@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 17: Disagreeing with CTO on Strategic Direction | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">17 · Disagreeing with CTO on Strategic Direction</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Disagreeing with CTO on Strategic Direction</h1>
+        <p class="subtitle">Article 17 · Module 4: Stakeholder Communication & Strategic Pushback · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Intermediate</span>
+            <span>🎯 Push back on a top-down decision with evidence, trade-offs, and a constructive counter-proposal</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday, 4:00 PM HKT</strong>. The Group CTO has just announced a top-down
+            strategic direction in the Architecture Chapter town hall: <em>all new digital channels in
+            CMB and RBWM must be built on a single, bank-wide Customer Data Platform (CDP) by end of
+            FY26</em>. The decision is recorded in <strong>ADR-0901</strong>, signed by the CTO, and
+            is now landing in your inbox. You are a Solution Architect in the <em>RBWM Digital</em>
+            tribe — and you have serious concerns: the vendor shortlist was never shared, the
+            data-residency implications for HK and EU customers weren't addressed, and the timeline
+            conflicts with the OneWealth migration already in flight (ADR-0142).
+        </p>
+        <p>
+            周二下午 4 点香港时间，集团 CTO 在架构师 Chapter 全员会上宣布了一条自上而下的战略方向：
+            <em>CMB 和 RBWM 所有新的数字渠道必须在 FY26 年底前基于一个全行统一的客户数据平台（CDP）建设</em>。
+            该决策被记录在 <strong>ADR-0901</strong>，由 CTO 签批，现已下发到你的邮箱。
+        </p>
+        <p>
+            You are a Solution Architect in the <em>RBWM Digital</em> tribe. The vendor shortlist was
+            never circulated. Data-residency for HK and EU customers was not addressed. The timeline
+            collides with the OneWealth migration (ADR-0142) you are mid-flight on. You have a
+            30-minute slot with the CTO tomorrow morning. You need to push back — but with evidence,
+            trade-offs, and a constructive counter-proposal, not with a flat "no".
+        </p>
+        <p>
+            你是 <em>RBWM 数字化</em> tribe 的 Solution 架构师。厂商短名单从未下发；HK 和 EU 客户的数据驻留
+            问题未被讨论；时间表和你正在做的 OneWealth 迁移（ADR-0142）撞期。明天上午你有 30 分钟和 CTO 谈。
+            你必须提出反对意见——但要有证据、有 trade-off、有建设性的替代方案，而不是简单地说"不行"。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">CTO (Group Chief Technology Officer):</span>
+                <span class="text"><span class="en">Thanks for making the time, Wei. <em>Just to set context</em> — ADR-0901 is signed and the direction is firm. I want to hear your concerns, but I also want to know <em>what's needed to make it work for RBWM.</em></span><span class="cn">谢谢你抽时间。背景说一下：ADR-0901 已经签批，方向是定的。我想听你的顾虑，但也想知道 <em>RBWM 这边需要什么才能落地</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Thanks, David. <strong>Honest answer — I support the strategic intent, but I have <em>three concrete concerns</em> with ADR-0901 as written.</strong> I'd like to walk through them, the trade-offs, and a counter-proposal.</span><span class="cn">谢谢 David。实话实说——我支持战略意图，但对 ADR-0901 的<em>现有写法有 3 个具体顾虑</em>。我想过一下顾虑、trade-off 和一个替代方案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Concern one — data residency.</em> The ADR doesn't address HKMA's <em>cross-border data transfer rules</em> or GDPR's data-localisation for EU customers. <em>Honestly,</em> if we put HK and EU customer profiles on a single global CDP without a <em>data-sovereignty carve-out</em>, we expose the bank to regulatory findings. I'd like InfoSec and Compliance to sign off <em>before</em> we commit to a vendor.</span><span class="cn">第一个顾虑——数据驻留。ADR 没有处理 HKMA 的<em>跨境数据传输规则</em>，也没有处理 GDPR 对 EU 客户的数据本地化要求。<em>坦白说</em>，如果把 HK 和 EU 客户画像放在一个全球 CDP 上而没有<em>数据主权豁免</em>，银行会面临监管处罚。希望在选型前拿到 InfoSec 和 Compliance 的签批。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CTO:</span>
+                <span class="text"><span class="en">Fair point. <em>What's your evidence</em> that this is a real risk and not a theoretical one?</span><span class="cn">说得有理。怎么证明这是真风险而不是理论上的？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Two things. <em>One,</em> the HKMA's <em>2024 circular on outsourcing cloud services</em> explicitly names cross-border data as a supervisory focus. <em>Two,</em> a peer bank's CDP programme was paused for 9 months last year on similar grounds — I can share the public reference. <em>Happy to share both offline</em>.</span><span class="cn">两点。第一，HKMA 的<em>2024 年云外包通函</em>明确把跨境数据列为监管重点。第二，一家同业的 CDP 项目去年因类似原因停了 9 个月，公开资料可查。<em>可以线下把两份材料发你</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Concern two — the timeline collides with OneWealth.</em> We have <em>three squads</em> mid-flight on OneWealth migration, ADR-0142, with a Q2 FY26 sign-off. Asking them to switch mid-stream to a CDP integration is a <em>context-switch cost</em> I'd estimate at 3 to 4 sprints of lost velocity.</span><span class="cn">第二个顾虑——时间表和 OneWealth 冲突。我们有 3 个 squad 正在做 OneWealth 迁移（ADR-0142），计划 FY26 Q2 签批。让他们中途切换去接 CDP 是<em>上下文切换成本</em>，我估算要损失 3 到 4 个 Sprint 的速度。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CTO:</span>
+                <span class="text"><span class="en">OK, so <em>what's the trade-off you'd propose?</em></span><span class="cn">那你建议的 trade-off 是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>My counter-proposal is a phased rollout.</em> <em>Phase one</em> — RBWM Digital adopts the CDP for <em>new journeys only</em> from Q1 FY27, with the existing OneWealth migration completing on its current track. <em>Phase two</em> — we backfill OneWealth onto the CDP in Q3 FY27, with a 6-month buffer for data-residency remediation. This protects FY26 delivery <em>and</em> meets the FY27 strategic intent.</span><span class="cn">好问题。我的替代方案是分阶段上线。第一阶段——RBWM 数字化从 FY27 Q1 开始只在新流程上接入 CDP，OneWealth 迁移按原计划完成。第二阶段——FY27 Q3 把 OneWealth 回填到 CDP，留 6 个月缓冲处理数据驻留。这样既保住 FY26 交付，也满足 FY27 战略意图。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CTO:</span>
+                <span class="text"><span class="en"><em>Right, so</em> — to be clear — you're not blocking the direction, you're proposing a <em>sequencing change</em>?</span><span class="cn">那讲清楚——你不是反对方向，而是建议<em>调整节奏</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Exactly. <em>I recommend</em> we <em>re-issue ADR-0901 as ADR-0901.1</em> with a phased plan, a data-residency appendix, and a <em>named owner per workstream</em>. <em>Happy to draft</em> the appendix this week and <em>walk you through it</em> Friday.</span><span class="cn">对。<em>我建议</em>把 ADR-0901 改写成 ADR-0901.1，增加分阶段计划、数据驻留附录和<em>每个工作流的明确负责人</em>。我这周可以起草附录，周五跟你过一遍。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CTO:</span>
+                <span class="text"><span class="en"><em>Good, that's constructive.</em> Send me the draft Thursday EOD and I'll <em>loop in Compliance and InfoSec</em> for a joint review next week. <em>Thanks for pushing back — properly.</em></span><span class="cn">不错，这才叫建设性反对。周四 EOD 前发我初稿，我下周拉合规和 InfoSec 一起评审。<em>谢谢你的合理 push back</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Honest answer — I support the intent, but I have concrete concerns.</em></span>
+                <span class="chinese">说实话——我支持意图，但有具体顾虑</span>
+                <span class="note">Disagree-and-commit opening: acknowledge the direction first, then surface concerns. Never start with "I disagree".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Concern</span> <em>I have three concrete concerns with ADR-0901 as written.</em></span>
+                <span class="chinese">我对 ADR-0901 现有写法有 3 个具体顾虑</span>
+                <span class="note">"Concern" is softer than "objection". "As written" is the architect's escape hatch — you can rewrite the ADR, you can't rewrite the strategy.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence</span> <em>What's your evidence that this is a real risk?</em></span>
+                <span class="chinese">你有什么证据表明这是真风险？</span>
+                <span class="note">A senior stakeholder will always ask for evidence. Have 1-2 facts ready: a regulator's circular, a peer-bank precedent, a public incident.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>What's the trade-off you'd propose?</em></span>
+                <span class="chinese">你建议的 trade-off 是什么？</span>
+                <span class="note">A pushback without a trade-off is just a complaint. Always pair the concern with an alternative.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Counter-proposal</span> <em>My counter-proposal is a phased rollout.</em></span>
+                <span class="chinese">我的替代方案是分阶段上线</span>
+                <span class="note">"Counter-proposal" = a constructive alternative. The word itself signals you're not blocking, you're problem-solving.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>For new journeys only.</em></span>
+                <span class="chinese">只覆盖新流程</span>
+                <span class="note">Scoped pushback beats sweeping pushback. "New journeys only" is a real, defensible boundary.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>I recommend we re-issue ADR-0901 as ADR-0901.1.</em></span>
+                <span class="chinese">我建议把 ADR-0901 改写成 ADR-0901.1</span>
+                <span class="note">Even when pushing back on a senior, frame your ask as "I recommend…" — it positions you as a peer, not a rebel.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Owner</span> <em>A named owner per workstream.</em></span>
+                <span class="chinese">每个工作流的明确负责人</span>
+                <span class="note">"Named owner" is what turns a strategic ADR into a deliverable. If no one is named, nothing ships.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Loop in</span> <em>I'll loop in Compliance and InfoSec.</em></span>
+                <span class="chinese">我把合规和 InfoSec 拉进来</span>
+                <span class="note">When a CTO offers to loop people in, treat it as a win — your concerns are now a formal review, not just a private chat.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Diplomacy</span> <em>Thanks for pushing back — properly.</em></span>
+                <span class="chinese">谢谢你的合理 push back</span>
+                <span class="note">The "— properly" suffix is the compliment. Good architects are the ones who challenge the CTO with evidence, not with attitude.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Top-down decision</strong> n. 自上而下的决策 A strategic direction set by senior leadership (CTO, CIO, Board) and pushed down to delivery teams.</li>
+            <li><strong>Disagree-and-commit</strong> n. 反对但执行 A senior-leader pattern: voice concerns, then fully back the decision once it's made.</li>
+            <li><strong>Counter-proposal</strong> n. 反提议 A constructive alternative offered when you disagree with a decision.</li>
+            <li><strong>Trade-off</strong> n. 取舍 Explicit comparison of options with pros, cons, costs, and chosen path.</li>
+            <li><strong>Data residency</strong> n. 数据驻留 Requirement that customer data stays in the legal jurisdiction where it was collected (e.g., HKMA, GDPR).</li>
+            <li><strong>Data sovereignty</strong> n. 数据主权 The legal right of a country to control data generated within its borders.</li>
+            <li><strong>Carve-out</strong> n. 豁免条款 An explicit exception for a defined scope, geography, or customer segment.</li>
+            <li><strong>Context-switch cost</strong> n. 上下文切换成本 The velocity lost when a squad is asked to pivot mid-sprint to a new technical direction.</li>
+            <li><strong>Phased rollout</strong> n. 分阶段上线 A delivery plan that brings capability live in stages, not all at once.</li>
+            <li><strong>Chapter town hall</strong> n. Chapter 全员会 Monthly all-hands for a functional community (e.g., the Architecture chapter).</li>
+            <li><strong>Backfill</strong> v. 回填 Migrating an existing system onto a new platform after the platform is proven in production.</li>
+            <li><strong>Evidence-based pushback</strong> n. 基于证据的反对 Pushing back with cited facts (regulator circulars, peer precedents) rather than opinions.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I'd like to" — soft modal for senior pushback</h3>
+        <p>
+            When pushing back on a CTO, avoid direct imperatives like <em>change the ADR</em> or
+            <em>delay the rollout</em>. Use <strong>I'd like to</strong> / <em>I'd recommend</em> /
+            <em>I was hoping we could</em>. These soft modals signal respect for seniority while
+            still landing your ask. Notice <em>I'd like InfoSec to sign off before we commit to a
+            vendor</em> — same intent as <em>InfoSec must sign off</em>, but twice as soft.
+        </p>
+        <p>对 CTO 提反对时，避免祈使句（"change the ADR"），用 <em>I'd like to / I'd recommend</em> 这种柔性语气。</p>
+
+        <h3>② "As written" — the architect's escape hatch</h3>
+        <p>
+            When you disagree with a decision document (ADR, RFC, mandate), qualify your concern
+            with <em>as written</em> / <em>as proposed</em> / <em>in its current form</em>. The phrase
+            separates the <strong>strategic intent</strong> (which you can support) from the
+            <strong>execution details</strong> (which you can rewrite). It's a polite way of saying
+            "I support the goal; I want to change the plan".
+        </p>
+        <p>"As written" 把"战略意图"和"具体执行"分开——你可以支持战略，但改执行细节。</p>
+
+        <h3>③ "Right, so…" — checking alignment in real time</h3>
+        <p>
+            Senior stakeholders use <em>right, so…</em> to summarise what they just heard and check
+            they understood you. When the CTO says <em>Right, so — to be clear — you're proposing a
+            sequencing change?</em>, that's your chance to confirm or correct before the meeting
+            moves on. Always respond to these checkpoints — silence reads as disagreement.
+        </p>
+        <p><em>Right, so…</em> 是高管在确认自己听对了。一定要接话，沉默会被解读为还在反对。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Never start with "I disagree".</strong> At HSBC, disagreeing with a top-down direction is fine — but you start with "I support the intent". You separate the <em>what</em> (the goal) from the <em>how</em> (the plan). Saying "I disagree" full stop reads as a personal challenge.</li>
+            <li><strong>Always have a counter-proposal.</strong> A pushback without a counter-proposal is just a complaint — and complaints get remembered, not solved. The minimum viable pushback is: concern + evidence + a proposed alternative.</li>
+            <li><strong>Cite the regulator, not your opinion.</strong> When the ADR touches compliance, the strongest evidence is the regulator's own circular (HKMA, MAS, FCA). Personal judgment is fine for technical concerns; regulatory judgment must cite a regulator.</li>
+            <li><strong>"As written" beats "this is wrong".</strong> Senior leaders respect ADRs as the unit of decision. Reframe your pushback as "ADR-0901 as written has gap X; I propose a 0901.1 with Y appended". Now you are co-authoring, not blocking.</li>
+            <li><strong>Cross-region etiquette matters more when pushing back.</strong> When your concern affects UK, HK, and EU, name the regions explicitly ("HKMA, FCA, GDPR"). A concern that is silent on geography reads as parochial.</li>
+            <li><strong>The CTO's "Thanks for pushing back — properly" is a compliment.</strong> It's how senior leaders signal "you're a peer now, not just a delivery resource". Earn it once and you earn it for the rest of the chapter.</li>
+            <li><strong>Don't relitigate in the town hall.</strong> If you have concerns about a top-down decision, book a 1:1 with the CTO — never ambush the town hall. The town hall is for alignment, not for argument.</li>
+            <li><strong>Document the pushback in writing.</strong> After the meeting, send a 5-line follow-up email summarising the concerns, the counter-proposal, and the next step. This is the audit trail that protects you if the decision later turns out to be wrong.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the CTO pushback</h3>
+        <p>Translate the following architect's pushback to a senior stakeholder into natural Chinese. Pay attention to the "disagree-and-commit" framing and the counter-proposal.</p>
+        <blockquote>
+            "Honest answer — I support the strategic intent of moving RBWM onto a single data
+            mesh, but I have two concrete concerns with ADR-0902 as written. One: the latency NFR
+            of 50ms p99 isn't achievable on a cross-region mesh without edge caching, and we
+            haven't budgeted for that. Two: the FY26 deadline clashes with the GPB regulatory
+            reporting workstream. My counter-proposal: phase one — RBWM Digital adopts the data
+            mesh for read-only analytics workloads in Q1 FY27; phase two — we enable transactional
+            workloads in Q3 FY27 with a 6-month edge-cache remediation plan. I'll draft the ADR-0902.1
+            appendix by Friday and walk you through it next Monday."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"实话实说——我支持把 RBWM 统一到同一个数据网格的战略意图，但对 ADR-0902 的现有写法有 2 个具体顾虑。第一：50ms p99 的延迟 NFR 在跨区域的数据网格上做不到，除非加边缘缓存，而这块预算还没批。第二：FY26 的截止日期和 GPB 监管报送工作流撞期。我的替代方案：第一阶段——RBWM 数字化在 FY27 Q1 先把数据网格用于只读分析类负载；第二阶段——FY27 Q3 再启用事务性负载，并配套 6 个月的边缘缓存整改计划。我周五前起草 ADR-0902.1 的附录，下周一跟你过一遍。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the bad pushback</h3>
+        <p>Which of these opening lines is the most "HSBC-architect" pushback to a CTO? Why?</p>
+        <ol>
+            <li>"I disagree with ADR-0901. We shouldn't do this."</li>
+            <li>"I think ADR-0901 is wrong and will fail in production."</li>
+            <li>"Honest answer — I support the strategic intent, but I have three concrete concerns with ADR-0901 as written."</li>
+            <li>"David, your ADR is going to cause a regulatory incident. Have you thought about GDPR at all?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is the correct architect-style pushback: it acknowledges the intent, separates intent from execution ("as written"), previews the volume of concerns ("three"), and signals evidence is coming. ①, ②, ④ are flat objections — they read as personal, not professional. A good HSBC architect never opens with "I disagree" or "this is wrong" to a CTO; they open with the intent, then surface concerns with evidence.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a Solution Architect in the GPB Digital tribe. The Group CTO has just signed ADR-0933 mandating that all GPB digital channels move to a single group-wide event bus (Kafka) by end of FY26. You have concerns: (a) the on-prem mainframe publisher cannot emit Kafka-format events without a 6-month adapter build, (b) MAS TRM requires audit logging of the event source, which the proposed schema does not capture, (c) the FY26 deadline collides with the GPB MAS TRM audit in Q2 FY26. Write your 60-second pushback to the CTO in English. Use at least 3 patterns from the Key Phrases section. Include a counter-proposal.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks, David. Honest answer — I support the intent of a single group event bus, but I have three concrete concerns with ADR-0933 as written. One: the on-prem mainframe publisher can't emit Kafka-format events without a 6-month adapter build, and we haven't scoped that work. Two: MAS TRM requires audit logging of the event source, and the proposed schema doesn't capture it. Three: the FY26 deadline collides with the GPB MAS TRM audit in Q2 FY26. My counter-proposal: phase one — GPB Digital adopts Kafka for new, greenfield event flows in Q1 FY27, with the audit-source field baked into the schema; phase two — we backfill the mainframe publisher in Q3 FY27 after the TRM audit closes. I'll draft ADR-0933.1 with the phased plan and a named owner per workstream by Friday and walk you through it Monday."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="18-compliance-infosec-architecture.html" class="btn btn-primary">Next: Article 18 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

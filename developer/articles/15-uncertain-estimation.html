@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: Estimating Uncertain Tasks | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">15 · Estimating Uncertain Tasks</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Estimating Uncertain Tasks</h1>
+        <p class="subtitle">Article 15 · Module 4: Difficult Conversations · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>📏 Express uncertainty, give ranges, protect the team</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            In sprint planning, your PM <strong>Sarah</strong> (London) is asking for estimates on
+            <strong>PAY-2950</strong> — "<em>Migrate the trade order service from WebSphere on-prem to
+            AWS EKS</em>." This is a big, multi-week effort with <em>many unknowns</em>:
+            database migration approach, security review, network topology, performance testing strategy.
+            Sarah wants a single number. You need to communicate the uncertainty honestly.
+        </p>
+        <p>
+            冲刺规划会上，PM <strong>Sarah</strong>（伦敦）要求给 <strong>PAY-2950</strong>（<em>把交易订单服务从
+            WebSphere 本地迁移到 AWS EKS</em>）估时。这是一个多周的工作，<em>很多未知</em>：数据库迁移方法、
+            安全评审、网络拓扑、性能测试策略。Sarah 要一个数字。你需要诚实沟通不确定性。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en">OK Wei, what's your estimate for PAY-2950? <em>Single number please</em> — I need it for the <em>SteerCo slide</em>.</span><span class="cn">Wei，PAY-2950 你估多少？请给个单一数字——我要写进 SteerCo 幻灯片。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Sarah, <em>honestly</em>, I'd <em>push back gently</em> on a single number. <em>This story has too many unknowns</em> to estimate accurately today.</span><span class="cn">Sarah，坦白说，我想温和地反对只给一个数字。这个故事未知因素太多，今天没法准确估算。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en"><em>I appreciate that</em>, but the SteerCo wants a <em>single point estimate</em>. Can you give me <em>your best guess</em>?</span><span class="cn">谢谢，但 SteerCo 想要一个单点估算。你能给个最佳猜测吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Sure, <em>here's how I'd think about it</em>:</span><span class="cn">好的，我是这样想的：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>If everything goes well</em> — the AWS account is ready, the security review is fast, the network topology is straightforward, and we hit the <em>happy path</em> first try — I'd say <strong>5 sprints (~10 weeks).</strong></span><span class="cn">如果一切顺利——AWS 账号就绪、安全评审快、网络拓扑简单、一次走通——我估 5 个 sprint（约 10 周）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>If we hit a few of the typical migration hiccups</em> — say, a 2-week wait for InfoSec on the VPC peering, a DB migration issue, and some performance tuning — I'd say <strong>8 sprints (~16 weeks).</strong></span><span class="cn">如果遇到一些典型迁移问题——比如 InfoSec 在 VPC 对等连接上要等 2 周、DB 迁移有问题、需要性能调优——我估 8 个 sprint（约 16 周）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>If things go really sideways</em> — say, InfoSec requires a re-architecture, or we discover a hidden WebSphere dependency — I'd say <strong>13 sprints (~26 weeks).</strong> <em>Hopefully not, but I want to be honest about the tail risk.</em></span><span class="cn">如果情况很糟糕——比如 InfoSec 要求重新架构，或者发现隐藏的 WebSphere 依赖——我估 13 个 sprint（约 26 周）。希望不会，但我要诚实面对尾部风险。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">So my <em>best single-number estimate</em> is <strong>8 sprints</strong>, but I'd <em>flag it as at risk from day one</em>. <em>For SteerCo, I'd suggest showing a range</em> — maybe <strong>5 to 13 sprints, 8 as the most likely.</strong> That's <em>more honest</em> than a single number.</span><span class="cn">所以我最佳的单点估算是 8 个 sprint，但要从第一天就标记有风险。建议给 SteerCo 展示区间——比如 5 到 13 个 sprint，8 是最可能值。这比单一数字更诚实。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My strong recommendation</em> is that we <em>do a 1-sprint spike first</em> — just to <em>de-risk the unknowns</em>: AWS account setup, security scoping, DB migration POC. <em>After the spike</em>, I can <em>give you a much tighter estimate</em> — probably <strong>±2 sprints</strong> instead of <strong>±5 sprints.</strong></span><span class="cn">我强烈建议先做一个 1 sprint 的 spike——专门解决未知项：AWS 账号搭建、安全范围、DB 迁移 POC。Spike 之后我可以给出更紧的估算——可能 ±2 sprint 而不是 ±5。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en"><em>OK, that makes sense.</em> Let me <em>put 8 sprints in the slide</em> as the <em>most likely</em>, with a <em>range of 5-13</em> in the footnotes. <em>Can you do the spike in sprint 1</em> and <em>re-estimate after</em>?</span><span class="cn">好的，有道理。我把 8 个 sprint 写进幻灯片作为最可能值，区间 5-13 放在脚注。你能在 sprint 1 做 spike 然后重新估算吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yes, <em>happy to</em>. I'll <em>set up the spike stories</em> in the next refinement and <em>come back with a revised estimate</em> at the end of the spike.</span><span class="cn">没问题，很乐意。我会在下次 backlog refinement 里建好 spike 故事，spike 结束后给你修订后的估算。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en"><em>Good call on the spike, Wei.</em> I'll <em>add it to the backlog</em> with <em>3 points allocated</em> for the spike work.</span><span class="cn">决定做 spike 很对，Wei。我会把它加到 backlog 里，给 spike 工作分配 3 个点。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Honest</span> <em>Honestly, I'd push back on a single number.</em></span>
+                <span class="chinese">说实话，我会 push back 单个数字</span>
+                <span class="note">Use <em>honestly</em> / <em>to be honest</em> / <em>truth be told</em> to flag a real concern.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Unknowns</span> <em>This story has too many unknowns.</em></span>
+                <span class="chinese">这张卡有太多未知</span>
+                <span class="note">Always name the source of uncertainty. <em>"Unknowns"</em> is the standard term.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scenario</span> <em>If everything goes well… / If we hit a few hiccups… / If things go sideways…</em></span>
+                <span class="chinese">如果一切顺利 / 如果遇到一些问题 / 如果很不顺利</span>
+                <span class="note">Three-scenario estimation is the gold standard for high-uncertainty tasks.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Best guess</span> <em>My best single-number estimate is 8 sprints.</em></span>
+                <span class="chinese">我最佳单数字估计是 8 个冲刺</span>
+                <span class="note">Even when giving a single number, label it as <em>best guess</em> / <em>most likely</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Range</span> <em>I'd suggest showing a range — 5 to 13 sprints.</em></span>
+                <span class="chinese">我建议展示区间 — 5 到 13 冲刺</span>
+                <span class="note">Ranges are more honest than point estimates. <em>"5 to 13, 8 most likely"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Tail risk</span> <em>Want to be honest about the tail risk.</em></span>
+                <span class="chinese">想诚实说明尾部风险</span>
+                <span class="note"><em>Tail risk</em> = the low-probability but high-impact worst case.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">De-risk</span> <em>Do a 1-sprint spike first to de-risk the unknowns.</em></span>
+                <span class="chinese">先做 1 冲刺 spike 降低未知风险</span>
+                <span class="note"><strong>De-risk</strong> = reduce the unknowns. A spike <em>de-risks</em> the future estimate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Tighter</span> <em>A much tighter estimate after the spike.</em></span>
+                <span class="chinese">Spike 后估计会更紧</span>
+                <span class="note">Spikes trade a small upfront cost for a much tighter (less uncertain) future estimate.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>point estimate</strong> <span class="tag">n.</span></span>
+                <span class="chinese">点估计 (单个数字)</span>
+                <span class="note">A single number. Often required by management, but rarely accurate.</span>
+            </li>
+            <li>
+                <span class="english"><strong>range estimate / confidence interval</strong> <span class="tag">n.</span></span>
+                <span class="chinese">区间估计 / 置信区间</span>
+                <span class="note">A range with a most-likely value. More honest than a point estimate.</span>
+            </li>
+            <li>
+                <span class="english"><strong>unknowns</strong> <span class="tag">n.</span></span>
+                <span class="chinese">未知因素</span>
+                <span class="note">Things we don't know yet. Source of estimation uncertainty.</span>
+            </li>
+            <li>
+                <span class="english"><strong>tail risk</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">尾部风险</span>
+                <span class="note">Low-probability, high-impact worst case. Like a long tail in a probability distribution.</span>
+            </li>
+            <li>
+                <span class="english"><strong>de-risk</strong> <span class="tag">v.</span></span>
+                <span class="chinese">降低风险</span>
+                <span class="note">Reduce uncertainty before committing to a plan.</span>
+            </li>
+            <li>
+                <span class="english"><strong>VPC peering</strong> <span class="tag">AWS</span></span>
+                <span class="chinese">VPC 对等连接</span>
+                <span class="note">Network connection between two AWS VPCs. Common blocker in cloud migrations.</span>
+            </li>
+            <li>
+                <span class="english"><strong>POC (Proof of Concept)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">概念验证</span>
+                <span class="note">A small-scale implementation to validate a technical approach.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① Conditional Sentences for Scenarios</h3>
+        <p>When estimating, use conditionals to describe scenarios:</p>
+        <ul>
+            <li><em><strong>If</strong> everything goes well, I'd say 5 sprints.</em> (best case)</li>
+            <li><em><strong>If</strong> we hit a few hiccups, I'd say 8 sprints.</em> (most likely)</li>
+            <li><em><strong>If</strong> things go really sideways, I'd say 13 sprints.</em> (worst case)</li>
+        </ul>
+
+        <h3>② "I'd say" / "My estimate is" / "My best guess is"</h3>
+        <p>Three levels of confidence in your estimate:</p>
+        <ul>
+            <li><em><strong>I'd say</strong> 8 sprints.</em> (most hedging, casual)</li>
+            <li><em><strong>My estimate is</strong> 8 sprints.</em> (more confident)</li>
+            <li><em><strong>My best guess is</strong> 8 sprints.</em> (acknowledges uncertainty)</li>
+        </ul>
+
+        <h3>③ "Want to be honest" — Softening Predictions</h3>
+        <p>When you want to flag a risk without sounding alarmist:</p>
+        <ul>
+            <li>❌ <em>"This could take 26 weeks."</em> (sounds like a threat)</li>
+            <li>✅ <em>"I want to be honest about the <strong>tail risk</strong> — if things go sideways, it could be 26 weeks."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">📏 The "Cone of Uncertainty" 估算的不确定性锥</div>
+            <p>Steve McConnell's classic principle: <strong>at the start of a project, estimates can be off by 4x. As you progress, the cone narrows.</strong></p>
+            <ul>
+                <li>Initial estimate: <strong>±4x</strong> (huge uncertainty)</li>
+                <li>After requirements: <strong>±2x</strong></li>
+                <li>After design: <strong>±1.25x</strong></li>
+                <li>After implementation: <strong>±0.25x</strong></li>
+            </ul>
+            <p>This is why <strong>spikes</strong> are so valuable — they narrow the cone before you commit to a plan.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Estimation Anti-Patterns</div>
+            <ul>
+                <li>❌ <em>"It'll take 2 weeks."</em> (over-confident, single point estimate)</li>
+                <li>✅ <em>"I'd estimate <strong>1 to 4 weeks, 2 most likely</strong>. Want me to do a spike to tighten this?"</em></li>
+                <li>❌ Padding: <em>"Add 50% for safety."</em> (Hofstadter's Law: it always takes longer than expected, even with padding)</li>
+                <li>✅ <strong>Spike first</strong>, then re-estimate with reduced uncertainty.</li>
+                <li>❌ Committing to a date your team can't meet (damages credibility long-term).</li>
+                <li>✅ Giving a range + spike proposal (shows maturity, not weakness).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to native-sounding English:</div>
+                <p>"Sarah，单个数字我给不了。这卡太多未知。我估5到13个冲刺，8最可能。我建议先做2周spike降低风险。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Sarah, <em>to be honest</em>, I'd <em>push back on a single number</em> — this story has <em>too many unknowns</em> to estimate accurately today. <em>My best estimate is 8 sprints</em>, with a range of <em>5 to 13 sprints</em>. <em>My strong recommendation</em> is to <em>do a 1-sprint spike first</em> to <em>de-risk the unknowns</em> — after that, I can <em>give you a much tighter estimate</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Convert this over-confident estimate into a range:</div>
+                <p>"This migration will take exactly 12 weeks."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Honestly, I'd push back on a single number</em> for a migration of this scale. <em>My best estimate is 12 weeks</em>, but there's a <em>wide range</em>:
+                    <ul>
+                        <li><em>Best case</em> (everything goes well, no surprises): <strong>8 weeks</strong></li>
+                        <li><em>Most likely</em> (typical migration hiccups): <strong>12 weeks</strong></li>
+                        <li><em>Worst case</em> (InfoSec re-architecture, hidden dependencies): <strong>20 weeks</strong></li>
+                    </ul>
+                    For the SteerCo, I'd suggest <strong>12 weeks most likely, 8-20 range</strong> in the footnotes. <em>Want me to do a 1-sprint spike to tighten this?</em>"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right estimation phrases:</div>
+                <p>"<em>This story has too many _____. / If everything goes _____, 5 sprints. / My best _____ is 8 sprints. / I'd suggest showing a _____. / A 1-sprint spike would help de-_____ the unknowns.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>unknowns</em> / <em>well</em> / <em>estimate</em> (or <em>guess</em>) / <em>range</em> / <em>risk</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>Sarah asks for a single-number estimate on migrating 50 microservices from WebSphere to EKS in 6 months. You believe 6 months is unrealistic — each microservice has its own complexity, and they share databases and APIs. Write a 3-scenario estimate + spike recommendation.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Sarah, <em>honestly</em>, I'd <em>push back on a single number</em> for 50 microservices in 6 months. <em>Too many cross-dependencies</em> (shared DBs, API contracts) to estimate accurately today. <em>Three scenarios</em>:
+                    <ul>
+                        <li><em>Best case</em> (50 independent services, parallel teams, no shared state): <strong>6 months</strong> — possible but unlikely.</li>
+                        <li><em>Most likely</em> (we discover shared dependencies, need to migrate some in pairs): <strong>9-12 months</strong>.</li>
+                        <li><em>Worst case</em> (architectural re-design needed, e.g., database consolidation): <strong>18+ months</strong>.</li>
+                    </ul>
+                    <em>My best guess is 9 months</em>, with a <em>6-18 month range</em>. For SteerCo, I'd show <strong>9 months most likely, 6-18 range</strong> in the footnotes.
+                    <br><br>
+                    <em>Strong recommendation:</em> do a <strong>2-sprint spike</strong> on <em>5 representative services</em> (1 simple, 2 medium, 2 complex) to <em>de-risk the cross-dependency question</em>. <em>After the spike</em>, I can <em>re-estimate with much tighter confidence</em> — probably <strong>±1 month</strong> instead of <strong>±6 months.</strong>"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="14-disagreeing-with-senior.html">
+            <span class="label">← Previous</span>
+            <span class="title">14 · Disagreeing with a Senior</span>
+        </a>
+        <a class="next" href="16-production-incident.html">
+            <span class="label">Next Article →</span>
+            <span class="title">16 · Production Incident Communication</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 15 · Estimating Uncertain Tasks · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

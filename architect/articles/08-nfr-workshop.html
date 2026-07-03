@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: NFR Workshop | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">08 · NFR Workshop</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>NFR Workshop</h1>
+        <p class="subtitle">Article 08 · Module 4: Live Design Sessions · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Quantify the NFRs — performance, security, scalability, auditability — with numbers, owners, and evidence</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>3:00 PM HKT</strong>. You are a Solution Architect in the <em>CMB Digital Channels</em>
+            tribe, hosting a 60-minute Non-Functional Requirements workshop in a Hong Kong meeting room, with
+            Akash dialling in from Bangalore and Wei in Shanghai. The squad is finalising
+            <strong>ADR-0167</strong> for the <em>HSBCnet corporate cash-flow dashboard</em>, and the design
+            review next Tuesday will reject the ADR if the NFRs are not quantified.
+        </p>
+        <p>
+            下午 3 点香港时间，你是 <em>CMB 数字渠道</em> tribe 的 Solution 架构师，在香港会议室主持一场
+            60 分钟的非功能需求（NFR）工作坊，Akash 从班加罗尔拨入，Wei 在上海。这个 squad 正在收尾
+            <strong>ADR-0167</strong>，主题是 <em>HSBCnet 公司网银现金流看板</em>，下周二的设计评审如果 NFR
+            没有量化就会 reject。
+        </p>
+        <p>
+            In the room: <strong>Mei</strong> (Tech Lead), <strong>Jonathan</strong> (BA), <strong>Rohit</strong>
+            (QA Lead), <strong>Priya</strong> (peer architect, dialling in from London), and
+            <strong>Sara</strong> from <em>Group Cyber</em>, invited specifically to challenge the security NFRs.
+            Your job: turn vague NFRs like "fast" and "secure" into quantified, owner-attributed, evidence-backed
+            statements.
+        </p>
+        <p>
+            会议室里：<strong>Mei</strong>（Tech Lead）、<strong>Jonathan</strong>（BA）、<strong>Rohit</strong>（QA 负责人）、
+            从伦敦拨入的同侪架构师 <strong>Priya</strong>，以及专程被请来挑战安全 NFR 的 <em>集团网络</em>的
+            <strong>Sara</strong>。你的工作：把"快"、"安全"这种模糊的 NFR 变成有数字、有 owner、有证据的陈述。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">OK, everyone — <em>right, so</em> the goal of the next 60 minutes is to <em>quantify every NFR</em> in the design. If it doesn't have a number, an owner, and evidence, it doesn't ship to the design review. <em>Let's go round by category</em> — performance first, then security, scalability, and auditability.</span><span class="cn">好——<em>接下来</em> 60 分钟的目标是<em>把每个 NFR 都量化</em>。没有数字、没有 owner、没有证据的就进不了设计评审。<em>我们按类别走</em>——先性能，再安全，再扩展性，再审计性。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en">For performance — the dashboard has to load <em>fast</em>. We've said "sub-second" in the story, but we haven't pinned down the percentile yet.</span><span class="cn">性能这块——看板要<em>快</em>。Story 里写了"亚秒级"，但还没定百分位。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good catch. <em>Let's be specific:</em> dashboard initial render at <em>p95 ≤ 1.5 seconds</em> and <em>p99 ≤ 3 seconds</em>, measured from the API gateway to the last byte of HTML. The owner is Akash, evidence is the <em>JMeter scripts in the performance Git repo</em>, run on the pre-prod environment with a 5,000-concurrent-user load profile. <em>Quantified?</em></span><span class="cn">抓得好。<em>明确一下：</em>看板首屏渲染 <em>p95 ≤ 1.5 秒</em>，<em>p99 ≤ 3 秒</em>，从 API 网关到 HTML 末字节计。Owner 是 Akash，证据是<em>性能 Git 仓库里的 JMeter 脚本</em>，在 pre-prod 环境跑 5000 并发用户负载。<em>这样量化可以吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (QA Lead):</span>
+                <span class="text"><span class="en">Hold on — <em>5,000 concurrent users</em>? Last quarter the peak was 1,800. Are we sizing for 3x growth or are we over-engineering?</span><span class="cn">等一下——<em>5000 并发用户</em>？上个季度峰值才 1800。我们是按 3 倍增长规划还是过度设计？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Honest answer — <em>we're sizing for 2.5x.</em> The CMB growth target for FY26 is 40% YoY, and we want headroom. If Rohit, you'd rather cap at 1.5x and re-evaluate mid-year, we can do that — but <em>we'd be buying back performance in 6 months</em>. I'd recommend we hold the 2.5x.</span><span class="cn">说实话——<em>我们按 2.5 倍规划。</em>CMB FY26 的增长目标是同比 40%，我们要留余量。如果 Rohit 你倾向于按 1.5 倍然后年中再重评，也可以——但<em>6 个月后我们还得再花钱买性能</em>。我建议先按 2.5 倍。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara (Group Cyber):</span>
+                <span class="text"><span class="en">Quick one on security — what <em>encryption standard</em> are we using for the data-in-transit between the browser and the API gateway?</span><span class="cn">问一下安全——浏览器到 API 网关之间的<em>传输加密标准</em>用哪个？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>TLS 1.3 only</em>, with the Group Standard cipher suite — that's the SDL baseline. We also have <em>HSTS with a 1-year max-age</em> and <em>certificate pinning</em> for the mobile client. <em>Owner:</em> Mei for the API side, mobile TL for the app. <em>Evidence:</em> the Group Cyber <em>penetration test report</em> from Q4, plus a quarterly <em>Nessus scan</em> in CI/CD.</span><span class="cn">好问题。<em>只允许 TLS 1.3</em>，用集团标准密码套件——这是 SDL 基线。同时启用 <em>1 年 max-age 的 HSTS</em>，移动端<em>证书锁定</em>。<em>Owner：</em>API 侧是 Mei，移动端是移动 TL。<em>证据：</em>Q4 集团网络<em>渗透测试报告</em>，加上 CI/CD 里每季度的 <em>Nessus 扫描</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Architect, London):</span>
+                <span class="text"><span class="en"><em>Just to flag</em> — the data-at-rest encryption for the cash-flow snapshots. Is that <em>AES-256</em> with <em>HSBC HSM-managed keys</em>, or are we using AWS KMS?</span><span class="cn"><em>提一下</em>——现金流快照的数据静态加密。是用 <em>AES-256 + 汇丰 HSM 托管密钥</em>，还是用 AWS KMS？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>we're using HSBC HSM-managed keys with envelope encryption</em>. AES-256 for the data, the data encryption key is wrapped by an HSM-held key. <em>Group Cyber mandates HSM, not KMS</em>, for any data classified as Customer Confidential — and cash-flow snapshots are CC by default. Owner: Sara's team for the key rotation policy, our squad for the integration.</span><span class="cn">好，<em>我们用汇丰 HSM 托管密钥 + envelope encryption</em>。数据本身 AES-256，数据加密密钥由 HSM 持有的 key 包裹。<em>集团网络要求 HSM 而不是 KMS</em>，只要数据被归类为客户机密（CC）就用 HSM——现金流快照默认是 CC。Owner：密钥轮换策略归 Sara 团队，集成归我们 squad。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">For scalability — when the squad asked the PO about the projected user growth, he just said "a lot". Can we make the scalability NFR evidence-based?</span><span class="cn">扩展性这块——squad 问 PO 预测的用户增长，他就说"很多"。扩展性 NFR 能不能做成有证据的？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good push. <em>Let's lock the scalability NFR on the dashboard API at 2,500 RPS sustained, 5,000 RPS peak</em>, with <em>horizontal auto-scaling</em> on the EKS cluster. The evidence is the load test report; the trigger to scale up is CPU > 65% over 5 minutes. <em>Action:</em> Jonathan, can you <em>get the PO to commit a number</em> — even a 12-month projection — by end of this week?</span><span class="cn">好追问。<em>看板 API 的扩展性 NFR 锁定在 2500 RPS 稳态、5000 RPS 峰值</em>，EKS 集群<em>横向自动伸缩</em>。证据是负载测试报告；触发扩容的条件是 5 分钟内 CPU > 65%。<em>Action：</em>Jonathan，<em>你能不能让 PO 给个数字</em>——哪怕是 12 个月的预测——本周 EOD 前定下来？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (QA Lead):</span>
+                <span class="text"><span class="en">For auditability — the <em>Group Standard on auditability</em> says 7-year retention, but where does the audit log actually live?</span><span class="cn">审计性这块——<em>集团审计标准</em>说保留 7 年，但审计日志到底放在哪？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Every API call writes a structured audit record to GLCM</em> — that includes user ID, action, timestamp, IP, and a hash of the request body. <em>GLCM is the system of record for audit</em>, with WORM (write-once-read-many) storage and 7-year retention. <em>Owner:</em> Rohit for the test coverage, InfoSec for the retention policy sign-off.</span><span class="cn"><em>每次 API 调用都写一条结构化审计记录到 GLCM</em>——包括用户 ID、操作、时间戳、IP、请求体的哈希。<em>GLCM 是审计的唯一数据源</em>，用 WORM（一次写多次读）存储，保留 7 年。<em>Owner：</em>测试覆盖归 Rohit，保留策略签批归 InfoSec。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>to wrap up</em> — performance is p95 ≤ 1.5s at 5K concurrent, security is TLS 1.3 + HSM-managed keys, scalability is 2.5K RPS sustained with auto-scale, auditability is GLCM WORM 7-year retention. <em>Mei, can you update ADR-0167 with these by EOD Friday?</em></span><span class="cn">好，<em>收尾</em>——性能是 5K 并发下 p95 ≤ 1.5 秒，安全是 TLS 1.3 + HSM 托管密钥，扩展性是 2500 RPS 稳态 + 自动伸缩，审计性是 GLCM WORM 7 年保留。<em>Mei，你能不能在周五 EOD 前把这些写进 ADR-0167？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Right, so the goal of the next 60 minutes is to quantify every NFR.</em></span>
+                <span class="chinese">好，接下来的 60 分钟目标是把每个 NFR 都量化</span>
+                <span class="note">NFR workshops need a stated rule: if it doesn't have a number, an owner, and evidence, it doesn't ship.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>Let's be specific: p95 ≤ 1.5 seconds and p99 ≤ 3 seconds.</em></span>
+                <span class="chinese">明确一下：p95 ≤ 1.5 秒，p99 ≤ 3 秒</span>
+                <span class="note">Always cite both p95 and p99. p95 alone hides tail latency — and tail latency is what kills mobile UX.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Owner</span> <em>The owner is Akash, evidence is the JMeter scripts.</em></span>
+                <span class="chinese">Owner 是 Akash，证据是 JMeter 脚本</span>
+                <span class="note">"Owner" is non-negotiable. An NFR without an owner is an NFR that never gets measured.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence</span> <em>Evidence: the JMeter scripts in the performance Git repo.</em></span>
+                <span class="chinese">证据：性能 Git 仓库里的 JMeter 脚本</span>
+                <span class="note">Evidence is the artefact, not the assertion. "It's fast" is not evidence. The JMeter report is evidence.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Baseline</span> <em>TLS 1.3 only, with the Group Standard cipher suite — that's the SDL baseline.</em></span>
+                <span class="chinese">只允许 TLS 1.3，用集团标准密码套件——这是 SDL 基线</span>
+                <span class="note">Cite SDL by name. "TLS 1.3" alone is not enough — you need the cipher suite, the HSTS, the cert pinning.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Mandate</span> <em>Group Cyber mandates HSM, not KMS, for any CC-classified data.</em></span>
+                <span class="chinese">集团网络要求 HSM 而非 KMS，只要数据被分类为 CC</span>
+                <span class="note">"Mandates" = a hard rule. Distinguish it from "prefers" or "recommends". Mandates cannot be negotiated.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capacity</span> <em>2,500 RPS sustained, 5,000 RPS peak.</em></span>
+                <span class="chinese">2500 RPS 稳态，5000 RPS 峰值</span>
+                <span class="note">"Sustained" + "peak" is the standard capacity pair. Sustained = what you hold all day; peak = what you survive.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Auto-scale</span> <em>Horizontal auto-scaling on the EKS cluster, trigger at CPU > 65% over 5 minutes.</em></span>
+                <span class="chinese">EKS 集群横向自动伸缩，触发条件是 5 分钟内 CPU > 65%</span>
+                <span class="note">Always cite the trigger condition. "Auto-scaling" without a trigger is just a Terraform module.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">WORM</span> <em>WORM storage and 7-year retention.</em></span>
+                <span class="chinese">WORM 存储，保留 7 年</span>
+                <span class="note">"WORM" (write-once-read-many) is the audit standard. Plain S3 won't do for an audit trail.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Action</span> <em>Action: Jonathan, can you get the PO to commit a number by end of this week?</em></span>
+                <span class="chinese">Action：Jonathan，你能不能让 PO 本周 EOD 前给个数字？</span>
+                <span class="note">End every NFR workshop with named actions. NFRs that don't get owned in the room don't get owned at all.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>NFR (Non-Functional Requirement)</strong> n. 非功能需求 Performance, security, scalability, auditability — quantified with numbers.</li>
+            <li><strong>p95 / p99 latency</strong> n. P95 / P99 延迟 The 95th / 99th percentile response time — what the slowest 5% / 1% of users experience.</li>
+            <li><strong>RPS (Requests Per Second)</strong> n. 每秒请求数 The number of API calls a system can serve per second.</li>
+            <li><strong>Sustained vs peak load</strong> n. 稳态 / 峰值负载 Sustained = what you handle all day; peak = what you survive for a short burst.</li>
+            <li><strong>TLS 1.3</strong> n. TLS 1.3 协议 The current transport-layer encryption standard. The Group SDL baseline.</li>
+            <li><strong>HSTS (HTTP Strict Transport Security)</strong> n. 严格传输安全 A header that forces browsers to use HTTPS only.</li>
+            <li><strong>Certificate pinning</strong> n. 证书锁定 A mobile-app technique that only trusts a specific server certificate.</li>
+            <li><strong>HSM (Hardware Security Module)</strong> n. 硬件安全模块 A physical device that holds cryptographic keys — mandated by Group Cyber for CC data.</li>
+            <li><strong>Envelope encryption</strong> n. 信封加密 A pattern where a data key is encrypted by a master key, allowing the data key itself to be stored alongside the data.</li>
+            <li><strong>EKS (Elastic Kubernetes Service)</strong> n. 弹性 K8s 服务 AWS managed Kubernetes — used by most HSBC squads for container workloads.</li>
+            <li><strong>WORM (Write-Once-Read-Many)</strong> n. 一次写多次读存储 The storage class for audit logs that cannot be modified after write.</li>
+            <li><strong>SDL (Secure Development Lifecycle)</strong> n. 安全开发生命周期 HSBC's mandatory security process baked into delivery.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Let's be specific:" — the quantifier opener</h3>
+        <p>
+            <em>Let's be specific: p95 ≤ 1.5 seconds and p99 ≤ 3 seconds.</em> The <strong>imperative "let's"</strong>
+            + <em>be specific</em> is the architect's way of saying "we're done with hand-waving". It's a soft
+            power move — you're not telling the room they're being vague, you're inviting them to be precise.
+            Pair it with numbers immediately, so the room sees the shape of a quantified NFR.
+        </p>
+        <p><em>Let's be specific:</em> 是架构师打断模糊讨论的软开场——接着立刻给数字。</p>
+
+        <h3>② "The owner is X, the evidence is Y" — the NFR triplet</h3>
+        <p>
+            Every quantified NFR has three parts: a <strong>number</strong>, an <strong>owner</strong>, and
+            <strong>evidence</strong>. In the workshop, repeat this triplet out loud for every NFR. The
+            repetition sounds mechanical — that's the point. It trains the room to think in triplets, and
+            the design review will check that every NFR has all three. <em>The owner is Akash, the evidence
+            is the JMeter scripts in the performance Git repo.</em>
+        </p>
+        <p>每个量化 NFR 有三件套：数字、Owner、证据。在工作坊里反复说三件套——这是 NFR Workshop 的节奏。</p>
+
+        <h3>③ "Group X mandates Y" — citing the policy by name</h3>
+        <p>
+            <em>Group Cyber mandates HSM, not KMS, for any CC-classified data.</em> The <strong>active-voice
+            mandate</strong> (<em>Group Cyber mandates…</em>) is more authoritative than <em>we should use HSM</em>.
+            It removes the room's ability to negotiate — you cannot argue with a Group Standard, only with
+            a colleague's opinion. Architects who cite the policy by name are architects who don't get
+            pushed back on.
+        </p>
+        <p><em>Group Cyber mandates…</em> 比 <em>we should use…</em> 有权威得多——因为集团标准不能谈判。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"Fast" is not an NFR.</strong> If a Tech Lead says "the dashboard has to be fast", ask: fast for whom, at what percentile, under what load, measured how? An NFR without a number is a wish. Architects turn wishes into commitments.</li>
+            <li><strong>Always cite p95 and p99.</strong> p50 (median) hides tail latency. p95 is what most users feel; p99 is what your worst user feels. Tail latency is what causes mobile-app crashes, not medians. If a dev quotes only p50, push back.</li>
+            <li><strong>Group Cyber is a stakeholder, not a gate.</strong> Invite Sara into the room, not just into the email thread. When she challenges a security NFR live, the rest of the room hears the rationale. Don't fight her in a DM later.</li>
+            <li><strong>Distinguish "mandates" from "prefers".</strong> "Group Cyber mandates HSM" is non-negotiable. "InfoSec prefers mTLS" is a soft preference. Mixing them up is a common mistake — and it leads to architectures that look Group-Standard-compliant but aren't.</li>
+            <li><strong>Size for 2.5x, not 5x.</strong> 5x sizing is over-engineering; 1x sizing is fragile. 2.5x is the HSBC sweet spot — it gives you a sprint to react when the PO overshoots projection. Rohit will push back on cost; 2.5x is your defensible middle.</li>
+            <li><strong>HSM, not KMS, for CC data.</strong> This is the single most common Group-Standard trap. AWS KMS is easier to use, but Group Cyber requires HSM for any data classified as Customer Confidential. Default to HSM, not KMS, on HSBC work.</li>
+            <li><strong>End with named actions, not a recap.</strong> Bad close: "So we covered a lot." Good close: "Jonathan, get the PO a number by Friday. Mei, update ADR-0167 by Friday EOD. Rohit, drop the test plan in Confluence." NFRs without owners don't get measured.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the NFR workshop summary</h3>
+        <p>Translate the following NFR workshop closing summary into natural Chinese. Pay attention to the NFR triplet (number, owner, evidence) and how the architect cites Group Standards.</p>
+        <blockquote>
+            "Right, so to wrap up. Performance: API p95 ≤ 800ms, p99 ≤ 1.5 seconds, under 3,000 concurrent
+            users, measured by the Gatling scripts in the perf repo — owner Akash. Security: TLS 1.3 only,
+            HSM-managed AES-256 envelope encryption per the Group Cyber mandate for CC data, pen test
+            from Q1 — owner Mei, evidence the pen test report. Scalability: 1,800 RPS sustained, 3,500 RPS
+            peak, auto-scale trigger at CPU > 70% over 5 minutes — owner Akash. Auditability: GLCM WORM,
+            7-year retention per the Group Standard on auditability — owner Rohit for tests, InfoSec for
+            sign-off. Action: Mei, can you update ADR-0171 with all four by EOD Wednesday? Jonathan,
+            please get the PO to confirm the 12-month user projection by Friday."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，收尾。性能：API p95 ≤ 800 毫秒、p99 ≤ 1.5 秒，3000 并发用户，证据是 perf 仓库里的 Gatling 脚本——Owner Akash。安全：只允许 TLS 1.3，HSM 托管 AES-256 信封加密（按集团网络对 CC 数据的强制要求），Q1 渗透测试——Owner Mei，证据是渗透测试报告。扩展性：1800 RPS 稳态、3500 RPS 峰值，5 分钟内 CPU > 70% 触发自动扩容——Owner Akash。审计性：GLCM WORM，按集团审计标准保留 7 年——Owner Rohit 负责测试，InfoSec 负责签批。Action：Mei，你能不能在周三 EOD 前把 ADR-0171 这 4 项都更新好？Jonathan，麻烦你周五前让 PO 把 12 个月的用户预测确认一下。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these NFR statements would pass a strict design review at HSBC and which would not? Why?</p>
+        <ol>
+            <li>"Performance: the API should be fast."</li>
+            <li>"Performance: p95 ≤ 1.5s at 5K concurrent users, owner Akash, evidence the JMeter report."</li>
+            <li>"Security: we use strong encryption."</li>
+            <li>"Security: TLS 1.3 with the Group Standard cipher suite, AES-256 HSM-managed envelope encryption per Group Cyber mandate for CC data, owner Mei, evidence the Q1 pen test report."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ would pass — they have a number, an owner, and evidence, and ④ explicitly cites the Group Standard. ① and ③ would be rejected: "fast" and "strong encryption" are not NFRs, they are wishes. A common mistake new architects make is shipping ①/③-style NFRs into the design review and getting the ADR bounced.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're running an NFR workshop for the OnePay real-time fraud-screening service. The room includes a Tech Lead, a BA, a QA Lead, a peer architect dialling in from London, and a Group Cyber rep. The squad has written four vague NFRs: "fast", "secure", "scales", and "auditable". Write your 90-second workshop opening in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK everyone, right, so the goal of the next 90 minutes is to quantify every NFR. If it doesn't have a number, an owner, and evidence, it doesn't ship to the design review. Let's go round by category — performance first, then security, then scalability, then auditability. For performance — let's be specific: fraud-screening API p95 ≤ 300ms, p99 ≤ 800ms, under 2,000 RPS sustained, measured by the Gatling scripts in the perf repo. Owner: the Tech Lead. Evidence: the load test report. For security — Group Cyber mandates HSM-managed keys for any CC-classified data, and fraud scores are CC by default. So we're using AES-256 with HSM envelope encryption, not KMS. Mei, can you confirm the Q1 pen test is current? For scalability — 2,000 RPS sustained, 4,000 RPS peak, auto-scale trigger at CPU > 65% over 5 minutes. For auditability — every scoring call writes a structured audit record to GLCM, WORM storage, 7-year retention per the Group Standard on auditability. Action at the end: BA, please get the fraud ops team to commit the 12-month RPS projection by Friday. Tech Lead, you own the ADR-0173 update by EOD Wednesday."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="09-api-design-discussion.html" class="btn btn-primary">Next: Article 09 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

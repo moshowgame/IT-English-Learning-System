@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 20: HSBC Systems Architecture & Integration | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">20 · HSBC Systems Architecture & Integration</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>HSBC Systems Architecture & Integration</h1>
+        <p class="subtitle">Article 20 · Module 5: HSBC Banking Context — Systems Landscape & Integration · Architect English</p>
+        <div class="meta">
+            <span>⏱ 11 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 HSBCnet, OneWealth, HUB, GLCM, GPB, RBWM — how the bank's core platforms connect</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Monday, 3:00 PM HKT</strong>. You are a Solution Architect in the
+            <em>RBWM Digital</em> tribe, and a new Chief Architect — <strong>James</strong> —
+            just joined from the UK retail bank. He has 20 years of experience, but <em>honestly</em>,
+            he admits he is still learning the HSBC systems map. He has booked a 60-minute
+            whiteboard session on the global RBWM systems landscape: <strong>HSBCnet</strong>,
+            <strong>OneWealth</strong>, <strong>HUB</strong>, <strong>GLCM</strong>, and how the
+            global businesses (<strong>RBWM</strong>, <strong>CMB</strong>, <strong>GPB</strong>)
+            fit on top.
+        </p>
+        <p>
+            周一下午 3 点香港时间，你是 <em>RBWM 数字化</em> tribe 的 Solution 架构师。新来的
+            Chief Architect <strong>James</strong> 从英国零售银行加入，有 20 年经验，但坦言
+            自己<em>还在学</em>汇丰的系统地图。他约了 60 分钟的白板会，主题是 RBWM 的全球
+            系统全景：<strong>HSBCnet</strong>、<strong>OneWealth</strong>、<strong>HUB</strong>、
+            <strong>GLCM</strong>，以及全球业务条线（<strong>RBWM</strong>、<strong>CMB</strong>、
+            <strong>GPB</strong>）如何落在上面。
+        </p>
+        <p>
+            You have 60 minutes. The audience is small: James, plus <strong>Aisha</strong> (peer
+            architect, UAE), <strong>Tom</strong> (GPB architect, Shanghai), and <strong>Lin</strong>
+            (CMB architect, HK). You have the <em>HSBC Group Architecture Map v9.2</em> open in
+            Confluence. The session needs to leave James with three things: a mental model of the
+            customer-facing platforms, a mental model of the integration patterns, and a list of
+            the three integration decisions he should not re-litigate.
+        </p>
+        <p>
+            60 分钟，观众少：James，加上 <strong>Aisha</strong>（同侪架构师，阿联酋）、
+            <strong>Tom</strong>（GPB 架构师，上海）、<strong>Lin</strong>（CMB 架构师，香港）。
+            你打开了 Confluence 上的 <em>汇丰集团架构图 v9.2</em>。会议需要让 James 带 3 样东西走：
+            面向客户平台的心理模型、集成模式的心理模型、以及 3 个他不该翻案重谈的集成决策。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">James (Chief Architect, UK):</span>
+                <span class="text"><span class="en">Thanks for the slot, Wei. <em>Quick one</em> to start — at a high level, <em>how would you map the HSBC systems landscape</em> for someone who knows retail banking but not HSBC specifically?</span><span class="cn">Wei，谢你给时间。开场问一句——对懂零售银行但不懂汇丰的人，你会怎么画汇丰系统全景？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><strong>Sure. Three layers.</strong> <em>Layer one — the customer-facing channels.</em> <em>HSBCnet</em> is the global <em>digital banking platform</em> for RBWM and CMB — it's the customer's main entry point. <em>OneWealth</em> is the wealth-management platform — investment, advisory, portfolio rebalancing. <em>OnePay</em> is the card and payments platform for GPB and RBWM.</span><span class="cn">好。三层。<em>第一层——面向客户的渠道</em>。<em>HSBCnet</em> 是 RBWM 和 CMB 的全球<em>数字银行平台</em>——是客户的主要入口。<em>OneWealth</em> 是财富管理平台——投资、顾问、组合再平衡。<em>OnePay</em> 是 GPB 和 RBWM 的卡和支付平台。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James:</span>
+                <span class="text"><span class="en"><em>Right, so</em> HSBCnet is the digital front door, OneWealth sits behind it for the wealth journey, OnePay sits behind it for cards?</span><span class="cn">那 HSBCnet 是数字前门，OneWealth 躲在后面做财富旅程，OnePay 躲在后面做卡？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Exactly. <em>Layer two — the core banking and ledger systems.</em> <em>HUB</em> is the global <em>core banking platform</em> — accounts, balances, transactions, statements. <em>GLCM</em> is the <em>Global Liquidity and Cash Management</em> platform — corporate deposits, payments, liquidity, served to CMB and GPB.</span><span class="cn">对。<em>第二层——核心银行和账本系统</em>。<em>HUB</em> 是全球<em>核心银行平台</em>——账户、余额、交易、流水。<em>GLCM</em> 是<em>全球流动性与现金管理</em>平台——公司存款、支付、流动性，服 CMB 和 GPB。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Architect, Shanghai):</span>
+                <span class="text"><span class="en">Quick clarification — GLCM is <em>CMB-and-GPB-only</em>, right? RBWM doesn't use it.</span><span class="cn">澄清一下——GLCM <em>只服务 CMB 和 GPB</em>，RBWM 不用的对吧？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Correct. GLCM is corporate; RBWM is retail wealth. They share the <em>core banking ledger</em> in HUB, but the front-end and product engines are separate.</span><span class="cn">对。GLCM 走公司，RBWM 走零售财富。它们在 HUB 里共享<em>核心银行账本</em>，但前端和产品引擎是分开的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Aisha (Architect, UAE):</span>
+                <span class="text"><span class="en"><em>Good, that's clearer.</em> What's <em>layer three</em>?</span><span class="cn">清楚了。<em>第三层</em>是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Layer three — the cross-cutting platforms.</em> <em>Group Cyber</em> and <em>Group Resilience</em> for security and DR. <em>Group Data</em> for the customer data platform, the data lake, and the regulatory reporting mart. <em>Group Cloud</em> for the AWS landing zone and the multi-account setup. <em>Every customer-facing platform</em> sits on top of these three.</span><span class="cn"><em>第三层——横向平台</em>。<em>Group Cyber</em> 和 <em>Group Resilience</em> 负责安全和容灾。<em>Group Data</em> 负责客户数据平台、数据湖和监管报送数据集市。<em>Group Cloud</em> 负责 AWS landing zone 和多账号体系。<em>每个面向客户的平台</em>都建在这 3 个之上。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James:</span>
+                <span class="text"><span class="en">And the <em>integration patterns</em> between the layers — what's the default?</span><span class="cn">那层与层之间的<em>集成模式</em>——默认是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Three patterns, in priority order.</em> <em>One,</em> <strong>synchronous REST over mTLS</strong> for customer-facing real-time — HSBCnet calls OneWealth, OnePay calls HUB. <em>Two,</em> <strong>event-driven on Kafka</strong> for state changes — OneWealth publishes a <em>portfolio-rebalanced</em> event that HUB consumes to update positions. <em>Three,</em> <strong>T+1 batch file over SFTP</strong> for regulatory and reconciliation — HUB drops a daily ledger file for the correspondent banks to reconcile against.</span><span class="cn"><em>3 种模式，按优先级排</em>。<em>第一</em>，<strong>双向 TLS 上的同步 REST</strong>，用于面向客户的实时场景——HSBCnet 调 OneWealth，OnePay 调 HUB。<em>第二</em>，<strong>Kafka 上的事件驱动</strong>，用于状态变更——OneWealth 发<em>组合再平衡</em>事件，HUB 消费后更新头寸。<em>第三</em>，<strong>SFTP 上的 T+1 批量文件</strong>，用于监管和对账——HUB 每日落账本文件给代理行对账。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James:</span>
+                <span class="text"><span class="en"><em>OK, and the three decisions I shouldn't re-litigate?</em></span><span class="cn"><em>那 3 个我不该翻案的决策呢？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Honest answer —</em> three. <em>One,</em> don't relitigate <em>Kafka as the group event bus</em> — that's ADR-0902, signed. <em>Two,</em> don't relitigate <em>HUB as the core ledger</em> — there's no plan B and the cost to migrate is in the billions. <em>Three,</em> don't relitigate <em>AWS as the default cloud</em> for new digital workloads — the Group Cloud landing zone is the path.</span><span class="cn">实话——3 个。<em>一</em>，别翻案<em>Kafka 作为集团事件总线</em>——ADR-0902 已经签了。<em>二</em>，别翻案<em>HUB 作为核心账本</em>——没有 Plan B，迁移成本数十亿美元。<em>三</em>，别翻案<em>AWS 作为新数字化负载的默认云</em>——走 Group Cloud landing zone 是正路。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Architect, HK):</span>
+                <span class="text"><span class="en"><em>Just to flag</em> — a fourth one, if I may: don't relitigate <em>Group Standard SDL</em>. The SDL gate is the single most-defended control in CAB and eCAB.</span><span class="cn">提一下——如果可以再加第四条：别翻案<em>集团标准 SDL</em>。SDL gate 是 CAB 和 eCAB 上最被严格捍卫的控制项。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good addition. <em>Right, so</em> — to summarise: <em>HSBCnet, OneWealth, OnePay</em> on layer one; <em>HUB, GLCM</em> on layer two; <em>Group Cyber, Group Resilience, Group Data, Group Cloud</em> on layer three. <em>REST+mTLS, Kafka, T+1 SFTP</em> as the three integration patterns. <em>Kafka, HUB, AWS, SDL</em> as the four no-go zones for re-litigation. <em>Happy to walk through</em> any layer in more detail offline.</span><span class="cn">好补充。总结一下：第一层 <em>HSBCnet、OneWealth、OnePay</em>；第二层 <em>HUB、GLCM</em>；第三层 <em>Group Cyber、Group Resilience、Group Data、Group Cloud</em>。3 个集成模式：<em>REST+mTLS、Kafka、T+1 SFTP</em>。4 个"别翻案"：<em>Kafka、HUB、AWS、SDL</em>。任何一层要细看都可以线下约。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Map</span> <em>Three layers.</em></span>
+                <span class="chinese">三层</span>
+                <span class="note">A simple count ("three layers") buys the listener 60 seconds of patience while you build the picture. Architects over-explain; count instead.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Front door</span> <em>HSBCnet is the digital front door.</em></span>
+                <span class="chinese">HSBCnet 是数字前门</span>
+                <span class="note">"Front door" is the customer-facing metaphor. New joiners picture the system map faster when you use physical metaphors (door, core, basement).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>GLCM is CMB-and-GPB-only.</em></span>
+                <span class="chinese">GLCM 只服务 CMB 和 GPB</span>
+                <span class="note">Always state the business scope. RBWM doesn't use GLCM. CMB doesn't use OnePay. Scope stops people proposing out-of-scope integrations.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cross-cutting</span> <em>Layer three — the cross-cutting platforms.</em></span>
+                <span class="chinese">第三层——横向平台</span>
+                <span class="note">"Cross-cutting" = used by everything (security, data, cloud). New joiners often miss these because they don't have a "home team" — make them visible.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pattern</span> <em>Three integration patterns, in priority order.</em></span>
+                <span class="chinese">3 种集成模式，按优先级排</span>
+                <span class="note">"In priority order" tells the listener which pattern to use by default. The first one is the answer 80% of the time.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Default</span> <em>Synchronous REST over mTLS for customer-facing real-time.</em></span>
+                <span class="chinese">面向客户实时场景默认双向 TLS 上的同步 REST</span>
+                <span class="note">"Default" is the architect's escape hatch from architecture debates. If someone proposes a new pattern, ask "is the default not working?".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">State</span> <em>Event-driven on Kafka for state changes.</em></span>
+                <span class="chinese">状态变更用 Kafka 事件驱动</span>
+                <span class="note">"State changes" is the architect's trigger phrase for events. If the change is a state change, use events; if it's a query, use REST.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">No re-litigate</span> <em>Three decisions I shouldn't re-litigate.</em></span>
+                <span class="chinese">3 个我不该翻案的决策</span>
+                <span class="note">"Re-litigate" is the perfect verb for a settled decision. Use it in any "should we revisit X?" meeting to politely shut it down.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Plan B</span> <em>There's no plan B and the cost to migrate is in the billions.</em></span>
+                <span class="chinese">没有 Plan B，迁移成本数十亿美元</span>
+                <span class="note">"Plan B" is the architect's word for the alternative that doesn't exist. Pair it with the cost to make the case land.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Gate</span> <em>The SDL gate is the single most-defended control in CAB.</em></span>
+                <span class="chinese">SDL gate 是 CAB 上最被严格捍卫的控制项</span>
+                <span class="note">"Gate" = a mandatory checkpoint. CAB / eCAB / SDL are the three HSBC architecture gates. If you can't pass the gate, you can't ship.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>HSBCnet</strong> n. 汇丰网银 The global digital banking platform for RBWM and CMB — the customer's main entry point.</li>
+            <li><strong>OneWealth</strong> n. 统一财富平台 The wealth-management platform — investment, advisory, portfolio rebalancing.</li>
+            <li><strong>OnePay</strong> n. 统一支付平台 The card and payments platform for GPB and RBWM.</li>
+            <li><strong>HUB</strong> n. HUB 核心银行 The global core banking platform — accounts, balances, transactions, statements.</li>
+            <li><strong>GLCM (Global Liquidity and Cash Management)</strong> n. 全球流动性与现金管理 The corporate deposits, payments, and liquidity platform for CMB and GPB.</li>
+            <li><strong>RBWM (Retail Banking and Wealth Management)</strong> n. 零售银行与财富管理 One of the four global businesses. Retail + wealth customers.</li>
+            <li><strong>CMB (Commercial Banking)</strong> n. 商业银行 Mid-market corporate customers.</li>
+            <li><strong>GPB (Global Private Banking)</strong> n. 全球私人银行 High-net-worth individuals.</li>
+            <li><strong>Group Cyber</strong> n. 集团网络安全 The bank-wide cybersecurity function — owns secure-by-default baseline.</li>
+            <li><strong>Group Resilience</strong> n. 集团业务连续性 The bank-wide DR, BCM, and operational resilience function.</li>
+            <li><strong>Group Data</strong> n. 集团数据 The bank-wide data platform — CDP, data lake, regulatory reporting mart.</li>
+            <li><strong>Group Cloud</strong> n. 集团云 The bank-wide AWS landing zone and multi-account governance.</li>
+            <li><strong>AWS landing zone</strong> n. AWS 落地区 A multi-account AWS setup with baseline security, networking, and account vending.</li>
+            <li><strong>CAB / eCAB</strong> n. 变更评审委员会 / 紧急变更评审 Change Advisory Board and emergency CAB — the gates an ADR must pass before release.</li>
+            <li><strong>ADR (Architecture Decision Record)</strong> n. 架构决策记录 A short, immutable document capturing one decision and its rationale (e.g., ADR-0902 = Kafka as the group event bus).</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Layer one / two / three" — labelled lists for systems</h3>
+        <p>
+            When describing a system landscape, use <strong>labelled layers</strong> rather than
+            numbered bullet points. <em>Layer one — the customer-facing channels</em> is easier
+            to refer back to than <em>the first category</em>. The label <em>layer one</em> stays
+            in the listener's head; <em>the first category</em> doesn't. Use this pattern in any
+            whiteboarding session — it makes the picture easy to copy off the whiteboard later.
+        </p>
+        <p>描述系统全景用 "Layer one / two / three" 标签化分层的形式——比"第一类"更易记忆和回指。</p>
+
+        <h3>② "Don't re-litigate" — the negative imperative for settled decisions</h3>
+        <p>
+            When a decision is already signed (an ADR, a Group Standard, a regulator's circular),
+            use the verb <strong>re-litigate</strong> with a <strong>negative imperative</strong>:
+            <em>don't re-litigate Kafka as the group event bus</em>. The verb is borrowed from
+            legal language ("re-open a closed case") and signals politely that the decision is
+            final. Pair it with the ADR number so the listener knows exactly where the
+            decision lives.
+        </p>
+        <p>用 <em>don't re-litigate</em> + ADR 编号来礼貌地叫停翻案讨论。</p>
+
+        <h3>③ "The default" — naming the architecture choice</h3>
+        <p>
+            Use <strong>the default</strong> to name the architecture's standing choice:
+            <em>synchronous REST over mTLS is the default for customer-facing real-time</em>. The
+            word <em>default</em> carries weight: it says "you don't have to choose this; you have
+            to justify not choosing it". When a Tech Lead proposes a new integration pattern,
+            the architect's first question is "what's wrong with the default?".
+        </p>
+        <p>用 <em>the default</em> 命名架构选择——意味着"你不必选它，但你要解释为什么不选它"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Draw the picture in three layers.</strong> Customer-facing channels on top, core banking and ledger in the middle, cross-cutting platforms (Cyber, Resilience, Data, Cloud) on the bottom. New joiners, new architects, new CTOs — everyone gets the same three-layer picture first.</li>
+            <li><strong>Always name the business scope.</strong> GLCM is CMB-and-GPB-only. OnePay is GPB-and-RBWM. HSBCnet is RBWM-and-CMB. The moment someone proposes a cross-scope integration, you can point to the scope and ask "is this in scope?".</li>
+            <li><strong>Three integration patterns, in priority order.</strong> Synchronous REST over mTLS first (real-time customer-facing). Kafka events second (state changes). T+1 SFTP batch third (regulatory and reconciliation). 80% of new integrations use pattern one. Reach for pattern two only when you have a true state change. Pattern three is for regulators and correspondents.</li>
+            <li><strong>Some decisions are "no re-litigate".</strong> Kafka, HUB, AWS, SDL — these are settled. If a Tech Lead proposes replacing any of them, your first move is to cite the ADR, not to debate. Re-litigation costs weeks; the ADR cost the bank months.</li>
+            <li><strong>Cross-region etiquette: the 60-min whiteboard.</strong> A new Chief Architect from another region is a 60-min whiteboard session, not a 6-hour deck. Whiteboard beats slides for systems maps. Save the deck for the chapter review.</li>
+            <li><strong>Use physical metaphors.</strong> "Digital front door", "core ledger", "cross-cutting platform", "landing zone" — physical metaphors make the picture stick. New joiners remember <em>front door</em> when they forget <em>customer-facing channel</em>.</li>
+            <li><strong>Cite the ADR number, not the prose.</strong> "ADR-0902" beats "the Kafka decision" beats "the event-bus standardisation". Numbers are the only thing in a system map that don't move when the prose does.</li>
+            <li><strong>Don't redraw the picture; reuse it.</strong> The HSBC Group Architecture Map v9.2 is in Confluence. Reuse the canonical picture, don't redraw it in your slide. The map is the bank's shared language; redrawing it makes yours different and harder to align.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the systems walkthrough</h3>
+        <p>Translate the following systems walkthrough into natural Chinese. Pay attention to the three-layer framing and the "no re-litigate" decisions.</p>
+        <blockquote>
+            "Three layers. Layer one — the customer-facing channels. HSBCnet is the digital front
+            door for RBWM and CMB. OneWealth is the wealth platform, OnePay is the card and
+            payments platform. Layer two — the core ledger systems. HUB is the global core banking
+            platform; GLCM is the corporate deposits and liquidity platform for CMB and GPB. Layer
+            three — the cross-cutting platforms: Group Cyber, Group Resilience, Group Data, Group
+            Cloud. Three integration patterns, in priority order: synchronous REST over mTLS first,
+            Kafka events second, T+1 SFTP batch third. Three decisions you shouldn't re-litigate:
+            Kafka as the group event bus (ADR-0902), HUB as the core ledger, AWS as the default
+            cloud. The cost to migrate off HUB is in the billions, and there is no plan B."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"三层。第一层——面向客户的渠道。HSBCnet 是 RBWM 和 CMB 的数字前门。OneWealth 是财富平台，OnePay 是卡和支付平台。第二层——核心账本系统。HUB 是全球核心银行平台；GLCM 是 CMB 和 GPB 的公司存款和流动性平台。第三层——横向平台：Group Cyber、Group Resilience、Group Data、Group Cloud。3 种集成模式按优先级：先 mTLS 上的同步 REST，再 Kafka 事件，最后 T+1 SFTP 批量。3 个不该翻案的决策：Kafka 作为集团事件总线（ADR-0902）、HUB 作为核心账本、AWS 作为默认云。HUB 迁移成本数十亿美元，没有 Plan B。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the integration-pattern error</h3>
+        <p>A junior architect has proposed the following integrations in ADR-0210. Which integration-pattern choice is wrong? Why?</p>
+        <ol>
+            <li>"HSBCnet will call OneWealth over a synchronous REST API with mTLS to fetch the customer's portfolio."</li>
+            <li>"OneWealth will publish a 'portfolio-rebalanced' event on Kafka, and HUB will consume it to update positions."</li>
+            <li>"The GPB squad will call HUB via Kafka for a real-time balance inquiry."</li>
+            <li>"HUB will drop a T+1 ledger file to the correspondent bank over SFTP for reconciliation."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>① is correct — real-time, customer-facing, REST+mTLS. ② is correct — state change, event-driven on Kafka. ③ is <strong>wrong</strong> — a balance inquiry is a query, not a state change. Real-time queries should be synchronous REST, not Kafka. Kafka is for state changes (events that downstream systems need to react to), not for read-your-own-writes reads. ④ is correct — T+1 regulatory/reconciliation flow over SFTP is the right pattern. The error is ③: the architect has confused "real-time" with "use Kafka" — real-time read traffic still belongs on REST, not on the event bus.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a Solution Architect in the CMB Digital tribe. A new Tech Lead from outside HSBC asks you, in 90 seconds, to explain (a) the three layers of the HSBC systems landscape, (b) the default integration pattern, and (c) the one "no re-litigate" decision he should not challenge in his first CAB. Write the explanation in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Quick walkthrough. Three layers. Layer one — the customer-facing channels. HSBCnet is the digital front door for CMB and RBWM. Layer two — the core banking and ledger systems: HUB is the global core banking platform, GLCM is the corporate deposits and liquidity platform for CMB and GPB. Layer three — the cross-cutting platforms: Group Cyber, Group Resilience, Group Data, Group Cloud. The default integration pattern is synchronous REST over mTLS, for real-time customer-facing traffic; reach for Kafka events only on state changes, and T+1 SFTP only for regulatory and reconciliation flows. The one 'don't re-litigate' decision for your first CAB: AWS as the default cloud for new digital workloads. The Group Cloud landing zone is the path — don't propose Azure, don't propose on-prem, the ADR is signed. Happy to walk through any layer in more detail offline."</p>
+        </div>
+    </section>
+
+    <!-- Module 5 Wrap-up -->
+    <section class="article-section">
+        <h2>8. Module 5 Wrap-up — HSBC Banking Context</h2>
+        <p>
+            You have completed <strong>Module 5: HSBC Banking Context</strong> across three
+            articles. The aim of this module is to make the HSBC banking landscape — regulators,
+            terminology, and systems — feel as natural as your code editor. The patterns you
+            have built are the ones you will reach for in your next CAB, your next chapter
+            review, and your next conversation with a regulator's office.
+        </p>
+
+        <h3>What you should now be able to do</h3>
+        <ul>
+            <li><strong>Article 18 — Compliance & InfoSec Architecture.</strong> Speak the regulator's language. Cite Group Standards by code (GCS-PCI-04, GCS-GDPR-12, GCS-TRM-08). Draw a PCI-DSS scope diagram, and know the SDL gate is non-negotiable at every design review.</li>
+            <li><strong>Article 19 — Banking Architecture Terminology.</strong> Define KYC, AML, sanctions screening, real-time, batch, idempotency, and reconciliation. Spot the two terms architects get wrong — idempotency is a guarantee, not a hope; reconciliation needs an external anchor, not just an internal check.</li>
+            <li><strong>Article 20 — HSBC Systems Architecture & Integration.</strong> Draw the three-layer picture (channels / core / cross-cutting). Name the three integration patterns in priority order (REST+mTLS, Kafka, T+1 SFTP). Cite the four "no re-litigate" decisions (Kafka, HUB, AWS, SDL) by their ADR numbers.</li>
+        </ul>
+
+        <h3>The three signature phrases to keep using</h3>
+        <ul>
+            <li><em>"Honest answer —"</em> — the softener for a sensitive or contrarian point. Use it before pushing back on a CTO, surfacing a regulatory risk, or admitting a design gap.</li>
+            <li><em>"I recommend…"</em> — the architect's signature verb. Use it in every ADR, every design review, every chapter presentation. It signals an evaluation has been done and a position has been taken.</li>
+            <li><em>"Don't re-litigate…"</em> — the polite shut-down for a settled decision. Pair it with an ADR number and a one-line rationale. Save it for the four "no-go" zones (Kafka, HUB, AWS, SDL).</li>
+        </ul>
+
+        <h3>Where to go next</h3>
+        <p>
+            Module 5 closes with this article. The next module — <em>Cross-Region Collaboration &
+            Influence</em> — extends these patterns to multi-region delivery: how to chair a
+            design review across HK, Shanghai, Bangalore, and London; how to brief a regulator
+            across time zones; and how to mentor a new joiner in the HSBC way of architecting.
+            You will need the patterns from this module — the regulator's language, the
+            banking vocabulary, the three-layer systems map — every single day.
+        </p>
+        <p>
+            <em>Same time tomorrow for the chapter standup. Bring one ADR, one NFR, and one
+            recommendation. The rest is conversation.</em>
+        </p>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

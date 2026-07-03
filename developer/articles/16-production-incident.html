@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 16: Production Incident Communication | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">16 · Production Incident Communication</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Production Incident Communication</h1>
+        <p class="subtitle">Article 16 · Module 4: Difficult Conversations · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🚨 Communicate clearly under pressure: status, impact, ETA, mitigation</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            <strong>It's 2:47 AM HKT.</strong> A <strong>P1 incident</strong> has been declared: the
+            <em>HSBCnet payment callback service</em> is throwing 500 errors, and <strong>~30% of inbound
+            cross-border payments are failing</em>. You are the <em>on-call developer</em> this week.
+            You need to communicate clearly in the <em>#incident-war-room</em> Slack channel.
+        </p>
+        <p>
+            <strong>香港时间凌晨 2:47。</strong>发生 <strong>P1 事故</strong>：<em>HSBCnet 支付回调服务</em> 抛 500 错误，
+            <strong>约 30% 的跨境支付失败</strong>。你是本周 <em>on-call 开发</em>。需要在 <em>#incident-war-room</em> Slack
+            频道清晰沟通。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Incident Communication Timeline 事故沟通时间线</h2>
+
+        <h3>🕐 2:47 AM HKT — Initial Alert (you, 30 seconds after detection)</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:47 HKT</span>
+                <span class="text"><span class="en">🚨 <strong>INCIDENT DECLARED — P1</strong></span><span class="cn">🚨 事故已声明——P1 级</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:47 HKT</span>
+                <span class="text"><span class="en"><strong>Service:</strong> HSBCnet payment callback service<br/>
+<strong>Symptom:</strong> 500 errors, ~30% failure rate on inbound cross-border payments<br/>
+<strong>Detected:</strong> 2:46 AM HKT by Datadog alert (5xx spike)<br/>
+<strong>Impact:</strong> ~30% of new cross-border payments failing; existing payments in retry queue<br/>
+<strong>Started investigating</strong> — checking recent deployments and infra changes</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:47 HKT</span>
+                <span class="text"><span class="en"><em>Tagging @Priya (TL), @Sarah (PM), @SRE-on-call.</em> <em>Joining war room in 1 min.</em></span><span class="cn">@Priya (TL)、@Sarah (PM)、@SRE 值班，1 分钟后进战情室。</span></span>
+            </div>
+        </div>
+
+        <h3>🕐 2:55 AM HKT — First Update (8 minutes in)</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:55 HKT</span>
+                <span class="text"><span class="en"><strong>UPDATE 1 — 8 min in</strong></span><span class="cn">进度更新 1——事故已发生 8 分钟</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:55 HKT</span>
+                <span class="text"><span class="en"><strong>Findings:</strong> Deployment at 2:30 AM (PAY-2847 retry logic) seems correlated. <em>Rolling back</em> to the previous version now.</span><span class="cn">调查发现：凌晨 2:30 的部署（PAY-2847 重试逻辑）看起来有关联。现在回滚到上一版本。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 02:55 HKT</span>
+                <span class="text"><span class="en"><strong>Mitigation in progress:</strong> Rollback ETA 5 min (3:00 AM HKT)<br/>
+<strong>Workaround:</strong> None yet — failing payments are stuck in retry queue<br/>
+<strong>Customer impact:</strong> Same (~30% failure rate)<br/>
+<strong>Next update:</strong> 3:00 AM HKT or sooner if status changes</span></span>
+            </div>
+        </div>
+
+        <h3>🕐 3:05 AM HKT — Mitigation Deployed</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:05 HKT</span>
+                <span class="text"><span class="en"><strong>UPDATE 2 — 18 min in</strong></span><span class="cn">进度更新 2——事故已发生 18 分钟</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:05 HKT</span>
+                <span class="text"><span class="en"><strong>Rollback complete at 3:02 AM HKT.</strong> <em>Error rate dropping.</em></span><span class="cn">凌晨 3:02 香港时间回滚完成，错误率正在下降。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:05 HKT</span>
+                <span class="text"><span class="en"><strong>Current state:</strong> 5xx rate at ~3% (down from 30%) — <em>still above threshold</em>, likely from retry queue backlog draining<br/>
+<strong>Customer impact:</strong> Improving — most new payments now succeeding<br/>
+<strong>Backlog:</strong> ~5,000 stuck payments in retry queue, draining now<br/>
+<strong>Next update:</strong> 3:20 AM HKT (full drain ETA)</span></span>
+            </div>
+        </div>
+
+        <h3>🕐 3:25 AM HKT — Full Recovery</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:25 HKT</span>
+                <span class="text"><span class="en"><strong>UPDATE 3 — 39 min in — RESOLVED</strong></span><span class="cn">进度更新 3——事故已发生 39 分钟——已解决</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:25 HKT</span>
+                <span class="text"><span class="en"><strong>Service fully restored.</strong> 5xx rate at 0.02% (normal). Retry queue fully drained.</span><span class="cn">服务完全恢复。5xx 错误率 0.02%（正常），重试队列已清空。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei 03:25 HKT</span>
+                <span class="text"><span class="en"><strong>Root cause (preliminary):</strong> New retry logic in PAY-2847 had a <em>NullPointerException</em> on empty response body, causing cascade failures.<br/>
+<strong>Fix:</strong> Rollback successful; bug identified; will be fixed in a follow-up PR with proper null check.<br/>
+<strong>Action items:</strong> Post-mortem to be scheduled within 48h.</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (TL) 03:28 HKT</span>
+                <span class="text"><span class="en">Thanks Wei, <em>great handling</em> under pressure. <em>Marking as resolved.</em> Let's <em>sync on the post-mortem</em> tomorrow HKT afternoon.</span><span class="cn">谢谢 Wei，压力下处理得很好。标记为已解决。明天下午香港时间我们对一下事后复盘。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag red">Severity</span> <em>🚨 INCIDENT DECLARED — P1</em></span>
+                <span class="chinese">事故声明 — P1</span>
+                <span class="note">Use severity prefixes. P1 = critical, P2 = high, P3 = medium, P4 = low.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Structure</span> <em>Service: / Symptom: / Impact: / Mitigation:</em></span>
+                <span class="chinese">服务 / 症状 / 影响 / 缓解</span>
+                <span class="note">Use the same structure for every incident update. Scannable in seconds.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Time</span> <em>Started investigating…</em></span>
+                <span class="chinese">开始调查</span>
+                <span class="note">Always state what you're doing right now. <em>"Investigating… / Rolling back… / Monitoring…"</em></span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Tag</span> <em>Tagging @Priya, @Sarah, @SRE.</em></span>
+                <span class="chinese">@Priya @Sarah @SRE</span>
+                <span class="note">Tag the right people. <strong>TL + PM + SRE</strong> for P1.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">ETA</span> <em>Rollback ETA 5 min (3:00 AM HKT).</em></span>
+                <span class="chinese">回滚 ETA 5 分钟（3:00 AM HKT）</span>
+                <span class="note">Always give an ETA for the next action. Even if rough.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Workaround</span> <em>Workaround: None yet.</em></span>
+                <span class="chinese">临时方案：暂无</span>
+                <span class="note">If no workaround exists, say so explicitly. Don't leave the team wondering.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Update</span> <em>Next update: 3:00 AM HKT or sooner.</em></span>
+                <span class="chinese">下次更新：3:00 AM HKT 或更早</span>
+                <span class="note">Always commit to a <strong>next update time</strong>. Stops the team from pinging you.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Resolve</span> <em>RESOLVED. Service fully restored.</em></span>
+                <span class="chinese">已解决。服务完全恢复。</span>
+                <span class="note">Always end the incident with a clear <em>RESOLVED</em> statement.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>P1 / P2 / P3 / P4</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">事故优先级 (1-4)</span>
+                <span class="note">P1 = critical (full outage / major customer impact). P4 = minor.</span>
+            </li>
+            <li>
+                <span class="english"><strong>on-call</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">on-call 值班</span>
+                <span class="note">The person responsible for handling incidents during a specific shift.</span>
+            </li>
+            <li>
+                <span class="english"><strong>rollback</strong> <span class="tag">n.</span></span>
+                <span class="chinese">回滚</span>
+                <span class="note">Reverting a deployment to the previous version. Common mitigation for P1s.</span>
+            </li>
+            <li>
+                <span class="english"><strong>war room</strong> <span class="tag">n.</span></span>
+                <span class="chinese">作战室 (事故沟通频道)</span>
+                <span class="note">A dedicated Slack channel / bridge for an active incident. All comms go here.</span>
+            </li>
+            <li>
+                <span class="english"><strong>root cause</strong> <span class="tag">n.</span></span>
+                <span class="chinese">根本原因</span>
+                <span class="note">The fundamental reason for the incident. Identified in the post-mortem.</span>
+            </li>
+            <li>
+                <span class="english"><strong>post-mortem</strong> <span class="tag">n.</span></span>
+                <span class="chinese">事后分析 / 复盘会</span>
+                <span class="note">A meeting after the incident to review what happened, root cause, and improvements.</span>
+            </li>
+            <li>
+                <span class="english"><strong>mitigation</strong> <span class="tag">n.</span></span>
+                <span class="chinese">缓解措施 (临时方案)</span>
+                <span class="note">The immediate action to reduce impact. Different from <em>resolution</em> (full fix).</span>
+            </li>
+            <li>
+                <span class="english"><strong>backlog / retry queue</strong></span>
+                <span class="chinese">积压 / 重试队列</span>
+                <span class="note">Items that failed and are waiting to be retried. Drains over time after the fix.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① Time Anchoring in Incident Updates</h3>
+        <p>Always anchor updates in time:</p>
+        <ul>
+            <li><em><strong>UPDATE 1 — 8 min in</strong></em> (relative to incident start)</li>
+            <li><em><strong>2:55 AM HKT</strong></em> (absolute, with timezone)</li>
+            <li><em><strong>Detected: 2:46 AM HKT</strong></em> (incident start time)</li>
+        </ul>
+
+        <h3>② Passive vs Active Voice in Status</h3>
+        <p>In incident communication, both are used, but differently:</p>
+        <ul>
+            <li><em><strong>Active</strong> (what you're doing): "Rolling back now." / "Investigating."</em></li>
+            <li><em><strong>Passive</strong> (what's happening): "Rollback complete at 3:02." / "Service restored."</em></li>
+        </ul>
+
+        <h3>③ "ETA" vs "Status" vs "Plan"</h3>
+        <p>Three pieces of information every update needs:</p>
+        <ul>
+            <li><strong>ETA:</strong> <em>Rollback ETA 5 min (3:00 AM HKT).</em></li>
+            <li><strong>Status:</strong> <em>Error rate dropping — 5xx at 3%.</em></li>
+            <li><strong>Plan:</strong> <em>Monitoring drain, next update at 3:20.</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🚨 The 5 Golden Rules of Incident Communication</div>
+            <ol>
+                <li><strong>Update early, update often.</strong> Silence is the worst enemy. <em>No update for 20 min?</em> Ping <em>"Still investigating, no change."</em></li>
+                <li><strong>Stick to facts, not speculation.</strong> Say <em>"Investigating"</em>, not <em>"It's the new code"</em> — until you know.</li>
+                <li><strong>Always commit to a next update time.</strong> Stops people from flooding you with <em>"any update?"</em></li>
+                <li><strong>Use the same structure for every update.</strong> Service / Symptom / Impact / Mitigation / ETA. Scannable in 5 seconds.</li>
+                <li><strong>End with a clear RESOLVED.</strong> People need to know when to stop worrying.</li>
+            </ol>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ HSBC Incident Culture</div>
+            <ul>
+                <li><strong>P1 incidents must have a war room within 15 minutes</strong> of detection. No exceptions.</li>
+                <li><strong>Customer-facing comms</strong> are owned by the <em>Corporate Communications</em> team. <strong>Do not</strong> communicate directly with customers.</li>
+                <li><strong>Regulator notification</strong>: for P1s impacting regulated services, <strong>InfoSec + Legal</strong> must be looped in within 30 min.</li>
+                <li><strong>Post-mortem</strong> is mandatory for every P1/P2, due within <strong>5 business days</strong>.</li>
+                <li><strong>Blame-free culture</strong> — focus on <em>systems and processes</em>, not individuals.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the first incident update to native English:</div>
+                <p>"P1事故。HSBCnet支付回调服务抛500错，30%跨境支付失败。Datadog告警发现。我正在查最近部署。@Priya @Sarah 紧急。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "🚨 <strong>INCIDENT DECLARED — P1</strong><br>
+                    <strong>Service:</strong> HSBCnet payment callback service<br>
+                    <strong>Symptom:</strong> 500 errors, ~30% failure rate on inbound cross-border payments<br>
+                    <strong>Detected:</strong> by Datadog alert (5xx spike)<br>
+                    <strong>Impact:</strong> ~30% of new cross-border payments failing<br>
+                    <strong>Action:</strong> Investigating recent deployments and infra changes<br>
+                    <em>Tagging @Priya, @Sarah, @SRE-on-call. Joining war room in 1 min.</em>"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Write an "Update 2" for this scenario:</div>
+                <p>It's 25 min into a P1. You identified the cause: a config change in the database connection pool caused connection exhaustion. You're applying a fix to bump the pool size. ETA: 5 more minutes. Current state: still 30% errors, no improvement yet. No workaround.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<strong>UPDATE 2 — 25 min in</strong><br>
+                    <strong>Root cause (preliminary):</strong> Config change in DB connection pool caused connection exhaustion.<br>
+                    <strong>Mitigation:</strong> Bumping pool size, deploying now.<br>
+                    <strong>ETA:</strong> 5 min (3:35 AM HKT)<br>
+                    <strong>Workaround:</strong> None currently.<br>
+                    <strong>Customer impact:</strong> Still ~30% failure rate; no improvement yet.<br>
+                    <strong>Next update:</strong> 3:35 AM HKT or sooner."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right incident phrases:</div>
+                <p>"<em>🚨 INCIDENT _____ — P1 / Service: HSBCnet / _____: 500 errors / _____ rate 30% / Mitigation: rolling back / Rollback _____ 5 min / Next _____ at 3:00 / _____ fully restored.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>DECLARED</em> / <em>Symptom</em> / <em>Failure</em> / <em>ETA</em> / <em>update</em> / <em>Service</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>It's 2:30 AM HKT. The OneWealth statement service is generating blank PDFs for ~40% of customer statements since a 1 AM deployment. You're on-call. Write 3 incident updates: (a) the declaration, (b) Update 1 at 10 min, (c) Update 2 at 25 min (RESOLVED via rollback).</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p><strong>2:30 AM HKT — Declaration</strong></p>
+                    <p>🚨 <strong>INCIDENT DECLARED — P1</strong><br>
+                    <strong>Service:</strong> OneWealth statement service<br>
+                    <strong>Symptom:</strong> ~40% of customer statements generated as blank PDFs<br>
+                    <strong>Detected:</strong> 2:28 AM HKT (P1 alert from monitoring)<br>
+                    <strong>Impact:</strong> ~40% of recent statements affected; customer service receiving complaint calls<br>
+                    <strong>Investigation:</strong> Checking the 1:00 AM deployment of the new report template<br>
+                    <em>Tagging @Priya, @Sarah, @SRE. War room starting now.</em></p>
+                    <br>
+                    <p><strong>2:40 AM HKT — Update 1 (10 min in)</strong></p>
+                    <p><strong>Findings:</strong> 1:00 AM deployment of new template engine correlated. <em>Rolling back now.</em><br>
+                    <strong>Mitigation:</strong> Rollback in progress, ETA 3 min (2:43 AM HKT)<br>
+                    <strong>Workaround:</strong> None for already-generated blank PDFs; affected customers need re-generation<br>
+                    <strong>Customer impact:</strong> Same (~40% blank PDFs); service desk is informed<br>
+                    <strong>Next update:</strong> 2:45 AM HKT or sooner.</p>
+                    <br>
+                    <p><strong>2:55 AM HKT — Update 2 (25 min in) — RESOLVED</strong></p>
+                    <p><strong>Rollback complete at 2:44 AM HKT.</strong> Blank PDF rate dropped to 0% within 3 min.<br>
+                    <strong>Service fully restored.</strong><br>
+                    <strong>Root cause (preliminary):</strong> New template engine had a font-embedding bug that caused silent PDF generation failure for non-ASCII characters.<br>
+                    <strong>Affected:</strong> ~3,200 statements generated between 1:00 and 2:44 AM HKT. Service desk will re-generate them.<br>
+                    <strong>Action items:</strong> Post-mortem within 5 business days; fix the font-embedding bug in a follow-up PR.<br>
+                    <em>Marking as resolved. Syncing with PM and TL tomorrow for the post-mortem.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="15-uncertain-estimation.html">
+            <span class="label">← Previous</span>
+            <span class="title">15 · Estimating Uncertain Tasks</span>
+        </a>
+        <a class="next" href="17-vendor-and-contractor.html">
+            <span class="label">Next Article →</span>
+            <span class="title">17 · Vendor / Contractor Calls</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 16 · Production Incident Communication · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

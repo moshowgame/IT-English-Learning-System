@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 20: KYC / AML Business Rules & UAT | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">20 · KYC / AML Business Rules & UAT</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>KYC / AML Business Rules & UAT</h1>
+        <p class="subtitle">Article 20 · Module 5: HSBC Banking Context · BA English</p>
+        <div class="meta">
+            <span>⏱ 12 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🧪 Run UAT for KYC refresh, sanctions screening, and EDD triggers</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>UAT week</strong> on the <em>OneScreening 2.4 release</em> — the periodic KYC
+            refresh and sanctions screening engine upgrade for the GPB Onboarding tribe. You are the BA
+            running the <em>User Acceptance Test (UAT)</em> alongside <strong>Pradeep (QA Lead,
+            Bangalore)</strong>, <strong>Charlotte (Compliance Tester, London)</strong>, and
+            <strong>Roberto (the business lead, Miami)</strong>. The UAT environment was promoted on
+            Sunday. You have <em>forty-two test scripts</em> to run in five days, with three regulator
+            sign-offs needed before the production release on Friday 18:00 GMT.
+        </p>
+        <p>
+            到了 <em>OneScreening 2.4 发布版本</em> 的 <strong>UAT 周</strong>——GPB 开户 tribe 周期 KYC 刷新
+            和制裁名单筛查引擎的升级。你是 BA，和 <strong>Pradeep（QA 负责人，班加罗尔）</strong>、
+            <strong>Charlotte（合规测试员，伦敦）</strong>、<strong>Roberto（业务负责人，迈阿密）</strong>
+            一起跑 UAT。UAT 环境周日上线。你有 <em>42 个测试脚本</em>，5 天内必须跑完，并在周五 18:00 GMT
+            生产发布前拿到三个监管签字。
+        </p>
+        <p>
+            Day 2 at 11 AM HKT: three <em>P1 defects</em> land in the daily triage — the EDD trigger
+            <em>fires twice</em> for a PEP match, the sanctions screening <em>misses a fuzzy name match</em>
+            for "Mohammed" vs "Muhammad", and the periodic-refresh batch job <em>skips</em> clients with
+            a NULL risk rating. You have to triage live, in English, with the dev team in Hyderabad and
+            Compliance in London.
+        </p>
+        <p>
+            第 2 天上午 11 点香港时间：每日 triage 会议上来 3 个 <em>P1 缺陷</em>——EDD 触发对 PEP 匹配<em>重复触发
+            两次</em>；制裁筛查对"Mohammed"和"Muhammad"的<em>模糊匹配漏报</em>；定期刷新批处理<em>跳过</em>
+            风险评级为 NULL 的客户。你必须和海得拉巴的开发、伦敦的合规一起用英语现场 triage。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Pradeep (QA Lead, Bangalore):</span>
+                <span class="text"><span class="en"><em>Morning, all.</em> <em>Quick one</em> — yesterday's run surfaced <em>three P1s</em> on the test report. <em>Let's triage live</em> — Wei, do you want to walk us through the AC impact?</span><span class="cn">大家早上好。简单说一下——昨天的测试报告上出现了 3 个 P1。我们现场 triage——Wei，你先讲一下对 AC 的影响？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Sure, let me take them in order.</em> P1-A: <em>the EDD workflow fires twice</em> for a single PEP match — the AC says "trigger <em>once and only once</em>", so this is a direct <em>AC failure</em>. P1-B: <em>the sanctions screening missed a fuzzy match</em> between "Mohammed" and "Muhammad" — that one has a <em>MAS TRM</em> implication, so it's <em>not just a bug</em>, it's a potential <em>control failure</em>. P1-C: <em>the periodic-refresh job skipped</em> clients with a NULL risk rating — that's about 4% of the book.</span><span class="cn">好，我按顺序讲。P1-A：单个 PEP 匹配下 EDD 工作流触发两次——AC 是"仅触发一次"，所以这是直接的 AC 失败。P1-B：制裁筛查漏掉了"Mohammed"和"Muhammad"的模糊匹配——这有 MAS TRM 含义，所以不只是 bug，是潜在的控制失效。P1-C：定期刷新作业跳过了风险评级为 NULL 的客户——约占客户群的 4%。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Charlotte (Compliance Tester, London):</span>
+                <span class="text"><span class="en"><em>On P1-B</em> — from a <em>control</em> perspective, that's a <em>walk-back</em>. <em>If MAS sees this in the audit trail,</em> we'll have an observation letter. <em>What's the proposed fix?</em></span><span class="cn">关于 P1-B——从控制角度看，这是"回退"。如果 MAS 在审计追踪里看到，会发观察函。提议怎么修？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Akash from the dev team is on the call.</em> Akash — <em>can you walk us through</em> the matching algorithm and <em>whether the fuzzy threshold</em> can be tightened <em>for</em> Arabic transliterations?</span><span class="cn">开发的 Akash 在会上。Akash——能讲一下匹配算法，以及阿拉伯语音译的模糊阈值能否收紧吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev, Hyderabad):</span>
+                <span class="text"><span class="en"><em>Sure.</em> <em>The current threshold</em> is a Jaro-Winkler score of 0.85. <em>For</em> transliterations like Mohammed / Muhammad, we're scoring around 0.78, which is just below the cut-off. <em>We can either</em> lower the threshold to 0.75 <em>or</em> add an <em>alias list</em> for the top 50 transliterations. <em>Trade-off</em>: lower threshold = more false positives; alias list = more manual maintenance.</span><span class="cn">好。目前阈值是 Jaro-Winkler 0.85。对于 Mohammed / Muhammad 这种音译，分数在 0.78 左右，恰好低于阈值。两个选项：把阈值降到 0.75，或者给最常见的 50 个音译加别名列表。权衡：阈值降会产生更多误报，别名列表需要更多人工维护。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>From a UAT perspective,</em> my recommendation is the <em>alias list</em> — it's <em>deterministic</em> and <em>auditable</em>. <em>Charlotte, does that hold for Compliance?</em></span><span class="cn">从 UAT 角度，我推荐别名列表——它是确定性的、可审计的。Charlotte，合规这边 ok 吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Charlotte (Compliance Tester, London):</span>
+                <span class="text"><span class="en"><em>Yes, alias list is preferred.</em> <em>However,</em> <em>we need</em> the alias list <em>to be reviewed</em> by FCC <em>at least</em> every six months, and <em>we need</em> the change <em>logged</em> in the <em>Model Risk register</em> as a <em>parameter change</em>, not a model change.</span><span class="cn">好，别名列表更可取。但是，别名列表需要至少每 6 个月由 FCC 审查一次，并且变更需要记入模型风险登记簿，归为参数变更而非模型变更。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Roberto (Business Lead, Miami):</span>
+                <span class="text"><span class="en"><em>On P1-C</em> — the NULL risk rating, <em>that's</em> a <em>data quality</em> issue from the legacy CRM, <em>right?</em> <em>Can we just</em> <em>default</em> them to <em>medium</em> in the rule engine, <em>rather than</em> skipping them?</span><span class="cn">关于 P1-C——NULL 风险评级是老 CRM 的数据质量问题对吧？能否在规则引擎里默认设为"中"，而不是跳过？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Good question, Roberto.</em> <em>Per the AC,</em> the engine should <em>not skip</em> NULL clients — it should <em>default to high</em> and <em>trigger EDD</em>. <em>That's</em> the regulatory safer option. <em>Quick check</em> — Akash, is the rule <em>in code</em> or in the <em>BRD rule table</em>?</span><span class="cn">Roberto，好问题。根据 AC，引擎不应跳过 NULL 客户——应默认为高并触发 EDD。这是监管上更稳妥的选项。快速确认——Akash，这条规则在代码里还是在 BRD 规则表里？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev, Hyderabad):</span>
+                <span class="text"><span class="en"><em>It's in the rule table.</em> <em>So</em> the fix is a one-line <em>configuration change</em> — no code deploy needed. <em>I can have</em> the updated table in UAT by tomorrow.</span><span class="cn">在规则表里。所以改起来是一行配置变更——不需要代码部署。我明天可以把更新后的表放 UAT。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Perfect.</em> <em>To wrap up</em>: P1-A needs a <em>root cause analysis (RCA)</em> by EOD, P1-B gets the alias-list fix with the Model Risk <em>parameter change</em> logged, P1-C is a one-line rule table change tomorrow. <em>I'll re-execute</em> the affected test scripts on Thursday, and <em>we'll do</em> a final <em>go/no-go</em> on Friday morning. <em>Charlotte, can you confirm</em> the <em>Compliance sign-off</em> is on track for Friday 12:00 GMT?</span><span class="cn">完美。总结一下：P1-A 需要 EOD 前出 RCA；P1-B 走别名列表修复，模型风险记为参数变更；P1-C 是规则表一行配置变更明天上。我会在周四重跑受影响的测试脚本，周五上午做最终 go/no-go 决策。Charlotte，能确认合规签字能在周五 12:00 GMT 前到位吗？</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Triage</span> <em>Let's triage live.</em></span>
+                <span class="chinese">我们现场 triage 一下</span>
+                <span class="note">"Triage" = sort defects by severity, owner, and fix path. A UAT ritual. Always run live with the dev team present.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">AC failure</span> <em>That's a direct AC failure.</em></span>
+                <span class="chinese">这是直接的 AC 失败</span>
+                <span class="note">"AC failure" is the strongest defect classification. A P1 that breaks AC is a release blocker — no negotiation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Control</span> <em>From a control perspective, that's a walk-back.</em></span>
+                <span class="chinese">从控制角度看，这是回退</span>
+                <span class="note">"Control" = a regulatory safeguard. "Walk-back" = a regression. Compliance uses these to push P1s to P0.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Lower threshold = more false positives; alias list = more manual maintenance.</em></span>
+                <span class="chinese">降阈值会有更多误报，别名列表需要更多人工维护</span>
+                <span class="note">Always present a trade-off, not a single fix. Lets the room choose — and shows you've thought it through.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Deterministic</span> <em>The alias list is deterministic and auditable.</em></span>
+                <span class="chinese">别名列表是确定性的、可审计的</span>
+                <span class="note">"Deterministic" = same input always gives the same output. Compliance loves deterministic — random / probabilistic is hard to audit.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Parameter change</span> <em>It should be logged as a parameter change, not a model change.</em></span>
+                <span class="chinese">应记为参数变更，不是模型变更</span>
+                <span class="note">"Parameter change" is a lighter Model Risk approval (days). "Model change" needs full governance (weeks). Choose carefully.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Default</span> <em>The engine should default to high and trigger EDD.</em></span>
+                <span class="chinese">引擎应默认为高并触发 EDD</span>
+                <span class="note">When in doubt, default to the safer regulatory option. "Skip" is almost never acceptable in compliance UAT.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">RCA</span> <em>We need a root cause analysis by EOD.</em></span>
+                <span class="chinese">我们需要在 EOD 前出 RCA</span>
+                <span class="note">"RCA" = Root Cause Analysis. The 5-whys or fishbone exercise. Required for every P1 before a release decision.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Re-execute</span> <em>I'll re-execute the affected test scripts on Thursday.</em></span>
+                <span class="chinese">我会在周四重跑受影响的测试脚本</span>
+                <span class="note">After a fix, never "trust" the change — re-execute the script. "Re-execute" is QA's preferred verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Go / no-go</span> <em>We'll do a final go/no-go on Friday morning.</em></span>
+                <span class="chinese">周五上午做最终 go/no-go 决策</span>
+                <span class="note">"Go/no-go" = the binary release decision. Always scheduled in advance, with named attendees and a clear escalation path.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>UAT (User Acceptance Testing)</strong> n. 用户验收测试 The final test phase before production. Owned by the business, not by IT.</li>
+            <li><strong>AC (Acceptance Criteria)</strong> n. 验收标准 The bullet list of "done" conditions in a user story. A P1 that breaks AC is a release blocker.</li>
+            <li><strong>P1 / P2 / P3</strong> n. 缺陷等级 P1 = release blocker; P2 = must-fix-this-sprint; P3 = nice-to-have.</li>
+            <li><strong>Defect triage</strong> n. 缺陷分类 The daily meeting to classify, prioritise, and assign defects. Run live with the dev team.</li>
+            <li><strong>RCA (Root Cause Analysis)</strong> n. 根因分析 The exercise to identify why a defect happened. Required for every P1.</li>
+            <li><strong>Jaro-Winkler</strong> n. 字符串相似度算法 A common string-similarity algorithm for fuzzy name matching. Score 0-1, higher = more similar.</li>
+            <li><strong>Fuzzy match</strong> n. 模糊匹配 A match between two strings that are similar but not identical. Critical for sanctions screening.</li>
+            <li><strong>False positive / false negative</strong> n. 误报 / 漏报 False positive = clean client flagged. False negative = risky client missed. Regulators hate the second.</li>
+            <li><strong>Rule table</strong> n. 规则表 The externalised business rules (e.g. Drools, OPA). A change to the table is a parameter change, not a code change.</li>
+            <li><strong>Model Risk register</strong> n. 模型风险登记簿 HSBC's central log of all model and parameter changes, owned by Group Model Risk.</li>
+            <li><strong>Parameter change vs model change</strong> n. 参数变更/模型变更 Parameter = tuning an existing model (faster approval). Model = new algorithm (heavy approval).</li>
+            <li><strong>Go / no-go</strong> n. 发布决策 The final binary decision to release to production. Scheduled in advance, owned by the release manager.</li>
+            <li><strong>OneScreening</strong> n. 汇丰统一筛查平台 HSBC's unified KYC and sanctions screening engine. Consolidates the legacy ACME and WorldCheck stacks.</li>
+            <li><strong>BRD (Business Requirements Document)</strong> n. 业务需求文档 The formal document that captures the business rules. The rule table is the operational expression of the BRD.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "It should trigger" / "It should not skip" — the regulatory should/should not</h3>
+        <p>
+            Compliance UAT loves the <strong>should / should not</strong> modal pair. <em>The engine should
+            default to high and trigger EDD</em> — the system has an obligation. <em>The engine should
+            not skip NULL clients</em> — an explicit prohibition. Use these in AC for unambiguous test
+            assertions. <em>Must</em> is reserved for regulator-defined absolutes; <em>should</em> is for
+            your own design decisions.
+        </p>
+        <p>合规 UAT 的 AC 用 should / should not 表达系统义务和禁止——比 must 更适合设计决策。</p>
+
+        <h3>② "I can have" / "I'll have" — the BA's "I will deliver" pattern</h3>
+        <p>
+            <em>I'll have the updated table in UAT by tomorrow.</em> "I'll have X by Y" is a stronger,
+            more time-bound commitment than <em>I'll try to get X done</em>. Use it to close out triage
+            decisions — it creates the audit trail and the social commitment.
+        </p>
+        <p><em>I'll have X by Y</em> 比"我尽量"更有时间承诺感——triage 收尾时用这个句型。</p>
+
+        <h3>③ "That's a control failure" — the "that's a X" identification pattern</h3>
+        <p>
+            The pattern <em>that's a + classification noun</em> (control failure, AC failure, model change,
+            parameter change) is the standard way to <strong>label</strong> an issue in triage. Once
+            labelled, the room knows how to react. Get comfortable using the noun the regulator uses.
+        </p>
+        <p>triage 中用 <em>that's a + 分类名词</em> 给问题贴标签——会议室会知道如何反应。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>The BA runs triage, not the QA lead.</strong> In HSBC squads, the BA is the AC authority. The QA Lead runs the test execution, but the BA decides whether a defect is "in scope" of AC. If you don't chair the triage, you'll be overridden by the loudest dev in the room.</li>
+            <li><strong>"Skip" is a four-letter word in compliance UAT.</strong> Never let "skip" through as a fix for a NULL or missing field. Default to the safer option (high risk rating, manual review) and raise a follow-on story to clean the data.</li>
+            <li><strong>Parameter change vs model change is a 10x time difference.</strong> A parameter change is a 3-day Model Risk review. A model change is a 30-day one. If your fix is a threshold or a list, make sure it's classified as a parameter change, not a model change. Ask the Group Model Risk team if in doubt.</li>
+            <li><strong>Compliance testers don't sign off on technical correctness.</strong> They sign off on whether the AC satisfies the regulatory intent. Don't ask Charlotte "does the algorithm work" — ask "does this fix satisfy the MAS TRM control standard".</li>
+            <li><strong>Cross-region UAT means someone is always late or early.</strong> With Bangalore, Hyderabad, London, Miami, and HK on a UAT call, the standup time will inconvenience someone. Rotate the time fairly across releases — it builds trust across the tribe.</li>
+            <li><strong>Document the "go/no-go" decision in writing — same day.</strong> Even a 2-line email: "Release 2.4 signed off at 12:30 GMT by Charlotte, Roberto, Wei. Defects: 0 P1 open, 2 P2 deferred to 2.4.1." That email is what Audit reads first.</li>
+            <li><strong>Test the negative cases, not just the positive ones.</strong> A UAT that only tests "EDD triggers for a PEP" misses the bug that fires EDD twice. Always script the "what if the data is NULL", "what if the alias list is empty", "what if the threshold is exactly the cut-off".</li>
+            <li><strong>Alias lists must be reviewed every 6 months, not once.</strong> A common squad mistake is to fix the fuzzy match and forget the maintenance. Bake the 6-month review into the operational runbook before you release.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the triage</h3>
+        <p>Translate the following BA summary into natural Chinese. Pay attention to the trade-off framing and the go/no-go commitment.</p>
+        <blockquote>
+            "To wrap up: P1-A needs a root cause analysis by EOD. P1-B gets the alias-list fix with the
+            Model Risk parameter change logged. P1-C is a one-line rule table change tomorrow. I'll
+            re-execute the affected test scripts on Thursday, and we'll do a final go/no-go on Friday
+            morning. Charlotte, can you confirm the Compliance sign-off is on track for Friday 12:00 GMT?
+            From a control perspective, the alias list is deterministic and auditable, which is the
+            regulator-friendly option."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"总结一下：P1-A 需要 EOD 前出根因分析。P1-B 走别名列表修复，模型风险记为参数变更。P1-C 是规则表一行配置变更，明天上。我会在周四重跑受影响的测试脚本，周五上午做最终 go/no-go 决策。Charlotte，能确认合规签字能在周五 12:00 GMT 前到位吗？从控制角度看，别名列表是确定性的、可审计的，是监管更友好的选项。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the UAT mistake</h3>
+        <p>During UAT triage, which BA response is the strongest "release-ready" pattern?</p>
+            <ol>
+                <li>"Let's just skip the NULL clients for now and clean the data next sprint."</li>
+                <li>"The engine should not skip NULL clients. It should default to high and trigger EDD. Per the AC, that's the regulatory safer option. Akash, can you confirm the rule is in the BRD rule table and apply the one-line change?"</li>
+                <li>"I'm not sure — let's ask the dev team."</li>
+                <li>"Maybe we can ship without fixing it and add it to 2.5?"</li>
+            </ol>
+            <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+            <div class="answer-box" style="display:none;">
+                <p>② is the strongest. It cites the AC, the regulatory principle (default to safer), assigns the owner (Akash), and asks for a specific confirmation (rule table, not code). ① and ④ both propose "skip" or "defer" — patterns that rarely survive Compliance review. ③ abdicates the BA's AC authority.</p>
+            </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're running UAT for the <em>OneScreening 2.4</em> release. A new P1 lands: the periodic-refresh batch job <em>sends the reminder email twice</em> to the same client — a duplicate notification, but the email is also being sent to the <em>old</em> address because the client's email field hasn't been updated in the consent ledger. The business lead is on the call. Write a 5-7 sentence BA response that (a) labels the defect against AC, (b) distinguishes the duplicate-send (release blocker) from the address-update (data issue), (c) proposes a triage path. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK, let me triage this live. The AC for the periodic-refresh story says: 'send a single reminder to the client's registered email, with a 7-day expiry'. The duplicate send is a direct AC failure — the system is firing twice on a single refresh cycle, which is a release blocker. I'd call that an AC failure, and it should be P1. The address-update piece is a separate issue: if the consent ledger has the old email, that's a data quality problem in the consent ledger, not a bug in the refresh job. I'd split it: P1 fix the duplicate send before Friday go/no-go; raise a follow-on P2 story to scope the consent-ledger address-validation logic. Akash, on the duplicate send — is the trigger in the rule table or in code? If it's in the rule table, can you have the fix in UAT by tomorrow EOD? I'll re-execute test script T-238 after the fix lands. Roberto, on the data side — can you confirm with the data steward whether the consent-ledger address-validation is in flight under a different squad, so we don't double-track? I want to make sure the Friday go/no-go is a clean decision, not a 'fix it in production' decision."</p>
+        </div>
+    </section>
+
+    <!-- Module 5 Wrap-up -->
+    <section class="article-section">
+        <h2>8. Module 5 Wrap-up — HSBC Banking Context</h2>
+        <p>
+            This article closes <strong>Module 5: HSBC Banking Context</strong> (Articles 18-20). The three
+            articles together form the BA's "compliance toolkit" — the language and the discipline you
+            need when requirements meet regulators.
+        </p>
+
+        <h3>Article 18 — Compliance & Regulators (回顾)</h3>
+        <ul>
+            <li><strong>Core pattern:</strong> Cite the regulator with the specific standard (<em>per MAS TRM</em>, <em>per HKMA SPM</em>, <em>per Group AML Policy</em>).</li>
+            <li><strong>Core phrase:</strong> <em>I'm proposing an interim control</em> + waiver reference + expiry date. The trio is non-negotiable.</li>
+            <li><strong>Core rule:</strong> If you said it in the meeting, write it in the email the same day. Compliance officers quote section numbers back at you — match their precision.</li>
+        </ul>
+
+        <h3>Article 19 — Banking Terminology (回顾)</h3>
+        <ul>
+            <li><strong>Core pattern:</strong> Speak the regulator's local filing language — SAR (US/UK) vs STR (HK/SG); JFIU (HK) vs STRO (SG) vs FinCEN (US) vs NCA (UK).</li>
+            <li><strong>Core phrase:</strong> <em>SoW (how the wealth was built) and SoF (where this transaction's money is from)</em> are NOT the same. Write separate AC for each.</li>
+            <li><strong>Core rule:</strong> Periodic refresh vs event-driven review are different triggers. Event-driven trumps periodic. Sanctions screening runs on every payment, not just onboarding.</li>
+        </ul>
+
+        <h3>Article 20 — KYC / AML UAT (本文)</h3>
+        <ul>
+            <li><strong>Core pattern:</strong> The BA chairs triage, not the QA Lead. Label every defect (<em>AC failure</em>, <em>control failure</em>, <em>parameter change</em>, <em>model change</em>).</li>
+            <li><strong>Core phrase:</strong> <em>Default to the safer regulatory option</em> — never "skip" a NULL or missing field. Default to high, trigger EDD, fix the data later.</li>
+            <li><strong>Core rule:</strong> A P1 needs an RCA, a re-execute, and a Compliance sign-off before the go/no-go. The go/no-go email is what Audit reads first — make it 2 lines, dated, named.</li>
+        </ul>
+
+        <div class="tip-box">
+            <div class="tip-title">🎓 Module 5 Takeaway</div>
+            <p>
+                The three articles share one principle: <strong>in HSBC, a BA's vocabulary IS the
+                control</strong>. If you write the wrong AC, the system makes the wrong decision. If you
+                say "skip" in triage, the regulator's question becomes "why did you allow a skip?". The
+                words you choose at the desk become the audit trail in the regulator's office. Choose
+                them with the same care Compliance chooses them.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

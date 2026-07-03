@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: Event-Driven Architecture Conversation | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">10 · Event-Driven Architecture Conversation</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Event-Driven Architecture Conversation</h1>
+        <p class="subtitle">Article 10 · Module 5: Cross-Cutting Architecture · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Design Kafka topics, event schemas, ordering, exactly-once delivery, and the saga pattern</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>4:00 PM HKT</strong>. You are a Solution Architect in the <em>RBWM Digital</em> tribe,
+            running a 75-minute design conversation in a Hong Kong meeting room on the
+            <em>OneWealth event-driven rebalancing flow</em>. The squad is implementing
+            <strong>ADR-0184</strong>, which has already been signed off at the chapter level but is now in
+            detailed design. Akash is dialling in from Bangalore, Priya from London, and Mei is in Shanghai.
+        </p>
+        <p>
+            下午 4 点香港时间，你是 <em>RBWM 数字化</em> tribe 的 Solution 架构师，在香港会议室主持一场 75
+            分钟的设计对话，主题是 <em>OneWealth 事件驱动的再平衡流程</em>。Squad 正在实施
+            <strong>ADR-0184</strong>，ADR 已经在 chapter 层面签过，现在进入详细设计阶段。Akash 从班加罗尔拨入，
+            Priya 从伦敦，Mei 在上海。
+        </p>
+        <p>
+            The decisions still open: the <em>Kafka topic naming</em>, the <em>event schema</em>
+            (Avro vs Protobuf), the <em>ordering guarantee</em> per customer, the
+            <em>delivery semantics</em> (at-least-once vs exactly-once), and the <em>saga pattern</em> for
+            the cross-service rebalance flow. The Chief Architect <strong>Margaret</strong> is in the room,
+            and she will sign off on the schema evolution policy before the squad starts coding.
+        </p>
+        <p>
+            还没敲定的决策：<em>Kafka topic 命名</em>、<em>事件 schema</em>（Avro 还是 Protobuf）、
+            <em>按客户的顺序保证</em>、<em>投递语义</em>（at-least-once 还是 exactly-once），以及跨服务再平衡流程的
+            <em>saga 模式</em>。首席架构师 <strong>Margaret</strong> 在场，squad 开始写代码前她要先签 schema
+            演进策略。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">OK everyone — <em>right, so</em> the goal of the next 75 minutes is to <em>lock down the event-driven design</em> for OneWealth rebalancing. We have five open items: topic naming, event schema, ordering, delivery semantics, and saga. <em>Let's start with topic naming</em> — that's the easiest win and the platform team needs it for the topic-provisioning script.</span><span class="cn">好——<em>接下来</em> 75 分钟目标是把 OneWealth 再平衡的事件驱动设计<em>敲死</em>。5 个开放项：topic 命名、事件 schema、顺序、投递语义、saga。<em>先从 topic 命名开始</em>——这是最简单的一个，平台团队要拿去配 topic 脚本。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>My recommendation:</em> <em>reverse-DNS style, kebab-case</em> — <em>hsbc.rbwm.onewealth.rebalance.requested</em>, <em>hsbc.rbwm.onewealth.rebalance.completed</em>. The pattern is <em>hsbc.{tribe}.{domain}.{entity}.{event-type}</em>. The platform team's Kafka topic standard already mandates this — and it gives us a clean prefix for ACLs.</span><span class="cn"><em>我的建议：</em><em>反向 DNS 风格、kebab-case</em>——<em>hsbc.rbwm.onewealth.rebalance.requested</em>、<em>hsbc.rbwm.onewealth.rebalance.completed</em>。模式是 <em>hsbc.{tribe}.{domain}.{entity}.{event-type}</em>。平台团队的 Kafka topic 标准已经强制这个——而且给我们一个干净的 ACL 前缀。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en">Quick one — for the <em>event schema</em>, the squad wants Protobuf because that's what the OnePay service uses. But the Group Standard on data interchange says Avro for events going into the central data lake.</span><span class="cn">问一下——<em>事件 schema</em>，squad 想用 Protobuf，因为 OnePay 服务用的就是。但集团数据交换标准要求进中央数据湖的事件走 Avro。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good catch. <em>Honest answer</em> — <em>we use Avro on the wire, with the Protobuf-generated Java classes as the in-process types.</em> The wire format is Avro, the Confluent Schema Registry enforces it, and the data lake reads it natively. The Protobuf types are still useful for compile-time type-safety in the consumer — we just convert at the boundary. <em>This satisfies both the squad's ergonomics and the Group Standard.</em></span><span class="cn">抓得好。<em>说实话</em>——<em>线协议用 Avro，进程内类型用 Protobuf 生成的 Java 类。</em>线协议是 Avro，Confluent Schema Registry 强制执行，数据湖原生可读。Protobuf 类型在消费者编译期类型安全上仍然有用——我们只在边界做转换。<em>这样既满足 squad 的工程体验，也满足集团标准。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev, Bangalore):</span>
+                <span class="text"><span class="en"><em>Just to flag</em> — the rebalance events for the same customer need to be <em>ordered</em>, right? If the customer changes allocation at 10:00:01 and the scheduled rebalance fires at 10:00:02, we can't process them out of order.</span><span class="cn"><em>提一下</em>——同一客户的再平衡事件需要<em>有序</em>，对吧？如果客户 10:00:01 改配置、10:00:02 调度再平衡触发，我们不能乱序处理。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>we partition by customer ID</em> — that's the <em>ordering key.</em> Kafka guarantees ordering within a partition, and <em>as long as the same customer ID always hashes to the same partition, the order is preserved.</em> We also pin the partition count at 12 for now — that gives us headroom for parallelism across customers without re-partitioning mid-year.</span><span class="cn">好，<em>我们按客户 ID 分区</em>——这就是<em>排序 key</em>。Kafka 在分区内保证有序，<em>只要同一客户 ID 总是哈希到同一分区，顺序就保留。</em>分区数先锁在 12——给客户维度的并行留余量，年内不用重新分区。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Architect, London):</span>
+                <span class="text"><span class="en">What about <em>delivery semantics</em>? The squad said they want <em>exactly-once</em>, but I've seen a lot of squads burn time chasing exactly-once when at-least-once with idempotent consumers would have done the job.</span><span class="cn"><em>投递语义</em>呢？Squad 说他们想要 <em>exactly-once</em>，但我见过很多 squad 追 exactly-once 烧了大量时间，其实 at-least-once + 幂等消费者就够用。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Honest answer — <em>at-least-once with idempotent consumers is the default, exactly-once is the exception.</em> Kafka's exactly-once only works inside Kafka — the moment the consumer calls an external service (the rebalancing engine, the audit store), the guarantee evaporates. <em>So the pattern is:</em> at-least-once from Kafka, <em>idempotency key per event</em>, and the downstream consumer dedups against a Redis store. We get the same end-state as exactly-once, with much less operational pain.</span><span class="cn">说实话——<em>默认是 at-least-once + 幂等消费者，exactly-once 是例外。</em>Kafka 的 exactly-once 只在 Kafka 内部有效——一旦消费者调用外部服务（再平衡引擎、审计存储），保证就消失了。<em>所以套路是：</em>Kafka 这边 at-least-once，<em>每个事件带幂等 key</em>，下游消费者对 Redis 存储去重。我们用更少的运维代价拿到和 exactly-once 一样的最终结果。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en">Last big one — the <em>saga pattern</em>. The rebalance flow has four steps: validate allocation, check risk profile, execute the trade, write the audit record. If step 3 fails, we need to <em>compensate</em> step 2 and step 1.</span><span class="cn">最后大件——<em>saga 模式</em>。再平衡流程有 4 步：校验配置、检查风险偏好、执行交易、写审计记录。如果第 3 步失败，我们需要<em>补偿</em>第 2 步和第 1 步。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>orchestrated saga over choreographed, for v1.</em> An orchestrator service holds the state machine — it sends the "validate allocation" command, waits for the result, then sends "check risk profile", and so on. <em>On failure</em>, the orchestrator issues <em>compensating transactions in reverse order.</em> We tried choreographed sagas on the OnePay flow and they were a debugging nightmare — every service owned part of the state and nobody could answer "where are we in the flow?" Honest answer: orchestrated is more code, but it's the only one a junior dev can debug at 2 AM.</span><span class="cn">好，<em>v1 用编排式 saga 而非编舞式 saga。</em>一个 orchestrator 服务持有状态机——发"校验配置"命令、等结果、再发"检查风险偏好"，依次类推。<em>失败时</em>，orchestrator <em>按反序发起补偿事务</em>。OnePay 流程我们试过编舞式 saga，调试是噩梦——每个服务都持有一部分状态，没人能回答"流程走到哪一步了"。说实话：编排式代码更多，但这是唯一一个初级开发者凌晨 2 点能 debug 的方案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Quick one on <em>schema evolution</em> — before the squad starts coding, I need to know: if we add a new field to the rebalance event in 6 months, do old consumers break?</span><span class="cn">问一下<em>schema 演进</em>——squad 开始写代码前，我需要知道：6 个月后给再平衡事件加一个新字段，老消费者会不会挂？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>No, old consumers don't break, because Avro's default-value semantics let the consumer ignore unknown fields and fill missing fields with defaults.</em> The rule is: <em>additive changes are backward-compatible, breaking changes require a new topic version.</em> Removing a field or changing a type is breaking — that's a new topic, not a new version of the existing one. <em>I'll write this rule into ADR-0184 by EOD Friday</em> as the schema evolution policy.</span><span class="cn">好问题。<em>老消费者不会挂，因为 Avro 的 default-value 语义允许消费者忽略未知字段、对缺失字段填默认值。</em>规则是：<em>增量变更向后兼容，破坏性变更需要新版本 topic。</em>删字段或改类型是破坏——那是新 topic，不是现有 topic 的新版本。<em>我周五 EOD 前把这条规则写进 ADR-0184</em>，作为 schema 演进策略。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>to close</em> — topics named <em>hsbc.rbwm.onewealth.rebalance.*</em>, Avro on the wire, partition by customer ID, at-least-once with idempotent consumers, orchestrated saga with the orchestrator service. <em>Schema evolution rule:</em> additive is backward-compatible, breaking needs a new topic. <em>Mei, ADR-0184 update by EOD Friday. Margaret, can you sign off on the schema evolution policy this week?</em></span><span class="cn">好，<em>收尾</em>——topic 命名 <em>hsbc.rbwm.onewealth.rebalance.*</em>，线协议 Avro，按客户 ID 分区，at-least-once + 幂等消费者，编排式 saga + orchestrator 服务。<em>Schema 演进规则：</em>增量向后兼容，破坏性变更需要新 topic。<em>Mei，ADR-0184 周五 EOD 前更新好。Margaret，schema 演进策略本周能签批吗？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>The goal is to lock down the event-driven design.</em></span>
+                <span class="chinese">目标是把事件驱动设计敲死</span>
+                <span class="note">"Lock down" = commit to specific decisions, not explore options. Use once the chapter ADR is approved.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Naming</span> <em>Reverse-DNS style, kebab-case — hsbc.{tribe}.{domain}.{entity}.{event-type}.</em></span>
+                <span class="chinese">反向 DNS 风格、kebab-case——hsbc.{tribe}.{domain}.{entity}.{event-type}</span>
+                <span class="note">Cite the platform team's Kafka topic standard. Don't invent your own naming — it breaks the ACL scripts.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Boundary</span> <em>Avro on the wire, Protobuf-generated classes as the in-process types.</em></span>
+                <span class="chinese">线协议 Avro，进程内类型用 Protobuf 生成的类</span>
+                <span class="note">"On the wire" = the bytes that travel. "In-process" = the objects in memory. Always separate the two.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Ordering</span> <em>We partition by customer ID — that's the ordering key.</em></span>
+                <span class="chinese">我们按客户 ID 分区——这就是排序 key</span>
+                <span class="note">"Ordering key" = the field you partition by. If the field is wrong, ordering is wrong; no other knob can fix it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capacity</span> <em>We pin the partition count at 12 for now.</em></span>
+                <span class="chinese">分区数先锁在 12</span>
+                <span class="note">Partition count is a one-way door — re-partitioning mid-flight is a 6-week project. Pick a number that survives the year.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Semantics</span> <em>At-least-once with idempotent consumers is the default; exactly-once is the exception.</em></span>
+                <span class="chinese">默认 at-least-once + 幂等消费者；exactly-once 是例外</span>
+                <span class="note">Always name the default first, then the exception. "Default + exception" is the architect's pattern.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Saga</span> <em>Orchestrated saga over choreographed, for v1.</em></span>
+                <span class="chinese">v1 用编排式 saga 而非编舞式</span>
+                <span class="note">"Orchestrated" = a central service owns the state machine. "Choreographed" = each service owns its own. Junior devs can debug orchestrated; only senior devs can debug choreographed at 2 AM.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensate</span> <em>On failure, the orchestrator issues compensating transactions in reverse order.</em></span>
+                <span class="chinese">失败时，orchestrator 按反序发起补偿事务</span>
+                <span class="note">"Compensating transaction" = the undo for a previous step. Always cited in reverse order — the last step is undone first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evolution</span> <em>Additive changes are backward-compatible, breaking changes require a new topic.</em></span>
+                <span class="chinese">增量变更向后兼容，破坏性变更需要新 topic</span>
+                <span class="note">Write this rule into the ADR. Without it, the squad will rename a field in 6 months and 3 consumers will break silently.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sign-off</span> <em>Margaret, can you sign off on the schema evolution policy this week?</em></span>
+                <span class="chinese">Margaret，schema 演进策略本周能签批吗？</span>
+                <span class="note">Always name who signs what and by when. Unnamed sign-offs don't ship.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Kafka topic</strong> n. Kafka 主题 A named, durable stream of events. The unit of subscription and ACL.</li>
+            <li><strong>Reverse-DNS naming</strong> n. 反向 DNS 命名 A naming style that starts with the broadest scope (e.g., hsbc) and narrows (e.g., hsbc.rbwm.onewealth).</li>
+            <li><strong>Event schema</strong> n. 事件 schema The contract describing the fields and types of an event (Avro .avsc, Protobuf .proto).</li>
+            <li><strong>Avro</strong> n. Avro Schema A schema format that supports default values — enabling backward-compatible evolution.</li>
+            <li><strong>Protobuf</strong> n. Protobuf 协议 Google binary serialisation format. Strong in-process type-safety, weaker cross-team schema governance.</li>
+            <li><strong>Partition key</strong> n. 分区 key The field used to hash a record to a Kafka partition. Determines ordering.</li>
+            <li><strong>At-least-once delivery</strong> n. 至少一次投递 The delivery guarantee that a record will not be lost, but may be redelivered.</li>
+            <li><strong>Exactly-once delivery</strong> n. 精确一次投递 The delivery guarantee that a record is delivered exactly once. Only works inside Kafka; evaporates at the network boundary.</li>
+            <li><strong>Idempotent consumer</strong> n. 幂等消费者 A consumer that can safely process the same event multiple times because it dedups on a key.</li>
+            <li><strong>Saga pattern</strong> n. Saga 模式 A pattern for managing distributed transactions across multiple services via a sequence of local transactions + compensating actions.</li>
+            <li><strong>Orchestrated saga</strong> n. 编排式 saga A saga where a central orchestrator service holds the state machine.</li>
+            <li><strong>Choreographed saga</strong> n. 编舞式 saga A saga where each service reacts to events from the others — no central state.</li>
+            <li><strong>Compensating transaction</strong> n. 补偿事务 The undo operation for a previously-completed saga step.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Orchestrated saga over choreographed, for v1" — the comparative for choice</h3>
+        <p>
+            <em>Orchestrated saga over choreographed, for v1.</em> The <strong>"X over Y"</strong> pattern is
+            the architect's way of stating a comparative decision in 4 words. <em>Over</em> signals "I
+            considered both, I chose X, here's the temporal scope". Pair it with <em>for v1</em> to signal
+            that the decision is re-evaluable. This pattern is denser than <em>we recommend orchestrated,
+            not choreographed, for v1</em> — and in a 75-minute design conversation, density wins.
+        </p>
+        <p><em>X over Y</em> 是架构师做对比决策的紧凑句式，4 个词说完选择。配合 <em>for v1</em> 表明会复评。</p>
+
+        <h3>② "On the wire" vs "in-process" — the two-boundary distinction</h3>
+        <p>
+            <em>Avro on the wire, Protobuf-generated classes as the in-process types.</em> This <strong>two-boundary
+            distinction</strong> is a hallmark of senior architect talk. <em>On the wire</em> = the bytes that
+            cross a network. <em>In-process</em> = the objects inside a JVM. Confusing the two is a common
+            junior mistake ("we use Protobuf end-to-end") that breaks the data lake. Naming both boundaries
+            explicitly is what makes the design defensible to Group Cyber and the data team.
+        </p>
+        <p>明确区分<em>线协议</em>和<em>进程内类型</em>是高级架构师的标志——这两种很容易被初级工程师混为一谈。</p>
+
+        <h3>③ "We tried X, it was a Y" — the past-tense war story</h3>
+        <p>
+            <em>We tried choreographed sagas on the OnePay flow and they were a debugging nightmare.</em>
+            The <strong>past-tense war story</strong> is the architect's most convincing tool. You're not
+            saying "I think choreographed is bad"; you're saying "we tried it, here's what happened". A
+            past-tense war story carries more weight than an opinion because it has evidence behind it.
+            Use war stories from your own tribe — OnePay for RBWM, GLCM for CMB — and always name the
+            project, the pattern, and the failure mode.
+        </p>
+        <p>过去时的"踩坑故事"比单纯说"我不喜欢 X"有说服力得多。要点出项目、模式和失败模式。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Cite the platform standard by name.</strong> When you name a Kafka topic, cite the platform team's Kafka topic standard. Don't invent your own naming — it breaks the ACL scripts and the platform team will reject the topic. <em>hsbc.{tribe}.{domain}.{entity}.{event-type}</em> is the only acceptable pattern.</li>
+            <li><strong>Exactly-once is a trap on the network boundary.</strong> A junior dev reads "exactly-once" in the Kafka docs and assumes it works across the whole system. It doesn't. The moment the consumer calls the rebalancing engine or the audit store, the guarantee is gone. Architects who let juniors chase exactly-once are architects who will be debugging it at 2 AM.</li>
+            <li><strong>Partition count is a one-way door.</strong> Picking 6 partitions vs 12 might seem harmless today, but re-partitioning mid-flight is a 6-week project and the consumer offsets need a re-mapping plan. Always size partitions for the year, not the sprint.</li>
+            <li><strong>Orchestrated saga for junior-heavy squads.</strong> Choreographed saga looks elegant on a slide but is undebuggable by anyone except the senior who designed it. If your squad is 60% junior or mid-level, orchestrated saga is the only safe choice. You can always move to choreographed in v2 once the team has the muscle memory.</li>
+            <li><strong>Schema evolution policy is the ADR's most-quoted section.</strong> "Additive is backward-compatible, breaking needs a new topic" — write it down, cite the Avro default-value semantics, and link to the Group Standard. 6 months from now, the squad will rename a field and 3 consumers will silently break. The policy is the only thing that prevents the regression.</li>
+            <li><strong>Cross-region courtesy on Kafka designs.</strong> When Priya (UK) joins late, recap the schema decision in 30 seconds. UK is 8 hours behind — Priya has had no time to read the ADR. Recap is courtesy, and it's also risk-reduction: a UK consumer team that didn't hear the policy will deploy the wrong schema.</li>
+            <li><strong>End with a named sign-off, not a recap.</strong> "Margaret, can you sign off on the schema evolution policy this week?" is the close. A close without a sign-off name is a chat. Margaret's sign-off is the only thing that lets the squad start coding.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the event-driven design summary</h3>
+        <p>Translate the following event-driven design summary into natural Chinese. Pay attention to the two-boundary distinction and the saga choice.</p>
+        <blockquote>
+            "Right, so to close. Topics named hsbc.gpb.onboarding.customer.events, partitioned by
+            customer ID — that's the ordering key. Avro on the wire, Protobuf-generated classes
+            in-process, schema enforced by the Confluent Schema Registry. At-least-once with
+            idempotent consumers — exactly-once is off the table because of the network boundary.
+            Orchestrated saga over choreographed, for v1 — we tried choreographed on OnePay and it
+            was a debugging nightmare. Schema evolution: additive is backward-compatible, breaking
+            needs a new topic. Mei, can you update ADR-0189 with this by EOD Friday? Margaret, can
+            you sign off on the schema evolution policy this week?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，收尾。Topic 命名 hsbc.gpb.onboarding.customer.events，按客户 ID 分区——这就是排序 key。线协议 Avro，进程内类型用 Protobuf 生成的类，schema 由 Confluent Schema Registry 强制。At-least-once + 幂等消费者——exactly-once 不用，因为有网络边界。v1 用编排式 saga 而非编舞式——OnePay 我们试过编舞式，调试是噩梦。Schema 演进：增量向后兼容，破坏性变更需要新 topic。Mei，你周五 EOD 前把 ADR-0189 更新好？Margaret，schema 演进策略本周能签批吗？"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these event-driven design statements would pass a strict design review at HSBC and which would not? Why?</p>
+        <ol>
+            <li>"We use Protobuf end-to-end — on the wire and in-process."</li>
+            <li>"Avro on the wire, Protobuf in-process, partitioned by customer ID, at-least-once with idempotent consumers, orchestrated saga. Schema evolution: additive is backward-compatible, breaking needs a new topic."</li>
+            <li>"We'll figure out the topic naming when we provision the topics."</li>
+            <li>"Exactly-once end-to-end. The rebalancing engine, the audit store, the notification service — they all get exactly-once."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② passes — it has the two-boundary distinction, the partition key, the delivery semantics, the saga choice, and the schema evolution policy. ① fails (Protobuf end-to-end violates the Group Standard for events going to the data lake). ③ fails (figuring out naming during provisioning breaks the platform team's ACL scripts). ④ fails (exactly-once across the network boundary is impossible — the guarantee evaporates the moment the consumer calls an external service).</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a Solution Architect in the CMB Digital Channels tribe. The squad is designing the CMB trade-settlement event flow. The Tech Lead wants 32 partitions; the platform team recommends 12. The Tech Lead also wants exactly-once; you know it doesn't survive the network boundary. Write your 60-second response in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK, two trade-offs. First, partitions. Honest answer — 12 is enough for now. We're settling roughly 200 trades per second at peak; 12 partitions gives us 17 trades per partition per second, which is well within Kafka's headroom. 32 partitions is a one-way door — re-partitioning mid-flight is a 6-week project and the consumer offsets need a re-mapping plan. I'd recommend 12 for v1, and we re-evaluate at the year mark. Second, exactly-once — that one's off the table. Exactly-once only works inside Kafka; the moment the consumer calls the settlement engine or the audit store, the guarantee evaporates. So the pattern is: at-least-once from Kafka, idempotency key per event, and the downstream consumer dedups against Redis. We get the same end-state with much less operational pain. We tried the exactly-once path on the OnePay trade flow in 2024 — it was a debugging nightmare. Mei, can you update ADR-0195 with the partition count and the at-least-once decision by EOD Wednesday?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="11-architecture-decision-email.html" class="btn btn-primary">Next: Article 11 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

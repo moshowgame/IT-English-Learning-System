@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: Stakeholder Mapping & RACI | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">10 · Stakeholder Mapping & RACI</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Stakeholder Mapping & RACI</h1>
+        <p class="subtitle">Article 10 · Module 2: Discovery & Workshops · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Sponsors, gatekeepers, RACI, and the right conversations</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Friday afternoon, 2 PM HKT</strong>. You're a BA on the GPB (Global Private
+            Banking) <em>Source-of-Wealth</em> squad. The programme is about to enter UAT in three weeks,
+            and you have <strong>14 named stakeholders</strong> spread across HK, Shanghai, Singapore,
+            London, and Bangalore. Last week, a story got stuck for four days because nobody knew who
+            was <em>Accountable</em> for signing off the source-of-wealth evidence policy.
+        </p>
+        <p>
+            周五下午 2 点，香港时间。你是 GPB（全球私人银行）<em>资金来源</em> squad 的 BA。项目
+            3 周后进入 UAT，你有 <strong>14 个明确的干系人</strong>，分布在香港、上海、新加坡、伦敦、
+            班加罗尔。上周一个 Story 卡了 4 天，因为没人知道资金来源证据政策由谁 <em>Accountable</em> 签字。
+        </p>
+        <p>
+            Your Scrum Master (Sarah, HK) has asked you to run a <strong>90-minute stakeholder-mapping
+            and RACI workshop</strong> with the core squad. The output will be a one-page RACI matrix
+            in Confluence, signed off by the Programme Sponsor, and used to triage every open story
+            from now on.
+        </p>
+        <p>
+            你的 Scrum Master（Sarah，香港）请你主持一场 <strong>90 分钟的干系人地图和 RACI 工作坊</strong>，
+            核心 squad 参加。产出是 Confluence 上一张一页纸的 RACI 矩阵，由项目 Sponsor 签字，并
+            作为今后每条开放 Story 的分流依据。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Right, so <em>the goal today is one page in Confluence</em> — sponsor, gatekeepers, and a full RACI for the top 8 deliverables. Sarah, <em>can you walk us through who you think is Accountable</em> for source-of-wealth evidence?</span><span class="chinese">好，今天的目标是 Confluence 上一页纸——Sponsor、Gatekeeper，以及 8 个主要交付物的完整 RACI。Sarah，你先说说你认为资金来源证据的 Accountable 是谁？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en">My read: <em>Accountable is the Group Head of Financial Crime Compliance</em>, but the Responsible person day-to-day is our Compliance BA Carmen in Shanghai.</span><span class="cn">我的看法：Accountable 是集团反洗钱合规负责人，但日常 Responsible 是上海合规 BA Carmen。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Good. <em>Just to flag — Accountable is always exactly one person.</em> Multiple A's is the most common RACI mistake. <em>Who is the single A for that policy?</em></span><span class="cn">好。提一下——Accountable 永远只会有一个人，多个 A 是 RACI 最常见的错误。这条政策的单个 A 是谁？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en"><em>OK, single A</em> — let's call it <em>Margaret Yu, Group Head of FCC, based in HK.</em> Carmen is R, I agree.</span><span class="cn">好，单个 A——就叫 Margaret Yu，集团 FCC 负责人，在香港。Carmen 是 R，我同意。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Noted. <em>Now the gatekeepers.</em> Gatekeepers are the people who can <em>block progress if we don't get their input.</em> I'm thinking the HKMA contact, the GPB COO, and the UK Risk Lead — agree?</span><span class="cn">收到。现在看 Gatekeeper。Gatekeeper 是如果我们不找他就会阻塞进展的人。我想的是 HKMA 联系人、GPB COO、英国 Risk Lead——同意吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO):</span>
+                <span class="text"><span class="en">I'd add <em>the Group DPO</em> — GDPR / PDPO questions are landing on us weekly. <em>She's the real gatekeeper for any PII flow.</em></span><span class="cn">我想加上集团 DPO——GDPR / PDPO 的问题每周都落到我们这里。她才是 PII 流的真正 Gatekeeper。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Good shout, Priya — adding her in.</em> Quick one for the team: <em>for the UAT execution row, who's the single A?</em> Is it me, or is it the QA Lead?</span><span class="cn">好建议，Priya——加进去。问一下团队：UAT 执行这一行，单个 A 是谁？是我还是 QA Lead？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sandeep (QA):</span>
+                <span class="text"><span class="en">I'd say <em>it's the QA Lead, but you're Consulted for the test scenarios</em> — and the business PO is Informed at minimum.</span><span class="cn">我说应该是 QA Lead，但你是 Consulted（参与测试场景），业务 PO 至少是 Informed。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, so QA = A, BA = C, PO = I. <em>What about the CAB rule change</em> — who's A there? The Head of GPB Operations?</span><span class="cn">好，UAT 这行：QA = A，BA = C，PO = I。那 CAB 规则变更呢？谁是 A？GPB 运营负责人？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO):</span>
+                <span class="text"><span class="en"><em>That has to be Margaret as well</em> — it's a financial-crime policy, not a tech change. <em>If we put the COO as A there, we'll get a different answer every region.</em></span><span class="cn">那也必须是 Margaret——这是反洗钱政策，不是技术变更。如果把 COO 放上去，每个地区都会给出不同答案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Wise call.</em> <em>Time check — 20 minutes left</em> for the last two rows. Let's do the CAB sign-off and the eCAB case management rows. <em>I'll capture in Confluence live.</em></span><span class="cn">明智。时间提示——还剩 20 分钟做最后两行：CAB 签字和 eCAB 案件管理。我会实时录入 Confluence。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Final ask — can we get Margaret to e-sign the matrix in eCAB by Monday EOD?</em> Then we publish v1.0 and circulate to all 14 stakeholders.</span><span class="cn">最后问一下——能让 Margaret 周一 EOD 前在 eCAB 里电子签字这个矩阵吗？然后我们发 v1.0，通知所有 14 个干系人。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>The goal today is one page in Confluence.</em></span>
+                <span class="chinese">今天的目标是 Confluence 上一页纸</span>
+                <span class="note">A 90-minute workshop with a one-page output is the right size. State it upfront.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Walk</span> <em>Can you walk us through who you think is Accountable?</em></span>
+                <span class="chinese">你说说你认为 Accountable 是谁</span>
+                <span class="note">Ask one person to seed the conversation. Avoids blank-page paralysis.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">RACI rule</span> <em>Accountable is always exactly one person.</em></span>
+                <span class="chinese">Accountable 永远只会有一个人</span>
+                <span class="note">The cardinal RACI rule. State it explicitly. Multiple A's = no accountability = stuck stories.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Gatekeeper</span> <em>Gatekeepers are the people who can block progress if we don't get their input.</em></span>
+                <span class="chinese">Gatekeeper 是如果不找他们就会阻塞进展的人</span>
+                <span class="note">A gatekeeper is defined by blocking power, not by seniority. The junior who owns the data feed can be a gatekeeper.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Single A</span> <em>Single A — let's call it Margaret Yu.</em></span>
+                <span class="chinese">单个 A——就叫 Margaret Yu</span>
+                <span class="note">Always name the A with a real person + a real role. A is not a team, a region, or a function.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Consulted</span> <em>BA is Consulted for the test scenarios.</em></span>
+                <span class="chinese">BA 在测试场景上是 Consulted</span>
+                <span class="note">"C" = two-way communication, give-and-receive input. Reserve for stakeholders whose input changes the deliverable.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Informed</span> <em>The business PO is Informed at minimum.</em></span>
+                <span class="chinese">业务 PO 至少是 Informed</span>
+                <span class="note">"I" = one-way, push-only updates. Use liberally — keeps people on side without overloading them.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Wise call</span> <em>Wise call. If we put the COO as A, we'll get a different answer every region.</em></span>
+                <span class="chinese">明智。如果把 COO 放上去，每个地区会给出不同答案</span>
+                <span class="note">Reinforces good thinking. Use "wise call" or "good shout" sparingly — they mean more.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capture</span> <em>I'll capture in Confluence live.</em></span>
+                <span class="chinese">我会实时录入 Confluence</span>
+                <span class="note">Always say "live". Signals that nothing is being lost in transcription.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Circulate</span> <em>Then we publish v1.0 and circulate to all 14 stakeholders.</em></span>
+                <span class="chinese">然后我们发 v1.0，通知所有 14 个干系人</span>
+                <span class="note">"Circulate" is the verb for senior distribution. Includes "I" stakeholders who should be kept in the loop.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>RACI</strong> n. RACI 矩阵 Responsible / Accountable / Consulted / Informed.</li>
+            <li><strong>Accountable (A)</strong> n. 最终责任人 The single person who owns the outcome and the sign-off.</li>
+            <li><strong>Responsible (R)</strong> n. 执行人 The person who does the work. Multiple R's are allowed.</li>
+            <li><strong>Consulted (C)</strong> n. 咨询对象 Two-way input — give-and-receive before the decision.</li>
+            <li><strong>Informed (I)</strong> n. 知会对象 One-way update — kept in the loop, no input required.</li>
+            <li><strong>Gatekeeper</strong> n. 守门人 A stakeholder whose input is required to unblock progress.</li>
+            <li><strong>Sponsor</strong> n. 项目 Sponsor The senior owner who funds and champions the programme.</li>
+            <li><strong>DPO (Data Protection Officer)</strong> n. 数据保护官 Owner of GDPR / PDPO compliance — true PII gatekeeper.</li>
+            <li><strong>FCC (Financial Crime Compliance)</strong> n. 反洗钱合规 Group function owning AML, sanctions, KYC.</li>
+            <li><strong>PDPO</strong> n. 个人资料条例 Hong Kong's Personal Data (Privacy) Ordinance.</li>
+            <li><strong>GDPR</strong> n. 通用数据保护条例 EU General Data Protection Regulation.</li>
+            <li><strong>Stakeholder map</strong> n. 干系人地图 A 2x2 (power vs interest) or RACI view of who is involved.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Single A" / "Single Accountable" — the noun-as-modifier pattern</h3>
+        <p>
+            <em>Single A — let's call it Margaret Yu</em> uses <strong>single + letter</strong> as a
+            shorthand for "the single Accountable person". This is industry-standard RACI shorthand
+            and saves a lot of words. Use it in workshops, not in the matrix document itself.
+        </p>
+        <p><em>Single A</em> 是 RACI 圈内的简写，会议里可以直接用，正式文档里要写全称 Accountable。</p>
+
+        <h3>② "If we put X as A, we'll get Y" — conditional risk framing</h3>
+        <p>
+            <em>If we put the COO as A there, we'll get a different answer every region.</em> uses
+            <strong>if + present, will + base</strong> (first conditional) to predict a future
+            problem. It's the standard pattern for surfacing risk in a workshop. Combine it with
+            a specific, concrete consequence ("a different answer every region") for max impact.
+        </p>
+        <p><em>If + 一般现在时, will + 动词原形</em> 用于预测未来问题，搭配具体后果效果最强。</p>
+
+        <h3>③ "At minimum" — the soft-floor adverb</h3>
+        <p>
+            <em>The business PO is Informed at minimum</em> uses the adverbial phrase <strong>at
+            minimum</strong> to signal "I = at least; could be C if circumstances change". A subtle
+            way to leave room for future escalation of stakeholder involvement.
+        </p>
+        <p><em>at minimum</em> 用于表达"至少是这个层级，未来可能升级"，给后续调整留余地。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"A" is sacred. Never put two.</strong> At HSBC, multiple A's in a RACI row is treated as no A at all. As BA, you enforce the rule in the workshop. If two people argue, escalate to the sponsor and let the sponsor pick — do not split.</li>
+            <li><strong>Gatekeepers are defined by blocking power, not seniority.</strong> A junior engineer who owns the data feed in Bangalore can be a real gatekeeper. A Group MD who never opens email is not. Map blocking power, not org chart height.</li>
+            <li><strong>GDPR / PDPO gatekeeper is non-negotiable.</strong> If your story touches PII (which most onboarding stories do), the Group DPO is a gatekeeper. The DPO lives in the UK or HK; book a 30-min slot in their calendar at programme kick-off, not at UAT.</li>
+            <li><strong>Sponsor is the one who funds the pain.</strong> The Programme Sponsor at HSBC is typically a Director or MD level. They sign the v1.0 RACI matrix and own escalations. Find them in the first 2 weeks or you'll be blocked for months.</li>
+            <li><strong>Cross-region RACI = region names in C and I.</strong> With stakeholders in HK, Shanghai, Singapore, London, Bangalore, your matrix rows should make regional involvement explicit. "GPB Operations (HK + UK)" beats "GPB Operations".</li>
+            <li><strong>"I'll capture live" earns trust in cross-region workshops.</strong> When the UK Risk Lead can't be in the room and dials in from a noisy home office, live Confluence capture is the only way to keep them on side. Send the doc link in the Teams chat before the meeting starts.</li>
+            <li><strong>Always end with a published v1.0 and a circulation list.</strong> A RACI in someone's head is not a RACI. Force the v1.0 publication in the workshop, with sponsor sign-off and a named circulation list. Otherwise the matrix is just a slide deck.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the RACI workshop dialogue</h3>
+        <p>Translate the following BA facilitation line into natural Chinese.</p>
+        <blockquote>
+            "Right, so the goal today is one page in Confluence — sponsor, gatekeepers, and a full
+            RACI for the top 8 deliverables. Sarah, can you walk us through who you think is
+            Accountable for source-of-wealth evidence? Just to flag — Accountable is always exactly
+            one person. Multiple A's is the most common RACI mistake. Who is the single A for that
+            policy?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，今天的目标是 Confluence 上一页纸——Sponsor、Gatekeeper，以及 8 个主要交付物的完整 RACI。Sarah，你先说说你认为资金来源证据的 Accountable 是谁？提一下——Accountable 永远只会有一个人，多个 A 是 RACI 最常见的错误。这条政策的单个 A 是谁？"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the RACI mistake</h3>
+        <p>Which of these RACI assignments is wrong? Why?</p>
+        <ol>
+            <li>For the UAT execution row: QA Lead = A, BA = C, Business PO = I.</li>
+            <li>For the source-of-wealth evidence policy row: Group Head of FCC (HK) = A, Compliance BA (Shanghai) = R, Group DPO (UK) = C, COO GPB (HK + UK) = I.</li>
+            <li>For the UAT execution row: QA Lead = A, BA = A, Tech Lead = A.</li>
+            <li>For the CAB sign-off row: Group Head of FCC = A, Group DPO = C, BA = R.</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is wrong: it has three A's, which means no A. Reframe: pick one A (typically the QA Lead) and demote the others to R (e.g., BA = R for test scenario review, Tech Lead = R for automation harness). Multiple A's is the most common RACI mistake and is the leading cause of stuck stories.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the CMB Trade Finance squad. You have 3 open stories that are blocked because nobody knows the RACI. The 3 stories are: (a) update the Letters of Credit AC for UCP 600, (b) ship the SWIFT MT798 migration to production, (c) handle trade-AML hits above $1M. Stakeholders: Compliance BA in Shanghai, Head of Trade Finance in HK, Group FCC in London, Tech Lead in Bangalore, QA Lead in Singapore. For each story, propose a single A and the R/C/I for each stakeholder. Justify in 1 sentence why that A makes sense. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p><strong>Story (a) — UCP 600 AC update:</strong> A = Head of Trade Finance (HK), R = Compliance BA (Shanghai), C = Group FCC (London), I = Tech Lead, QA Lead. <em>Justification: the UCP 600 rule is a Trade Finance product policy, not a financial-crime policy — Head of Trade Finance is the right single A.</em></p>
+            <p><strong>Story (b) — MT798 migration to production:</strong> A = Tech Lead (Bangalore), R = QA Lead (Singapore), C = BA, Compliance BA, I = Head of Trade Finance, Group FCC. <em>Justification: this is a production release, so the Tech Lead who owns the deployment is the right A; the BA and Compliance are Consulted because the release touches regulated functionality.</em></p>
+            <p><strong>Story (c) — Trade-AML hits above $1M:</strong> A = Group FCC (London), R = Compliance BA (Shanghai), C = BA, Head of Trade Finance (HK), I = Tech Lead, QA Lead. <em>Justification: trade-AML is a financial-crime policy — putting the Head of Trade Finance as A here would mean a different answer in every corridor, so the single A has to be Group FCC.</em></p>
+            <p><strong>Workshop phrasing you might use:</strong> "Right, so for story (a) — if we put Group FCC as A, the Tech Lead will be blocked for two weeks waiting on UK sign-off. Single A is Head of Trade Finance, with Group FCC as C. <em>Wise call, Priya.</em> <em>Time check — 10 minutes left for the other two.</em> I'll capture live in Confluence and circulate the v1.0 matrix by 5 PM HKT."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="11-requirements-signoff-email.html" class="btn btn-primary">Next: Article 11 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

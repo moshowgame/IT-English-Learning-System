@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: Architecture Discussion | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">10 · Architecture Discussion</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Architecture Discussion</h1>
+        <p class="subtitle">Article 10 · Module 2: Meeting Workshops · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🏗️ Contribute to design discussions, trade-offs, and decisions</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            The platform architect <strong>Rajesh</strong> (based in Pune, India) is presenting the
+            <strong>target architecture</strong> for the <em>customer onboarding service migration</em> from
+            on-premise WebSphere to <strong>AWS EKS</strong>. The team is discussing whether to use the
+            <em>Strangler Fig pattern</em> or the <em>big-bang cutover</em>. You are a backend developer and
+            want to contribute meaningfully.
+        </p>
+        <p>
+            平台架构师 <strong>Rajesh</strong>（印度浦那）正在介绍 <em>客户开户服务</em> 从本地 WebSphere 迁移到
+            <strong>AWS EKS</strong> 的<strong>目标架构</strong>。团队在讨论用 <em>Strangler Fig 模式</em>
+            还是 <em>大爆炸切换</em>。你是一名后端开发，想有意义地参与。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Rajesh (Architect):</span>
+                <span class="text"><span class="en">OK, so <em>two options on the table</em> for the migration: <strong>Strangler Fig</strong> vs. <strong>big-bang cutover</strong>. <em>Quick recap</em> — Strangler means we run both <em>old and new in parallel</em> and <em>gradually shift traffic</em> over weeks. Big-bang is a <em>single cutover weekend</em>. <em>Thoughts?</em></span><span class="cn">好的，迁移有两个方案：Strangler Fig 模式 vs. 大爆炸切换。简单回顾——Strangler 是新旧并行运行、几周内逐步切流量；大爆炸是周末一次性切换。怎么看？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Quick thought</em> from the dev side — I think the <em>Strangler pattern</em> makes more sense for us, for a few reasons.</span><span class="cn">从开发角度快速说下——我觉得对我们来说 Strangler 模式更合适，理由有几点。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>First, risk.</em> With a <em>big-bang</em>, if anything goes wrong on cutover weekend, we have a <em>P1 incident with no easy rollback</em>. With Strangler, if the new service has a bug, we can <em>route 100% of traffic back to the old service</em> in minutes.</span><span class="cn">第一是风险。大爆炸切换周末出问题，就是 P1 事故，没有简单回滚。Strangler 模式如果新服务有 bug，几分钟内就能把 100% 流量切回老服务。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Second, data consistency.</em> Big-bang means we have to <em>migrate the entire customer DB in one shot</em> — high risk of <em>data corruption</em>. With Strangler, we can <em>migrate customer-by-customer</em> or <em>account-by-account</em>, and validate as we go.</span><span class="cn">第二是数据一致性。大爆炸要求一次性迁移整个客户数据库——数据损坏风险高。Strangler 模式可以逐客户或逐账户迁移，边走边验证。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Third, observability.</em> Running both in parallel gives us <em>real production data to compare</em> — we can see if the new service is <em>behaving the same as the old one</em> before fully cutting over. With big-bang, we <em>find out in production</em>.</span><span class="cn">第三是可观测性。并行运行能让我们对比真实生产数据——完全切换前能看到新旧服务行为是否一致。大爆炸就只能在生产环境里发现了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rajesh (Architect):</span>
+                <span class="text"><span class="en">Those are <em>good points</em>, Wei. <em>One concern with Strangler</em> is the <em>operational complexity</em> — running two stacks for 2-3 months is <em>non-trivial</em>. <em>Have you thought about</em> the <em>cost overhead</em> of running both?</span><span class="cn">说得不错，Wei。Strangler 的一个顾虑是运维复杂度——同时维护两套系统 2-3 个月不简单。你考虑过并行运行的成本开销吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yeah, I have. <em>From what I understand</em>, the <em>AWS cost</em> for the new EKS cluster is roughly <em>30% of what we pay for the WebSphere on-prem</em> — so <em>we're effectively saving</em> even while running both. <em>But more importantly</em>, a <em>P1 rollback in big-bang</em> would cost us <em>way more in reputational damage and incident response</em> than the 2-3 months of dual-running cost.</span><span class="cn">是的，我考虑过。据我了解，新 EKS 集群的 AWS 成本大约是本地 WebSphere 的 30%——并行运行实际上也是省钱的。但更重要的是，大爆炸里一次 P1 回滚造成的声誉损失和事故响应成本，远超 2-3 个月双轨运行的成本。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">I'd <em>second the Strangler approach</em>, but <em>add one more thing</em> — we should <em>set explicit cutover milestones</em>: 1% canary at week 1, 10% at week 3, 50% at week 5, 100% at week 8. <em>Hard stop</em> if error rate goes above <em>0.5%</em> at any milestone.</span><span class="cn">我支持 Strangler 方案，但要加一点——应该设定明确的切换里程碑：第 1 周 1% 灰度，第 3 周 10%，第 5 周 50%，第 8 周 100%。任何里程碑错误率超过 0.5% 就硬性停止。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rajesh (Architect):</span>
+                <span class="text"><span class="en"><em>Solid proposal.</em> Let me <em>capture this in the ADR</em> — <em>Architecture Decision Record</em>. <em>Wei, can you draft the dev-side rationale section?</em> I'll <em>add the cost analysis and operational complexity</em>, and we'll <em>circulate it for review</em> before the next architecture board.</span><span class="cn">方案很扎实。我把这个写进 ADR（架构决策记录）。Wei，你来起草开发侧的论证部分吗？我补充成本分析和运维复杂度，下次架构委员会前发出来审阅。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Sure, <em>happy to</em>. I'll <em>have a draft by Friday</em> and <em>post it in the channel</em> for review.</span><span class="cn">没问题，很乐意。周五前出初稿，发到频道里供大家审阅。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick thought from the dev side.</em></span>
+                <span class="chinese">从开发角度说一个想法</span>
+                <span class="note">Identify your <em>angle</em> (dev / QA / SRE / PM) to frame your contribution.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Structure</span> <em>First / Second / Third — [reason].</em></span>
+                <span class="chinese">第一 / 第二 / 第三</span>
+                <span class="note">When contributing to architecture discussions, <strong>always structure your points</strong>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>The trade-off is operational complexity vs. risk.</em></span>
+                <span class="chinese">权衡是运维复杂度 vs. 风险</span>
+                <span class="note"><strong>Trade-off</strong> is the key word in architecture discussions. Always frame as trade-offs.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk</span> <em>High risk of data corruption.</em></span>
+                <span class="chinese">数据损坏的高风险</span>
+                <span class="note">Name the specific risk. <em>"High risk of X"</em> / <em>"Non-trivial chance of Y"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Mitigate</span> <em>Running both gives us real production data to compare.</em></span>
+                <span class="chinese">并行运行给我们真实生产数据做对比</span>
+                <span class="note">Show how the option <em>mitigates</em> a specific risk.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Push back</span> <em>One concern with X is…</em></span>
+                <span class="chinese">对 X 有一个关注点</span>
+                <span class="note">A graceful way to challenge the architect. Never <em>"X is wrong"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Data</span> <em>From what I understand, the AWS cost is ~30% of WebSphere.</em></span>
+                <span class="chinese">据我了解，AWS 成本大约是 WebSphere 的 30%</span>
+                <span class="note">Always <em>back up</em> with data when challenging. <em>"From what I understand"</em> hedges uncertainty.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Counter</span> <em>But more importantly, the reputational damage would cost way more.</em></span>
+                <span class="chinese">更重要的是，声誉损失成本会高得多</span>
+                <span class="note">Use <em>but more importantly / but the bigger concern is</em> to pivot the argument.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Decision</span> <em>Let me capture this in the ADR.</em></span>
+                <span class="chinese">我把这个记到 ADR 里</span>
+                <span class="note">ADR = Architecture Decision Record. Standard for documenting design decisions.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>Strangler Fig pattern</strong> <span class="tag">n.</span></span>
+                <span class="chinese">绞杀者无花果模式 (渐进式迁移)</span>
+                <span class="note">Named after the strangler fig tree. Gradually replaces old system with new, one piece at a time.</span>
+            </li>
+            <li>
+                <span class="english"><strong>big-bang cutover</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">大爆炸切换 (一次性切换)</span>
+                <span class="note">Cut everything over in a single event. High risk, hard to rollback.</span>
+            </li>
+            <li>
+                <span class="english"><strong>canary deployment</strong> <span class="tag">n.</span></span>
+                <span class="chinese">灰度发布 / 金丝雀部署</span>
+                <span class="note">Roll out to a small % of users first, monitor, then expand.</span>
+            </li>
+            <li>
+                <span class="english"><strong>cutover milestone</strong> <span class="tag">n.</span></span>
+                <span class="chinese">切换里程碑</span>
+                <span class="note">Defined checkpoints (e.g., 1%, 10%, 50%, 100%) during a phased migration.</span>
+            </li>
+            <li>
+                <span class="english"><strong>ADR (Architecture Decision Record)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">架构决策记录</span>
+                <span class="note">A document that captures an important architectural decision: context, options, decision, consequences.</span>
+            </li>
+            <li>
+                <span class="english"><strong>AWS EKS</strong> <span class="tag">AWS</span></span>
+                <span class="chinese">AWS 弹性 Kubernetes 服务</span>
+                <span class="note">Managed Kubernetes service. Common target for containerization.</span>
+            </li>
+            <li>
+                <span class="english"><strong>rollback</strong> <span class="tag">n.</span></span>
+                <span class="chinese">回滚</span>
+                <span class="note">Reverting to a previous version after a failed deployment.</span>
+            </li>
+            <li>
+                <span class="english"><strong>data consistency / corruption</strong></span>
+                <span class="chinese">数据一致性 / 数据损坏</span>
+                <span class="note">Ensuring data is correct and uncorrupted. Critical during migration.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① Structuring Arguments: "First / Second / Third"</h3>
+        <p>When contributing to architecture discussions, always structure. Use signposting words:</p>
+        <ul>
+            <li><em><strong>First</strong>, [argument 1].</em></li>
+            <li><em><strong>Second</strong>, [argument 2].</em></li>
+            <li><em><strong>Third</strong>, [argument 3].</em></li>
+            <li><em><strong>Another point</strong> is…</em></li>
+            <li><em><strong>On top of that</strong>…</em></li>
+        </ul>
+
+        <h3>② "From what I understand…" — Hedging Data Points</h3>
+        <p>When citing data you're not 100% sure about:</p>
+        <ul>
+            <li><em><strong>From what I understand</strong>, the AWS cost is ~30%.</em></li>
+            <li><em><strong>Based on the analysis</strong> I did last quarter…</em></li>
+            <li><em><strong>According to the SRE team</strong>…</em></li>
+        </ul>
+
+        <h3>③ Conditional Structures for Scenarios</h3>
+        <p>When describing a risk scenario, use conditional structures:</p>
+        <ul>
+            <li><em><strong>If</strong> anything goes wrong, <strong>we have</strong> a P1.</em></li>
+            <li><em><strong>With</strong> Strangler, <strong>if</strong> the new service has a bug, <strong>we can</strong> route 100% back.</em></li>
+            <li><em><strong>Without</strong> parallel running, <strong>we'd find out</strong> in production.</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🏗️ Contributing to Architecture Discussions</div>
+            <p>Junior developers often stay silent in architecture discussions. <strong>Don't.</strong> Your perspective
+            as the person who will <em>actually build and operate</em> the system is invaluable. Tips:</p>
+            <ul>
+                <li><strong>Bring data, not just opinions.</strong> <em>"The latency is 600ms"</em> beats <em>"It's slow."</em></li>
+                <li><strong>Frame as trade-offs.</strong> Architects love <em>trade-off</em> discussions. Avoid <em>"X is right, Y is wrong."</em></li>
+                <li><strong>Speak from your angle.</strong> <em>"From the dev side…"</em> / <em>"From an operational perspective…"</em> — naming your angle is more credible.</li>
+                <li><strong>Push back with questions, not statements.</strong> <em>"Have you considered the cost of dual-running?"</em> invites discussion; <em>"That's too expensive"</em> shuts it down.</li>
+                <li><strong>Use the ADR pattern.</strong> If a decision is being made, ask <em>"Can we document this in an ADR?"</em> Shows maturity.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes</div>
+            <ul>
+                <li>❌ <em>"I think big-bang is wrong."</em> (judgmental, no reasoning)</li>
+                <li>✅ <em>"<strong>From the dev side</strong>, I see <strong>three concerns with big-bang</strong>: first, rollback risk… second, data consistency… third, observability…"</em></li>
+                <li>❌ <em>"This is too complex."</em> (vague, dismissive)</li>
+                <li>✅ <em>"The operational complexity of running two stacks for 3 months is roughly <strong>30% cost overhead</strong>. Have we <strong>benchmarked</strong> this against the <strong>rollback cost</strong> of a failed big-bang?"</em></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to native-sounding architecture English:</div>
+                <p>"从开发的角度看，我建议用消息队列（Kafka）解耦。不是直接同步调用。原因是：1）解耦后两个服务可以独立扩展；2）失败重试更稳；3）可以记录审计日志。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "<em>From the dev side</em>, I'd suggest <em>decoupling the two services with Kafka</em> rather than <em>synchronous calls</em>. <strong>Three reasons</strong>: <em>first</em>, <strong>decoupled services can scale independently</strong>; <em>second</em>, <em>failure retry is much more robust</em> with a message queue; <em>third</em>, we get <em>built-in audit logging</em> from the Kafka events."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Push back politely on an architect's proposal:</div>
+                <p>The architect suggests storing all customer PII in a single PostgreSQL database for simplicity. What's a careful, structured pushback?</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>One concern with a single DB</em>: <strong>regulatory separation</strong>. <em>From what I understand</em>, InfoSec at HSBC requires <em>data residency separation</em> for customer PII — HK customers in HK, mainland in mainland, EU in EU. A single DB <em>complicates this</em> significantly. <em>Have you considered</em> a <em>sharded approach</em> by region, or a <em>per-region DB</em> with a <em>federated query layer</em> on top? <em>Happy to dig into the trade-offs</em> if useful."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right architecture phrases:</div>
+                <p>"<em>The trade-off is _____ (X) vs. _____ (Y). / That'll _____ (affect) the latency budget. / Have you _____ (consider) the cost? / From the dev _____ (side), I see three concerns.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>operational complexity</em> <em>rollback risk</em> / <em>affect</em> / <em>considered</em> / <em>side</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>The architect proposes using a single AWS RDS instance for all three microservices (auth, payment, statement) to reduce cost. Write 3 structured concerns and propose an alternative. (Hint: think about blast radius, scaling, compliance.)</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>From the dev side, three concerns with a single RDS</em>:
+                    <ol>
+                        <li><em>Blast radius</em> — if the RDS goes down, <em>all three services go down</em>. A <em>DB crash</em> in production means <em>customers can't log in, pay, or view statements</em> simultaneously.</li>
+                        <li><em>Scaling</em> — auth is <em>read-heavy</em>, payment is <em>write-heavy with low latency</em> requirements, statement is <em>batch-heavy</em>. One RDS instance means <em>they fight for the same resources</em>.</li>
+                        <li><em>Compliance</em> — InfoSec usually <em>requires</em> payment data to be in a <em>separate, more restricted DB</em> with <em>stricter access controls</em>. <em>Co-locating</em> with auth and statement <em>weakens the security boundary</em>.</li>
+                    </ol>
+                    <em>Alternative</em>: <em>one RDS per service</em> (auth, payment, statement), or <em>AWS Aurora Serverless</em> for the variable-load ones. <em>Slightly higher cost</em>, but <em>much better isolation and resilience</em>."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="09-backlog-refinement.html">
+            <span class="label">← Previous</span>
+            <span class="title">09 · Backlog Refinement</span>
+        </a>
+        <a class="next" href="../index.html">
+            <span class="label">Module Index</span>
+            <span class="title">Back to Developer Articles</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 10 · Architecture Discussion · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

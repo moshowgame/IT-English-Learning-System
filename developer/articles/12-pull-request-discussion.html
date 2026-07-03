@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 12: Pull Request Description & Discussion | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">12 · Pull Request Description & Discussion</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Pull Request Description & Discussion</h1>
+        <p class="subtitle">Article 12 · Module 3: Written Communication · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>📝 Write clear PR titles, descriptions, and respond professionally</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            You are submitting a PR for <strong>PAY-2847</strong> — the <em>HSBCnet API callback retry logic</em>.
+            You've just finished coding, tests are green, and now you need to write a <strong>PR description</strong>
+            that helps your reviewer Priya (UK) understand <em>what changed, why, and how to test it</em> in
+            under 2 minutes of reading.
+        </p>
+        <p>
+            你正在为 <strong>PAY-2847</strong>（<em>HSBCnet API 回调重试逻辑</em>）提交 PR。代码完成、测试通过，
+            现在需要写一份 <strong>PR 描述</strong>，让英国 reviewer Priya 在 2 分钟内明白 <em>改了什么、为什么、怎么测试</em>。
+        </p>
+    </section>
+
+    <!-- Section A: PR Title -->
+    <section class="article-section">
+        <h2>3. PR Title & Description Example</h2>
+
+        <h3>✅ Good PR Title</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">PR Title:</span>
+                <span class="text"><span class="en"><strong>[PAY-2847] Add configurable retry logic for HSBCnet API callback</strong></span><span class="cn">PR 标题：[PAY-2847] 为 HSBCnet API 回调添加可配置的重试逻辑</span></span>
+            </div>
+        </div>
+
+        <h3>❌ Bad PR Title</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">PR Title:</span>
+                <span class="text"><span class="en">update</span><span class="cn">PR 标题（不够具体）：update——应改为更具体的描述</span></span>
+            </div>
+        </div>
+
+        <h3>✅ Good PR Description</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">📋 Description</span>
+                <span class="text"><span class="en"><strong>Jira:</strong> <em>PAY-2847</em> — HSBCnet API callback retry logic<br/>
+<strong>Type:</strong> Feature + Refactor<br/>
+<strong>Reviewer:</strong> @priya.shah<br/>
+<strong>Estimated review time:</strong> ~20 min</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">🎯 What &amp; Why</span>
+                <span class="text"><span class="en">The HSBCnet API callback currently <em>fails silently</em> if the downstream is briefly unavailable,
+                causing <em>stuck payment records</em> in the reconciliation job. This PR adds:
+                <ul>
+<li>Configurable <em>retry count</em> (default: 3) via <em>application.yml</em></li>
+<li>Configurable <em>backoff</em> (exponential, base 2s)</li>
+<li>Idempotency check via <em>Idempotency-Key</em> header to <em>avoid duplicate processing</em></li>
+</ul></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">🛠 How to test</span>
+                <span class="text"><span class="en"><ol>
+<li>Deploy to UAT (Jenkins job: <em>hsbcnet-callback-uat</em>)</li>
+<li>Trigger a payment with the <em>test merchant ID</em> MT-TEST-001</li>
+<li>Simulate a 5xx response by <em>throttling the UAT HSBCnet endpoint</em> (see test guide)</li>
+<li>Verify the <em>retry counter</em> increments in the logs and the payment eventually succeeds</li>
+</ol></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">✅ Checklist</span>
+                <span class="text"><span class="en"><ul>
+<li>[x] Unit tests added (12 cases, 100% pass)</li>
+<li>[x] Integration test on the retry flow</li>
+<li>[x] Confluence updated with the new config properties</li>
+<li>[x] No new audit logging required (existing loggers cover it)</li>
+<li>[x] InfoSec approval: KMS-RET-001 confirmed</li>
+</ul></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">📸 Screenshots / Logs</span>
+                <span class="text"><span class="en"><em>[Attached: retry-counter-increments.log]</em></span><span class="cn">附件：retry-counter-increments.log（重试计数器递增日志）</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">⚠️ Out of scope</span>
+                <span class="text"><span class="en">• Dead-letter queue (DLQ) — separate ticket <em>PAY-2901</em><br/>
+                • Retry metrics dashboard — separate ticket <em>PAY-2910</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion Section -->
+    <section class="article-section">
+        <h2>2. PR Discussion Example 评审对话</h2>
+
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (Reviewer):</span>
+                <span class="text"><span class="en">Thanks Wei, <em>well-structured PR</em> 🙌. <em>One question</em> on the <em>backoff calculation</em> in <em>RetryExecutor.java#L88</em> — I see we're using a <em>decorrelated jitter</em> pattern. <em>Curious</em> why we chose that over a <em>simple exponential</em>?</span><span class="cn">谢谢 Wei，PR 结构清晰 🙌。RetryExecutor.java#L88 的退避算法有个问题——看到用的是 decorrelated jitter 模式，为什么不直接用简单的指数退避？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Author):</span>
+                <span class="text"><span class="en">Good question. <em>From what I read</em> in the AWS Architecture Blog, <em>decorrelated jitter</em> <em>reduces the thundering-herd risk</em> when many callbacks fail at the same time. <em>Simple exponential</em> tends to <em>cluster retries</em> across services. Happy to <em>add a comment in the code</em> with the link if useful.</span><span class="cn">好问题。根据 AWS 架构博客的说法，decorrelated jitter 能降低大量回调同时失败时的 thundering-herd 风险。简单指数退避容易让各服务的重试时间集中。如有需要，我可以加代码注释并附上链接。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (Reviewer):</span>
+                <span class="text"><span class="en">Yes please — a <em>code comment</em> would be great. <em>One more thing</em> — should we also <em>cap the maximum backoff</em> at, say, 30 seconds? Right now it can theoretically grow <em>without bound</em>.</span><span class="cn">麻烦加个代码注释。还有一个——是否要把最大退避时间设个上限，比如 30 秒？目前理论上可以无限增长。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Author):</span>
+                <span class="text"><span class="en">Good catch. <em>I'll add a cap</em> — <em>default 30s, configurable</em>. <em>Quick one</em> though — would 30s be the <em>max wait per retry</em>, or the <em>total wait across all retries</em>? I assume the former.</span><span class="cn">提得好。我加上限——默认 30 秒，可配置。顺便问下——30 秒是单次重试的最大等待，还是所有重试的总等待？我理解是前者。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (Reviewer):</span>
+                <span class="text"><span class="en"><em>Per retry</em>, yeah. <em>That makes sense.</em></span><span class="cn">单次重试，对，没错。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Author):</span>
+                <span class="text"><span class="en">Will do. <em>Pushing an update shortly</em> with the cap and the code comment. <em>Tagging you back</em> when it's ready for another look.</span><span class="cn">好的。我马上推个更新，加上上限和代码注释，更新好后 @ 你再 review 一次。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (Reviewer):</span>
+                <span class="text"><span class="en">Perfect. <em>Almost there.</em> 👍</span><span class="cn">完美。差不多搞定了 👍</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Author):</span>
+                <span class="text"><span class="en"><em>Update pushed.</em> Added: (1) <em>max backoff cap</em> at 30s (configurable via <em>retry.max-backoff</em>), (2) <em>code comment</em> with the AWS blog link. <em>Ready for re-review.</em></span><span class="cn">更新已推送。新增：(1) 最大退避时间 30 秒（通过 retry.max-backoff 可配置）；(2) 附 AWS 博客链接的代码注释。准备好再次 review。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Priya (Reviewer):</span>
+                <span class="text"><span class="en"><em>Approved</em> ✅. <em>Nice work</em>, Wei. <em>Merging now.</em></span><span class="cn">已批准 ✅。干得漂亮，Wei。现在合并。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Title</span> <em>[TICKET-ID] Action verb + brief description</em></span>
+                <span class="chinese">[工单号] 动词 + 简短描述</span>
+                <span class="note">Action verbs: <em>Add / Refactor / Fix / Remove / Migrate / Update</em>. Always past-tense-friendly.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Structure</span> <em>What &amp; Why / How to test / Checklist / Out of scope</em></span>
+                <span class="chinese">改了什么 / 怎么测 / 自检 / 范围外</span>
+                <span class="note">The four-section structure is the gold standard for PR descriptions.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Well-structured PR.</em></span>
+                <span class="chinese">结构清晰的 PR</span>
+                <span class="note">Open reviews with a positive. Sets a collaborative tone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Question</span> <em>One question on…</em></span>
+                <span class="chinese">关于…有一个问题</span>
+                <span class="note">Use <em>one question / one comment / one nit</em> to introduce each piece of feedback.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Curious</span> <em>Curious why we chose X over Y?</em></span>
+                <span class="chinese">好奇为什么选 X 而不是 Y？</span>
+                <span class="note"><em>Curious</em> is a soft way to challenge a design decision. Suggests learning, not criticism.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Catch</span> <em>Good catch.</em></span>
+                <span class="chinese">抓得好 / 提到点上了</span>
+                <span class="note">Acknowledge the reviewer's input. Builds respect.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Promise</span> <em>Pushing an update shortly.</em></span>
+                <span class="chinese">马上推更新</span>
+                <span class="note">Always commit to a follow-up. <em>"Will do"</em> / <em>"On it"</em> / <em>"Pushing shortly"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Status</span> <em>Update pushed. Ready for re-review.</em></span>
+                <span class="chinese">更新已推，请重新 review</span>
+                <span class="note">Always tell the reviewer when you've responded. <em>"Tagging you back"</em> / <em>"Ready for re-review"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Approval</span> <em>Approved ✅ Nice work. Merging now.</em></span>
+                <span class="chinese">已批准，干得漂亮，现在合并</span>
+                <span class="note">End the conversation cleanly. <em>"LGTM"</em> (Looks Good To Me) is the abbreviated form.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>PR / Pull Request</strong> <span class="tag">n.</span></span>
+                <span class="chinese">合并请求</span>
+                <span class="note">Also called <em>MR (Merge Request)</em> in GitLab.</span>
+            </li>
+            <li>
+                <span class="english"><strong>LGTM (Looks Good To Me)</strong> <span class="tag">abbr.</span></span>
+                <span class="chinese">看着不错 (批准用语)</span>
+                <span class="note">The standard approval abbreviation in PR reviews.</span>
+            </li>
+            <li>
+                <span class="english"><strong>idempotency / Idempotency-Key</strong> <span class="tag">n.</span></span>
+                <span class="chinese">幂等性 / 幂等键</span>
+                <span class="note">A property where repeated operations produce the same result. Critical for retries.</span>
+            </li>
+            <li>
+                <span class="english"><strong>backoff (exponential / decorrelated jitter)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">退避策略（指数 / 去相关抖动）</span>
+                <span class="note">A retry timing strategy. <em>Decorrelated jitter</em> reduces thundering-herd risk.</span>
+            </li>
+            <li>
+                <span class="english"><strong>thundering herd</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">惊群效应 (大量重试同时发生)</span>
+                <span class="note">When many clients retry simultaneously, overwhelming the downstream.</span>
+            </li>
+            <li>
+                <span class="english"><strong>DLQ (Dead-Letter Queue)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">死信队列 (处理失败的消息归宿)</span>
+                <span class="note">Where messages go after all retries are exhausted. Out of scope in this PR.</span>
+            </li>
+            <li>
+                <span class="english"><strong>checklist</strong> <span class="tag">n.</span></span>
+                <span class="chinese">自检清单</span>
+                <span class="note">Use checkboxes [x] to show what's been done. Increases reviewer confidence.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① PR Title Verbs — Always in Base Form or Gerund</h3>
+        <p>Standard PR title verbs (used in base form / past participle):</p>
+        <ul>
+            <li><em><strong>Add</strong> configurable retry logic…</em> ✅</li>
+            <li><em><strong>Refactor</strong> retry executor…</em> ✅</li>
+            <li><em><strong>Fix</strong> stuck payment records…</em> ✅</li>
+            <li><em><strong>Remove</strong> deprecated API call…</em> ✅</li>
+            <li><em><strong>Migrate</strong> to Spring Boot 3.x…</em> ✅</li>
+            <li>❌ <em>update</em> (too vague)</li>
+            <li>❌ <em>fix bug</em> (no detail)</li>
+        </ul>
+
+        <h3>② "Will do" vs. "On it" vs. "Pushing shortly"</h3>
+        <p>Three ways to commit to a follow-up:</p>
+        <ul>
+            <li><em><strong>Will do</strong>.</em> (short, standard)</li>
+            <li><em><strong>On it</strong>.</em> (slightly more casual)</li>
+            <li><em><strong>Pushing an update shortly</strong>.</em> (commitment + timing)</li>
+        </ul>
+
+        <h3>③ "Approved" / "LGTM" / "Looks good" / "Ship it"</h3>
+        <p>Four ways to approve a PR (in order of casual → enthusiastic):</p>
+        <ul>
+            <li><em><strong>Approved ✅</strong></em> (formal, GitHub standard)</li>
+            <li><em><strong>LGTM</strong></em> (Looks Good To Me — abbreviated)</li>
+            <li><em><strong>Looks good</strong></em> (informal)</li>
+            <li><em><strong>Ship it</strong></em> (enthusiastic, casual)</li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">📝 The "Two-Minute Review" Rule</div>
+            <p>A good PR description lets your reviewer understand the change in <strong>2 minutes of reading</strong>.
+            Use the four-section structure:</p>
+            <ol>
+                <li><strong>What &amp; Why</strong> — what changed and the business reason. Link the Jira ticket.</li>
+                <li><strong>How to test</strong> — concrete steps the reviewer can follow. With commands, endpoints, test data.</li>
+                <li><strong>Checklist</strong> — what you've already done (tests, docs, security checks).</li>
+                <li><strong>Out of scope</strong> — what you intentionally did NOT do. Sets expectations.</li>
+            </ol>
+            <p>Reviewers who can understand your PR in 2 minutes are <strong>10x more likely</strong> to review it quickly.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ PR Anti-Patterns</div>
+            <ul>
+                <li>❌ <em>"update"</em> / <em>"fix"</em> / <em>"WIP"</em> as the title (zero information)</li>
+                <li>✅ <em>"[PAY-2847] Add configurable retry logic for HSBCnet API callback"</em></li>
+                <li>❌ PR with 2000 lines of changes across 30 files (un-reviewable)</li>
+                <li>✅ PR with <strong>focused changes</strong> — split if needed</li>
+                <li>❌ No description — <em>"see diff"</em></li>
+                <li>❌ No tests added in the PR</li>
+                <li>❌ <strong>Pushing force</strong> after reviewer approved (don't rebase after approval — breaks trust)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Improve this PR title:</div>
+                <p>"update"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<strong>[ONB-1420] Add async virus scan for PDF uploads with SQS + Lambda</strong>" (if it's a new feature)<br>
+                    "<strong>[PAY-3301] Fix NullPointerException in HSBCnet callback on empty response</strong>" (if it's a bugfix)<br>
+                    "<strong>[TRD-882] Refactor RetryExecutor to support configurable backoff</strong>" (if it's a refactor)
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Write a PR description for this scenario:</div>
+                <p>You're adding a new endpoint POST /api/v2/customers/{id}/addresses to the onboarding service. The endpoint allows adding a new address with validation (postcode format, country whitelist, required fields). Response returns the new address with a 201 status. 8 new unit tests, 2 new integration tests. InfoSec reviewed the new fields.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p><strong>[ONB-1450] Add POST /api/v2/customers/{id}/addresses endpoint</strong></p>
+                    <p><strong>Jira:</strong> ONB-1450<br>
+                    <strong>Type:</strong> Feature<br>
+                    <strong>Reviewer:</strong> @priya.shah<br>
+                    <strong>Review time:</strong> ~15 min</p>
+                    <p><strong>What &amp; Why:</strong> Adds a new REST endpoint to allow onboarding service to register a new customer address. Currently, address registration requires multiple service calls — this consolidates it into one. AC includes postcode validation, country whitelist, and required-field checks.</p>
+                    <p><strong>How to test:</strong><br>
+                    1. Deploy to UAT (Jenkins: onboarding-uat).<br>
+                    2. curl -X POST https://uat.hsbc.local/api/v2/customers/{id}/addresses -d '{...}'<br>
+                    3. Verify 201 response and DB record.<br>
+                    4. Test invalid postcode (expect 400).</p>
+                    <p><strong>Checklist:</strong><br>
+                    [x] 8 unit tests, all green<br>
+                    [x] 2 integration tests covering happy path + invalid postcode<br>
+                    [x] OpenAPI spec updated<br>
+                    [x] Confluence updated with the new endpoint<br>
+                    [x] InfoSec review: address fields confirmed PII-compliant</p>
+                    <p><strong>Out of scope:</strong> Address update / delete endpoints (separate ticket ONB-1460).</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Translate to native-sounding review English:</div>
+                <p>"我刚把更新推上去了。加了30秒的上限，还加了代码注释说明为什么用去相关抖动。@priya 可以再看一下吗？"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Update pushed</em> with two changes: (1) <em>added the 30s max backoff cap</em> (configurable via <em>retry.max-backoff</em>); (2) <em>added a code comment</em> explaining the decorrelated jitter choice with a link to the AWS blog. <em>Tagging you back</em> — <em>ready for re-review</em> when you have a moment."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>You submitted a PR 2 days ago. Reviewer left these comments:
+                (a) "Please add a null check on the response."
+                (b) "Could you explain why we chose Redis over Memcached?"
+                (c) "Nit: typo on line 42."
+                Write 3 polite responses, one for each, and close the loop when you push the update.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p>"Thanks for the review, @priya 👌</p>
+                    <p><strong>(a) Null check</strong> — <em>good catch</em>, adding it now with a unit test for the null case.</p>
+                    <p><strong>(b) Redis vs Memcached</strong> — fair question. We picked Redis primarily for the <em>persistence + replication</em> — Memcached is <em>pure in-memory</em>, and we wanted the cache to <em>survive a pod restart</em> without a cold-cache storm. <em>Happy to add this to the ADR</em> as well if useful.</p>
+                    <p><strong>(c) Typo</strong> — <em>good eye</em>, fixed.</p>
+                    <p><em>Update pushed.</em> All three addressed. <em>Tagging you back for re-review.</em>"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="11-email-and-im.html">
+            <span class="label">← Previous</span>
+            <span class="title">11 · Email & IM</span>
+        </a>
+        <a class="next" href="13-politely-push-back.html">
+            <span class="label">Next Article →</span>
+            <span class="title">13 · Politely Pushing Back</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 12 · Pull Request Description & Discussion · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

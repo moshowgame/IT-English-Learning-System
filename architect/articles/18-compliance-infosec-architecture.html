@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 18: Compliance & InfoSec Architecture | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">18 · Compliance & InfoSec Architecture</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Compliance & InfoSec Architecture</h1>
+        <p class="subtitle">Article 18 · Module 5: HSBC Banking Context — Compliance & InfoSec · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 PCI-DSS, MAS TRM, HKMA, GDPR, SDL, Group Standards — speak the regulator's language</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday, 2:30 PM SGT</strong>. You are a Solution Architect in the
+            <em>GPB Digital</em> tribe, based in Singapore. The <em>OnePay</em> squad is mid-flight
+            on a card-data tokenisation redesign and has hit three regulatory questions they can't
+            answer: <em>scope of PCI-DSS</em> for the new token vault, <em>audit-trail</em>
+            requirements under MAS TRM, and <em>data-subject rights</em> under GDPR for EU customers.
+            You have booked a 45-min joint session with <strong>Sarah</strong> from Group InfoSec
+            (Hong Kong), <strong>Ravi</strong> from Group Compliance (Bangalore), and
+            <strong>Liam</strong>, the OnePay Tech Lead (London). ADR-0207 is the redesign.
+        </p>
+        <p>
+            周三下午 2 点 30 新加坡时间，你是驻新加坡的 <em>GPB 数字化</em> tribe Solution 架构师。
+            <em>OnePay</em> squad 正在做卡数据 token 化重设计，遇到 3 个监管问题答不上来：
+            <em>新 token 库的 PCI-DSS 适用范围</em>、<em>MAS TRM 下的审计追踪要求</em>、
+            以及 <em>GDPR 下 EU 客户的数据主体权利</em>。你约了 45 分钟的联合会议，与会人：
+            集团 InfoSec 的 Sarah（香港）、集团合规的 Ravi（班加罗尔）、OnePay Tech Lead Liam（伦敦）。
+        </p>
+        <p>
+            The redesign is in <strong>ADR-0207</strong>. The <em>Secure Development Lifecycle (SDL)</em>
+            requires InfoSec sign-off at the design review stage. The MAS TRM audit window opens
+            in 6 weeks. You need to walk out of this meeting with a clear path: which controls are
+            mandatory, which are nice-to-have, and which regulator you have to brief first.
+        </p>
+        <p>
+            重设计在 <strong>ADR-0207</strong> 里。<em>安全开发生命周期（SDL）</em>要求设计评审阶段拿到
+            InfoSec 签批。MAS TRM 审计窗口 6 周后开启。你需要从这次会议带走清晰的路径：
+            哪些控制项是强制的、哪些是 nice-to-have、监管方要先汇报谁。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Thanks all for joining. <strong>Quick context — OnePay squad is mid-flight on the tokenisation redesign, ADR-0207.</strong> We have <em>three regulatory questions</em> that are blocking the design review. I'd like to walk through them one by one and capture your input on the call.</span><span class="cn">感谢各位。简单背景——OnePay squad 正在做 token 化重设计（ADR-0207），有 3 个监管问题卡住了设计评审。我想逐个过一下，把你们的意见记在会议纪要里。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (InfoSec, HK):</span>
+                <span class="text"><span class="en"><em>Quick one before we start</em> — is the new token vault going to be on AWS or on-prem? The <em>Group Cyber baseline</em> is stricter for on-prem.</span><span class="cn">开始前问一句——新 token 库是上 AWS 还是 on-prem？<em>集团 Cyber 基线</em>对 on-prem 更严。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Currently proposed on AWS</em>, in the Singapore region, with KMS-managed keys. We chose AWS because the OnePay squad already operates there and we're avoiding a <em>hybrid split</em>.</span><span class="cn">好问题。目前提议上 AWS，新加坡 region，KMS 管密钥。选 AWS 是因为 OnePay squad 已经在 AWS 上跑，避免变成<em>混合架构</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Compliance, Bangalore):</span>
+                <span class="text"><span class="en"><em>Right, so</em> — question one. <em>What's the PCI-DSS scope</em> of the new token vault? Does it store the PAN at any point, or only the token + last-four?</span><span class="cn">那——第一个问题。新 token 库的 <em>PCI-DSS 适用范围</em>是什么？任何环节会存 PAN，还是只存 token + 卡号后 4 位？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Liam (Tech Lead, London):</span>
+                <span class="text"><span class="en"><em>Honest answer —</em> in the current draft we <em>store the PAN for up to 60 seconds</em> during token issuance, then discard. The token is what's persisted.</span><span class="cn">实话——当前草案里 PAN 最长<em>存 60 秒</em>，在签发 token 期间持有，然后就丢弃。持久化的是 token。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (InfoSec):</span>
+                <span class="text"><span class="en">OK, that means <em>PCI-DSS scope applies for those 60 seconds</em> — the issuing service, its host, its logging, and the network path. <em>Group Standard GCS-PCI-04</em> requires you to <em>file a scope diagram</em> with InfoSec and have it <em>re-attested every quarter</em>. I'll send you the template.</span><span class="cn">好，那意味着 <em>这 60 秒内 PCI-DSS 适用</em>——签发服务、它所在主机、它的日志、以及网络路径。<em>集团标准 GCS-PCI-04</em>要求你向 InfoSec 提交一份<em>范围图</em>，并<em>每季度重新确认</em>。我发你模板。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Compliance):</span>
+                <span class="text"><span class="en"><em>Good, that's the PCI piece.</em> Question two — MAS TRM. The <em>audit trail</em> for token issuance and lookup must be <em>immutable and retained for 7 years</em>. Are we capturing the <em>issuing service identity</em> in the audit event, or just the user identity?</span><span class="cn">好，PCI 这块过了。第二个问题——MAS TRM。token 签发和查询的<em>审计追踪</em>必须<em>不可篡改并保留 7 年</em>。审计事件里你们捕获的是<em>签发服务的身份</em>，还是只有用户身份？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Liam (Tech Lead):</span>
+                <span class="text"><span class="en">Currently <em>only the user identity</em>. We'd need to add a <em>service-principal field</em> to the audit schema. <em>Honestly,</em> that's a 2-week change to the event schema and a backfill of the last 30 days.</span><span class="cn">目前<em>只有用户身份</em>。需要在审计 schema 里加一个<em>服务主体字段</em>。这要改 2 周的 schema，还要回填最近 30 天的数据。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Compliance):</span>
+                <span class="text"><span class="en"><em>Just to flag —</em> the MAS TRM audit window opens in 6 weeks. <em>I recommend</em> you <em>get the schema change merged this sprint</em> and the backfill done before the audit opens. <em>Happy to review</em> the audit-event design on a 30-min call.</span><span class="cn">提一下——MAS TRM 审计窗口 6 周后开。<em>我建议</em>这个 Sprint 把 schema 改动合进去，回填在审计开窗前完成。<em>我可以</em>花 30 分钟过一下审计事件设计。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good. <em>Question three — GDPR.</em> Under GDPR, EU customers have the <em>right to erasure</em>. If we issue a token for an EU customer and they later request deletion, <em>what's the regulatory path</em> — do we delete the token, the PAN, or both? And <em>how do we prove deletion</em> to the regulator?</span><span class="cn">好。第三个问题——GDPR。GDPR 下 EU 客户有<em>被遗忘权</em>。如果我们给 EU 客户签发了 token，他们事后要求删除，<em>监管路径是什么</em>——删 token、删 PAN、还是两个都删？<em>怎么向监管方证明已删除</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Compliance):</span>
+                <span class="text"><span class="en">Both. The token is <em>personal data</em> under GDPR because it's linkable to the customer. <em>Group Standard GCS-GDPR-12</em> requires the erasure request to <em>cascade to all dependent systems</em>, including the token vault. We also need a <em>machine-readable deletion certificate</em> for the regulator.</span><span class="cn">都删。GDPR 下 token 算<em>个人数据</em>，因为它可以追溯到客户。<em>集团标准 GCS-GDPR-12</em>要求删除请求<em>级联到所有依赖系统</em>，包括 token 库。我们还需要给监管方提供<em>机器可读的删除凭证</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Right, so</em> to summarise — <em>three actions</em>: (1) Liam, you'll file the PCI-DSS scope diagram with Sarah by Friday; (2) the audit-event schema change goes in this sprint with a 30-day backfill before the TRM audit; (3) I'll add a GDPR cascade-and-certify workstream to ADR-0207 and book a follow-up next week. <em>Agreed?</em></span><span class="cn">那总结一下——<em>3 件事</em>：(1) Liam，周五前把 PCI-DSS 范围图提交给 Sarah；(2) 审计事件 schema 改动这个 Sprint 合入，TRM 审计前完成 30 天回填；(3) 我把 GDPR 级联+凭证工作流加进 ADR-0207，下周再开一次跟进会。<em>大家同意吗？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>We have three regulatory questions blocking the design review.</em></span>
+                <span class="chinese">有 3 个监管问题卡住了设计评审</span>
+                <span class="note">Name the count up front. Compliance and InfoSec respect numbered lists — they know exactly how long the meeting is.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>What's the PCI-DSS scope of the new token vault?</em></span>
+                <span class="chinese">新 token 库的 PCI-DSS 适用范围是什么？</span>
+                <span class="note">"Scope" is the regulator's first question. If you can't draw the scope diagram, you can't pass the audit.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Standard</span> <em>Group Standard GCS-PCI-04 requires…</em></span>
+                <span class="chinese">集团标准 GCS-PCI-04 要求…</span>
+                <span class="note">Always cite the Group Standard by its code (GCS-PCI-04, GCS-GDPR-12). Numbers beat descriptions in compliance reviews.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Audit</span> <em>Audit trail must be immutable and retained for 7 years.</em></span>
+                <span class="chinese">审计追踪必须不可篡改并保留 7 年</span>
+                <span class="note">MAS TRM retention is 7 years. HKMA is 7 years. PCI-DSS audit logs are 12 months online, 3 months immediate. Know the numbers.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Re-attest</span> <em>Re-attested every quarter.</em></span>
+                <span class="chinese">每季度重新确认</span>
+                <span class="note">"Re-attest" is the compliance verb. Compliance is not a one-off — it is a quarterly re-confirmation that scope hasn't drifted.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cascade</span> <em>The erasure request must cascade to all dependent systems.</em></span>
+                <span class="chinese">删除请求必须级联到所有依赖系统</span>
+                <span class="note">"Cascade" is GDPR's key word. If your deletion logic doesn't cascade, you have a finding on your hands.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence</span> <em>How do we prove deletion to the regulator?</em></span>
+                <span class="chinese">怎么向监管方证明已删除？</span>
+                <span class="note">Regulators don't take your word for it. You need a deletion certificate — a machine-readable artifact the regulator can verify.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Audit window</span> <em>The MAS TRM audit window opens in 6 weeks.</em></span>
+                <span class="chinese">MAS TRM 审计窗口 6 周后开</span>
+                <span class="note">"Audit window" = a fixed date range. Any change must land before it opens, or you carry the risk into the audit.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SDL</span> <em>Group Standard SDL-GCS-12 requires InfoSec sign-off at the design review.</em></span>
+                <span class="chinese">集团标准 SDL-GCS-12 要求设计评审阶段 InfoSec 签批</span>
+                <span class="note">"SDL" = Secure Development Lifecycle. HSBC's mandatory secure-by-design process. Bypass it and the CAB will reject your release.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Baseline</span> <em>The Group Cyber baseline is stricter for on-prem.</em></span>
+                <span class="chinese">集团 Cyber 基线对 on-prem 更严</span>
+                <span class="note">"Baseline" = the minimum control set. Cloud and on-prem have different baselines — pick the right one before you start designing.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>PCI-DSS</strong> n. 支付卡行业数据安全标准 Payment Card Industry Data Security Standard. The global standard for protecting card data.</li>
+            <li><strong>MAS TRM</strong> n. 新加坡金管局技术风险管理 Monetary Authority of Singapore — Technology Risk Management guidelines.</li>
+            <li><strong>HKMA</strong> n. 香港金管局 Hong Kong Monetary Authority. The HK banking regulator; supervises HK licensed banks.</li>
+            <li><strong>GDPR</strong> n. 通用数据保护条例 EU General Data Protection Regulation. Covers data-subject rights including right to erasure.</li>
+            <li><strong>SDL (Secure Development Lifecycle)</strong> n. 安全开发生命周期 HSBC's mandatory secure-by-design process; required at every design review.</li>
+            <li><strong>Group Standard</strong> n. 集团标准 A bank-wide mandatory standard with a code (e.g., GCS-PCI-04). Overrides local preferences.</li>
+            <li><strong>Group Cyber</strong> n. 集团网络安全 The bank-wide cybersecurity function. Owns the secure-by-default baseline.</li>
+            <li><strong>Tokenisation</strong> n. 令牌化 Replacing sensitive data (e.g., PAN) with a non-sensitive token that maps back to the original.</li>
+            <li><strong>Token vault</strong> n. Token 库 The secure store that holds the token-to-PAN mapping.</li>
+            <li><strong>PAN (Primary Account Number)</strong> n. 主账号 The 16-digit card number. PCI-DSS scope the moment it is processed or stored.</li>
+            <li><strong>Scope diagram</strong> n. 范围图 A diagram showing which systems, networks, and people are in PCI-DSS scope.</li>
+            <li><strong>Right to erasure</strong> n. 被遗忘权 GDPR Article 17. The data subject's right to have their personal data deleted on request.</li>
+            <li><strong>Audit trail</strong> n. 审计追踪 A chronological, immutable record of events — required for MAS TRM, HKMA, SOX.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① Passive voice for regulatory requirements</h3>
+        <p>
+            Compliance and InfoSec speak in the <strong>passive voice</strong> because the law applies
+            to <em>the data</em> or <em>the system</em>, not to <em>you</em>. Notice
+            <em>the audit trail must be immutable and retained for 7 years</em> — not
+            <em>we must keep the audit trail for 7 years</em>. The passive form signals the
+            obligation is regulatory, not personal — a subtle but important register shift in
+            compliance meetings.
+        </p>
+        <p>合规和 InfoSec 习惯用被动语态——强调是<strong>法规要求</strong>，不是个人要求。</p>
+
+        <h3>② "Group Standard GCS-XXX-NN requires…" — citing by code</h3>
+        <p>
+            When citing a regulatory or group obligation, use the <strong>subject + code + requires
+            + object + to-infinitive</strong> pattern: <em>Group Standard GCS-GDPR-12 requires the
+            erasure request to cascade to all dependent systems</em>. The code is the noun phrase,
+            <em>requires</em> is the verb, and the <em>to-infinitive</em> carries the action. This
+            is the HSBC-architect's standard sentence for "you must do X".
+        </p>
+        <p>引用标准时用 "Group Standard GCS-XXX-NN requires + 宾语 + to do" 句式——汇丰架构师的标准"必须做 X"说法。</p>
+
+        <h3>③ "Honest answer —" / "Just to flag —" — the compliance softenings</h3>
+        <p>
+            Two of the most useful softeners in a compliance conversation: <em>honest answer —</em>
+            (signals you are about to say something uncomfortable) and <em>just to flag —</em>
+            (signals you are about to raise a concern, not demand action). Both are polite
+            previews that prepare the room for a sensitive point. In a meeting with InfoSec and
+            Compliance, they are the difference between a finding and a follow-up.
+        </p>
+        <p><em>Honest answer</em> 和 <em>just to flag</em> 是合规对话的"软启动器"——让对方先有心理准备。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Speak the regulator's language, not the engineer's.</strong> "PCI-DSS scope diagram" lands with InfoSec; "we encrypt the PAN" does not. The first is a control; the second is a feature. Architects translate between the two.</li>
+            <li><strong>Always cite the Group Standard code.</strong> "GCS-PCI-04" carries more weight than "the PCI standard". A cited code is also a self-documenting audit trail — Compliance can look it up in the Group Standards portal.</li>
+            <li><strong>The SDL gate is not optional.</strong> At HSBC, every design review must include an InfoSec sign-off against the SDL. A "design done, security later" attitude will get rejected at CAB or eCAB. Plan the security review at the design stage, not at the release stage.</li>
+            <li><strong>Cross-region means cross-regulator.</strong> A Singapore-hosted service can still touch HKMA, MAS, FCA, and GDPR. The architecture is Singapore; the regulatory map is global. Always ask "which regulators can read this data?" before you finalise the design.</li>
+            <li><strong>Compliance is a date, not a feature.</strong> The MAS TRM audit window opens in 6 weeks. That is a hard date. Compliance work is sequenced backwards from that date — not forwards from "whenever we have time".</li>
+            <li><strong>"Right to erasure" cascades, not just deletes.</strong> GDPR's Article 17 doesn't just delete the row — it cascades to dependent systems, backups, replicas, and analytics stores. If your architecture has any side-channel that holds personal data, GDPR applies to it too.</li>
+            <li><strong>Re-attestation is forever.</strong> A scope diagram signed this quarter must be re-attested next quarter. Compliance is a quarterly rhythm, not a one-off. Build the re-attestation process into your delivery cadence from day one.</li>
+            <li><strong>When in doubt, escalate to Group InfoSec and Group Compliance.</strong> Tribal InfoSec can answer "how do we do this?". Group InfoSec and Group Compliance can answer "should we do this?". A 30-min call with Group is the cheapest insurance against a finding.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the compliance conversation</h3>
+        <p>Translate the following compliance conversation into natural Chinese. Pay attention to the regulatory terms and the Group Standard codes.</p>
+        <blockquote>
+            "Ravi: Honest answer — under MAS TRM, the audit trail for any customer-facing
+            transaction must be immutable and retained for 7 years. Group Standard GCS-TRM-08
+            requires the audit event to include the service principal, the user identity, and a
+            cryptographic hash of the payload. If your OnePay redesign doesn't capture all three,
+            you'll have a finding in the next TRM audit. Just to flag — the audit window opens in
+            6 weeks, so I'd recommend getting the schema change merged this sprint. Happy to review
+            the event design on a 30-min call this week."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Ravi：实话实说——根据 MAS TRM，任何面向客户的交易审计追踪必须不可篡改并保留 7 年。集团标准 GCS-TRM-08 要求审计事件必须包含服务主体、用户身份以及 payload 的加密哈希。如果你们 OnePay 的重设计没把 3 项都捕获，下一次 TRM 审计就会有 finding。提一下——审计窗口 6 周后开，所以我建议这个 Sprint 把 schema 改动合进去。这周我可以花 30 分钟过一下事件设计。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the compliance error</h3>
+        <p>A junior architect has drafted the following design-review response. Which lines contain compliance errors that must be fixed before InfoSec sign-off? Why?</p>
+        <ol>
+            <li>"We'll add TLS to the API."</li>
+            <li>"The token vault will store PANs encrypted with AES-256."</li>
+            <li>"We'll keep audit logs for 90 days."</li>
+            <li>"The PCI-DSS scope diagram will be drawn at release time."</li>
+            <li>"EU customers can request data deletion — we'll handle it manually."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>① is too vague — "TLS" doesn't say which version (TLS 1.2+ is the Group Cyber baseline), and it doesn't address mTLS for partner APIs. ② is dangerous — storing PAN at all means the full PCI-DSS scope applies; the design should aim to <em>avoid</em> PAN storage, not just encrypt it. ③ is wrong — MAS TRM and HKMA require 7-year retention for transaction audit logs, not 90 days. ④ is too late — the scope diagram must be filed with InfoSec at the design stage, not at release (per GCS-PCI-04). ⑤ is risky — manual deletion is not a control; GDPR requires an automated, auditable cascade with a deletion certificate. All five lines need to be rewritten before InfoSec sign-off.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a Solution Architect in the RBWM Digital tribe. The Onboarding squad is redesigning the eKYC flow for HK and EU customers. You have a design review next Tuesday. You need to brief the chapter on (a) which Group Standards apply (pick 2 from GCS-KYC-02, GCS-GDPR-12, GCS-PCI-04, GCS-TRM-08), (b) what the audit-trail retention rule is, and (c) one cross-region regulator concern. Write your 90-second chapter briefing in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Quick context — Onboarding squad is redesigning the eKYC flow for HK and EU customers, design review next Tuesday. Two Group Standards apply. First, GCS-KYC-02 — KYC records must be retained for 7 years with an immutable audit trail. Second, GCS-GDPR-12 — EU customers have the right to erasure, so the design must include a cascade-and-certify pattern. The audit-trail retention rule: 7 years online-archive, with the service principal, user identity, and a cryptographic hash of the captured ID image. One cross-region concern — HKMA's 2024 cloud outsourcing circular reads our proposed AWS HK region as cross-border for any EU customer data; I'm flagging a data-residency carve-out and looping in Group Compliance for sign-off before we commit. Happy to walk through the ADR next Tuesday."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="19-banking-architecture-terminology.html" class="btn btn-primary">Next: Article 19 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

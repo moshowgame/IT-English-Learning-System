@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 12: Jira / Confluence Story Description | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">12 · Jira / Confluence Story Description</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Jira / Confluence Story Description</h1>
+        <p class="subtitle">Article 12 · Module 4: Documentation & User Stories · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Writing a self-explanatory story that any dev can pick up cold</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>2:00 PM HKT</strong>. Akash, a developer in Bangalore, opens <em>Jira ticket WM-2410</em>
+            on the RBWM Onboarding squad — a brand-new story you shaped this morning. The Business PO in London
+            is on annual leave for the next two days, and Akash needs to start the story <em>today</em> to keep
+            the sprint on track. He messages you on Teams: <em>"Wei, I opened WM-2410. Could you walk me through
+            the intent and edge cases? The description is a bit thin."</em>
+        </p>
+        <p>
+            下午 2 点香港时间。班加罗尔的开发 Akash 打开了你在 RBWM 开户 squad 早上刚拆好的 Jira
+            <em>WM-2410</em>。伦敦的业务 PO 正在休年假，未来两天联系不上。Akash 为了 Sprint 进度需要今天
+            启动，他 Teams 上找你："Wei，WM-2410 我开了，能不能讲下需求意图和边界场景？描述里写得不太清楚。"
+        </p>
+        <p>
+            This is the moment a BA earns the title. A great story description lets <strong>any developer in any region pick it up cold</strong> — with the AC, context, scope, dependencies, and edge cases already on the ticket. No IM ping required, no
+            walking over to your desk, no waiting for a meeting. The ticket itself tells the story.
+        </p>
+        <p>
+            这就是体现 BA 价值的关键时刻。一份优秀的 Story 描述让<strong>任何地区的开发都能冷启动</strong>——
+            AC、上下文、范围、依赖、边界场景全在工单里，不用 IM 问你，不用找你当面聊，不用等会议，工单本身就
+            把故事讲清楚。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev):</span>
+                <span class="text"><span class="en">Hey Wei, <em>quick one</em> — I just opened <em>WM-2410</em> on the Onboarding squad. The description's a bit thin; could you help me <em>pick it up cold</em>?</span><span class="cn">Wei 问个快问题——我刚打开开户 squad 的 WM-2410，描述写得有点单薄，能帮我冷启动吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Sure, give me <em>five minutes</em> and I'll <em>beef up the description</em> on Confluence and Jira. The PO is on leave, so I want to make sure the ticket <em>stands on its own</em>.</span><span class="cn">好，给我 5 分钟，我把 Confluence 和 Jira 上的描述都补全。PO 在休假，所以我想让工单独立可读。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>OK, so</em> the <em>intent</em>: when a <em>HK retail client</em> upgrades from Premier to Jade, we need to <em>re-run CDD</em> on the source-of-wealth evidence and trigger a fresh <em>EDD</em> review if the customer's net worth crosses the HKD 8 million threshold.</span><span class="cn">好，需求意图是这样的：当香港零售客户从 Premier 升级到 Jade 时，我们要对资金来源证据重新跑一次 CDD，如果客户净资产超过 800 万港币门槛就触发新一轮 EDD 审核。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">I've <em>linked the BRD section</em> in the description — <em>RBWM-CDD-2025 §4.2</em>. The AC is <em>scoped to HK</em> for this sprint; UK and Singapore are <em>explicitly out of scope</em>.</span><span class="cn">我在描述里链了 BRD 章节——RBWM-CDD-2025 §4.2。AC 范围是<strong>仅限香港</strong>，英国和新加坡明确排除。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">There are <em>three edge cases</em> you need to know: <em>joint accounts</em>, <em>PEP hits</em>, and <em>re-application within 90 days</em>. I've <em>listed them in the comments</em> with the expected behavior — please <em>read those first</em> before you start.</span><span class="cn">有 3 个边界场景你必须知道：<strong>联名账户</strong>、<strong>PEP 命中</strong>、<strong>90 天内重新申请</strong>。我在评论里列了预期行为，开始前<strong>先看评论</strong>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev):</span>
+                <span class="text"><span class="en">Got it. <em>One dependency</em> I'm worried about — the <em>sanctions screening</em> service. Is that <em>in flight</em>?</span><span class="cn">明白。我担心一个依赖——制裁名单筛查服务，它现在在做吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Yes — the <em>sanctions screening API</em> is owned by the Compliance tribe and is on track for <em>end of sprint</em>. I've <em>logged it as a dependency</em> in the ticket's <em>Issue Links</em>. If it slips, we have a <em>fallback path</em> documented in §6 of the BRD.</span><span class="cn">在做，制裁名单筛查 API 由合规 tribe 负责，sprint 末可以交付。我在工单的 Issue Links 里登记了依赖。如果延期，BRD §6 里有备案路径。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev):</span>
+                <span class="text"><span class="en">Perfect. <em>Last thing</em> — who do I <em>ping</em> if I find a <em>gap in the AC</em>?</span><span class="cn">完美。最后一个问题——我发现 AC 有漏洞时该 @ 谁？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Raise it on the ticket</em> as a comment and <em>assign it to me</em> — I'll triage with the PO when she's back. <em>Don't sit on it</em>; the BA review is part of our Definition of Ready.</span><span class="cn"><strong>在工单上加评论并指给我</strong>，PO 回来后我会跟她一起 triage。<strong>别憋着</strong>，BA 评审是我们 DoR 的一部分。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev):</span>
+                <span class="text"><span class="en"><em>Brilliant.</em> I'm <em>good to start</em> — thanks for the heads-up.</span><span class="cn">太棒了，可以开工了，谢谢提醒。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Cold Start</span> <em>Can a dev pick it up cold?</em></span>
+                <span class="chinese">开发能否冷启动 (零上下文也能开工)</span>
+                <span class="note">"Pick up cold" = start work with zero prior context. The gold standard for story quality.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Beef Up</span> <em>I'll beef up the description.</em></span>
+                <span class="chinese">我把描述补完整</span>
+                <span class="note">"Beef up" = add depth and detail. Casual BA shorthand for "make it complete".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Self-Contained</span> <em>The ticket should stand on its own.</em></span>
+                <span class="chinese">工单应该独立可读</span>
+                <span class="note">"Stand on its own" = no IM pings, no tribal knowledge required. A Definition of Ready pillar.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>The AC is scoped to HK only.</em></span>
+                <span class="chinese">AC 范围仅限香港</span>
+                <span class="note">Always name the in-scope region / segment. <em>Scoped to</em> = bounded by.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Out of Scope</span> <em>UK and SG are explicitly out of scope.</em></span>
+                <span class="chinese">英国和新加坡明确排除</span>
+                <span class="note">Stating what's <em>out</em> of scope prevents scope creep later. HSBC BAs must write this.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Edge Case</span> <em>Three edge cases you need to know…</em></span>
+                <span class="chinese">有 3 个边界场景你必须知道</span>
+                <span class="note">Edge cases belong in the description (not hidden in someone's head). Joint accounts, PEP hits, timeouts.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Dependency</span> <em>I've logged it as a dependency in Issue Links.</em></span>
+                <span class="chinese">我在 Issue Links 里登记了依赖</span>
+                <span class="note">Use Jira's <em>Issue Links</em> field, not comments. Comments get buried; links stay visible.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fallback</span> <em>We have a fallback path in §6 of the BRD.</em></span>
+                <span class="chinese">BRD §6 里有备案路径</span>
+                <span class="note">"Fallback path" = Plan B if a dependency slips. BAs document this in the BRD, not in chat.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Gap</span> <em>Raise it on the ticket if you find a gap in the AC.</em></span>
+                <span class="chinese">如果发现 AC 有漏洞，在工单上提</span>
+                <span class="note">"Gap" = something missing or ambiguous. Always log gaps on the ticket, never in DM.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">DoR</span> <em>BA review is part of our Definition of Ready.</em></span>
+                <span class="chinese">BA 评审是我们 DoR 的一部分</span>
+                <span class="note">DoR = Definition of Ready. The checklist a story must pass before it can be pulled into a sprint.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Story description</strong> n. Story 描述 The "why" and "what" of a story. Distinct from AC (the "done" check).</li>
+            <li><strong>Pick up cold</strong> phr. 冷启动 Start work with no verbal context. Litmus test for story quality.</li>
+            <li><strong>Issue Links</strong> n. Jira 关联项 A Jira field that links related tickets (blocks, depends on, relates to).</li>
+            <li><strong>BRD (Business Requirements Document)</strong> n. 业务需求文档 The long-form business requirements, version-controlled on Confluence.</li>
+            <li><strong>DoR (Definition of Ready)</strong> n. 就绪定义 The squad's checklist a story must pass before sprint entry.</li>
+            <li><strong>DoD (Definition of Done)</strong> n. 完成定义 The squad's checklist a story must pass before "done".</li>
+            <li><strong>CDD (Customer Due Diligence)</strong> n. 客户尽职调查 KYC's lighter layer. Required for all customers at onboarding.</li>
+            <li><strong>EDD (Enhanced Due Diligence)</strong> n. 强化尽职调查 A deeper review for high-risk customers, PEPs, and high-value accounts.</li>
+            <li><strong>PEP (Politically Exposed Person)</strong> n. 政治敏感人物 A customer who holds a prominent public function. Triggers EDD.</li>
+            <li><strong>Source of wealth</strong> n. 资金来源 How a customer accumulated their assets. Must be evidenced for Premier / Jade.</li>
+            <li><strong>Sanctions screening</strong> n. 制裁名单筛查 Checking customers against OFAC, EU, UN, HMT, HKMA lists.</li>
+            <li><strong>Edge case</strong> n. 边界场景 An unusual or boundary condition (joint account, PEP hit, re-application window).</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I've logged it as a dependency" — present perfect for state, not action</h3>
+        <p>
+            The present perfect (<em>have logged</em>, <em>have raised</em>, <em>have linked</em>) is the BA's best
+            friend in a story description conversation. It signals <strong>the work is done and the state is
+            now correct</strong>. Compare: <em>"I'm logging it"</em> (in progress, not safe) vs
+            <em>"I've logged it"</em> (auditable, done). Use past simple (<em>I logged it yesterday at 3 PM</em>)
+            only when the timing is itself the news.
+        </p>
+        <p>现在完成时 (have logged / have raised / have linked) 表示"已完成，状态已就绪"。BA 在工单沟通里最常用。</p>
+
+        <h3>② Passive "is scoped to" / "is owned by" — defining the boundary, not blaming a person</h3>
+        <p>
+            <em>"The AC <strong>is scoped to</strong> HK"</em> and <em>"The API <strong>is owned by</strong> the
+            Compliance tribe"</em> use the <strong>passive voice</strong> to focus on <em>scope and accountability</em>,
+            not on who <em>did</em> something. This is the politeness default in BA documentation — it keeps
+            the description neutral, factual, and free of personal pronouns that can age badly in a comment thread.
+        </p>
+        <p>被动语态强调"范围"和"归属"而非"谁做的"。BA 文档中保持中立、客观，不写人名。</p>
+
+        <h3>③ Imperative + "please" — the softest ask for compliance actions</h3>
+        <p>
+            <em>"<strong>Read those first</strong> before you start"</em> and <em>"<strong>Raise it on the ticket</strong>
+            as a comment"</em> use the <strong>imperative</strong> for clear, action-oriented instructions — but
+            HSBC BAs soften it with <em>please</em> or with "I'd recommend" framing. The combo is: imperative for
+            clarity, <em>please</em> for relationship. Avoid the bare imperative in cross-region Teams messages.
+        </p>
+        <p>祈使句给出清晰指令，加上 please 保持关系友好。跨地区 Teams 沟通时不要用裸祈使句。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"Pick up cold" is a real HSBC test.</strong> Tech Leads at HSBC often ask: <em>"Can a Bangalore dev pick this up cold next sprint?"</em> If the answer is no, the story doesn't pass Definition of Ready. Build the habit of writing for someone who has never seen the project.</li>
+            <li><strong>Confluence is the source of truth; Jira is the work tracker.</strong> The <em>BRD lives on Confluence</em> (versioned, auditable, accessible to Risk and Compliance). Jira holds the AC, the status, and the comments. Never put business rationale only in Jira — it will be lost when the ticket closes.</li>
+            <li><strong>Always cite the BRD section number.</strong> "RBWM-CDD-2025 §4.2" is gold. Auditors and Risk reviewers love it. The story description should always link to the section, not just the document.</li>
+            <li><strong>Stating "out of scope" protects the squad.</strong> When the UK business asks "but can we also have this in London?" in two weeks, you can point to the original ticket: <em>"Out of scope for this story — see WM-2410 description."</em> It's a polite shield.</li>
+            <li><strong>Use the <em>Issue Links</em> field, not comments.</strong> Comments scroll away; Issue Links are queryable in Jira dashboards. A BA who logs dependencies properly gets a 3-second dependency graph in JQL.</li>
+            <li><strong>Tag the right squad, not the right person.</strong> <em>@onboarding-squad</em> outlives <em>@akash-sharma</em>. When Akash rotates, the @-mention will still route to the right team.</li>
+            <li><strong>Document edge cases in the description, not in your head.</strong> PEP hits, joint accounts, expired IDs — these often live as "tribal knowledge" with the original PO. The day the PO leaves, the story breaks. Write it down.</li>
+            <li><strong>Time zones, not personal schedules.</strong> When the PO is on leave and Akash is starting now, don't say "the PO is asleep" — say <em>"the PO is on annual leave; coverage is in the handover doc linked on Confluence."</em> Time zones are facts; people's schedules are personal.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the BA explanation</h3>
+        <p>Translate the following message into natural Chinese, paying attention to the BA's "self-contained" framing.</p>
+        <blockquote>
+            "Quick context on WM-2410. The intent: when a HK retail client upgrades from Premier to Jade, we
+            re-run CDD on source-of-wealth evidence and trigger EDD if net worth crosses the HKD 8M threshold.
+            AC is scoped to HK only; UK and SG are explicitly out of scope this sprint. Three edge cases are
+            listed in the comments — joint accounts, PEP hits, and re-application within 90 days. The sanctions
+            screening API is a dependency, owned by the Compliance tribe, and I've logged it in Issue Links.
+            Pick it up cold and ping me if you find a gap."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"WM-2410 快速同步一下背景。需求意图：香港零售客户从 Premier 升级到 Jade 时，重新跑一次 CDD 验证资金来源，净资产超过 800 万港币就触发 EDD。AC 范围仅限香港，英国和新加坡本 Sprint 明确排除。3 个边界场景在评论里——联名账户、PEP 命中、90 天内重新申请。制裁名单筛查 API 是一个依赖，由合规 tribe 负责，已经在 Issue Links 里登记。可以冷启动，发现漏洞随时 @ 我。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the well-shaped story description</h3>
+        <p>Which of these Jira descriptions is most likely to <strong>pass Definition of Ready</strong>? Why?</p>
+        <ol>
+            <li>"As a HK retail customer, I want to upgrade to Jade so I get more benefits. AC: TBD."</li>
+            <li>"Premier→Jade upgrade flow. Re-run CDD on source of wealth, trigger EDD above HKD 8M. HK only. See BRD RBWM-CDD-2025 §4.2 for full intent. Out of scope: UK, SG. Dependencies: SAN-301 (sanctions API). Edge cases: joint accounts, PEP hits, re-app within 90 days — see comments."</li>
+            <li>"Need to fix the Jade upgrade. Please ask Wei if anything is unclear."</li>
+            <li>"Implement Jade upgrade. Should be similar to Premier upgrade. Dev: Akash."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② passes DoR — it has intent, scope, BRD reference, dependencies, and edge cases. ① has "TBD" AC (fails). ③ is tribal knowledge ("ask Wei") and a single point of failure. ④ is vague and skips scope/edge cases. A good description lets any dev in any region pick up cold — ② is the only one that does.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB KYC squad. Akash just opened <em>GPB-1188</em> for a <em>SWIFT MT202 cover payment screening</em> enhancement. The PO is in Singapore, on a half-day today. The story is linked to the HKMA sanctions circular. You need to (a) write a Confluence paragraph describing the intent, scope, and edge cases, and (b) write a Teams message to Akash telling him to pick it up cold. Use at least 4 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p><em>Confluence paragraph:</em> "GPB-1188 enhances the SWIFT MT202 cover payment screening to align with HKMA's latest sanctions circular (2025-04). Intent: any MT202 outgoing cover payment must pass enhanced sanctions screening on both ordering and beneficiary BICs. Scope: GPB HK only this sprint. Out of scope: GPB UK, GPB SG. Dependencies: SAN-301 sanctions API (owned by Compliance tribe). Edge cases: (1) cover payments where the ordering BIC is a correspondent, (2) MT202 with a related-party beneficiary, (3) payment chain longer than 3 hops. See BRD GPB-AML-2025 §3.4 for full rationale."</p>
+            <p><em>Teams message to Akash:</em> "Hey Akash — just beefed up GPB-1188 on Confluence and Jira. The ticket stands on its own now: intent, scope, edge cases, and the SAN-301 dependency. AC is scoped to GPB HK only. Please read the edge case comments first before you start. Raise any gap in the AC as a ticket comment and assign it to me — I'll triage with the SG PO when she's online. Good to start cold."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="13-meeting-minutes.html" class="btn btn-primary">Next: Article 13 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 04: Requirements Clarification | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">04 · Requirements Clarification</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Requirements Clarification</h1>
+        <p class="subtitle">Article 04 · Module 4: Requirements & Backlog · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Live Jira-comment Q&amp;A: pinning down AC between BA, dev, and PO — without ping-pong</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>2:30 PM HKT, Tuesday</strong>. The HSBC <em>RBWM Digital Onboarding</em>
+            squad is mid-refinement for next sprint's <em>Jira ticket WM-1982 — "Refresh KYC for
+            high-value retail customers"</em>. The ticket has 9 acceptance criteria items, but 3 of
+            them are still <em>yellow-flagged</em> in the comments. The conversation has moved to
+            the Jira ticket itself — a live thread between you (BA, Hong Kong), Akash (Dev,
+            Bangalore), and Priya (PO, Singapore business).
+        </p>
+        <p>
+            周二下午 2:30 香港时间。HSBC <em>RBWM 数字化开户</em> squad 正在做下个 Sprint
+            <em>Jira WM-1982——"高净值零售客户 KYC 信息更新"</em> 的 Refinement。这张
+            Ticket 有 9 条验收标准，3 条还在<em>黄标</em>状态。讨论已转到 Jira Ticket 评论区——
+            是你（BA，香港）、Akash（开发，班加罗尔）和 Priya（业务 PO，新加坡）三方实时
+            留言。
+        </p>
+        <p>
+            The three open items are: (1) what triggers the KYC refresh — calendar anniversary
+            or risk-score change? (2) what documents does the customer need to re-upload? and
+            (3) does CDD have to be re-run by Operations, or is the digital refresh enough? Your
+            job is to <strong>convert ambiguity into testable AC</strong> before the sprint planning
+            on Thursday — without bouncing the PO between you and the dev.
+        </p>
+        <p>
+            3 个开放项：(1) KYC 更新的触发条件——是周年日期还是风险评分变化？(2) 客户需要
+            重新上传哪些文件？(3) 运营是否需要重跑 CDD，还是数字端更新就够？你的任务是在
+            周四 Sprint Planning 之前<strong>把模糊项变成可测的 AC</strong>，同时不让 PO 在
+            你和开发之间被踢皮球。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 1:</span>
+                <span class="text"><span class="en">@Priya @Akash — <em>picking up the 3 yellow AC items</em> on WM-1982. <em>Let's go one by one</em> so we don't ping-pong. <strong>Item 1: trigger.</strong> <em>Just to confirm my understanding</em> — the refresh should fire on <em>either</em> the KYC anniversary (every 36 months) <em>or</em> a material risk-score change (e.g. PEP hit, high-risk country change). <em>Am I right?</em></span><span class="cn">@Priya @Akash——我接着处理 WM-1982 上 3 条黄标 AC。<em>一条一条来</em>，避免踢皮球。<strong>项 1：触发条件。</strong><em>确认一下我的理解</em>——KYC 更新应该由<em>任一</em>条件触发：KYC 周年（每 36 个月）<em>或</em>重大风险评分变化（如命中 PEP、高风险国家变更）。<em>我理解对吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO) — Jira comment 2:</span>
+                <span class="text"><span class="en"><em>Yes, that's right.</em> But <em>just to be precise</em> — the risk-score change should only trigger a refresh if it moves the customer from <em>low to high</em> risk, not the other way round. <em>Going from high to low shouldn't trigger a refresh</em> — that's a re-classification, not a re-KYC.</span><span class="cn">对，但<em>明确一下</em>——风险评分变化只在客户从<em>低风险升到高风险</em>时触发更新，反向不触发。从高到低是重新分类，不是重新 KYC。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 3:</span>
+                <span class="text"><span class="en"><em>Got it — adding the direction qualifier.</em> I'll <em>rewrite AC#1</em> as: "<em>Given</em> a customer's KYC anniversary is within 30 days <em>or</em> their risk score has just moved from low to high, <em>when</em> the customer logs in, <em>then</em> the system shall block dashboard access and prompt for KYC refresh." <em>OK with that?</em></span><span class="cn">收到——加上方向限定。我把 AC#1 改写为："<em>假设</em>客户 KYC 周年在 30 天内<em>或</em>风险评分刚从低变高，<em>当</em>客户登录，<em>则</em>系统应拦截仪表盘访问并提示 KYC 更新。"<em>这样写可以吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev) — Jira comment 4:</span>
+                <span class="text"><span class="en"><em>Looks good from a dev side.</em> <em>Quick follow-up</em> — the risk-score change event is published on the <em>event bus</em> as a Kafka message. <em>How fresh is "fresh"?</em> If the event arrives after the customer has already logged in, do we need to <em>force-logout</em> them on the next session?</span><span class="cn">开发侧看着没问题。<em>追问一下</em>——风险评分变化事件以 Kafka 消息发到<em>事件总线</em>。"刚变化"的"刚"是什么粒度？如果事件在客户已登录后才到，下次会话要不要<em>强制下线</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 5:</span>
+                <span class="text"><span class="en"><em>Good catch</em> — I'd say <em>defer the force-logout</em> to a follow-up story, it's not in scope for this one. <em>For WM-1982,</em> the system just needs to <em>evaluate the trigger at the next login</em>. <em>Agreed?</em></span><span class="cn">好问题——我建议<em>强制下线</em>延到后续 Story，不在本次范围。<em>WM-1982 里</em>，系统只需<em>在下一次登录时评估触发条件</em>。<em>同意吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO) — Jira comment 6:</span>
+                <span class="text"><span class="en"><em>Agreed on the scope.</em> <strong>Item 2: documents.</strong> For the digital refresh, the customer should re-upload: <em>(a)</em> proof of address (utility bill or bank statement, &lt; 3 months old), <em>(b)</em> ID document (HKID or passport), and <em>(c)</em> source-of-wealth declaration <em>if</em> they're moving into the high-net-worth segment. <em>Does that match what RBWM Compliance told us, Wei?</em></span><span class="cn">范围同意。<strong>项 2：文件。</strong>数字端更新，客户应重新上传：<em>(a)</em> 地址证明（水电费单或银行月结单，&lt; 3 个月）、<em>(b)</em> 身份证明（HKID 或护照）、<em>(c)</em> <em>如果</em>客户进入高净值段，需资金来源声明。<em>Wei，这和 RBWM 合规说的一致吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 7:</span>
+                <span class="text"><span class="en"><em>Mostly, yes.</em> But Compliance also wants a <em>tax residency self-cert</em> for all refreshed customers, <em>not just</em> HNW. That's the <em>FATCA / CRS</em> rule, <em>separate from</em> the EDD requirement. <em>I'll add it as AC#5.</em></span><span class="cn">大体一致。但合规还要求所有更新客户提交<em>税务居民自证</em>，<em>不只是</em>高净值客户。这是 <em>FATCA / CRS</em> 要求，<em>独立于</em> EDD。我加到 AC#5。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev) — Jira comment 8:</span>
+                <span class="text"><span class="en"><em>On item 3</em> — the CDD re-run by Operations question — <em>is the answer 'yes' or 'no'?</em> If it's yes, we need a <em>case-management integration</em> with the Operations tool, and that's a <em>5-point story on its own</em>.</span><span class="cn"><em>项 3</em>——运营是否重跑 CDD 的问题——<em>答案是 yes 还是 no？</em>如果是 yes，需要和运营系统<em>做案件管理集成</em>，那是独立的<em>5 个点 Story</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 9:</span>
+                <span class="text"><span class="en"><em>My recommendation</em> — for WM-1982 (digital refresh only), <em>we do NOT trigger a CDD re-run by Operations.</em> The digital refresh <em>flags the case</em> for Operations review, but the case-management integration is <em>a separate story (WM-2100)</em> for next sprint. <em>Can you confirm with HK Operations, Priya?</em></span><span class="cn"><em>我的建议</em>——WM-1982（仅数字端更新），<em>不触发运营重跑 CDD</em>。数字端更新<em>标记案件</em>给运营复核，但案件管理集成<em>是下个 Sprint 的独立 Story (WM-2100)</em>。<em>Priya，能和香港运营确认一下吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO) — Jira comment 10:</span>
+                <span class="text"><span class="en"><em>Confirmed with HK Ops this morning.</em> They're <em>fine with the flag-only approach for v1</em>, and they've <em>booked a workshop</em> with us for the WM-2100 scope. <em>Brilliant — I think we're locked.</em></span><span class="cn">今早和香港运营确认。他们<em>接受 v1 只标记</em>的方式，并<em>约了 workshop</em>和我们一起过 WM-2100 范围。<em>很好——我觉得锁定了。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA) — Jira comment 11:</span>
+                <span class="text"><span class="en"><em>Locked.</em> I'll <em>update the ticket with the 9 ACs,</em> <em>close the yellow flags</em>, and <em>tag Akash for a sizing review</em> in tomorrow's refinement. <em>Thanks both</em> — that was a clean thread. 👌</span><span class="cn"><em>锁定。</em>我会<em>更新 Ticket 上的 9 条 AC</em>，<em>关掉黄标</em>，<em>在明天的 Refinement 会上 @ Akash 估时</em>。<em>感谢两位</em>——这条讨论很干净。👌</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Let's go one by one so we don't ping-pong.</em></span>
+                <span class="chinese">一条一条来，避免踢皮球</span>
+                <span class="note">"Ping-pong" = bouncing a question back and forth. The BA's job is to kill ping-pong with structure.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>Just to confirm my understanding — am I right?</em></span>
+                <span class="chinese">确认一下我的理解——我对吗？</span>
+                <span class="note">"Just to confirm" + "am I right?" = double softener. Restate what you heard and ask for a yes/no. Forces a clear answer.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Precise</span> <em>Just to be precise — the change should only trigger if…</em></span>
+                <span class="chinese">明确一下——变化只在…时触发</span>
+                <span class="note">"Just to be precise" = polite way to add a qualifier that might contradict a previous statement. Use freely in PO conversations.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Format</span> <em>Given… when… then the system shall…</em></span>
+                <span class="chinese">假设… 当… 则系统应…</span>
+                <span class="note">The Gherkin format (Given/When/Then). Universal AC template. Turns ambiguity into a testable sentence.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>I'd say defer the force-logout to a follow-up story.</em></span>
+                <span class="chinese">我建议强制下线延到后续 Story</span>
+                <span class="note">"Defer to a follow-up" = polite way to say no without saying no. Captures the need without burning this sprint's points.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Ask</span> <em>Does that match what RBWM Compliance told us?</em></span>
+                <span class="chinese">这和 RBWM 合规说的一致吗？</span>
+                <span class="note">Cross-check pattern: ask the PO to validate their own statement against another stakeholder. Builds in audit accuracy.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Differentiate</span> <em>That's a separate rule, separate from the EDD requirement.</em></span>
+                <span class="chinese">这是独立规则，独立于 EDD 要求</span>
+                <span class="note">Always separate regulatory drivers (FATCA/CRS, KYC, EDD, CDD, AML) — different rules, different audit trails.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Force</span> <em>Is the answer 'yes' or 'no'?</em></span>
+                <span class="chinese">答案是 yes 还是 no？</span>
+                <span class="note">A dev's natural question style. BAs learn this trick from devs — force a binary answer when stakeholders waffle.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>My recommendation — for v1, we do NOT trigger…</em></span>
+                <span class="chinese">我的建议——v1 不触发…</span>
+                <span class="note">Lead with "my recommendation" before the decision. Lets the PO disagree with the rec, not the question.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Locked. I'll update the ticket and close the yellow flags.</em></span>
+                <span class="chinese">锁定。我会更新 Ticket 并关掉黄标</span>
+                <span class="note">"Locked" = the AC is final. Always explicitly close the loop in writing, not just in chat.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Acceptance Criteria (AC)</strong> n. 验收标准 The bulleted testable conditions that define "done" for a story.</li>
+            <li><strong>Gherkin (Given/When/Then)</strong> n. 行为驱动格式 A standard format for writing AC: <em>Given a state, when an action, then an outcome</em>.</li>
+            <li><strong>Yellow flag</strong> n. 黄标 A Jira label signalling an open question or unresolved AC item.</li>
+            <li><strong>Refinement (Grooming)</strong> n. Refinement 会 The meeting to discuss and size upcoming stories.</li>
+            <li><strong>KYC</strong> n. 了解你的客户 Know Your Customer — identity &amp; risk verification.</li>
+            <li><strong>CDD / EDD</strong> n. 客户尽职调查 / 强化尽调 Customer / Enhanced Due Diligence.</li>
+            <li><strong>PEP</strong> n. 政治敏感人物 Politically Exposed Person — high-risk customer category.</li>
+            <li><strong>FATCA / CRS</strong> n. 美国 / OECD 税务信息申报 Foreign Account Tax Compliance Act / Common Reporting Standard.</li>
+            <li><strong>Event bus / Kafka</strong> n. 事件总线 A publish-subscribe messaging system for real-time events.</li>
+            <li><strong>Case-management integration</strong> n. 案件管理集成 A link between the digital channel and the Operations case tool.</li>
+            <li><strong>Source-of-wealth (SOW)</strong> n. 资金来源证明 Documents proving where a customer's wealth originated.</li>
+            <li><strong>Tag / @mention</strong> v. @ 提及 A Jira / Teams feature to pull a specific person into a thread.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Am I right?" — the tag question that locks the AC</h3>
+        <p>
+            After you restate your understanding of a requirement, end with a tag question:
+            <em>am I right?</em>, <em>is that correct?</em>, <em>does that match?</em>. The tag forces the
+            other person to say "yes" or "no" — not to waffle. In Jira comments, this is the difference
+            between a closed thread and a 30-comment ping-pong.
+        </p>
+        <p>复述需求后，加反义疑问句（am I right? / is that correct?）逼对方给"是/否"，避免来回。</p>
+
+        <h3>② "Should" for soft requirements vs "shall" for hard AC</h3>
+        <p>
+            In HSBC requirements docs, <em>should</em> means "recommended" and <em>shall</em> means "mandatory, testable".
+            Compare: <em>The system <strong>should</strong> warn the user</em> (nice to have) vs
+            <em>The system <strong>shall</strong> block access</em> (testable AC). Use <em>shall</em> in
+            AC items; use <em>should</em> in design notes.
+        </p>
+        <p>HSBC 需求文档里：<em>should</em> = 建议，<em>shall</em> = 强制可测。AC 用 shall，设计备注用 should。</p>
+
+        <h3>③ "I'd say defer" — "I'd" + verb as a soft recommendation</h3>
+        <p>
+            <em>I'd <strong>say</strong> defer</em>, <em>I'd <strong>recommend</strong>…</em>, <em>I'd <strong>suggest</strong>…</em>
+            all use the contracted form <em>I'd</em> (I would) to soften a recommendation. The pattern is
+            <em>I'd + recommend / say / suggest + base verb</em>. It's the politeness prefix for any
+            BA recommendation in writing.
+        </p>
+        <p><em>I'd say / recommend / suggest</em> 是书面推荐的礼貌前缀。结构：<em>I'd + recommend/say/suggest + 动词原形</em>。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Written AC beats chat AC.</strong> "I thought we agreed" is the most expensive phrase in a sprint. Everything agreed in chat must be written into the Jira ticket AC before refinement closes. The ticket is the source of truth.</li>
+            <li><strong>One thread, one topic.</strong> Don't let a Jira comment thread become a 20-message debate on 9 different things. Restructure ("let's go one by one") and assign each item a number. Saves hours.</li>
+            <li><strong>The BA is the translator.</strong> Devs speak in code and events (Kafka, APIs). POs speak in business rules (KYC, EDD). The BA is the only one who hears both. When Akash asks "how fresh is fresh?", your job is to translate the answer into a business rule, not to bounce the question to the PO.</li>
+            <li><strong>Tax residency is a separate compliance stream.</strong> Don't fold FATCA/CRS into KYC. They have different regulators, different audit trails, different schedules. Always separate the compliance drivers in the AC.</li>
+            <li><strong>Singapore POs are time-conscious.</strong> Priya is in Singapore. She will give a 1-line answer, expect you to act on it, and move on. Don't ask 3 follow-ups in the same comment — ask the most important one, get the answer, ask the next.</li>
+            <li><strong>Bangalore devs are detail-oriented.</strong> Akash will probe edge cases (force-logout, event freshness). Don't dismiss — fold the question into a "defer to follow-up story" or "yes, in scope, will size". It shows the BA respects the engineering view.</li>
+            <li><strong>"Locked" is the magic closing word.</strong> When the AC is final, say <em>locked</em> explicitly. It signals the end of the conversation, the start of the implementation, and gives the dev permission to start sizing.</li>
+            <li><strong>Tag the right people, not everyone.</strong> A Jira thread @-mentioning the whole squad creates noise. Only @ the people whose decision is needed. Be respectful of attention.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the BA clarification</h3>
+        <p>Translate the following BA Jira comment into natural Chinese. Pay attention to the Gherkin format and the soft recommendation style.</p>
+        <blockquote>
+            "@Priya @Akash — picking up the 3 yellow AC items on WM-1982. Let's go one by one. Item 1: trigger.
+            Just to confirm my understanding — the refresh should fire on either the KYC anniversary (every
+            36 months) or a material risk-score change. Am I right? Item 2: documents. The customer should
+            re-upload (a) proof of address, (b) ID document, and (c) source-of-wealth declaration if they're
+            moving into the high-net-worth segment. Does that match what Compliance told us? Item 3: the
+            CDD re-run by Operations. My recommendation — for v1, we do NOT trigger a CDD re-run; we just
+            flag the case for Operations review. The case-management integration is a separate story for
+            next sprint. Can you confirm with HK Operations, Priya?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"@Priya @Akash——我接着处理 WM-1982 上 3 条黄标 AC。一条一条来。项 1：触发条件。确认一下我的理解——KYC 更新由 KYC 周年（每 36 个月）或重大风险评分变化触发。我理解对吗？项 2：文件。客户需重新上传 (a) 地址证明、(b) 身份证明、(c) 若进入高净值段则需资金来源声明。这和合规说的一致吗？项 3：运营是否重跑 CDD。我的建议——v1 不触发 CDD 重跑；只标记案件给运营复核。案件管理集成是下个 Sprint 的独立 Story。Priya，能和香港运营确认一下吗？"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the BA mistake</h3>
+        <p>Which of these Jira comment styles would lead to a "ping-pong" thread and which would close the loop? Why?</p>
+        <ol>
+            <li>"Hi @Priya, can you clarify the documents thing? Also the trigger. And the CDD question. Thanks!"</li>
+            <li>"@Priya @Akash — three open items. Let's go one by one. Item 1 (trigger): my understanding is X. Am I right? Item 2 (documents): the spec says Y. Does that match Compliance? Item 3 (CDD): my recommendation is Z. Please confirm."</li>
+            <li>"Hey, just checking in on WM-1982 — any update on those AC items?"</li>
+            <li>"@Priya — quick one. I rewrote AC#1 to add the FATCA/CRS tax-residency self-cert (separate from the EDD docs). Please review. AC#1 now reads: 'Given a customer's KYC anniversary is within 30 days OR their risk score moved low to high, when the customer logs in, then the system shall block access and request KYC refresh + tax-residency self-cert.' OK to lock?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ close the loop — ② pre-frames and numbers items, ④ proposes the exact wording and asks for a yes/no. ① and ③ are vague and will generate ping-pong. ① crams 3 questions into one message; ③ is the worst — vague nudge with no proposal, forcing the PO to think from scratch.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB Cards squad. A Jira ticket CARD-3340 ("Tokenise stored cards for Apple Pay enrolment") has 3 yellow AC items: (a) trigger — only on first Apple Pay enrolment, or on every card-add? (b) token storage — does it use the existing OnePay vault or a new dedicated token service? (c) what happens to the old card-on-file if the customer removes the card from Apple Pay?
+            Write 3 Jira comments (one per item) in the style of the dialogue above. Use Gherkin format for at least one, recommend a path for each, and ask the PO a forcing yes/no question.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"@Priya @Akash — picking up the 3 yellow AC items on CARD-3340. Let's go one by one. <strong>Item 1 (trigger):</strong> my understanding is the tokenisation should fire only on the first Apple Pay enrolment, not on every card-add (which is just a card-link, not a token refresh). Am I right? <strong>Item 2 (token storage):</strong> my recommendation is we use the existing OnePay vault — building a new dedicated token service is 8+ points and not justified for v1. Does that match what InfoSec said? <strong>Item 3 (card-on-file behaviour):</strong> if the customer removes the card from Apple Pay, the system shall keep the card-on-file in the OnePay vault but mark it as 'not enrolled in wallet' — no deletion. Given a card is removed from Apple Pay, when the customer next logs into HSBCnet/Mobile, then the system shall display 'Card present but not in wallet'. OK to lock? @Priya please confirm Items 1 and 3 with the business. @Akash please sanity-check the OnePay vault integration story-point estimate."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="05-walkthrough-demo-prep.html" class="btn btn-primary">Next: Article 05 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

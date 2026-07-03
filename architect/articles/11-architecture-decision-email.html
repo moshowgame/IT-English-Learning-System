@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 11: Architecture Decision Email | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">11 · Architecture Decision Email</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Architecture Decision Email</h1>
+        <p class="subtitle">Article 11 · Module 6: Communicating Decisions · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Communicate a final architecture decision to dev, PM, BA, and business stakeholders — clearly and without re-opening the debate</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Friday, 5:30 PM HKT</strong>. You are a Solution Architect in the <em>GPB Digital</em>
+            tribe. The chapter review of <strong>ADR-0191</strong> finished an hour ago with a sign-off. The
+            decision: the GPB onboarding API surface will use <em>REST for partner-facing, GraphQL behind
+            the BFF for the mobile app, and gRPC for east-west service-to-service</em>. The Idempotency-Key
+            header is mandated on all state-changing endpoints. The pagination is cursor for partner GET,
+            offset for internal.
+        </p>
+        <p>
+            周五下午 5:30 香港时间，你是 <em>GPB 数字化</em> tribe 的 Solution 架构师。<strong>ADR-0191</strong>
+            的 chapter 评审一小时前结束，已经签批。结论是：GPB 开户 API 接口<em>合作方走 REST、手机 BFF 走 GraphQL、
+            东西向服务间走 gRPC</em>。所有有状态变更的接口强制 Idempotency-Key 请求头。分页方面，合作方 GET 走
+            cursor，内部走 offset。
+        </p>
+        <p>
+            You need to email the decision to <strong>Mei</strong> (Tech Lead, Shanghai),
+            <strong>Jonathan</strong> (BA), <strong>Rohit</strong> (QA Lead, Bangalore),
+            <strong>Sara</strong> (Product Owner, RBWM Wealth), and CC <strong>Margaret</strong> (Chief
+            Architect), <strong>Diego</strong> (peer architect, UK), and the <em>Group Cyber</em> distribution
+            list. The email must: (1) state the decision in 3 sentences, (2) summarise the trade-offs in a
+            table, (3) list the next actions with owners and dates, (4) close the debate without sounding
+            dismissive.
+        </p>
+        <p>
+            你需要给 <strong>Mei</strong>（Tech Lead，上海）、<strong>Jonathan</strong>（BA）、
+            <strong>Rohit</strong>（QA 负责人，班加罗尔）、<strong>Sara</strong>（产品负责人，RBWM 财富）发邮件，
+            并抄送 <strong>Margaret</strong>（首席架构师）、<strong>Diego</strong>（同侪架构师，英国）和
+            <em>集团网络</em>邮件组。邮件要做到：(1) 3 句话讲清决策，(2) 用表格总结 trade-off，
+            (3) 列出下一步行动和 owner、日期，(4) 关掉讨论但语气不拒人千里。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话 (Email Body 邮件正文)</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">From:</span>
+                <span class="text"><span class="en">wei.architect@hsbc.com</span><span class="cn">你的邮箱</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">To:</span>
+                <span class="text"><span class="en">mei.tl@hsbc.com, jonathan.ba@hsbc.com, rohit.qa@hsbc.com, sara.po@hsbc.com</span><span class="cn">Tech Lead、BA、QA、PO</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Cc:</span>
+                <span class="text"><span class="en">margaret.chief.architect@hsbc.com, diego.architect@hsbc.com, group-cyber@hsbc.com</span><span class="cn">首席架构师、同侪架构师、集团网络</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Subject:</span>
+                <span class="text"><span class="en">[DECISION] ADR-0191 — GPB Onboarding API Surface — Protocol Trifecta, Idempotency, Pagination</span><span class="cn">[决策] ADR-0191——GPB 开户 API 接口——协议三件套、幂等、分页</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hi all,</span>
+                <span class="text"><span class="en">Following today's chapter review, <em>ADR-0191 is signed off.</em> This email is the <em>final decision</em> for the GPB onboarding API surface; please use it as the source of truth going forward and stop the Slack thread on REST vs GraphQL.</span><span class="cn">各位好，<em>ADR-0191 已经签批。</em>这封邮件是 GPB 开户 API 接口的<em>最终决策</em>；后续请以此为准，REST vs GraphQL 的 Slack 讨论请收尾。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Decision 决策</span>
+                <span class="text"><span class="en">We are recommending <em>REST for partner-facing north-south traffic, GraphQL behind the mobile BFF, and gRPC for east-west service-to-service.</em> The Idempotency-Key header is <em>mandated</em> on every state-changing endpoint with a 24-hour Redis dedup window. Cursor pagination for partner GET, offset for internal admin UIs.</span><span class="cn">我们建议<em>合作方南北向走 REST、手机 BFF 走 GraphQL、东西向服务间走 gRPC。</em>所有有状态变更的接口<em>强制</em>Idempotency-Key 请求头，24 小时 Redis 去重窗口。合作方 GET 走 cursor 分页，内部管理 UI 走 offset。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Trade-offs considered 已评估的取舍</span>
+                <span class="text"><span class="en">Three options were on the table: REST-only, GraphQL-everywhere, and the trifecta. The full matrix is in the ADR, but <em>here's the short version:</em></span><span class="cn">桌上有 3 个选项：纯 REST、GraphQL 全用、三件套。完整矩阵在 ADR 里，<em>简化版如下：</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Trade-off table 取舍表</span>
+                <span class="text"><span class="en"><em>REST-only:</em> simplest, partner-compliant, but mobile over-fetching stays. <em>GraphQL-everywhere:</em> best mobile ergonomics, but conflicts with the Group Standard on partner-facing APIs. <em>Trifecta (chosen):</em> each protocol used where it's strongest, Group-Standard compliant, mobile BFF gets the GraphQL ergonomics.</span><span class="cn"><em>纯 REST：</em>最简单、合作方合规，但手机 over-fetching 还在。<em>GraphQL 全用：</em>手机体验最佳，但和集团合作方 API 标准冲突。<em>三件套（已选）：</em>每个协议用在其最擅长的场景，集团标准合规，手机 BFF 拿到 GraphQL 体验。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Actions &amp; owners 行动与负责人</span>
+                <span class="text"><span class="en"><em>Mei:</em> update the OpenAPI spec with the URL versioning policy and the cursor contract by <em>EOD Wednesday.</em> <em>Jonathan:</em> walk through the partner-facing API contract with the two fintech partners next week. <em>Rohit:</em> drop the test plan for the Idempotency-Key rejection at the gateway into Confluence by <em>Friday EOD.</em> <em>Sara:</em> please confirm the 12-month partner RPS projection by <em>end of next week</em> so we can size the auto-scale.</span><span class="cn"><em>Mei：</em><em>周三 EOD 前</em>在 OpenAPI 规约里写好 URL 版本策略和 cursor 契约。<em>Jonathan：</em>下周和两家金融科技合作方走查合作方 API 契约。<em>Rohit：</em><em>周五 EOD 前</em>在 Confluence 里贴出 API 网关 Idempotency-Key 拒绝的测试方案。<em>Sara：</em>麻烦<em>下周末前</em>确认 12 个月合作方 RPS 预测，方便我们规划自动伸缩。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Open questions 悬而未决</span>
+                <span class="text"><span class="en"><em>Group Standard on API protocols carve-out for GraphQL behind the BFF</em> is still pending confirmation from the platform team. <em>Diego has offered to chase it</em> — Diego, please confirm by Tuesday. <em>If the carve-out is denied, we fall back to REST with sparse fieldsets</em> for the mobile BFF; that's a known pattern and the squad has done it before on the OnePay flow.</span><span class="cn"><em>集团 API 协议标准对 BFF 后 GraphQL 的豁免</em>还在等平台团队确认。<em>Diego 主动要跟</em>——Diego，麻烦周二前确认。<em>如果豁免被拒，我们就退回 REST + sparse fieldsets</em>给手机 BFF；这是已知模式，squad 之前在 OnePay 流程做过。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Closing 收尾</span>
+                <span class="text"><span class="en"><em>Thanks, everyone,</em> for the design discussions this week. The chapter review feedback is in Confluence. <em>If you have any concerns about this decision,</em> please raise them in the chapter sync on Monday — <em>not on the Slack thread</em>, which I'm closing EOD today.</span><span class="cn"><em>感谢大家</em>本周的设计讨论。Chapter 评审反馈已贴在 Confluence。<em>如果对决策有不同意见</em>，请在周一的 chapter 例会上提——<em>不要在 Slack 线程里</em>，那条讨论我今天 EOD 关掉。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">— Wei, Solution Architect, GPB Digital</span>
+                <span class="text"><span class="en">ADR-0191 · Confluence: hsbc.atlassian.net/wiki/spaces/GPB-arch/pages/ADR-0191</span><span class="cn">ADR 链接</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Subject</span> <em>[DECISION] ADR-0191 — GPB Onboarding API Surface — Protocol Trifecta, Idempotency, Pagination</em></span>
+                <span class="chinese">[决策] ADR-0191——GPB 开户 API 接口——协议三件套、幂等、分页</span>
+                <span class="note">Lead with [DECISION] in the subject. Without it, the email gets deprioritised to the "next week" pile.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>This email is the final decision; please use it as the source of truth going forward.</em></span>
+                <span class="chinese">这封邮件是最终决策；后续请以此为准</span>
+                <span class="note">"Source of truth" + "going forward" = the sentence that stops the debate. State it in the second paragraph.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>We are recommending REST for partner-facing, GraphQL behind the BFF, gRPC for east-west.</em></span>
+                <span class="chinese">我们建议合作方走 REST、BFF 后 GraphQL、东西向 gRPC</span>
+                <span class="note">Always use "recommend" in a decision email. "We have decided" is too authoritative; "we recommend" carries the rationale.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Mandate</span> <em>The Idempotency-Key header is mandated on every state-changing endpoint.</em></span>
+                <span class="chinese">所有有状态变更的接口强制 Idempotency-Key 请求头</span>
+                <span class="note">"Mandated" = non-optional. Use it for hard rules (Group Standards, Idempotency-Key, HSM).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Here's the short version: REST-only, GraphQL-everywhere, and the trifecta.</em></span>
+                <span class="chinese">简化版：纯 REST、GraphQL 全用、三件套</span>
+                <span class="note">Always give the alternatives — even if you've already chosen. People accept decisions they've seen considered.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Owner</span> <em>Mei: update the OpenAPI spec by EOD Wednesday. Jonathan: walk through the partner contract next week.</em></span>
+                <span class="chinese">Mei：周三 EOD 前更新 OpenAPI 规约。Jonathan：下周走查合作方契约</span>
+                <span class="note">"Name: action by date." This is the architect's action template. Repeat for every action; never leave a date or an owner blank.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Soft</span> <em>Diego has offered to chase it — Diego, please confirm by Tuesday.</em></span>
+                <span class="chinese">Diego 主动要跟——Diego，麻烦周二前确认</span>
+                <span class="note">"Has offered to" is a politeness device. You're assigning the action, but you're framing it as their offer, not your demand.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fallback</span> <em>If the carve-out is denied, we fall back to REST with sparse fieldsets.</em></span>
+                <span class="chinese">如果豁免被拒，我们就退回 REST + sparse fieldsets</span>
+                <span class="note">Always name the plan B in a decision email. The plan B is what makes the decision survivable.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Channel</span> <em>If you have concerns, please raise them in the chapter sync — not on the Slack thread, which I'm closing EOD today.</em></span>
+                <span class="chinese">如果有不同意见，请在 chapter 例会上提——不要在 Slack 线程里，那条讨论我今天 EOD 关掉</span>
+                <span class="note">Naming the channel where debate is allowed is the politeness way to close the discussion. "I'm closing the thread" is the boundary.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sign-off</span> <em>— Wei, Solution Architect, GPB Digital · ADR-0191 · Confluence link</em></span>
+                <span class="chinese">落款：Wei，Solution 架构师，GPB 数字化·ADR-0191·Confluence 链接</span>
+                <span class="note">Always end with: name, role, tribe, ADR number, Confluence link. Five things — missing any one loses traceability.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Source of truth</strong> n. 唯一权威 The single document / email that everyone agrees to refer to. Stops re-debate.</li>
+            <li><strong>Sign-off</strong> n. 签批 The formal approval that closes a decision. ADR sign-off is the gate for squad coding.</li>
+            <li><strong>Carve-out</strong> n. 豁免 An exception to a Group Standard — must be approved in writing by the standard owner.</li>
+            <li><strong>Trade-off matrix</strong> n. 取舍矩阵 A small table comparing 2-3 options across 3-4 criteria. Always include the chosen one.</li>
+            <li><strong>Action item</strong> n. 行动项 A named task with an owner and a date. The output of every decision email.</li>
+            <li><strong>Plan B / Fallback</strong> n. 备选方案 The pre-agreed alternative if the chosen path is blocked. Reduces re-litigation.</li>
+            <li><strong>Channel discipline</strong> n. 渠道纪律 The rule that certain conversations happen in certain places (e.g., design debates in chapter, not Slack).</li>
+            <li><strong>CC etiquette</strong> n. 抄送礼仪 The HSBC norm of CC'ing the Chief Architect, the platform team, and InfoSec on every decision email.</li>
+            <li><strong>Closing the loop</strong> n. 闭环 Sending the final email / update that tells the team "we are done debating this".</li>
+            <li><strong>Open question</strong> n. 悬而未决项 A known unknown that the team will resolve later. Always named in the decision email.</li>
+            <li><strong>Stakeholder</strong> n. 利益相关方 Anyone affected by the decision: dev, PM, BA, QA, business, Group Cyber.</li>
+            <li><strong>Distribution list (DL)</strong> n. 邮件组 An email alias that reaches a whole team (e.g., group-cyber@hsbc.com).</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "We are recommending X" vs "We have decided X" — the verb of authority</h3>
+        <p>
+            In a decision email, <em>we are recommending</em> carries the rationale; <em>we have decided</em>
+            carries the authority. Use <strong>"we are recommending"</strong> when the decision is fresh and
+            the room may still want to discuss. Use <strong>"we have decided"</strong> only after the
+            chapter has signed off. After sign-off, the email subject leads with <em>[DECISION]</em> and the
+            body uses <em>we are recommending</em> + <em>this email is the final decision</em>. The two
+            phrases together signal "this is closed, but with the humility of a rationale".
+        </p>
+        <p><em>We are recommending</em> 带 rationale，<em>we have decided</em> 带 authority。决策邮件里两个都用。</p>
+
+        <h3>② "Name: action by date." — the action-item template</h3>
+        <p>
+            Every action in a decision email follows the <strong>"Name: action by date."</strong> template.
+            <em>Mei: update the OpenAPI spec by EOD Wednesday.</em> The colon after the name is a hard
+            separator — it tells the reader "this is now an action, not a sentence about an action". The
+            trailing <em>by date</em> is non-negotiable: an action without a date is a wish. Use this
+            template for every action item; the rhythm makes the email scannable.
+        </p>
+        <p><em>Name: action by date.</em> 是决策邮件的行动项模板——冒号、动作、日期，缺一不可。</p>
+
+        <h3>③ "If you have any concerns, please raise them in X — not in Y" — the channel-redirect</h3>
+        <p>
+            <em>If you have any concerns, please raise them in the chapter sync — not on the Slack thread,
+            which I'm closing EOD today.</em> The <strong>channel-redirect</strong> is the politeness way to
+            close a debate. <em>Please raise them in X</em> gives people a legitimate place to object. The
+            <em>— not in Y, which I'm closing</em> is the boundary. The em-dash + <em>not</em> construction
+            is more graceful than <em>do not post on Slack</em>. Use it once per decision email; over-use
+            sounds controlling.
+        </p>
+        <p><em>If you have concerns, raise them in X — not in Y</em> 是关闭讨论的得体句式。给一个合法渠道、给一个边界。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Lead the subject with [DECISION].</strong> An email about an architecture decision without [DECISION] in the subject gets deprioritised to "next week". HSBC inboxes are noisy; the tag is the only thing that makes Margaret read it on Friday night.</li>
+            <li><strong>CC the Chief Architect, the platform team, and Group Cyber.</strong> This is the HSBC CC norm on every architecture decision email. Skipping the CC looks like you're hiding the decision. Over-CC'ing (e.g., the whole department) looks like CYA. The right CC is: chief architect, peer architect, the relevant group function (Cyber / Resilience / InfoSec).</li>
+            <li><strong>State the decision in 3 sentences, then the trade-offs.</strong> Decision emails that lead with the trade-off matrix are PM-style; they read like a "let me explain my thinking" memo. Architects lead with the decision, then the trade-offs. Recipients want the conclusion in the first paragraph.</li>
+            <li><strong>Always name the action, owner, and date.</strong> "Mei: update the OpenAPI spec by EOD Wednesday." An action without an owner is a wish; an action without a date is a wish with a name. Architects write all three.</li>
+            <li><strong>Always name the open question and the fallback.</strong> "Group Standard carve-out pending — Diego chasing by Tuesday. If denied, REST + sparse fieldsets fallback." Open questions are not failures; they are honest disclosures. Fallbacks are not pessimism; they are risk-reduction.</li>
+            <li><strong>Channel discipline closes the debate gracefully.</strong> "Please raise concerns in the chapter sync — not on the Slack thread, which I'm closing EOD." This sentence turns a debate-closer into a respectful one. People feel heard (the chapter sync is real) and the boundary is clear (Slack is closed).</li>
+            <li><strong>End with name, role, tribe, ADR number, Confluence link.</strong> Five things, every time. The signature block is the audit trail. Two years from now, when the squad asks "why did we choose REST over GraphQL?", the email is the only artifact that has all five — name, role, tribe, ADR, link.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the decision email</h3>
+        <p>Translate the following architecture decision email into natural Chinese. Pay attention to the subject-line tag, the 3-sentence decision, and the action-item template.</p>
+        <blockquote>
+            Subject: [DECISION] ADR-0194 — OnePay Fraud-Screening Service — NFRs, Cold-Start, Model Risk<br><br>
+            Hi all,<br><br>
+            Following today's chapter review, ADR-0194 is signed off. This email is the final decision for
+            the OnePay fraud-screening service; please use it as the source of truth going forward and
+            stop the Slack thread on cold-start handling.<br><br>
+            Decision: we are recommending a 2-second scoring budget at p95, manual-review queue for
+            cold-start customers with fewer than 10 transactions, no deny-by-default policy. The
+            ML model is gated on the Group Standard on Model Risk, with a 6-monthly re-validation
+            cadence. Owner: Akash for the scoring service, Sara's team for the model risk sign-off.<br><br>
+            Actions &amp; owners: Akash: drop the scoring budget test plan into Confluence by EOD Wednesday.
+            Jonathan: walk through the manual-review queue UX with the Ops team by Friday. Rohit:
+            schedule the Group Cyber pen test by end of next week. Margaret: please sign off on the
+            model re-validation cadence by next Tuesday.<br><br>
+            Open question: the Group Standard on Model Risk requires Group Model Risk sign-off
+            before production deploy — Diego is chasing the platform team. If the sign-off is
+            delayed beyond 2 weeks, we descope the ML model and ship the rules-only path on time.<br><br>
+            If you have any concerns about this decision, please raise them in the chapter sync
+            on Monday — not on the Slack thread, which I'm closing EOD today.<br><br>
+            — Wei, Solution Architect, GPB Digital · ADR-0194 · Confluence link
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>主题：[决策] ADR-0194——OnePay 反欺诈筛查服务——NFR、冷启动、模型风险<br><br>各位好，今天 chapter 评审后 ADR-0194 已经签批。这封邮件是 OnePay 反欺诈筛查服务的最终决策；后续请以此为准，关于冷启动的 Slack 讨论请收尾。<br><br>决策：我们建议评分预算 p95 2 秒、冷启动客户（交易少于 10 笔）走人工审核队列、不做 deny-by-default。ML 模型走集团模型风险标准，6 个月一次再验证。Owner：Akash 负责评分服务、Sara 团队负责模型风险签批。<br><br>行动与负责人：Akash：周三 EOD 前在 Confluence 里贴出评分预算测试方案。Jonathan：周五前和 Ops 团队走查人工审核队列的 UX。Rohit：下周末前安排好集团网络的渗透测试。Margaret：麻烦下周二前签批模型再验证节奏。<br><br>悬而未决：集团模型风险标准要求生产部署前必须有集团模型风险签批——Diego 在和平台团队跟。如果签批延迟超过 2 周，我们就 descope ML 模型、按时上线纯规则路径。<br><br>如果对决策有不同意见，请在周一的 chapter 例会上提——不要在 Slack 线程里，那条讨论我今天 EOD 关掉。<br><br>落款：Wei，Solution 架构师，GPB 数字化·ADR-0194·Confluence 链接</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these decision email lines is most "architect-like" and which is most "PM-like" or "developer-like"? Why?</p>
+        <ol>
+            <li>Subject: "Quick question on the fraud-screening service" — body: "Hey, just wanted to float an idea…"</li>
+            <li>Subject: "[DECISION] ADR-0194 — OnePay Fraud-Screening — NFRs, Cold-Start, Model Risk" — body: "Following today's chapter review, ADR-0194 is signed off. This email is the final decision…"</li>
+            <li>Subject: "Update on the fraud-screening service" — body: "I've been thinking about the design and I think we should…"</li>
+            <li>Subject: "[DECISION] ADR-0194" — body: "We recommend X. Mei: action 1 by Wed. Rohit: action 2 by Fri. — Wei, Solution Architect, GPB Digital."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the gold standard — [DECISION] tag, ADR number, final-decision sentence, source-of-truth phrase. ④ is the architect's terse close (correct elements, minimal prose). ① is dev-style ("Quick question" + "float an idea" is a Slack post, not a decision email). ③ is PM-style ("Update" + "I've been thinking" is mid-debate, not closed). A common mistake new architects make is writing ① or ③ and wondering why the decision gets re-litigated two weeks later.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a Solution Architect in the CMB Digital Channels tribe. The chapter has just signed off on ADR-0201 for the CMB trade-settlement event flow. The decision: Kafka topics named <em>hsbc.cmb.trades.TradeLifecycle</em>, partitioned by trade ID, at-least-once with idempotent consumers, orchestrated saga, schema evolution: additive is backward-compatible. Write the full decision email (subject + 3-sentence decision + actions + open question + close) in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>Subject: [DECISION] ADR-0201 — CMB Trade-Settlement Event Flow — Topics, Ordering, Saga, Schema Evolution<br><br>Hi all,<br><br>Following today's chapter review, ADR-0201 is signed off. This email is the final decision for the CMB trade-settlement event flow; please use it as the source of truth going forward and stop the Slack thread on exactly-once vs at-least-once.<br><br>Decision: we are recommending Kafka topics named hsbc.cmb.trades.TradeLifecycle, partitioned by trade ID, at-least-once with idempotent consumers, orchestrated saga with a central orchestrator service, and the schema evolution policy: additive is backward-compatible, breaking needs a new topic.<br><br>Actions &amp; owners: Mei: provision the topics in the platform team's Kafka cluster and drop the OpenAPI/protobuf contract into Confluence by EOD Wednesday. Akash: implement the orchestrator service skeleton and the idempotency key dedup against Redis by EOD Friday. Jonathan: walk through the saga state machine with the Ops team by next Tuesday. Rohit: schedule the schema evolution regression test by end of next week.<br><br>Open question: the platform team's Kafka topic-naming standard is being revised (v2 expected in 4 weeks) — Diego is on the working group. If v2 changes the kebab-case to camelCase, we may need a topic migration plan. Honest answer: we'd rather do the migration now while we have one consumer than in 6 months when we have ten.<br><br>If you have any concerns about this decision, please raise them in the chapter sync on Monday — not on the Slack thread, which I'm closing EOD today.<br><br>Thanks, everyone, for the design discussions this week.<br><br>— Wei, Solution Architect, CMB Digital Channels · ADR-0201 · Confluence link</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="06-tech-radar.html" class="btn btn-outline-secondary">← Previous: Article 06</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

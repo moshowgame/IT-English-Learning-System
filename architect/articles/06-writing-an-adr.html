@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: Writing an ADR | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">06 · Writing an ADR</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Writing an ADR</h1>
+        <p class="subtitle">Article 06 · Module 6: The MADR Template in Practice · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Context, Decision, Consequences — the MADR template in practice</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Friday afternoon, 14:00 HKT</strong>. You are sitting down to draft
+            <em>ADR-0231</em> for the OneWealth platform — specifically, the decision to adopt
+            <em>AWS API Gateway with mutual TLS</em> as the north-south entry for partner-facing
+            traffic. Margaret, your Chief Architect, has asked for the draft to be in the chapter
+            review queue by Monday.
+        </p>
+        <p>
+            周五下午 2 点香港时间，你坐下来起草 OneWealth 平台的 <em>ADR-0231</em>——具体来说，是决定采用
+            <em>AWS API Gateway + 双向 TLS</em> 作为合作方侧流量的南北向入口。Chief Architect Margaret
+            要求草稿下周一前进入 chapter 评审队列。
+        </p>
+        <p>
+            HSBC's chapter uses the <strong>MADR</strong> (Markdown Any Decision Records) template:
+            <em>Context, Decision, Consequences</em> — with an optional <em>Considered Options</em>
+            section and a <em>Pros and Cons of the Options</em> table. The ADR is the durable
+            artefact: it lives in Confluence, gets a number, and never gets edited after sign-off
+            (you write a new ADR to supersede it). <strong>Lin</strong>, a peer architect in Shanghai,
+            is doing a peer review of the draft over the weekend.
+        </p>
+        <p>
+            HSBC 的 chapter 用 <strong>MADR</strong>（Markdown Any Decision Records）模板：<em>Context,
+            Decision, Consequences</em>——还有一个可选的 <em>Considered Options</em> 章节和
+            <em>Pros and Cons of the Options</em> 表格。ADR 是持久化的产物：它存在 Confluence 里，分配一个
+            编号，签批后不能再编辑（要用新的 ADR 来取代）。上海的同侪架构师 <strong>Lin</strong>
+            周末会做同行评审。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Wei, <em>quick check-in before you start.</em> For ADR-0231, are you <em>writing it in MADR or the legacy template?</em></span><span class="cn">Wei，<em>你开始之前快速对一下</em>。ADR-0231，<em>你用 MADR 还是旧模板写？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">MADR, definitely. <em>The chapter standardised on MADR-3.0 last year</em> and the legacy template is <em>sunset for new ADRs</em>. <em>Honest answer — I find MADR cleaner</em> because the <em>Context / Decision / Consequences split</em> forces you to be <em>explicit about trade-offs</em>.</span><span class="cn">用 MADR。<em>去年 chapter 统一用 MADR-3.0</em>，旧模板<em>对新 ADR 已经废弃</em>。说实话，<em>我觉得 MADR 更清晰</em>，因为 <em>Context / Decision / Consequences 的划分</em>能强迫你<em>把 trade-off 写清楚</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Perfect. <em>One thing to watch — the Context section is the most-skimmed part.</em> <em>Make the first paragraph the "why this decision matters now"</em> — not the historical background. <em>If the first paragraph is history,</em> reviewers will skim past it.</span><span class="cn">好。<em>注意一点——Context 章节是被跳读最多的部分</em>。<em>第一段直接写"为什么这个决定现在重要"</em>——不要写历史背景。<em>如果第一段是历史，</em>评审者会跳过去。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Got it. <em>I'll lead with the business driver</em> — OneWealth partner onboarding is gating two Tier-1 partners in Q3 — and <em>keep the legacy history in a sub-section if it helps</em>.</span><span class="cn">明白。<em>我先用业务驱动开篇</em>——OneWealth 合作方接入是 Q3 两个 Tier-1 合作方的瓶颈——<em>如果需要，旧历史放进子章节</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Good. <em>For the Considered Options section, are you doing two options or three?</em></span><span class="cn">好。<em>Considered Options 章节，你是写 2 个还是 3 个选项？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Three.</em> <em>One,</em> AWS API Gateway with mTLS — <em>recommended</em>; <em>two,</em> a self-managed NGINX with mTLS on EC2; <em>three,</em> a "do nothing" option that keeps the current ad-hoc partner VPN. <em>The "do nothing" option is important</em> because <em>it forces the ADR to defend the cost of change</em> — reviewers will ask "why not just keep what we have?"</span><span class="cn"><em>3 个。</em><em>一、</em>AWS API Gateway + 双向 TLS——<em>推荐</em>；<em>二、</em>自管 NGINX + 双向 TLS，跑在 EC2 上；<em>三、</em>"do nothing"选项，保持当前临时凑合的合作方 VPN。<em>"Do nothing"选项很重要</em>，因为<em>它强迫 ADR 去论证改造的成本</em>——评审者会问"为什么不保持现状？"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Exactly right.</em> <em>Now, the Consequences section</em> — that's where the <em>honest negative consequences</em> go. <em>If the Consequences section is all positive,</em> the chapter will reject it on the spot. <em>What are the negatives of API Gateway + mTLS?</em></span><span class="cn"><em>对。</em><em>接下来，Consequences 章节</em>——这里是<em>诚实的负面后果</em>该写的地方。<em>如果 Consequences 全是正面的，</em>chapter 会当场打回。API Gateway + 双向 TLS 的负面是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Three negatives, <em>honest answer.</em> <em>One,</em> <em>vendor lock-in to AWS</em> — if the Group ever moves off AWS, the gateway is a re-platform item. <em>Two,</em> <em>cost at scale</em> — the per-request pricing model means the OnePay high-volume partner will see a material bill increase. <em>Three,</em> <em>operational maturity</em> — our UK ops team has zero muscle memory on API Gateway debugging, so the first 3 months post go-live will need a <em>designated on-call rota and a published runbook.</em></span><span class="cn">3 个负面，说实话。<em>一、</em><em>对 AWS 厂商锁定</em>——如果集团将来离开 AWS，gateway 要重新选型。<em>二、</em><em>规模上的成本</em>——按请求计费意味着 OnePay 高流量合作方的账单会明显增加。<em>三、</em><em>运维成熟度</em>——英国运维团队对 API Gateway 调试零经验，所以上线后前 3 个月需要<em>专门的 on-call 排班和发布的 runbook</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Good. <em>One last thing — the ADR needs a Decision Outcome section.</em> Are you <em>Propose Accepted, Propose Rejected, or Propose Superseded?</em>"</span><span class="cn">好。<em>最后一件事——ADR 需要一个 Decision Outcome 章节。</em>你要写 <em>Propose Accepted、Propose Rejected 还是 Propose Superseded？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Propose Accepted</em>, of course. <em>But honest answer — I want to leave the door open to a future "Superseded" if we ever break the partner traffic off the gateway</em>. <em>MADR allows for that — the outcome is filled in at chapter sign-off</em>, and a superseding ADR can be written in the future.</span><span class="cn">当然是 <em>Propose Accepted</em>。不过说实话，<em>我想给未来"Superseded"留个口子</em>，万一我们将来把合作方流量从 gateway 上拆下来。<em>MADR 允许这样做——结果在 chapter 签批时填</em>，将来可以写一个 supersede 的 ADR。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Lovely. <em>Lin in Shanghai is doing peer review — ping her when the draft is up.</em> <em>And Wei, one tip — the Pros and Cons table is the chapter's favourite part.</em> <em>If your table is well-structured,</em> the review meeting is 20 minutes. <em>If it's a wall of text,</em> it's 60 minutes.</span><span class="cn">好。<em>上海的 Lin 做同行评审——草稿上线后 ping 她</em>。<em>Wei，再给一个 tip——Pros and Cons 表格是 chapter 最喜欢的部分</em>。<em>如果你的表格结构清晰，</em>评审会 20 分钟。<em>如果是一大段文字，</em>就是 60 分钟。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Will do, thanks Margaret.</em> <em>Right, drafting now — I'll have ADR-0231 in the chapter queue by Monday morning.</em></span><span class="cn"><em>好，谢谢 Margaret</em>。<em>好，开始起草——下周一早上 ADR-0231 进 chapter 队列</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Standard</span> <em>The chapter standardised on MADR-3.0 last year.</em></span>
+                <span class="chinese">去年 chapter 统一用 MADR-3.0</span>
+                <span class="note">Always cite the MADR version. MADR-3.0 is the current HSBC standard. Legacy templates are sunset.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Make the first paragraph the "why this decision matters now".</em></span>
+                <span class="chinese">第一段直接写"为什么这个决定现在重要"</span>
+                <span class="note">The Context section is the most-skimmed. Lead with the business driver, not the history.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Are you doing two options or three?</em></span>
+                <span class="chinese">你是写 2 个还是 3 个选项？</span>
+                <span class="note">Always include a "do nothing" or "status quo" option. Three options is the chapter's preference; two is the minimum.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>The "do nothing" option forces the ADR to defend the cost of change.</em></span>
+                <span class="chinese">"Do nothing"选项强迫 ADR 去论证改造的成本</span>
+                <span class="note">The "do nothing" option is the ADR's honesty test. If you can't defend why change is cheaper than staying, the chapter will reject the proposal.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Honest</span> <em>What are the negatives? — honest answer, three.</em></span>
+                <span class="chinese">负面是什么？——说实话，3 个</span>
+                <span class="note">The Consequences section must include real negatives. An all-positive Consequences section gets rejected on the spot.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Lock-in</span> <em>Vendor lock-in to AWS — if the Group ever moves off AWS, the gateway is a re-platform item.</em></span>
+                <span class="chinese">对 AWS 厂商锁定——如果集团将来离开 AWS，gateway 要重新选型</span>
+                <span class="note">Always name the lock-in risk in Consequences. "Re-platform item" is the chapter's word for "this will need its own ADR someday".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cost</span> <em>Cost at scale — the per-request pricing model means the OnePay high-volume partner will see a material bill increase.</em></span>
+                <span class="chinese">规模上的成本——按请求计费意味着 OnePay 高流量合作方的账单会明显增加</span>
+                <span class="note">"Cost at scale" is the most common ADR rejection reason. Always quantify the cost in the Consequences section, even if roughly.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Maturity</span> <em>Operational maturity — our UK ops team has zero muscle memory on API Gateway debugging.</em></span>
+                <span class="chinese">运维成熟度——英国运维团队对 API Gateway 调试零经验</span>
+                <span class="note">"Muscle memory" is the chapter's word for "we know how to operate this in production". If zero, name a 3-6 month maturity plan.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Outcome</span> <em>Are you Propose Accepted, Propose Rejected, or Propose Superseded?</em></span>
+                <span class="chinese">你要写 Propose Accepted、Propose Rejected 还是 Propose Superseded？</span>
+                <span class="note">MADR has three Decision Outcomes. "Propose Superseded" is set at chapter sign-off if the ADR is being replaced.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Tip</span> <em>If your table is well-structured, the review meeting is 20 minutes.</em></span>
+                <span class="chinese">如果你的表格结构清晰，评审会 20 分钟</span>
+                <span class="note">A well-built Pros and Cons table is the chapter's biggest time-saver. A wall of text is the chapter's biggest time-waster.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>ADR (Architecture Decision Record)</strong> n. 架构决策记录 A short, immutable document capturing one decision + its context + consequences.</li>
+            <li><strong>MADR</strong> n. MADR 模板 "Markdown Any Decision Records" — a lightweight ADR template with Context / Decision / Consequences.</li>
+            <li><strong>Context</strong> n. 上下文 The MADR section that explains the forces at play: business driver, constraints, and "why now".</li>
+            <li><strong>Decision</strong> n. 决策 The MADR section that states the chosen option and the rationale.</li>
+            <li><strong>Considered Options</strong> n. 候选选项 The MADR section that lists 2-3 candidate options, including "do nothing".</li>
+            <li><strong>Pros and Cons table</strong> n. 利弊对照表 The MADR table that compares each option's strengths and weaknesses.</li>
+            <li><strong>Consequences</strong> n. 后果 The MADR section that lists the positive AND negative consequences of the chosen option.</li>
+            <li><strong>Decision Outcome</strong> n. 决策结果 The MADR field filled in at chapter sign-off: Propose Accepted / Rejected / Superseded.</li>
+            <li><strong>Propose Accepted</strong> phr. 提议通过 The ADR is approved and becomes the architecture standard.</li>
+            <li><strong>Propose Rejected</strong> phr. 提议驳回 The ADR is rejected; the status quo stands.</li>
+            <li><strong>Propose Superseded</strong> phr. 提议被取代 A later ADR replaces this one. MADR supports this as a first-class outcome.</li>
+            <li><strong>Peer review</strong> n. 同行评审 A second architect (often in another region) reads the draft and raises comments before chapter sign-off.</li>
+            <li><strong>Immutability</strong> n. 不可变性 ADRs, once signed off, are not edited — they are superseded by new ADRs.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Lead with the driver, not the history" — the ADR context pattern</h3>
+        <p>
+            <em>Make the first paragraph the "why this decision matters now"</em> uses a
+            noun-phrase pattern. The structure is <em>Lead with the [driver]</em>, where
+            <em>driver</em> is a business or technical reason, not a history. The grammatical
+            move: <em>lead with X, not Y</em>. <em>X</em> is the driver; <em>Y</em> is the
+            history. Reviewers skim history; they read drivers.
+        </p>
+        <p>"Lead with the driver, not the history" 是 ADR Context 章节的核心模式。评审者跳读历史，但会读驱动。</p>
+
+        <h3>② "It forces the ADR to defend X" — the "do nothing" verb</h3>
+        <p>
+            <em>The "do nothing" option forces the ADR to defend the cost of change</em> uses
+            <em>forces X to Y</em>, a strong-verb pattern. The structure: <em>[constraint] forces
+            [artefact] to [action]</em>. The "do nothing" option is the constraint; the ADR is
+            the artefact; <em>defend the cost of change</em> is the action. Use it when explaining
+            why you included a "do nothing" option that seems to weaken the recommendation.
+        </p>
+        <p>"[约束] forces [产物] to [行动]" 是解释"为什么包含 'do nothing' 选项"的标准句型。</p>
+
+        <h3>③ "If the Consequences section is all positive, the chapter will reject it" — the MADR condition</h3>
+        <p>
+            <em>If the Consequences section is all positive, the chapter will reject it on the
+            spot</em> uses a conditional structure: <em>If [section] is [bad shape], the chapter
+            will [verdict]</em>. The implied subject of <em>reject</em> is the chapter. The
+            structure signals a hard rule: an all-positive Consequences is a chapter-level
+            rejection. Use it to remind yourself and your peers that honesty in Consequences is
+            not optional.
+        </p>
+        <p>"If [章节] is [坏状态], the chapter will [判定]" 是 MADR 强约束条件句型——用来强调 Consequences 章节的诚实性不可省。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>MADR is the only template for new ADRs.</strong> The legacy template is sunset. If you submit a legacy ADR, the chapter will ask you to re-format before review. Always use MADR-3.0, always cite the version in the metadata.</li>
+            <li><strong>Lead the Context with the driver, not the history.</strong> The first paragraph answers "why this decision matters now". Reviewers skim history; they read drivers. If the first paragraph is "in 2019, the squad did X", rewrite it.</li>
+            <li><strong>Always include a "do nothing" option.</strong> The chapter expects 3 options: recommended, alternative, and "do nothing". The "do nothing" option is the ADR's honesty test. If you can't defend why change is cheaper than staying, the chapter will reject the proposal.</li>
+            <li><strong>Consequences must include real negatives.</strong> Vendor lock-in, cost at scale, operational maturity — these are the three honest negatives the chapter expects. An all-positive Consequences section gets rejected on the spot. Always name the negatives and the mitigations.</li>
+            <li><strong>Quantify the cost, even roughly.</strong> "Cost at scale" is the most common ADR rejection reason. "We expect a 15% increase in partner-facing infra cost" is acceptable; "it might cost more" is not. A back-of-the-envelope number is better than no number.</li>
+            <li><strong>The Pros and Cons table is the chapter's favourite part.</strong> A well-structured table turns a 60-minute review into a 20-minute review. A wall of text turns a 20-minute review into a 60-minute review. Use the MADR table format.</li>
+            <li><strong>Decision Outcome is filled in at chapter sign-off, not by the author.</strong> You write "Propose Accepted"; the chapter fills in "Accepted" at sign-off. MADR allows for "Superseded" as a first-class outcome — a later ADR can replace it.</li>
+            <li><strong>ADRs are immutable once signed off.</strong> You don't edit a signed ADR. If the decision changes, you write a new ADR that says "this supersedes ADR-XXXX". The history of the architecture lives in the chain of ADRs, not in edited documents.</li>
+            <li><strong>Cross-region peer review is normal.</strong> Lin in Shanghai reviewing your draft is the chapter's standard practice. Always ping the peer reviewer when the draft is up, and always address their comments in the next revision before the chapter sign-off.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the MADR outline</h3>
+        <p>Translate the following MADR-style ADR outline into natural Chinese. Pay attention to the "do nothing" option and the Consequences section.</p>
+        <blockquote>
+            "ADR-0240: Adopt Apache Flink for RBWM fraud-detection streaming.
+            Context. The RBWM fraud-detection pipeline runs on batch Spark jobs every 15 minutes.
+            The business wants sub-second decisioning on card-not-present transactions to reduce
+            fraud loss. Considered Options. Option 1 — Adopt Apache Flink with exactly-once
+            semantics on the Group Kafka platform. Option 2 — Stay on Spark Structured Streaming
+            with micro-batch mode. Option 3 — Do nothing; accept the 15-minute latency as a
+            business-as-usual cost. Decision. We recommend Option 1 — Apache Flink on the Group
+            Kafka platform, scoped to one squad (RBWM fraud-detection) for one quarter, with a
+            go/no-go gate. Consequences. Positive — sub-second decisioning, exactly-once
+            guarantees, native Kafka integration. Negative — vendor coupling to the Flink
+            ecosystem; operational maturity is low (UK ops has zero muscle memory); cost of the
+            RocksDB state backend tuning. Mitigations — SRE runbook, monthly game-day, designated
+            on-call rota. Decision Outcome. Propose Accepted."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"ADR-0240：在 RBWM 反欺诈流处理上采用 Apache Flink。<em>背景</em>。RBWM 反欺诈管线目前每 15 分钟跑一次 Spark 批处理。业务希望对<em>卡不在场交易</em>达到亚秒级判定，以减少欺诈损失。<em>候选选项</em>。选项 1——在 Group Kafka 平台上采用 Apache Flink，使用精确一次语义。选项 2——继续用 Spark Structured Streaming 的微批模式。选项 3——Do nothing；接受 15 分钟延迟作为日常业务成本。<em>决策</em>。我们<em>推荐选项 1</em>——在 Group Kafka 平台上的 Apache Flink，范围限定在 1 个 squad（RBWM 反欺诈），1 个季度，有 go/no-go 关卡。<em>后果</em>。正面——亚秒级判定、精确一次保证、原生 Kafka 集成。负面——对 Flink 生态的厂商耦合；运维成熟度低（英国运维零经验）；RocksDB state 后端调参的成本。缓解措施——SRE runbook、每月演练日、专门的 on-call 排班。<em>决策结果</em>。提议通过。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the ADR mistake</h3>
+        <p>Which of these ADR drafts is most aligned with the MADR template and HSBC architecture culture? Why?</p>
+        <ol>
+            <li>"Context. We are moving to Flink. Decision. Use Flink. Consequences. Faster, better, cheaper. Outcome. Propose Accepted."</li>
+            <li>"Context. The RBWM fraud-detection pipeline runs on batch Spark every 15 minutes; the business wants sub-second decisioning on card-not-present transactions to reduce fraud loss by Q3. Considered Options. Option 1 — Adopt Apache Flink (recommended). Option 2 — Stay on Spark micro-batch. Option 3 — Do nothing. Decision. We recommend Option 1, scoped to one squad, one quarter, with a go/no-go gate. Consequences. Positive: sub-second decisioning, exactly-once, native Kafka. Negative: vendor coupling, low operational maturity, RocksDB tuning cost. Mitigations: SRE runbook, monthly game-day, on-call rota. Outcome. Propose Accepted."</li>
+            <li>"Context. Flink is fast and modern. Decision. Adopt Flink. Consequences. None. Outcome. Propose Accepted."</li>
+            <li>"Context. The squad asked for Flink. Decision. Yes. Outcome. Propose Accepted."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is MADR-compliant: driver-led Context, 3 Considered Options (including "do nothing"), explicit Decision with scope, honest Consequences with positive and negative, and mitigations. ① is too thin — Context is a state change, not a driver, and Consequences has no negatives. ③ is dishonest — "Consequences. None." gets rejected on the spot. ④ is a rubber-stamp, not an ADR. MADR forces honesty; the chapter enforces it.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are drafting ADR-0255 for the GPB Markets squad. The decision: replace the self-managed PostgreSQL on EC2 with Amazon RDS multi-AZ. The driver: the Group Resilience DR test rig only covers RDS, not self-managed EC2 databases; the squad is carving out an exception every quarter. Write the MADR outline in English. Include: a driver-led Context, 3 Considered Options (recommended = RDS multi-AZ, alternative = self-managed on EC2, "do nothing" = continue with the exception), a Decision with scope, a Consequences section with at least 2 honest negatives, and Decision Outcome: Propose Accepted. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"ADR-0255: Adopt Amazon RDS multi-AZ for the GPB Markets reference-data store.<br><br>Context. The GPB Markets reference-data store is currently self-managed PostgreSQL on EC2. The Group Resilience DR test rig only covers Amazon RDS, not self-managed EC2 databases — so the squad carves out a DR-test exception every quarter, which adds 4 sprint-days of toil and a real audit-finding risk in the HKMA and FCA reviews.<br><br>Considered Options. Option 1 — Adopt Amazon RDS multi-AZ with the standard backup window and the standard DR test schedule (recommended). Option 2 — Stay on self-managed PostgreSQL on EC2 and invest in a custom DR test rig. Option 3 — Do nothing; continue with the quarterly exception.<br><br>Decision. We recommend Option 1 — Amazon RDS multi-AZ — scoped to the GPB Markets reference-data workload for one quarter, with a go/no-go gate at the end of Q3. After the gate, RDS becomes the default for any new GPB Markets relational store.<br><br>Consequences. Positive — DR test rig alignment, Group Cyber audit hooks out of the box, automatic failover, reduced on-call toil. Negative — vendor lock-in to AWS RDS (a re-platform item if the Group ever moves off AWS); cost at scale (RDS multi-AZ roughly doubles the storage cost relative to single-AZ); operational maturity on the GPB side is low (the squad has run self-managed PostgreSQL for 6 years and the muscle memory is in EC2, not RDS). Mitigations — SRE runbook for RDS failure modes, a 30-day shadow run with read-replica, a designated on-call rota for the first 3 months post-cutover.<br><br>Decision Outcome. Propose Accepted."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="01-architecture-standup.html" class="btn btn-outline-secondary">↑ Back to Article 01</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

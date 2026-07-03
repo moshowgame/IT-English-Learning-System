@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 18: Compliance & Info Sec | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">18 · Compliance & Info Sec</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Talking to Compliance &amp; Info Sec</h1>
+        <p class="subtitle">Article 18 · Module 5: HSBC Banking Context · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🛡️ Handle audit findings, security exceptions, and policy questions</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            You are working on the OneWealth trade order service. The InfoSec team has sent you an
+            <strong>audit finding</strong>: the <em>JWT signing key</em> is <em>rotated only every 12 months</em>,
+            but the <em>HSBC Group Security Standard</em> requires <em>90-day rotation</em>. You have a remediation
+            deadline of 30 days. You also need to discuss a security exception: you want to log
+            <em>customer PII (name + account number)</em> in plain text for debugging, but InfoSec requires
+            <em>masking</em>.
+        </p>
+        <p>
+            你在做 OneWealth 交易订单服务。InfoSec 给你发了一个 <strong>审计发现</strong>：<em>JWT 签名密钥</em>
+            <em>12 个月才轮换</em> 一次，但 <em>汇丰集团安全标准</em> 要求 <em>90 天轮换</em>。整改期限 30 天。
+            你还需要讨论一个安全例外：你想在 plain text 记录 <em>客户 PII（姓名+账号）</em> 用于调试，
+            但 InfoSec 要求 <em>脱敏</em>。
+        </p>
+    </section>
+
+    <!-- Dialogue Part 1: Audit Finding -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 1: Responding to an Audit Finding</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en">Hi Wei, <em>following up on the audit finding</em> on the OneWealth trade order service. <em>The Group Security Standard requires</em> 90-day key rotation, but your <em>JWT signing key</em> is on a 12-month rotation cycle. <em>You have 30 days to remediate.</em></span><span class="cn">嗨 Wei，跟进 OneWealth 交易订单服务的审计发现。集团安全标准要求 90 天密钥轮换，但你们的 JWT 签名密钥是 12 个月轮换。你有 30 天时间整改。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Hi Hannah, <em>thanks for flagging this — and apologies for the gap.</em> <em>You're absolutely right</em>, we're not meeting the standard. <em>Quick question</em> to make sure I scope this correctly: does the 90-day rotation apply to <em>just the JWT signing key</em>, or to <em>all cryptographic keys</em> in the service (including the DB encryption key)?</span><span class="cn">嗨 Hannah，谢谢指出——抱歉有这个差距。你完全对，我们没达到标准。快速确认下范围：90 天轮换是只针对 JWT 签名密钥，还是服务里所有加密密钥（包括 DB 加密密钥）？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en"><em>All cryptographic keys</em> in the service. The DB encryption key is <em>also covered</em>.</span><span class="cn">服务里所有加密密钥都适用，DB 加密密钥也算。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>Here's my proposed remediation plan:</em></span><span class="cn">明白。以下是我的整改计划：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Week 1 — investigation.</em> I'll <em>audit all cryptographic keys</em> in the service (JWT signing, DB encryption, internal service-to-service tokens) and <em>map the current rotation schedule</em> for each.</span><span class="cn">第 1 周——调研。我会审计服务里所有加密密钥（JWT 签名、DB 加密、内部服务间 token），并画出每把密钥的当前轮换时间表。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Week 2 — design.</em> I'll <em>design the rotation mechanism</em> using <em>AWS Secrets Manager rotation lambda</em> for the JWT key, and a <em>zero-downtime DB key rotation</em> pattern (re-encrypt in batches).</span><span class="cn">第 2 周——设计。设计轮换机制：JWT 密钥用 AWS Secrets Manager 的 rotation lambda，DB 密钥用零停机分批重加密的模式。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Week 3 — implementation.</em> Implement the rotation, test in UAT, and <em>do a dry run on a non-prod environment first</em>.</span><span class="cn">第 3 周——实现。实现轮换，在 UAT 测试，先在非生产环境做演练。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Week 4 — production rollout + verification.</em> Roll out to production with <em>monitoring</em> and a <em>rollback plan</em>. <em>Happy to walk through</em> the design with you before I implement, to <em>make sure it meets the standard</em>.</span><span class="cn">第 4 周——生产部署 + 验证。带监控和回滚方案部署到生产。实现前很乐意和你过一下设计，确保符合标准。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>One ask</em> — would InfoSec be able to <em>provide a sample reference implementation</em> of a 90-day rotation pattern? <em>Just to make sure</em> I'm aligned with the Group Standard, since the standard doc is <em>a bit high-level</em> on the implementation side.</span><span class="cn">一个小请求——InfoSec 能提供一个 90 天轮换模式的参考实现吗？想确保我符合集团标准，因为标准文档在实现层面写得比较粗。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en"><em>Yes, I can share a reference doc</em> — let me <em>dig it out</em> and send it over by tomorrow. <em>Solid plan, Wei.</em> <em>Let's sync</em> at the end of week 2 to <em>review the design before implementation</em>.</span><span class="cn">好的，我可以分享参考文档——我找一下明天发给你。计划很扎实，Wei。第 2 周结束前我们对一下设计再开始实现。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Thanks, Hannah. <em>Appreciate it.</em> I'll <em>set up the recurring sync</em> and <em>send you the design doc</em> by end of week 2.</span><span class="cn">谢谢 Hannah。我会安排定期会议，第 2 周结束前把设计文档发给你。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dialogue Part 2: Security Exception -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 2: Discussing a Security Exception</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Hannah, <em>one more thing to discuss</em> — a security exception request. <em>Context:</em> we're debugging an intermittent issue with the trade order flow, and we need to <em>capture customer name + account number in the application logs</em> temporarily to <em>trace specific transactions</em>. I know this <em>violates the PII masking standard</em>, so <em>I want to do this the right way</em>.</span><span class="cn">Hannah，还有一件事——一个安全例外申请。背景：我们正在排查交易订单流程的间歇性问题，需要在应用日志里临时记录客户姓名 + 账号以追踪具体交易。我知道这违反 PII 脱敏标准，所以想按正规流程申请。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en">Wei, <em>I appreciate you raising this proactively</em> — most teams <em>just turn it on</em> without asking. <em>A few questions first.</em></span><span class="cn">Wei，谢谢你主动提出来——大多数团队都是直接打开不申请。我先问几个问题。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en"><em>One — can the issue be reproduced in a non-prod environment</em> with synthetic data? That would <em>avoid the need for a PII exception</em> entirely.</span><span class="cn">第一——这个 issue 能在非生产环境用合成数据复现吗？那样就完全不需要 PII 例外。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Honestly, no.</em> We've tried in UAT for two weeks — the issue <em>only happens in production</em> with <em>real customer traffic patterns</em>. Synthetic data doesn't <em>trigger the race condition</em>.</span><span class="cn">老实说，不行。我们在 UAT 试了两周——问题只在生产环境的真实客户流量模式下出现，合成数据触发不了这个竞态条件。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en">OK. <em>Two — what's the minimum PII</em> you actually need? <em>Full name and full account number?</em> Or would <em>last 4 digits</em> + <em>first name initial</em> be enough?</span><span class="cn">好的。第二——你实际需要的最少 PII 是多少？完整姓名和完整账号？还是账号后 4 位 + 名的首字母就够了？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Good question. <em>Last 4 digits of the account + a transaction ID</em> would actually be enough for our trace. <em>We don't need the full name</em>.</span><span class="cn">好问题。账号后 4 位 + 交易 ID 实际上就够我们追踪了，不需要完整姓名。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en"><em>That's much more workable.</em> <em>Three — what's the time window?</em> How long do you need the exception for?</span><span class="cn">这样好办多了。第三——时间窗口？例外需要多长？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Maximum 14 days</em> — we expect to <em>identify the root cause within 1-2 weeks</em>. After that, the logging reverts to <em>fully masked</em>.</span><span class="cn">最多 14 天——我们预计 1-2 周内定位根因。之后日志恢复为完全脱敏。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en">OK. <em>Here's what I can approve:</em> 14-day exception, <em>last 4 digits + transaction ID only</em>, <em>UAT-grade masking for everything else</em>. <em>Conditions:</em> (1) the change <em>goes through a CAB approval</em>; (2) you send me <em>daily log samples</em> to verify compliance; (3) <em>the exception is auto-revoked after 14 days</em>.</span><span class="cn">好的。我能批准的是：14 天例外，只用账号后 4 位 + 交易 ID，其他按 UAT 级脱敏。条件：(1) 变更走 CAB 审批；(2) 你每天给我日志样本验证合规；(3) 例外 14 天后自动撤销。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>All three conditions acceptable.</em> <em>Thanks, Hannah</em> — this is much more workable than I expected. <em>I'll raise the CAB ticket</em> today and <em>loop you in for approval</em>.</span><span class="cn">三个条件都接受。谢谢 Hannah——比我预想的顺利得多。我今天就提 CAB 工单，拉你审批。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (InfoSec):</span>
+                <span class="text"><span class="en"><em>Sounds good.</em> <em>One last thing</em> — after the 14 days, <em>please send me a confirmation</em> that the logging has been reverted, and <em>an analysis of what you found</em>. <em>Worth sharing with the wider team</em> so we can <em>prevent future cases</em>.</span><span class="cn">好的。最后一件——14 天到期后，请给我一个确认，说明日志已恢复，并附上你发现的问题分析。值得分享给更广的团队，预防未来类似情况。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Will do.</em> I'll <em>send the post-mortem + confirmation</em> by end of day 14. <em>Thanks for working with us on this, Hannah.</em></span><span class="cn">好的。第 14 天 EOD 前我会发事后复盘 + 确认。谢谢你配合，Hannah。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Acknowledge</span> <em>Apologies for the gap — you're absolutely right.</em></span>
+                <span class="chinese">抱歉有差距——你说得对</span>
+                <span class="note">When responding to an audit finding, own it immediately. <em>"Apologies for the gap"</em> is the standard opener.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Quick question to make sure I scope this correctly.</em></span>
+                <span class="chinese">问一个确保范围正确</span>
+                <span class="note">Always clarify scope before committing to a remediation plan.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Plan</span> <em>Here's my proposed remediation plan.</em></span>
+                <span class="chinese">这是我建议的整改计划</span>
+                <span class="note">Always come with a plan, not just <em>"I'll fix it"</em>. Shows maturity.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Phased</span> <em>Week 1 — investigation. / Week 2 — design…</em></span>
+                <span class="chinese">第1周 — 调研 / 第2周 — 设计</span>
+                <span class="note">Phase your plan by week. Easy to track, easy to verify.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Collaborate</span> <em>Happy to walk through the design with you first.</em></span>
+                <span class="chinese">愿意先和你过一下设计</span>
+                <span class="note">Always offer to collaborate with InfoSec <em>before</em> implementing, not after.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Proactive</span> <em>I want to do this the right way.</em></span>
+                <span class="chinese">我想用对的方式做</span>
+                <span class="note">When requesting an exception, <em>frame</em> it as doing things right, not asking for forgiveness.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Concession</span> <em>Last 4 digits + transaction ID would be enough.</em></span>
+                <span class="chinese">末4位 + 交易ID就够了</span>
+                <span class="note">Concede on scope first. Most InfoSec exceptions are about reducing the request.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>I'll send the post-mortem + confirmation by end of day 14.</em></span>
+                <span class="chinese">14天结束前发复盘+确认</span>
+                <span class="note">Always commit to closing the loop on time-bounded exceptions.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>audit finding</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">审计发现</span>
+                <span class="note">A formal issue raised by internal or external audit. Has a remediation deadline.</span>
+            </li>
+            <li>
+                <span class="english"><strong>remediation</strong> <span class="tag">n.</span></span>
+                <span class="chinese">整改 / 修复</span>
+                <span class="note">The action to fix an audit finding. Must be completed by the deadline.</span>
+            </li>
+            <li>
+                <span class="english"><strong>key rotation</strong> <span class="tag">n.</span></span>
+                <span class="chinese">密钥轮换</span>
+                <span class="note">Periodically replacing cryptographic keys. Required by Group Security Standard.</span>
+            </li>
+            <li>
+                <span class="english"><strong>JWT (JSON Web Token)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">JWT 令牌</span>
+                <span class="note">A signed token used for stateless authentication. The signing key must be rotated.</span>
+            </li>
+            <li>
+                <span class="english"><strong>PII (Personally Identifiable Information)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">个人身份识别信息</span>
+                <span class="note">Any data that can identify an individual. Strictly regulated.</span>
+            </li>
+            <li>
+                <span class="english"><strong>PII masking</strong> <span class="tag">n.</span></span>
+                <span class="chinese">PII 脱敏</span>
+                <span class="note">Hiding part of the PII (e.g., showing only last 4 digits of an account number).</span>
+            </li>
+            <li>
+                <span class="english"><strong>security exception</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">安全例外 (临时偏离安全标准)</span>
+                <span class="note">A time-bounded, approved deviation from a security standard.</span>
+            </li>
+            <li>
+                <span class="english"><strong>CAB (Change Advisory Board)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">变更咨询委员会</span>
+                <span class="note">The approval body for production changes. Required for security exceptions.</span>
+            </li>
+            <li>
+                <span class="english"><strong>AWS Secrets Manager rotation lambda</strong></span>
+                <span class="chinese">AWS Secrets Manager 轮换 lambda</span>
+                <span class="note">AWS-managed function for automatic key rotation.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Apologies for…" — Owning an Audit Finding</h3>
+        <p>Standard openers for audit findings:</p>
+        <ul>
+            <li><em><strong>Apologies for the gap</strong> — you're absolutely right.</em></li>
+            <li><em><strong>Apologies for missing the standard</strong>.</em></li>
+            <li><em><strong>Apologies, this slipped through</strong>.</em></li>
+        </ul>
+
+        <h3>② Phased Plans: "Week 1 — …" / "Step 1 — …"</h3>
+        <p>Always phase a remediation plan. It shows forethought:</p>
+        <ul>
+            <li><em><strong>Week 1</strong> — investigation.</em></li>
+            <li><em><strong>Week 2</strong> — design.</em></li>
+            <li><em><strong>Week 3</strong> — implementation.</em></li>
+            <li><em><strong>Week 4</strong> — production rollout.</em></li>
+        </ul>
+
+        <h3>③ Conceding on Scope: "X would be enough"</h3>
+        <p>When negotiating, reduce the scope <em>first</em>:</p>
+        <ul>
+            <li>❌ <em>"We need full PII for the trace."</em></li>
+            <li>✅ <em>"Last 4 digits + transaction ID would <strong>be enough</strong> for our trace."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🛡️ Working with InfoSec at HSBC</div>
+            <ol>
+                <li><strong>Treat InfoSec as a partner, not a blocker.</strong> They protect the bank and your customers. Their job is hard.</li>
+                <li><strong>Raise exceptions proactively, before implementation.</strong> <em>"I want to do this the right way"</em> is the magic phrase.</li>
+                <li><strong>Come with a plan, not just a problem.</strong> InfoSec respects teams that bring solutions, not just questions.</li>
+                <li><strong>Concede on scope first.</strong> Most exceptions are about reducing the PII surface, not eliminating it.</li>
+                <li><strong>Always close the loop.</strong> Time-bounded exceptions must be confirmed as expired.</li>
+            </ol>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes with InfoSec</div>
+            <ul>
+                <li>❌ <em>"We'll just turn it on for now and ask later."</em> (career-ending move at HSBC)</li>
+                <li>✅ <em>"I want to <strong>do this the right way</strong> — can we discuss the exception process?"</em></li>
+                <li>❌ <em>"We don't have time for this."</em> (InfoSec has regulatory authority over you)</li>
+                <li>✅ <em>"I understand this is a <strong>Group Standard</strong> — here's my plan to <strong>meet it by [date]</strong>."</em></li>
+                <li>❌ Treating PII as <em>"just data"</em> — at HSBC, PII breaches are <strong>career-impacting events</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to professional English:</div>
+                <p>"Hannah，抱歉没达到90天轮换的要求。我们会改。第1周调研所有密钥，第2周设计AWS Secrets Manager轮换，第3周UAT测试，第4周生产上线。实施前愿意先和你过设计。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Hannah, <em>apologies for missing the 90-day rotation requirement</em> — you're right, we're not meeting the standard. <em>Here's my proposed remediation plan:</em> <em>Week 1</em> — audit all cryptographic keys; <em>Week 2</em> — design the AWS Secrets Manager rotation; <em>Week 3</em> — UAT testing; <em>Week 4</em> — production rollout. <em>Happy to walk through the design with you</em> before I implement, to <em>make sure it meets the standard</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Reframe this PII request as a properly-scoped exception:</div>
+                <p>"I need to log full customer name and account number for debugging."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Hannah, <em>I want to do this the right way</em>. We need to <em>capture customer info in the application logs temporarily</em> to trace a production issue. <em>Honestly, I think</em> <strong>last 4 digits of the account + transaction ID</strong> would be enough for the trace — we don't need full PII. <em>Maximum 14-day window</em>, then revert to fully masked. <em>Can we discuss the exception process?</em>"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right InfoSec phrases:</div>
+                <p>"<em>Apologies for _____ (the gap). / Quick question to make sure I scope this _____. / Here's my proposed _____ (remediate) plan. / Happy to walk through the _____ (design) with you first. / I want to do this the _____ (right) way. / I'll send the post-_____ (mortem) by day 14.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>the gap</em> / <em>correctly</em> / <em>remediation</em> / <em>design</em> / <em>right</em> / <em>mortem</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>InfoSec sends you an audit finding: the OneWealth trade order audit log is retained for only 6 months, but the Group Standard requires 7 years. You have 60 days to remediate. Write a 4-week phased plan + ask for a design review.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Hi Hannah,<br><br>
+                    <em>Apologies for the gap</em> — you're right, we're not meeting the 7-year retention standard. <em>Here's my proposed remediation plan:</em><br><br>
+                    <em>Week 1 — investigation.</em> I'll <em>audit the current retention setup</em> — where the logs are stored, the current TTL, the migration path to long-term storage (e.g., <em>AWS S3 Glacier</em>).<br><br>
+                    <em>Week 2 — design.</em> I'll design the <em>S3 + Glacier lifecycle policy</em> for the 7-year retention, with <em>WORM (write-once-read-many)</em> for compliance.<br><br>
+                    <em>Week 3 — implementation + UAT.</em> Implement the lifecycle policy, test in UAT with <em>sample 7-year data</em>.<br><br>
+                    <em>Week 4 — production rollout.</em> Deploy with monitoring and a <em>rollback plan</em>.<br><br>
+                    <em>One ask</em> — could InfoSec <em>review the design</em> at the end of week 2, before I implement? <em>Want to make sure</em> the S3 Glacier + WORM setup meets the Group Standard.<br><br>
+                    <em>Happy to walk through</em> any details. <em>Thanks, Hannah.</em>"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="17-vendor-and-contractor.html">
+            <span class="label">← Previous</span>
+            <span class="title">17 · Vendor / Contractor Calls</span>
+        </a>
+        <a class="next" href="19-banking-terminology.html">
+            <span class="label">Next Article →</span>
+            <span class="title">19 · Banking Terminology</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 18 · Talking to Compliance &amp; Info Sec · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

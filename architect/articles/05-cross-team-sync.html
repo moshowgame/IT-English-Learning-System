@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: Cross-Team Architecture Sync | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">05 · Cross-Team Architecture Sync</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cross-Team Architecture Sync</h1>
+        <p class="subtitle">Article 05 · Module 5: Aligning Across Regions and Tribes · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Aligning with other architects across regions and tribes</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday, 09:00 HKT</strong>. The monthly <em>Cross-Tribe Architecture Sync</em>
+            is starting — a 60-minute Microsoft Teams meeting chaired by Margaret, your Chief
+            Architect. The attendees are the solution architects from <strong>five tribes</strong>:
+            RBWM Digital (you, Hong Kong), <em>CMB Digital</em> (Wei, Shanghai), <em>GPB Digital</em>
+            (Hugo, London), <em>Group Platform</em> (Rashida, Bangalore), and <em>Group Cyber</em>
+            (Anika, Hong Kong, joining for the last 20 minutes).
+        </p>
+        <p>
+            周二上午 9 点香港时间，每月一次的<em>跨 Tribe 架构同步会</em>开始——这是 Chief Architect
+            Margaret 主持的 60 分钟 Teams 会议。参会者来自 <strong>5 个 tribe</strong>的 solution
+            架构师：RBWM Digital（你，香港）、<em>CMB Digital</em>（Wei，上海）、<em>GPB Digital</em>
+            （Hugo，伦敦）、<em>Group Platform</em>（Rashida，班加罗尔），以及<em>Group Cyber</em>
+            （Anika，香港，最后 20 分钟加入）。
+        </p>
+        <p>
+            The agenda: <em>OneWealth API gateway strategy alignment</em> (your ADR-0142),
+            <em>Group Kafka topic-naming standard</em> (Rashida's draft), and
+            <em>cross-tribe observability</em> with OpenTelemetry (Wei from CMB wants to trial it).
+            The room dynamic is delicate — five tribes, four time zones, one shared platform. The
+            goal is to leave the meeting with a clean alignment, not a fistfight.
+        </p>
+        <p>
+            议程：<em>OneWealth API gateway 策略对齐</em>（你的 ADR-0142）、<em>Group Kafka topic 命名标准</em>
+            （Rashida 的草稿）、以及<em>OpenTelemetry 跨 tribe 可观测性</em>（CMB 的 Wei 想试用）。房间里的
+            氛围比较微妙——5 个 tribe、4 个时区、1 个共享平台。目标是带着干净的对齐离场，而不是不欢而散。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Morning, everyone. <em>Right, let's get started</em> — we've got <em>three items and 60 minutes.</em> Item one is the <em>OneWealth API gateway strategy</em> — Wei from RBWM Digital is going to <em>walk us through ADR-0142.</em> <em>Wei, over to you.</em></span><span class="cn">大家早上好。<em>好，开始</em>——<em>3 项议题，60 分钟</em>。第一项是 <em>OneWealth API gateway 策略</em>——RBWM Digital 的 Wei 来<em>过一下 ADR-0142</em>。<em>Wei，你来</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect, RBWM):</span>
+                <span class="text"><span class="en">Thanks, Margaret. <em>Quick context</em> — ADR-0142 recommends <em>AWS API Gateway with mutual TLS</em> as the <em>north-south entry</em> for the OneWealth platform, for <em>partner-facing traffic only</em>, for now. <em>Internal traffic stays on the existing private API mesh.</em> The chapter sign-off is on the queue for Thursday.</span><span class="cn">谢谢 Margaret。<em>简短背景</em>——ADR-0142 推荐用 <em>AWS API Gateway + 双向 TLS</em> 作为 OneWealth 平台的<em>南北向入口</em>，目前只覆盖<em>合作方侧流量</em>。<em>内部流量继续走现有的私有 API mesh</em>。Chapter 签批排到周四。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hugo (Architect, GPB, London):</span>
+                <span class="text"><span class="en"><em>Quick one, Wei</em> — does the API Gateway sit <em>in front of</em> the OneWealth front door, or are you <em>replacing</em> the front door? We've got a <em>similar pattern</em> in the GPB HSBCnet redesign and we want to <em>align before we sign off our own ADR</em>.</span><span class="cn"><em>简短一个问题，Wei</em>——API Gateway 是放在 OneWealth 前端的<em>前面</em>，还是<em>替换</em>前端？GPB 在 HSBCnet 重新设计里有个<em>类似的模式</em>，我们想在签自己的 ADR 之前<em>对齐一下</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect, RBWM):</span>
+                <span class="text"><span class="en">Good question, Hugo. <em>Honest answer — in front of, not replacing.</em> The OneWealth front door keeps the <em>existing WAF, DDoS protection, and rate-limiting</em>; the API Gateway sits behind it and handles the <em>partner onboarding, mTLS, and quota enforcement</em>. <em>I'm happy to share the reference architecture diagram offline</em> — let's grab 30 min after this meeting.</span><span class="cn">好问题，Hugo。说实话——放在前面，不是替换。OneWealth 前端保留现有的<em>WAF、DDoS 防护和限流</em>；API Gateway 放在它后面，负责<em>合作方接入、双向 TLS 和配额执行</em>。<em>我乐意线下分享参考架构图</em>——会后约 30 分钟。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Wei (Architect, CMB, Shanghai):</span>
+                <span class="text"><span class="en"><em>Just to flag</em> — for CMB's CMB Mobile redesign, we've been <em>looking at the same pattern</em>. <em>Can we get the ADR circulated today</em> so we can <em>align our chapter review with yours?</em></span><span class="cn"><em>提一句</em>——CMB 的 CMB Mobile 重新设计，<em>我们也在看同样的模式</em>。<em>ADR 今天能发出来吗</em>？这样我们<em>把 chapter 评审和你们的对齐</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect, RBWM):</span>
+                <span class="text"><span class="en"><em>Will do</em> — I'll <em>circulate ADR-0142 with the reference diagram by EOD today.</em> <em>Rashida, one thing for you</em> — can the <em>Group Platform team</em> own the <em>API Gateway shared landing zone</em> so we don't have <em>five tribes each spinning up their own</em>?</span><span class="cn"><em>没问题</em>——我<em>今天下班前把 ADR-0142 和参考图发出来</em>。<em>Rashida，问你一件事</em>——<em>Group Platform 团队</em>能不能负责<em>API Gateway 共享 landing zone</em>，免得<em>5 个 tribe 各自搭一套</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rashida (Architect, Group Platform, Bangalore):</span>
+                <span class="text"><span class="en">Yes, <em>that's a good ask</em>. <em>Honest answer — we're already landing the API Gateway central tenant</em> for the OnePay and HUB programs. <em>We can absorb OneWealth and the future CMB Mobile</em> on the same tenant, <em>if the chapters can agree on a common quota and naming policy</em>. <em>Item two on the agenda is the topic-naming standard</em> — <em>let's do that now while we're all in the room</em>.</span><span class="cn">没问题，<em>问得好</em>。说实话，<em>我们已经在为 OnePay 和 HUB 项目落地 API Gateway 中心租户</em>。<em>OneWealth 和未来的 CMB Mobile 我们可以吸收到同一个租户</em>，<em>前提是各 chapter 能就统一的配额和命名规范达成一致</em>。<em>议程第二项就是 topic 命名标准</em>——<em>趁大家都在，现在过一下</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rashida (Architect, Group Platform, Bangalore):</span>
+                <span class="text"><span class="en"><em>Quick walkthrough of the draft</em> — the proposed convention is <em>[region].[tribe].[domain].[event-type].[version]</em>, e.g. <em>apac.rbwm.onewealth.rebalancerequested.v1</em>. <em>The goal is per-event lineage and per-region routing</em>. <em>Two open questions</em> — <em>do we use a dot or a slash as the separator</em>, and <em>do we lowercase or PascalCase the segments?</em></span><span class="cn"><em>简短过一下草稿</em>——提议的命名约定是 <em>[region].[tribe].[domain].[event-type].[version]</em>，比如 <em>apac.rbwm.onewealth.rebalancerequested.v1</em>。<em>目标是每个事件的 lineage 和每个区域的路由</em>。<em>两个开放问题</em>——<em>分隔符用点还是斜杠</em>，<em>字段段是全小写还是 PascalCase？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hugo (Architect, GPB, London):</span>
+                <span class="text"><span class="en">From the UK angle, <em>FCA reviews prefer the slash separator</em> because <em>it maps cleanly to the topic-inspection tooling</em>. <em>But honest answer — we can live with the dot</em> if the chapter is aligned.</span><span class="cn">从英国视角，<em>FCA 评审偏好斜杠分隔符</em>，因为<em>能直接对应到 topic 检查工具</em>。不过说实话，<em>如果 chapter 对齐了，用点我们也能接受</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Wei (Architect, CMB, Shanghai):</span>
+                <span class="text"><span class="en"><em>CMB is fine with the dot</em> — <em>it's already the de-facto standard in our event-bus</em>. <em>And lowercase please</em> — it <em>plays nicely with case-sensitive routing rules</em> on Kafka.</span><span class="cn"><em>CMB 没问题，用点</em>——<em>这已经是我们事件总线上事实上的标准</em>。<em>请用全小写</em>——<em>和 Kafka 的大小写敏感路由规则配合得好</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rashida (Architect, Group Platform, Bangalore):</span>
+                <span class="text"><span class="en">OK, <em>let's capture the position</em>: dot separator, lowercase, with the <em>[region].[tribe].[domain].[event-type].[version]</em> template. <em>I'll update the draft and re-circulate by Thursday.</em></span><span class="cn">好，<em>我们记录一下立场</em>：点分隔、全小写，用 <em>[region].[tribe].[domain].[event-type].[version]</em> 模板。<em>我周四前更新草稿并重新发出</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Lovely, clean alignment.</em> <em>Right, last item</em> — Wei from CMB wants to <em>trial OpenTelemetry across the CMB Mobile stack</em>. <em>Wei, you've got five minutes.</em></span><span class="cn"><em>好，干净的对齐。</em><em>好，最后一项</em>——CMB 的 Wei 想在 <em>CMB Mobile 栈上试用 OpenTelemetry</em>。<em>Wei，5 分钟</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Wei (Architect, CMB, Shanghai):</span>
+                <span class="text"><span class="en">Thanks, Margaret. <em>Honest answer — OpenTelemetry is the only vendor-neutral observability standard</em> and our <em>current APM is vendor-locked and expensive.</em> We're proposing <em>Trial on the CMB Mobile stack for one quarter</em>, with a <em>go/no-go gate at the end of Q3</em>. <em>Precondition: Group Cyber sign-off on the trace-data residency</em> — traces carry <em>customer PII in some spans</em>.</span><span class="cn">谢谢 Margaret。说实话——OpenTelemetry 是唯一的厂商中立的可观测性标准，<em>我们现有的 APM 被厂商锁定且昂贵</em>。我们提议<em>在 CMB Mobile 栈上试用 1 个季度</em>，Q3 末有 <em>go/no-go 关卡</em>。<em>前提条件：Group Cyber 对 trace 数据驻留的签批</em>——<em>某些 span 里有客户 PII</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Anika (Architect, Group Cyber):</span>
+                <span class="text"><span class="en"><em>Just to flag</em> — <em>the trace-data residency question is non-trivial</em> because <em>MAS TRM and HKMA both expect trace data to stay in-region.</em> <em>Before I commit Group Cyber to a sign-off</em>, I need to see the <em>collector-to-backend data flow</em>. <em>Wei, can you share the architecture diagram by next Tuesday?</em></span><span class="cn"><em>提一句</em>——<em>trace 数据驻留的问题不简单</em>，<em>MAS TRM 和 HKMA 都要求 trace 数据留在本区域</em>。<em>在我让 Group Cyber 承诺签批之前</em>，我需要看<em>collector 到 backend 的数据流</em>。<em>Wei，下周二前能分享架构图吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Wei (Architect, CMB, Shanghai):</span>
+                <span class="text"><span class="en"><em>Yes, Tuesday works.</em> <em>Margaret, can I have the slot on the next cross-tribe sync</em> to <em>come back with the Anika-validated design</em>?</span><span class="cn"><em>好，周二可以。</em><em>Margaret，下次跨 tribe 同步会能给我留个 slot</em>，<em>带着 Anika 校验过的设计回来</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Done, you're on the agenda.</em> <em>Right, time check — we're at 55 minutes.</em> <em>Summary of decisions:</em> <em>One,</em> ADR-0142 will be circulated EOD; <em>two,</em> the API Gateway central tenant is owned by Group Platform with the quota and naming policy; <em>three,</em> topic-naming standard is dot + lowercase + the [region].[tribe].[domain].[event-type].[version] template; <em>four,</em> OpenTelemetry Trial is conditional on Group Cyber sign-off. <em>Thanks all — see you next month.</em></span><span class="cn"><em>好，议程上有你了。</em><em>好，时间提示——55 分钟了</em>。<em>决策总结：</em><em>一、</em>ADR-0142 今天 EOD 发；<em>二、</em>API Gateway 中心租户由 Group Platform 负责，配额和命名政策由各 chapter 达成；<em>三、</em>Topic 命名标准是点 + 全小写 + [region].[tribe].[domain].[event-type].[version] 模板；<em>四、</em>OpenTelemetry Trial 以 Group Cyber 签批为前提。<em>感谢大家——下个月见</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Right, let's get started — three items and 60 minutes.</em></span>
+                <span class="chinese">好，开始——3 项议题，60 分钟</span>
+                <span class="note">Open with a timebox and item count. A cross-tribe sync without a timebox is a 90-minute talkathon.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Align</span> <em>We want to align before we sign off our own ADR.</em></span>
+                <span class="chinese">我们想在签自己的 ADR 之前对齐一下</span>
+                <span class="note">"Align" is the politeness word for "let's not have two tribes doing the same thing differently". Use it liberally.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Steer</span> <em>Honest answer — in front of, not replacing.</em></span>
+                <span class="chinese">说实话——放在前面，不是替换</span>
+                <span class="note">"In front of, not replacing" — the negative-part construction clarifies scope. Always name what you are NOT doing.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>I'm happy to share the reference architecture diagram offline.</em></span>
+                <span class="chinese">我乐意线下分享参考架构图</span>
+                <span class="note">"I'm happy to" = a soft commitment. "Offline" = move the detail work out of the cross-tribe meeting.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>Just to flag — can we get the ADR circulated today?</em></span>
+                <span class="chinese">提一句——ADR 今天能发出来吗？</span>
+                <span class="note">"Just to flag" introduces a side issue without derailing the main discussion. Same device as Article 02.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Steer</span> <em>Let's do that now while we're all in the room.</em></span>
+                <span class="chinese">趁大家都在，现在过一下</span>
+                <span class="note">"While we're all in the room" = the cross-tribe politeness device. It's expensive to get five tribes on a call — use the moment.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Honest answer — we can live with the dot if the chapter is aligned.</em></span>
+                <span class="chinese">说实话——如果 chapter 对齐了，用点我们也能接受</span>
+                <span class="note">"We can live with X" is a politeness concession. It signals "I have a preference, but tribe alignment matters more".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Constraint</span> <em>The trace-data residency question is non-trivial.</em></span>
+                <span class="chinese">trace 数据驻留的问题不简单</span>
+                <span class="note">"Non-trivial" = a soft "this is hard". Architects use it for things that aren't blocking but need real work.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>Before I commit Group Cyber to a sign-off, I need to see the data flow.</em></span>
+                <span class="chinese">在我让 Group Cyber 承诺签批之前，我需要看数据流</span>
+                <span class="note">"Before I commit [Group] to [verb]" = the architect's polite refusal. It signals "I want to say yes, but I need evidence".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Summary of decisions: one, two, three, four.</em></span>
+                <span class="chinese">决策总结：一、二、三、四</span>
+                <span class="note">End with a numbered summary. The cross-tribe meeting's only durable output is the decision list. Always verbalise it.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Cross-tribe sync</strong> n. 跨 tribe 同步 A regular meeting where architects from multiple tribes align on shared decisions.</li>
+            <li><strong>Tribe</strong> n. 部落 A collection of squads aligned to a business outcome (RBWM, CMB, GPB, Group Platform, etc.).</li>
+            <li><strong>Chapter</strong> n. 职能社区 The functional community of practice (e.g., the Architecture chapter).</li>
+            <li><strong>Central tenant</strong> n. 中心租户 A shared cloud landing zone owned by a central team and consumed by multiple tribes.</li>
+            <li><strong>Landing zone</strong> n. 落地区 A pre-provisioned cloud account/environment with baseline controls, networking, and security.</li>
+            <li><strong>Shared platform</strong> n. 共享平台 A platform (e.g., Kafka, API Gateway) that multiple tribes consume from a single owner.</li>
+            <li><strong>Network of networks</strong> n. 网络协同 The pattern of one shared platform with multiple consumers across tribes.</li>
+            <li><strong>Lineage</strong> n. 数据血缘 The trail that shows where data came from, how it was transformed, and where it went.</li>
+            <li><strong>Data residency</strong> n. 数据驻留 The requirement that data stays within a specific geographic region for regulatory reasons.</li>
+            <li><strong>Trace data</strong> n. trace 数据 The data emitted by distributed tracing systems (e.g., OpenTelemetry spans).</li>
+            <li><strong>Vendor-locked</strong> adj. 厂商锁定的 A state where the architecture is dependent on a single vendor's proprietary product.</li>
+            <li><strong>APM (Application Performance Monitoring)</strong> n. 应用性能监控 Vendor tools for monitoring application performance (e.g., Dynatrace, AppDynamics).</li>
+            <li><strong>Quota policy</strong> n. 配额策略 A documented rule for how shared resources are allocated across consumers.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "We can live with X" — the cross-tribe concession</h3>
+        <p>
+            <em>Honest answer — we can live with the dot if the chapter is aligned</em> uses
+            <em>can live with</em> to express a soft concession. The pattern is <em>we can live
+            with [option] if [condition]</em>. It signals "I have a preference, but alignment
+            matters more". Use it when you've stated a preference, the room is leaning the other
+            way, and you want to land the decision without a fight.
+        </p>
+        <p>"We can live with X if Y" 是跨 tribe 会议的礼貌让步——表示"我有偏好，但对齐更重要"。</p>
+
+        <h3>② "Before I commit [Group] to [verb]" — the architect's polite refusal</h3>
+        <p>
+            Anika's <em>Before I commit Group Cyber to a sign-off, I need to see the data flow</em>
+            is a soft refusal. The pattern is <em>Before I commit [organisation] to [commitment], I
+            need [evidence]</em>. It's softer than <em>I cannot sign off</em> and softer than
+            <em>Group Cyber will not approve</em>. It leaves the door open while demanding
+            evidence. Use it whenever you speak on behalf of a Group function.
+        </p>
+        <p>"Before I commit [组织] to [承诺], I need [证据]" 是代 Group function 发言时的礼貌拒绝，比直接拒绝更柔和。</p>
+
+        <h3>③ "In front of, not replacing" — the negative-part clarification</h3>
+        <p>
+            <em>Honest answer — in front of, not replacing</em> uses two parallel noun phrases
+            separated by a comma and "not" to clarify scope. The pattern is <em>[positive] [noun
+            phrase], not [negative] [noun phrase]</em>: <em>in front of, not replacing</em>;
+            <em>internal, not external</em>; <em>squad-level, not chapter-level</em>. Always name
+            what you are NOT doing. Architects over-specify the negative because the positive is
+            easy to misread.
+        </p>
+        <p>"[正向] [名词]，not [负向] [名词]" 是架构师用来明确范围的标准结构。永远要说明你"不做什么"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Cross-tribe time is precious.</strong> Five tribes, four time zones, one shared platform. The cross-tribe sync is the only forum where all the architects are in the room. Use the slot for alignment, not for status updates. Status belongs in the standup.</li>
+            <li><strong>"Align" is the politeness word for "stop duplicating work".</strong> When Hugo says "we want to align before we sign off our own ADR", he's not asking for help — he's saying "we have a similar pattern, let's not do it twice". Honour the move by sharing the reference architecture.</li>
+            <li><strong>Cross-region voice etiquette.</strong> If a question is regulator-driven, let the relevant region's voice answer first. Anika (Group Cyber, HK) speaks for HKMA and MAS TRM. Hugo (GPB, London) speaks for FCA. Rashida (Group Platform, Bangalore) speaks for central platform decisions. Don't talk over them.</li>
+            <li><strong>"We can live with X" is a landing move, not a surrender.</strong> When Hugo concedes on the dot separator, he's not losing — he's landing the decision. A cross-tribe meeting that lands 4 decisions in 60 minutes is a success, even if every decision is a compromise.</li>
+            <li><strong>Group Cyber answers are fixed when the regulator is named.</strong> When Anika says "MAS TRM and HKMA both expect trace data to stay in-region", the answer is fixed. Don't relitigate. The compromise lives in the architecture (collector-to-backend data flow), not in the policy.</li>
+            <li><strong>End with a numbered decision list.</strong> "Summary of decisions: one, two, three, four." The cross-tribe meeting's only durable output is the decision list — it goes into the chapter meeting minutes. Always verbalise it before closing.</li>
+            <li><strong>Central tenants beat per-tribe reinvention.</strong> When Rashida offers the API Gateway central tenant for OneWealth and future CMB Mobile, take it. Five tribes each spinning up their own API Gateway is a Group Cyber, Group Resilience, and operational nightmare. Shared platform, shared controls, shared lineage.</li>
+            <li><strong>Move the detail work offline.</strong> The cross-tribe meeting is for alignment, not for deep design. If a question goes long, say "happy to share the reference diagram offline — let's grab 30 min". Don't let one question eat 20 minutes of cross-tribe time.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the cross-tribe alignment</h3>
+        <p>Translate the following cross-tribe sync snippet into natural Chinese. Pay attention to the concession, the soft refusal, and the decision summary.</p>
+        <blockquote>
+            "OK, last item — Hugo from GPB wants to trial HashiCorp Vault for the GPB Markets
+            secrets. Hugo, you've got five minutes. Thanks, Margaret. Honest answer — Vault's
+            dynamic-secrets story is strong, and our CyberArk integration is operational toil.
+            We're proposing Trial on the GPB Markets workload for one quarter, with a go/no-go
+            gate at the end of Q3. From the Group Cyber angle, just to flag — the on-call runbook
+            isn't written yet, and CyberArk is the current Group Standard for tier-1 systems.
+            Before I commit Group Cyber to a sign-off, I need to see the rotation runbook and the
+            on-call rota. Hugo, can you share both by next Tuesday? Yes, Tuesday works. Right,
+            time check — we're at 55 minutes. Summary of decisions: one, ADR-0142 will be
+            circulated EOD; two, the API Gateway central tenant is owned by Group Platform; three,
+            topic-naming standard is dot + lowercase; four, HashiCorp Vault Trial is conditional
+            on the rotation runbook and Group Cyber sign-off. Thanks all — see you next month."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，最后一项——GPB 的 Hugo 想在 GPB Markets 试用 HashiCorp Vault。Hugo，5 分钟。谢谢 Margaret。说实话——Vault 的动态密钥能力很强，我们 CyberArk 集成的运维负担很重。我们提议在 GPB Markets 工作负载上试用 1 个季度，Q3 末有 go/no-go 关卡。从 Group Cyber 角度，提一句——on-call runbook 还没写，而 CyberArk 是当前 tier-1 系统的<em>集团标准</em>。在我让 Group Cyber 承诺签批之前，我需要看轮换 runbook 和 on-call 排班。Hugo，下周二前能分享这两份吗？好，周二可以。好，时间提示——55 分钟了。决策总结：一、ADR-0142 今天 EOD 发；二、API Gateway 中心租户由 Group Platform 负责；三、Topic 命名标准是点 + 全小写；四、HashiCorp Vault Trial 以轮换 runbook 和 Group Cyber 签批为前提。感谢大家——下个月见。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the cross-tribe mistake</h3>
+        <p>Which of these cross-tribe moves is most aligned with HSBC architecture culture? Why?</p>
+        <ol>
+            <li>"We're going to do this our way. Other tribes can copy or not."</li>
+            <li>"We can live with the dot if the chapter is aligned. Let me share the reference architecture offline. Let's grab 30 min after this meeting to walk through the trade-off."</li>
+            <li>"Group Cyber will never approve this. Forget it."</li>
+            <li>"Whatever, just decide. I have another meeting."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is HSBC-aligned: a soft concession ("we can live with"), a willingness to share, and a move to offline detail work. ① is unilateral — it kills cross-tribe alignment. ③ speaks for Group Cyber without authority. ④ abdicates the architect's role. Cross-tribe work is "align, concede gracefully, move detail offline".</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're an architect in the CMB Digital tribe. The cross-tribe sync has just opened the discussion on a new <em>Group observability standard</em> based on OpenTelemetry. Rashida (Group Platform) is proposing that all five tribes adopt the same collector-to-backend data flow. You have a concern: the current CMB Mobile collector writes spans with customer PII in the user-id attribute, and you want the Group Standard to mandate a span-attribute redaction policy. Write your 60-second intervention in English. Use a concession, name a regulator, and propose a concrete change. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks, Margaret. Quick one on the Group observability standard. Rashida, the central collector proposal is the right direction, and we can live with the OTel collector as the Group Standard — alignment across five tribes is worth more than CMB's local preference. But honest answer — there's a real risk. The current CMB Mobile collector writes customer PII in the user-id span attribute, and that breaks the MAS TRM data-residency posture for trace data. Before I commit CMB to a sign-off, I need the Group Standard to mandate a span-attribute redaction policy — specifically, user-id and email must be hashed at the collector before the span leaves the region. My concrete ask is: add a redaction section to the Group observability standard, and let's ratify it as a chapter precondition for any OTel Trial. Rashida, can you own the redaction-policy draft by next Tuesday? Happy to share the CMB Mobile collector config offline to help seed it. Margaret, can we land the redaction precondition today so all five tribes can align their Trials?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="06-writing-an-adr.html" class="btn btn-primary">Next: Article 06 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

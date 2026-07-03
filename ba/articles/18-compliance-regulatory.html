@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 18: Talking to Compliance & Regulators | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">18 · Talking to Compliance & Regulators</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Talking to Compliance & Regulators</h1>
+        <p class="subtitle">Article 18 · Module 5: HSBC Banking Context · BA English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🏦 GDPR, MAS TRM, HKMA, PCI-DSS — audit findings and exceptions</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday morning, 10 AM SGT</strong>. You are the BA on the <em>WealthView Client
+            Portal</em> squad (RBWM, Singapore). The MAS (Monetary Authority of Singapore) has issued an
+            <strong>observation letter</strong> citing weaknesses in the platform's <em>sanctions screening
+            re-evaluation frequency</em> and the handling of <em>data subject access requests (DSARs) under
+            the Personal Data Protection Act (PDPA)</em>. Internal Audit has logged it as a <em>RIB (Risk
+            Issue in Box)</em> P1, and the squad has 30 days to deliver a remediation plan.
+        </p>
+        <p>
+            周二上午 10 点新加坡时间。你是 <em>WealthView 客户门户</em> squad（RBWM，新加坡）的 BA。新加坡金融管理局
+            （MAS）发来一份 <strong>观察函</strong>，指出平台在 <em>制裁名单复评频率</em> 和处理
+            <em>个人数据访问请求（DSAR）</em>（依据《个人数据保护法》PDPA）方面存在薄弱环节。集团内审将其
+            记为 <em>RIB（盒中风险事项）P1</em>，squad 有 30 天时间提交整改方案。
+        </p>
+        <p>
+            You are in a 45-minute meeting with <strong>Sundara, Head of APAC Compliance</strong>, and
+            <strong>Helen, the regional Data Privacy Officer (DPO)</strong>. The goal: align on the AC for
+            the remediation story, agree on the evidence package for MAS, and confirm the <em>PCI-DSS
+            scope</em> for the upcoming release. Every word in this meeting is potentially <em>auditable</em>.
+        </p>
+        <p>
+            你和 <strong>Sundara，亚太区合规负责人</strong> 以及 <strong>Helen，区域数据隐私官（DPO）</strong>
+            开了一个 45 分钟的会议。目标：对齐整改 Story 的 AC、就提交给 MAS 的证据材料达成一致、并确认
+            即将发布的版本的 <em>PCI-DSS 范围</em>。这次会议上的每句话未来都可能被 <em>审计</em> 调取。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sundara (Compliance APAC):</span>
+                <span class="text"><span class="en"><em>Thanks for joining, Wei.</em> <em>Quick one</em> — MAS has flagged two findings under the <em>TRM (Technology Risk Management) Guidelines</em>. <em>First</em>, the screening re-eval is running every 24 hours, but the <em>control standard</em> requires <em>at least every 12 hours</em>. <em>Second</em>, DSAR turnaround is sitting at 14 days <em>as per current runbook</em>, but PDPA allows only <em>30 calendar days</em>, and our internal SLA is 7. <em>Where's the gap?</em></span><span class="cn">Wei，谢谢你过来。简单说一下——MAS 在 TRM（技术风险管理）指引下提出两项发现。第一，筛查复评目前是 24 小时一次，但控制标准要求至少 12 小时一次。第二，DSAR 处理周期目前按 runbook 是 14 天，但 PDPA 允许 30 个日历日，而我们内部 SLA 是 7 天。差距在哪里？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Thanks for laying that out so clearly, Sundara.</em> On the screening re-eval: the <em>batch job</em> in the <em>legacy ACME screen</em> is hard-coded at 24h. <em>We're working on</em> moving it to the <em>OneScreening platform</em> with a 12h cadence — that's <em>in flight</em> in the next sprint. <em>In the meantime,</em> I'm proposing an <em>interim manual control</em>: a 12h secondary check by the Operations team, logged in the audit trail.</span><span class="cn">Sundara，谢谢您讲得这么清楚。筛查复评这块：老 ACME 屏的批处理作业硬编码为 24 小时。我们正在迁移到 OneScreening 平台，频次改为 12 小时——下个 sprint 进行中。在此期间，我建议一个过渡性的人工控制：运营团队每 12 小时做一次二次检查，记录在审计追踪中。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helen (DPO):</span>
+                <span class="text"><span class="en"><em>On the DSAR point</em> — the 14-day turnaround is the <em>median, not the ceiling</em>, right? We are <em>within the regulatory maximum</em>, but <em>exceeding the internal SLA</em>. <em>Just to confirm</em>, the constraint is on the <em>manual data extraction</em> step in the WealthView API.</span><span class="cn">关于 DSAR 这一点——14 天是中位数，不是上限对吧？我们没超过监管上限，但超出了内部 SLA。确认一下，瓶颈是 WealthView API 里人工数据抽取这一步。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>That's right.</em> 80% of the cycle is spent on <em>cross-system reconciliation</em> — pulling client data from <em>HSBCnet, OneWealth, and the legacy CRM</em>. <em>We're scoping</em> a self-service DSAR portal in the next PI, but for this MAS cycle, <em>we can commit to</em> automating the <em>two highest-volume client segments</em> — that's ~70% of requests.</span><span class="cn">是的。80% 的时间花在跨系统对账上——从 HSBCnet、OneWealth 和老 CRM 拉客户数据。我们下个 PI 正在规划一个自助式 DSAR 门户，但针对本次 MAS 周期，我们可以承诺把<em>两个最高量的客群</em>自动化，约占请求量的 70%。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sundara (Compliance APAC):</span>
+                <span class="text"><span class="en"><em>OK, so</em> the MAS evidence pack should include: (1) the <em>interim control</em> for screening, with an <em>expiry date</em>; (2) the <em>automated DSAR coverage</em> percentage; and (3) a <em>target operating model</em> with timelines. <em>Does that work for you, Wei?</em></span><span class="cn">好，那 MAS 证据包应包括：(1) 筛查的过渡性控制，附过期日期；(2) DSAR 自动化覆盖率；(3) 目标运营模型和时间表。Wei，这样可以吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Yes, agreed.</em> <em>One thing to flag</em> — the <em>interim control</em> needs a <em>waiver reference number</em> from Group Risk. <em>Can I ask</em> the Compliance team to raise that this week? <em>Otherwise</em> the audit trail will show an <em>uncontrolled manual step</em>, which might invite a follow-up finding.</span><span class="cn">同意。提一个事项——过渡性控制需要集团风险出具一个<em>豁免编号</em>。能否请合规团队本周内申请？否则审计追踪会显示一个未受控的人工步骤，可能引来后续发现。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sundara (Compliance APAC):</span>
+                <span class="text"><span class="en"><em>Good catch.</em> I'll have <em>my team raise the waiver</em> by Thursday. <em>Last point</em> — is the upcoming release in <em>PCI-DSS scope</em>? <em>I need to know</em> whether the <em>QSA (Qualified Security Assessor)</em> should be looped in.</span><span class="cn">好问题。我会让我团队周四前把豁免申请提上去。最后一点——即将发布的版本是否在 PCI-DSS 范围内？我需要知道是否要把 QSA（合格安全评估师）拉进来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Quick check</em> — the release touches the <em>card-on-file tokenisation</em> flow, but <em>does not</em> store or transmit the PAN. <em>As far as I know,</em> it stays in scope for the <em>SAQ A</em> but <em>out of scope</em> for the full ROC. <em>I'll confirm with Infosec</em> and circle back to you in writing by EOD.</span><span class="cn">快速确认——这次发布涉及卡档令牌化流程，但不存储或传输 PAN。据我所知，它属于 SAQ A 范围，但不在完整 ROC 范围内。我会和信息安全确认后，今天 EOD 前书面回复您。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helen (DPO):</span>
+                <span class="text"><span class="en"><em>Perfect.</em> <em>Send me the user stories</em> once they're ready, and <em>I'll sign off on the privacy AC</em>. <em>And Wei</em> — <em>please make sure</em> every DSAR-related field is captured in the <em>consent ledger</em>, not just the audit log. <em>That's been a recurring finding</em> in HKMA reviews.</span><span class="cn">好的。准备好之后把 user story 发给我，我会在隐私 AC 上签字。Wei，请确保每个 DSAR 相关字段都记入<em>同意台账</em>，而不只是审计日志。这是 HKMA 审查的常见发现项。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Noted, Helen.</em> <em>I'll add that as an explicit AC</em> — "<em>all DSAR consent events written to the consent ledger with timestamp, requester, and legal basis</em>". <em>Thanks both</em> — <em>I'll send the minutes and the updated story</em> by tomorrow EOD.</span><span class="cn">Helen，记下了。我会把它作为显式 AC 加进去——"所有 DSAR 同意事件写入同意台账，附时间戳、请求方和法律依据"。谢谢两位——我会在明天 EOD 前发出会议纪要和更新后的 Story。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Thanks for laying that out so clearly.</em></span>
+                <span class="chinese">谢谢您讲得这么清楚</span>
+                <span class="note">Acknowledges the regulator's framing. Critical for compliance meetings — opens the conversation in a register that matches theirs.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cite</span> <em>MAS has flagged two findings under the TRM Guidelines.</em></span>
+                <span class="chinese">MAS 在 TRM 指引下提出两项发现</span>
+                <span class="note">Always cite the regulation, not the regulator. "Under the TRM Guidelines" sounds more rigorous than "MAS said".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">In-flight</span> <em>That's in flight in the next sprint.</em></span>
+                <span class="chinese">下个 sprint 正在进行</span>
+                <span class="note">"In flight" = actively being worked on. Distinguishes from "on the roadmap" or "being scoped".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Interim</span> <em>I'm proposing an interim manual control.</em></span>
+                <span class="chinese">我建议一个过渡性人工控制</span>
+                <span class="note">"Interim control" = a temporary mitigation while the permanent fix is in development. Always pair with an "expiry date".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>We can commit to automating the two highest-volume segments.</em></span>
+                <span class="chinese">我们可以承诺把最高量的两个客群自动化</span>
+                <span class="note">Be specific. "We can commit to X% of Y" is auditable; "we'll improve it" is not.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>One thing to flag — the interim control needs a waiver reference.</em></span>
+                <span class="chinese">提一个事项——过渡性控制需要豁免编号</span>
+                <span class="note">"Flag" = raise a concern politely. A favourite compliance word. Always pair with the consequence.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Is the upcoming release in PCI-DSS scope?</em></span>
+                <span class="chinese">即将发布的版本是否在 PCI-DSS 范围内？</span>
+                <span class="note">"In scope" / "out of scope" — the regulator's mental model. Default to "I'll confirm in writing".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Confirm</span> <em>I'll confirm with Infosec and circle back in writing by EOD.</em></span>
+                <span class="chinese">我会和信安确认后，今天 EOD 前书面回复</span>
+                <span class="note">"In writing" is a defensive phrase. Creates the email trail that protects you in the next audit.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sign off</span> <em>I'll sign off on the privacy AC.</em></span>
+                <span class="chinese">我会在隐私 AC 上签字</span>
+                <span class="note">"Sign off" = formal approval. Get it captured in writing — Slack is not a sign-off channel.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recurring finding</span> <em>That's been a recurring finding in HKMA reviews.</em></span>
+                <span class="chinese">这是 HKMA 审查的常见发现项</span>
+                <span class="note">"Recurring finding" = something the regulator has flagged before. Politically charged — solve it before the next review.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>MAS (Monetary Authority of Singapore)</strong> n. 新加坡金融管理局 Singapore's integrated regulator for banking, insurance, and securities.</li>
+            <li><strong>TRM (Technology Risk Management) Guidelines</strong> n. 技术风险管理指引 MAS's binding standard for IT risk in financial institutions. Revised in 2021.</li>
+            <li><strong>HKMA (Hong Kong Monetary Authority)</strong> n. 香港金融管理局 Hong Kong's banking regulator. Issues its own SA-2 (Supervisory Policy) circulars.</li>
+            <li><strong>Observation letter</strong> n. 观察函 Formal written communication from a regulator flagging concerns. Not a fine, but precedes one.</li>
+            <li><strong>RIB (Risk Issue in Box)</strong> n. 盒中风险事项 HSBC's internal risk register entry. P1 = highest severity; P2 = high; P3 = medium.</li>
+            <li><strong>DSAR (Data Subject Access Request)</strong> n. 数据主体访问请求 A formal request by an individual to access or delete their personal data, under PDPA / GDPR.</li>
+            <li><strong>PDPA (Personal Data Protection Act)</strong> n. 《个人数据保护法》 Singapore's data protection law. 30-day maximum response window.</li>
+            <li><strong>GDPR</strong> n. 欧盟通用数据保护条例 EU data protection regulation. 30-day maximum, with possible 60-day extension.</li>
+            <li><strong>PCI-DSS</strong> n. 支付卡行业数据安全标准 The global standard for protecting cardholder data. 12 requirements.</li>
+            <li><strong>SAQ A / ROC</strong> n. 自评问卷/合规报告 SAQ A = self-assessment for card-not-present merchants. ROC = Report on Compliance, the full audit report.</li>
+            <li><strong>QSA (Qualified Security Assessor)</strong> n. 合格安全评估师 A PCI-SSC certified assessor. Required for full ROC.</li>
+            <li><strong>Waiver</strong> n. 豁免 A formal documented exception to a control, with an expiry and an owner. The Compliance team's bread and butter.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "We're working on / We're scoping / We're committing to" — the BA's present continuous toolkit</h3>
+        <p>
+            Compliance conversations love the <strong>present continuous</strong> tense because it conveys
+            <em>active, in-flight work</em> rather than a vague plan. Compare: <em>We will improve DSAR
+            turnaround</em> (vague future) vs <em>We're scoping a self-service DSAR portal in the next
+            PI</em> (specific, ongoing, owned). Always lead with the latter.
+        </p>
+        <p>合规对话里多用现在进行时，强调"在做事"而不是"将来做"。</p>
+
+        <h3>② "As far as I know / I believe / To my understanding" — epistemic modality</h3>
+        <p>
+            When you are not 100% sure of a regulatory detail, use an <strong>epistemic hedge</strong>:
+            <em>as far as I know, I believe, to my understanding, if I recall correctly</em>. This
+            protects you if the answer turns out to be wrong — you qualified it. Compliance officers
+            respect this register; lawyers require it.
+        </p>
+        <p>对监管细节不确定时用认识情态：as far as I know / I believe——既是保护，也是合规官尊重的说话方式。</p>
+
+        <h3>③ "It stays in scope for SAQ A but out of scope for the full ROC" — the parallel structure</h3>
+        <p>
+            The pattern <em>X for A but Y for B</em> is the standard way to express <strong>scope
+            segmentation</strong>. Compliance and Infosec think in scope buckets — mirror their language.
+            Always follow with <em>I'll confirm in writing</em>.
+        </p>
+        <p><em>X for A but Y for B</em> 是表达范围切分的标准句型，对齐合规和信安的思维方式。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Compliance officers write everything down. So should you.</strong> If a Compliance lead says something in a meeting that affects scope, follow up with a 3-sentence email: "Per our discussion, agreed X, owner Y, date Z." Treat every compliance meeting as a future audit exhibit.</li>
+            <li><strong>Never use "I think" or "probably" with a regulator's rule.</strong> Compliance will remember the uncertainty and re-question it. Use "as far as I know" + "I'll confirm in writing by EOD" — that pattern buys you time without losing credibility.</li>
+            <li><strong>MAS, HKMA, FCA, GDPR — they don't overlap neatly.</strong> A control that satisfies MAS TRM might not satisfy HKMA SPM. Always ask "which regulator's standard are we aligning to?" before promising a date. Compliance teams love this question.</li>
+            <li><strong>The "interim control" is your best friend.</strong> Regulators accept a temporary fix if it has (a) a clear expiry date, (b) a documented waiver, and (c) a permanent remediation plan. The trio is non-negotiable. Skip the waiver and you have a finding, not a fix.</li>
+            <li><strong>Recurring findings are career-altering.</strong> If HKMA has flagged the same control weakness twice, the second time will get escalated to the regional CRO. Treat every repeat finding as a P1 — it will eventually be one.</li>
+            <li><strong>PCI-DSS scope questions belong to Infosec, not to you alone.</strong> When in doubt, say "I'll confirm with Infosec and circle back in writing." Never commit on PCI scope without their sign-off — the consequences of a wrong answer are measurable in millions.</li>
+            <li><strong>Data Privacy Officers (DPOs) think in "legal basis".</strong> When writing DSAR-related AC, use the phrase "with timestamp, requester, and legal basis" — that's the DPO's mental model. They'll sign off faster when you speak their language.</li>
+            <li><strong>Different regions, different paces.</strong> HKMA is methodical and paper-heavy; MAS is fast and outcome-focused; FCA in the UK is principle-based and trusts judgement. Adapt your meeting style — but never your rigour.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the compliance call</h3>
+        <p>Translate the following BA response into natural Chinese. Pay attention to the "interim control + waiver + expiry" trio.</p>
+        <blockquote>
+            "Thanks for laying that out so clearly, Sundara. On the screening re-eval: the batch job in the
+            legacy ACME screen is hard-coded at 24h. We're working on moving it to OneScreening with a 12h
+            cadence — that's in flight next sprint. In the meantime, I'm proposing an interim manual
+            control: a 12h secondary check by Operations, logged in the audit trail. One thing to flag —
+            the interim control needs a waiver reference number from Group Risk. Can I ask Compliance to
+            raise that this week? Otherwise the audit trail will show an uncontrolled manual step, which
+            might invite a follow-up finding. I'll confirm the PCI-DSS scope with Infosec and circle back
+            in writing by EOD."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Sundara，谢谢您讲得这么清楚。筛查复评这块：老 ACME 屏的批处理作业硬编码为 24 小时。我们正在迁移到 OneScreening，频次改为 12 小时——下个 sprint 进行中。在此期间，我建议一个过渡性人工控制：运营团队每 12 小时做一次二次检查，记录在审计追踪中。提一个事项——过渡性控制需要集团风险出具豁免编号。能否请合规本周内申请？否则审计追踪会显示一个未受控的人工步骤，可能引来后续发现。PCI-DSS 范围我会和信安确认后，今天 EOD 前书面回复。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the compliance risk</h3>
+        <p>A BA gives a verbal answer in a meeting with the regional DPO. Which line is most likely to cause a follow-up audit finding?</p>
+        <ol>
+            <li>"I'll add that as an explicit AC: all DSAR consent events written to the consent ledger with timestamp, requester, and legal basis."</li>
+            <li>"Yeah, I think we already log that somewhere. Probably in the audit log."</li>
+            <li>"Let me confirm with Infosec and circle back in writing by EOD."</li>
+            <li>"Noted, Helen. I'll send the minutes and the updated story by tomorrow EOD."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the dangerous one. "I think", "probably", "somewhere" — three hedges stacked together. A DPO will write that down, and at the next audit the BA will be asked to prove it. ① is the gold standard (explicit AC + specific fields). ③ and ④ are professional hedges — owning the answer with a time-bound commitment.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're the BA on the RBWM Onboarding squad. The HKMA has issued an observation letter on (a) the <em>periodic KYC refresh</em> cycle being run only annually, while the SPM CR-1 requires <em>every 6 months for HKRBWM high-risk</em>; (b) the <em>consent ledger</em> not capturing the legal basis field. You are in a meeting with the regional Head of Compliance. Write a 5-7 sentence BA response that acknowledges both findings, proposes an interim control for the KYC cycle, and commits the consent-ledger fix as a story. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks for the heads-up, Joyce. Let me address both findings. On the KYC refresh cycle: you're right that the current platform runs annually, but SPM CR-1 requires six-monthly for HKRBWM high-risk. We're scoping a rule engine change to drive the cycle from the customer risk-rating field — that's in flight for the next PI. In the meantime, I'll propose an interim manual control: Operations runs a monthly report of customers due for refresh and triggers them off-system, with a waiver reference from Group Risk. The waiver will have an expiry aligned to the permanent fix. On the consent ledger — that's a straight fix. I'll commit it as a story: 'Add legal basis field to consent ledger entries, with timestamp, requester, and source.' I'll have a draft story and the interim-control memo to you by Friday EOD. Could I ask Compliance to raise the waiver this week, so the audit trail is clean by the time HKMA's follow-up review lands?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="19-banking-terminology.html" class="btn btn-primary">Next: Article 19 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

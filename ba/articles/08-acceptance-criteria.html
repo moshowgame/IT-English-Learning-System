@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: Acceptance Criteria Definition | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">08 · Acceptance Criteria Definition</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Acceptance Criteria Definition</h1>
+        <p class="subtitle">Article 08 · Module 2: Discovery & Workshops · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Given/When/Then, edge cases, unambiguous AC</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday morning, 10 AM HKT</strong>. The CMB (Commercial Banking) sanctions
+            screening squad — a BA (you, Wei, in HK), a Tech Lead (Hannah, in the UK), a QA (Sandeep, in
+            Bangalore), and a Compliance Business Analyst (Carmen, in Shanghai) — is sitting in a
+            refinement session. The story on the table is <em>SCN-4410: Real-time sanctions hit handling
+            for cross-border payments</em>.
+        </p>
+        <p>
+            周三上午 10 点，香港时间。CMB（工商金融）制裁名单筛查 squad——包括香港的 BA 你（Wei）、
+            英国的 Tech Lead Hannah、班加罗尔的 QA Sandeep，以及上海的合规业务分析师 Carmen——在开
+            Grooming 会。桌上的 Story 是 <em>SCN-4410: 跨境支付的实时制裁名单命中处理</em>。
+        </p>
+        <p>
+            The business PO has written the AC, but it's vague: "the system should handle sanctions hits
+            appropriately". Your job as BA is to <strong>turn it into a Given/When/Then list, surface
+            edge cases</strong> (PEP, false positives, dual-jurisdiction rules under OFAC + HKMA), and
+            <strong>make it testable</strong> before the story goes into sprint planning tomorrow.
+        </p>
+        <p>
+            业务方 PO 写的 AC 很模糊："系统应适当处理制裁名单命中"。BA 你的任务是在 Story 进
+            Sprint Planning 之前，把它变成 <strong>Given/When/Then 列表，暴露边界情况</strong>
+            （PEP、误报、OFAC + HKMA 双司法管辖），并让 AC <strong>可测</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, so <em>let's read through Carmen's AC draft line by line</em> and stress-test it.</span><span class="cn">好，我们一行一行看 Carmen 写的 AC 草稿，逐一压测。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carmen (Compliance BA):</span>
+                <span class="text"><span class="en">Sure. "The system should <em>handle sanctions hits appropriately</em>." That's the only line I have.</span><span class="cn">好。"系统应适当处理制裁名单命中"——这是我目前唯一一行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Right, "appropriately" <em>isn't testable</em>. <em>What does "handle" mean?</em> Block? Hold for review? Let through with a flag? We need to pick a behaviour and pin it down.</span><span class="cn">"适当地"不可测。"处理"是什么意思？拦截？挂起待审？放行但加标记？我们必须选定一种行为并写死。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sandeep (QA):</span>
+                <span class="text"><span class="en">Same problem from my side. <em>Given/When/Then</em>, please — I want to write a test the same day this story is picked up.</span><span class="cn">我这边也是同一个问题。麻烦用 Given/When/Then——我希望 Story 一开工我就能写测试。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Agreed. Carmen, <em>walk me through what should happen on a hard hit</em> — say, a 100% match on the OFAC SDN list for a USD payment to a counterparty in Hong Kong.</span><span class="cn">同意。Carmen，你讲讲硬命中（hard hit）应该怎么处理——比如一笔 USD 付款，对方在香港，OFAC SDN 名单 100% 命中。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carmen (Compliance BA):</span>
+                <span class="text"><span class="en">Hard hit means <em>block and escalate to Level 2 Compliance</em>. The payment is held in the eCAB queue within 60 seconds. The relationship manager gets a OneWealth notification.</span><span class="chinese">硬命中就是拦截并升级到二级合规。60 秒内挂到 eCAB 队列，客户经理在 OneWealth 收到通知。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Got it. <em>And on a soft hit?</em> A name match but wrong date of birth or nationality — what's the policy there?</span><span class="cn">明白。软命中（soft hit）呢？名字匹配但出生日期或国籍不对——政策是？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carmen (Compliance BA):</span>
+                <span class="text"><span class="en">Soft hit goes into a <em>manual review queue</em> — the payment is not blocked but held. SLA is 4 business hours for L1 review.</span><span class="cn">软命中进人工审核队列——不拦截但挂起。一级审核 SLA 是 4 个工作小时。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Hannah (Tech Lead):</span>
+                <span class="text"><span class="en">Quick one — <em>does the SLA clock start at the screening event or at the payment submission?</em> The architecture differs.</span><span class="cn">问一下——SLA 时钟从筛查事件开始算还是从付款提交开始算？架构上不一样。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Good catch.</em> Let's <em>lock it as the screening event</em> for now and call it out as an open assumption for the architecture review on Friday.</span><span class="cn">好问题。我们先按筛查事件开始算，作为开放假设留到周五架构评审再确认。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>And PEP hits?</em> If the counterparty is a PEP, do we still treat it as a soft hit, or does it escalate regardless?</span><span class="cn">PEP 命中呢？如果对方是 PEP，是按软命中处理，还是无论命中强度都升级？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carmen (Compliance BA):</span>
+                <span class="text"><span class="en">PEP — <em>regardless of fuzzy-match score</em> — always goes to manual review with a 2-hour SLA. That's a Group Compliance rule, not negotiable.</span><span class="cn">PEP——无论模糊匹配分数多少——都进人工审核，SLA 2 小时。这是集团合规的硬规定，不能谈。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, so <em>we have three ACs now</em>: hard hit (block + escalate, 60s), soft hit (manual review, 4h), PEP (manual review, 2h). <em>I'll draft the Given/When/Then for each and share in Confluence by EOD.</em></span><span class="cn">好，现在我们有 3 条 AC：硬命中（拦截+升级，60 秒）、软命中（人工审核，4 小时）、PEP（人工审核，2 小时）。我今天 EOD 前在 Confluence 写好每条的 Given/When/Then。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Let's read through the AC draft line by line.</em></span>
+                <span class="chinese">我们一行一行看 AC 草稿</span>
+                <span class="note">Forces a literal walkthrough. "Line by line" is the antidote to vague AC.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Vague</span> <em>"Appropriately" isn't testable.</em></span>
+                <span class="chinese">"适当地"不可测</span>
+                <span class="note">The two words to ban from AC: "appropriately" and "as needed". Replace with a number or a decision.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Define</span> <em>What does "handle" mean?</em></span>
+                <span class="chinese">"处理"是什么意思</span>
+                <span class="note">When a verb is ambiguous, force the stakeholder to pick one of: block, hold, allow, escalate, notify.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Walk</span> <em>Walk me through what should happen on a hard hit.</em></span>
+                <span class="chinese">你讲讲硬命中时应该怎么处理</span>
+                <span class="note">"Walk me through" + a specific scenario is the best elicitation line for turning policy into AC.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Edge case</span> <em>And on a soft hit?</em></span>
+                <span class="chinese">软命中呢？</span>
+                <span class="note">Always ask for the second case after the first. Hard / soft / PEP / timeout / partial match — surface them all.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SLA</span> <em>SLA is 4 business hours for L1 review.</em></span>
+                <span class="chinese">一级审核 SLA 是 4 个工作小时</span>
+                <span class="note">SLAs go in AC as numbers, not adjectives. "Within 4 business hours" beats "quickly".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Assumption</span> <em>Let's lock it as the screening event for now and call it out as an open assumption.</em></span>
+                <span class="chinese">我们先按……来，作为开放假设</span>
+                <span class="note">When the team can't agree, capture as an assumption + owner + due date. Don't kill the workshop.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Rule</span> <em>That's a Group Compliance rule, not negotiable.</em></span>
+                <span class="chinese">这是集团合规的硬规定，不能谈</span>
+                <span class="note">Use "not negotiable" only for genuine hard rules. If you over-use it, people stop trusting you.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Lock</span> <em>We have three ACs now.</em></span>
+                <span class="chinese">现在我们锁了 3 条 AC</span>
+                <span class="note">Locking = "we won't re-debate this today". A workshop productivity device.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Draft</span> <em>I'll draft the Given/When/Then and share in Confluence by EOD.</em></span>
+                <span class="chinese">我今天 EOD 前在 Confluence 写好 Given/When/Then</span>
+                <span class="note">Always end with a concrete next step + a channel + a deadline. Avoids the "who's writing it?" stall.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Acceptance Criteria (AC)</strong> n. 验收标准 The bullet list of conditions that define "done" for a story.</li>
+            <li><strong>Given/When/Then</strong> n. Gherkin 三段式 The standard AC syntax: precondition, action, expected outcome.</li>
+            <li><strong>Hard hit</strong> n. 硬命中 A 100% match against the sanctions list — block-and-escalate.</li>
+            <li><strong>Soft hit</strong> n. 软命中 A fuzzy / partial match — manual review.</li>
+            <li><strong>PEP (Politically Exposed Person)</strong> n. 政治公众人物 A high-risk customer profile that always triggers EDD.</li>
+            <li><strong>OFAC SDN list</strong> n. OFAC 制裁名单 The US Office of Foreign Assets Control sanctions database.</li>
+            <li><strong>HKMA</strong> n. 香港金管局 Hong Kong Monetary Authority — local regulator.</li>
+            <li><strong>Sanctions screening</strong> n. 制裁名单筛查 Real-time check of all parties against global watchlists.</li>
+            <li><strong>Edge case</strong> n. 边界情况 A scenario at the boundary of normal — e.g., timeout, partial match, dual jurisdiction.</li>
+            <li><strong>eCAB</strong> n. 电子合规审批 HSBC's electronic Compliance Approval Booking system.</li>
+            <li><strong>Group Compliance</strong> n. 集团合规 The global compliance function — its rules override local policy.</li>
+            <li><strong>Open assumption</strong> n. 开放假设 A working decision captured in the AC, awaiting validation.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "What does X mean?" — the disambiguation question</h3>
+        <p>
+            When a stakeholder uses a vague verb (<em>handle</em>, <em>process</em>, <em>manage</em>),
+            your best response is <strong>"What does X mean in this context?"</strong> The question is
+            grammatically simple — auxiliary <em>does</em> + subject + base verb — but politically
+            powerful. It signals "I want to capture your intent precisely" without saying "your AC is bad".
+        </p>
+        <p>面对"处理/管理/应对"这种模糊动词，反问 <em>What does X mean?</em> 比直接说"AC 不好"更得体。</p>
+
+        <h3>② "Regardless of X" — the override clause</h3>
+        <p>
+            <em>PEP — regardless of fuzzy-match score — always goes to manual review</em> uses
+            <strong>regardless of + noun</strong> to express a rule that overrides other rules. It
+            pattern-matches perfectly to "regardless of" lines in policy docs. Use it when one factor
+            dominates all others.
+        </p>
+        <p><em>Regardless of + 名词</em> 表达"无论……都……"，对应合规文档中常见的"压倒性条款"措辞。</p>
+
+        <h3>③ "Within X seconds / hours / business days" — the SLA pattern</h3>
+        <p>
+            SLAs in AC are written as <strong>"within + duration"</strong>: <em>within 60 seconds</em>,
+            <em>within 4 business hours</em>, <em>within 2 business days</em>. Avoid "quickly" / "as
+            soon as possible" / "promptly". The <em>within</em> form is measurable and ties cleanly
+            to a Jira test assertion.
+        </p>
+        <p>SLA 在 AC 里用 <em>within + 时间</em> 表达，避免 "quickly"、"as soon as possible" 这类不可测措辞。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"Appropriately" is the enemy of testability.</strong> At HSBC, the QA chapter will reject a story if any AC line contains "appropriately", "as needed", or "TBD". As BA, you catch these before the story hits refinement — it saves a full round of ping-pong.</li>
+            <li><strong>Use Group Compliance wording verbatim.</strong> If a Group Compliance rule says "regardless of fuzzy-match score", put that exact phrase in the AC. Re-paraphrasing it ("always escalate PEPs") opens a debate you can't win. Verbatim = defensible.</li>
+            <li><strong>SLAs in HSBC always reference a clock start.</strong> "Within 60 seconds" means nothing without saying <em>of what event</em>. Capture the clock start (screening event, payment submission, alert generation) in the AC line — never leave it implicit.</li>
+            <li><strong>Edge cases for sanctions: always ask the "what if the list changes mid-flight?" question.</strong> If the SDN list updates while a payment is in the queue, the AC must say what happens. Hannah and the Tech Lead will thank you for surfacing it.</li>
+            <li><strong>Cross-region refinement etiquette.</strong> With Hannah in the UK, Carmen in Shanghai, and Sandeep in Bangalore, expect Sandeep to want a clear test script, Carmen to want policy words verbatim, and Hannah to want edge cases. Address all three concerns in the same refinement — don't play them sequentially.</li>
+            <li><strong>"Not negotiable" is a Group Compliance phrase.</strong> BAs at HSBC are trained to use it <em>only</em> when the underlying rule is published at Group level. Over-using it for your own preferences erodes its power. If in doubt, say "this is the published policy — let's confirm with Group Compliance".</li>
+            <li><strong>Always capture the AC in Confluence, not just Jira.</strong> Jira AC is the source of truth, but the <em>discussion</em> of why each AC exists belongs in a Confluence page. Carmen will look there when she audits the story six months later.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the compliance AC discussion</h3>
+        <p>Translate the following compliance AC line into natural Chinese, keeping the testability focus.</p>
+        <blockquote>
+            "Right, 'appropriately' isn't testable. What does 'handle' mean? Block, hold, escalate, or
+            let through with a flag? We need to pick one and pin it down. Same problem from the QA side —
+            Given/When/Then, please. Carmen, walk me through what should happen on a hard hit: a 100%
+            match on the OFAC SDN list for a USD payment to a counterparty in Hong Kong. SLA is 60
+            seconds; the clock starts at the screening event, not the payment submission."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，'适当地'不可测。'处理'到底是拦截、挂起、升级，还是放行加标记？我们必须选一个并写死。QA 那边也是同样的问题——麻烦用 Given/When/Then。Carmen，你讲讲硬命中应该怎么处理：OFAC SDN 名单 100% 命中，付款币种 USD，对方在香港。SLA 是 60 秒，时钟从筛查事件开始算，不是从付款提交开始算。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the weak AC</h3>
+        <p>Which of these AC lines is the strongest and most testable? Why?</p>
+        <ol>
+            <li>"The system should handle sanctions hits appropriately and notify the relationship manager."</li>
+            <li>"Given a payment triggers a 100% OFAC SDN match, when the screening event completes, then the payment is blocked and an eCAB case is created within 60 seconds."</li>
+            <li>"The system should be fast and user-friendly."</li>
+            <li>"Soft hits are reviewed quickly by Compliance."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the strongest. It has a specific precondition (100% OFAC match), a clear trigger (screening event), a defined outcome (block + eCAB case), and a measurable SLA (within 60 seconds). ① uses "appropriately" — vague. ③ is a non-functional claim dressed as a functional AC. ④ uses "quickly" — replace with a number. Reframe: <em>Given a soft hit, when L1 review is requested, then the review is completed within 4 business hours.</em></p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB onboarding squad. The Compliance team has given you a one-line AC for a new feature: <em>"High-risk customer profiles should trigger enhanced due diligence."</em> Rewrite this as 3 Given/When/Then ACs covering (a) a PEP hit, (b) a high-jurisdiction-risk country, and (c) a customer with adverse media. Include a specific SLA for each. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p><strong>AC 1 (PEP):</strong> <em>Given</em> a new GPB prospect matches a PEP list with a score above 80, <em>when</em> the CDD event is recorded, <em>then</em> an EDD case is opened in eCAB within 2 business hours and assigned to a Level 2 Compliance officer.</p>
+            <p><strong>AC 2 (Jurisdiction):</strong> <em>Given</em> a prospect's country of residence is on the Group High-Risk Jurisdiction list, <em>when</em> the onboarding record is created, <em>then</em> the system flags the record for EDD and blocks account opening until Compliance clearance is recorded.</p>
+            <p><strong>AC 3 (Adverse media):</strong> <em>Given</em> a prospect has 3 or more adverse-media hits in the last 12 months, <em>when</em> the screening refresh runs, <em>then</em> the RM is notified in OneWealth and an EDD review is queued within 4 business hours.</p>
+            <p><strong>Workshop phrasing you might use:</strong> "'Trigger EDD' isn't testable on its own. What does trigger mean — automatic case, RM notification, or both? Let's pin each path down. Carmen, walk me through the PEP path first. Regardless of fuzzy-match score, is it 2 hours or 4 hours? We need to lock the SLA before refinement."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="09-brd-frd-walkthrough.html" class="btn btn-primary">Next: Article 09 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

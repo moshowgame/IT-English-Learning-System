@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: Disagreeing with Tech Lead on Feasibility | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">15 · Disagreeing with Tech Lead on Feasibility</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Disagreeing with Tech Lead on Feasibility</h1>
+        <p class="subtitle">Article 15 · Module 5: Difficult Conversations · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 When AC conflicts with tech reality — discuss trade-offs in English</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>2:30 PM GMT</strong>. You are in a 30-minute refinement session on Microsoft Teams for
+            story <em>GPB-1190</em> — <em>real-time sanctions screening for cross-border payments</em>.
+            The AC you wrote says: <em>"All MT103 outgoing payments must complete sanctions screening and return
+            a decision within 200 milliseconds p99."</em> Priya, your Tech Lead in the UK, has just said
+            bluntly: <em>"That latency target isn't achievable with the current screening API. We'd need
+            to rebuild the rule engine."</em>
+        </p>
+        <p>
+            下午 2:30 GMT，你在 Teams 上开 30 分钟的 Grooming，讨论 <em>GPB-1190</em>——<em>跨境支付实时
+            制裁名单筛查</em>。你写的 AC 是："所有 MT103 发出支付必须在 200 毫秒 p99 内完成制裁名单筛查
+            并返回决策。"UK 的技术负责人 Priya 刚直接说："这个延迟目标用现在的筛查 API 做不到，
+            我们得重建规则引擎。"
+        </p>
+        <p>
+            The tension is real: the AC came from the HK regulator's circular; the latency is non-negotiable
+            for Compliance. Priya is not wrong — the API has a 600ms p99 floor today. You have to disagree
+            <em>politely but firmly</em>, find the trade-off, and keep the relationship with the Tech Lead intact
+            while protecting the regulatory commitment.
+        </p>
+        <p>
+            矛盾是真实的：AC 来自 HK 监管的通函，延迟对合规是硬要求。Priya 也没错——API 今天的 p99 底线
+            是 600 毫秒。你要<strong>礼貌但坚定地 disagree</strong>，找到 trade-off，既维护和 Tech Lead
+            的关系，又保住监管承诺。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Wei, I have to push back</em> on the latency AC. <em>200ms p99 is not achievable</em> with the current sanctions API — its floor is 600ms.</span><span class="cn">Wei，这个延迟 AC 我得 push back 一下。200 毫秒 p99 用现在的制裁 API 做不到，底线就是 600 毫秒。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Thanks for being direct, Priya.</em> Let me share the constraint <em>on my side</em> first, and then we can <em>find a middle ground</em>.</span><span class="cn">Priya 谢谢直说。先说下我这边的约束，然后我们找个中间地带。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">The <em>HKMA circular 2025-04</em> explicitly says the screening decision must be returned <em>before payment dispatch</em>. The 200ms is not a <em>nice-to-have</em>; it's a <em>regulatory commitment</em> that's been <em>signed off by Jonathan</em> at the PO level.</span><span class="cn">HKMA 通函 2025-04 明确要求筛查决策必须在支付发出前返回。200 毫秒不是 nice-to-have，而是<strong>监管承诺</strong>，已经由 PO Jonathan 签字。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">I hear the regulatory pressure, but <em>200ms is not a soft target</em> on my side either — the rule engine itself takes 400ms <em>per single rule match</em>. You'd need to <em>fundamentally rebuild</em> the screening service to hit that.</span><span class="cn">我理解监管压力，但 200 毫秒在我这边也不是软指标——规则引擎每条规则匹配就要 400 毫秒。要达到 200 毫秒必须<strong>根本性重建</strong>筛查服务。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>OK, so</em> we're both <em>boxed in</em> by our own constraints. <em>Can I ask</em> — is 200ms impossible, or is it <em>costly</em>?</span><span class="cn">好，我们都被各自的约束困住了。我问一下——200 毫秒是"完全不可能"，还是"代价很高"？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">It's not impossible — it's <em>expensive</em>. We'd need to <em>re-architect the rule engine</em>, bring in a <em>pre-screening cache</em>, and add <em>async risk scoring</em>. <em>Realistic</em> number: 4 sprints of dedicated work, two extra engineers, and roughly USD 400k of infra.</span><span class="cn">不是不可能，但<strong>很贵</strong>。需要<strong>重新架构规则引擎</strong>，引入<strong>预筛查缓存</strong>，加<strong>异步风险评分</strong>。实际数字：4 个 Sprint 的专项工作，2 个额外工程师，大约 40 万美元基础设施。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Right, so</em> the constraint is <em>time and budget</em>, not <em>physics</em>. <em>That changes the conversation.</em> <em>What if we…</em></span><span class="cn">明白了，那约束是<strong>时间和预算</strong>，不是<strong>物理定律</strong>。这就不一样了。我的想法是……</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>What if we split the AC?</em> <em>Phase 1</em>: keep 200ms as the <em>regulatory target</em> and use the pre-screening cache + async scoring to <em>get to 250ms</em> this sprint — which is <em>good enough</em> for the HKMA letter if we <em>document the gap and the roadmap</em>.</span><span class="cn"><strong>把 AC 拆开呢？</strong>第一阶段：200 毫秒保留为<strong>监管目标</strong>，用预筛查缓存+异步评分<strong>本 Sprint 做到 250 毫秒</strong>——这够 HKMA 来函用，只要<strong>把差距和路线图写清楚</strong>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">250ms this sprint is <em>tight but doable</em>. I'd want a <em>spike</em> first to <em>de-risk the cache</em> though.</span><span class="cn">本 Sprint 做到 250 毫秒<strong>紧但可行</strong>。不过我想要先做个<strong>技术 spike</strong>把缓存风险降下来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Agreed.</em> Let me <em>shape a 1-point spike story</em> for the cache proof-of-concept, and we <em>lock 250ms as the sprint AC</em> with a clear <em>roadmap to 200ms</em> in the description. <em>Can we take that to Jonathan together?</em></span><span class="cn">同意。我去成型一个 1 点的 spike Story 做缓存 PoC，<strong>把 250 毫秒作为 Sprint AC 锁定</strong>，描述里写清楚到 200 毫秒的路线图。<strong>我们一起跟 Jonathan 谈行吗？</strong></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Happy to.</em> <em>Good trade-off</em> — I think Jonathan will accept it <em>if we show him the roadmap</em>.</span><span class="cn">乐意。<strong>不错的 trade-off</strong>——只要我们给他看路线图，Jonathan 应该会接受。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Push Back</span> <em>I have to push back on the latency AC.</em></span>
+                <span class="chinese">我得 push back 一下延迟 AC</span>
+                <span class="note">"Push back" = disagree formally. The standard verb for a polite-but-firm challenge.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Constraint</span> <em>Let me share the constraint on my side.</em></span>
+                <span class="chinese">让我说下我这边的约束</span>
+                <span class="note">"Constraint" = a hard limit you can't move. Naming the constraint (not the person) is the polite form.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Middle Ground</span> <em>Can we find a middle ground?</em></span>
+                <span class="chinese">我们能不能找个中间地带？</span>
+                <span class="note">"Middle ground" = a position both sides can accept. The goal of every negotiation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Boxed In</span> <em>We're both boxed in by our own constraints.</em></span>
+                <span class="chinese">我们都被各自的约束困住了</span>
+                <span class="note">"Boxed in" = cornered. Acknowledging the other side's corner makes the conversation collaborative.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Impossible vs Costly</span> <em>Is 200ms impossible, or is it costly?</em></span>
+                <span class="chinese">200 毫秒是"完全不可能"还是"代价很高"？</span>
+                <span class="note">A magic question. "Impossible" ends the conversation; "costly" opens it. Always ask this.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>What if we split the AC as a trade-off?</em></span>
+                <span class="chinese">我们能不能把 AC 拆开做个 trade-off？</span>
+                <span class="note">"Trade-off" = a position where both sides give something. The unit of negotiation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Phase</span> <em>Phase 1: 250ms. Phase 2: 200ms.</em></span>
+                <span class="chinese">第一阶段 250 毫秒，第二阶段 200 毫秒</span>
+                <span class="note">"Phase" = staged delivery. Lets you ship something this sprint without losing the long-term target.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Good Enough</span> <em>250ms is good enough for the HKMA letter.</em></span>
+                <span class="chinese">250 毫秒对 HKMA 来函够用了</span>
+                <span class="note">"Good enough" = meets the real requirement, even if not the ideal. Use carefully — never for ACs that <em>are</em> the requirement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Spike</span> <em>Let me shape a 1-point spike for the cache PoC.</em></span>
+                <span class="chinese">我去成型一个 1 点的 spike 做缓存 PoC</span>
+                <span class="note">"Spike" = a time-boxed investigation to de-risk a tech choice. Standard Scrum term.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Roadmap</span> <em>Lock 250ms as the sprint AC with a roadmap to 200ms.</em></span>
+                <span class="chinese">锁定 250 毫秒为 Sprint AC，并写明到 200 毫秒的路线图</span>
+                <span class="note">"Roadmap" = the path to the long-term target. What the regulator wants to see, even if you can't ship it today.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Feasibility</strong> n. 可行性 Whether something can be built given the current tech, time, and budget.</li>
+            <li><strong>Latency</strong> n. 延迟 The time a system takes to respond. Often measured at p50, p95, p99.</li>
+            <li><strong>p99</strong> abbr. 第 99 百分位 The 99th percentile latency — 99% of requests are faster than this.</li>
+            <li><strong>Spike</strong> n. 技术验证 A time-boxed (usually 1-3 day) investigation to de-risk a tech choice.</li>
+            <li><strong>Pre-screening cache</strong> n. 预筛查缓存 A store of pre-computed screening decisions to avoid repeating the full check.</li>
+            <li><strong>Async risk scoring</strong> n. 异步风险评分 Running the deep risk score in the background, not in the request path.</li>
+            <li><strong>Re-architect</strong> v. 重新架构 To redesign the system's structure. Implies a large, expensive change.</li>
+            <li><strong>Proof of concept (PoC)</strong> n. 概念验证 A small implementation that proves a tech approach is viable.</li>
+            <li><strong>Constraint</strong> n. 约束 A hard limit. A regulatory date, a budget cap, a p99 target. Always name, never blame.</li>
+            <li><strong>Trade-off</strong> n. 权衡 A position where both sides give something. The output of a feasibility negotiation.</li>
+            <li><strong>Regulatory commitment</strong> n. 监管承诺 A formal date a regulator requires a change to be live. Drives sequencing.</li>
+            <li><strong>Sanctions API</strong> n. 制裁名单 API The service that checks a counterparty against OFAC, EU, UN, HMT, HKMA lists.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "It's not impossible — it's <em>expensive</em>" — the contrastive correction</h3>
+        <p>
+            One of the most useful sentences in BA-TL negotiation: <em>"It's not impossible — it's <strong>expensive</strong>"</em>.
+            The structure <strong>not X — it's Y</strong> is a <em>contrastive correction</em> that reframes a
+            "no" into a "how much". It works because the listener hears the negation first (preserving their
+            point of view) and then the reframing. Compare: <em>"That's not going to work"</em> (dead end) vs
+            <em>"It's not impossible — it's costly"</em> (opens the conversation). Use the contrastive correction
+            when you suspect the other side is conflating <em>difficulty</em> with <em>impossibility</em>.
+        </p>
+        <p>"It's not X — it's Y" 是一种对比修正句式，把"不可能"重构成"代价大"，给对话留出空间。</p>
+
+        <h3>② "Is X impossible, or is it costly?" — the disjunction that opens a negotiation</h3>
+        <p>
+            The <strong>disjunctive question</strong> (<em>Is X <strong>A</strong>, or is it <strong>B</strong>?</em>)
+            is the BA's scalpel. It forces the other side to pick a category. <em>"Impossible"</em> ends the
+            conversation; <em>"costly"</em> opens it. By asking, you also signal you suspect the answer is the
+            second one — which is itself a soft form of pressure. Use it when you sense the Tech Lead is
+            inflating the difficulty to avoid the work.
+        </p>
+        <p>"Is X A, or is it B?" 是个二分式问题，逼对方归类。"不可能" 终止对话，"代价高" 开启谈判。</p>
+
+        <h3>③ "What if we split the AC?" — the first-person plural suggestion</h3>
+        <p>
+            <em>"What if <strong>we</strong> split the AC?"</em> uses the <strong>first-person plural</strong>
+            (<em>we</em>, <em>us</em>, <em>our</em>) to share ownership of the new idea. The contrast is with
+            <em>"What if <strong>you</strong> split the AC?"</em> (sounds like a demand) or <em>"What if
+            <strong>I</strong> split the AC?"</em> (sounds like you'll do it alone). <em>We</em> is the
+            negotiation default. Pair with <em>can</em> for politeness: <em>"Can <strong>we</strong> split
+            the AC?"</em>
+        </p>
+        <p>"What if we…" 用第一人称复数共享方案归属，比 "you" 听起来更像要求，比 "I" 听起来更协作。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Disagree with the constraint, not the person.</strong> <em>"The 200ms is hard to hit"</em> is a fact. <em>"You're wrong about 200ms"</em> is a personal attack. HSBC BAs default to the first form — even when the Tech Lead is, in fact, being pessimistic.</li>
+            <li><strong>Always share your constraint before naming the trade-off.</strong> If you skip the "here's my constraint" step, the Tech Lead will feel you're asking them to move without giving anything back. The order is: my constraint → your constraint → the trade-off.</li>
+            <li><strong>Use "what if" to introduce your idea, not "I want" or "you should".</strong> <em>"What if we split the AC?"</em> is an invitation. <em>"You should split the AC"</em> is a directive. The former gets the Tech Lead thinking with you; the latter triggers defensiveness.</li>
+            <li><strong>Be willing to be wrong.</strong> If after the discussion the Tech Lead still says 200ms is impossible, the right answer is <em>"Happy to be wrong — let's spike it."</em> A spike is cheap insurance; ego is expensive.</li>
+            <li><strong>Take the trade-off to the PO together.</strong> Don't make the BA-TL decision in isolation. The PO needs to see both the constraint and the trade-off, and the BA-TL pair presenting a unified position is much stronger than either presenting separately.</li>
+            <li><strong>Document the trade-off in the AC.</strong> <em>"AC: 250ms p99 this sprint. Roadmap to 200ms in Sprint 17 (depends on re-architect of rule engine). Signed off by Priya (TL) and Jonathan (PO)."</em> The signature line is gold for audit and for next sprint's planner.</li>
+            <li><strong>Cross-region timing matters.</strong> When the Tech Lead is in the UK and the PO is in HK, the "fast" feedback loop is broken. Be explicit about response times: <em>"Jonathan will reply by tomorrow 10 AM HKT — that's your morning."</em> Sets expectations and avoids the 24-hour silence trap.</li>
+            <li><strong>End on the relationship.</strong> <em>"Appreciate you digging into this, Priya — let's catch up over coffee next sprint review."</em> Disagreement + warmth is the long game. Tech Leads who trust their BAs will move mountains on real blockers.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the trade-off conversation</h3>
+        <p>Translate the following BA-TL exchange into natural Chinese, preserving the constraint-trade-off structure.</p>
+        <blockquote>
+            "Priya, let me share the constraint on my side first. The HKMA circular 2025-04 says the screening
+            decision must be returned before payment dispatch. 200ms is not a nice-to-have; it's a regulatory
+            commitment signed off by Jonathan. I hear the rule engine constraint on your side. So we're both
+            boxed in. Can I ask — is 200ms impossible, or is it costly? If it's costly, can we split the AC?
+            Phase 1: 250ms this sprint. Phase 2: 200ms in Sprint 17 with a roadmap. Let's take the trade-off
+            to Jonathan together."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Priya，先说下我这边的约束。HKMA 通函 2025-04 要求筛查决策必须在支付发出前返回。200 毫秒不是 nice-to-have，而是 Jonathan 签字的监管承诺。你那边的规则引擎约束我听到了，所以我们都被困住了。我问一下——200 毫秒是'完全不可能'还是'代价很高'？如果是'代价很高'，我们能不能把 AC 拆开？第一阶段：本 Sprint 250 毫秒；第二阶段：Sprint 17 到 200 毫秒，并写明路线图。Trade-off 我们一起带给 Jonathan。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the bad disagreement</h3>
+        <p>Which of these responses is most likely to <strong>resolve the disagreement AND keep the Tech Lead on side</strong>? Why?</p>
+            <ol>
+                <li>"200ms is the AC, the regulator signed it off. Make it work."</li>
+                <li>"You don't understand the regulatory pressure. We have to hit 200ms."</li>
+                <li>"I hear the rule engine constraint. Here's my constraint too — the HKMA letter is dated. So we're both boxed in. Is 200ms impossible, or is it costly? If it's costly, can we split the AC as a trade-off and take it to Jonathan together?"</li>
+                <li>"OK fine, let's just descope the latency AC."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is the textbook answer: shares constraint, names mutual box, asks the magic "impossible vs costly" question, proposes a trade-off, loops the PO. ① sounds like a directive, no acknowledgment, no alternative. ② is personal ("you don't understand") — relationship-damaging. ④ caves on the regulator's commitment — the PO will not be happy. The skill is firmness <em>and</em> curiosity.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB onboarding squad. Priya, your UK Tech Lead, says: <em>"Wei, the eKYC selfie-liveness AC is not achievable. The third-party liveness vendor we use has a 4-second floor for the deep check. You wrote 2 seconds in the AC."</em> The AC came from the HKMA eKYC standard, which says liveness must complete within 3 seconds for the customer experience. You need to push back politely, find a trade-off (maybe split AC: happy-path 2s, deep-check 4s async?), and ask Priya to take it to Jonathan with you. Write a 6-8 line Teams message in English. Use at least 4 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks for flagging, Priya. Let me share my constraint: the HKMA eKYC standard sets a 3-second customer experience budget for liveness, which is why the AC says 2 seconds. I hear the vendor floor of 4 seconds on your side. So we're both boxed in. Quick question — is the 2-second target impossible, or is it costly? If we can split the AC, my idea: Phase 1 — happy-path liveness in 2 seconds (vendor's fast lane), with the deep check moved to async and logged out-of-band. The customer sees 2 seconds; the regulator sees the full 4-second deep check on record. Can we spike the vendor's fast lane together, then take the trade-off to Jonathan as a pair? Happy to be wrong on the split if you see a cleaner option."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="16-saying-no-last-minute.html" class="btn btn-primary">Next: Article 16 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 02: Tech Radar Review | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">02 · Tech Radar Review</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Tech Radar Review</h1>
+        <p class="subtitle">Article 02 · Module 2: Evaluating Emerging Technology · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Adopt / Trial / Assess / Hold — discussing new tech for the bank</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday afternoon, 14:00 HKT</strong>. The quarterly <em>Architecture Tech Radar</em>
+            session is running on Microsoft Teams. Margaret, your Chief Architect, chairs the meeting.
+            Today the radar committee is reviewing <strong>six technologies</strong> that squads have
+            proposed over the last quarter: <em>OpenTelemetry</em>, <em>Apache Flink</em>,
+            <em>HashiCorp Vault</em>, <em>Service Mesh with Istio Ambient</em>, <em>pgvector</em>, and
+            <em>Databricks Lakehouse</em> for the OneWealth analytics platform.
+        </p>
+        <p>
+            周二下午 2 点香港时间，季度<em>架构技术雷达</em>评审在 Teams 上进行。Chief Architect Margaret
+            主持。今天雷达委员会要评审本季度 squad 提的 6 项技术：<em>OpenTelemetry</em>、
+            <em>Apache Flink</em>、<em>HashiCorp Vault</em>、<em>Istio Ambient 服务网格</em>、
+            <em>pgvector</em>，以及用于 OneWealth 分析平台的 <em>Databricks Lakehouse</em>。
+        </p>
+        <p>
+            Each technology gets a verdict — <strong>Adopt</strong>, <strong>Trial</strong>,
+            <strong>Assess</strong>, or <strong>Hold</strong>. The verdict lands in the public HSBC
+            Tech Radar on Confluence and shapes which technologies the squads can use. Diego joins
+            from the UK to represent the European regulatory view, and <strong>Priya</strong>, a
+            peer architect from Bangalore, joins to advocate for the Flink stream-processing
+            proposal her RBWM fraud-detection squad wants to trial.
+        </p>
+        <p>
+            每项技术都有一个判定——<strong>Adopt</strong>、<strong>Trial</strong>、
+            <strong>Assess</strong>、<strong>Hold</strong>。判定结果会落到 Confluence 的 HSBC 公共
+            Tech Radar 上，决定 squad 能用哪些技术。Diego 从英国加入，代表欧洲监管视角；班加罗尔的
+            同侪架构师 <strong>Priya</strong> 加入，她要为她的 RBWM 反欺诈 squad 提议试用的
+            Flink 流处理站台。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Right, everyone — thanks for dialling in. We've got <em>six blips</em> on the radar today. Let's keep it tight: <em>proposer presents for three minutes</em>, then the committee pokes holes. OK, Priya — you're up first with <em>Apache Flink</em>.</span><span class="cn">好的，谢谢大家上线。今天雷达上有 6 项，按节奏来：提议人 3 分钟展示，委员会挑刺。Priya，你先上 Flink。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Architect, Bangalore):</span>
+                <span class="text"><span class="en">Thanks, Margaret. So, <em>honest answer — we need Flink for the RBWM fraud-detection pipeline.</em> Today we're on <em>batch Spark jobs every 15 minutes</em>, and the business wants <em>sub-second decisioning</em> on card-not-present transactions. Flink gives us <em>true streaming with exactly-once semantics</em>, and it's <em>group-standard aligned</em> because it runs on the Group Kafka platform.</span><span class="cn">谢谢 Margaret。说实话，RBWM 反欺诈需要 Flink。我们现在每 15 分钟跑一次 Spark 批处理，业务要<em>卡不在场交易</em>亚秒级判定。Flink 能给我们真正的流处理和<em>精确一次语义</em>，而且跑在 Group Kafka 平台上是<em>符合集团标准</em>的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en">Quick one, Priya — <em>what's the operational burden?</em> The UK fraud team <em>burnt a quarter</em> standing up Flink last year and <em>rolled back to Spark Structured Streaming</em>. Are we <em>doubling down on someone else's mistake</em>?</span><span class="cn">问一句，Priya——<em>运维成本怎么样？</em>英国反欺诈团队去年花了 1 个季度搭 Flink，又<em>回滚到了 Spark Structured Streaming</em>。我们要重复别人的坑吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Architect, Bangalore):</span>
+                <span class="text"><span class="en">Good pushback. <em>Honest answer — we learnt from the UK post-mortem.</em> The rollback was caused by <em>state-backend tuning on RocksDB</em>, not Flink itself. <em>We've already engaged the SRE chapter in Bangalore</em> and they've given us a <em>reference runbook</em>. We're proposing <strong>Trial</strong>, not Adopt — <em>one squad, one use case, three months</em>, with a <em>clear go/no-go gate at the end of Q1</em>.</span><span class="cn">好问题。说实话，我们吸取了英国复盘的教训。回滚是 <em>RocksDB state 后端调参</em> 引起的，不是 Flink 本身的问题。我们已经请了班加罗尔的 SRE 章节，他们给了我们一份<em>参考 runbook</em>。我们提议 <strong>Trial</strong>，不是 Adopt——<em>一个 squad、一个用例、3 个月</em>，Q1 末有明确的 go/no-go 关卡。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">OK, I'm <em>sympathetic to Trial</em> — but the <em>Group Cyber caveat</em> is non-negotiable. Flink jobs process card data, so <em>we need an InfoSec design review before the trial spins up</em>. <em>Wei, can you own that handoff?</em></span><span class="cn">我倾向 Trial，但 <em>Group Cyber 的附加条件</em> 不能省。Flink 作业处理卡数据，所以<em>试用启动前要过 InfoSec 设计评审</em>。Wei，这个交接你负责一下？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Yep, happy to. <em>I'll book the InfoSec design review for week 2 of the trial</em> and <em>add it as a precondition to the Trial blip on the radar</em>. Priya, can you <em>drop me a one-pager</em> on the data flows by Friday?</span><span class="cn">没问题，我来。<em>我会把 InfoSec 设计评审安排在试用第 2 周</em>，并把它作为雷达 Trial 项的前提条件。Priya，周五前能给我一份<em>数据流一页纸</em>吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Architect, Bangalore):</span>
+                <span class="text"><span class="en"><em>Will do.</em> And just to flag — the <em>Group Resilience team</em> has already <em>signed off on the DR posture</em> for the trial cluster, so that part is done.</span><span class="cn">没问题，提一句——<em>Group Resilience 团队已经签了试用集群的 DR 姿态</em>，这部分已经完成。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Lovely. <em>Right, next on the list is pgvector</em> — Wei, you wanted to pitch this for the OneWealth semantic-search use case, right?</span><span class="cn">好的。下一项是 pgvector——Wei，OneWealth 语义搜索的用例是你要提的对吧？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">That's right. <em>Honest answer — pgvector is convenient</em>, but <em>for OneWealth we should Hold on pgvector and Assess on a dedicated vector database</em>. The semantic-search workload will outgrow pgvector's recall and operational maturity by mid-2027, and <em>we'd be doing a re-platform in 18 months</em>. <em>My recommendation is to Assess on Pinecone or Weaviate</em>, and revisit in two quarters.</span><span class="cn">对。说实话，pgvector 用起来很方便，但 <em>OneWealth 场景我建议 Hold pgvector，Assess 专用向量数据库</em>。语义搜索的负载到 2027 年中会超过 pgvector 的召回和运维成熟度，等于 <em>18 个月后要重新选型</em>。我<em>建议 Assess Pinecone 或 Weaviate</em>，两个季度后再评审。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Agreed, that's a clean Hold.</em> Let's move on. <em>Diego, are you good to write up the verdicts</em> on Confluence by end of week?</span><span class="cn">同意，这是一个干净的 Hold。下一项。Diego，这周内能把判定结果写到 Confluence 上吗？</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Honest answer — we need Flink for the fraud pipeline.</em></span>
+                <span class="chinese">说实话，反欺诈管线需要 Flink</span>
+                <span class="note">"Honest answer" = a softener that signals "I'm about to make a strong claim". Architects use it before stating a real need.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>What six blips are on the radar today?</em></span>
+                <span class="chinese">今天雷达上有哪 6 项？</span>
+                <span class="note">"Blip" is the canonical Tech Radar term for one technology entry. A blip moves between quadrants (Adopt / Trial / Assess / Hold).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pushback</span> <em>Good pushback — we learnt from the UK post-mortem.</em></span>
+                <span class="chinese">好问题——我们吸取了英国复盘的教训</span>
+                <span class="note">"Good pushback" is the politeness move that turns a critique into a compliment. Always acknowledge the challenge before answering it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Verdict</span> <em>We're proposing Trial, not Adopt — one squad, one use case.</em></span>
+                <span class="chinese">我们提议 Trial，不是 Adopt——一个 squad、一个用例</span>
+                <span class="note">Always scope your verdict: who, what, how long, and the go/no-go gate. An unscoped verdict is a recipe for scope creep.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Caveat</span> <em>The Group Cyber caveat is non-negotiable.</em></span>
+                <span class="chinese">Group Cyber 的附加条件不能省</span>
+                <span class="note">"Non-negotiable" = hard, no discussion. Group Cyber, Group Resilience, SDL — these are the pillars you don't push back on.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Handoff</span> <em>Can you own that handoff?</em></span>
+                <span class="chinese">这个交接你负责一下？</span>
+                <span class="note">A "handoff" is an explicit transfer of an action from one person to another. Naming it avoids the "I thought you were doing it" trap.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Precondition</span> <em>Add it as a precondition to the Trial blip.</em></span>
+                <span class="chinese">把它作为 Trial 项的前提条件</span>
+                <span class="note">"Precondition" = "this must happen before the blip is consumed". Use it to attach InfoSec / Group Cyber gates to a Trial.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Soft</span> <em>Just to flag — the Group Resilience team has signed off.</em></span>
+                <span class="chinese">提一句——Group Resilience 团队已经签了</span>
+                <span class="note">"Just to flag" = the politeness device for raising a side issue without derailing the main discussion. Same as "flagging" in Article 01.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Verdict</span> <em>That's a clean Hold.</em></span>
+                <span class="chinese">这是一个干净的 Hold</span>
+                <span class="note">"Clean" = unambiguous, no caveats. Holds are usually clean; Trials and Adopts often come with preconditions.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>My recommendation is to Assess on Pinecone or Weaviate.</em></span>
+                <span class="chinese">我建议 Assess Pinecone 或 Weaviate</span>
+                <span class="note">Always name 2-3 options. "Assess on X or Y" is better than "Assess on X" because it shows you considered the market.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Tech Radar</strong> n. 技术雷达 A public, time-boxed list of recommended technologies organised into four quadrants.</li>
+            <li><strong>Adopt</strong> v. 采用 The technology is recommended for new projects. Group-supported, with runbooks and reference implementations.</li>
+            <li><strong>Trial</strong> v. 试用 The technology is approved for a bounded use case. Requires a go/no-go gate.</li>
+            <li><strong>Assess</strong> v. 评估 The technology is worth a small proof-of-concept. No production use yet.</li>
+            <li><strong>Hold</strong> v. 暂缓 The technology is not recommended. Existing use is tolerated, but new use requires an exception.</li>
+            <li><strong>Blip</strong> n. 雷达点 A single technology entry on the radar, with a name, quadrant, and a one-line rationale.</li>
+            <li><strong>Exactly-once semantics</strong> n. 精确一次语义 A streaming guarantee that each event is processed exactly once, even on failure.</li>
+            <li><strong>State backend</strong> n. 状态后端 The storage layer that holds a stream processor's in-flight state (e.g., RocksDB).</li>
+            <li><strong>Post-mortem</strong> n. 复盘 A blameless write-up of an incident, focusing on root cause and learning.</li>
+            <li><strong>Go/no-go gate</strong> n. go/no-go 关卡 A formal decision point at the end of a Trial where the committee decides whether to move the blip to Adopt.</li>
+            <li><strong>Reference runbook</strong> n. 参考 runbook A documented operating procedure that has been used successfully in another team.</li>
+            <li><strong>Re-platform</strong> v. 重新选型 Migrating a workload to a different technology, usually because the original choice no longer scales.</li>
+            <li><strong>Quadrant</strong> n. 象限 One of the four radar categories (Adopt, Trial, Assess, Hold).</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Honest answer" / "Honest take" — the soft strong claim</h3>
+        <p>
+            <em>Honest answer — we need Flink</em> is a way of saying "I'm about to state a need that might
+            be controversial, but I want you to hear it straight". It's softer than <em>we clearly need Flink</em>
+            and softer than <em>we must have Flink</em>. The format is <em>Honest [noun] — [claim]</em>. Use it
+            before stating a position you've already taken internally.
+        </p>
+        <p>"Honest answer" 是"我要说一个可能有点争议的需求，但我想直说"的礼貌化表达，比"we clearly need"或"we must have"都更柔和。</p>
+
+        <h3>② "Proposing Trial, not Adopt" — the architect's scope setter</h3>
+        <p>
+            When you state a verdict, always include the scope: <em>one squad, one use case, three months</em>.
+            The pattern is <em>proposing [verdict], not [broader verdict] — [scope]</em>. This signals
+            that you've thought about risk and you've bounded the blast radius. The committee can then
+            accept the verdict without worrying about cross-tribe spread.
+        </p>
+        <p>陈述判定时一定要带范围："proposing Trial, not Adopt — [scope]"。这表示你已经评估过风险并限制了爆炸半径。</p>
+
+        <h3>③ "The X caveat is non-negotiable" — the Group Standards shield</h3>
+        <p>
+            <em>The Group Cyber caveat is non-negotiable</em> is a grammatical way to insulate a
+            decision from being revisited. The structure is <em>the [Group Standard] [noun] is
+            non-negotiable</em>. Reserve "non-negotiable" for things that are hard, mandatory,
+            regulator-driven. Don't use it for preferences — that dilutes it.
+        </p>
+        <p>"The [集团标准] caveat is non-negotiable" 是把一个决定锁起来不被反复挑战的语法结构。只对监管驱动的硬性条款用"non-negotiable"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Tech Radar verdicts are public and durable.</strong> A "Hold" lands in Confluence and stays there. If you put a Hold on something a squad is using, expect a 1:1 explaining the migration path. Don't drop Holds without a conversation.</li>
+            <li><strong>Always include a go/no-go gate for Trial.</strong> An unscoped Trial is a slow Adopt by stealth. A go/no-go gate is the committee's lever: it forces a decision at the end of the bounded period.</li>
+            <li><strong>Group Standards (Cyber, Resilience, SDL) override local preferences.</strong> If Flink processes cardholder data, the InfoSec design review is a precondition, not a "nice to have". Cite the Group Standard by name when you set a precondition.</li>
+            <li><strong>"Honest answer" is a politeness device, not an apology.</strong> Native speakers use it to introduce a strong claim. It signals "I respect the committee enough to be direct". Don't be afraid to use it.</li>
+            <li><strong>Cross-region learn-first, copy-second.</strong> When Diego flags that the UK team "burnt a quarter" on Flink, Priya's answer must be "we learnt from the post-mortem" — not "yes but we're different". Always reference the post-mortem explicitly.</li>
+            <li><strong>Bangalore, Shanghai, HK, UK voice etiquette.</strong> In Tech Radar meetings, everyone gets a clean turn. Don't talk over Priya. Wait for Margaret to call on you. And if you're pitching something, the first 30 seconds of your pitch is the "claim" — state it cleanly.</li>
+            <li><strong>"Recommend" still wins.</strong> "I'm Assess on Pinecone" is weaker than "my recommendation is to Assess on Pinecone or Weaviate". The recommendation verb forces you to take a position. Don't hide behind "we could look at".</li>
+            <li><strong>Write up the verdicts the same day.</strong> If Diego says "I'll write up the verdicts by end of week", that's a soft commitment. Verbal verdicts don't exist in HSBC's governance — the Confluence page is the record.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the Tech Radar pitch</h3>
+        <p>Translate the following Tech Radar proposal into natural Chinese. Pay attention to how the architect scopes the verdict and the precondition.</p>
+        <blockquote>
+            "Honest answer — we need to Trial Istio Ambient for the GPB API mesh. The classic sidecar
+            pattern is eating our CPU budget; Ambient cuts sidecar overhead by about 60%. We're
+            proposing Trial, not Adopt — one squad (GPB Markets), one cluster, two months, with a
+            go/no-go gate at the end of Q2. Precondition: Group Cyber sign-off on the mTLS posture
+            before we even spin up the trial. We learnt from the Wealth squad's earlier Consul
+            attempt — they skipped the security review and rolled back after six weeks."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"说实话，我们要在 GPB API mesh 上 Trial Istio Ambient。传统 sidecar 模式吃 CPU 太多，Ambient 能把 sidecar 开销砍掉大约 60%。我们提议 Trial，不是 Adopt——一个 squad（GPB Markets）、一个集群、2 个月，Q2 末有 go/no-go 关卡。前提条件：试用启动前要有 Group Cyber 对 mTLS 姿态的签批。我们吸取了 Wealth squad 之前 Consul 试点的教训——他们当时跳过了安全评审，6 周后回滚了。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the radar mistake</h3>
+        <p>Which of these Tech Radar proposals is most aligned with HSBC architecture culture? Why?</p>
+        <ol>
+            <li>"We should adopt Apache Flink because it's fast and modern."</li>
+            <li>"Honest answer — we need Flink for sub-second card-not-present decisioning. Proposing Trial, not Adopt — one squad, one use case, three months, with a go/no-go gate. Precondition: InfoSec design review."</li>
+            <li>"Flink is the future of streaming. Everyone should use it. The UK team is wrong about RocksDB."</li>
+            <li>"My recommendation is to Assess on Apache Flink and to revisit Spark Structured Streaming as the fallback. We learnt from the UK post-mortem that state-backend tuning is the real risk."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are HSBC-aligned: scoped verdict (Trial/Assess with squad + duration + gate), precondition, and a cross-region learning reference. ① is a "we should" (architect anti-pattern). ③ dismisses the UK post-mortem, which violates cross-region etiquette. Always scope your verdict and always cite the relevant Group Standard or post-mortem.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a Solution Architect in the CMB Digital tribe. The Onboarding squad has proposed adopting <em>HashiCorp Vault</em> for secrets management, replacing the legacy CyberArk integration. The squad's argument: Vault has dynamic secrets, supports AWS KMS auto-unseal, and reduces secret-rotation toil by 80%. Concerns from InfoSec: the on-call rotation runbook isn't written yet, and CyberArk is the current Group Standard for tier-1 systems. Write your 60-second Tech Radar pitch in English. Choose a verdict (Adopt / Trial / Assess / Hold), scope it, and cite at least one Group Standard or post-mortem. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Honest answer — the Onboarding squad's case for Vault is strong, but I'm proposing Trial, not Adopt. The dynamic-secrets and auto-unseal story is real, and the 80% toil reduction is hard to argue with. However, the on-call runbook isn't written yet, and InfoSec has flagged that CyberArk is the current Group Standard for tier-1 systems. We're proposing Trial, not Adopt — one squad, one workload (the Onboarding KYC API), three months, with a go/no-go gate at the end of Q3. Precondition: an InfoSec design review and a published runbook before the trial spins up. We learnt from the RBWM CyberArk migration in 2024 — they skipped the runbook phase and paid for it during a 3 AM rotation. Margaret, can the chapter agree to Trial with those preconditions?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="03-design-review-meeting.html" class="btn btn-primary">Next: Article 03 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

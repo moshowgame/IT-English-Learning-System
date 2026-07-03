@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: BRD & FRD Walkthrough | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">09 · BRD & FRD Walkthrough</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>BRD & FRD Walkthrough</h1>
+        <p class="subtitle">Article 09 · Module 2: Discovery & Workshops · BA English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Walk stakeholders through a BRD/FRD, capture sign-off, and manage live edits</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday morning, 10 AM HKT</strong>. The GLCM (Global Liquidity and Cash
+            Management) squad is holding the <strong>formal walkthrough</strong> of two documents:
+            the BRD for the <em>Real-Time Cross-Border Payments Modernisation</em> programme (v0.9) and
+            the FRD for the <em>SWIFT MT103 → ISO 20022 pacs.008 Migration</em> story family (v1.0).
+        </p>
+        <p>
+            周四上午 10 点，香港时间。GLCM（全球流动性与现金管理）squad 正在召开两份文档的<strong>正式走查会</strong>：
+            <em>实时跨境支付现代化</em> 项目的 BRD（v0.9）和 <em>SWIFT MT103 → ISO 20022 pacs.008 迁移</em>
+            Story 族的 FRD（v1.0）。
+        </p>
+        <p>
+            In the room: <strong>you (Wei, the BA)</strong>, <strong>Priya (PO, London)</strong>,
+            <strong>David (Head of CMB Operations, HK — the gatekeeper)</strong>, <strong>Lina (Group
+            Compliance, UK)</strong>, and <strong>Ahmed (Tech Lead, Bangalore)</strong>. The goal of
+            this 90-minute session is to <strong>walk the documents clause-by-clause</strong>, capture
+            every comment, and <strong>walk away with sign-off or a punch list</strong>.
+        </p>
+        <p>
+            现场包括 <strong>你（Wei，BA）</strong>、<strong>Priya（PO，伦敦）</strong>、
+            <strong>David（CMB 运营负责人，香港——gatekeeper）</strong>、<strong>Lina（集团合规，英国）</strong>
+            和 <strong>Ahmed（Tech Lead，班加罗尔）</strong>。90 分钟会议的目标是<strong>逐条走查文档</strong>，
+            记录每条意见，并<strong>在结束时拿到签字或一份 Punch List</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, everyone, <em>thanks for joining.</em> Quick agenda: 30 minutes on the BRD, 45 on the FRD, last 15 for sign-off or punch list. <em>Please call out comments as we go — I'll capture live in the doc.</em></span><span class="cn">好，感谢大家到场。议程：30 分钟 BRD，45 分钟 FRD，最后 15 分钟签字或列 Punch List。请大家边走边提意见——我会实时在文档里记录。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Starting on Section 3 of the BRD — Business Objectives.</em> Priya, can you <em>read out the three objectives</em> and tell me if they still hold after last week's meeting with the HK business?</span><span class="cn">从 BRD 第 3 节开始——业务目标。Priya，你念一下这 3 条目标，并说一下上周和香港业务方开完会后，这 3 条是否还成立？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO):</span>
+                <span class="text"><span class="en">They hold, but <em>the HK team added a fourth</em>: cut the SWIFT MT103 repair rate from 6% to under 2% within 12 months. <em>It's not in the doc.</em></span><span class="cn">成立，但香港团队加了第 4 条：12 个月内把 SWIFT MT103 退票率从 6% 降到 2% 以下。文档里还没写。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Got it. <em>I'll add it as Objective 3.4</em> and mark the corresponding KPI in Section 7. <em>Just to flag — that changes our success measure. Anyone want to push back on the 2% target?</em></span><span class="cn">明白。我把它加为 3.4 目标，并在第 7 节标记对应的 KPI。提一下——这会改变我们的成功衡量指标。有人对 2% 目标有异议吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Head of CMB Ops):</span>
+                <span class="text"><span class="en"><em>2% is ambitious but achievable.</em> Just make sure the baseline is measured <em>per corridor</em>, not as a global average — Asia corridors run hotter than UK.</span><span class="cn">2% 有点挑战但可达。要注意基线是按<em>每个通道</em>单独量，不是全球平均——亚洲通道比英国的高。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Noted, David — I'll add a per-corridor split to the KPI table.</em> Moving to Section 5 — Functional Scope. <em>Ahmed, can you walk us through the ISO 20022 mapping in the FRD?</em></span><span class="cn">收到，David——我在 KPI 表里加上按通道分列。接下来看第 5 节——功能范围。Ahmed，你在 FRD 里讲一下 ISO 20022 字段映射。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ahmed (Tech Lead):</span>
+                <span class="text"><span class="en">Sure. <em>We've mapped 38 of the 42 mandatory pacs.008 fields.</em> Four are still under discussion with the SWIFT Standards team — I'll flag them in the open-issues section.</span><span class="cn">好。我们已经映射了 42 个 pacs.008 必填字段中的 38 个。还有 4 个在和 SWIFT 标准团队讨论——我会在 Open Issues 一节标出来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lina (Group Compliance):</span>
+                <span class="text"><span class="en">Quick one on the sanctions field. <em>Does pacs.008 actually carry the screening decision?</em> We need that for HKMA's TM-G-1 reporting.</span><span class="cn">关于制裁字段问一句。pacs.008 里是否真的带筛查结论？HKMA 的 TM-G-1 报告需要这个。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Good catch, Lina.</em> <em>Ahmed, can you confirm by tomorrow EOD?</em> If not, we'll <em>raise it as a follow-up story</em>, not a blocker for this BRD sign-off.</span><span class="cn">好问题，Lina。Ahmed，明天 EOD 前能确认吗？如果不能，我们作为后续 Story 提出，不作为本次 BRD 签字的阻塞项。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Time check — we've got 10 minutes for sign-off.</em> David, Lina — <em>are you happy to sign off the BRD as v1.0 with the punch list?</em></span><span class="chinese">时间提示——还剩 10 分钟签字。David、Lina——你们接受 BRD v1.0 带着 Punch List 签字吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Head of CMB Ops):</span>
+                <span class="text"><span class="en"><em>I'm happy to sign off the BRD</em> subject to the per-corridor KPI split and the four open ISO 20022 fields. <em>Send me the punch list by 5 PM and I'll e-sign in eCAB.</em></span><span class="cn">我接受签字 BRD，前提是按通道 KPI 拆分和 4 个待定 ISO 20022 字段。Punch List 下午 5 点前发我，我就在 eCAB 里电子签字。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lina (Group Compliance):</span>
+                <span class="text"><span class="en"><em>Sign-off from Compliance, with the caveat</em> that the sanctions-screening decision field is confirmed by Monday. <em>Otherwise this becomes a Group-level escalation.</em></span><span class="cn">合规同意签字，前提是下周一前确认制裁筛查结论字段。否则这件事就要升级到集团层面。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Perfect.</em> I'll <em>circulate the punch list by 5 PM HKT</em>, update the BRD to v1.0, and book the eCAB sign-off slot for tomorrow morning. <em>Thanks, everyone.</em></span><span class="cn">好。我下午 5 点 HKT 前发 Punch List，把 BRD 升到 v1.0，并约明天上午的 eCAB 签字。各位，谢谢。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick agenda: 30 minutes on the BRD, 45 on the FRD, last 15 for sign-off.</em></span>
+                <span class="chinese">简单议程：BRD 30 分钟，FRD 45 分钟，最后 15 分钟签字</span>
+                <span class="note">Always start a walkthrough with the time split. Stops stakeholders from relitigating the agenda.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capture</span> <em>Please call out comments as we go — I'll capture live in the doc.</em></span>
+                <span class="chinese">请边走边提意见——我会实时在文档里记录</span>
+                <span class="note">"Capture live" is the BA's superpower in walkthroughs. Use "live" — not "later" — to signal no comment is lost.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Read</span> <em>Can you read out the three objectives?</em></span>
+                <span class="chinese">你念一下这 3 条目标</span>
+                <span class="note">"Read out" forces the PO to own the words. People can't dispute text they just read aloud.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>Just to flag — that changes our success measure.</em></span>
+                <span class="chinese">提一下——这会改变我们的成功衡量指标</span>
+                <span class="note">"Just to flag" = polite risk callout. Lower-stakes than "this is a problem".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Baseline</span> <em>Make sure the baseline is measured per corridor, not as a global average.</em></span>
+                <span class="chinese">基线要按通道量，不是全球平均</span>
+                <span class="note">Stakeholders love averages; they hide variance. Push for the right unit of measurement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Punch list</span> <em>Are you happy to sign off the BRD with the punch list?</em></span>
+                <span class="chinese">你接受 BRD 带着 Punch List 签字吗</span>
+                <span class="note">"Punch list" = a list of minor remaining items. Standard for conditional sign-off.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Subject to</span> <em>Sign-off subject to the per-corridor KPI split.</em></span>
+                <span class="chinese">在按通道 KPI 拆分的前提下签字</span>
+                <span class="note">"Subject to X" is the cleanest way to attach conditions to sign-off. Use it instead of "but".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Escalation</span> <em>Otherwise this becomes a Group-level escalation.</em></span>
+                <span class="chinese">否则这件事就要升级到集团层面</span>
+                <span class="note">Reserve "escalation" for true escalations. Saying it from Compliance is a strong signal — listen.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Caveat</span> <em>Sign-off with the caveat that the field is confirmed by Monday.</em></span>
+                <span class="chinese">在周一前确认字段的前提下签字</span>
+                <span class="note">"Caveat" is softer than "condition". Compliance uses it; you can echo it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Circulate</span> <em>I'll circulate the punch list by 5 PM HKT.</em></span>
+                <span class="chinese">我下午 5 点 HKT 前发 Punch List</span>
+                <span class="note">"Circulate" is more formal than "send". Use it for documents going to senior stakeholders.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>BRD (Business Requirements Document)</strong> n. 业务需求文档 The "what & why" — business objectives, scope, KPIs.</li>
+            <li><strong>FRD (Functional Requirements Document)</strong> n. 功能需求文档 The "how" — system behaviour, data, rules, interfaces.</li>
+            <li><strong>Walkthrough</strong> n. 走查 A line-by-line review of a document with stakeholders.</li>
+            <li><strong>Sign-off</strong> n. 签字确认 Formal approval recorded in eCAB or a designated system.</li>
+            <li><strong>Punch list</strong> n. 待办清单 A list of minor remaining items that don't block sign-off.</li>
+            <li><strong>Subject to</strong> n. 以……为前提 Conditional approval language.</li>
+            <li><strong>SWIFT MT103</strong> n. SWIFT MT103 报文 The classic single-customer credit transfer message.</li>
+            <li><strong>ISO 20022 pacs.008</strong> n. ISO 20022 标准报文 The modern XML-based replacement for MT103.</li>
+            <li><strong>Corridor</strong> n. 通道 A specific payment route (e.g., HK → UK USD).</li>
+            <li><strong>HKMA TM-G-1</strong> n. 金管局统计申报 HKMA's statistical return for cross-border payments.</li>
+            <li><strong>Gatekeeper</strong> n. 守门人 A senior stakeholder whose approval is required before you can proceed.</li>
+            <li><strong>Caveat</strong> n. 附加条件 A condition attached to an approval.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Subject to X" — the conditional sign-off phrase</h3>
+        <p>
+            <em>Sign-off subject to the per-corridor KPI split</em> uses the prepositional phrase
+            <strong>subject to + noun</strong> to attach a condition to an approval. It is more
+            formal than "with the condition that…" and signals to the senior reader that you
+            understand approval-with-conditions is normal practice, not a fight.
+        </p>
+        <p><em>Subject to + 名词</em> 用于有条件地批准，比 "with the condition that" 更正式、更专业。</p>
+
+        <h3>② "Just to flag" — the hedged announcement</h3>
+        <p>
+            <em>Just to flag — that changes our success measure</em> uses the <strong>imperative +
+            dash</strong> construction to insert a soft warning into a flow. "Just to" + base verb
+            downgrades the politeness cost. Compare <em>that changes our success measure</em>
+            (accusatory) vs. <em>just to flag, that changes our success measure</em> (informational).
+        </p>
+        <p><em>Just to + 动词原形</em> 是英语里"提一下……"的固定说法，能把潜在的对抗性陈述降级为信息性告知。</p>
+
+        <h3>③ "Noted, David — I'll add X." — the ack-and-action pattern</h3>
+        <p>
+            <em>Noted, David — I'll add a per-corridor split to the KPI table.</em> is the
+            <strong>ack-and-action</strong> pattern: acknowledge the speaker by name, then state
+            your concrete next step. The em-dash (or "and") makes the transition feel instant. In
+            walkthroughs this pattern prevents the dreaded "yes, but we need to think about it"
+            stall.
+        </p>
+        <p>走查会用 <em>Noted, [名字] — I'll + 动词</em> 的"确认+动作"模式，既体现尊重又避免空转讨论。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>BRD vs FRD — keep them separate.</strong> At HSBC, BRD is owned by the business (the PO signs) and FRD is owned by IT (the BA signs). Don't blur the two. The walkthrough is the moment to surface the boundary clearly.</li>
+            <li><strong>Always bring the gatekeeper in the room.</strong> David is the gatekeeper here. If you walk the BRD without him, you will walk it twice. Senior stakeholders in HK, Shanghai, and Bangalore expect to see the BRD — never surprise them with "we already signed it".</li>
+            <li><strong>"Punch list" is your friend.</strong> HSBC walkthroughs rarely end with unconditional sign-off. A punch list of 3-5 small items is normal and gets the document into eCAB. Don't try to resolve everything in the walkthrough — be ruthless about deferring minor stuff.</li>
+            <li><strong>Use eCAB for sign-off, not email.</strong> "Please reply-all to confirm approval" is not a sign-off at HSBC. Sign-off means an eCAB case with the named approver. As BA you own setting up the case and chasing the approver.</li>
+            <li><strong>Time-box ruthlessly.</strong> Walkthroughs with senior stakeholders (David is Head of CMB Ops) cannot overrun. If you're behind at 60 minutes, say so and offer to defer clauses to async. The senior person will respect you for it.</li>
+            <li><strong>Per-corridor, not global.</strong> A common fight with HK and Shanghai stakeholders is the "global average" KPI. They will push for per-corridor or per-product reporting because averages hide their pain. Capture the unit of measurement in the BRD — never leave it implicit.</li>
+            <li><strong>Always end with the next step + the time + the channel.</strong> "I'll circulate the punch list by 5 PM HKT via email" is better than "I'll send it out". Senior stakeholders track commitments by time and channel.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the walkthrough opener</h3>
+        <p>Translate the following BA walkthrough opener into natural Chinese.</p>
+        <blockquote>
+            "OK, everyone, thanks for joining. Quick agenda: 30 minutes on the BRD, 45 on the FRD, last
+            15 for sign-off or punch list. Please call out comments as we go — I'll capture live in the
+            doc. Starting on Section 3 — Business Objectives. Priya, can you read out the three
+            objectives and tell me if they still hold after last week's meeting with the HK business?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，感谢大家到场。简单议程：BRD 30 分钟，FRD 45 分钟，最后 15 分钟签字或列 Punch List。请大家边走边提意见——我会实时在文档里记录。从第 3 节开始——业务目标。Priya，你念一下这 3 条目标，并说一下上周和香港业务方开完会后，这 3 条是否还成立？"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the weak sign-off language</h3>
+        <p>Which of these sign-off lines is the strongest, HSBC-appropriate language? Why?</p>
+        <ol>
+            <li>"Please reply-all to confirm you agree with the BRD."</li>
+            <li>"Sign-off from Compliance, with the caveat that the sanctions-screening decision field is confirmed by Monday. Otherwise this becomes a Group-level escalation."</li>
+            <li>"I think we're all on the same page, so let's call it done."</li>
+            <li>"David, can you sign off the BRD now?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the strongest — it uses <em>subject to / with the caveat</em> to attach a named condition, an owner, and a deadline, and it includes a clear escalation consequence. At HSBC, "reply-all" is not a sign-off mechanism, and "we're all on the same page" gives you no audit trail. Always pair sign-off with a system of record (eCAB) and a written condition.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the RBWM digital onboarding squad. You've just held a 90-minute walkthrough of the BRD for <em>"Mobile Onboarding with eKYC & Facial Biometrics"</em>. The HK business PO wants to add an objective: <em>"Cut digital abandonment by 50% within 9 months"</em>. A Group Compliance officer (Lina, UK) wants the biometric data-retention rule confirmed before sign-off. The HK gatekeeper (David) is happy to sign subject to the new objective. Write a 5-line summary email to the attendees closing the walkthrough, including: (a) the new objective, (b) Lina's caveat, (c) David's conditional sign-off, (d) your next step and time. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p><strong>Subject:</strong> BRD Walkthrough Closed — Mobile Onboarding with eKYC & Biometrics (v1.0)</p>
+            <p>"Hi all, thanks for a productive walkthrough. Quick recap:</p>
+            <p>(1) New business objective added (3.5): <em>cut digital abandonment by 50% within 9 months</em>, per the HK business ask. Priya to confirm the baseline figure by Monday.</p>
+            <p>(2) <em>Sign-off from Group Compliance, with the caveat</em> that the biometric data-retention rule is confirmed by Lina by 5 PM Friday. Otherwise this becomes a Group-level escalation.</p>
+            <p>(3) <em>Sign-off from David (CMB Ops gatekeeper), subject to</em> the new objective 3.5 and the per-corridor KPI split.</p>
+            <p>(4) <em>I'll circulate the punch list and the updated BRD v1.0 by 5 PM HKT</em>, and set up the eCAB sign-off case for tomorrow morning. Ping me on Teams if anything's missing. — Wei"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="10-stakeholder-raci.html" class="btn btn-primary">Next: Article 10 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

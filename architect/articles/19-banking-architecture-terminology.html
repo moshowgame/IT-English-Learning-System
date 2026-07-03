@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 19: Banking Architecture Terminology | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">19 · Banking Architecture Terminology</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Banking Architecture Terminology</h1>
+        <p class="subtitle">Article 19 · Module 5: HSBC Banking Context — Banking Architecture Vocabulary · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Intermediate</span>
+            <span>🎯 KYC, AML, sanctions, real-time vs batch, idempotency, reconciliation — speak the bank's language</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday, 11:00 AM HKT</strong>. You are a Solution Architect in the
+            <em>GPB Payments</em> tribe, supporting the <em>Cross-Border Payments</em> and
+            <em>Sanctions Screening</em> squads. A new Tech Lead, <strong>Priya</strong>, just
+            joined from HSBC's Bangalore hub. She has 8 years of payments experience but admits
+            she is "still learning the HSBC banking vocabulary" — terms like <em>SWIFT MT103</em>,
+            <em>OFAC SDN list</em>, <em>idempotency key</em>, <em>T+1 reconciliation</em> keep
+            coming up in the daily standup, and she wants a half-hour walkthrough.
+        </p>
+        <p>
+            周四上午 11 点香港时间，你是 <em>GPB 支付</em> tribe 的 Solution 架构师，支持
+            <em>跨境支付</em> 和 <em>制裁名单筛查</em> 两个 squad。一位新来的 Tech Lead
+            <strong>Priya</strong> 从汇丰班加罗尔中心加入，有 8 年支付经验，但坦言自己
+            "还在学汇丰的银行业术语"——<em>SWIFT MT103</em>、<em>OFAC SDN 名单</em>、
+            <em>幂等键</em>、<em>T+1 对账</em> 这些词每天站会都冒出来，她想要半小时的串讲。
+        </p>
+        <p>
+            You book a 30-min Microsoft Teams session. The session is informal — Priya will pick
+            the terms, you'll explain them, and you'll wrap with the two terms that architects
+            most often get wrong: <strong>idempotency</strong> and <strong>reconciliation</strong>.
+            These are the words that separate a real banking architect from a generic payments
+            engineer.
+        </p>
+        <p>
+            你约了 30 分钟的 Teams 会议。形式非正式——Priya 选词、你解释，最后你用架构师最容易
+            用错的两个词收尾：<strong>幂等性</strong>和<strong>对账</strong>。这两个词是
+            区分真正的银行架构师和普通支付工程师的分水岭。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead, Bangalore):</span>
+                <span class="text"><span class="en"><em>Quick one</em> before we start — can we go through the terms in the order I keep hearing them in standup? I want to build the mental map first, the trade-offs second.</span><span class="cn">开始前问一句——能不能按我在站会里听到的顺序讲？先建心理模型，再讲 trade-off。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Sure. <strong>Quick banking-vocab walkthrough.</strong> I'll group them: <em>regulatory screening</em> first, then <em>payment mechanics</em>, then <em>data correctness</em> — that's the order you actually need them in production.</span><span class="cn">好。快速过一下银行术语。我会分组：先<em>监管筛查</em>，再<em>支付机制</em>，最后<em>数据正确性</em>——这是你生产环境真正需要的顺序。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Group one — KYC, AML, sanctions screening.</em> <em>KYC</em> is <em>Know Your Customer</em> — the bank's process for verifying the customer's identity at onboarding and refresh. <em>AML</em> is <em>Anti-Money Laundering</em> — the broader set of controls to detect money-laundering patterns across accounts. <em>Sanctions screening</em> is the act of checking every customer and every payment against the <em>OFAC SDN list</em>, the <em>EU consolidated list</em>, and the <em>UN sanctions list</em>.</span><span class="cn">第一组——KYC、AML、制裁名单筛查。<em>KYC</em> 是<em>了解你的客户</em>——银行在开户和信息更新时核验客户身份的过程。<em>AML</em> 是<em>反洗钱</em>——跨账户检测洗钱模式的更广泛控制集。<em>制裁名单筛查</em>是把每个客户和每笔交易对照 <em>OFAC SDN 名单</em>、<em>EU 合并名单</em> 和 <em>UN 制裁名单</em> 的动作。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Right, so</em> KYC is at onboarding, AML is ongoing, sanctions screening is per-transaction?</span><span class="cn">那 KYC 在开户，AML 是持续的，制裁名单筛查是每笔交易？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Exactly. And <em>just to flag</em> — sanctions screening has to happen <em>before the payment is released</em>, not after. <em>Screening at settlement</em> is a regulatory finding waiting to happen.</span><span class="cn">对。提一下——制裁名单筛查必须<em>在支付放行前</em>做，不能在之后。<em>结算时才筛查</em>是等着被监管处罚。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead):</span>
+                <span class="text"><span class="en">Got it. Next — payment mechanics. What's the difference between <em>SWIFT MT103</em>, <em>CHAPS</em>, and <em>FPS</em>?</span><span class="cn">收到。下一组——支付机制。<em>SWIFT MT103</em>、<em>CHAPS</em> 和 <em>FPS</em> 有什么区别？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>SWIFT MT103</em> is the cross-border <em>message format</em> — it's a single message, not a transfer. <em>CHAPS</em> is a UK <em>real-time gross settlement</em> system — pound-denominated, settled in seconds. <em>FPS</em> is the UK's <em>Faster Payments Service</em> — also real-time, but for smaller-value retail. <em>All three</em> are governed by the FCA.</span><span class="cn">好问题。<em>SWIFT MT103</em> 是跨境<em>报文格式</em>——它是一条消息，不是转账。<em>CHAPS</em> 是英国<em>实时全额结算</em>系统——英镑计价，秒级结算。<em>FPS</em> 是英国<em>快速支付服务</em>——也是实时，但面向小额零售。<em>三者</em>都受 FCA 监管。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead):</span>
+                <span class="text"><span class="en">And what does <em>real-time</em> actually mean here? <em>Honest answer —</em> in my old shop "real-time" was anything under 5 minutes.</span><span class="cn">那"实时"到底指什么？实话——在老东家"实时"是 5 分钟以内。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">In HSBC-land, <em>real-time</em> means <em>sub-second at the edge</em> and <em>end-to-end under 5 seconds</em>, with the customer seeing the payment in their account before the next UI refresh. <em>Batch</em> means anything that runs on a schedule — typically T+0 end-of-day or T+1 morning, for things like SWIFT MT103 confirmation files and statement rendering.</span><span class="cn">在汇丰，"实时"指<em>边缘亚秒级</em>，<em>端到端 5 秒以内</em>，客户在 UI 下一次刷新前看到钱到账。<em>批量</em>指按计划跑的东西——通常是 T+0 日终或 T+1 上午，跑 SWIFT MT103 确认文件和账单出账这类。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead):</span>
+                <span class="text"><span class="en">OK, so the last group is what I'm most worried about — <em>idempotency</em> and <em>reconciliation</em>.</span><span class="cn">好，最后一组也是我最担心的——<em>幂等性</em>和<em>对账</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">These are the two that <em>architects most often get wrong.</em> <em>Idempotency</em> means: <em>if the same payment request is sent twice, the system processes it once.</em> It's not "we try not to duplicate" — it's a <em>guarantee</em>, enforced by an <em>idempotency key</em> (usually a UUID v7 generated at the API edge) and a <em>dedup window</em> (typically 24 hours in Redis).</span><span class="cn">这两个是<em>架构师最容易用错的</em>。<em>幂等性</em>指：<em>同一笔支付请求发两次，系统只处理一次</em>。不是"我们尽量不重复"——这是一个<em>保证</em>，靠<em>幂等键</em>（通常是 API 入口生成的 UUID v7）和<em>去重窗口</em>（一般 Redis 24 小时）来强制执行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Reconciliation</em> is different — it's the act of <em>matching our internal ledger to the correspondent bank's ledger</em> at end of day, to prove <em>we sent the same value they received</em>. <em>T+1 reconciliation</em> means we run the match at 9 AM the next business day. Any unmatched item is a <em>break</em>, and breaks go to the ops team with a <em>2-day SLA</em> to resolve.</span><span class="cn"><em>对账</em>不一样——它是<em>把我们内部账本和代理行的账本核对</em>的动作，日终跑，证明<em>我们发出的金额和他们收到的对得上</em>。<em>T+1 对账</em>是下一个工作日上午 9 点跑核对。任何未匹配项就是<em>差异</em>，交给 ops 团队，<em>SLA 2 天</em> 内解决。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Good, that's the picture.</em> One last thing — when a payment <em>fails at the correspondent</em>, is that an idempotency issue or a reconciliation issue?</span><span class="cn">清晰了。最后一问——当支付<em>在代理行失败</em>，是幂等问题还是对账问题？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Honest answer — both, in different places.</em> Idempotency prevents the <em>re-send</em>. Reconciliation catches the <em>unmatched funds</em>. If the correspondent rejects the payment after we've debited the customer, we <em>reverse the debit</em> and the reversal itself has to be idempotent. <em>Both guarantees have to hold, end-to-end.</em></span><span class="cn">好问题。实话——在不同环节，两个都涉及。幂等性防止<em>重复发送</em>。对账捕获<em>未匹配的资金</em>。如果代理行拒付了但我们已经从客户账上扣款，我们就要<em>冲正</em>，而冲正本身也要幂等。<em>两个保证都必须端到端成立</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick banking-vocab walkthrough.</em></span>
+                <span class="chinese">快速过一下银行术语</span>
+                <span class="note">Frames a vocabulary session as a walkthrough, not a lecture. Sets the casual, learn-as-we-go tone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Order</span> <em>I'll go in the order you actually need them in production.</em></span>
+                <span class="chinese">按你在生产中真正需要的顺序讲</span>
+                <span class="note">Architects teach in dependency order, not alphabetical order. Screening → mechanics → correctness is the order a real payment actually uses them.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>KYC at onboarding, AML ongoing, sanctions screening per-transaction.</em></span>
+                <span class="chinese">KYC 在开户，AML 持续，制裁名单筛查每笔交易</span>
+                <span class="note">Scope each control by when it fires. Junior engineers confuse KYC and AML because both "screen" — but they fire at different points in the lifecycle.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Order</span> <em>Sanctions screening has to happen before the payment is released, not after.</em></span>
+                <span class="chinese">制裁名单筛查必须在支付放行前，不能在之后</span>
+                <span class="note">The verb "release" is the architect's word. The mistake juniors make is "screen at settlement" — that's a regulatory finding.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Definition</span> <em>Real-time means sub-second at the edge, end-to-end under 5 seconds.</em></span>
+                <span class="chinese">实时指边缘亚秒级，端到端 5 秒以内</span>
+                <span class="note">Always define "real-time" with two numbers: edge latency and end-to-end latency. "Real-time" alone is meaningless.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Definition</span> <em>Idempotency means the same request processed twice is processed once.</em></span>
+                <span class="chinese">幂等性指同一请求发两次只处理一次</span>
+                <span class="note">The "twice → once" definition is the cleanest. Anything else is wishful thinking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Definition</span> <em>Reconciliation is matching our ledger to the correspondent's ledger.</em></span>
+                <span class="chinese">对账是把我们的账本和代理行的账本核对</span>
+                <span class="note">The "correspondent's ledger" is the external anchor. Without an external anchor, you have an internal check, not a reconciliation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SLA</span> <em>Breaks go to ops with a 2-day SLA to resolve.</em></span>
+                <span class="chinese">差异交给 ops，SLA 2 天内解决</span>
+                <span class="note">Every break has an SLA. If you don't have an SLA, you don't have a process — you have a wish.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reverse</span> <em>If the correspondent rejects the payment, we reverse the debit.</em></span>
+                <span class="chinese">如果代理行拒付，我们就冲正扣款</span>
+                <span class="note">"Reverse" is the architect's word for an undo. The reversal itself must be idempotent — that's the trap most juniors miss.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">End-to-end</span> <em>Both guarantees have to hold, end-to-end.</em></span>
+                <span class="chinese">两个保证都必须端到端成立</span>
+                <span class="note">"End-to-end" is the architect's signature phrase. A guarantee that only holds in the middle is not a guarantee.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>KYC (Know Your Customer)</strong> n. 了解你的客户 The bank's process for verifying customer identity at onboarding and refresh.</li>
+            <li><strong>AML (Anti-Money Laundering)</strong> n. 反洗钱 Controls to detect money-laundering patterns across accounts, transactions, and time.</li>
+            <li><strong>Sanctions screening</strong> n. 制裁名单筛查 Checking customers and payments against OFAC SDN, EU consolidated, and UN sanctions lists.</li>
+            <li><strong>OFAC SDN list</strong> n. OFAC SDN 名单 The US Office of Foreign Assets Control's Specially Designated Nationals list — a global sanctions watchlist.</li>
+            <li><strong>SWIFT MT103</strong> n. SWIFT MT103 报文 The standard SWIFT message format for single customer credit transfer — a message, not a transfer.</li>
+            <li><strong>CHAPS</strong> n. CHAPS 英镑实时清算 UK real-time gross settlement system for high-value pound payments.</li>
+            <li><strong>FPS (Faster Payments Service)</strong> n. 英国快速支付 UK real-time retail payment system, sub-value threshold.</li>
+            <li><strong>Real-time</strong> n. 实时 Sub-second at the edge, end-to-end under 5 seconds (HSBC definition).</li>
+            <li><strong>Batch</strong> n. 批量 Scheduled processing — T+0 end-of-day or T+1 morning — for non-urgent workloads.</li>
+            <li><strong>Idempotency</strong> n. 幂等性 A guarantee: the same request processed twice is processed once, enforced by an idempotency key.</li>
+            <li><strong>Idempotency key</strong> n. 幂等键 A unique identifier (typically UUID v7) attached to a request, used to dedup at the API edge.</li>
+            <li><strong>Reconciliation</strong> n. 对账 Matching our internal ledger to the correspondent bank's ledger at end of day to prove value parity.</li>
+            <li><strong>Break</strong> n. 差异 An unmatched item in reconciliation; routed to ops with a defined SLA.</li>
+            <li><strong>Correspondent bank</strong> n. 代理行 The intermediary bank that holds nostro accounts and settles cross-border payments on our behalf.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Means" as a definition verb</h3>
+        <p>
+            When teaching banking terms, the verb <strong>means</strong> is your workhorse. Use the
+            pattern <em>X means Y</em> where Y is a definition the listener can verify: <em>real-time
+            means sub-second at the edge</em>, <em>idempotency means the same request processed twice
+            is processed once</em>. Avoid <em>X is when you do Y</em> — that pattern defines
+            activities, not properties, and it breaks for terms like <em>idempotency</em> that aren't
+            activities.
+        </p>
+        <p>教银行术语用 "X means Y" 句式。Y 是一句可验证的定义。</p>
+
+        <h3>② "Has to" vs "should" vs "must" — regulatory obligation</h3>
+        <p>
+            Three near-synonyms with very different weight. <em>Should</em> is advice. <em>Has to</em>
+            is operational obligation. <em>Must</em> is regulatory obligation. Notice
+            <em>sanctions screening has to happen before the payment is released</em> — not
+            <em>should happen</em>. When the obligation comes from a regulator (OFAC, MAS, HKMA),
+            the architect uses <em>has to</em> / <em>must</em>. When it's an internal preference, use
+            <em>should</em>.
+        </p>
+        <p><em>Should</em> 建议 / <em>has to</em> 操作义务 / <em>must</em> 监管义务——根据义务来源选词。</p>
+
+        <h3>③ "End-to-end" — the architect's signature adverb</h3>
+        <p>
+            A guarantee that only holds in the middle of the system is not a guarantee — it's a
+            partial guarantee. Use <strong>end-to-end</strong> as the adverb to extend a property
+            to the full path: <em>both guarantees have to hold, end-to-end</em>. The phrase is
+            almost a tic in banking architects — if you hear yourself say "end-to-end" three
+            times in a meeting, you're probably architecting correctly.
+        </p>
+        <p><em>End-to-end</em> 是架构师的口头禅——把一个属性推到整条链路上。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Banking vocabulary is an inclusion lever.</strong> New joiners — especially from non-banking backgrounds — get excluded not by being unfriendly, but by people using 12 acronyms in one sentence. If you spot a new joiner going quiet, slow down and define the term out loud.</li>
+            <li><strong>Always screen before release, not after.</strong> Sanctions screening at settlement is the single most common finding in cross-border payments. The verb to remember is <em>release</em> — if it isn't screened before <em>release</em>, you have a finding.</li>
+            <li><strong>SWIFT MT103 is a message, not a transfer.</strong> Juniors often confuse the SWIFT message with the underlying funds movement. The message is the instruction; the funds settle on the correspondent's books. Architects distinguish these explicitly in ADRs.</li>
+            <li><strong>Real-time needs two numbers.</strong> "Real-time" is meaningless without (1) edge latency and (2) end-to-end latency. HSBC architects say <em>sub-second at the edge, end-to-end under 5 seconds</em>. If a Tech Lead says "real-time" without numbers, ask for the two numbers.</li>
+            <li><strong>Idempotency is a guarantee, not a hope.</strong> "We'll try not to duplicate" is not idempotency. Idempotency is enforced by a UUID v7 idempotency key + a Redis-backed dedup window + a tested retry path. The ADR must show all three.</li>
+            <li><strong>Reconciliation always has an external anchor.</strong> An internal "check" between two of your own systems is not reconciliation. Reconciliation matches your ledger to an external party's ledger (correspondent bank, custodian, card scheme). No external anchor = no reconciliation.</li>
+            <li><strong>Reversals are still payments.</strong> When a payment fails at the correspondent, the reversal is itself a payment — and it must be idempotent, screened, and reconciled. Most double-posting bugs come from reversals that bypass the idempotency check.</li>
+            <li><strong>Breaks have SLAs, not vibes.</strong> A reconciliation break that "should be looked at" is not a process. Every break needs an owner, an SLA, and a runbook. If the SLA is missing, raise it as an ADR item.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the banking-vocab session</h3>
+        <p>Translate the following architect's explanation of banking terms into natural Chinese. Pay attention to the regulatory ordering and the idempotency definition.</p>
+        <blockquote>
+            "Quick walkthrough. Idempotency means: the same payment request sent twice is processed
+            once — not 'we try not to duplicate', a guarantee enforced by a UUID v7 idempotency key
+            and a 24-hour Redis dedup window. Reconciliation is different: it's matching our
+            internal ledger to the correspondent bank's ledger at T+1 to prove we sent the same
+            value they received. Any unmatched item is a break, with a 2-day ops SLA. Just to flag —
+            sanctions screening has to happen before the payment is released, not after. OFAC
+            screening at settlement is the single most common cross-border finding. Both guarantees
+            — idempotency and reconciliation — have to hold, end-to-end."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"快速过一下。幂等性指：同一笔支付请求发两次只处理一次——不是'我们尽量不重复'，而是一个保证，靠 UUID v7 的幂等键和 24 小时 Redis 去重窗口来强制执行。对账不一样：它是 T+1 把我们的内部账本和代理行的账本核对，证明我们发出的金额和他们收到的对得上。任何未匹配项就是差异，ops 团队 SLA 2 天处理。提一下——制裁名单筛查必须在支付放行前，不能在之后。结算时再过 OFAC 是跨境最常见的 finding。幂等和对账这两个保证，都必须端到端成立。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the definition error</h3>
+        <p>A junior architect has drafted the following definitions for a new joiner deck. Which definitions are wrong or misleading? Why?</p>
+        <ol>
+            <li>"KYC is when you check the customer's ID at onboarding."</li>
+            <li>"AML is when you run sanctions screening on every payment."</li>
+            <li>"Real-time means it happens fast, like under a minute."</li>
+            <li>"Idempotency means we try not to send the same payment twice."</li>
+            <li>"Reconciliation is checking that our two internal systems agree on balances."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>① is roughly OK but uses "is when you do" — fine for an activity (KYC), but keep it simple. ② is wrong — AML is anti-money-laundering (transaction monitoring, pattern detection), not sanctions screening (which is a separate per-transaction control). ③ is wrong — "real-time" in HSBC is sub-second at the edge, end-to-end under 5 seconds, not "under a minute". ④ is wrong — "we try not to" is not idempotency; idempotency is a guarantee, not an intent. ⑤ is wrong — checking two internal systems is a consistency check, not reconciliation; reconciliation needs an external anchor (correspondent bank, custodian). Definitions ②, ③, ④, ⑤ must be rewritten.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a Solution Architect in the RBWM Payments tribe. A new Tech Lead (ex-e-commerce) just joined and asks you to explain, in 90 seconds, the three terms she'll hear most: (a) sanctions screening, (b) idempotency, and (c) reconciliation. Write the explanation in English, in the order she will need them in production. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Quick walkthrough, in the order you need them in production. First — sanctions screening: every payment is checked against the OFAC SDN list, the EU consolidated list, and the UN sanctions list. The screening has to happen before the payment is released, not after. Second — idempotency: the same payment request sent twice is processed once. It's a guarantee, not a hope, enforced by a UUID v7 idempotency key at the API edge and a 24-hour Redis dedup window. Third — reconciliation: at T+1 we match our internal ledger to the correspondent bank's ledger to prove the values agree. Any unmatched item is a break with a 2-day ops SLA. Just to flag — reversals are still payments, so the reversal has to be idempotent and the funds movement has to reconcile end-to-end. Both guarantees have to hold across the full path."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="20-hsbc-systems-integration.html" class="btn btn-primary">Next: Article 20 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

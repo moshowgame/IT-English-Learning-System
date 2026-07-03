@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: API Design Discussion | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">09 · API Design Discussion</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>API Design Discussion</h1>
+        <p class="subtitle">Article 09 · Module 5: Cross-Cutting Architecture · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Choose between REST, GraphQL, and gRPC; pin down versioning, idempotency, and pagination</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>11:00 AM HKT</strong>. You are a Solution Architect in the <em>GPB Digital</em> tribe,
+            running a 60-minute API design discussion in a Hong Kong meeting room. The topic is the
+            <em>GPB onboarding API surface</em> — the new set of APIs that will be exposed to the
+            <em>OnePay mobile app</em> and to two external fintech partners via the partner gateway. Akash is
+            dialling in from Bangalore, Mei is in Shanghai, and <strong>Diego</strong> (peer architect, UK) is
+            on the line.
+        </p>
+        <p>
+            上午 11 点香港时间，你是 <em>GPB 数字化</em> tribe 的 Solution 架构师，在香港会议室主持一场 60
+            分钟的 API 设计讨论。议题是 <em>GPB 开户 API 接口</em>——即将暴露给 <em>OnePay 手机 App</em> 以及
+            通过合作方网关暴露给两家外部金融科技合作方的一组新 API。Akash 从班加罗尔拨入，Mei 在上海，
+            <strong>Diego</strong>（同侪架构师，英国）在电话里。
+        </p>
+        <p>
+            The squad's Tech Lead wants to use <em>GraphQL</em> for the mobile client to avoid over-fetching.
+            The platform team has just published a Group Standard saying <em>REST is the default for
+            partner-facing APIs</em>. You have <strong>ADR-0179</strong> in flight and need to land on a
+            protocol choice, a versioning policy, an idempotency strategy, and a pagination standard — all
+            in 60 minutes.
+        </p>
+        <p>
+            Squad 的 Tech Lead 想用 <em>GraphQL</em> 给手机端以避免 over-fetching。平台团队刚发布了一个
+            集团标准，说<em>合作方 API 默认走 REST</em>。<strong>ADR-0179</strong> 已经在进行中，需要在 60
+            分钟内敲定协议选型、版本策略、幂等策略和分页标准。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, everyone — <em>we have four things to land today</em>: the protocol choice, the versioning policy, the idempotency strategy, and the pagination standard. <em>Let's start with protocol</em> — that's the loudest disagreement.</span><span class="cn">好——<em>今天要敲定 4 件事</em>：协议选型、版本策略、幂等策略和分页标准。<em>先从协议开始</em>——这是分歧最大的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en">I'm pushing for <em>GraphQL</em> on the mobile client. Right now we're over-fetching — the OnePay onboarding screen needs customer name, KYC status, and risk grade, and the REST endpoint returns the whole customer object. GraphQL lets the client ask for exactly what it needs.</span><span class="cn">我倾向手机端用 <em>GraphQL</em>。现在我们是 over-fetching——OnePay 开户屏要客户姓名、KYC 状态和风险等级，但 REST 接口返回整个客户对象。GraphQL 让客户端按需取。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question to push on. <em>Honest answer</em> — <em>I agree with the diagnosis, not the prescription.</em> Over-fetching is real, but GraphQL trades it for <em>under-fetching-N+1 queries</em>, and our squad doesn't have a federation story yet. <em>My recommendation:</em> <em>REST for partner-facing, GraphQL only for the mobile BFF layer</em> behind our gateway. That way the partners see REST — which is the Group Standard — and the mobile app gets a GraphQL endpoint that aggregates the internal services.</span><span class="cn">值得追问。<em>说实话</em>——<em>我同意诊断，不同意药方。</em>Over-fetching 是真问题，但 GraphQL 用 <em>under-fetching 的 N+1 查询</em>来换，我们 squad 还没有 federation。<em>我的建议是：</em><em>合作方走 REST，手机 BFF 层走 GraphQL</em>，藏在我们的网关后面。这样合作方看到的是 REST（符合集团标准），手机 App 通过 GraphQL 端点聚合内部服务。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en">Quick one — for the <em>internal service-to-service</em> calls between the onboarding service and the KYC service, are we sticking with <em>gRPC</em>?</span><span class="cn">问一下——<em>内部服务到服务</em>的调用，比如开户服务和 KYC 服务之间，还是用 <em>gRPC</em> 吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Yes. <em>gRPC for east-west, REST for north-south partner-facing, GraphQL for the mobile BFF.</em> That's the trifecta — and it lines up with the Group Standard on API protocols. Akash, can you confirm the platform team's gRPC service mesh is ready?</span><span class="cn">是的。<em>东西向走 gRPC，南北向合作方走 REST，手机 BFF 走 GraphQL。</em>三件套——这也和集团 API 协议标准对齐。Akash，平台团队的 gRPC 服务网格 ready 了吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev, Bangalore):</span>
+                <span class="text"><span class="en">Yes, mesh is up. <em>Quick one on versioning</em> — when the partner team wants to add a new optional field to the onboarding response, do we bump the major version or just add the field?</span><span class="cn">是的，mesh 已经上线。<em>问个版本问题</em>——合作方团队想给开户响应加一个新的可选字段，我们是要跳大版本还是直接加字段？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>URI versioning for partner-facing, header versioning for internal.</em> For partner-facing REST, we use <em>URL path versioning</em> — <em>/v1/onboarding</em>, <em>/v2/onboarding</em> — and the rule is: <em>additive changes don't bump the major version, breaking changes do.</em> A new optional field is additive — it stays on /v1. A removed field is breaking — that's /v2.</span><span class="cn">好问题。<em>合作方走 URI 版本，内部走 header 版本。</em>合作方 REST 我们用 <em>URL 路径版本</em>——<em>/v1/onboarding</em>、<em>/v2/onboarding</em>——规则是：<em>增量变更不跳大版本，破坏性变更才跳</em>。加一个可选字段是增量——留在 /v1。删一个字段是破坏——那才上 /v2。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (QA Lead):</span>
+                <span class="text"><span class="en">What about <em>idempotency</em> on the partner POST? If the partner retries because of a timeout, we don't want to onboard the same customer twice.</span><span class="cn">合作方 POST 的<em>幂等性</em>怎么办？如果合作方因为超时重试，我们不能给同一个客户开户两次。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>we mandate the Idempotency-Key header on every state-changing endpoint.</em> The partner generates a UUID v7 at their edge, sends it in the header, and we <em>dedup against Redis with a 24-hour window</em>. Same key in, same response out — even if the underlying onboarding is still running. <em>This is the same pattern as ADR-0158</em> on OneWealth, so we get consistency across the tribe.</span><span class="cn">好，<em>我们对每个有状态变更的接口强制要求 Idempotency-Key 请求头。</em>合作方在他们边缘生成 UUID v7，放在请求头里，我们用 <em>Redis 做 24 小时窗口去重</em>。同一 key 进来，给同一响应——即使底层开户还在跑。<em>这和 OneWealth 的 ADR-0158 一个套路</em>，整个 tribe 一致。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en">Last one — <em>pagination</em> on the partner GET. We have 200K customer records. <em>Offset pagination</em> is easy but slow on deep pages; <em>cursor pagination</em> is faster but harder to debug.</span><span class="cn">最后一个——合作方 GET 的<em>分页</em>。我们有 20 万客户记录。<em>Offset 分页</em>简单但深页慢；<em>cursor 分页</em>快但难调试。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Honest answer — <em>cursor pagination for partner-facing, offset for internal admin UIs.</em> Cursor scales to 200K and beyond, and the partner only ever paginates forward anyway. Internal admin UIs are paginated by humans who want to jump to "page 47" — offset is fine there. <em>Mei, can you write up the cursor contract in the OpenAPI spec</em> — page size capped at 100, opaque cursor, and a hard max of 10,000 records per request?</span><span class="cn">说实话——<em>合作方走 cursor 分页，内部管理 UI 走 offset。</em>Cursor 可以扛 20 万甚至更多，合作方反正也只往前翻。内部管理 UI 是人在翻页，要"跳到第 47 页"——offset 在那种场景没问题。<em>Mei，你能不能在 OpenAPI 规约里把 cursor 契约写清楚</em>——page size 上限 100，cursor 不透明，每次请求最多 1 万条？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en"><em>Just to double-check</em> — the Group Standard on API protocols does permit GraphQL behind the BFF, right? I want to make sure we're not deviating.</span><span class="cn"><em>确认一下</em>——集团 API 协议标准是允许 GraphQL 藏在 BFF 后面吧？我想确认我们没违规。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good check. <em>I'll confirm with the platform team by EOD tomorrow</em> and add the citation to ADR-0179. If Group Standard says no GraphQL at all, we'll fall back to REST with sparse fieldsets — that's a known pattern and the squad has done it before.</span><span class="cn">好眼力。<em>我明天 EOD 前和平台团队确认</em>，把引用加到 ADR-0179。如果集团标准完全不允许 GraphQL，我们就退回 REST + sparse fieldsets——这是已知模式，squad 之前做过。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Right, so <em>to close</em> — gRPC east-west, REST north-south partner-facing with URL versioning, GraphQL behind the BFF for the mobile app, Idempotency-Key required on all state-changing endpoints with a 24-hour Redis dedup, cursor pagination for partner GET, offset for internal. <em>Mei, can you update ADR-0179 by EOD Friday?</em></span><span class="cn">好，<em>收尾</em>——东西向 gRPC，南北向合作方走 REST + URL 版本，手机 BFF 走 GraphQL，所有有状态变更的接口强制 Idempotency-Key + 24 小时 Redis 去重，合作方 GET 走 cursor 分页，内部走 offset。<em>Mei，你周五 EOD 前把 ADR-0179 更新好？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>We have four things to land today.</em></span>
+                <span class="chinese">今天要敲定 4 件事</span>
+                <span class="note">State the agenda at minute 0. A 60-minute API discussion without a stated agenda becomes a 3-hour debate on REST vs GraphQL.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Push back</span> <em>I agree with the diagnosis, not the prescription.</em></span>
+                <span class="chinese">我同意诊断，不同意药方</span>
+                <span class="note">The most polite architect pushback. Validate the problem, then challenge the solution. Both sides feel heard.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trifecta</span> <em>gRPC for east-west, REST for north-south partner-facing, GraphQL behind the BFF.</em></span>
+                <span class="chinese">东西向 gRPC，南北向合作方 REST，BFF 后 GraphQL</span>
+                <span class="note">"East-west" = service-to-service. "North-south" = client-to-service. BFF = backend-for-frontend.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Versioning</span> <em>URL path versioning — /v1/onboarding, /v2/onboarding.</em></span>
+                <span class="chinese">URL 路径版本——/v1/onboarding、/v2/onboarding</span>
+                <span class="note">"Additive changes don't bump the major version, breaking changes do." Memorise this rule.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Idempotency</span> <em>We mandate the Idempotency-Key header on every state-changing endpoint.</em></span>
+                <span class="chinese">我们对每个有状态变更的接口强制要求 Idempotency-Key 请求头</span>
+                <span class="note">"Mandate" is a verb here. The Idempotency-Key is non-optional; reject requests without it at the gateway.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Consistency</span> <em>This is the same pattern as ADR-0158, so we get consistency across the tribe.</em></span>
+                <span class="chinese">这和 ADR-0158 一个套路，整个 tribe 一致</span>
+                <span class="note">Cite the prior ADR. Patterns travel by reference, not by re-derivation. Cite-and-link is faster than re-explain.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Cursor pagination is faster but harder to debug; offset is easier but slow on deep pages.</em></span>
+                <span class="chinese">Cursor 分页快但难调试，offset 简单但深页慢</span>
+                <span class="note">Always name both sides. Architects don't say "use cursor" — they say "cursor for X because Y; offset for Z because W".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Contract</span> <em>Can you write up the cursor contract in the OpenAPI spec?</em></span>
+                <span class="chinese">你能不能在 OpenAPI 规约里把 cursor 契约写清楚</span>
+                <span class="note">A contract is not a doc — it's the OpenAPI spec, the schema, the protobuf. "Write the contract" means "make it machine-readable".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fallback</span> <em>If Group Standard says no GraphQL, we'll fall back to REST with sparse fieldsets.</em></span>
+                <span class="chinese">如果集团标准不允许 GraphQL，我们就退回 REST + sparse fieldsets</span>
+                <span class="note">Always have a plan B when citing a Group Standard. Group Standards are revisited and sometimes tightened.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cite</span> <em>I'll confirm with the platform team and add the citation to ADR-0179.</em></span>
+                <span class="chinese">我会和平台团队确认并把引用加到 ADR-0179</span>
+                <span class="note">"Citation" = the link to the Group Standard in the ADR. If the citation is missing, the ADR is a wishlist, not a decision.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>REST (Representational State Transfer)</strong> n. REST 架构风格 A resource-oriented API style using HTTP verbs. Group Standard default for partner-facing APIs.</li>
+            <li><strong>GraphQL</strong> n. GraphQL 查询语言 A query language that lets clients request exactly the fields they need. Risks include N+1 queries and federation complexity.</li>
+            <li><strong>gRPC</strong> n. gRPC 远程过程调用 A high-performance RPC framework using protobuf. Used for service-to-service (east-west) calls.</li>
+            <li><strong>BFF (Backend-For-Frontend)</strong> n. 面向前端的后端 A thin API layer tailored to one client (e.g., the mobile app), aggregating internal services.</li>
+            <li><strong>East-west traffic</strong> n. 东西向流量 Service-to-service traffic inside the cluster.</li>
+            <li><strong>North-south traffic</strong> n. 南北向流量 Traffic between external clients and the cluster (e.g., partner APIs).</li>
+            <li><strong>URL path versioning</strong> n. URL 路径版本 Versioning via the URL path, e.g., <em>/v1/onboarding</em>.</li>
+            <li><strong>Additive change</strong> n. 增量变更 A change that adds new optional fields but does not remove or change existing ones — does NOT bump the major version.</li>
+            <li><strong>Breaking change</strong> n. 破坏性变更 A change that removes or renames a field, or changes a type — bumps the major version.</li>
+            <li><strong>Idempotency-Key</strong> n. 幂等键 A client-generated unique key (UUID v7) that lets the server safely dedup retries.</li>
+            <li><strong>Cursor pagination</strong> n. Cursor 分页 Pagination using an opaque cursor token — scales to large datasets, no deep-page cost.</li>
+            <li><strong>Offset pagination</strong> n. Offset 分页 Pagination using <em>?offset=100&limit=20</em> — easy for humans to debug, slow on deep pages.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I agree with the diagnosis, not the prescription" — the architect's pushback</h3>
+        <p>
+            <em>I agree with the diagnosis, not the prescription</em> is a politeness pattern that has
+            saved many an architect from an argument. The <strong>parallel structure</strong> (<em>with the
+            diagnosis, not the prescription</em>) signals that you've listened, validated the problem, and
+            are now challenging the solution. The other person doesn't feel dismissed — they feel heard on
+            the part that matters (the problem) and corrected on the part that doesn't (the solution).
+        </p>
+        <p><em>I agree with the diagnosis, not the prescription</em> 是架构师最体面的反驳——肯定问题、否定方案。</p>
+
+        <h3>② "gRPC for east-west, REST for north-south" — the protocol pattern</h3>
+        <p>
+            The <strong>parallel for-phrases</strong> (<em>gRPC for east-west, REST for north-south, GraphQL
+            for the BFF</em>) are how architects summarise multi-protocol designs in a single sentence. The
+            rule is: name the protocol, then name the direction / use-case. Avoid bare lists
+            (<em>gRPC, REST, GraphQL</em>) — they don't tell the reader which protocol goes where. The
+            prepositional phrase is what carries the design decision.
+        </p>
+            <p>用 <em>for</em> 引导的介词短语是架构师做多协议选型总结的标准句式：协议 + 适用场景。</p>
+
+        <h3>③ "Add additive changes don't bump the major version, breaking changes do" — the inversion</h3>
+        <p>
+            <em>Additive changes don't bump the major version, breaking changes do.</em> The <strong>trailing
+            "do"</strong> is an inverted auxiliary that avoids repeating <em>bump the major version</em>. This
+            pattern is dense — pack two rules into one sentence. It is the architect's voice: maximise
+            information per minute, because the room is busy and the design review is in 3 days. Use
+            inversion when both clauses share a verb; use plain repetition when clarity matters more than
+            density.
+        </p>
+        <p>句末的 <em>do</em> 用来避免重复动词——架构师讲话追求"高信息密度"。在 NFR 评审这类时间紧的场合特别好用。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Group Standard first, personal preference second.</strong> When a Tech Lead says "let's use GraphQL for the partner API", the Group Standard on API protocols says REST. Cite the Group Standard by name, then propose GraphQL behind the BFF. The Tech Lead still gets GraphQL where it helps; the partners stay on REST.</li>
+            <li><strong>"Diagnosis vs prescription" is the architect's politeness device.</strong> When a junior architect wants to push back on a senior's design, never say "that's wrong". Say "I agree with the diagnosis, not the prescription". The senior keeps face; the design gets better.</li>
+            <li><strong>Versioning rules must be in the ADR, not in tribal knowledge.</strong> "Additive changes don't bump the major version, breaking changes do" — write it down. The next 5 API changes will be debated by 5 different squads; the ADR is the only place the rule is unambiguous.</li>
+            <li><strong>Idempotency-Key is non-negotiable on POSTs.</strong> If a partner POST doesn't have the Idempotency-Key header, reject it at the gateway. Don't make it "advisory". The day a partner retries due to a 2-second timeout, "advisory" becomes "we onboarded the same customer twice".</li>
+            <li><strong>Cursor pagination is for machines; offset is for humans.</strong> Partner UIs are written by code — they paginate forward forever, cursor is fine. Internal admin UIs are operated by humans — they want "page 47", offset is fine. Match the pagination to the consumer.</li>
+            <li><strong>Always have a fallback when citing a Group Standard.</strong> "If Group Standard says no GraphQL, we'll fall back to REST with sparse fieldsets." This sentence turns a potentially blocking question into a known plan B. Group Standards are revisited; your design should survive the revision.</li>
+            <li><strong>Cross-region courtesy on API reviews.</strong> When Diego (UK) joins late, recap the protocol decision in 30 seconds before continuing. UK is 8 hours behind — Diego probably hasn't had coffee and definitely hasn't read the ADR. Recap is courtesy.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the API design summary</h3>
+        <p>Translate the following API design summary into natural Chinese. Pay attention to the protocol trifecta and the versioning rule.</p>
+        <blockquote>
+            "Right, so to close. gRPC for east-west service-to-service, REST for north-south
+            partner-facing with URL path versioning, GraphQL behind the BFF for the mobile app.
+            Additive changes don't bump the major version, breaking changes do. We mandate the
+            Idempotency-Key header on every state-changing endpoint — UUID v7, 24-hour Redis dedup.
+            Cursor pagination for partner GET, page size capped at 100, opaque cursor, max 10,000
+            records per request. Offset pagination for internal admin UIs. Mei, can you update ADR-0182
+            with this and add the citation to the Group Standard on API protocols by EOD Friday? I'll
+            confirm the GraphQL carve-out with the platform team by tomorrow."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，收尾。东西向服务间调用走 gRPC，南北向合作方走 REST + URL 路径版本，手机 BFF 走 GraphQL。增量变更不跳大版本，破坏性变更才跳。所有有状态变更的接口强制 Idempotency-Key 请求头——UUID v7、24 小时 Redis 去重。合作方 GET 走 cursor 分页，page size 上限 100、cursor 不透明、单次请求最多 1 万条。内部管理 UI 走 offset。Mei，你周五 EOD 前把 ADR-0182 更新好并加上集团 API 协议标准的引用。GraphQL 的豁免我明天和平台团队确认。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these API design proposals would pass a strict HSBC design review and which would not? Why?</p>
+        <ol>
+            <li>"Let's use GraphQL for everything — partner, mobile, internal. It's flexible."</li>
+            <li>"gRPC for east-west, REST for partner-facing, GraphQL behind the BFF, with URL versioning and the Idempotency-Key mandated on state-changing endpoints."</li>
+            <li>"We removed the `email` field from the /v1/onboarding response. Partners should use /v2 instead. Oh, and we still updated /v1 in place."</li>
+            <li>"Pagination: offset. Everyone uses offset. Why complicate things?"</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② passes — it has the protocol trifecta, the versioning rule, and the idempotency mandate. ① fails (GraphQL for partner-facing violates the Group Standard). ③ is a disaster — removing a field and updating /v1 in place is a breaking change without a version bump; the next partner integration breaks silently. ④ is a PM-style "keep it simple" answer that doesn't scale to 200K records; offset on deep pages will time out the partner's request.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a Solution Architect in the CMB Digital Channels tribe. The squad is designing the CMB onboarding API for a new partner — a corporate KYC vendor. The partner wants gRPC, but the Group Standard says REST for partner-facing. The squad also wants offset pagination, but the partner will have 500K customer records. Write your 60-second response to the squad in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK, two trade-offs to land. First, protocol — the partner wants gRPC, but the Group Standard on API protocols says REST for partner-facing north-south traffic. I agree with the diagnosis — gRPC has a tighter contract and lower latency — but not the prescription. Our recommendation: REST for the partner-facing API, gRPC for the east-west calls between our onboarding service and the KYC service. That way the partner stays REST-compliant, and we get the gRPC benefits internally. We'll cite the Group Standard in the ADR and have a fallback ready if the standard is revised. Second, pagination — the squad wants offset, but 500K records means deep-page latency will kill the partner. Honest answer: cursor pagination for the partner GET, offset for our internal admin UIs. Page size capped at 100, opaque cursor, max 10,000 records per request. Mei, can you update ADR-0190 with the protocol decision and the cursor contract by EOD Wednesday?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="10-event-driven-architecture.html" class="btn btn-primary">Next: Article 10 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

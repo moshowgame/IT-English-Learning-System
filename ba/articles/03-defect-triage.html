@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 03: Defect Triage Meeting | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">03 · Defect Triage Meeting</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Defect Triage Meeting</h1>
+        <p class="subtitle">Article 03 · Module 3: Defect & Risk Management · BA English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Prioritizing P1/P2 defects and pushing back on "must fix in this sprint" — with evidence</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday, 11:00 AM HKT</strong>. The HSBC <em>CMB (Commercial Banking)</em>
+            Trade Finance squad is running its weekly defect triage on Microsoft Teams. You are the BA
+            based in Hong Kong. In the room: Daniel, the QA Lead (Bangalore), Lina, the Tech Lead
+            (Shanghai), and Henry from the Singapore business who has just dialled in 5 minutes late
+            and is already pushing for "everything to be fixed before the UAT on Friday".
+        </p>
+        <p>
+            周三上午 11 点香港时间，汇丰 <em>CMB（公司银行）</em> 贸易融资 squad 在 Teams 上开
+            周度缺陷评审。你是 BA（base 香港）。在场的有：班加罗尔的 QA Lead Daniel、
+            上海的技术负责人 Lina，以及迟到 5 分钟刚上线的 Henry（新加坡业务方），他一上来就
+            催"周五 UAT 前必须全部修完"。
+        </p>
+        <p>
+            There are 14 open defects on the board: 2 P1, 5 P2, 7 P3. The squad has 4 developer-days
+            left this sprint. Your job as BA is to facilitate the prioritisation conversation, push
+            back on Henry with evidence (severity × business impact × effort), and protect the
+            sprint goal — which is the SWIFT MT202 cover-payment validation, not the cosmetic
+            dashboard issues.
+        </p>
+        <p>
+            看板上有 14 个开放缺陷：2 个 P1、5 个 P2、7 个 P3。本 Sprint 还剩 4 个开发人天。
+            你作为 BA 要主持优先级讨论，用证据（严重度 × 业务影响 × 修复成本）顶回 Henry 的
+            压力，并守住 Sprint Goal（SWIFT MT202 同行报文校验，不是仪表盘的 UI 小问题）。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Right, let's get started.</em> We have 14 defects on the board — 2 P1, 5 P2, 7 P3. We have <em>4 dev-days left</em> this sprint, and our <em>sprint goal</em> is the MT202 validation release. <em>Let's triage by severity first</em>, then we'll talk about scope.</span><span class="cn">好，开始。看板上有 14 个缺陷——2 个 P1、5 个 P2、7 个 P3。本 Sprint 还剩 4 个开发人天，<em>Sprint Goal</em> 是 MT202 校验上线。<em>先按严重度评审</em>，再讨论范围。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (QA):</span>
+                <span class="text"><span class="en"><em>Quick one</em> — the P1s first. <em>DEF-4421</em>, the MT202 cover-payment field is <em>truncating</em> the IBAN after 30 characters. We've reproduced it in UAT with 3 different client data sets.</span><span class="cn">先说 P1。<em>DEF-4421</em>，MT202 同行报文字段在 IBAN 超过 30 字符后<em>被截断</em>。UAT 上 3 套客户数据都复现了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lina (TL):</span>
+                <span class="text"><span class="en"><em>Yeah, I saw that one.</em> It's a <em>schema validation gap</em>. <em>One day</em> to fix and a half-day for regression. Lina: <em>this one is non-negotiable</em> — we cannot ship without it.</span><span class="cn">看到了。这是<em>字段校验缺失</em>。1 天修，半天回归。这个<em>不能让</em>——没修好不能上线。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Agreed.</em> DEF-4421 is <em>in</em> for this sprint, and it's <em>flagged as a release blocker</em>. <em>Daniel,</em> can you <em>log the RCA template</em> so we have it for the audit trail?</span><span class="cn">同意。DEF-4421 本 Sprint 修，标记为<em>上线阻塞</em>。Daniel，能开一下 RCA 模板吗？要留审计痕迹。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Henry (Business):</span>
+                <span class="text"><span class="en"><em>Sorry I'm late.</em> Quick question — are we going to <em>fix all 14 before Friday UAT</em>? The Singapore desk is <em>on my back</em> about this.</span><span class="cn">不好意思迟到了。问一下——周五 UAT 之前<em>14 个全修完吗</em>？新加坡那边在催我。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Honest answer — no, Henry, we can't.</em> We have 4 dev-days left, 1 is locked to DEF-4421. <em>That leaves 3 days for the remaining 13.</em> Let me <em>walk you through the prioritisation</em> so you can take it back to the desk with a clear picture.</span><span class="cn">实话——修不完，Henry。还剩 4 个开发人天，1 天锁给 DEF-4421，<em>剩 3 天给其他 13 个</em>。我<em>把优先级过一遍</em>，你好带着清晰画面回新加坡那边。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Out of the 13,</em> I'd recommend <em>2 more in-sprint:</em> DEF-4430 (P2, sanctions screening false-negative on Turkish IBAN — <em>2 days, regulatory risk</em>) and DEF-4445 (P2, MAS report timestamp off by 1 hour — <em>half-day, audit risk</em>). The other 11 are P3 cosmetic / UX issues, <em>deferred to sprint +1</em>.</span><span class="cn">13 个里我建议<em>再加 2 个本 Sprint 修</em>：DEF-4430（P2，土耳其 IBAN 制裁名单漏报——<em>2 天，监管风险</em>）和 DEF-4445（P2，MAS 报告时间戳差 1 小时——<em>半天，审计风险</em>）。其余 11 个是 P3 体验/UI 问题，<em>延到下个 Sprint</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Henry (Business):</span>
+                <span class="text"><span class="en">But DEF-4460 — the <em>dashboard label mis-alignment</em> — the Singapore desk <em>flagged it as must-fix</em>. We had a customer <em>complaint</em> last week.</span><span class="cn">但 DEF-4460——<em>仪表盘标签错位</em>——新加坡那边<em>标了必做</em>。上周有客户<em>投诉</em>了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>I hear you on the complaint</em> — let me <em>push back gently.</em> DEF-4460 is a <em>cosmetic UI issue</em>, it doesn't block any trade or report. <em>Realistically</em>, 1 dev-day to fix, and if we pull that in, we <em>have to descope</em> either DEF-4430 or DEF-4445 — and those are <em>regulatory</em>, not cosmetic. <em>Which one would you like me to drop?</em></span><span class="cn"><em>理解你那边的投诉</em>——我<em>委婉顶一下</em>。DEF-4460 是 UI 体验问题，不影响任何交易或申报。<em>实际上</em> 1 个开发人天，如果拉进来，就<em>必须砍掉</em> DEF-4430 或 DEF-4445 其中之一——那两条是<em>监管</em>问题，不是 UI 问题。<em>你想让我砍哪一条？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Henry (Business):</span>
+                <span class="text"><span class="en"><em>Hmm, fair point.</em> <em>Keep the regulatory ones in.</em> Can we <em>at least</em> get a workaround note for DEF-4460 <em>out to the desk</em> by Friday?</span><span class="cn">嗯，有道理。<em>监管的留着</em>。DEF-4460 能否<em>至少</em>周五前<em>给业务方一个临时说明</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Yes, I can do that.</em> I'll <em>draft a 1-page workaround note</em> today and <em>loop you in</em> before I send it out. <em>Right,</em> anything else on the board before we close?</span><span class="cn">可以。今天<em>草拟 1 页临时说明</em>，发之前<em>拉你确认</em>。<em>好，</em>看板上的其他项有要说的吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lina (TL):</span>
+                <span class="text"><span class="en"><em>One more —</em> DEF-4450, the <em>eCAB-raised PCI-DSS logging</em> one. <em>Just to confirm</em> that's <em>in scope</em> for this sprint as a regulatory must-have?</span><span class="cn">还有一条——DEF-4450，<em>eCAB 提的 PCI-DSS 日志</em>。<em>确认一下</em>这条是本 Sprint 监管必做项？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Confirmed — in scope, regulator-raised via eCAB last Friday.</em> <em>That's the 4th dev-day,</em> so the board is now fully loaded. <em>Thanks, all.</em> I'll <em>send the prioritised list</em> and the workaround note by EOD.</span><span class="cn"><em>确认——在上周范围里，周五 eCAB 走监管流程进来的</em>。<em>第 4 个开发人天用在这里</em>，看板已满负荷。<em>感谢各位</em>。我 EOD 前<em>发优先级列表和临时说明</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Let's triage by severity first, then we'll talk about scope.</em></span>
+                <span class="chinese">先按严重度评审，再讨论范围</span>
+                <span class="note">Sets the rules of engagement: severity first, scope second. Stops the meeting becoming a "fix everything" debate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">P1</span> <em>Flagged as a release blocker.</em></span>
+                <span class="chinese">标记为上线阻塞</span>
+                <span class="note">"Release blocker" = cannot ship. Strongest triage label. Use sparingly — once a sprint is the most.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Honest</span> <em>Honest answer — no, we can't.</em></span>
+                <span class="chinese">实话——修不完</span>
+                <span class="note">"Honest answer" = politeness wrapper for saying no. BAs need to say no with data, not vibes.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>1 is locked to DEF-4421. That leaves 3 days for the remaining 13.</em></span>
+                <span class="chinese">DEF-4421 锁 1 天，剩 3 天给其他 13 个</span>
+                <span class="note">Always do the math out loud. Capacity + priorities = the conversation. Maths kills "fix everything" arguments.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Push back</span> <em>Let me push back gently.</em></span>
+                <span class="chinese">我委婉顶一下</span>
+                <span class="note">"Push back" = disagree. "Gently" = softens. Always pair push-back with data (severity, effort, regulatory exposure).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Which one would you like me to drop?</em></span>
+                <span class="chinese">你想让我砍哪一条？</span>
+                <span class="note">The classic "force the choice" move. Don't accept "fix everything" — make them choose what to drop.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Acknowledge</span> <em>I hear you on the complaint.</em></span>
+                <span class="chinese">理解你那边的投诉</span>
+                <span class="note">Always acknowledge the stakeholder's concern first, before pushing back. Acknowledgement ≠ agreement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Defer</span> <em>Deferred to sprint +1.</em></span>
+                <span class="chinese">延到下个 Sprint</span>
+                <span class="note">"Sprint +1" = next sprint. "Sprint +2" = the one after. Standard agile shorthand for deferral.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Workaround</span> <em>I'll draft a 1-page workaround note.</em></span>
+                <span class="chinese">我草拟 1 页临时说明</span>
+                <span class="note">A workaround acknowledges the pain without committing the dev time. Critical tool for de-escalating cosmetic defects.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>Just to confirm that's in scope…</em></span>
+                <span class="chinese">确认一下这条在范围内</span>
+                <span class="note">"Just to confirm" = polite, no-judgement way to surface a disagreement in a meeting. Lets you reset the record.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Defect triage</strong> n. 缺陷评审 The meeting to review, prioritise, and assign defects.</li>
+            <li><strong>P1 / P2 / P3</strong> n. 优先级 1/2/3 Severity classification. P1 = release blocker, P2 = high, P3 = cosmetic.</li>
+            <li><strong>Release blocker</strong> n. 上线阻塞 A defect severe enough to prevent production release.</li>
+            <li><strong>Severity vs Priority</strong> n. 严重度 vs 优先级 Severity = technical impact. Priority = business urgency. They differ!</li>
+            <li><strong>RCA (Root Cause Analysis)</strong> n. 根本原因分析 A structured investigation into why a defect occurred (often "5 whys").</li>
+            <li><strong>SWIFT MT202</strong> n. SWIFT MT202 报文 Cover payment message for bank-to-bank transfers.</li>
+            <li><strong>IBAN</strong> n. 国际银行账号 International Bank Account Number — up to 34 characters.</li>
+            <li><strong>Sanctions screening false-negative</strong> n. 制裁名单漏报 A match that should have been caught but wasn't — a regulatory risk.</li>
+            <li><strong>MAS</strong> n. 新加坡金管局 Monetary Authority of Singapore — Singapore's banking regulator.</li>
+            <li><strong>PCI-DSS</strong> n. 支付卡行业数据安全标准 Payment Card Industry Data Security Standard.</li>
+            <li><strong>Sprint +1</strong> n. 下个 Sprint The next sprint in sequence. +2 = two sprints away.</li>
+            <li><strong>Workaround</strong> n. 临时方案 A manual or interim solution that avoids the defect's impact without fixing the root cause.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Let me push back gently" — gerund as a soft announcement</h3>
+        <p>
+            Saying <em>let me <strong>push back</strong></em> (verb) is direct, almost confrontational.
+            Saying <em>let me <strong>push back gently</strong></em> adds the adverb, signalling "I disagree but
+            I'm doing it with care". The adverb is doing the politeness work. Same trick works with
+            <em>let me <strong>flag this carefully</strong></em> or <em>let me <strong>raise this honestly</strong></em>.
+        </p>
+        <p>直接说 <em>push back</em> 有点冲，加 <em>gently</em> 副词就软了。同样的技巧：<em>flag this carefully</em>、<em>raise this honestly</em>。</p>
+
+        <h3>② "We can't" vs "We won't" — modality in pushback</h3>
+        <p>
+            <em>We <strong>can't</strong> fix all 14</em> says it's impossible (capacity-bound).
+            <em>We <strong>won't</strong> fix all 14</em> says we've chosen not to (priority-bound).
+            Use <em>can't</em> with stakeholders — it removes the "you don't want to" reading and replaces
+            it with "we literally don't have the days". <em>Can't</em> is the BA's politeness tool.
+        </p>
+        <p><em>Can't</em> 表示客观能力不足，<em>won't</em> 表示主观选择。对业务方用 <em>can't</em>，避免被认为"你不想做"。</p>
+
+        <h3>③ "Which one would you like me to drop?" — the question that ends the debate</h3>
+        <p>
+            When a stakeholder says "fix everything", the correct response is a forced-choice question:
+            <em>Which one would you like me to drop?</em> This shifts the conversation from "can we add more?"
+            to "what are we willing to lose?". The structure is <em>which + noun + would you like + me + to + verb</em>:
+            polite, hypothetical, and uncatchable.
+        </p>
+        <p>当业务方说"全做"时，正确回应是强制选择题：<em>Which one would you like me to drop?</em>。把对话从"加"转到"放弃什么"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Severity ≠ priority.</strong> A P1 might still be P3 priority if it doesn't affect a release. A P3 might be P1 priority if a regulator is calling. Train the room to separate "how bad is it technically" from "how urgent is it for the business". HSBC audits love this distinction.</li>
+            <li><strong>"Must-fix" needs evidence, not volume.</strong> When a business says "this is a must-fix", ask: "What's the regulatory or revenue impact?" If they can't quantify it, it's a "want-fix", not a "must-fix". Politely push back with the question.</li>
+            <li><strong>Singapore vs HK: be culturally careful.</strong> Henry is from Singapore business. Singapore colleagues are direct, time-conscious, and will accept a "no" with reasons. Don't soften so much that they think you haven't decided — be clear and quick.</li>
+            <li><strong>Regulatory beats cosmetic, always.</strong> Sanctions, MAS, HKMA, FCA, PCI-DSS — once a regulator is mentioned, the conversation is over. Cosmetic UI issues are "next sprint" until proven otherwise.</li>
+            <li><strong>Workarounds are your friend.</strong> A 1-page workaround note is 30 minutes of BA work that resolves a customer complaint without burning 1 dev-day. Always offer the workaround as the third option: fix it / defer it / workaround it.</li>
+            <li><strong>Don't accept late arrivals changing scope.</strong> Henry dialled in 5 minutes late and immediately pushed for "fix everything". As BA, you reset: "we've already triaged, let me walk you through the prioritisation". Don't re-open the whole board for a latecomer.</li>
+            <li><strong>Always confirm in writing after the meeting.</strong> Send the prioritised list by EOD. If it's not in writing, the "must-fix" list grows by Monday morning. The triage meeting's output is the email that follows.</li>
+            <li><strong>Numbers beat volume.</strong> "1 P1, 2 P2 in-sprint, 11 P3 deferred" beats "we're working hard on quality". HSBC PMs and BAs speak in numbers. Train yourself to count out loud.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the BA pushback</h3>
+        <p>Translate the following BA pushback into natural Chinese. Pay attention to how the BA acknowledges first, then quantifies, then forces the choice.</p>
+        <blockquote>
+            "I hear you on the customer complaint. Let me push back gently. DEF-4460 is a cosmetic UI issue — it
+            doesn't block any trade or report. Realistically, 1 dev-day to fix. If we pull that in, we have to
+            descope either DEF-4430 (sanctions screening false-negative) or DEF-4445 (MAS report timestamp) —
+            and those are regulatory, not cosmetic. Which one would you like me to drop? As a workaround, I
+            can draft a 1-page note for the desk by Friday EOD."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"理解你那边的客户投诉。我委婉顶一下。DEF-4460 是 UI 体验问题——不影响任何交易或申报。实际上 1 个开发人天。如果拉进来，就必须砍掉 DEF-4430（土耳其 IBAN 制裁名单漏报）或 DEF-4445（MAS 报告时间戳）其中之一——那两条是监管问题，不是 UI 问题。你想让我砍哪一条？作为临时方案，周五 EOD 前我可以给业务方草拟 1 页说明。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the BA mistake</h3>
+        <p>Which of these triage lines is the most "BA-polished" and which would damage your credibility in the meeting? Why?</p>
+        <ol>
+            <li>"Yeah, sure Henry, we'll just work harder and fix everything by Friday."</li>
+            <li>"We can't fix all 14. We have 4 dev-days left, 1 is locked to DEF-4421. That leaves 3 days for 13. I'd recommend 2 more in-sprint: DEF-4430 (regulatory) and DEF-4445 (audit). The other 11 P3s are deferred to sprint +1. Which P3 would you like me to swap in instead of one of those two?"</li>
+            <li>"Henry, you're late. Catch up."</li>
+            <li>"I'll draft a 1-page workaround note for DEF-4460 and loop you in before sending. That gets the customer-facing pain resolved without burning 1 dev-day."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are BA-polished — ② quantifies and forces a choice, ④ offers a workaround. ① is the worst — agreeing to fix everything destroys your credibility and the sprint goal. ③ is rude and will be remembered. A BA's job in triage is to be the calm, evidence-based adult in the room.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB Tax Reporting squad. Weekly defect triage. Facts: (a) 2 P1s — DEF-5101 (CRS report XML schema mismatch, regulator-raised, 1 dev-day) and DEF-5102 (PEP false-positive on UK MPs, 2 dev-days); (b) 3 P2s — DEF-5110 (tax-residency dropdown missing 2 countries, 1 dev-day), DEF-5115 (OneWealth dashboard slow on first load, half-day), DEF-5120 (CRS report PDF footer wrong year, quarter-day); (c) 4 dev-days left. The PO is pushing for everything to be done before MAS audit on Friday.
+            Write the triage facilitation. Acknowledge the PO, do the maths, recommend an in-sprint set, and offer a workaround for at least one deferred item.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Right, let's triage. We have 5 open defects — 2 P1, 3 P2 — and 4 dev-days left. Honest answer: we cannot fix all 5 by Friday. The maths: 2 P1s alone are 3 dev-days, which leaves 1 day for the P2s. I'd recommend DEF-5101 and DEF-5102 in-sprint as the regulator and compliance P1s. For the P2s, my recommendation is to defer DEF-5115 and DEF-5120 to sprint +1, and pick up DEF-5110 (tax-residency dropdown) — that one has a clear 1-day fix and a real customer impact. So the in-sprint set is 5101, 5102, and 5110. For the deferred items, I'll draft a 1-page workaround note for DEF-5115 and a holding email to the regulator for DEF-5120, both out by Friday. Push-back welcome — but we'll have to drop one of the P1s to add more, and I'd rather not do that given the MAS audit. Sound good?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="04-requirements-clarification.html" class="btn btn-primary">Next: Article 04 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

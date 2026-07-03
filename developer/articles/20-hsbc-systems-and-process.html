@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 20: HSBC Systems & Process | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">20 · HSBC Systems & Process</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>HSBC Systems &amp; Process</h1>
+        <p class="subtitle">Article 20 · Module 5: HSBC Banking Context · Developer English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🏦 HSBCnet, OneWealth, HUB, GLCM, and internal workflow terms</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It's your third week at HSBC. Your Tech Lead (David) is giving you a system overview on a whiteboard —
+            HSBC's <em>internal landscape</em> can feel like alphabet soup: <em>HSBCnet, OneWealth, HUB, GLCM, GPB,
+            CMB, RBWM, GPS, HOST, GLBa</em>. You also hear process terms: <em>SDL, CAB, RIB, Operational Risk,
+            Risk and Control Assessment (RCA), Three Lines of Defence (3LoD), SOX controls</em>.
+        </p>
+        <p>
+            第三周，你的 Tech Lead (David) 给你做系统 overview。汇丰<em>内部系统</em>像字母汤：
+            <em>HSBCnet, OneWealth, HUB, GLCM, GPB, CMB, RBWM, GPS, HOST, GLBa</em>。还有流程术语：
+            <em>SDL, CAB, RIB, 操作风险, 风险与控制评估 (RCA), 三道防线 (3LoD), SOX 控制</em>。
+        </p>
+        <p>
+            This article is a <strong>spoken English tour</strong> of the core HSBC systems, the business lines,
+            the change-management process, and the control framework. Mastering these lets you <em>follow
+            meetings, write Jiras, and contribute in design reviews</em> with confidence.
+        </p>
+    </section>
+
+    <!-- Dialogue Part 1: Business Lines -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 1: Business Lines & Internal Systems</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">Wei, <em>let me give you the lay of the land.</em> HSBC is split into <em>four main business lines</em>: <em>RBWM</em> — <em>Retail Banking and Wealth Management</em>, <em>CMB</em> — <em>Commercial Banking</em>, <em>GPB</em> — <em>Global Private Banking</em>, and <em>GB&amp;M</em> — <em>Global Banking and Markets</em>. Our service <em>sits under CMB</em>.</span><span class="cn">Wei，给你介绍下整体情况。HSBC 分为四大业务线：RBWM（零售银行与财富管理）、CMB（工商金融）、GPB（全球私人银行）、GB&amp;M（全球银行与市场）。我们的服务在 CMB 下。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>And the system landscape</em> — what are the <em>core platforms</em> I need to know about?</span><span class="cn">明白。系统层面——我需要了解哪些核心平台？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Top of the list</em> is <em>HSBCnet</em> — that's the <em>customer-facing online banking platform</em> for corporate and institutional clients. <em>Anything customer-visible</em> on the corporate side <em>goes through HSBCnet</em>.</span><span class="cn">排在首位的是 HSBCnet——这是面向公司和机构客户的网银平台。企业端所有客户可见的功能都通过 HSBCnet。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK. <em>And on the wealth side?</em></span><span class="cn">好的。财富管理方面呢？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>OneWealth</em> is the <em>global wealth platform</em> for RBWM and GPB. It handles <em>investment products, portfolio management, and advisory</em>. <em>If you're touching anything wealth-related</em>, you'll <em>go through OneWealth APIs</em>.</span><span class="cn">OneWealth 是 RBWM 和 GPB 的全球财富管理平台，处理投资产品、投资组合管理和顾问服务。任何财富相关的东西都会走 OneWealth API。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Understood. <em>What about HUB and GLCM</em> — I keep seeing those in Jira tickets.</span><span class="cn">明白。HUB 和 GLCM 呢——我经常在 Jira 单子里看到。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">Right. <em>HUB</em> is the <em>Hong Kong Universal Banking platform</em> — a <em>legacy core banking system</em> for HK retail and commercial. <em>GLCM</em> is <em>Global Liquidity and Cash Management</em> — the platform for <em>corporate cash management, payments, and FX</em>. <em>Both are critical-path systems</em>.</span><span class="cn">对。HUB 是香港 Universal Banking 平台——HK 零售和工商的遗留核心银行系统。GLCM 是 Global Liquidity and Cash Management（全球流动性与现金管理）——企业现金管理、支付和外汇的平台。两个都是关键路径系统。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Got it — and the others I keep hearing: GPS, HOST, GLBa?</em></span><span class="cn">明白——还有几个我经常听到的：GPS、HOST、GLBa？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>GPS</em> is <em>Global Payments Solutions</em> — the cross-border payments engine. <em>HOST</em> is the <em>Hong Kong Operations and Systems Technology</em> — internal IT for HK. <em>GLBa</em> is <em>Group Legal and Board Affairs</em> — not a tech system, but you'll <em>hear it in compliance discussions</em>.</span><span class="cn">GPS 是 Global Payments Solutions（全球支付解决方案）——跨境支付引擎。HOST 是 Hong Kong Operations and Systems Technology（香港运营与系统技术）——HK 的内部 IT。GLBa 是 Group Legal and Board Affairs（集团法务与董事会事务）——不是技术系统，但合规讨论中会听到。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dialogue Part 2: Change Management -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 2: Change Management Process</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">Wei, <em>just to walk you through the change process.</em> Every production change <em>goes through CAB</em> — <em>Change Advisory Board</em> — which meets <em>twice a week</em>. <em>Standard changes</em> can be <em>pre-approved</em>, but <em>anything touching</em> a <em>critical-path system</em> — like GLCM or HUB — needs <em>full CAB approval</em>.</span><span class="cn">Wei，给你讲讲变更流程。每个生产变更都要走 CAB（Change Advisory Board，变更咨询委员会），每周开两次。标准变更可以预先批准，但涉及关键路径系统（比如 GLCM 或 HUB）需要完整 CAB 审批。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK. <em>What does a CAB submission</em> need to include?</span><span class="cn">好的。CAB 提交需要包含什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Five things, at minimum:</em> (1) <em>change description</em> — what and why; (2) <em>risk assessment</em> — low / medium / high; (3) <em>implementation plan</em> — including <em>rollback plan</em>; (4) <em>test evidence</em> — UAT sign-off, <em>non-functional testing</em> results; (5) <em>approval chain</em> — Tech Lead, BA, Product, <em>and for some changes</em>, <em>InfoSec and Compliance</em>.</span><span class="cn">至少 5 项：(1) 变更描述——变更什么和为什么；(2) 风险评估——低/中/高；(3) 实施计划——含回滚计划；(4) 测试证据——UAT sign-off、非功能测试结果；(5) 审批链——Tech Lead、BA、Product，某些变更还需要 InfoSec 和 Compliance。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>And what about emergency changes</em> — like a <em>P1 incident</em> fix?</span><span class="cn">明白。紧急变更呢——比如 P1 事故修复？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">Emergency changes follow the <em>eCAB</em> — <em>emergency CAB</em> — process. The <em>Incident Commander</em> <em>fast-tracks</em> the approval, usually <em>within 30 minutes</em>. But the change <em>still needs to be retroactively documented</em> and <em>go through a post-implementation review (PIR)</em> within <em>5 business days</em>.</span><span class="cn">紧急变更走 eCAB（紧急 CAB）流程。事故指挥官快速审批，通常 30 分钟内完成。但变更仍需要事后补文档，并在 5 个工作日内进行 PIR（实施后回顾）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Understood. <em>And SDL</em> — what is that exactly?</span><span class="cn">明白。SDL 具体是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>SDL</em> stands for <em>Secure Development Lifecycle</em>. <em>It's the Group Standard</em> for how we build software — covers <em>threat modelling, secure coding, code review, security testing</em>. <em>Any production system</em> <em>has to comply</em> with SDL. <em>Auditors check it.</em></span><span class="cn">SDL 是 Secure Development Lifecycle（安全开发生命周期）。这是集团标准，规定我们如何构建软件——涵盖威胁建模、安全编码、代码审查、安全测试。任何生产系统都必须符合 SDL，审计员会检查。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dialogue Part 3: Risk and Control -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 3: Risk, Controls & Three Lines of Defence</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Wei, <em>just to make sure you understand the governance side</em>: at HSBC, <em>every system</em> has an <em>RCA</em> — <em>Risk and Control Assessment</em>. It's a document that <em>lists the risks</em> of the system and the <em>controls</em> we have <em>in place to mitigate them</em>.</span><span class="cn">Wei，确保你理解治理方面：HSBC 每个系统都有一个 RCA（Risk and Control Assessment，风险与控制评估）。这是列出系统风险和缓解控制措施的文档。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK. <em>And who owns the RCA</em> — the dev team, or <em>the business</em>?</span><span class="cn">好的。RCA 谁负责——开发团队还是业务？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">The <em>first line of defence</em> is <em>us</em> — the <em>business and IT teams</em> who <em>own and operate</em> the system. <em>We're responsible for</em> identifying risks, <em>implementing controls</em>, and <em>running them effectively</em>.</span><span class="cn">第一道防线是我们——拥有和运营系统的业务和 IT 团队。我们负责识别风险、实施控制、并有效运行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Right. <em>And the second and third lines?</em></span><span class="cn">好的。第二道和第三道防线呢？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en"><em>Second line</em> is <em>Risk and Compliance</em> — they <em>oversee and challenge</em> the first line. <em>Third line</em> is <em>Internal Audit</em> — they <em>provide independent assurance</em> to the Board. <em>That's the Three Lines of Defence model.</em></span><span class="cn">第二道防线是风险与合规部门——他们监督并挑战第一道防线。第三道防线是内部审计——他们为董事会提供独立保证。这就是“三道防线”模型。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Understood. <em>In practical terms</em>, if I'm <em>building a new feature</em>, do I need to <em>update the RCA</em>?</span><span class="cn">明白。实际工作中，如果我在做新功能，需要更新 RCA 吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en"><em>Yes — every change</em> that <em>introduces a new risk</em> or <em>modifies an existing control</em> needs an <em>RCA update</em>. <em>The change ticket</em> won't be approved <em>without it</em>. <em>And for SOX-scoped systems</em> — anything <em>impacting financial reporting</em> — the <em>SOX controls</em> also need to be <em>re-tested and signed off</em>.</span><span class="cn">是的——任何引入新风险或修改现有控制的变更都需要更新 RCA。变更单没有 RCA 更新不会被批准。对于 SOX 范围内的系统——任何影响财务报告的——SOX 控制也需要重新测试并签字。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>And RIB</em> — what is that?</span><span class="cn">明白。RIB 是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en"><em>RIB</em> stands for <em>Risk Issues Book</em>. It's where we <em>log and track</em> <em>all known risks and issues</em> <em>within a system</em>. Anything in the RIB <em>needs a mitigation plan</em> and a <em>target close date</em>. <em>It's reviewed monthly</em> by the <em>system owner</em>.</span><span class="cn">RIB 是 Risk Issues Book（风险问题册）。我们在这里记录和跟踪系统内所有已知风险和问题。RIB 里的每项都需要缓解计划和目标关闭日期，每月由系统负责人审查。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Overview</span> <em>Let me give you the lay of the land.</em></span>
+                <span class="chinese">我给你介绍一下整体情况</span>
+                <span class="note">Standard opener for system / org overview.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>Our service sits under CMB.</em></span>
+                <span class="chinese">我们的服务属于 CMB</span>
+                <span class="note">"Sits under" = 业务上属于哪个条线。Always confirm this first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Path</span> <em>Anything customer-visible goes through HSBCnet.</em></span>
+                <span class="chinese">任何面向客户的功能都走 HSBCnet</span>
+                <span class="note">"Goes through" = 流量/逻辑上经过。常用来指代 critical path。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Approval</span> <em>Anything touching a critical-path system needs full CAB approval.</em></span>
+                <span class="chinese">任何涉及 critical-path 系统的变更都需要完整 CAB 审批</span>
+                <span class="note">"Touching" / "impacts" = 影响。HSBC 高度关注 "what does this change touch?"</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fast-track</span> <em>The Incident Commander fast-tracks the approval, usually within 30 minutes.</em></span>
+                <span class="chinese">事件指挥官快速通道审批，通常 30 分钟内</span>
+                <span class="note">"Fast-track" = 紧急审批通道。区别于"skip approval"——仍然需要审批，只是更快。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compliance</span> <em>Any production system has to comply with SDL.</em></span>
+                <span class="chinese">任何生产系统都必须符合 SDL</span>
+                <span class="note">"Comply with" = 符合/遵守。"Has to" = 必须（强调）。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Own</span> <em>The first line of defence is us — we're responsible for identifying risks.</em></span>
+                <span class="chinese">第一道防线是我们——我们负责识别风险</span>
+                <span class="note">"Own" = 拥有/负责。在风险和合规语境中非常重要。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Block</span> <em>The change ticket won't be approved without an RCA update.</em></span>
+                <span class="chinese">没有 RCA 更新，变更单不会被批准</span>
+                <span class="note">"Won't be approved without…" = 缺少某项就无法通过。HSBC 治理的硬规则。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+
+        <h3>① Business Lines 业务条线</h3>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>RBWM (Retail Banking and Wealth Management)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">零售银行与财富管理</span>
+                <span class="note">Mass-affluent and retail customers.</span>
+            </li>
+            <li>
+                <span class="english"><strong>CMB (Commercial Banking)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">工商金融</span>
+                <span class="note">Mid-market and SME commercial clients. <em>Our service sits here.</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>GPB (Global Private Banking)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">环球私人银行</span>
+                <span class="note">High-net-worth individuals.</span>
+            </li>
+            <li>
+                <span class="english"><strong>GB&M (Global Banking and Markets)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">环球银行与资本市场</span>
+                <span class="note">Investment banking, markets, securities services.</span>
+            </li>
+        </ul>
+
+        <h3>② Core Systems 核心系统</h3>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>HSBCnet</strong> <span class="tag gold">n.</span></span>
+                <span class="chinese">HSBC 企业网银</span>
+                <span class="note">Customer-facing online banking for corporate and institutional clients.</span>
+            </li>
+            <li>
+                <span class="english"><strong>OneWealth</strong> <span class="tag">n.</span></span>
+                <span class="chinese">全球财富管理平台</span>
+                <span class="note">Global wealth platform for RBWM and GPB.</span>
+            </li>
+            <li>
+                <span class="english"><strong>HUB (Hong Kong Universal Banking)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">香港 Universal Banking 核心系统</span>
+                <span class="note">Legacy core banking platform for HK. <em>Critical-path.</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>GLCM (Global Liquidity and Cash Management)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">全球流动性与现金管理</span>
+                <span class="note">Corporate cash management, payments, FX. <em>Critical-path.</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>GPS (Global Payments Solutions)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">全球支付解决方案</span>
+                <span class="note">Cross-border payments engine.</span>
+            </li>
+            <li>
+                <span class="english"><strong>HOST</strong> <span class="tag">n.</span></span>
+                <span class="chinese">香港 IT 与运营</span>
+                <span class="note">Hong Kong IT and operations. Internal team / function.</span>
+            </li>
+        </ul>
+
+        <h3>③ Change & Risk Process 变更与风险流程</h3>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>CAB (Change Advisory Board)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">变更咨询委员会</span>
+                <span class="note">Approval body for production changes. Meets 2x/week.</span>
+            </li>
+            <li>
+                <span class="english"><strong>eCAB (Emergency CAB)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">紧急变更审批</span>
+                <span class="note">Fast-track approval for P1 incident fixes. Usually &lt; 30 mins.</span>
+            </li>
+            <li>
+                <span class="english"><strong>PIR (Post-Implementation Review)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">实施后回顾</span>
+                <span class="note">Required after eCAB changes, within 5 business days.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SDL (Secure Development Lifecycle)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">安全开发生命周期</span>
+                <span class="note">Group Standard for secure coding. Auditors check it.</span>
+            </li>
+            <li>
+                <span class="english"><strong>RCA (Risk and Control Assessment)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">风险与控制评估</span>
+                <span class="note">Document listing risks and controls for a system.</span>
+            </li>
+            <li>
+                <span class="english"><strong>RIB (Risk Issues Book)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">风险与问题登记簿</span>
+                <span class="note">Log of all known risks / issues for a system. Reviewed monthly.</span>
+            </li>
+            <li>
+                <span class="english"><strong>3LoD (Three Lines of Defence)</strong> <span class="tag gold">n.</span></span>
+                <span class="chinese">三道防线</span>
+                <span class="note">1st = business/IT, 2nd = Risk/Compliance, 3rd = Internal Audit.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SOX controls</strong> <span class="tag">n.</span></span>
+                <span class="chinese">SOX 控制（萨班斯-奥克斯利法案）</span>
+                <span class="note">Sarbanes-Oxley controls for financial reporting. Quarterly re-test.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Sits under" / "Goes through" / "Touches" — System Topology Verbs</h3>
+        <p>Three core verbs for talking about how systems connect:</p>
+        <ul>
+            <li><em><strong>Sits under</strong> CMB</em> — business-line ownership</li>
+            <li><em><strong>Goes through</strong> HSBCnet</em> — customer-facing flow</li>
+            <li><em><strong>Touches</strong> GLCM</em> — impacts / integrates with</li>
+        </ul>
+
+        <h3>② "Has to comply" / "Has to go through" — Mandatory Compliance</h3>
+        <p>HSBC governance language uses <em>have to / need to / won't be approved without</em>:</p>
+        <ul>
+            <li>❌ <em>"We should probably do CAB."</em></li>
+            <li>✅ <em>"We <strong>have to go through</strong> CAB."</em></li>
+            <li>✅ <em>"The change <strong>won't be approved without</strong> an RCA update."</em></li>
+        </ul>
+
+        <h3>③ "Just to walk you through / make sure" — Framing Phrases</h3>
+        <p>Useful for transitions in spoken English:</p>
+        <ul>
+            <li><em><strong>Just to walk you through</strong> the change process…</em></li>
+            <li><em><strong>Just to make sure</strong> you understand the governance side…</em></li>
+            <li><em><strong>In practical terms</strong>, if I'm building a new feature…</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🏦 HSBC Internal Navigation</div>
+            <ol>
+                <li><strong>"Critical-path" is sacred.</strong> If a system is <em>critical-path</em>, changes take longer, need more approvals, and have stricter change windows. Always ask: <em>"Is this system critical-path?"</em></li>
+                <li><strong>Three Lines of Defence is not a slogan.</strong> When a BA or PM says <em>"we are the first line"</em>, they mean <em>"we own the risk, not just the code."</em></li>
+                <li><strong>Acronyms are dense. Use the "ABC" rule.</strong> When you hear a new acronym, ask: <em>"Sorry, what does [X] stand for?"</em> Nobody will mind — everyone does it.</li>
+                <li><strong>"Per Group Standard" wins all arguments.</strong> When in doubt, refer to the Group Standard / Group Policy / SDL. It's the single source of truth.</li>
+                <li><strong>Region matters even for systems.</strong> HUB is HK-only. OneWealth is global. GPS is global. Always confirm <em>which region</em> the system serves.</li>
+            </ol>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes</div>
+            <ul>
+                <li>❌ <em>"I'll just push the change directly to production."</em> — at HSBC, this is a <strong>dismissible offence</strong>.</li>
+                <li>✅ <em>"I'll raise a CAB ticket and loop in the Tech Lead and BA for approval."</em></li>
+                <li>❌ <em>"We don't need an RCA for this small change."</em> — RCA updates are mandatory for any new risk.</li>
+                <li>❌ <em>"I think this is a low-risk change."</em> — let <em>Risk and Compliance</em> decide, not the dev team.</li>
+                <li>❌ Treating <em>"fast-track"</em> as <em>"skip approval"</em> — fast-track still requires approver sign-off.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to banking English:</div>
+                <p>"我们的服务属于CMB工商金融。任何面向客户的功能都走HSBCnet。财富相关功能走OneWealth API。涉及GLCM或HUB这种critical-path系统的变更，需要完整CAB审批。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Our service <em>sits under CMB</em> — Commercial Banking. <em>Anything customer-visible goes through HSBCnet</em>. <em>Wealth-related functionality</em> <em>goes through the OneWealth APIs</em>. <em>Any change touching</em> GLCM or HUB — both <em>critical-path systems</em> — <em>needs full CAB approval</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the HSBC system / process terms:</div>
+                <p>"(1) Our service sits under <em>____ (CMB)</em>. (2) Anything customer-facing goes through <em>____ (HSBCnet)</em>. (3) Wealth is on <em>____ (OneWealth)</em>. (4) HK legacy core banking is <em>____ (HUB)</em>. (5) Corporate cash management is <em>____ (GLCM)</em>. (6) Production changes need <em>____ (CAB) approval</em>. (7) Risk and Control Assessment is the <em>____ (RCA)</em>. (8) The first line of defence is <em>____ (us / the business and IT teams)</em>."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    (1) CMB / (2) HSBCnet / (3) OneWealth / (4) HUB / (5) GLCM / (6) CAB / (7) RCA / (8) us / the business and IT teams
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play: Cab approval walk-through</div>
+                <p>You need to deploy a hotfix to GLCM (a critical-path system) for a P1 incident. Explain to a junior dev: (a) which approval process, (b) what documentation is required, (c) what happens after the fix.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "OK, here's how this <em>fast-track</em> works for the P1.<br><br>
+                    (1) <em>Approval process</em>: We <em>go through eCAB</em> — <em>emergency CAB</em>. The <em>Incident Commander</em> <em>fast-tracks</em> the approval, <em>usually within 30 minutes</em>. <em>Critical-path systems</em> like GLCM <em>still need approval</em> — we just <em>skip the standard CAB queue</em>.<br><br>
+                    (2) <em>Documentation</em>: <em>Before the deploy</em>, we need: change description, <em>risk assessment</em>, <em>rollback plan</em>, <em>test evidence</em>, and <em>approval chain</em> (Tech Lead, BA, Product, InfoSec). <em>The CAB ticket has to be raised</em> — <em>won't be approved without it</em>.<br><br>
+                    (3) <em>After the fix</em>: <em>The change still needs to be retroactively documented</em>, and we <em>have to run a PIR (Post-Implementation Review)</em> within <em>5 business days</em>. <em>The RCA has to be updated</em> for any <em>new risk</em> the change introduces. <em>And the SDL controls</em> — <em>threat modelling, code review, security testing</em> — <em>still apply</em>, even on an emergency change."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Explain the Three Lines of Defence to a new joiner</div>
+                <p>You are onboarding a new developer. Explain the 3LoD model in spoken English. Cover: (a) what the three lines are, (b) who does what, (c) why a developer should care.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "OK, <em>just to walk you through</em> the <em>Three Lines of Defence</em> model. <em>It's how HSBC thinks about risk</em>.<br><br>
+                    <em>The first line</em> is <em>us</em> — the <em>business and IT teams</em> who <em>own and operate</em> the system. <em>We're responsible for</em> identifying risks, <em>implementing controls</em>, and <em>running them effectively</em>. <em>In practice</em>, that means updating the RCA, <em>running SDL controls</em>, and <em>owning the Risk Issues Book (RIB)</em>.<br><br>
+                    <em>The second line</em> is <em>Risk and Compliance</em>. They <em>oversee and challenge</em> the first line — so they <em>review the RCA</em>, they <em>sign off on changes</em>, they <em>set the policies</em> we follow. <em>They're our partners, not blockers.</em><br><br>
+                    <em>The third line</em> is <em>Internal Audit</em>. They <em>provide independent assurance</em> to the Board — so they <em>audit our systems</em>, they <em>check our controls</em>, they <em>report findings</em> <em>directly to senior management</em>.<br><br>
+                    <em>Why should you care?</em> <em>As a developer</em>, you're <em>first line</em> — <em>you own the risk</em>, not just the code. <em>That means</em> when you <em>build a new feature</em>, you <em>have to think about</em> the risks <em>and the controls</em>. <em>It's not just the BA's job.</em>"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 5 Wrap-up -->
+    <section class="article-section">
+        <h2>8. Module 5 Wrap-up 第五模块总结</h2>
+        <div class="tip-box">
+            <div class="tip-title">🎓 What you've covered in Module 5</div>
+            <p>You now have the spoken English for the <strong>three core HSBC conversations</strong>:</p>
+            <ol>
+                <li><strong>Compliance & InfoSec</strong> (Article 18) — audit findings, security exceptions, PII masking.</li>
+                <li><strong>Banking Terminology</strong> (Article 19) — KYC, AML, sanctions screening, SWIFT, TBML.</li>
+                <li><strong>HSBC Systems & Process</strong> (Article 20) — HSBCnet, OneWealth, CAB, RCA, 3LoD.</li>
+            </ol>
+            <p>
+                <em>Practice tip:</em> In your next standup, try to <strong>drop one banking term naturally</strong>
+                — e.g., <em>"This story touches GLCM, so we'll need CAB approval and an RCA update."</em>
+                Real usage is the fastest path to fluency.
+            </p>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="19-banking-terminology.html">
+            <span class="label">← Previous</span>
+            <span class="title">19 · Banking Terminology</span>
+        </a>
+        <a class="next" href="../index.html">
+            <span class="label">Back to Developer Home →</span>
+            <span class="title">All 20 Articles</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 20 · HSBC Systems &amp; Process · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

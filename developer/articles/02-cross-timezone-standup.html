@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 02: Cross-Timezone Standup | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">02 · Cross-Timezone Standup</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cross-Timezone Standup</h1>
+        <p class="subtitle">Article 02 · Module 1: Daily Standup · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🌍 Async updates to UK / HK / India teams</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            Your team is distributed: backend developers in <strong>Shenzhen &amp; Shanghai</strong>, the tech lead
+            <strong>Priya in London</strong>, and the BA <strong>Jonathan in Hong Kong</strong>. Because of the
+            7–8 hour time difference, the team has switched to a <strong>written async standup</strong> posted in
+            the <em>#daily-standup</em> Slack channel by <strong>10:00 AM HKT</strong>.
+        </p>
+        <p>
+            你的团队分布：后端开发在深圳/上海，技术负责人 Priya 在伦敦，BA Jonathan 在香港。考虑到7-8小时时差，
+            团队改成了 <strong>异步书面站会</strong>，在 <em>#daily-standup</em> 频道里发布，发布截止时间
+            <strong>香港时间上午10点</strong>。
+        </p>
+        <p>
+            You have been working on the <em>customer onboarding service</em>. Yesterday you hit a blocker
+            waiting on credentials from InfoSec, but it's now resolved. Today you will move on to the next ticket.
+        </p>
+        <p>
+            你在做 <em>客户开户服务</em>。昨天因为等 InfoSec 的凭证被卡了一下，今天已经解决，今天会继续下一张卡。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Sample Standup Post 站会示例</h2>
+
+        <h3>✏️ Written Post (what you type in Slack)</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei</span>
+                <span class="text"><span class="en"><strong>📅 Standup · 10 Jul · HKT 09:42</strong></span><span class="cn">📅 站会 · 7月10日 · 香港时间 09:42</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">✅ Done:</span>
+                <span class="text"><span class="en">Finished the <em>customer KYC validation</em> flow (ONB-1342). Resolved the <em>InfoSec credential issue</em> from yesterday — turns out we needed the <em>sandbox token</em> first, then the prod one. PR is up: <em>#1421</em>.</span><span class="cn">✅ 完成的：客户 KYC 校验流程已做完（ONB-1342）。昨天的 InfoSec 凭证问题已解决——原来需要先申请沙箱 token，再切到生产 token。PR 已发：#1421。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">🎯 Today:</span>
+                <span class="text"><span class="en">Picking up <em>ONB-1356</em> — the <em>address verification</em> step via the third-party API. Will start with a <em>spike</em> on the response time (target &lt; 200ms).</span><span class="cn">🎯 今天的：开始处理 ONB-1356——通过第三方 API 做地址校验。会先做一个 spike 评估响应时间（目标 < 200ms）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">🚧 Blockers:</span>
+                <span class="text"><span class="en">None. <em>Should be unblocked</em> for the rest of the sprint.</span><span class="cn">🚧 阻塞：没有了，剩下的冲刺应该能顺利推进。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">📌 Notes:</span>
+                <span class="text"><span class="en">@Priya — could you <em>have a quick look</em> at the PR when you're online? <em>No rush</em>, tomorrow EOD works too.</span><span class="cn">📌 备注：@Priya 方便时帮我看一下 PR？不急，明天 EOD 也可以。</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Reply from Priya (in her time zone, London 02:43 AM)</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Priya</span>
+                <span class="text"><span class="en">Thanks Wei 👍 I'll <em>take a look first thing</em> my morning. <em>Quick question</em> —
+                    did you also cover the <em>retry logic</em> for the 5xx responses from the KYC vendor?</span><span class="cn">谢谢 Wei 👍 我明天早上第一时间看。问一句——KYC 供应商返回 5xx 时的重试逻辑你也覆盖了吗？</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Your async reply (next morning HKT)</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei</span>
+                <span class="text"><span class="en">Good catch, Priya. <em>Not yet</em> — I <em>handled the 4xx</em> cases but skipped the 5xx on purpose to <em>avoid scope creep</em>. <em>Happy to add it</em> as a follow-up ticket if you think it's needed for UAT?</span><span class="cn">问得好 Priya。还没做——我处理了 4xx 的情况，5xx 是故意跳过的，为了避免范围蔓延。如果你觉得 UAT 需要，我可以加个 follow-up ticket。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Resolve</span> <em>Resolved the credential issue from yesterday.</em></span>
+                <span class="chinese">昨天那个凭证问题已解决</span>
+                <span class="note">Always call out yesterday's blocker status — shows closure and accountability.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pickup</span> <em>Picking up ONB-1356.</em></span>
+                <span class="chinese">开始处理 ONB-1356</span>
+                <span class="note"><em>Pick up</em> = take on. Common in Scrum: <em>"I'll pick up that ticket"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Spike</span> <em>Will start with a spike on the response time.</em></span>
+                <span class="chinese">先做一个 spike 来评估响应时间</span>
+                <span class="note">A <strong>spike</strong> is a time-boxed investigation task (no production code).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Soft Ask</span> <em>Could you have a quick look? No rush.</em></span>
+                <span class="chinese">方便时帮我看一下？不急</span>
+                <span class="note"><em>No rush</em> / <em>when you're online</em> / <em>no pressure</em> are common politeness markers in async chat.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Scope</span> <em>To avoid scope creep.</em></span>
+                <span class="chinese">为了避免范围蔓延</span>
+                <span class="note"><strong>Scope creep</strong> = uncontrolled expansion of project scope. Always a valid reason to defer work.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Good catch</span></span>
+                <span class="chinese">问得好 / 抓得准</span>
+                <span class="note">Used to acknowledge a sharp observation or useful question.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Follow-up</span> <em>Happy to add it as a follow-up ticket.</em></span>
+                <span class="chinese">可以加一张 follow-up ticket</span>
+                <span class="note"><strong>Follow-up ticket</strong> = a separate ticket to address this later, not part of current sprint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Async</span> <em>First thing my morning.</em></span>
+                <span class="chinese">明天早上第一时间</span>
+                <span class="note">Implies they are in a different time zone — they say "my morning" to clarify.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>async standup</strong> <span class="tag">n.</span></span>
+                <span class="chinese">异步站会 (书面形式)</span>
+                <span class="note">Replaces real-time standup; posted in a chat channel. Common in distributed teams.</span>
+            </li>
+            <li>
+                <span class="english"><strong>KYC (Know Your Customer)</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">客户身份识别 / 客户尽职调查</span>
+                <span class="note">Mandatory regulatory process to verify customer identity.</span>
+            </li>
+            <li>
+                <span class="english"><strong>spike</strong> <span class="tag">n.</span></span>
+                <span class="chinese">调研任务 / 技术预研</span>
+                <span class="note">A Scrum term for a time-boxed research task to reduce uncertainty.</span>
+            </li>
+            <li>
+                <span class="english"><strong>PR (Pull Request)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">合并请求</span>
+                <span class="note">A request to merge code changes; reviewed before integration.</span>
+            </li>
+            <li>
+                <span class="english"><strong>sandbox token / prod token</strong></span>
+                <span class="chinese">沙箱凭证 / 生产凭证</span>
+                <span class="note">Test environment credential vs. production credential.</span>
+            </li>
+            <li>
+                <span class="english"><strong>4xx / 5xx</strong> <span class="tag">HTTP</span></span>
+                <span class="chinese">客户端错误 / 服务端错误 (HTTP状态码)</span>
+                <span class="note">4xx = client-side errors, 5xx = server-side errors.</span>
+            </li>
+            <li>
+                <span class="english"><strong>scope creep</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">范围蔓延</span>
+                <span class="note">When project requirements grow beyond the original agreement.</span>
+            </li>
+            <li>
+                <span class="english"><strong>follow-up ticket</strong> <span class="tag">n.</span></span>
+                <span class="chinese">后续工单</span>
+                <span class="note">A separate ticket created to track work that was intentionally deferred.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① "Could you…" — Polite Imperative in Writing</h3>
+        <p>
+            In async communication, direct imperatives can feel rude. <em>Could you…?</em> softens them:
+        </p>
+        <ul>
+            <li>❌ <em>Review this PR.</em> (too direct)</li>
+            <li>✅ <em><strong>Could you</strong> have a quick look at the PR?</em> (polite)</li>
+        </ul>
+
+        <h3>② Hedging with "happy to…"</h3>
+        <p>
+            <em>"I'm <strong>happy to</strong> add it as a follow-up ticket"</em> is a very common native pattern to
+            offer help without committing prematurely.
+        </p>
+        <ul>
+            <li><em>Happy to <strong>sync</strong> offline if that helps.</em></li>
+            <li><em>Happy to <strong>walk you through</strong> the code tomorrow.</em></li>
+            <li><em>Happy to <strong>take it on</strong> if we have bandwidth.</em></li>
+        </ul>
+
+        <h3>③ "Turns out…" — Presenting Discoveries</h3>
+        <p>
+            <em>"It <strong>turns out</strong> we needed the sandbox token first"</em> is a casual but professional
+            way to present a finding. Other options:
+        </p>
+        <ul>
+            <li><em><strong>It looks like</strong> we need…</em></li>
+            <li><em><strong>It seems</strong> the issue was…</em></li>
+            <li><em><strong>Apparently</strong>, the token had to be…</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🌏 Working with UK / HK / India Teams</div>
+            <ul>
+                <li><strong>Post on time.</strong> Async standup only works if everyone posts by the deadline. Late posts defeat the purpose.</li>
+                <li><strong>Use time-zone-aware language.</strong> Don't say "tomorrow" — say <em>"tomorrow <strong>HKT</strong>"</em> or <em>"by EOD <strong>GMT</strong>"</em>.</li>
+                <li><strong>Tag people sparingly.</strong> Only @mention if you need action. Otherwise, write for the whole team.</li>
+                <li><strong>Don't expect instant replies.</strong> UK colleagues may reply in 4–8 hours; that's normal, not rude.</li>
+                <li><strong>Be explicit about "no rush".</strong> If you don't need an urgent reply, say so — it lowers stress and improves quality.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Async Pitfalls</div>
+            <ul>
+                <li>❌ <em>"Please review."</em> (no context, no link, no deadline)</li>
+                <li>✅ <em>"Could you have a quick look at <strong>PR #1421</strong> when you're online? <strong>No rush</strong> — tomorrow EOD works."</em></li>
+                <li>❌ Long, unstructured paragraphs in Slack — hard to scan.</li>
+                <li>✅ Short bullet points with clear sections (Done / Today / Blockers / Notes).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Write your own async standup post based on this:</div>
+                <p>Yesterday: completed the database migration script, but the test environment had an issue and tests failed. <br>
+                Today: fix the test environment issue, then re-run the migration tests. <br>
+                Note: ask Tom if he's seen similar test environment issues before. No rush.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p>✅ Done: Finished the DB migration script, but tests failed in the test env (looks like a config issue).</p>
+                    <p>🎯 Today: Investigate the test env failure and re-run migration tests.</p>
+                    <p>🚧 Blockers: None.</p>
+                    <p>📌 Notes: @Tom — have you seen this test env config issue before? <em>No rush</em>, just looking for a pointer.</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Translate to English:</div>
+                <p>"Priya 方便的时候帮我看一下这个PR好吗？不急，明天 EOD 也行。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "<em>Could you have a quick look at this PR when you're online, Priya? <strong>No rush</strong> — tomorrow EOD works too.</em>"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Make this standup line more polite / async-friendly:</div>
+                <p>"I need Priya to review my PR."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "@Priya — <em>could you take a look at PR #1421 when you're online</em>? <em>No rush</em>, but ideally by tomorrow EOD HKT so we can merge before the UAT freeze."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Reply professionally to this async question from your TL:</div>
+                <p>"Did you also handle the case where the third-party API returns 503?"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Good question, Priya. <em>Not yet</em> — I focused on the 4xx cases to <em>stay within scope</em>. <em>Happy to add</em> 503 handling as a follow-up ticket if you think it's needed for the release. What's your call?"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="01-classic-standup-update.html">
+            <span class="label">← Previous</span>
+            <span class="title">01 · Classic Standup Update</span>
+        </a>
+        <a class="next" href="../index.html">
+            <span class="label">Module Index</span>
+            <span class="title">Back to Developer Articles</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 02 · Cross-Timezone Standup · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

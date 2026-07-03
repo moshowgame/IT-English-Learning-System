@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 12: Confluence Design Doc Review | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">12 · Confluence Design Doc Review</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Confluence Design Doc Review</h1>
+        <p class="subtitle">Article 12 · Module 4: Async Architecture Communication · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Async review etiquette: structured comments, decisions captured in line, polite disagreement</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday morning, 9:00 AM HKT</strong>. A Tech Lead in the <em>OnePay</em> squad
+            has just published a 14-page design document on Confluence — <em>"OnePay Idempotency & Retry
+            Strategy v3"</em> — linked from <strong>ADR-0158</strong>. You are the Solution Architect
+            covering OnePay, and your review is one of three peer reviews before the document goes
+            to chapter sign-off on Friday.
+        </p>
+        <p>
+            周二上午 9 点香港时间，<em>OnePay</em> squad 的 Tech Lead 在 Confluence 上发布了一份 14 页
+            的设计文档 <em>"OnePay 幂等与重试策略 v3"</em>，挂在 <strong>ADR-0158</strong> 下面。
+            你是覆盖 OnePay 的 Solution 架构师，评审是文档送到 chapter 签批前的 3 个同侪评审之一。
+        </p>
+        <p>
+            The Tech Lead, <strong>Rohit</strong> (Bangalore), has explicitly asked for review by
+            <em>Thursday EOD IST</em>. Because Margaret, your Chief Architect, is at a Group
+            Architects' offsite in London this week, she has asked you to <em>consolidate the
+            comments</em> and surface the key trade-offs to her in a single Slack DM on Thursday
+            evening. Two other reviewers — <strong>Sofia</strong> (peer architect, HK) and
+            <strong>Daniel</strong> (InfoSec, UK) — will also leave inline comments on the same page.
+        </p>
+        <p>
+            Tech Lead <strong>Rohit</strong>（班加罗尔）明确要求 <em>周四 EOD 印度时间</em>前完成评审。
+            Chief Architect Margaret 本周在伦敦参加集团架构师 offsite，所以她请你把评审意见
+            <em>汇总</em>，周四晚上通过一条 Slack DM 把关键 trade-off 给她。两位同侪评审——
+            <strong>Sofia</strong>（同侪架构师，香港）和 <strong>Daniel</strong>（InfoSec，英国）——
+            也会在同一个页面留下行内评论。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (Tech Lead, OnePay):</span>
+                <span class="text"><span class="en"><em>Hi Wei — just published the v3 design doc</em> for ADR-0158 on Confluence. <em>14 pages, 4 sections</em>: idempotency keys, retry/back-off, dedup store, and the Kafka consumer offset strategy. <em>Could you take a look by Thursday EOD?</em> I'm keen to land this in the chapter review on Friday.</span><span class="cn">Wei 你好——刚把 ADR-0158 的 v3 设计文档发到 Confluence，14 页 4 个章节：幂等键、重试/退避、去重存储、Kafka 消费 offset 策略。能在周四 EOD 前看一下吗？想赶上 Friday chapter 评审。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Thanks, Rohit — picked it up.</em> I'll <em>read end-to-end</em> and leave <em>inline comments on the page</em> rather than a separate doc — that way Sofia and Daniel can see my thinking when they review.</span><span class="cn">Rohit 收到。我会<em>通读一遍</em>，直接在页面<em>行内评论</em>，不开新文档——这样 Sofia 和 Daniel 评审时能看到我的想法。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Quick one before I start</em> — section 3.4 proposes <em>Redis Cluster for the dedup store</em>. I noticed <em>Group Standard G-SDL-2024-09</em> recommends <em>DynamoDB global tables</em> for cross-region dedup. <em>Was that considered,</em> or is there a reason we are deliberately deviating?</span><span class="cn">开始前先问一下——3.4 节提了用 <em>Redis Cluster 做去重存储</em>。我注意到 <em>集团标准 G-SDL-2024-09</em> 跨区域去重推荐 <em>DynamoDB global tables</em>。这个选项考虑过吗？还是有什么原因要主动偏离？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (Tech Lead):</span>
+                <span class="text"><span class="en">Good question. <em>Honest answer</em> — we <em>benchmarked both</em> and Redis Cluster came in <em>~30% cheaper</em> at our projected RPS. But you're right, <em>we did not formally raise a deviation request</em>. Let me check with InfoSec and come back.</span><span class="cn">好问题。坦白说——我们两个都做了基准测试，按预测 RPS 算下来 Redis Cluster <em>便宜约 30%</em>。但你说得对，我们<em>没正式提偏离申请</em>。我问一下 InfoSec 再回复你。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Appreciated.</em> I'm <em>not saying no to Redis</em> — if the trade-off holds, that's a valid call. We just need the deviation to be <em>documented and signed off by InfoSec</em>. <em>I'll leave a comment on section 3.4</em> so Sofia and Daniel see the thread.</span><span class="cn">感谢。我<em>不是说不能用 Redis</em>——如果 trade-off 站得住，这也是合理选择。我们只是要把偏离<em>记录在案并由 InfoSec 签批</em>。我会在 3.4 节挂条评论，让 Sofia 和 Daniel 看到这个讨论链。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sofia (Peer Architect, HK):</span>
+                <span class="text"><span class="en"><em>Hi Wei, Rohit</em> — <em>I left 6 inline comments</em>. The big one is on section 4.2: the <em>at-least-once Kafka consumer offset strategy</em> is fine, but the <em>dead-letter queue</em> design is <em>not quantified</em>. What is the <em>DLQ retention and replay policy</em>? And who owns it?</span><span class="cn">Wei、Rohit 大家好——我<em>留了 6 条行内评论</em>。最大一条在 4.2 节：<em>at-least-once Kafka 消费 offset 策略</em>没问题，但 <em>死信队列</em> 设计<em>没量化</em>。<em>DLQ 保留和重放策略</em>是什么？谁负责？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (Tech Lead):</span>
+                <span class="text"><span class="en">Good catch, Sofia. <em>DLQ retention is 14 days</em> in the current draft — I'll <em>raise it to 30 days</em> to match <em>Group Resilience's replay window</em>. Owner is the OnePay platform team. Will update the doc this afternoon.</span><span class="cn">Sofia 好眼力。当前版本 <em>DLQ 保留 14 天</em>——我会改成 <em>30 天</em>，对齐<em>集团 Resilience 的重放窗口</em>。Owner 是 OnePay 平台团队。今天下午更新文档。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (InfoSec, UK):</span>
+                <span class="text"><span class="en"><em>Two comments from InfoSec.</em> Section 2.1 — the <em>idempotency-key TTL of 24 hours</em> is <em>not aligned with our sanctions-screening retry policy</em>, which expects <em>72 hours</em>. And section 5.1 — please <em>add the SDL threat model reference</em> explicitly, not just as a footnote.</span><span class="cn">InfoSec 提 2 条。2.1 节——<em>幂等键 TTL 24 小时</em>和我们的<em>制裁名单筛查重试策略</em>不一致，那边要的是 <em>72 小时</em>。5.1 节——请把 <em>SDL 威胁模型引用</em>显式加进去，不要放在脚注里。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Noted, Daniel.</em> Rohit, the 72-hour TTL is a <em>hard requirement</em> from Group Cyber — it's in the <em>OnePay InfoSec standard</em>. The <em>SDL threat model reference</em> — let's put it <em>inline in section 5.1, not in a footnote</em>. <em>I'll consolidate all the open items</em> in a comment at the top of the doc by Thursday noon HKT so we can chase sign-off Friday.</span><span class="cn">Daniel 收到。Rohit，72 小时 TTL 是 <em>Group Cyber 的硬性要求</em>，写在 <em>OnePay InfoSec 标准</em>里。<em>SDL 威胁模型引用</em>——放在 5.1 节<em>正文里，不要放脚注</em>。我会在周四香港中午之前把所有待办<em>汇总到文档顶部的一条评论</em>，方便周五追签批。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Perfect, that works.</em> I'll have the v3.1 doc out by <em>Thursday 3 PM IST</em>. <em>Quick Slack ping</em> once you've consolidated — I want to make sure nothing falls through the cracks before Margaret signs off on Friday.</span><span class="cn">好，没问题。我会在 <em>印度时间周四下午 3 点</em>前发出 v3.1 文档。你汇总完之后<em>Slack 戳我一下</em>，我想在 Margaret 周五签批前确保没遗漏。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Async</span> <em>Could you take a look by Thursday EOD?</em></span>
+                <span class="chinese">能在周四 EOD 前看一下吗？</span>
+                <span class="note">Always set a deadline in async reviews. "Take a look" is vague; "by Thursday EOD" is a commitment.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Inline</span> <em>I'll leave inline comments on the page rather than a separate doc.</em></span>
+                <span class="chinese">我直接在页面行内评论，不开新文档</span>
+                <span class="note">Inline comments are visible to all reviewers. Separate docs create review islands — avoid them.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Deviate</span> <em>Was that considered, or is there a reason we are deliberately deviating?</em></span>
+                <span class="chinese">这个选项考虑过吗？还是有什么原因要主动偏离？</span>
+                <span class="note">"Deliberately deviating" is a politeness pattern. It signals "you may have a reason" instead of "you broke the rule".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>I'm not saying no — if the trade-off holds, that's a valid call.</em></span>
+                <span class="chinese">我不是说不行——如果 trade-off 站得住，这也是合理选择</span>
+                <span class="note">Separate the decision from the process. You can approve the choice but require the deviation paperwork.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>The DLQ design is not quantified. What is the retention and replay policy?</em></span>
+                <span class="chinese">DLQ 设计没量化。保留和重放策略是什么？</span>
+                <span class="note">"Not quantified" = no numbers. Always push for retention, replay window, ownership, alert thresholds.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hard</span> <em>The 72-hour TTL is a hard requirement from Group Cyber.</em></span>
+                <span class="chinese">72 小时 TTL 是 Group Cyber 的硬性要求</span>
+                <span class="note">Use "hard requirement" for Group Standards, MAS TRM, HKMA, PCI-DSS. "Soft" for things you can debate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reference</span> <em>Add the SDL threat model reference inline, not in a footnote.</em></span>
+                <span class="chinese">把 SDL 威胁模型引用放在正文里，不要放脚注</span>
+                <span class="note">Footnotes are skipped. Inline references force the reader to confront the constraint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Consolidate</span> <em>I'll consolidate all the open items in a comment at the top.</em></span>
+                <span class="chinese">我会把所有待办汇总到顶部的一条评论</span>
+                <span class="note">The "consolidation comment" is an architect's signature move. It transforms scattered threads into a single sign-off list.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Honest</span> <em>Honest answer — we benchmarked both and Redis came in 30% cheaper.</em></span>
+                <span class="chinese">坦白说——我们两个都做了基准测试，Redis 便宜 30%</span>
+                <span class="note">"Honest answer" invites candour. It signals "I want the truth, not the polished version".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Loop</span> <em>Quick Slack ping once you've consolidated — I want to make sure nothing falls through the cracks.</em></span>
+                <span class="chinese">你汇总完之后 Slack 戳我一下——我想确保没遗漏</span>
+                <span class="note">"Quick Slack ping" closes the loop. Async reviewers must explicitly hand back to the author before sign-off.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Design document (design doc)</strong> n. 设计文档 A long-form technical document, usually 5–20 pages, capturing a proposed design end-to-end.</li>
+            <li><strong>Inline comment</strong> n. 行内评论 A comment anchored to a specific paragraph, table, or diagram in a document — not a separate email.</li>
+            <li><strong>Peer review</strong> n. 同侪评审 Review by a person of equal seniority (vs. <em>sign-off</em>, which is a hierarchical approval).</li>
+            <li><strong>Chapter sign-off</strong> n. Chapter 签批 Formal approval by the Architecture chapter after peer review passes.</li>
+            <li><strong>Deviation request</strong> n. 偏离申请 A formal document requesting to depart from a Group Standard. Always needs InfoSec + chapter approval.</li>
+            <li><strong>Dead-letter queue (DLQ)</strong> n. 死信队列 A holding area for messages that failed processing — needs explicit retention and replay policy.</li>
+            <li><strong>At-least-once delivery</strong> n. 至少一次投递 A delivery guarantee where a message may be delivered more than once — requires idempotency on the consumer side.</li>
+            <li><strong>Idempotency key</strong> n. 幂等键 A unique key (often UUID v7) attached to a request to ensure duplicate processing produces the same result.</li>
+            <li><strong>Dedup store</strong> n. 去重存储 A persistence layer (Redis, DynamoDB) that remembers seen idempotency keys within a TTL window.</li>
+            <li><strong>SDL (Secure Development Lifecycle) threat model</strong> n. SDL 威胁模型 A structured analysis of security threats, required for any change touching customer data.</li>
+            <li><strong>Group Resilience</strong> n. 集团韧性 HSBC's function that defines recovery time objectives (RTO), replay windows, and DR drill cadence.</li>
+            <li><strong>Group Cyber</strong> n. 集团网络安全 HSBC's function that owns InfoSec standards — including TTL, encryption, key rotation.</li>
+            <li><strong>Sanctions screening</strong> n. 制裁名单筛查 Real-time check against OFAC, UN, EU, HMT sanctions lists — TTL must cover retry window.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Was that considered, or is there a reason we are deliberately deviating?"</h3>
+        <p>
+            The <strong>deliberately</strong> adverb + <strong>deviating</strong> present participle is the
+            architect's politeness pattern when challenging a choice. Compare:
+            <em>"Why didn't you use X?"</em> (accusatory) vs. <em>"Was that considered, or is there a reason
+            we are deliberately deviating?"</em> (collaborative). The first assumes negligence; the second
+            assumes intentionality and invites the rationale.
+        </p>
+        <p><strong>Deliberately + -ing</strong> 是架构师提出质疑的礼貌句式。先假设对方有意，再请其说明理由。</p>
+
+        <h3>② "I'm not saying no — if the trade-off holds, that's a valid call."</h3>
+        <p>
+            The pattern <em>I'm not saying no / I'm not saying X</em> separates <strong>the decision</strong>
+            from <strong>the process</strong>. It signals: I am not blocking the technical choice; I am
+            requiring the deviation paperwork, sign-off, or quantification. Use it whenever a Tech Lead
+            hears "no" when you actually mean "yes, with conditions".
+        </p>
+        <p>"I'm not saying no" 把"技术选择"和"流程要求"分开。你不是拒绝方案，而是要流程/签批/量化。</p>
+
+        <h3>③ The consolidation comment — third-person summary in the present tense</h3>
+        <p>
+            When you consolidate review comments, write in the <strong>present tense</strong> and
+            <strong>third person</strong> so the author can copy-paste the summary into the ADR:
+            <em>"Section 3.4 deviates from G-SDL-2024-09. Deviation request required before
+            sign-off."</em> Avoid <em>"I think you should…"</em> — it reads as opinion. The
+            present-tense third-person summary reads as fact and is harder to argue with.
+        </p>
+        <p>汇总评审意见时用<strong>现在时 + 第三人称</strong>，方便作者直接 copy 到 ADR 里。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Async review is the default at HSBC, not a fallback.</strong> Margaret and Daniel being in different time zones (HK / UK) makes async the only practical mode. Default to Confluence + Slack. Use live meetings only for unresolved disagreement.</li>
+            <li><strong>Inline comments, not email threads.</strong> Email is a private review island. Inline comments let Sofia and Daniel see the thread and avoid the "Daniel disagreed in email but Wei didn't know" failure mode.</li>
+            <li><strong>Quantify or it didn't happen.</strong> "Robust", "scalable", "secure" are not NFRs. Numbers are NFRs. Always push: retention, replay window, TTL, RPS, p99 latency, error budget.</li>
+            <li><strong>Deviation ≠ exception. Deviation = documented decision.</strong> When a Tech Lead proposes something off the Group Standard path, do not block — require the deviation paperwork. The bank expects deviations; it does not expect undocumented ones.</li>
+            <li><strong>Cross-region etiquette — IST vs HKT vs GMT.</strong> Rohit thinks in IST, you in HKT, Daniel in GMT. Always quote the deadline in two time zones: <em>"Thursday EOD IST / 9 PM HKT"</em>. Avoid abbreviations that mean different things (HKT vs HKC).</li>
+            <li><strong>"Honest answer" creates psychological safety.</strong> It signals you want the truth, not the polished answer. Rohit admitted the deviation wasn't formally raised — that admission only came because you invited candour.</li>
+            <li><strong>The consolidation comment is a deliverable.</strong> Pin it at the top of the doc. Tag each item with the owner. Treat it as a living checklist, not a one-off email.</li>
+            <li><strong>Loop the author back in.</strong> Async reviews fail when the reviewer disappears. End every thread with <em>"Quick Slack ping once you've updated"</em> — close the loop explicitly.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the async review</h3>
+        <p>Translate the following async review message into natural Chinese. Notice how the architect challenges a deviation without sounding accusatory.</p>
+        <blockquote>
+            "Hi Priya — picked up the v2 design doc for the HSBCnet payment callback flow. Section
+            4.1 proposes storing the callback payload in PostgreSQL for 7 days. Was that considered
+            against Group Standard G-DR-2023-11, which recommends S3 with 30-day retention for
+            audit replay? I'm not saying no to PostgreSQL — if the squad has a concrete reason
+            (e.g. cost, query patterns), we can raise a deviation. But I want it documented before
+            the chapter review. Could you either align with the Group Standard or submit the
+            deviation request by Wednesday EOD HKT?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Priya 你好——刚看到 HSBCnet 支付回调流程的 v2 设计文档。4.1 节提了把回调 payload 存到 PostgreSQL 保留 7 天。和集团标准 G-DR-2023-11 比对过吗？那份标准建议用 S3 保留 30 天用于审计重放。我不是说不能用 PostgreSQL——如果 squad 有具体理由（比如成本、查询模式），我们可以提偏离申请。但我希望在 chapter 评审前把它落到纸面上。麻烦在<em>香港时间周三 EOD</em>前，要么对齐集团标准，要么把偏离申请提交上来。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the difference: async vs live review</h3>
+        <p>Which of these is the right pattern for an async Confluence review, and which would only work in a live meeting? Why?</p>
+        <ol>
+            <li>"This is wrong. Use Redis, not DynamoDB."</li>
+            <li>"Section 3.4 deviates from G-SDL-2024-09. Could the squad share the benchmark that drove the choice, or raise a formal deviation request before chapter sign-off?"</li>
+            <li>"We need to talk about this. Let's book 30 min."</li>
+            <li>"Daniel raised a hard requirement (sanctions-screening TTL = 72h). Section 2.1 currently says 24h. Suggest updating to 72h and citing the OnePay InfoSec standard inline."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are right for async. ② cites the Group Standard by name, names the section, and proposes a concrete next step. ④ attributes the source, quotes the requirement, and suggests an edit. ① is too blunt and offers no rationale. ③ is fine in a live meeting but useless in async — it demands a calendar action without context.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are the Solution Architect reviewing the GPB Onboarding squad's v1 design doc for an event-driven customer-duplicate-check flow. The doc proposes: (a) Kafka for the event bus, (b) a DynamoDB dedup table, (c) a 7-day retention on the dedup table. You noticed Group Standard G-DR-2024-02 requires 30-day retention on dedup tables for cross-region replay, and InfoSec requires the SDL threat model to be referenced inline in section 5, not as a footnote. Write a single async review comment that: (1) thanks the Tech Lead, (2) raises the retention deviation, (3) raises the SDL reference placement, and (4) sets a deadline. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Hi Anil — thanks for getting the v1 design doc out. Two comments from my side, both leave the technical choice open but require the process to be followed. First, section 4.3 proposes 7-day retention on the dedup table. Group Standard G-DR-2024-02 requires 30-day retention for cross-region replay. Was that benchmarked, or is there a reason we are deliberately deviating? I'm not saying no to 7 days — if there's a concrete cost or query-pattern reason, raise a deviation request and we'll take it to InfoSec. Second, section 5.1 references the SDL threat model only in a footnote. InfoSec has asked us to move that reference inline — footnotes get skipped, inline references force the reader to confront the threat surface. Could you update the doc and Slack me by <em>Thursday EOD HKT</em>? I'll consolidate any other open items in a comment at the top of the doc by Friday noon HKT so we can chase chapter sign-off Monday."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="13-tech-risk-memo.html" class="btn btn-primary">Next: Article 13 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

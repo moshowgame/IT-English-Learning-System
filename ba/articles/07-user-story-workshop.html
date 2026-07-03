@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: User Story Writing Workshop | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">07 · User Story Writing Workshop</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>User Story Writing Workshop</h1>
+        <p class="subtitle">Article 07 · Module 2: Discovery & Workshops · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 "As a / I want / so that" + INVEST + split-by-ability</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday afternoon, 3 PM HKT</strong>. The RBWM Digital onboarding squad — a
+            Product Owner (Priya, in London), a BA (you, Wei, in Hong Kong), a QA Lead (Ravi, in
+            Bangalore), and a Tech Lead (Mei, in Shanghai) — has just finished a discovery interview with
+            the HK retail-banking business. The team now has a stack of yellow stickies on the Miro board
+            and needs to <strong>turn them into well-shaped user stories</strong> by end of day.
+        </p>
+        <p>
+            周二下午 3 点，香港时间。RBWM 数字化开户 squad —— 包括伦敦的 PO Priya、香港的 BA 你（Wei）、
+            班加罗尔的 QA Lead Ravi，以及上海的 Tech Lead Mei —— 刚刚结束与香港零售银行业务方的需求
+            访谈会。团队在 Miro 板上一堆黄色便利贴，要在今天 EOD 之前把它们整理成合格的 User Story。
+        </p>
+        <p>
+            You're facilitating a <strong>90-minute story-shaping workshop</strong>. The goal is to leave
+            with at least 6 stories that are INVEST-compliant, split where needed, and ready for
+            refinement. Mei keeps pushing for technical tasks; Ravi wants every story testable. You have to
+            guide the conversation without losing the business value.
+        </p>
+        <p>
+            你要主持一场 <strong>90 分钟的 Story 整理工作坊</strong>。目标是至少产出 6 条符合 INVEST
+            原则、必要时拆分过的 Story，并能进入下一轮 Grooming。Mei 一直想把它写成技术任务；Ravi
+            要求每条 Story 都可测试。你需要把握方向，不偏离业务价值。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Right, so <em>let's keep this tight — 90 minutes, 6 stories out</em>. Priya, can you <em>walk us through the top three pains</em> you heard from the HK business?</span><span class="cn">好，我们把时间卡紧——90 分钟，产出 6 条 Story。Priya，你先说说你从香港业务方听到的三大痛点。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO):</span>
+                <span class="text"><span class="en">Sure. Number one: customers abandon onboarding when the <em>CDD enhanced due-diligence</em> questionnaire is too long. Number two: relationship managers can't see the KYC status of their book. Number three: PEP hits are flagged too late in the journey.</span><span class="cn">好。第一：客户在 CDD 增强尽职调查问卷太长时直接放弃开户。第二：客户经理看不到自己客户的 KYC 状态。第三：PEP（政治公众人物）命中信号在开户流程中出现得太晚。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, so <em>that's our three pillars</em>. Let's take pain one first. Mei, I know you want to refactor the questionnaire engine — <em>but let's frame this as a user story first</em>, not a tech task.</span><span class="cn">好，这就是三个支柱。我们先看第一个痛点。Mei，我知道你想重构问卷引擎——但我们先把它写成 User Story，不是技术任务。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead):</span>
+                <span class="text"><span class="en">Hmm, but the engine doesn't support <em>conditional branching</em> at all today. We'd need a spike first.</span><span class="cn">嗯，但现在的引擎根本不支持条件分支，我们得先做一个 Spike。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Fair point. <em>Let's split this by ability</em>. Story A: the business authors the questionnaire in a new CMS. Story B: the engine renders conditional questions at runtime. <em>Each one delivers value on its own.</em></span><span class="cn">有道理。我们按能力拆开。Story A：业务方在新的 CMS 里配置问卷；Story B：引擎运行时渲染条件问题。两条都能独立交付价值。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (QA):</span>
+                <span class="text"><span class="en">Quick one — <em>can we make the story testable on day one?</em> I want a clear "Given/When/Then" for the abandonment drop.</span><span class="cn">问一下——这条 Story 第一天就能测吗？我想要一个清晰的 Given/When/Then 来验证弃单率下降。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">Yes. <em>Given</em> a retail customer is mid-onboarding, <em>when</em> they complete the shortened CDD form, <em>then</em> the abandonment rate drops below 15% — we'll baseline that with Priya. <em>That's the AC.</em></span><span class="cn">可以。Given 零售客户正在开户中，when 完成简化版 CDD 表单，then 弃单率降到 15% 以下——这个基线我和 Priya 一起拉。这条就是 AC。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (PO):</span>
+                <span class="text"><span class="en">Love it. <em>What about the second story — RM visibility?</em> Are we tying this to OneWealth or HSBCnet?</span><span class="cn">很好。第二个 Story——客户经理可见性呢？这个我们接 OneWealth 还是 HSBCnet？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Good question — let's call it out as an open assumption</em> in the story description. Default to OneWealth for now, Mei can flag the tech risk tomorrow.</span><span class="cn">好问题——我们在 Story 描述里把它列为开放假设。先默认接 OneWealth，Mei 明天把技术风险点出来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, <em>time check — we've got 25 minutes left</em>. Let's lock the story titles, owners, and rough sizing. Ravi, can you capture?</span><span class="cn">好，时间提示——还剩 25 分钟。我们把 Story 标题、负责人、大致点数锁一下。Ravi，你来记录可以吗？</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Right, so let's keep this tight.</em></span>
+                <span class="chinese">好，我们把时间卡紧</span>
+                <span class="note">Sets the timebox and tone. A workshop opener that signals focus, not pressure.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Walk</span> <em>Can you walk us through the top three pains?</em></span>
+                <span class="chinese">你能说说你听到的三大痛点吗</span>
+                <span class="note">Use "walk us through" with a numbered list — forces the PO to prioritize, not ramble.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Let's frame this as a user story first, not a tech task.</em></span>
+                <span class="chinese">我们先按用户故事框架来，不是技术任务</span>
+                <span class="note">"Frame" = choose the lens. Defends business-value-first thinking against tech-led drift.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Split</span> <em>Let's split this by ability.</em></span>
+                <span class="chinese">我们按能力拆</span>
+                <span class="note">Split-by-ability is a BA standard. Each slice must be independently shippable.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Testable</span> <em>Can we make the story testable on day one?</em></span>
+                <span class="chinese">这条 Story 第一天就能测吗</span>
+                <span class="note">INVEST's "T". If QA can't write a test, the story is too vague or too big.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">AC</span> <em>That's the AC.</em></span>
+                <span class="chinese">这就是验收标准</span>
+                <span class="note">Use to anchor a conversation. Once AC is locked, the story is "sprint-ready".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Assumption</span> <em>Let's call it out as an open assumption.</em></span>
+                <span class="chinese">我们把它标为开放假设</span>
+                <span class="note">Open assumptions go in the story description, not the AC. They get resolved in refinement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Baseline</span> <em>We'll baseline that with Priya.</em></span>
+                <span class="chinese">我们和 Priya 一起拉基线</span>
+                <span class="note">"Baseline" = measure the current value so "improvement" is provable, not vibes-based.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Lock</span> <em>Let's lock the story titles, owners, and sizing.</em></span>
+                <span class="chinese">我们把标题、负责人、点数锁一下</span>
+                <span class="note">"Lock" = commit for now. Avoids endless re-litigation in the workshop.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>Time check — we've got 25 minutes left.</em></span>
+                <span class="chinese">时间提示——还剩 25 分钟</span>
+                <span class="note">A polite timebox nudge. Phrase as a check, not a warning, to keep the room calm.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>User story</strong> n. 用户故事 A short description of value from the user's perspective.</li>
+            <li><strong>INVEST</strong> n. INVEST 原则 Independent, Negotiable, Valuable, Estimable, Small, Testable.</li>
+            <li><strong>As a / I want / so that</strong> n. 故事三段式 The standard user-story template.</li>
+            <li><strong>Split by ability</strong> v. 按能力拆分 Cut a story along ability / capability lines, not layers.</li>
+            <li><strong>Spike</strong> n. 探针 A timeboxed research task to reduce a technical unknown.</li>
+            <li><strong>Story shaping</strong> n. Story 整理 Workshop where a BA turns raw discovery into ready-to-refine stories.</li>
+            <li><strong>Story readiness</strong> n. Story 准备度 A story's maturity: shaped → refined → ready → sprint-ready.</li>
+            <li><strong>Open assumption</strong> n. 开放假设 A working hypothesis that must be validated before sprint.</li>
+            <li><strong>PEP (Politically Exposed Person)</strong> n. 政治公众人物 A high-risk customer category triggering EDD.</li>
+            <li><strong>CDD / EDD</strong> n. 客户/增强尽职调查 Customer / Enhanced Due Diligence screening.</li>
+            <li><strong>OneWealth</strong> n. 内部系统 HSBC's relationship manager workstation (RBWM).</li>
+            <li><strong>Discovery</strong> n. 需求发现 The phase of gathering business problems before shaping solutions.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Let's …" — soft facilitation language</h3>
+        <p>
+            In a workshop, you are <em>suggesting</em>, not ordering. <strong>Let's + base verb</strong>
+            (e.g., <em>Let's split this by ability</em>) is the politest way to steer a group. Compare:
+            <em>I'll split this</em> (decides for everyone) vs. <em>Let's split this</em> (we decide together).
+        </p>
+        <p>工作坊里多用 <em>Let's + 动词原形</em> 引导团队，比 <em>I'll</em> 更礼貌、更能调动参与。</p>
+
+        <h3>② "We'd need a spike" — conditional past for hypotheticals</h3>
+        <p>
+            <em>We'd need a spike first</em> uses <strong>'d (= would) + base verb</strong> to describe a
+            hypothetical or desired next step. It's softer than <em>We need a spike</em> (which sounds like
+            a demand) and softer than <em>We will need a spike</em> (which sounds like a prediction).
+        </p>
+        <p><em>would + 动词原形</em> 用于假设/委婉表达，比 "we need" 更柔和。</p>
+
+        <h3>③ "Given / When / Then" — the imperative mood in AC</h3>
+        <p>
+            Acceptance criteria use the <strong>imperative / present-tense</strong> form: <em>Given X,
+            when Y, then Z</em>. You don't say "the system will…" or "the user should…" — you say
+            "Given…, when…, then…". This is a deliberate, declarative style that makes the AC
+            unambiguous and test-script-ready.
+        </p>
+        <p>AC 用 Given/When/Then 陈述式表达，不要用 "the system will" 或 "should"，让 AC 更可测、无歧义。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"Story" beats "requirement" at HSBC.</strong> Even in regulated areas, the squad vocabulary is story-based. Reframe any "the system shall…" requirement language as <em>As a … I want … so that …</em> to fit the team.</li>
+            <li><strong>Spike is a word, not a question.</strong> In HSBC squads, a "spike" is a timeboxed research story (e.g., 3 points, 2 days). When the Tech Lead asks for a spike, log it in Jira as a story of type Spike, not a comment.</li>
+            <li><strong>Always anchor AC in a number.</strong> "Drop the abandonment rate" is not an AC; "drop it below 15% from a baseline of 28%" is. BAs at HSBC are pushed by the QA chapter to make AC measurable, not aspirational.</li>
+            <li><strong>Split, don't layer.</strong> The split-by-ability rule exists because slicing by technical layer (UI / API / DB) creates hidden dependencies. If Mei says "let's just do the backend first", push back with "what's the smallest <em>user</em>-facing slice?"</li>
+            <li><strong>Cross-region story reviews.</strong> With Priya in London and Ravi in Bangalore, expect at least one async round of review on Confluence before refinement. Keep story descriptions in <strong>plain English</strong>, not UK idiom — your Shanghai and Bangalore reviewers will struggle otherwise.</li>
+            <li><strong>Use Miro or Mural, not just Jira.</strong> HSBC squads default to a digital board for shaping. "Move the sticky" is a literal instruction. If you can't share the board, send a screenshot — never just type "left of the page" on a call.</li>
+            <li><strong>"Lock" is a verb you should use often.</strong> Workshops go off the rails when nothing is committed. As BA, you own the parking lot and the "let's lock this for now" decision. The PO re-prioritises later; you don't re-debate in the workshop.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the workshop opening</h3>
+        <p>Translate the following BA facilitation line into natural Chinese. The phrase is from a story-shaping workshop.</p>
+        <blockquote>
+            "Right, so let's keep this tight — 90 minutes, 6 stories out. Priya, can you walk us through
+            the top three pains you heard from the HK business? And Mei, I know you want to refactor the
+            questionnaire engine, but let's frame this as a user story first, not a tech task."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，我们把时间卡紧——90 分钟，产出 6 条 Story。Priya，你先说说你从香港业务方听到的三大痛点。Mei，我知道你想重构问卷引擎，但我们先按 User Story 框架来，不是技术任务。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the non-INVEST story</h3>
+        <p>Which of these stories is INVEST-compliant? Why?</p>
+        <ol>
+            <li>"As a relationship manager, I want to see a single dashboard of my top 50 clients' KYC status, EDD alerts, and review dates, integrated with HSBCnet, OneWealth, and the eCAB system, so I can prepare for client meetings and stay compliant with HKMA and MAS guidelines."</li>
+            <li>"As a retail customer, I want to complete a shortened CDD questionnaire, so that I don't abandon onboarding."</li>
+            <li>"As a Compliance officer, I want to download a daily PEP hits report, so that I can review sanctions matches."</li>
+            <li>"As a Tech Lead, I want to refactor the questionnaire engine, so that the codebase is clean."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ③ are INVEST-compliant: specific user, clear value, testable. ① is too big (multiple systems, multiple value statements — split it). ④ is a tech task in a story costume — the "user" is a Tech Lead and the "value" is codebase cleanliness, not business value. Rephrase as a spike with a learning outcome.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the GPB (Global Private Banking) onboarding squad. The HK private bankers want a feature: see the source-of-wealth documentation status for each prospect, integrated with CAB. Write a user story for this feature and split it into at least 2 stories using the split-by-ability rule. Use at least 3 patterns from the Key Phrases section. Then write one Given/When/Then AC.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p><strong>Story 1 (Authoring side):</strong> "As a Private Banker in HK, I want to upload source-of-wealth documents in CAB, so that I have a single place for prospect due-diligence evidence."</p>
+            <p><strong>Story 2 (Visibility side):</strong> "As a Private Banker, I want to see the source-of-wealth status for each prospect in OneWealth, so that I can prioritise the next conversation with the prospect."</p>
+            <p><strong>AC for Story 2 (Given/When/Then):</strong> <em>Given</em> a prospect has a source-of-wealth record in CAB, <em>when</em> the Private Banker opens the prospect in OneWealth, <em>then</em> the SoW status is displayed within 2 seconds and links to the underlying CAB record.</p>
+            <p><strong>Workshop phrasing you might use:</strong> "Right, so let's frame this as user value first, not a CAB refactor. Let's split by ability — the uploading flow and the read-only view. Priya, can you walk us through which slice your bankers want first? We'll baseline the current onboarding drop-off before we lock the AC."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="08-acceptance-criteria.html" class="btn btn-primary">Next: Article 08 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 13: Politely Pushing Back | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">13 · Politely Pushing Back</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Politely Pushing Back on Decisions</h1>
+        <p class="subtitle">Article 13 · Module 4: Difficult Conversations · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🤝 Disagree without damaging the relationship</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            Your PM <strong>Sarah</strong> (London) has just announced that the team must <strong>deliver the
+            OneWealth trade order service one week earlier</strong> than originally planned, to align with a
+            <em>HKMA regulatory submission deadline</em>. You strongly believe this is unrealistic — the team
+            is already at 95% capacity and the UAT environment is not yet ready. You need to push back
+            <strong>without damaging the relationship</strong>.
+        </p>
+        <p>
+            你的 PM <strong>Sarah</strong>（伦敦）刚宣布团队必须把 <em>OneWealth 交易订单服务</em> 比原计划 <strong>提前一周交付</strong>，
+            以配合 <em>HKMA 监管申报截止日期</em>。你强烈认为不现实——团队已经在 95% 容量，UAT 环境还没准备好。
+            你需要 <strong>不伤关系地 push back</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en">OK team, <em>one thing to flag</em> — HKMA just confirmed the regulatory submission date. <em>We need to pull in</em> the OneWealth delivery <strong>by one week</strong>. New target: <em>23rd of next month</em>, not 30th.</span><span class="cn">团队注意——HKMA（金管局）刚确认监管提交日期。OneWealth 交付要提前一周，新目标是下月 23 号，不是 30 号。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en"><em>Ouch.</em> That's <em>tight</em> given where we are. <em>Wei, what do you think?</em></span><span class="cn">哎呀。按当前进度看很紧。Wei，你怎么想？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Sarah, thanks for the heads-up — totally understand the regulatory driver.</em> <em>I'd like to push back gently</em> on the timeline, but <em>not on the regulatory commitment</em>. <em>Three things</em> make me think <em>23rd is high risk</em>:</span><span class="cn">Sarah，谢谢提前告知——完全理解监管要求。我想温和地就时间表提点意见，但绝不是要反对监管承诺。三点让我觉得 23 号风险很高：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>First, capacity.</em> The team is already at <em>~95% allocated this sprint</em>. Pulling in by a week means <em>~25% additional effort</em> in the same time, with <em>no room for the production bug</em> we know is pending.</span><span class="cn">第一是容量。团队本 sprint 已经 95% 满负荷，提前一周意味着同样时间内多干 25%，而且没有空间处理那个已知要来的生产 bug。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Second, UAT.</em> The UAT environment is <em>still being provisioned by SRE</em> — <em>target ready date is the 18th</em>, which only gives us <em>3 working days for UAT</em> instead of the planned 10. <em>That's not enough</em> for the BA and Compliance to do a proper sign-off.</span><span class="cn">第二是 UAT。UAT 环境 SRE 还在搭建，目标就绪日期是 18 号——只给我们 3 个工作日做 UAT，而不是计划的 10 天。BA 和合规部没有足够时间做正式 sign-off。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Third, quality risk.</em> Rushing this is <em>very likely to introduce defects</em> in the trade order flow, which is a <em>revenue-critical path</em>. <em>One bug in production</em> could <em>cost more</em> than a one-week delay.</span><span class="cn">第三是质量风险。赶工很可能在交易订单流程里引入缺陷，而这是营收关键路径。生产环境一个 bug 造成的损失可能比延期一周更大。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>I want to be clear — I'm not saying no.</em> I think we have <em>three options</em> to explore:</span><span class="cn">强调一下——我不是说不。我觉得有三种方案可以探讨：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Option A — descope.</em> We <em>cut the secondary features</em> (e.g., the <em>multi-leg order</em>) and <em>ship the core</em> on the 23rd. <em>Secondary features slip</em> to the following sprint.</span><span class="cn">方案 A——缩减范围。砍掉次要功能（比如多腿订单），23 号交付核心功能，次要功能顺延到下一 sprint。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Option B — bring in more people.</em> We <em>borrow</em> two devs from the GLCM team for two weeks. <em>Risky</em> because they need ramp-up, but <em>could work</em> for the simpler stories.</span><span class="cn">方案 B——增加人手。从 GLCM 团队借调 2 个开发借两周。有风险因为他们要熟悉项目，但简单的故事可以交给他们。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Option C — phased delivery.</em> We <em>ship the core on 23rd</em> and <em>flag to HKMA</em> that the secondary features will follow in a <em>maintenance release</em> 2 weeks later. <em>Less ideal but possible</em>.</span><span class="cn">方案 C——分阶段交付。23 号交付核心功能，并向 HKMA 说明次要功能将在 2 周后的维护版本中提供。不太理想但可行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My recommendation</em> is <em>Option A</em> — descope — because it <em>preserves quality</em> and <em>avoids the cross-team coordination</em> of Option B. <em>But this is your call, Sarah.</em> <em>Happy to sync with HKMA directly</em> if useful to discuss which features are <em>must-have vs nice-to-have</em> for the regulatory submission.</span><span class="cn">我推荐方案 A——缩减范围——因为它能保证质量，避免方案 B 的跨团队协调。但这你说了算，Sarah。如果需要直接和 HKMA 沟通哪些功能是必须、哪些是 nice-to-have，我很乐意配合。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en"><em>Wei, this is really helpful</em> — <em>thank you</em>. The <em>three reasons</em> are valid, and I <em>didn't realize</em> the UAT environment was that tight. <em>Let me take this back to HKMA</em> and see if we can <em>negotiate descoping the secondary features</em>. <em>I'll come back</em> with a revised plan by EOD tomorrow.</span><span class="cn">Wei，这真的很有帮助——谢谢。三个理由都成立，我之前不知道 UAT 环境这么紧张。我拿回去和 HKMA 谈一下，看能否协商砍掉次要功能。明天下班前给你修订后的计划。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Thanks, Sarah. <em>Just to support</em>, I can <em>put together a one-pager</em> on what's in scope vs out of scope, so you have <em>concrete options</em> for the HKMA conversation. <em>By tomorrow morning, your time.</em></span><span class="cn">谢谢 Sarah。为支持你，我可以整理一份一页纸的范围清单，列出包含什么、不包含什么，这样你和 HKMA 谈的时候有具体选项。明早给你，按你的时区。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en"><em>That would be great, thanks.</em> <em>Much appreciated.</em></span><span class="cn">太好了，谢谢。非常感谢。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag gold">Soft</span> <em>I'd like to push back gently… not on the regulatory commitment.</em></span>
+                <span class="chinese">我想温和地 push back——但不是反对监管承诺</span>
+                <span class="note">Distinguish <em>what you're pushing back on</em> from <em>what you support</em>. Removes the "you're against us" framing.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Acknowledge</span> <em>Totally understand the regulatory driver.</em></span>
+                <span class="chinese">完全理解监管驱动</span>
+                <span class="note">Always start by acknowledging the other side's constraint. Shows you listened.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Structure</span> <em>First / Second / Third — [reason].</em></span>
+                <span class="chinese">第一 / 第二 / 第三</span>
+                <span class="note">Structure your pushback. Never list just one reason — looks like opinion.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Data</span> <em>Team is at ~95% allocated this sprint.</em></span>
+                <span class="chinese">团队本冲刺已经分配约 95%</span>
+                <span class="note">Always back up pushback with data. <em>"It's tight"</em> is opinion; <em>"95% allocated"</em> is fact.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Risk</span> <em>Very likely to introduce defects.</em></span>
+                <span class="chinese">很可能引入缺陷</span>
+                <span class="note">Frame as risk, not certainty. <em>"Likely to"</em> is more persuasive than <em>"will"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Clarity</span> <em>I'm not saying no.</em></span>
+                <span class="chinese">我不是说不</span>
+                <span class="note">Pre-empt the "you're being negative" interpretation. Make clear you're problem-solving, not blocking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Options</span> <em>We have three options to explore.</em></span>
+                <span class="chinese">有三个选项可以探索</span>
+                <span class="note">Always come with options. A pushback without alternatives is just a complaint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>My recommendation is X — but this is your call.</em></span>
+                <span class="chinese">我建议 X——但你决定</span>
+                <span class="note">Make a recommendation, but explicitly defer authority. Avoids "you're telling me what to do".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Support</span> <em>Happy to sync with HKMA directly if useful.</em></span>
+                <span class="chinese">如果需要，可以直接和 HKMA 同步</span>
+                <span class="note">Offer to do the work to make your pushback actionable. Removes the "easy for you to say" perception.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Receive</span> <em>This is really helpful — thank you.</em></span>
+                <span class="chinese">非常有帮助——谢谢</span>
+                <span class="note">The other side's <em>acknowledgment</em> is a sign your pushback was received well.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>push back</strong> <span class="tag">v.</span></span>
+                <span class="chinese">反对 / 表达异议</span>
+                <span class="note">Polite disagreement. Often softened with <em>"gently / softly / respectfully"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>pull in (a deadline)</strong> <span class="tag">v.</span></span>
+                <span class="chinese">提前（截止日期）</span>
+                <span class="note">Opposite of <em>push out</em>. <em>"Pull in by one week"</em> = bring forward by one week.</span>
+            </li>
+            <li>
+                <span class="english"><strong>descope / scope down</strong> <span class="tag">v.</span></span>
+                <span class="chinese">缩减范围</span>
+                <span class="note">Reduce the project scope to meet the deadline. Common in fixed-deadline projects.</span>
+            </li>
+            <li>
+                <span class="english"><strong>HKMA (Hong Kong Monetary Authority)</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">香港金融管理局</span>
+                <span class="note">Hong Kong's central banking institution. Sets regulatory standards for HK banks.</span>
+            </li>
+            <li>
+                <span class="english"><strong>revenue-critical path</strong> <span class="tag">n.</span></span>
+                <span class="chinese">收入关键路径</span>
+                <span class="note">A system or flow where any failure directly causes revenue loss.</span>
+            </li>
+            <li>
+                <span class="english"><strong>must-have vs nice-to-have</strong></span>
+                <span class="chinese">必须有 vs. 锦上添花</span>
+                <span class="note">Standard prioritization framework. <em>MoSCoW</em>: Must / Should / Could / Won't.</span>
+            </li>
+            <li>
+                <span class="english"><strong>phased delivery</strong> <span class="tag">n.</span></span>
+                <span class="chinese">分阶段交付</span>
+                <span class="note">Ship core features first, secondary features in a follow-up release.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "I'd like to push back gently on X, but not on Y" — Scope限定</h3>
+        <p>Always scope what you're pushing back on. This pattern is gold:</p>
+        <ul>
+            <li><em>I'd like to push back on the <strong>timeline</strong>, but not on the <strong>regulatory commitment</strong>.</em></li>
+            <li><em>I'd push back on the <strong>scope</strong>, but not on the <strong>deadline</strong>.</em></li>
+            <li><em>I disagree with the <strong>approach</strong>, but I support the <strong>goal</strong>.</em></li>
+        </ul>
+
+        <h3>② Hedging with "could / might / likely to"</h3>
+        <p>When pushing back, hedge predictions to avoid sounding like a fortune-teller:</p>
+        <ul>
+            <li>❌ <em>"Rushing will introduce bugs."</em> (over-confident)</li>
+            <li>✅ <em>"Rushing is <strong>very likely to</strong> introduce bugs."</em></li>
+            <li>✅ <em>"Rushing <strong>could</strong> introduce bugs."</em></li>
+        </ul>
+
+        <h3>③ "I'm not saying no" — Pre-empting Negativity</h3>
+        <p>Pre-empt the "you're being negative" perception:</p>
+        <ul>
+            <li><em><strong>I'm not saying no</strong> — I want to find a way to say yes.</em></li>
+            <li><em><strong>I'm not against the goal</strong> — I want to find a safer path to it.</em></li>
+            <li><em><strong>I'm not blocking</strong> — I'm flagging the risks so we can decide with full info.</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🤝 The "Push Back Sandwich" Framework</div>
+            <p>Pushing back to a senior (especially in cross-region HSBC teams) requires skill. Use the
+            <strong>push-back sandwich</strong>:</p>
+            <ol>
+                <li><strong>Top bun — Acknowledge the constraint.</strong> <em>"I understand HKMA is the driver."</em></li>
+                <li><strong>Filling — Structure your concerns with data.</strong> 2-3 reasons, each with evidence.</li>
+                <li><strong>Bottom bun — Offer 2-3 alternatives + a recommendation.</strong> Never just complain — propose solutions.</li>
+                <li><strong>Side dish — Offer to do the work.</strong> <em>"I can put together a one-pager by tomorrow."</em></li>
+            </ol>
+            <p>Skipping any layer makes your pushback ineffective or confrontational.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Cross-Cultural Pushback Tips</div>
+            <ul>
+                <li><strong>UK colleagues</strong> tend to appreciate <strong>direct, structured pushback with data</strong>. Be clear about the issue.</li>
+                <li><strong>HK colleagues</strong> may prefer <strong>softer framing</strong> with face-saving. Lead with the relationship.</li>
+                <li><strong>Indian colleagues</strong> often appreciate <strong>explicit alternatives</strong> — they love problem-solving modes.</li>
+                <li><strong>Never push back in writing first</strong>. Always have a quick call or face-to-face, then document the outcome.</li>
+                <li><strong>Be careful with "no"</strong>. Replace with <em>"I see significant risk in X — here's my concern and a proposed path forward."</em></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to professional pushback English:</div>
+                <p>"Sarah 我觉得提前一周不现实。团队已经95%满了，UAT还没好，赶工质量会出问题。我建议砍掉多腿订单功能，保证核心23号上线。你看怎么样？"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Sarah, <em>totally understand the HKMA driver</em>. <em>I'd like to push back gently</em> on the one-week pull-in, but <em>not on the regulatory commitment</em>. <em>Three reasons</em> make me think the 23rd is high risk: <em>first</em>, the team is already at ~95% allocated; <em>second</em>, the UAT environment is still being provisioned by SRE; <em>third</em>, rushing this could <em>introduce defects in a revenue-critical path</em>. <em>I'm not saying no</em> — my recommendation is to <em>descope the multi-leg order</em> and <em>ship the core on the 23rd</em>, with secondary features in a <em>follow-up release</em>. <em>Happy to draft a one-pager</em> for the HKMA conversation by tomorrow EOD your time."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Soften this pushback using the sandwich structure:</div>
+                <p>"This deadline is impossible. The team can't do it. We need to push back the date."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Sarah, <em>thanks for flagging</em> — I understand the regulatory driver. <em>I'd like to flag three concerns</em> with the current date, then offer some alternatives.
+                    <ol>
+                        <li><em>Capacity</em> — team is at <em>~95% allocated</em> this sprint, with no buffer for the production bug we know is pending.</li>
+                        <li><em>UAT readiness</em> — UAT environment is <em>still being provisioned</em>, target ready date is the 18th, giving us only <em>3 working days for sign-off</em>.</li>
+                        <li><em>Quality risk</em> — rushing this is <em>likely to introduce defects</em> in the trade flow.</li>
+                    </ol>
+                    <em>I'm not saying no</em> — <em>three options</em> to consider: (A) <em>descope secondary features</em>, (B) <em>borrow two devs from GLCM</em>, (C) <em>phased delivery</em> with HKMA. <em>My recommendation is A</em>. <em>But this is your call</em> — happy to support with a one-pager by tomorrow EOD."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right pushback phrases:</div>
+                <p>"<em>I'd like to push back _____ (gently) on X, but not on Y. / The team is at 95% _____. / Rushing is very _____ to introduce defects. / I'm not _____ no. / My _____ is option A. / But this is your _____.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>gently</em> / <em>allocated</em> / <em>likely</em> / <em>saying</em> / <em>recommendation</em> / <em>call</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>Your PM Sarah has decided to skip code review for a "small, urgent" hotfix. You disagree — you think all production changes should go through code review, even hotfixes. Write a pushback using the sandwich framework, with 2 reasons and 2 alternatives.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Sarah, <em>totally understand the urgency</em> of the hotfix. <em>I'd like to gently push back</em> on skipping code review, but <em>not on the timeline</em>. <em>Two reasons</em>:
+                    <ol>
+                        <li><em>Compliance risk</em> — InfoSec at HSBC requires <em>two-person review</em> for any production change. <em>Bypassing review</em> would be an <em>audit finding</em> in the next HKMA inspection.</li>
+                        <li><em>Past incident</em> — <em>Last quarter's P1</em> was caused by a hotfix that <em>skipped review</em>. The post-mortem explicitly <em>recommended</em> all hotfixes go through review.</li>
+                    </ol>
+                    <em>I'm not saying no</em> — <em>two alternatives</em> to consider:
+                    <ul>
+                        <li><em>Option A — Expedited review</em>: I do a <em>5-minute self-review</em>, then <em>Priya does a fast-track review</em> (10 minutes). Total: 15 min, still compliant.</li>
+                        <li><em>Option B — Pair programming for the hotfix</em>: I <em>pair with the requester</em> in real-time, which counts as review.</li>
+                    </ul>
+                    <em>My recommendation is A</em> — keeps us <em>audit-compliant</em> with minimal delay. <em>But this is your call</em>."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="12-pull-request-discussion.html">
+            <span class="label">← Previous</span>
+            <span class="title">12 · Pull Request Discussion</span>
+        </a>
+        <a class="next" href="14-disagreeing-with-senior.html">
+            <span class="label">Next Article →</span>
+            <span class="title">14 · Disagreeing with a Senior</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 13 · Politely Pushing Back · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

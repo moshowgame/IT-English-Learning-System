@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 14: Pushing Back on Over-Engineering | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">14 · Pushing Back on Over-Engineering</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Pushing Back on Over-Engineering</h1>
+        <p class="subtitle">Article 14 · Module 5: Difficult Conversations · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 YAGNI: keep it simple, ship value, refactor later — polite but firm pushback</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Friday, 4:00 PM HKT</strong>. A design review is running on Microsoft Teams
+            for the <em>RBWM Mobile squad's</em> new <em>spending-insights notification service</em>.
+            The Tech Lead, <strong>Arjun</strong> (Bangalore), has proposed a design that uses:
+            <em>Kafka</em> + <em>Event Sourcing</em> + <em>CQRS</em> + a <em>custom saga orchestrator</em>
+            to send a push notification when a customer's monthly spend crosses a threshold.
+        </p>
+        <p>
+            周五下午 4 点香港时间，<em>RBWM 移动 squad</em> 的一个新功能设计评审正在 Teams 上进行：
+            <em>消费洞察通知服务</em>。Tech Lead <strong>Arjun</strong>（班加罗尔）提的设计是：
+            <em>Kafka</em> + <em>Event Sourcing</em> + <em>CQRS</em> + <em>自研的 saga 编排器</em>，
+            用于在客户月消费超过阈值时发送推送通知。
+        </p>
+        <p>
+            You — the Solution Architect covering RBWM Mobile — are <em>politely concerned</em>. The
+            use case is a <strong>single read-after-write check on a single aggregate</strong>. Event
+            sourcing, CQRS, and a saga orchestrator are heavy patterns built for multi-service
+            transactional flows. You believe the squad is <em>over-engineering</em> the problem, and
+            that a simple cron + DB trigger would ship the same value in <em>2 weeks instead of 8</em>.
+            Margaret (Chief Architect) is also on the call but has asked you to <em>lead the
+            pushback</em> — this is exactly the kind of "architect says no" conversation she wants
+            you to own.
+        </p>
+        <p>
+            你——覆盖 RBWM Mobile 的 Solution 架构师——<em>礼貌地感到担忧</em>。这个用例就是一个
+            <strong>单聚合的 read-after-write 检查</strong>。Event sourcing、CQRS、saga 编排器
+            这些都是为多服务事务流设计的重模式。你认为 squad <em>过度设计</em>了这个问题，
+            简单的 cron + DB trigger 同样能交付价值，<em>2 周搞定 vs 8 周</em>。
+            Margaret（Chief Architect）也在会议里，但她请你<em>主导这次 pushback</em>——
+            这正是她希望你承担的"架构师说不"的对话。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Arjun (Tech Lead, RBWM Mobile):</span>
+                <span class="text"><span class="en"><em>OK, so</em> — the design is <em>Kafka for the event bus,</em> then we <em>persist every state change as an event</em> using event sourcing. The <em>read side is a CQRS projection</em> updated by a <em>saga orchestrator</em> that handles the threshold check and the notification fan-out. <em>Eight weeks, end-to-end.</em></span><span class="cn"><em>好的，</em>设计是<em>Kafka 做事件总线，</em>然后用 event sourcing 把<em>每次状态变化作为事件持久化</em>。<em>读侧是 CQRS 投影</em>，由 <em>saga 编排器</em>驱动，处理阈值检查和通知扇出。<em>端到端 8 周。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Thanks, Arjun — solid work on the design.</em> Before we sign off, <em>I want to push back gently on the architecture choice.</em> The use case here is <em>a single aggregate check</em> — a customer's monthly spend versus a threshold. <em>Honestly, this doesn't need event sourcing, CQRS, or a saga.</em></span><span class="cn"><em>Arjun，谢谢——设计做得很扎实。</em>签批前，<em>我想就架构选择温和地提一下不同意见。</em>这个用例本质是<em>单个聚合检查</em>——客户的月消费对一个阈值。<em>坦白说，这里不需要 event sourcing、CQRS 或 saga。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>YAGNI — You Ain't Gonna Need It.</em> <em>Right now,</em> the read is <em>always after a single write</em>, on <em>one aggregate</em>, with <em>no cross-service consistency</em>. Event sourcing pays off when you have <em>many readers with different shapes,</em> or when you need <em>time-travel replay.</em> We don't have either.</span><span class="cn"><em>YAGNI——You Ain't Gonna Need It。</em><em>目前，</em>读取总是发生在<em>单次写后</em>，针对<em>单个聚合</em>，<em>没有跨服务一致性</em>。Event sourcing 在需要<em>多读者不同形态</em>或<em>时间旅行重放</em>时才划算。这两个我们都不需要。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Arjun (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Fair point.</em> But I was thinking — <em>what if</em> we extend this to investment insights, or <em>cross-product</em> thresholds? <em>We're going to need the event-sourced view eventually.</em></span><span class="cn"><em>有道理。</em>但我在想——<em>如果</em>我们扩展到投资洞察，或者<em>跨产品</em>阈值呢？<em>我们迟早需要 event-sourced 的视图。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Good question.</em> But <em>that is a YAGNI argument.</em> We don't have the cross-product requirement <em>in the backlog today.</em> And if we do need it in 6 months, <em>refactoring to event sourcing from a clean monolith is straightforward</em> — much easier than refactoring <em>out of</em> an event-sourced system that's serving one use case.</span><span class="cn"><em>好问题。</em>但<em>这就是 YAGNI 论点。</em><em>今天的 backlog 里</em>没有跨产品需求。而且就算 6 个月后真有，<em>从一个干净的 monolith 重构成 event sourcing 是直接的</em>——比从<em>服务一个用例的 event-sourced 系统重构出去</em>容易得多。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>My recommendation</em> — <em>KISS.</em> A <em>monthly cron job</em> that reads the spend aggregate, a <em>simple comparison</em>, and a <em>push-notification fan-out</em> via the existing <em>HSBCnet notification service.</em> <em>Two weeks, ship value, learn from real usage.</em> If the cross-product case materialises, we <em>revisit the architecture</em> with real data, not speculation.</span><span class="cn"><em>我的建议是</em>——<em>KISS。</em>一个<em>月度 cron 任务</em>读取消费聚合，<em>简单的比较</em>，再走现有的 <em>HSBCnet 通知服务</em>做推送扇出。<em>2 周上线，交付价值，从真实使用里学习。</em>如果跨产品用例真的出现，<em>我们用真实数据再重新评估架构</em>，而不是靠推测。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Arjun (Tech Lead):</span>
+                <span class="text"><span class="en"><em>I hear you.</em> But the <em>2-week version</em> doesn't have a <em>DR strategy</em> or a <em>retry policy</em>. Won't the cron + DB approach hit us when the cron fails silently?</span><span class="cn"><em>听明白了。</em>但<em>2 周的版本</em>没有<em>DR 策略</em>和<em>重试策略</em>。cron 静默失败时，cron + DB 方案不就坑了我们吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Right, so</em> — <em>good challenge.</em> We add a <em>DLQ on the cron trigger</em> (Group Resilience requires it anyway), <em>idempotency on the notification</em> (UUID v7), and a <em>Group Cyber SDL threat model</em> as a non-negotiable. <em>Same controls, less architecture.</em> The cost of those controls is <em>3 days of dev, not 6 weeks.</em></span><span class="cn"><em>好的，</em>——<em>挑战得好。</em>我们加 <em>cron 触发器的 DLQ</em>（集团 Resilience 本来就要求），<em>通知的幂等性</em>（UUID v7），以及 <em>集团 Cyber 的 SDL 威胁模型</em>作为不可省项。<em>同样的控制，更少的架构。</em>这些控制的成本是<em>3 天开发，不是 6 周。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>I'm aligned with Wei.</em> <em>Just to flag</em> — chapter has <em>seen three YAGNI violations this quarter</em> — saga for a one-step flow, CQRS for a single read, and now this. <em>We recommend simple-first by default.</em> <em>Arjun, are you comfortable with the 2-week KISS path?</em></span><span class="cn"><em>我同意 Wei 的看法。</em><em>提一下</em>——chapter <em>这个季度已经看到 3 次 YAGNI 违规</em>——一步流程上 saga、单个读上 CQRS、再加上现在这个。<em>我们默认推荐 simple-first。</em><em>Arjun，2 周 KISS 方案你 OK 吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Arjun (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Honest answer</em> — I was hoping to use the heavy patterns <em>as a CV-driven-development moment</em>. <em>You're right</em> — the squad value is shipping insights, <em>not showcasing patterns.</em> Let's go with the KISS path. <em>I'll update the design doc and re-circulate by Monday.</em></span><span class="cn"><em>坦白说</em>——我本想用这些重模式<em>给自己简历加一笔</em>。<em>你说得对</em>——squad 的价值是交付洞察，<em>不是展示模式。</em>那就 KISS 路线。<em>我周一前更新设计文档重新发出来。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Soft</span> <em>I want to push back gently on the architecture choice.</em></span>
+                <span class="chinese">我想就架构选择温和地提一下不同意见</span>
+                <span class="note">"Push back gently" sets the tone: disagreement without hostility. The opposite — "I disagree" — sounds personal.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">YAGNI</span> <em>YAGNI — You Ain't Gonna Need It.</em></span>
+                <span class="chinese">YAGNI——你不会需要它的</span>
+                <span class="note">YAGNI is the architect's strongest word against over-engineering. Always pair it with a concrete future scenario the team fears.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Spec</span> <em>Right now, the read is always after a single write, on one aggregate.</em></span>
+                <span class="chinese">目前，读取总是发生在单次写后，针对单个聚合</span>
+                <span class="note">"Right now" is the keyword. You're not saying the future doesn't need it; you're saying the present doesn't.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Risk</span> <em>Refactoring to event sourcing from a clean monolith is straightforward — much easier than refactoring out of an event-sourced system.</em></span>
+                <span class="chinese">从干净 monolith 重构到 event sourcing 是直接的——比从 event-sourced 系统重构出去容易得多</span>
+                <span class="note">This is the "reversibility" argument. Heavy architectures are hard to leave; simple architectures are easy to extend.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">KISS</span> <em>My recommendation — KISS. Ship value, learn from real usage.</em></span>
+                <span class="chinese">我的建议是——KISS。交付价值，从真实使用里学习</span>
+                <span class="note">KISS = Keep It Simple, Stupid. Pair it with "ship, then learn" — over-engineering is often fear of the second iteration.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Speculation</span> <em>We revisit the architecture with real data, not speculation.</em></span>
+                <span class="chinese">我们用真实数据再重新评估架构，而不是靠推测</span>
+                <span class="note">"Speculation" is a politeness word for "we don't actually have evidence this is needed".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CV-driven</span> <em>I was hoping to use the heavy patterns as a CV-driven-development moment.</em></span>
+                <span class="chinese">我本想用这些重模式给自己简历加一笔</span>
+                <span class="note">"CV-driven development" — a recognised anti-pattern. Self-deprecating humour works here when admitting it; it lands better than blaming the squad.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Value</span> <em>The squad value is shipping insights, not showcasing patterns.</em></span>
+                <span class="chinese">squad 的价值是交付洞察，不是展示模式</span>
+                <span class="note">Reframe the conversation from "which is technically elegant" to "what value does the customer get". This is the chapter's frame, not the architect's ego.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Default</span> <em>We recommend simple-first by default.</em></span>
+                <span class="chinese">我们默认推荐 simple-first</span>
+                <span class="note">"By default" reverses the burden of proof. The architect doesn't have to justify simple; the squad has to justify complex.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Honest</span> <em>Honest answer — I was hoping to use the heavy patterns.</em></span>
+                <span class="chinese">坦白说——我本想用这些重模式</span>
+                <span class="note">Self-deprecation with "honest answer" closes the conversation gracefully. Saves face for both sides.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>YAGNI (You Ain't Gonna Need It)</strong> n. 你不会需要它 An Extreme Programming principle: don't build for hypothetical future needs.</li>
+            <li><strong>KISS (Keep It Simple, Stupid)</strong> n. 保持简单 A design principle: most systems work best if they are kept simple rather than made complex.</li>
+            <li><strong>Over-engineering</strong> n. 过度设计 Building a solution more complex than the problem requires — often in anticipation of needs that may never come.</li>
+            <li><strong>Event Sourcing</strong> n. 事件溯源 A pattern where state changes are stored as a sequence of events, rather than the current state.</li>
+            <li><strong>CQRS (Command Query Responsibility Segregation)</strong> n. 命令查询职责分离 A pattern that separates the write model (commands) from the read model (queries).</li>
+            <li><strong>Saga orchestrator</strong> n. Saga 编排器 A pattern for managing long-running, multi-service transactions by coordinating local transactions.</li>
+            <li><strong>Aggregate</strong> n. 聚合 A cluster of domain objects treated as a single unit for write operations (DDD term).</li>
+            <li><strong>Read-after-write</strong> n. 写后读 A consistency pattern where a write is immediately visible to the subsequent read.</li>
+            <li><strong>CV-driven development</strong> n. 简历驱动开发 An anti-pattern where a developer picks a technology to learn or showcase, not because the problem needs it.</li>
+            <li><strong>Cron job</strong> n. 定时任务 A scheduled task that runs at fixed intervals (e.g., monthly, daily) on a server.</li>
+            <li><strong>Reversibility</strong> n. 可逆性 The property that a decision can be undone cheaply. Architects prefer reversible decisions.</li>
+            <li><strong>Simple-first</strong> n. 简单优先 The default at HSBC: ship the simple version, refactor when real evidence demands complexity.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I want to push back gently" — the softener pattern</h3>
+        <p>
+            When you disagree as an architect, wrap the disagreement in a softener. Three common
+            patterns:
+            <em>I want to push back gently on…</em> (the softest);
+            <em>I'm not sure I'm convinced by…</em> (slightly firmer, invites evidence);
+            <em>I have a different view on…</em> (assertive but collaborative).
+            Avoid: <em>"This is wrong"</em> / <em>"This doesn't work"</em> / <em>"I disagree"</em>. They
+            sound personal and start fights the chief architect has to break up.
+        </p>
+        <p>架构师表达反对的三种礼貌句式：<em>push back gently</em>（最软）、<em>not convinced</em>（邀请举证）、<em>different view</em>（坚定但协作）。</p>
+
+        <h3>② "What if" + future speculation — the YAGNI counter</h3>
+        <p>
+            The Tech Lead argues <em>"What if we extend to cross-product?"</em>. You counter with the
+            <strong>conditional past + YAGNI</strong>:
+            <em>"If we do need it in 6 months, refactoring to event sourcing from a clean monolith
+            is straightforward."</em> The grammar: <em>If + present, will/be + adjective</em> + a
+            reversibility argument. YAGNI lives or dies on whether the future scenario is reversible.
+        </p>
+        <p>反驳 YAGNI 论点：用 <em>If + 现在时</em> 提假设，再用<strong>可逆性</strong>论证反驳。</p>
+
+        <h3>③ Self-deprecation as a closing device</h3>
+        <p>
+            The Tech Lead admits: <em>"Honest answer — I was hoping to use the heavy patterns as a
+            CV-driven-development moment."</em> The <strong>honest answer + self-deprecating
+            noun phrase</strong> pattern de-escalates. Compare:
+            <em>"You're wrong and we should always do simple-first."</em> (creates a fight) vs.
+            <em>"Honest answer — I was hoping to use the heavy patterns. You're right."</em> (lands
+            the same point without resentment). Use it when you (or your counterpart) need to back
+            down gracefully.
+        </p>
+        <p><em>Honest answer + 自嘲</em> 是优雅退让的句式，让双方都下得来台。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>YAGNI is HSBC's default.</strong> Margaret explicitly said "chapter has seen three YAGNI violations this quarter". The chapter is signalling: simple-first, always. If you propose complexity, the burden of proof is on you.</li>
+            <li><strong>"Push back gently" is a politeness technology.</strong> HSBC's culture runs on face-saving. A blunt "this is wrong" is career-limiting. A gentle pushback that invites the Tech Lead to arrive at the same conclusion is the architect's signature move.</li>
+            <li><strong>Heavy patterns need a multi-aggregate or cross-service trigger.</strong> Event sourcing, CQRS, and sagas pay off when there are multiple writers, multiple read shapes, or cross-service consistency. Single-aggregate single-write is the textbook YAGNI case.</li>
+            <li><strong>Reframe from elegance to value.</strong> Tech Leads often fall in love with patterns. The architect's job is to reframe the conversation: <em>"the squad value is shipping insights, not showcasing patterns"</em>. This is chapter language, not personal opinion.</li>
+            <li><strong>Self-deprecation is permitted — encouraged, even.</strong> Arjun admitting "CV-driven development" is a healthy team dynamic. It only works if the chief architect has set the tone that simple is OK. If the chapter punishes simple, the team will over-engineer to look serious.</li>
+            <li><strong>"By default" reverses the burden of proof.</strong> Once the chapter says "simple-first by default", the squad has to argue for complexity with evidence (predicted RPS, multiple read shapes, cross-service need). Speculation doesn't count.</li>
+            <li><strong>Refactoring out is harder than refactoring in.</strong> The strongest YAGNI argument: a simple system is easy to extend with event sourcing later; an event-sourced system serving one use case is hard to refactor away from. Reversibility is the architect's ally.</li>
+            <li><strong>Don't make it personal.</strong> Even when the Tech Lead is wrong, frame the conversation as "the use case doesn't need it" not "you over-engineered it". The former is about the problem; the latter is about the person.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the YAGNI pushback</h3>
+        <p>Translate the following YAGNI pushback into natural Chinese. Notice how the architect reframes from elegance to value.</p>
+        <blockquote>
+            "Thanks, Lin — strong design doc. I want to push back gently on the CQRS choice. Right
+            now, the read shape is identical to the write shape — both return the same JSON. CQRS
+            pays off when the read and write models diverge, or when you need a denormalised
+            projection for query speed. We have neither today. YAGNI — if the read shape diverges
+            in 6 months, refactoring from a single model to CQRS is straightforward. The squad
+            value is shipping the dashboard, not showcasing patterns. My recommendation: KISS,
+            single read/write model, ship in 3 weeks. We revisit the architecture with real data,
+            not speculation."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Lin，谢谢——设计文档做得很扎实。我想就 CQRS 的选择温和地提一下不同意见。目前读侧形态和写侧形态完全一致——返回同样的 JSON。CQRS 在读侧和写侧模型分叉，或需要反范式投影来加速查询时才划算。今天两个条件都不成立。YAGNI——如果 6 个月后读侧形态真的分叉，从单模型重构到 CQRS 是直接的。Squad 的价值是交付 dashboard，不是展示模式。我的建议是：KISS，单读/写模型，3 周上线。我们用真实数据再重新评估架构，而不是靠推测。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the difference: gentle vs harsh pushback</h3>
+        <p>Which of these would land well in a HSBC design review, and which would create friction? Why?</p>
+        <ol>
+            <li>"This design is over-engineered. Strip it back."</li>
+            <li>"Thanks, Akash. I want to push back gently on the saga orchestrator. Right now, the flow is a single service writing to a single DB. Sagas pay off when you have cross-service consistency to manage. We don't. YAGNI. My recommendation: a simple in-service transaction, ship in 2 weeks. We revisit when there's a real cross-service need."</li>
+            <li>"I disagree with the CQRS choice. Use a single model."</li>
+            <li>"Honest answer — I'm not convinced the event sourcing pays off here. The use case is a single aggregate, single read. The pattern's value is in time-travel replay and many-reader fan-out, neither of which we have. Refactoring to event sourcing from a clean monolith later is straightforward. Recommend: KISS path, ship in 4 weeks."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ land well. ② uses "push back gently" + YAGNI + reversibility + value reframe. ④ uses "honest answer" + "not convinced" + scenario-by-scenario counter + reversibility. ① and ③ are too blunt — they state a verdict without an argument and create a face-loss dynamic. Even if you're right, blunt pushback is a poor architect move at HSBC.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are the Solution Architect in the GPB Digital tribe. A Tech Lead has proposed using a custom saga orchestrator + Kafka for a "transfer between two internal accounts" flow. The flow is: (a) debit account A, (b) credit account B, both in the same core banking system. Write a 4–5 sentence YAGNI pushback that: (1) thanks the Tech Lead, (2) uses "push back gently" or similar, (3) explains why the pattern doesn't fit, (4) proposes a KISS alternative, (5) ends with a reversibility argument. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Priya, thanks for the design — really thorough work. <em>I want to push back gently on the saga orchestrator</em> here. <em>Right now</em>, the flow is two operations on the <em>same core banking system</em> — that's a single ACID transaction, not a cross-service saga. Sagas pay off when you have <em>distributed transactions across services that can't share a DB</em>. We don't have that here. <em>YAGNI</em>. <em>My recommendation</em> — KISS: a single in-service transaction, debit + credit in one call, ship in 1 sprint. <em>Refactoring from a clean in-service transaction to a saga later is straightforward</em> if we genuinely need cross-service consistency. <em>The squad value is shipping the transfer feature, not showcasing a saga pattern.</em>"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="15-saying-no-tech.html" class="btn btn-primary">Next: Article 15 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

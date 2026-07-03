@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 14: Pushing Back on Scope Creep | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">14 · Pushing Back on Scope Creep</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Pushing Back on Scope Creep</h1>
+        <p class="subtitle">Article 14 · Module 5: Difficult Conversations · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 "That's a new story" — protect the sprint without losing the relationship</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Day 9 of a 2-week sprint</strong> on the HSBC RBWM Onboarding squad. Your sprint goal is
+            clean: deliver the <em>Premier-to-Jade upgrade flow</em> for HK retail, with the
+            <em>source-of-wealth re-CD</em>D and the <em>EDD trigger</em> above HKD 8M. The squad is
+            on track — Akash has shipped the FATCA flag, Mei has finished the BRD walkthrough, QA starts
+            on Thursday.
+        </p>
+        <p>
+            <strong>Sprint 第 9 天（双周 Sprint）</strong>，RBWM 开户 squad 冲刺目标清晰：交付香港零售
+            <em>Premier 升级 Jade 流程</em>，含<em>资金来源重新 CDD</em>和<em>800 万港币以上触发 EDD</em>。
+            squad 一切按计划——Akash 已交付 FATCA 标记，Mei 完成 BRD 走查，QA 周四开始。
+        </p>
+        <p>
+            Then Jonathan, the HK RBWM Compliance PO, drops you a Teams message at 10:42 AM HKT:
+            <em>"Hi Wei, while you're at it — can we also add a HKMA-aligned re-CDD trigger at HKD 5M?
+            The regulator's guidance is now stricter. Just a small change."</em> The squad is at 95% capacity.
+            Adding this now means descoping something else, or burning the runway. You need to push back —
+            politely but firmly.
+        </p>
+        <p>
+            上午 10:42 HKT，HK RBWM 合规的 PO Jonathan 在 Teams 上找你："Wei，顺便问一下——能不能同时加一个
+            HKMA 标准的 500 万港币重新 CDD 触发？监管口径现在收紧了，加个小改动就行。"squad 产能已经在
+            95%，现在加这个就要砍别的或者把 buffer 烧光。你需要礼貌但坚定地 push back。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (PO):</span>
+                <span class="text"><span class="en">Hi Wei, <em>while you're at it</em> — can we also add a HKMA-aligned re-CDD trigger at <em>HKD 5M</em>? The regulator's guidance is now stricter. <em>Just a small change.</em></span><span class="cn">Wei 顺便问一下——能不能同时加一个 HKMA 标准的 500 万港币重新 CDD 触发？监管口径收紧了，加个小改动就行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Thanks for flagging, Jonathan</em> — and you're right, the HKMA tightening is a real concern. <em>Let me think out loud for a sec.</em></span><span class="cn">Jonathan 谢谢提醒，HKMA 收紧确实是个真问题。让我捋一下。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">If we add the <em>HKD 5M trigger</em> into the current sprint, we'd need to <em>descope</em> either the <em>FATCA recalcitrant flag</em> or the <em>MAS file format check</em>. <em>Neither is small</em> — they're both regulator-driven.</span><span class="cn">如果把 500 万触发加到这个 sprint，我们就得砍掉 FATCA 不配合标记或者 MAS 文件格式核对中的一个。<strong>都不是小项</strong>，都是监管要求的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">My honest read: <em>this is a new story</em>, not a small change. It needs its own <em>impact analysis</em> —<em>CDD rule engine, EDD routing, UAT scope</em> — and the right thing to do is <em>shape it as a separate story</em> and <em>sequence it into a future sprint</em>.</span><span class="cn">我的真实看法是：<strong>这是一个新的 Story</strong>，不是小改动。它需要独立做<strong>影响分析</strong>——CDD 规则引擎、EDD 路由、UAT 范围——正确的做法是<strong>单独成型一个 Story</strong>，排到后续 Sprint。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (PO):</span>
+                <span class="text"><span class="en"><em>I hear you</em>, but HKMA is breathing down our neck. Can we <em>just squeeze it in</em> this sprint? <em>Pretty please.</em></span><span class="cn">我理解，但 HKMA 在催我们。这个 Sprint 塞进去行吗？拜托了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">I really <em>get the pressure</em>, and I want to help. <em>Here's what I can do</em> in this sprint: I can <em>shape the 5M trigger story</em> today, get it <em>refined tomorrow</em>, and <em>prioritise it at the top of next sprint's backlog</em>.</span><span class="cn">我<strong>完全理解压力</strong>，我也想帮忙。<strong>我本 Sprint 能做的</strong>是：今天把 500 万触发的 Story 成型，明天过 Grooming，放到下个 Sprint backlog 的<strong>最前面</strong>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>The trade-off is real</em> — if I squeeze it into this sprint, we risk the 8M EDD trigger <em>slipping into UAT</em>, which would actually <em>make the HKMA conversation harder</em>, not easier.</span><span class="cn"><strong>代价是真实的</strong>——如果硬塞进本 Sprint，800 万 EDD 触发就有<strong>滑到 UAT 之后</strong>的风险，反而让 HKMA 那边的对话<strong>更难</strong>，不是更易。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">If the <em>HKMA letter</em> is dated and we need a <em>regulatory commitment date</em>, I'm <em>happy to walk it through</em> with Priya and the Chapter Lead — but I'd <em>rather we don't compromise the 8M EDD</em> for it.</span><span class="cn">如果 HKMA 来函有具体日期，需要<strong>监管承诺时间</strong>，我<strong>很乐意</strong>和 Priya、Chapter Lead 一起过一遍——但我<strong>不愿为此牺牲 800 万 EDD</strong>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (PO):</span>
+                <span class="text"><span class="en">OK, that <em>makes sense</em>. Shape the story and <em>let's prioritise it next sprint</em>. <em>Can we lock the refinement for Friday?</em></span><span class="cn">行，有道理。把 Story 成型，<strong>下个 Sprint 优先排</strong>。Grooming 能锁在周五吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Absolutely.</em> I'll book the refinement for Friday 11 AM HKT and <em>loop in Priya</em> for the impact on the CDD rule engine. <em>Appreciate your flexibility, Jonathan</em> — let's land the 8M cleanly first.</span><span class="cn">没问题。周五 11 点 HKT 的 Grooming 我来约，并把 Priya 拉进来评估对 CDD 规则引擎的影响。<strong>感谢你的灵活，Jonathan</strong>——我们先把 800 万稳稳交付。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>While you're at it…</em></span>
+                <span class="chinese">顺便……</span>
+                <span class="note">The classic scope-creep opener. Your BA antennae should always twitch when you hear this.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Acknowledge</span> <em>Thanks for flagging — and you're right, the HKMA tightening is a real concern.</em></span>
+                <span class="chinese">谢谢提醒——你说得对，HKMA 收紧确实是个真问题</span>
+                <span class="note">Always acknowledge the underlying concern <em>before</em> pushing back. The "ACK then pivot" pattern.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">New Story</span> <em>This is a new story, not a small change.</em></span>
+                <span class="chinese">这是一个新的 Story，不是小改动</span>
+                <span class="note">The single most useful phrase in scope-creep defense. Calm, factual, and provable.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Descope</span> <em>To add this, we'd have to descope…</em></span>
+                <span class="chinese">要加这个就得砍掉……</span>
+                <span class="note">"Descope" = formally remove from the sprint. Forces the trade-off to be visible to the PO.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Squeeze In</span> <em>Can we just squeeze it in?</em></span>
+                <span class="chinese">能不能塞进去？</span>
+                <span class="note">"Squeeze in" = jam in. PO's framing for "please overcommit". Don't accept the verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>The trade-off is real — if we squeeze it in, the 8M EDD slips.</em></span>
+                <span class="chinese">代价是真实的——硬塞进去 800 万 EDD 就会延期</span>
+                <span class="note">"Trade-off" = the cost of saying yes. Naming it makes the PO's choice conscious, not hidden.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sequence</span> <em>Let's sequence it into a future sprint.</em></span>
+                <span class="chinese">我们排到后续 Sprint</span>
+                <span class="note">"Sequence" = order in time. Polite way of saying "not now, but yes, later".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Prioritise</span> <em>I'll prioritise it at the top of next sprint's backlog.</em></span>
+                <span class="chinese">我会优先排在下个 Sprint 顶部</span>
+                <span class="note">A real concession. Saying yes to the priority, no to the timing — gives the PO a win.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compromise</span> <em>I'd rather we don't compromise the 8M EDD for it.</em></span>
+                <span class="chinese">我更不愿为此牺牲 800 万 EDD</span>
+                <span class="note">"Compromise" = weaken. Pick which thing to compromise, don't just say "we'll do both badly".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Appreciate</span> <em>Appreciate your flexibility — let's land the 8M cleanly first.</em></span>
+                <span class="chinese">感谢你的灵活——我们先把 800 万稳稳交付</span>
+                <span class="note">End with appreciation. Pushing back without thanks damages the relationship; pushing back with thanks builds it.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Scope creep</strong> n. 范围蔓延 The slow, informal expansion of work into a sprint that wasn't part of the original commitment.</li>
+            <li><strong>New story</strong> n. 新的 Story A piece of work that doesn't belong in the current story. The polite "no".</li>
+            <li><strong>Descope</strong> v. 削减范围 To formally remove a story or AC from the sprint. The trade-off verb.</li>
+            <li><strong>Sequencing</strong> n. 排期 Deciding which sprint a story belongs in. A BA's main lever for "not now".</li>
+            <li><strong>Prioritise</strong> v. 优先排序 To put at the top of the backlog. A real concession the PO can take to their boss.</li>
+            <li><strong>Impact analysis</strong> n. 影响评估 A short doc that lists what a change touches: systems, AC, UAT, risk.</li>
+            <li><strong>Refinement</strong> n. Story 澄清会 The meeting to discuss and size a story before it enters a sprint.</li>
+            <li><strong>Backlog</strong> n. 待办列表 The ordered list of all stories not yet started. The PO owns priority.</li>
+            <li><strong>Chapter Lead</strong> n. 部落内职能负责人 HSBC term — leads the BA / dev / QA community of practice across a tribe.</li>
+            <li><strong>Trade-off</strong> n. 权衡 The cost of choosing one thing over another. Always name it explicitly.</li>
+            <li><strong>Regulatory commitment date</strong> n. 监管承诺日期 A formal date a regulator requires a change to be live. Drives sequencing.</li>
+            <li><strong>Relationship</strong> n. 关系 The long-term trust between BA, PO, and squad. Pushing back protects it — when done right.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "If we add X, we'd have to descope Y" — the second conditional for trade-offs</h3>
+        <p>
+            The cleanest way to surface a trade-off in English is the <strong>second conditional</strong>:
+            <em>"If we <strong>add</strong> the 5M trigger, we'd have to <strong>descope</strong> the FATCA
+            flag."</em> (If + present, would + base). The structure forces both sides of the trade-off into
+            the same sentence — the PO can't hear one without the other. Avoid <em>"we can't do this"</em>
+            (sounds like refusal); the conditional sounds like problem-solving.
+        </p>
+        <p>用第二条件句 (If + 现在时, would + 原形) 把代价和动作放在同一句话里——PO 听到提议时同时听到代价。</p>
+
+        <h3>② "My honest read" / "my take" — soft assertions from the BA's voice</h3>
+        <p>
+            <em>"My honest read: this is a new story"</em> uses a <strong>first-person softener</strong>
+            (<em>my read</em>, <em>my take</em>, <em>my view</em>) before a strong claim. It signals confidence
+            without sounding like you're overruling the PO. Compare: <em>"This is a new story"</em> (bossy)
+            vs <em>"My honest read is that this is a new story"</em> (collaborative). BAs default to the
+            softener form in cross-region pushback.
+        </p>
+        <p>"My honest read / my take / my view" 是 BA 在提强烈观点时的"软化器"，显示自信又不越权。</p>
+
+        <h3>③ "I'd rather we don't compromise…" — preferring one outcome over another</h3>
+        <p>
+            <em>"I'd <strong>rather</strong> we don't compromise the 8M EDD"</em> uses <strong>would rather +
+            base form</strong> to express a preference. It's the politest way to say "please don't do this
+            to me" — softer than <em>"I don't want you to…"</em>. Pair it with the reason
+            (<em>…because it would make the HKMA conversation harder</em>) and the alternative
+            (<em>…let's sequence it instead</em>). Three-part structure: prefer, reason, alternative.
+        </p>
+        <p>"I'd rather + 原形"表达偏好，比"I don't want"更礼貌。结构：偏好 + 原因 + 替代方案。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>"While you're at it" is the trigger word.</strong> Train your ear for scope-creep openers: <em>while you're at it</em>, <em>just a small change</em>, <em>can we also</em>, <em>pretty please</em>. None of them are small. They are polite ways of asking for free work.</li>
+            <li><strong>ACK → Trade-off → Alternative is the formula.</strong> Acknowledge the concern (it's real), name the trade-off (here's the cost), and offer the alternative (here's what we can do). Skip any of the three and the pushback feels rude.</li>
+            <li><strong>Be specific about the trade-off.</strong> "It would impact the squad" is vague. <em>"It would force us to descope the FATCA recalcitrant flag — which is also regulator-driven"</em> is specific. Specifics win arguments with POs.</li>
+            <li><strong>Give the PO a win.</strong> <em>"I'll prioritise it at the top of next sprint's backlog"</em> is a real concession. POs need to take something back to their boss. If you say "no" without giving them a win, they'll go over your head.</li>
+            <li><strong>Don't apologise for the sprint.</strong> <em>"Sorry, the squad is full"</em> sounds weak. <em>"The squad is at 95% capacity"</em> is factual. Apologising invites the PO to negotiate; stating the fact invites them to choose.</li>
+            <li><strong>Loop in the Chapter Lead only when needed.</strong> For a single new story, you and the PO can sort it. If the PO escalates ("I need this in the sprint"), loop in the Chapter Lead as the neutral arbiter. Don't escalate yourself; let the PO escalate first.</li>
+            <li><strong>Document the decision in the minutes.</strong> When the PO agrees to sequence it, write it down: <em>"Decision: HKD 5M re-CDD trigger to be shaped as a separate story, prioritised at top of Sprint 14 backlog."</em> Future-you will thank present-you.</li>
+            <li><strong>Relationship is a multi-sprint asset.</strong> A BA who always says yes gets overloaded. A BA who always says no gets bypassed. The skill is to say "not now, but yes, sequenced" — and to do it warmly enough that the PO comes back next sprint.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the pushback</h3>
+        <p>Translate the following pushback into natural Chinese, preserving the ACK → trade-off → alternative structure.</p>
+        <blockquote>
+            "Thanks for flagging, Jonathan — you're right, the HKMA tightening is a real concern. If we add the
+            HKD 5M trigger into this sprint, we'd have to descope either the FATCA recalcitrant flag or the
+            MAS file format check — neither is small, both are regulator-driven. My honest read: this is a
+            new story, not a small change. Here's what I can do: I'll shape the 5M trigger story today,
+            refine it tomorrow, and prioritise it at the top of next sprint's backlog. If the HKMA letter
+            has a dated commitment, I'm happy to walk it through with Priya. Appreciate your flexibility —
+            let's land the 8M cleanly first."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Jonathan 谢谢提醒，HKMA 收紧确实是个真问题。如果把 500 万触发加到这个 Sprint，我们就得砍掉 FATCA 不配合标记或 MAS 文件格式核对——两个都不是小项，都是监管要求的。我的真实看法是：这是一个新的 Story，不是小改动。我能做的：今天把 500 万触发的 Story 成型，明天过 Grooming，优先放到下个 Sprint backlog 顶部。如果 HKMA 来函有承诺日期，我乐意和 Priya 一起过一遍。感谢你的灵活——我们先把 800 万稳稳交付。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the bad pushback</h3>
+        <p>Which of these responses is most likely to <strong>protect the sprint AND keep the relationship</strong>? Why?</p>
+        <ol>
+            <li>"No, we can't do that this sprint. The squad is full."</li>
+            <li>"Sorry, no. The squad is at 95% capacity and adding this would slip the 8M EDD."</li>
+            <li>"Thanks for raising it. If we add the 5M trigger this sprint, we'd have to descope the FATCA flag — also regulator-driven. My honest read is this is a new story; I can shape it today and prioritise it at the top of next sprint's backlog. Can we lock refinement for Friday?"</li>
+            <li>"You always do this. We just agreed the sprint goal last week."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is the textbook answer: ACK → trade-off → alternative → concrete next step. ① is too blunt (no ACK, no alternative — PO will go over your head). ② has the apology and the fact, but no alternative — PO has nothing to take back. ④ is personal and damages the relationship. The skill is being both firm <em>and</em> warm.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're a BA on the CMB onboarding squad. It's Day 8 of the sprint. Mei, the Shanghai dev, has just pinged you: <em>"Hey Wei, the business also asked if we can add a WeChat Pay binding step to the onboarding flow. It's just one extra screen."</em> The sprint goal is to deliver a HK-only eKYC flow. Write a 5-line Teams response in English that pushes back politely, names the trade-off, and offers to shape a new story for next sprint. Use at least 4 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks for flagging, Mei. Adding the WeChat Pay binding screen would mean descoping either the HK eKYC happy path or the FATCA flag — both are sprint goals. My honest read: this is a new story, not a small change. Here's what I can do: I'll shape it today, refine it tomorrow, and prioritise it at the top of Sprint 14's backlog. Can we lock the refinement for Friday 11 AM HKT? Appreciate you flagging it early — let's land HK eKYC cleanly first."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="15-disagreeing-tech-lead.html" class="btn btn-primary">Next: Article 15 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: System Design Whiteboarding | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">07 · System Design Whiteboarding</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>System Design Whiteboarding</h1>
+        <p class="subtitle">Article 07 · Module 4: Live Design Sessions · Architect English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Drive a live system design on the whiteboard, take "what about…?" questions, and steer to a decision</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>2:00 PM HKT</strong>. You are a Solution Architect in the <em>RBWM Digital</em> tribe,
+            running a 90-minute system design session in a Hong Kong meeting room — but with Akash dialing in
+            from Bangalore and Priya from London. The whiteboard is up, the topic is the <em>OneWealth
+            real-time portfolio rebalancing service</em>, and you are designing it live in front of:
+            <strong>Margaret</strong> (Chief Architect, HK), <strong>Diego</strong> (peer architect, UK),
+            <strong>Mei</strong> (Tech Lead, Shanghai), and <strong>Rohit</strong> (Product Owner, RBWM Wealth).
+        </p>
+        <p>
+            下午 2 点香港时间，你是 <em>RBWM 数字化</em> tribe 的 Solution 架构师，在香港会议室主持一场 90
+            分钟的系统设计会——Akash 从班加罗尔、Priya 从伦敦拨入。白板已摆好，议题是
+            <em>OneWealth 实时投资组合再平衡服务</em>，你将在 Margaret（首席架构师，香港）、Diego（同侪架构师，英国）、
+            Mei（Tech Lead，上海）和 Rohit（产品负责人，RBWM 财富）面前现场设计。
+        </p>
+        <p>
+            The goal of a whiteboarding session is <strong>not</strong> to draw the perfect diagram — it is
+            to <em>align on the trade-offs</em> and capture a decision everyone can live with. You will take
+            "what about…?" questions, push back on scope creep, and steer toward an ADR. You already have
+            <strong>ADR-0158</strong> in flight, scoped to the rebalancing flow only.
+        </p>
+        <p>
+            白板会的目标<strong>不是</strong>画出完美的图，而是<em>对齐 trade-off</em>，并落定一个大家都能接受的决策。
+            你会面对 "what about…" 的追问，需要对范围蔓延说不，并把结论收敛到 ADR 里。
+            <strong>ADR-0158</strong> 已经在进行中，范围限定在再平衡流程。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">OK, everyone — thanks for joining. <em>Right, so</em> the goal of the next 90 minutes is to land on a design for the OneWealth rebalancing service, and to <em>close out ADR-0158</em>. I'll draw first, then we go round for "what about…?" questions.</span><span class="cn">好，谢谢大家参加。接下来的 90 分钟，我们要为 OneWealth 再平衡服务敲定一个设计，把 ADR-0158 收尾。我先画，画完大家按顺序提 "what about…" 的问题。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Stepping back</em> — rebalancing is triggered by three things: market-data ticks, customer-driven allocation changes, and an end-of-day scheduled rebalance. <em>Honest answer:</em> for v1, we are only designing the customer-driven and scheduled paths. The market-data tick path is <em>descope</em> for this ADR — that's a separate conversation.</span><span class="cn">退一步看——再平衡由 3 件事触发：行情 ticks、客户主动调仓、日终调度再平衡。说实话，v1 我们只设计客户主动和调度两条路径。行情 tick 路径在本次 ADR 里 descope，那是另一场对话。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Quick one</em> before you draw — is this <em>event-driven</em> or <em>request-response</em>? That choice changes the whole picture.</span><span class="cn">你画之前问一下——这个是<em>事件驱动</em>还是<em>请求-响应</em>？这个选择会改变整张图。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Hybrid.</em> Customer-driven allocation changes come in via an <em>API call</em> from the mobile app — that's request-response. Once we accept the change, we <em>publish an event to Kafka</em> and downstream services consume it for rebalancing, notification, and audit. The scheduled path is <em>pure event-driven</em> — a daily cron publishes a rebalance-required event.</span><span class="cn">好问题。<em>混合模式。</em>客户主动调仓走手机银行 API 调用——这是请求-响应。一旦接受，我们就<em>发事件到 Kafka</em>，下游服务订阅做再平衡、通知和审计。调度路径是<em>纯事件驱动</em>——日终 cron 发出 rebalance-required 事件。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en"><em>What about</em> the <em>idempotency</em> on the customer-driven path? If the mobile app retries because of a flaky network, we'd double-rebalance.</span><span class="cn"><em>如果</em>客户主动路径上的<em>幂等性</em>怎么处理？如果手机银行因为网络抖动重试，就会重复再平衡。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good catch. <em>The client must send an Idempotency-Key header</em> — a UUID v7 generated at the edge. We <em>dedup at the API gateway</em> for 24 hours against a Redis store. Same key in, same response out — even if the underlying rebalance is still running.</span><span class="cn">抓得好。<em>客户端必须带 Idempotency-Key 请求头</em>——UUID v7 在 API 边缘生成。我们在 <em>API 网关对 Redis 存储做 24 小时去重</em>。同一个 key 进来，给同一个响应——即使底层再平衡还在跑。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Rohit (PO, RBWM):</span>
+                <span class="text"><span class="en"><em>What about</em> the <em>audit trail</em>? Compliance will ask — who triggered the rebalance, what was the pre/post allocation, and was the customer's risk profile respected?</span><span class="cn"><em>审计</em>怎么办？合规会问——谁触发的再平衡、调仓前后配置是什么、客户风险偏好是否被尊重？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Fair point. <em>Every rebalance event carries a correlation ID</em> and we <em>write an immutable audit record</em> to the GLCM audit store — pre-allocation, post-allocation, risk-profile match, and a hash of the customer's consent. <em>Group Standard on auditability</em> requires 7-year retention, and the audit store is the only system that holds the personal data in cleartext.</span><span class="cn">说得对。<em>每个再平衡事件带一个 correlation ID</em>，我们往 GLCM 审计存储<em>写一条不可变记录</em>——调仓前、调仓后、风险偏好匹配、客户同意书哈希。<em>集团审计标准</em>要求 7 年保留，审计存储是唯一保留个人数据明文的系统。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead, Shanghai):</span>
+                <span class="text"><span class="en"><em>What about</em> the <em>failure mode</em>? If the downstream rebalancing service is down, does the API call hang or do we 5xx?</span><span class="cn"><em>失败模式</em>怎么设计？下游再平衡服务挂了，API 调用是挂起还是 5xx？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Honest answer — <em>we accept the change first</em> and publish the event, then <em>respond 202 Accepted</em> to the client. The actual rebalance happens asynchronously. If downstream is down, the event stays in Kafka with retries. <em>The client doesn't wait</em> — that would tie up a mobile thread for 30 seconds and tank the user experience.</span><span class="cn">说实话——我们<em>先接受这次调仓</em>并发事件，然后给客户端<em>返回 202 Accepted</em>。真正的再平衡是异步发生的。下游挂了，事件留在 Kafka 里重试。<em>客户端不等</em>——让客户端等 30 秒会毁掉用户体验。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Akash (Dev, Bangalore):</span>
+                <span class="text"><span class="en"><em>What about</em> the <em>read-after-write</em> consistency? If I update my allocation on the app, the next screen should show the new allocation — not the old one.</span><span class="cn"><em>读写一致性</em>怎么办？如果我在 App 上改了配置，下一屏应该看到新配置——不是旧的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Cache invalidation</em> is the trick. We use a <em>versioned read model</em> — every allocation change bumps a customer-level version, and the mobile app does a <em>read-your-writes</em> query against the latest version. <em>For now</em>, we accept up to a 2-second read lag; we'll re-evaluate in the next quarter once we have real load data.</span><span class="cn">好问题。关键是<em>缓存失效</em>。我们用<em>带版本号的读模型</em>——每次调仓把客户级版本号加一，手机 App 用<em>read-your-writes</em> 查询最新版本。<em>目前</em>，我们允许最多 2 秒的读延迟；下个季度有了真实负载数据再重评。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Right, so <em>to summarise before we close</em> — hybrid API + event-driven, idempotency via UUID v7, async 202 Accepted, GLCM audit, versioned read model with a 2-second read lag. <em>Are we aligned on this for ADR-0158?</em></span><span class="cn">好，<em>收尾前总结一下</em>——API + 事件驱动混合，UUID v7 幂等，异步 202 Accepted，GLCM 审计，2 秒读延迟的版本化读模型。<em>ADR-0158 我们对齐到这个方向了吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Yes. <em>I'll update ADR-0158 by EOD Friday</em> with these decisions and the explicit descope of the market-data tick path. <em>Thanks, everyone</em> — I'll circulate the whiteboard photo on the chapter Teams channel.</span><span class="cn">好。<em>我周五 EOD 前把 ADR-0158 更新好</em>，把这些决策写进去，并显式 descope 行情 tick 路径。<em>谢谢大家</em>——我会把白板照片发到 chapter 的 Teams 频道。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Right, so the goal of the next 90 minutes is…</em></span>
+                <span class="chinese">好，接下来的 90 分钟目标是……</span>
+                <span class="note">Whiteboard sessions need a stated goal at minute 0. If you don't say it, scope creeps.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Honest answer: for v1, we are only designing the customer-driven and scheduled paths.</em></span>
+                <span class="chinese">说实话，v1 我们只设计客户主动和调度两条路径</span>
+                <span class="note">Use "honest answer" when you're about to say "no" to scope. Polite, firm, and adult.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Descope</span> <em>The market-data tick path is descope for this ADR.</em></span>
+                <span class="chinese">行情 tick 路径在本次 ADR 里 descope</span>
+                <span class="note">"Descope" = explicitly remove from current scope. Naming it prevents "but what about…?" later.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hybrid</span> <em>Hybrid. Customer-driven comes in via an API call, then we publish an event.</em></span>
+                <span class="chinese">混合模式。客户主动走 API 调用，然后发事件</span>
+                <span class="note">"Hybrid" beats "it depends". When asked binary questions in whiteboard sessions, name a default pattern.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Idempotency</span> <em>The client must send an Idempotency-Key header — a UUID v7 generated at the edge.</em></span>
+                <span class="chinese">客户端必须带 Idempotency-Key 请求头——UUID v7 在边缘生成</span>
+                <span class="note">Always cite the dedup window. "24 hours against Redis" is concrete; "we dedup" is hand-wavy.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Audit</span> <em>Every event carries a correlation ID and we write an immutable audit record to GLCM.</em></span>
+                <span class="chinese">每个事件带一个 correlation ID，我们写一条不可变审计记录到 GLCM</span>
+                <span class="note">Cite the Group Standard (7-year retention) and the system of record (GLCM). Don't say "we log it".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Async</span> <em>We accept the change first and respond 202 Accepted. The client doesn't wait.</em></span>
+                <span class="chinese">我们先接受调仓然后返回 202 Accepted。客户端不等</span>
+                <span class="note">202 Accepted = "I got it, processing async". Don't ever make a mobile client wait 30 seconds.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CAP</span> <em>Cache invalidation is the trick. We use a versioned read model.</em></span>
+                <span class="chinese">关键是缓存失效。我们用带版本号的读模型</span>
+                <span class="note">"Read-your-writes" is the consistency promise. Pair it with a quantified read lag (e.g., 2 seconds).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Re-evaluate</span> <em>We'll re-evaluate next quarter once we have real load data.</em></span>
+                <span class="chinese">下个季度有了真实负载数据再重评</span>
+                <span class="note">Pairs with "for now". Promises a future review without committing to scope today.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Are we aligned on this for ADR-0158?</em></span>
+                <span class="chinese">ADR-0158 我们对齐到这个方向了吗？</span>
+                <span class="note">Always close with a decision and a name (the ADR). If you don't, the session was a chat, not a decision.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Whiteboarding session</strong> n. 白板会 A live design meeting where the architect draws the system in real time and takes questions.</li>
+            <li><strong>Request-response</strong> n. 请求-响应 A synchronous pattern where the client waits for an answer (REST APIs).</li>
+            <li><strong>Event-driven</strong> adj. 事件驱动的 A pattern where services communicate by publishing and consuming events (e.g., Kafka).</li>
+            <li><strong>Hybrid pattern</strong> n. 混合模式 Combining request-response (for sync API entry) with event-driven (for async fan-out).</li>
+            <li><strong>Idempotency-Key</strong> n. 幂等键 A client-generated unique key (often UUID v7) that lets the server dedup retries.</li>
+            <li><strong>202 Accepted</strong> n. HTTP 202 The HTTP status code meaning "received, processing async".</li>
+            <li><strong>Correlation ID</strong> n. 关联 ID A unique ID propagated across all services touched by one user action — for tracing and audit.</li>
+            <li><strong>Read-your-writes</strong> n. 读写一致性保证 The consistency guarantee that after a write, the same client can immediately read the new value.</li>
+            <li><strong>Versioned read model</strong> n. 版本化读模型 A read store that carries a per-record version to support cache invalidation.</li>
+            <li><strong>Audit trail</strong> n. 审计链 An immutable record of who did what, when — required for regulatory compliance.</li>
+            <li><strong>Read lag</strong> n. 读延迟 The maximum delay between a write completing and reads reflecting it (e.g., 2 seconds).</li>
+            <li><strong>Descope</strong> v. 削减范围 Explicitly remove something from current scope to prevent feature creep.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "What about…?" — the live-design probe</h3>
+        <p>
+            The single most important phrase in a whiteboarding session is <em>What about…?</em>. Architects
+            should <em>invite</em> it: <em>then we go round for "what about…?" questions</em>. It signals
+            psychological safety — no one is afraid to ask the awkward question. Junior devs will probe
+            things no senior will. <em>What about the failure mode?</em> <em>What about idempotency?</em> —
+            these are the questions that catch design holes.
+        </p>
+        <p>白板会上最重要的句型是 <em>What about…?</em>。架构师要主动邀请这种问题，给团队心理安全感。</p>
+
+        <h3>② "Honest answer:" — the soft "no"</h3>
+        <p>
+            <em>Honest answer: for v1, we are only designing the customer-driven and scheduled paths.</em>
+            The colon after <em>answer</em> signals "I'm about to tell you something you might not want to
+            hear". It's a politeness device — you're not being evasive, you're being direct but kind. Pair
+            it with the explicit descope so the team can challenge the descope, not the principle.
+        </p>
+        <p><em>Honest answer:</em> 后的冒号表示"我接下来说的你不一定爱听"。配合显式 descope 使用，更体面。</p>
+
+        <h3>③ "Right, so…" and "OK, so…" — the discourse markers</h3>
+        <p>
+            <em>Right, so the goal of the next 90 minutes is…</em> and <em>OK, so to summarise…</em>. These
+            <strong>discourse markers</strong> signal transitions in a live meeting: opening, mid-meeting
+            pivot, and closing. Use them to give the room a beat — they tell people "we are now moving
+            from X to Y". Without them, whiteboards feel chaotic and decisions get lost.
+        </p>
+        <p><em>Right, so…</em> 和 <em>OK, so…</em> 是现场会议里的过渡标记——开篇、转折、收尾都用得上。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Whiteboard ≠ perfect diagram.</strong> The goal is alignment on trade-offs, not a beautiful UML sequence diagram. Arrows that are roughly right beat arrows that are precisely wrong. If a dev can't follow your arrows, simplify, don't add more detail.</li>
+            <li><strong>Always invite "what about…?" questions.</strong> If nobody asks, the room is either intimidated or not paying attention. Both are your fault. Seed one yourself: "What about the failure mode? Anyone want to push on that?"</li>
+            <li><strong>Cross-region whiteboard etiquette.</strong> With Akash in Bangalore and Priya in London, dial-in folks see the board last. Take a photo every 5 minutes, drop it in the Teams channel, and read it out loud. Don't make Bangalore chase the whiteboard.</li>
+            <li><strong>Name a default pattern, not "it depends".</strong> "Hybrid" is a better answer than "it depends". Junior architects hide behind "it depends" because it sounds safe. Naming a pattern and its trade-off is the architect's job.</li>
+            <li><strong>Cite the Group Standard by name.</strong> When the PO asks about audit, don't say "we'll log it". Say "we'll write an immutable audit record to GLCM, 7-year retention per the Group Standard on auditability". The Group Standard trumps local preference.</li>
+            <li><strong>Close with a decision, not a summary.</strong> Bad close: "So we've discussed a lot of things." Good close: "Are we aligned on hybrid, UUID v7 idempotency, 202 Accepted, GLCM audit? — I'll update ADR-0158 by EOD Friday." A whiteboard without a decision was a chat.</li>
+            <li><strong>Descope in public, never in private.</strong> If you're going to cut market-data ticks from this ADR, say it out loud in the room. Otherwise, the PO will write a follow-up Jira asking "what about the tick path?" and you'll be back at the whiteboard in 2 weeks.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the whiteboarding summary</h3>
+        <p>Translate the following whiteboarding closing summary into natural Chinese. Pay attention to how the architect names the patterns and closes the session.</p>
+        <blockquote>
+            "Right, so to summarise before we close. We're recommending a hybrid pattern — REST for the
+            customer-driven allocation change, then publish a rebalance event to Kafka. Idempotency
+            via a UUID v7 key, dedup at the API gateway for 24 hours. We return 202 Accepted — the
+            client doesn't wait for the rebalance. Every event carries a correlation ID and we write
+            an immutable audit record to GLCM per the Group Standard on auditability. Read-your-writes
+            via a versioned read model, with a 2-second read lag for now. Market-data tick path is
+            descope — that's a separate ADR. Are we aligned? I'll update ADR-0162 by EOD Wednesday."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，收尾前总结一下。我们推荐混合模式——客户主动调仓走 REST，然后发再平衡事件到 Kafka。幂等用 UUID v7 key，在 API 网关做 24 小时去重。我们返回 202 Accepted——客户端不等再平衡完成。每个事件带 correlation ID，按集团审计标准写一条不可变审计记录到 GLCM。读模型用版本化读模型保证 read-your-writes，目前读延迟 2 秒。行情 tick 路径 descope——那是另一个 ADR。我们对齐了吗？我周三 EOD 前把 ADR-0162 更新好。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these whiteboard closes is most "architect-like" and which is most "PM-like"? Why?</p>
+        <ol>
+            <li>"OK, so we've discussed a lot of things today. Lots of good ideas. Let's keep talking next week."</li>
+            <li>"Right, so to summarise: hybrid REST + Kafka, UUID v7 idempotency, 202 Accepted, GLCM audit, 2-second read lag. Market-data tick is descope. Are we aligned? I'll update ADR-0162 by EOD Wednesday."</li>
+            <li>"Great session everyone. I'll send out the slides tomorrow and we can pick this up in the next chapter."</li>
+            <li>"I think we're almost there on the design. Let me just polish the diagram a bit and circulate it."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is architect-like (named patterns, explicit descope, ADR number, named deadline). ①, ③, and ④ are PM-like or facilitator-like — vague, action-less, no ADR. A common mistake new architects make is closing a whiteboard session like a facilitator. The architect closes with a decision and an ADR number.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're running a 90-minute whiteboarding session on the OnePay real-time fraud-screening service. The room includes a Chief Architect, a peer architect, a Tech Lead, a PO, and a dev dialling in from Bangalore. A junior dev asks: "What about the cold-start case — when a customer opens the app for the first time and we have no history?" Write your 60-second answer in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Good question. Honest answer — for v1, we accept a higher false-positive rate on the cold-start case and lean on a manual review queue. We score on a small set of static signals — device fingerprint, IP geo, KYC risk grade — and any score above 0.6 routes to a human reviewer. We do NOT use a deny-by-default policy; that would block legitimate new customers. The ML-based personalised model kicks in once we have at least 10 transactions for that customer. For now, we accept the higher manual-review load — we'll re-evaluate next quarter once we have cold-start data. I'll capture this as an explicit non-goal in the ADR."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="08-nfr-workshop.html" class="btn btn-primary">Next: Article 08 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

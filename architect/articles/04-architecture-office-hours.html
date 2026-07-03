@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 04: Architecture Office Hours | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">04 · Architecture Office Hours</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Architecture Office Hours</h1>
+        <p class="subtitle">Article 04 · Module 4: Unblocking the Squads · Architect English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 Drop-in sessions, answering dev questions, unblocking squads</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday, 16:00 HKT</strong>. You are running the weekly
+            <em>Architecture Office Hours</em> for the RBWM Digital tribe. This is an open,
+            drop-in Microsoft Teams session that the squads know about: <em>no agenda, no minutes,
+            no slides</em>. Anyone can join — Tech Leads, BAs, devs, QAs, Product Owners — to ask
+            architecture questions or get an unblock on a design decision.
+        </p>
+        <p>
+            周三下午 4 点香港时间，你在主持 <em>RBWM 数字化</em> tribe 的每周<em>架构师 Office Hours</em>。
+            这是一个开放的、可随时加入的 Teams 会议：<em>没有议程、没有会议纪要、没有 PPT</em>。
+            任何人都可以加入——Tech Lead、BA、开发、QA、Product Owner——来问架构问题或解除设计决策上的阻塞。
+        </p>
+        <p>
+            Today's queue has three drop-ins: <strong>Sam</strong> (Wealth TL) wants a quick read on
+            his caching strategy, <strong>Linh</strong> (Mobile BA) needs to understand the data
+            classification for an offline KYC feature, and <strong>Carlos</strong> (a junior dev on
+            Onboarding) has a question about why the squad was told to use the Group Kafka platform
+            instead of a managed AWS offering. The tone of office hours is informal — but the
+            answers go into Confluence afterwards.
+        </p>
+        <p>
+            今天的排队有 3 个 drop-in：<strong>Sam</strong>（Wealth TL）想要一个关于缓存策略的快速意见；
+            <strong>Linh</strong>（Mobile BA）需要理解离线 KYC 功能的数据分级；<strong>Carlos</strong>
+            （Onboarding 的初级开发）想问为什么 squad 被要求用 Group Kafka 平台，而不是 AWS 的托管
+            Kafka 服务。Office Hours 的氛围是随意的——但答案事后会写到 Confluence。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">OK, hi everyone, <em>office hours is open.</em> <em>Quick reminder — no slides, no minutes,</em> but I will <em>write up the answers on the chapter Confluence page</em> afterwards. First in the queue is Sam — <em>fire away.</em></span><span class="cn">好，大家好，<em>Office Hours 开始</em>。提醒一下——<em>没 PPT、没纪要</em>，但我会<em>把答案写到 chapter 的 Confluence 页面上</em>。队列里第一个是 Sam——<em>请讲</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead, Wealth):</span>
+                <span class="text"><span class="en">Thanks, Wei. <em>Quick one</em> — for the OneWealth rebalancing flow, we're considering <em>Redis read-through cache</em> for the position data. <em>Honest answer — the data is reconciliation-sensitive,</em> and I'm <em>worried about cache drift</em> between Redis and the source-of-truth DB. <em>Should we cache at all?</em></span><span class="cn">谢谢 Wei。<em>简短一个问题</em>——OneWealth 再平衡流程，我们考虑给头寸数据加 <em>Redis read-through 缓存</em>。说实话，<em>这些数据对账敏感</em>，我担心 Redis 和源数据库之间的<em>缓存漂移</em>。<em>到底该不该加缓存？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Honest answer — yes, cache, but with a different pattern.</em> For reconciliation-sensitive data, <em>I recommend cache-aside with a short TTL</em> and a <em>Kafka change-data-feed</em> that invalidates the cache on every source-of-truth write. <em>The pattern is in our chapter ADR-0089</em> — let me drop the link in the chat. <em>You should not use read-through</em> for this data class — <em>read-through hides the staleness</em>.</span><span class="cn">好问题。说实话——加缓存，但用别的模式。对对账敏感的数据，<em>我推荐 cache-aside + 短 TTL</em>，外加一个 <em>Kafka 变更数据流</em>在源库写入时让缓存失效。<em>这个模式在 chapter 的 ADR-0089 里</em>，我把链接发到聊天里。<em>这种数据类不要用 read-through</em>——<em>read-through 掩盖了陈旧性</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead, Wealth):</span>
+                <span class="text"><span class="en">Got it. <em>Quick follow-up — what's a sensible TTL?</em></span><span class="cn">收到。<em>追问一下——TTL 多大合适？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">For position data, <em>I'd start at 30 seconds</em> and tune from there. The Kafka invalidation handles the writes; the TTL is your <em>belt-and-braces</em>. <em>Document the TTL and invalidation strategy in the ADR-0203 update</em> — Diego will ask about it.</span><span class="cn">头寸数据，<em>我建议先设 30 秒</em>，再根据实际情况调。Kafka 失效处理写，TTL 是<em>双保险</em>。<em>把 TTL 和失效策略写进 ADR-0203 更新里</em>——Diego 会问的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Linh (BA, Mobile):</span>
+                <span class="text"><span class="en">Hi Wei, <em>thanks for slotting me in.</em> <em>Quick context</em> — the Mobile squad is designing an <em>offline KYC capture</em> feature for customers with poor connectivity. <em>What data classification applies to the captured ID images on the device?</em></span><span class="cn">Wei 你好，<em>谢谢你给我加塞</em>。简短背景——Mobile squad 在设计一个<em>离线 KYC 采集</em>功能，给网络不好的客户用。<em>设备上采集的身份证图片适用什么数据分级？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question, and <em>this is a Group Cyber policy question, so the answer is fixed.</em> Captured ID images are <em>customer PII at "Restricted" classification</em>. That means <em>encryption at rest on the device is mandatory</em> — AES-256 with a key in the platform keystore, not in app code. <em>You'll need an InfoSec design review before the feature ships.</em> I've <em>dropped the link to the Group Cyber data-classification standard in the chat.</em></span><span class="cn">好问题，<em>这是 Group Cyber 政策问题，答案是固定的</em>。采集的身份证图片属于<em>"Restricted"级别的客户 PII</em>。这意味着<em>设备静态加密是强制的</em>——AES-256，密钥放在平台 keystore 里，不能放在 app 代码里。<em>这个功能上线前要过 InfoSec 设计评审</em>。我<em>把 Group Cyber 数据分级标准的链接发到聊天里了</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Linh (BA, Mobile):</span>
+                <span class="text"><span class="en">That's super clear. <em>One more — do we need consent capture for the offline mode?</em></span><span class="cn">很清晰。<em>再问一个——离线模式需要采集同意吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Yes, before any capture.</em> The consent must be <em>explicit, granular, and recorded in the audit log with a timestamp and a device fingerprint</em>. <em>That's also a Group Standard.</em> If you need a consent template, <em>ping me after the session</em> — I have one from the RBWM onboarding project.</span><span class="cn"><em>是的，任何采集之前都需要</em>。同意书必须<em>明确、颗粒度细，并记录到审计日志里，带时间戳和设备指纹</em>。<em>这也是集团标准</em>。如果你需要同意书模板，<em>会后 ping 我</em>——我手上有 RBWM 开户项目的模板。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carlos (Junior Dev, Onboarding):</span>
+                <span class="text"><span class="en">Hi Wei, <em>thanks for the slot.</em> <em>Quick one</em> — my squad was told to use the <em>Group Kafka platform</em> for the Onboarding event flow, <em>not the AWS Managed Kafka</em> service. <em>Honest answer — I don't really get why</em>. <em>Is it a cost thing? A security thing?</em></span><span class="cn">Wei 你好，<em>谢谢你加塞</em>。简短问题——我们 squad 被要求 Onboarding 事件流用 <em>Group Kafka 平台</em>，<em>不是 AWS Managed Kafka</em>。说实话，<em>我不太明白为什么</em>。是成本考虑？安全考虑？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question, and <em>it's worth understanding the "why"</em>. It's <em>not primarily a cost decision</em>. <em>Honest answer — three reasons.</em> <em>One,</em> the Group Kafka platform is the <em>Group Standard</em> for event streaming — so <em>alignment with InfoSec and Group Cyber is already done</em>. <em>Two,</em> cross-tribe consumers (CMB, GPB, RBWM) all <em>subscribe to the same platform</em>, so we get <em>network-of-networks reuse</em>. <em>Three,</em> the Group platform has <em>built-in lineage and auditability</em> for MAS TRM and HKMA reviews. <em>AWS Managed Kafka would mean re-doing all of that.</em></span><span class="cn">好问题，<em>理解"为什么"很重要</em>。这<em>不是主要出于成本考虑</em>。说实话——3 个原因。<em>一、</em>Group Kafka 平台是事件流的<em>集团标准</em>——<em>与 InfoSec 和 Group Cyber 的对齐已经做好了</em>。<em>二、</em>跨 tribe 的消费者（CMB、GPB、RBWM）都<em>订阅同一个平台</em>，<em>网络协同复用</em>。<em>三、</em>Group 平台<em>内置了 lineage 和可审计性</em>，满足 MAS TRM 和 HKMA 评审。<em>用 AWS Managed Kafka 等于把这一切重做一遍。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Carlos (Junior Dev, Onboarding):</span>
+                <span class="text"><span class="en"><em>Got it, that makes sense.</em> <em>One more — is there a "why" page on Confluence I can read?</em></span><span class="cn"><em>明白了，有道理。</em><em>再问一个——Confluence 上有讲"为什么"的页面可以读吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Yes, ADR-0052 — "Group Standard for event-streaming platforms".</em> <em>I'll drop the link in the chat</em>. <em>And honestly — questions like this are exactly what office hours is for.</em> <em>If you're ever unsure why we do something a certain way, just ask.</em></span><span class="cn"><em>有的，ADR-0052——"事件流平台集团标准"</em>。<em>我把链接发到聊天里</em>。<em>说实话——这种问题就是 Office Hours 存在的意义</em>。<em>如果你不确定我们为什么这样做，直接问就行。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Office hours is open — quick reminder, no slides, no minutes.</em></span>
+                <span class="chinese">Office Hours 开始——提醒一下，没 PPT、没纪要</span>
+                <span class="note">Open with the format reminder. Office hours are informal, but the answers are not — they go to Confluence.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Handoff</span> <em>First in the queue is Sam — fire away.</em></span>
+                <span class="chinese">队列里第一个是 Sam——请讲</span>
+                <span class="note">"Fire away" = the queue-management verb. It tells the next person to start talking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick one — should we cache at all?</em></span>
+                <span class="chinese">简短一个问题——到底该不该加缓存？</span>
+                <span class="note">"Quick one" signals the question is bounded. Use it for the simple stuff. "Genuine concern" is for the harder stuff (see Article 03).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>I recommend cache-aside with a short TTL.</em></span>
+                <span class="chinese">我推荐 cache-aside + 短 TTL</span>
+                <span class="note">Always name the specific pattern, not just the goal. "Cache-aside" beats "use a cache".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cite</span> <em>The pattern is in our chapter ADR-0089 — let me drop the link.</em></span>
+                <span class="chinese">这个模式在 chapter 的 ADR-0089 里——我把链接发出来</span>
+                <span class="note">Always cite the ADR. "Drop the link in the chat" turns the answer from opinion into reference.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>You should not use read-through for this data class.</em></span>
+                <span class="chinese">这种数据类不要用 read-through</span>
+                <span class="note">Architects give negative recommendations too. "You should not X because Y" is just as architectural as "I recommend X".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reasoning</span> <em>Honest answer — three reasons.</em></span>
+                <span class="chinese">说实话——3 个原因</span>
+                <span class="note">"Three reasons" is the politeness device for explaining a Group Standard. It signals "I've thought about this and it's not arbitrary".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Standard</span> <em>This is a Group Cyber policy question, so the answer is fixed.</em></span>
+                <span class="chinese">这是 Group Cyber 政策问题，答案是固定的</span>
+                <span class="note">Use "the answer is fixed" when the question is policy-driven, not preference-driven. It saves a 20-minute debate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Handoff</span> <em>If you need a template, ping me after the session.</em></span>
+                <span class="chinese">如果你需要模板，会后 ping 我</span>
+                <span class="note">Office hours are a triage. Move detailed follow-ups to 1:1s — don't expand the meeting.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Invite</span> <em>Questions like this are exactly what office hours is for.</em></span>
+                <span class="chinese">这种问题就是 Office Hours 存在的意义</span>
+                <span class="note">Closing the loop with "this is what the session is for" invites the next junior dev to ask. It builds the office-hours culture.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Office hours</strong> n. 答疑时间 A regular, informal drop-in session where an architect answers squad questions.</li>
+            <li><strong>Drop-in</strong> adj. 随时加入的 A session that doesn't require a calendar invite or pre-registration. People join as needed.</li>
+            <li><strong>Read-through cache</strong> n. 读穿透缓存 A caching pattern where the cache itself loads missing data from the source on a miss.</li>
+            <li><strong>Cache-aside</strong> n. 旁路缓存 A pattern where the application code explicitly reads from the cache and falls back to the source.</li>
+            <li><strong>Cache drift</strong> n. 缓存漂移 A divergence between the cached value and the source-of-truth value, usually caused by missed invalidations.</li>
+            <li><strong>TTL (time-to-live)</strong> n. 生存时间 The duration a cached value is considered valid before it must be refreshed.</li>
+            <li><strong>Change-data-feed (CDF)</strong> n. 变更数据流 A stream of database write events used to invalidate downstream caches.</li>
+            <li><strong>Belt-and-braces</strong> phr. 双保险 Using two independent mechanisms to guard against the same failure mode.</li>
+            <li><strong>Data classification</strong> n. 数据分级 The categorisation of data by sensitivity (e.g., Public, Internal, Confidential, Restricted).</li>
+            <li><strong>Group Standard</strong> n. 集团标准 A bank-wide mandatory standard that overrides local preferences.</li>
+            <li><strong>Lineage</strong> n. 数据血缘 The trail that shows where data came from, how it was transformed, and where it went.</li>
+            <li><strong>Network of networks</strong> n. 网络协同 HSBC's pattern of having one platform (e.g., Kafka) shared across tribes for cross-tribe reuse.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Quick one" / "Quick follow-up" — the queue-management phrases</h3>
+        <p>
+            Office hours are queue-based, so the language is short. <em>Quick one</em> opens a bounded
+            question. <em>Quick follow-up</em> opens a second bounded question. <em>Quick context</em>
+            opens a short background. The format is always <em>Quick [noun] — [content]</em>. Use
+            these to signal "I'm not opening a 30-minute debate".
+        </p>
+        <p>"Quick one / Quick follow-up / Quick context" 是 Office Hours 的排队语言。结构是"Quick [名词] — [内容]"。</p>
+
+        <h3>② "It's not primarily a cost decision" — the architect's "why" framing</h3>
+        <p>
+            When a junior dev asks <em>is it a cost thing?</em>, the architect's answer is rarely
+            "yes". The pattern is <em>It's not primarily a [X] decision. [Number] reasons.</em>
+            — followed by an enumerated list. The structure: name the misconception, then list the
+            real reasons. This is a politeness device that respects the question without agreeing
+            with the framing.
+        </p>
+        <p>当 junior dev 问"是不是 X 考虑？"，架构师一般回答"这不是主要出于 X 考虑，N 个原因……"——这是一种礼貌化结构。</p>
+
+        <h3>③ "The answer is fixed" — the policy shield</h3>
+        <p>
+            <em>This is a Group Cyber policy question, so the answer is fixed</em> uses a
+            cause-and-effect structure: <em>[authority] + [policy question], so the answer is
+            [adjective]</em>. <em>Fixed</em> is the strongest word — it means "no debate, no
+            alternative, no trade-off". Reserve it for things driven by Group Standards, regulators,
+            or law. Using it for preferences is a credibility hit.
+        </p>
+        <p>"The answer is fixed" 是最强的政策表达——只在集团标准、监管、法律驱动的场景使用。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Office hours are not design reviews.</strong> No agenda, no minutes, no slides. But the answers are durable — they go on the chapter Confluence page. If a junior dev asks a question, write up the answer once, link the ADR, and the next person with the same question self-serves.</li>
+            <li><strong>Always cite the ADR.</strong> "The pattern is in ADR-0089 — let me drop the link" turns the answer from opinion into reference. Junior devs in particular need citations, not just confident answers.</li>
+            <li><strong>Junior devs ask the best "why" questions.</strong> When Carlos asks "is it a cost thing?", that's not a stupid question — it's the question. The "why" of a Group Standard is the most important thing you can teach. Take 60 seconds to explain three reasons.</li>
+            <li><strong>Group Cyber / Group Resilience answers are fixed.</strong> When a question hits a Group Standard, say so explicitly: "this is a Group Cyber policy question, so the answer is fixed." Don't open a debate on a closed policy. Cite the standard by name.</li>
+            <li><strong>Negative recommendations are valid architecture.</strong> "You should not use read-through for this data class" is a real architectural statement. Saying "no" is harder than saying "yes", but it's a service to the squad.</li>
+            <li><strong>Triage to 1:1s.</strong> Office hours are 30-60 minutes for 3-6 questions. If a question is going long, say "let's take this offline — book a 1:1 with me". Don't let one drop-in eat the queue.</li>
+            <li><strong>Encourage the next question.</strong> End with "questions like this are exactly what office hours is for". A junior dev who felt heard today will ask the next hard question tomorrow. That's how the architecture culture scales.</li>
+            <li><strong>Cross-region voice etiquette.</strong> Office hours in RBWM Digital tend to be HK + Bangalore heavy, with UK joining for the harder questions. If the question is regulator-driven (HKMA, FCA, MAS TRM), let the relevant region's voice answer first.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the office-hours answer</h3>
+        <p>Translate the following office-hours answer into natural Chinese. Pay attention to how the architect cites the ADR and gives a negative recommendation.</p>
+        <blockquote>
+            "Quick one — should we use AWS Lambda for the OneWealth nightly batch, or stick with
+            the on-prem job scheduler? Honest answer — stay on the on-prem job scheduler for now.
+            Three reasons. One, the on-prem scheduler is the Group Standard for batch workloads
+            above 30 minutes — alignment with Group Resilience is already done. Two, AWS Lambda
+            has a 15-minute execution cap, and the OneWealth batch runs for 45 minutes — we'd
+            need to break it up and stitch it back together, which is operational complexity we
+            don't need. Three, the on-prem scheduler integrates with the Group Cyber audit log
+            out of the box; AWS Lambda would need a custom integration. So my recommendation is
+            to keep the on-prem scheduler, and revisit if we ever break the batch into smaller
+            pieces."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"简短一个问题——OneWealth 的夜间批处理用 AWS Lambda 还是继续用本地的 job scheduler？说实话——暂时继续用本地的 job scheduler。3 个原因。一、本地 scheduler 是 30 分钟以上批处理负载的<em>集团标准</em>——和 Group Resilience 的对齐已经做好了。二、AWS Lambda 有 15 分钟执行上限，而 OneWealth 批处理要跑 45 分钟——我们就得拆开再拼回去，这是我们不需要的运维复杂度。三、本地 scheduler 开箱即用就能对接 Group Cyber 审计日志；AWS Lambda 需要做自定义对接。所以<em>我建议</em>继续用本地 scheduler，除非将来我们把批处理拆成小块再说。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the office-hours mistake</h3>
+        <p>Which of these office-hours answers is most aligned with HSBC architecture culture? Why?</p>
+        <ol>
+            <li>"You should just use Redis. It's faster and everyone uses it."</li>
+            <li>"I recommend cache-aside with a short TTL and a Kafka change-data-feed for invalidation. The pattern is in chapter ADR-0089 — I'll drop the link. You should not use read-through for reconciliation-sensitive data."</li>
+            <li>"That's a stupid question. Read the Group Standard and stop asking me."</li>
+            <li>"Whatever, pick what you want. It's not a big deal."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is HSBC-aligned: specific pattern, ADR citation, negative recommendation with a reason. ① is a "just use X" (architect anti-pattern). ③ is rude and breaks the office-hours culture. ④ abdicates the architect's role. Always name the pattern, cite the ADR, and say yes or no with a reason.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're running office hours for the GPB Digital tribe. A junior dev (Ravi, Bangalore) drops in with: "Quick one — for our GPB Markets pricing API, the squad is proposing to use a self-managed PostgreSQL cluster on EC2 instead of Amazon RDS. Is that OK?" Write your 60-second answer in English. Cite at least one Group Standard or ADR, give a clear yes/no recommendation, and end with an invitation. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Good question, Ravi. Honest answer — recommend Amazon RDS, not self-managed PostgreSQL on EC2. Three reasons. One, RDS is the Group Standard for managed relational databases — the operational runbook, the backup posture, and the Group Cyber audit hooks are already aligned. Two, self-managing PostgreSQL on EC2 means your squad owns the failover, the patching, and the backup verification — that's a real toil burden for a squad that should be focused on pricing logic. Three, the Group Resilience DR test rig only covers RDS, not self-managed EC2 databases — so you'd be carving out an exception. The pattern is in chapter ADR-0117 — I'll drop the link in the chat. So my recommendation is to use Amazon RDS, multi-AZ, with the standard backup window. And honestly — questions like this are exactly what office hours is for. If you're ever unsure why we do something a certain way, just ask."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="05-cross-team-sync.html" class="btn btn-primary">Next: Article 05 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

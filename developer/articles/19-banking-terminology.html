@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 19: Banking Terminology | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">19 · Banking Terminology</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Banking Terminology</h1>
+        <p class="subtitle">Article 19 · Module 5: HSBC Banking Context · Developer English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🏦 KYC / AML / Trade Finance / Sanctions / Credit Risk</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            You are joining a sprint on the <strong>Trade Finance Onboarding</strong> service. The BA (Priya)
+            is walking you through the user stories, and the Tech Lead (David) keeps dropping acronyms:
+            <em>KYC, CDD, EDD, AML, sanctions screening, trade-based money laundering (TBML), SWIFT MT103,
+            Letter of Credit (LC), UCP 600, sanctions list (OFAC, UN, EU, HMT), credit risk scoring</em>.
+            The standup chat has even more terms you don't recognise: <em>PEP, adverse media, false positive,
+            name match, fuzzy match, regulatory reporting (SAR/STR)</em>.
+        </p>
+        <p>
+            你刚加入 <strong>贸易融资开户</strong> 服务的 Sprint。BA Priya 在给你讲 user story，Tech Lead David 一直
+            抛缩写：<em>KYC、CDD、EDD、AML、制裁筛查、贸易洗钱（TBML）、SWIFT MT103、信用证（LC）、UCP 600、
+            制裁名单（OFAC、UN、EU、HMT）、信贷风险打分</em>。站会聊天里还有更多：<em>PEP、负面媒体、误报、姓名匹配、
+            模糊匹配、监管报告（SAR/STR）</em>。
+        </p>
+        <p>
+            You need to understand these terms <em>in spoken English</em> so you can ask sharp questions in
+            refinement, follow the standup, and write code that matches the business intent.
+        </p>
+    </section>
+
+    <!-- Dialogue Part 1: KYC / CDD / EDD -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 1: Onboarding & KYC</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Wei, this story is about the <em>onboarding flow</em> for corporate trade finance customers. <em>Per Group Policy</em>, every new customer <em>has to go through KYC</em> — <em>Know Your Customer</em> — before we can <em>open a relationship</em>.</span><span class="cn">Wei，这个故事是关于企业贸易融资客户的开户流程。根据集团政策，每个新客户在开户前都必须做 KYC（了解你的客户）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>Quick check</em> — is the KYC for the <em>standard CDD</em> level, or do we need <em>EDD</em> for <em>high-risk customers</em>?</span><span class="cn">明白。快速确认——KYC 是标准 CDD 级别，还是高风险客户要做 EDD？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Both. <em>By default</em>, every customer goes through <em>Customer Due Diligence (CDD)</em> — ID, address, <em>beneficial ownership</em>. But if the customer is a <em>PEP</em> — <em>Politically Exposed Person</em> — or operates in a <em>high-risk jurisdiction</em>, the system should <em>trigger Enhanced Due Diligence (EDD)</em>, which is a deeper review.</span><span class="cn">都要。默认情况下每个客户都要做客户尽职调查（CDD）——身份证、地址、实益所有人。但如果客户是 PEP（政治敏感人物），或在高风险司法管辖区运营，系统应触发强化尽职调查（EDD）——更深入的审查。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK. <em>From a tech standpoint</em>, does EDD need a <em>manual approval workflow</em>, or is it fully <em>automated</em> via a <em>rules engine</em>?</span><span class="cn">好的。从技术角度，EDD 需要人工审批流程吗？还是完全由规则引擎自动化？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">It's <em>partially automated</em>. The <em>risk score</em> is calculated automatically, but if the score is above the <em>EDD threshold</em>, the case <em>gets routed to a compliance analyst</em> for manual review. <em>That's the standard AML pattern</em> — <em>Anti-Money Laundering</em>.</span><span class="cn">部分自动化。风险分数自动计算，但如果分数超过 EDD 阈值，案件会路由到合规分析师做人工审查。这是标准的反洗钱（AML）模式。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Understood. <em>One more thing</em> — when a customer <em>fails KYC</em>, do we <em>block the onboarding</em> outright, or is there a <em>remediation path</em> like <em>re-submission</em> of documents?</span><span class="cn">明白。还有一件——客户 KYC 失败时，是直接阻止开户，还是有补救路径比如重新提交文件？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">There's a <em>remediation path</em>. The customer can <em>re-submit</em> the missing or <em>expired documents</em>. But if the failure is due to a <em>sanctions hit</em>, the case <em>goes straight to compliance</em> — <em>no remediation</em>, <em>account opening is blocked</em>.</span><span class="cn">有补救路径。客户可以重新提交缺失或过期的文件。但如果失败是因为命中制裁名单，案件会直接给合规——没有补救，开户被阻止。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dialogue Part 2: Sanctions / SWIFT -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 2: Sanctions Screening & SWIFT Messages</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">Wei, <em>just to set context</em> for the next story: every payment <em>goes through sanctions screening</em> against the <em>OFAC, UN, EU, and HMT lists</em>. The system does a <em>name match</em> — and I mean a <em>fuzzy match</em>, not just <em>exact match</em> — against the watchlists.</span><span class="cn">Wei，为下一个故事铺垫：每笔支付都要对照 OFAC、UN、EU 和 HMT 名单做制裁筛查。系统做名字匹配——我指的是模糊匹配，不只是精确匹配——对照观察名单。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Right. <em>And on a hit</em>, do we <em>block the transaction</em> immediately, or do we <em>route it to a sanctions analyst</em> for review first?</span><span class="cn">好的。命中后，是立即阻止交易，还是先路由给制裁分析师审查？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">It depends on the <em>match score</em>. <em>If the score is above 95%,</em> the system <em>auto-blocks</em> the transaction. If it's between 70–95%, <em>it goes to a human reviewer</em>. Below 70% is a <em>false positive</em> and the system <em>auto-clears</em> it.</span><span class="cn">取决于匹配分数。如果分数超过 95%，系统自动阻止交易；如果在 70-95% 之间，交给人工审查员；低于 70% 是误报，系统自动放行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>On the false positive side</em> — are we <em>allowed to learn</em> from past false positives to <em>improve the match algorithm</em>, or is the matching logic <em>locked down by Group Compliance</em>?</span><span class="cn">明白。关于误报——我们能从过去的误报中学习、改进匹配算法吗？还是匹配逻辑被集团合规部锁定了？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Good question.</em> The <em>base algorithm</em> is <em>provided by the vendor</em> — we can't change it. But we <em>can tune</em> the <em>match thresholds</em> and the <em>auto-clear / manual review bands</em>, as long as the changes are <em>approved by Compliance</em> and <em>logged for audit</em>.</span><span class="cn">好问题。基础算法由供应商提供——我们不能改。但我们可以调整匹配阈值和自动放行 / 人工审查的区间，只要变更经合规部批准并记录供审计。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Understood. <em>One last thing</em> on the SWIFT side: for <em>cross-border payments</em>, is the outbound message an <em>MT103</em> or an <em>MT202</em>? <em>Just want to make sure</em> I'm looking at the right <em>message schema</em>.</span><span class="cn">明白。最后一个 SWIFT 的问题：跨境支付，出站报文是 MT103 还是 MT202？想确认我看的是正确的报文 schema。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Tech Lead):</span>
+                <span class="text"><span class="en">For a <em>single customer transfer</em>, it's <em>MT103</em>. For a <em>bank-to-bank cover payment</em> — like a <em>correspondent bank</em> settlement — it's <em>MT202</em>. <em>For trade finance</em>, we also use <em>MT700</em> for the <em>Letter of Credit (LC)</em> issuance, <em>governed by UCP 600</em>.</span><span class="cn">单笔客户转账用 MT103。银行间头寸调拨——比如代理行结算——用 MT202。贸易融资还用 MT700 开立信用证（LC），受 UCP 600 约束。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Perfect, <em>that's exactly the clarification I needed</em>. <em>I'll dig into</em> the <em>SWIFT message library</em> this afternoon and <em>circle back</em> with any <em>open questions</em>.</span><span class="cn">完美，正是我需要的澄清。我今天下午研究 SWIFT 报文库，有开放问题再回来。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dialogue Part 3: Trade Finance / TBML -->
+    <section class="article-section">
+        <h2>2. Dialogue Part 3: Trade Finance & TBML</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Wei, this story is about <em>monitoring</em> for <em>Trade-Based Money Laundering (TBML)</em>. <em>In a nutshell:</em> customers can use <em>trade transactions</em> — invoices, <em>letters of credit</em>, <em>bill of lading</em> — to <em>move value across borders</em> in ways that <em>don't match the underlying goods</em>.</span><span class="cn">Wei，这个故事是关于监测贸易型洗钱（TBML）。简而言之：客户可以通过贸易交易——发票、信用证、提单——跨境转移价值，且与实际货物不匹配。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK. <em>So in practice</em>, the system needs to <em>flag</em> transactions where the <em>invoice value</em> is <em>significantly off</em> the <em>market price</em> for that commodity, or where the <em>trade volume</em> doesn't match the <em>customer's profile</em>?</span><span class="cn">好的。实际中，系统需要标记以下交易：发票金额与该商品市价明显不符，或交易量与客户画像不匹配。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Exactly. <em>One common red flag</em> is <em>over- or under-invoicing</em> — the customer <em>overstates</em> the invoice to <em>move money out</em> of the country, or <em>understates</em> it to <em>bring money in</em>. Another is <em>phantom shipping</em> — <em>bill of lading</em> with <em>no actual goods</em>.</span><span class="cn">没错。常见红旗之一是溢开或低开发票——客户高开发票把钱转出境外，或低开发票把钱转进。另一个是虚假运输——有提单但没有实际货物。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>On the data side</em> — do we have access to <em>commodity price feeds</em> in real time, or is this <em>batch-based</em> at <em>end of day</em>?</span><span class="cn">明白。数据方面——我们能拿到实时商品价格数据吗？还是只能每日批量？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en"><em>Mostly batch</em> — we get a <em>daily feed</em> from <em>Refinitiv</em> for <em>reference prices</em>. The monitoring job <em>runs nightly</em> and <em>generates alerts</em>. <em>Anything high-risk</em> is <em>routed to a TBML analyst</em>.</span><span class="cn">主要是批量——我们每天从 Refinitiv 拿到参考价格。监测任务每晚跑，生成告警。高风险的会路由给 TBML 分析师。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>That makes sense.</em> And if the analyst <em>confirms</em> the alert, we <em>file an SAR</em> — <em>Suspicious Activity Report</em> — with the regulator, <em>right</em>?</span><span class="cn">合理。如果分析师确认告警，我们就向监管机构提交 SAR（可疑活动报告），对吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Correct. <em>Locally it's called an STR</em> — <em>Suspicious Transaction Report</em> — and it goes to the <em>HKMA</em> in Hong Kong, or <em>FCA</em> in the UK, depending on the <em>booking entity</em>. <em>Don't worry about the filing itself</em> — that's a <em>manual process</em> by Compliance. <em>Our job is to generate the alert cleanly.</em></span><span class="cn">对。本地叫 STR（可疑交易报告），根据入账主体提交给香港 HKMA 或英国 FCA。报告本身不用担心——那是合规部的手工流程。我们要做的是把告警生成干净。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Clarify</span> <em>Quick check — is this standard CDD or do we need EDD?</em></span>
+                <span class="chinese">快速确认——是标准 CDD 还是要 EDD？</span>
+                <span class="note">Always clarify the <em>level</em> of due diligence before designing the workflow.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Trigger</span> <em>…the system should trigger Enhanced Due Diligence.</em></span>
+                <span class="chinese">系统应该触发增强型尽职调查</span>
+                <span class="note">"Trigger" is the standard verb for risk-based rules.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Route</span> <em>The case gets routed to a compliance analyst.</em></span>
+                <span class="chinese">案件被路由到合规分析师</span>
+                <span class="note">"Route to" = 自动/手工分派。HSBC 大量使用此表达。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Block</span> <em>Account opening is blocked.</em></span>
+                <span class="chinese">开户被阻止</span>
+                <span class="note">"Block" = 阻止/拒绝。区别于"reject"——"block"通常是风控/合规强制。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fuzzy match</span> <em>It's a fuzzy match, not just an exact match.</em></span>
+                <span class="chinese">这是模糊匹配，不只是精确匹配</span>
+                <span class="note">Sanctions screening always uses fuzzy matching to catch aliases.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Tune</span> <em>We can tune the match thresholds.</em></span>
+                <span class="chinese">我们可以调整匹配阈值</span>
+                <span class="note">区别于"change"——"tune"是参数微调，受 Compliance 监管。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">File</span> <em>We file an SAR with the regulator.</em></span>
+                <span class="chinese">我们向监管机构提交 SAR</span>
+                <span class="note">"File a report" = 正式提交监管报告。HK 叫 STR，UK 叫 SAR。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>Don't worry about the filing itself — our job is to generate the alert cleanly.</em></span>
+                <span class="chinese">提交报告本身不用你管——我们的职责是把告警生成得干净</span>
+                <span class="note">明确开发 vs 合规的职责边界，避免 scope creep。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>KYC (Know Your Customer)</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">了解你的客户</span>
+                <span class="note">Mandatory process of verifying customer identity before onboarding.</span>
+            </li>
+            <li>
+                <span class="english"><strong>CDD (Customer Due Diligence)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">客户尽职调查（标准级）</span>
+                <span class="note">Standard level: ID + address + beneficial ownership.</span>
+            </li>
+            <li>
+                <span class="english"><strong>EDD (Enhanced Due Diligence)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">增强型尽职调查</span>
+                <span class="note">Deeper review for PEPs, high-risk jurisdictions, or complex structures.</span>
+            </li>
+            <li>
+                <span class="english"><strong>PEP (Politically Exposed Person)</strong> <span class="tag gold">n.</span></span>
+                <span class="chinese">政治敏感人物</span>
+                <span class="note">Someone holding a prominent public function. Triggers EDD automatically.</span>
+            </li>
+            <li>
+                <span class="english"><strong>AML (Anti-Money Laundering)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">反洗钱</span>
+                <span class="note">The framework of laws, regulations, and procedures to detect and prevent money laundering.</span>
+            </li>
+            <li>
+                <span class="english"><strong>TBML (Trade-Based Money Laundering)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">贸易洗钱</span>
+                <span class="note">Using trade transactions (invoices, LCs) to move value illicitly across borders.</span>
+            </li>
+            <li>
+                <span class="english"><strong>Sanctions screening</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">制裁名单筛查</span>
+                <span class="note">Screening customers and payments against OFAC / UN / EU / HMT watchlists.</span>
+            </li>
+            <li>
+                <span class="english"><strong>OFAC / HMT / UN / EU sanctions list</strong> <span class="tag">n.</span></span>
+                <span class="chinese">制裁名单（美国/英国/联合国/欧盟）</span>
+                <span class="note">OFAC (US), HMT (UK), UN (UN), EU (EU). All must be screened.</span>
+            </li>
+            <li>
+                <span class="english"><strong>false positive</strong> <span class="tag">n.</span></span>
+                <span class="chinese">误报</span>
+                <span class="note">A match that turns out to be incorrect. System auto-clears below threshold.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SWIFT MT103 / MT202 / MT700</strong> <span class="tag">n.</span></span>
+                <span class="chinese">SWIFT 报文类型</span>
+                <span class="note">MT103 = customer credit transfer. MT202 = bank-to-bank cover. MT700 = LC issuance.</span>
+            </li>
+            <li>
+                <span class="english"><strong>Letter of Credit (LC)</strong> <span class="tag gold">n.</span></span>
+                <span class="chinese">信用证</span>
+                <span class="note">Bank guarantee of payment to the seller, conditional on shipping documents.</span>
+            </li>
+            <li>
+                <span class="english"><strong>UCP 600</strong> <span class="tag">n.</span></span>
+                <span class="chinese">跟单信用证统一惯例 (2007 修订版)</span>
+                <span class="note">The ICC rules governing LCs. <em>Uniform Customs and Practice for Documentary Credits.</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>SAR / STR (Suspicious Activity / Transaction Report)</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">可疑交易报告</span>
+                <span class="note">SAR (US/UK), STR (HK/SG). Filed with the regulator when AML alerts are confirmed.</span>
+            </li>
+            <li>
+                <span class="english"><strong>Beneficial Ownership</strong> <span class="tag">n.</span></span>
+                <span class="chinese">实益所有权</span>
+                <span class="note">The real person who ultimately owns or controls the entity, not the nominee.</span>
+            </li>
+            <li>
+                <span class="english"><strong>Adverse media screening</strong> <span class="tag">n.</span></span>
+                <span class="chinese">负面媒体筛查</span>
+                <span class="note">Screening customers against negative news (sanctions, fraud, criminal activity).</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Should trigger / gets routed / is blocked" — Passive for Compliance Rules</h3>
+        <p>Compliance and AML rules are usually described passively — they <em>act on the customer</em>:</p>
+        <ul>
+            <li><em>The system <strong>triggers</strong> EDD</em> (active, but rare)</li>
+            <li>✅ <em>EDD <strong>is triggered</strong></em> (passive — much more common in compliance speak)</li>
+            <li>✅ <em>The case <strong>is routed</strong> to a compliance analyst.</em></li>
+            <li>✅ <em>Account opening <strong>is blocked</strong>.</em></li>
+        </ul>
+
+        <h3>② "Per Group Policy" / "Per the Standard" — Citing a Rule</h3>
+        <p>Always cite the <em>source</em> of a compliance rule:</p>
+        <ul>
+            <li>❌ <em>"Customers have to do KYC."</em> (too vague)</li>
+            <li>✅ <em>"<strong>Per Group Policy</strong>, customers have to do KYC."</em></li>
+            <li>✅ <em>"<strong>Per the Group AML Standard</strong>, …"</em></li>
+        </ul>
+
+        <h3>③ "In a nutshell" / "Just to set context" — Framing Helpers</h3>
+        <p>Useful phrases to start a topic or summarise:</p>
+        <ul>
+            <li><em><strong>In a nutshell</strong> — customers use trade transactions to move value across borders.</em></li>
+            <li><em><strong>Just to set context</strong> — every payment goes through sanctions screening.</em></li>
+            <li><em><strong>By default</strong>, every customer goes through CDD.</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🏦 Banking Jargon at HSBC</div>
+            <ol>
+                <li><strong>Acronyms are the norm.</strong> Everyone drops <em>KYC, AML, CDD, EDD, TBML, SAR, MT103</em> mid-sentence. Don't panic — ask for spelling and meaning. It's expected.</li>
+                <li><strong>Region matters.</strong> <em>SAR</em> (US/UK) vs <em>STR</em> (HK/SG) is the most common gotcha. Always confirm which jurisdiction the user story targets.</li>
+                <li><strong>Compliance is the authority.</strong> Devs can <em>tune thresholds</em>, but <em>the base algorithm is owned by Compliance / the vendor</em>. Don't try to change it.</li>
+                <li><strong>"The Group Standard" is sacred.</strong> When someone says <em>"per the Group Standard"</em>, that's the end of the argument. Follow it.</li>
+            </ol>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes</div>
+            <ul>
+                <li>❌ Saying <em>"I think we can skip KYC for low-value customers"</em> — never acceptable at HSBC.</li>
+                <li>✅ <em>"Per the Group KYC Standard, all customers must complete CDD. For low-value, do we apply a <strong>simplified due diligence (SDD)</strong> tier?"</em></li>
+                <li>❌ <em>"I'll just hard-code the sanctions list."</em> — Lists change weekly. Use the vendor feed.</li>
+                <li>❌ Calling KYC a <em>"checkbox"</em> — at HSBC, KYC is a <strong>regulatory obligation</strong>, not a UX step.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to banking English:</div>
+                <p>"所有跨境支付都要做OFAC、UN、EU、HMT制裁名单筛查。如果匹配分数高于95%，系统自动阻止；70-95%之间，路由到人工审核；70%以下，自动放行。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "All cross-border payments <em>go through sanctions screening</em> against the <em>OFAC, UN, EU, and HMT lists</em>. <em>If the match score is above 95%</em>, the transaction <em>is auto-blocked</em>. <em>Between 70–95%</em>, <em>it gets routed to a human reviewer</em>. <em>Below 70%</em> is a <em>false positive</em> and <em>is auto-cleared</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the banking terms:</div>
+                <p>"Every new customer must go through <em>____ (KYC)</em> — standard <em>____ (CDD)</em> by default. PEPs and high-risk customers trigger <em>____ (EDD)</em>. Payments are screened against the <em>____ (sanctions) list</em> with a <em>____ (fuzzy) match</em>. Confirmed AML alerts are filed as <em>____ (SAR) or ____ (STR)</em> with the regulator."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>KYC</em> / <em>CDD</em> / <em>EDD</em> / <em>sanctions</em> / <em>fuzzy</em> / <em>SAR</em> / <em>STR</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play: Talk to a BA about a KYC story</div>
+                <p>You are a developer. A new user story says: "All onboarding flows must perform KYC." You need to ask: (a) standard CDD or EDD, (b) which jurisdictions, (c) what happens on KYC fail, (d) who owns the rule engine. Write 4 sharp clarifying questions.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Hi Priya, <em>a few clarifying questions</em> on the KYC story before I start:<br><br>
+                    (1) <em>Per the Group Standard</em>, is this <em>standard CDD</em> only, or do we also need to <em>trigger EDD</em> for <em>PEPs</em> and <em>high-risk jurisdictions</em>?<br><br>
+                    (2) Which <em>jurisdictions</em> are in scope for this sprint — UK, HK, mainland China only, or also <em>cross-border</em>?<br><br>
+                    (3) <em>On KYC failure</em> — do we <em>block the onboarding</em> outright, or is there a <em>remediation path</em> for <em>re-submission of documents</em>?<br><br>
+                    (4) <em>Who's owning the rule engine</em> for the <em>EDD trigger logic</em> — is it an <em>existing Compliance service</em>, or are we <em>building it from scratch</em>?<br><br>
+                    <em>Once I have these answers,</em> I can scope the story <em>cleanly</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Explain a TBML monitoring concept in plain English</div>
+                <p>Explain Trade-Based Money Laundering to a junior dev who has no banking background. Cover: (a) what it is, (b) one common red flag, (c) what the system should do.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "TBML — <em>Trade-Based Money Laundering</em> — is when a customer <em>uses trade transactions</em>, like <em>invoices</em> or <em>letters of credit</em>, to <em>move value across borders</em> in ways that <em>don't match the underlying goods</em>. <em>In a nutshell</em>, it's a way to <em>launder money through trade</em>.<br><br>
+                    <em>One common red flag</em> is <em>over- or under-invoicing</em> — the customer <em>overstates</em> the invoice to <em>move money out</em> of the country, or <em>understates</em> it to <em>bring money in</em>. Another is <em>phantom shipping</em> — a <em>bill of lading</em> with <em>no actual goods</em> behind it.<br><br>
+                    <em>What the system should do</em>: compare the <em>invoice value</em> against the <em>market reference price</em> for that commodity, and <em>flag</em> anything <em>significantly off</em>. <em>High-risk alerts</em> are <em>routed to a TBML analyst</em> for review, and <em>confirmed cases</em> are <em>filed as an SAR / STR</em> with the regulator."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="18-compliance-and-infosec.html">
+            <span class="label">← Previous</span>
+            <span class="title">18 · Compliance & Info Sec</span>
+        </a>
+        <a class="next" href="20-hsbc-systems-and-process.html">
+            <span class="label">Next Article →</span>
+            <span class="title">20 · HSBC Systems & Process</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 19 · Banking Terminology · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

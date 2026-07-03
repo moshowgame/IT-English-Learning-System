@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: Saying No to a Tech That Doesn't Fit | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">15 · Saying "No" to a Tech That Doesn't Fit</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Saying "No" to a Tech That Doesn't Fit</h1>
+        <p class="subtitle">Article 15 · Module 5: Difficult Conversations · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 Why a popular tech is wrong for this banking context — polite but firm "no"</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday, 2:00 PM HKT</strong>. A new Tech Lead, <strong>Vikram</strong>
+            (joined HSBC 6 months ago from a fintech in Bangalore), has published a proposal on
+            Confluence titled <em>"Re-architecting the OnePay transaction ledger on
+            <strong>blockchain</strong>"</em>. The pitch: blockchain gives us <em>immutability,
+            cryptographic audit trail,</em> and <em>removes the need for reconciliation</em>.
+        </p>
+        <p>
+            周三下午 2 点香港时间，新 Tech Lead <strong>Vikram</strong>（6 个月前从班加罗尔一家
+            fintech 加入汇丰）在 Confluence 上发了一份提案：<em>"用 <strong>区块链</strong>
+            重新设计 OnePay 交易台账"</em>。卖点是：区块链提供<em>不可篡改性、加密审计追踪</em>，
+            还能<em>省掉对账</em>。
+        </p>
+        <p>
+            You — the Solution Architect for OnePay — see the proposal. <em>Blockchain is genuinely
+            good at things,</em> but it is the wrong tool for a <em>high-throughput, single-jurisdiction
+            settlement ledger</em> in a regulated bank. The OnePay ledger processes <em>~3,000 TPS
+            peak</em>, must clear transactions in <em>&lt;200ms</em>, and is subject to
+            <em>HKMA, MAS TRM, and PCI-DSS</em>. The proposal is also a <em>Group Standard
+            violation</em>: HSBC's official position is that <em>permissioned DLT is permitted only
+            for specific cross-bank settlement use cases</em>, not for in-bank ledgers.
+        </p>
+        <p>
+            你——OnePay 的 Solution 架构师——看到了提案。<em>区块链确实有它的长处，</em>但它
+            不是<em>高吞吐、单司法管辖区的结算台账</em>在受监管银行的正确工具。OnePay 台账
+            峰值处理 <em>~3,000 TPS</em>，交易须在 <em>&lt;200ms</em> 内清算，适用 <em>HKMA、MAS TRM
+            和 PCI-DSS</em>。这份提案还是<em>集团标准违规</em>：汇丰的官方立场是
+            <em>许可制 DLT 只允许用于特定的跨行结算场景</em>，不允许用于银行内部台账。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Vikram (Tech Lead, OnePay):</span>
+                <span class="text"><span class="en"><em>Hi Wei — welcome to the design review.</em> I've published a proposal to <em>re-architect the OnePay transaction ledger on blockchain</em> — <em>permissioned DLT,</em> with a <em>consortium node per region</em>. It gives us <em>immutability, cryptographic audit,</em> and <em>removes reconciliation overhead.</em> <em>Could you take a look?</em></span><span class="cn"><em>Wei 你好——欢迎参加设计评审。</em>我发了一份提案，<em>把 OnePay 交易台账重构到区块链上</em>——<em>许可制 DLT，</em><em>每区域一个联盟节点</em>。能拿到<em>不可篡改性、加密审计</em>，<em>省掉对账开销</em>。<em>能看一下吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Thanks, Vikram — bold proposal.</em> <em>Just to set the tone</em> — blockchain is a great tool <em>for the right problem</em>. <em>I don't think OnePay's ledger is that problem.</em> Let me walk you through the fit. <em>This isn't a no because blockchain is bad — it's a no because the problem isn't a match.</em></span><span class="cn"><em>Vikram，谢谢——提案很有魄力。</em><em>先把基调说清楚</em>——区块链对<em>合适的问题</em>是个好工具。<em>我不认为 OnePay 的台账是那个问题。</em>我跟你过一下适配性。<em>这个"不"不是因为区块链不好——是因为问题不匹配。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>First, throughput.</em> OnePay processes <em>~3,000 TPS peak</em> with a <em>settlement SLA of <200ms</em>. The fastest permissioned DLTs we benchmarked top out around <em>1,500 TPS</em> with <em>~2-second finality</em>. <em>That's a 2× throughput miss and 10× latency miss.</em></span><span class="cn"><em>先说吞吐。</em>OnePay 峰值处理 <em>~3,000 TPS</em>，<em>结算 SLA <200ms</em>。我们基准测试过的最快许可制 DLT 大约 <em>1,500 TPS</em>，<em>~2 秒最终性</em>。<em>吞吐差 2 倍，延迟差 10 倍。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Second, regulatory.</em> <em>Group Standard G-DLT-2024-01</em> explicitly limits <em>permissioned DLT to cross-bank settlement use cases.</em> An in-bank ledger does not qualify — and getting an exemption would require <em>HKMA + MAS TRM + PCI-DSS sign-off,</em> which is a <em>12-month process at best.</em></span><span class="cn"><em>其次是合规。</em><em>集团标准 G-DLT-2024-01</em> 明确把<em>许可制 DLT 限定在跨行结算场景</em>。银行内部台账不符合——要拿到豁免需要 <em>HKMA + MAS TRM + PCI-DSS 签批，</em>乐观估计也要 <em>12 个月</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Vikram (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Fair points on throughput.</em> But <em>the immutability story is genuinely strong</em> — regulators <em>love</em> tamper-evident audit trails. <em>And PCI-DSS scope shrinks</em> because card data lives on-chain with <em>zero plaintext retention.</em></span><span class="cn"><em>吞吐这点你说得对。</em>但<em>不可篡改性这一点是真的强</em>——监管<em>喜欢</em>防篡改审计追踪。而且<em>PCI-DSS 范围缩小了</em>，因为卡数据在链上，<em>零明文保留</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Good points — let me address each.</em> On immutability: <em>we already have it</em> via <em>WORM storage in S3 with cryptographic hashing</em> (Group Standard G-AUDIT-2023-04). It's <em>regulator-accepted,</em> and it doesn't need a consensus protocol. On PCI-DSS scope: <em>WORM + tokenisation at the API edge</em> already gives us scope reduction, <em>without the throughput and latency cost.</em></span><span class="cn"><em>好观点——我逐个回应。</em>关于不可篡改性：<em>我们已经有了</em>，用的是 <em>S3 的 WORM 存储加加密哈希</em>（集团标准 G-AUDIT-2023-04）。监管<em>认可</em>，而且不需要共识协议。关于 PCI-DSS 范围：<em>WORM + API 入口的 tokenisation</em>已经实现范围缩减，<em>不用付出吞吐和延迟的代价</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Third, reconciliation.</em> You said blockchain <em>removes reconciliation</em>. <em>Honest answer</em> — with a <em>consortium node per region</em>, you still reconcile <em>across regions</em>. And <em>reconciliation isn't actually the bottleneck</em> — the bottleneck is the <em>FX rate refresh + sanctions-screening latency,</em> which is upstream of the ledger.</span><span class="cn"><em>第三，对账。</em>你说区块链<em>省掉对账</em>。<em>坦白说</em>——用了<em>每区域一个联盟节点</em>的方案，<em>跨区域</em>还是需要对账。而且<em>对账其实不是瓶颈</em>——瓶颈是<em>汇率刷新 + 制裁名单筛查的延迟，</em>这两个在台账上游。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Vikram (Tech Lead):</span>
+                <span class="text"><span class="en"><em>I hear you.</em> But if we <em>don't experiment with DLT now,</em> we <em>fall behind</em> the market. <em>Other banks are doing this.</em></span><span class="cn"><em>听明白了。</em>但如果我们<em>现在不试 DLT，</em>就<em>落后于</em>市场了。<em>其他银行都在做。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Good challenge.</em> <em>Honest answer</em> — "other banks are doing it" is a <em>competitive-pressure argument,</em> not a <em>fitness-for-purpose argument.</em> <em>We don't pick tech because rivals picked it;</em> we pick tech because the problem demands it. <em>If we want to build DLT muscle,</em> let's do it on a <em>cross-bank settlement pilot with Group Treasury</em> — that's the Group-approved use case.</span><span class="cn"><em>挑战得好。</em><em>坦白说</em>——"其他银行在做"是<em>竞争压力论点，</em>不是<em>适配性论点。</em><em>我们不因为对手选了就选；</em>我们因为问题需要才选。<em>如果想建 DLT 能力，</em>我们<em>和集团 Treasury 做一个跨行结算的 PoC</em>——那是集团批准的场景。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>My recommendation</em> — <em>close this proposal,</em> and <em>instead,</em> let me <em>loop you in with the Group Treasury DLT pilot</em> that's already in flight. <em>You bring the engineering depth,</em> they bring the regulatory cover. <em>That's where blockchain will actually move the needle at HSBC.</em></span><span class="cn"><em>我的建议是</em>——<em>关掉这份提案，</em><em>改一下方向，</em>我把你<em>拉到集团 Treasury 的 DLT 试点项目</em>里，那边已经在跑。<em>你带工程深度，</em>他们带监管背书。<em>那才是区块链在汇丰真正能落地的地方。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Vikram (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Appreciated, Wei.</em> I <em>wasn't aware</em> of the G-DLT-2024-01 standard or the Group Treasury pilot. <em>Honest answer</em> — <em>I'd be keen to join the pilot</em> rather than push the OnePay proposal. Can you <em>introduce me to the pilot lead?</em></span><span class="cn"><em>Wei，感谢。</em>我<em>之前不知道</em> G-DLT-2024-01 标准或集团 Treasury 试点。<em>坦白说</em>——<em>我更愿意加入试点</em>，而不是继续推 OnePay 的提案。能<em>把我介绍给试点 lead 吗？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Soft</span> <em>Just to set the tone — blockchain is a great tool for the right problem. I don't think OnePay's ledger is that problem.</em></span>
+                <span class="chinese">先把基调说清楚——区块链对合适的问题是好工具。我不认为 OnePay 的台账是那个问题</span>
+                <span class="note">"For the right problem" — separating the tech from the use case. You're not attacking blockchain; you're saying the fit is wrong.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>This isn't a no because blockchain is bad — it's a no because the problem isn't a match.</em></span>
+                <span class="chinese">这个"不"不是因为区块链不好——是因为问题不匹配</span>
+                <span class="note">Repeat this distinction out loud. It immunises the conversation against the "you don't like new tech" framing.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Benchmark</span> <em>That's a 2× throughput miss and 10× latency miss.</em></span>
+                <span class="chinese">吞吐差 2 倍，延迟差 10 倍</span>
+                <span class="note">"Miss" is the architect's word for "fails the NFR by this factor". Always pair it with the SLA so the number is meaningful.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Group</span> <em>Group Standard G-DLT-2024-01 explicitly limits permissioned DLT to cross-bank settlement use cases.</em></span>
+                <span class="chinese">集团标准 G-DLT-2024-01 明确把许可制 DLT 限定在跨行结算场景</span>
+                <span class="note">Cite the Group Standard by name + number. The conversation ends there — you don't relitigate Group Standards.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Address</span> <em>Good points — let me address each.</em></span>
+                <span class="chinese">好观点——我逐个回应</span>
+                <span class="note">When the Tech Lead has a real point, name it before you counter. Skipping their best point is a face-loss move.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Existing</span> <em>We already have it via WORM storage in S3 with cryptographic hashing.</em></span>
+                <span class="chinese">我们已经有了，用的是 S3 的 WORM 存储加加密哈希</span>
+                <span class="note">"We already have it" is the strongest counter to a "we need this new thing" pitch. The bank rarely has zero capability in a space.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Bottleneck</span> <em>Reconciliation isn't actually the bottleneck — the bottleneck is upstream.</em></span>
+                <span class="chinese">对账其实不是瓶颈——瓶颈在上游</span>
+                <span class="note">Redirect to the real bottleneck. New tech rarely fixes the actual constraint; the team has misdiagnosed.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Caution</span> <em>"Other banks are doing it" is a competitive-pressure argument, not a fitness-for-purpose argument.</em></span>
+                <span class="chinese">"其他银行在做"是竞争压力论点，不是适配性论点</span>
+                <span class="note">Naming the fallacy in the argument is the architect's move. Don't reject the conclusion; reject the logic.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Redirect</span> <em>If we want to build DLT muscle, let's do it on a cross-bank settlement pilot with Group Treasury.</em></span>
+                <span class="chinese">如果想建 DLT 能力，我们和集团 Treasury 做一个跨行结算的 PoC</span>
+                <span class="note">Always pair a "no" with a "yes elsewhere". A pure no blocks the engineer; a redirected no gives them a path.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Cover</span> <em>You bring the engineering depth, they bring the regulatory cover.</em></span>
+                <span class="chinese">你带工程深度，他们带监管背书</span>
+                <span class="note">"Regulatory cover" is a politeness word for "they've already done the HKMA / MAS / FCA work". Saves the engineer a year of politics.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Permissioned DLT (Distributed Ledger Technology)</strong> n. 许可制分布式账本技术 A blockchain variant where participants are pre-approved (vs. public chains).</li>
+            <li><strong>Consortium node</strong> n. 联盟节点 A node operated by one member of a permissioned blockchain consortium (e.g., one node per region).</li>
+            <li><strong>Immutability</strong> n. 不可篡改性 The property that historical records cannot be altered after the fact.</li>
+            <li><strong>WORM storage (Write Once Read Many)</strong> n. 一次写入多次读取存储 A storage class where data, once written, cannot be modified — used for audit logs.</li>
+            <li><strong>Tokenisation</strong> n. 令牌化 Replacing sensitive data (e.g., PAN) with a non-sensitive equivalent (a token) to reduce PCI-DSS scope.</li>
+            <li><strong>Finality</strong> n. 最终性 The guarantee that a transaction, once confirmed, will not be reversed — measured in seconds for DLT.</li>
+            <li><strong>Throughput (TPS)</strong> n. 吞吐（每秒交易数） Transactions per second a system can sustain at the target latency.</li>
+            <li><strong>Settlement SLA</strong> n. 结算服务等级协议 The maximum time a settlement must complete in (e.g., <200ms for OnePay).</li>
+            <li><strong>Cross-bank settlement</strong> n. 跨行结算 Settlement between two or more banks — the Group-approved use case for permissioned DLT.</li>
+            <li><strong>Fitness-for-purpose</strong> n. 适配性 The match between a technology's strengths and a problem's requirements.</li>
+            <li><strong>Competitive pressure</strong> n. 竞争压力 The argument "rivals are doing it, so we should too" — a fallacy when not paired with fitness-for-purpose.</li>
+            <li><strong>Regulatory cover</strong> n. 监管背书 Pre-existing approval from a regulator that lowers the cost of adopting a new technology.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "This isn't a no because X — it's a no because Y" — the reframing pattern</h3>
+        <p>
+            The most useful sentence in the architect's "no" toolkit: <em>"This isn't a no because
+            blockchain is bad — it's a no because the problem isn't a match."</em> The grammar: a
+            negative <em>isn't a no because</em> clause, followed by <em>it's a no because</em>. The
+            pattern protects the engineer (you're not attacking their tech) and protects you
+            (you're not on record as a tech-skeptic). Use it for every "this is the wrong tool"
+            conversation.
+        </p>
+        <p>"This isn't a no because X — it's a no because Y" 把反驳从"否定技术"重定向到"否定适配性"。</p>
+
+        <h3>② "Let me address each" — the point-by-point counter</h3>
+        <p>
+            When the Tech Lead raises three good points and you counter with one, you lose the
+            argument — even if your one is the most important. Use the <strong>address each</strong>
+            pattern: <em>"Good points — let me address each."</em> Then go through their points
+            one by one. The grammar: <em>On [topic]: [counter]. On [topic]: [counter].</em> The
+            structure shows you took their argument seriously and is the most defensible form of
+            disagreement.
+        </p>
+        <p><em>On [topic]: [counter]</em> 逐条回应，显示你认真对待对方的论点。</p>
+
+        <h3>③ "If we want to do X, let's do it on Y" — the redirected yes</h3>
+        <p>
+            A pure "no" is career-limiting. A redirected "yes" gives the engineer a path. The
+            grammar: <em>"If we want to [underlying goal], let's do it on [Group-approved
+            alternative]."</em> The <strong>if-clause</strong> validates the goal; the
+            <strong>main clause</strong> redirects the path. This is how Margaret would frame
+            it: <em>"I want to build DLT muscle too. Let's do it where the bank has already paid
+            the regulatory cost."</em>
+        </p>
+        <p>"If we want to X, let's do it on Y"——肯定目标、重新规划路径。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Separate the tech from the use case.</strong> "Blockchain is a great tool for the right problem" is the magic sentence. It immunises you against the "you don't like new tech" framing. The conversation is then about the use case, not the tech.</li>
+            <li><strong>Always name the Group Standard by number.</strong> "G-DLT-2024-01 explicitly limits…" ends the policy debate. The Tech Lead can challenge your numbers; they cannot challenge a Group Standard.</li>
+            <li><strong>Cite existing capability first.</strong> "We already have WORM + cryptographic hashing" is the strongest counter to a "we need this new thing" pitch. Most "we need blockchain for immutability" proposals can be answered with "we already have it, regulator-accepted".</li>
+            <li><strong>Redirected yes > pure no.</strong> Vikram has a real goal (build DLT muscle). Closing the proposal without an alternative turns him into a frustrated ex-fintech who will leave in 12 months. A redirected yes keeps him engaged and gives him a regulated path.</li>
+            <li><strong>"Other banks are doing it" is a fallacy. Name it.</strong> Competitive pressure ≠ fitness-for-purpose. HSBC has been burned by Group Standards violations. Don't pick tech because rivals picked it; pick it because the problem demands it.</li>
+            <li><strong>Address every good point.</strong> If Vikram says three things and you only address one, you've signalled that the other two are unanswerable. Take all three seriously.</li>
+            <li><strong>The bottleneck is rarely where the team thinks it is.</strong> "Reconciliation isn't the bottleneck — the bottleneck is FX rate refresh and sanctions-screening latency upstream." New tech that doesn't fix the real bottleneck is wasted spend.</li>
+            <li><strong>Loop the engineer into a Group-approved path.</strong> "I'll introduce you to the Group Treasury pilot lead." That single sentence converts a frustrating "no" into a career opportunity. The architect's job is not just to gatekeep — it's to route talent to the right problem.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the "wrong tool" pushback</h3>
+        <p>Translate the following "wrong tool" pushback into natural Chinese. Notice how the architect separates the tech from the use case.</p>
+        <blockquote>
+            "Thanks, Lin — exciting proposal. Just to set the tone: I think GraphQL is a great tool
+            for the right problem. I don't think the HSBCnet mobile BFF is that problem. Three
+            points. First, the mobile BFF is read-only on a small, well-known schema — 4 queries,
+            all keyed by customer ID. GraphQL pays off when clients need flexible, ad-hoc queries
+            against many entities. We don't have that. Second, N+1 query risk on GraphQL would
+            blow our p99 budget — the mobile API has a 200ms SLA and GraphQL resolvers are hard
+            to constrain. Third, Group Standard G-API-2023-07 explicitly recommends REST for
+            BFF patterns. My recommendation: keep REST for the BFF, and if we want GraphQL
+            muscle, let's do it on the internal admin tools where the query shapes are genuinely
+            ad-hoc."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Lin，谢谢——提案很让人兴奋。先把基调说清楚：我觉得 GraphQL 对合适的问题是个好工具。我不认为 HSBCnet 移动 BFF 是那个问题。3 点。第一，移动 BFF 是只读、模式又小又固定——4 个查询，全部按客户 ID 索引。GraphQL 在客户端需要灵活的即兴查询、跨多个实体时才划算。我们没有这种场景。第二，GraphQL 的 N+1 查询风险会爆掉我们的 p99 预算——移动 API 有 200ms SLA，而 GraphQL 的 resolver 很难约束。第三，集团标准 G-API-2023-07 明确推荐 BFF 用 REST。我的建议：BFF 继续用 REST，如果想建 GraphQL 能力，放到内部 admin 工具上做，那边查询形态才是真正即兴的。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the difference: "no" vs "redirected no"</h3>
+        <p>Which of these would be a "no" that lands well at HSBC, and which would create friction or talent loss? Why?</p>
+        <ol>
+            <li>"Blockchain is overhyped. Close the proposal."</li>
+            <li>"Just to set the tone — blockchain is a great tool for the right problem. I don't think OnePay's ledger is that problem. Three reasons: throughput miss vs the 3,000 TPS SLA, Group Standard G-DLT-2024-01 limits DLT to cross-bank settlement, and reconciliation isn't the actual bottleneck. My recommendation: close the OnePay proposal and I'll loop you in with the Group Treasury DLT pilot."</li>
+            <li>"No, we don't use blockchain at HSBC."</li>
+            <li>"I want to push back on the GraphQL choice. We already have the capability via the existing REST BFF with field selection via sparse fieldsets. The new tech adds risk without adding value. Recommend: keep REST, and if we want to build GraphQL experience, do it on the internal admin tool where query shapes are ad-hoc."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ land well. ② uses the "great tool for the right problem" framing, names the Group Standard, identifies the real bottleneck, and redirects the engineer to a Group-approved path. ④ uses "we already have the capability" + addresses the underlying value + redirects to a better fit. ① and ③ are pure negatives — they reject without offering a path, which at HSBC both loses the argument and loses the engineer.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are the Solution Architect for the GPB Digital tribe. A Tech Lead has proposed using <strong>microservices with per-service databases</strong> for a "customer profile view" that aggregates: (a) basic KYC info, (b) product holdings, (c) recent transactions, (d) preferences — all from the same customer master, with a single read-after-write guarantee. Write a 5–6 sentence "wrong tool" pushback that: (1) thanks the Tech Lead, (2) uses "great tool for the right problem" or similar, (3) gives 2 reasons microservices is the wrong fit, (4) proposes a KISS alternative, (5) redirects the engineer to a better-suited project. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Ravi, thanks — interesting proposal. <em>Just to set the tone — microservices is a great tool for the right problem.</em> <em>I don't think the customer profile view is that problem.</em> Two reasons. <em>First,</em> the read is <em>a single aggregate</em> — KYC, holdings, transactions, preferences — all from the same customer master, with a <em>read-after-write guarantee.</em> Microservices pays off when you have <em>independent deployability and independent scaling per service.</em> <em>We have neither</em> — these four pieces always deploy together and scale together. <em>Second,</em> per-service databases would <em>break the read-after-write guarantee</em> unless we add <em>distributed transactions or sagas,</em> which is exactly the YAGNI pattern we just discussed last sprint. <em>My recommendation</em> — <em>a single modular monolith</em> with one database, <em>clear module boundaries,</em> ship in 3 weeks. <em>If we want to build microservices muscle,</em> let's do it on the <em>cross-tribe payment-initiation flow</em> that's been waiting for a microservices-savvy lead — <em>I'll loop you in with that tribe's architect.</em>"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="16-tech-debt-vs-features.html" class="btn btn-primary">Next: Article 16 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

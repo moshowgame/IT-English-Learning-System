@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 01: Classic Standup Update | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">01 · Classic Standup Update</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Classic Standup Update</h1>
+        <p class="subtitle">Article 01 · Module 1: Daily Standup · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 Core standup pattern: Yesterday / Today / Blockers</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>10:00 AM HKT</strong>. The HSBC Payments team holds its daily standup on Microsoft Teams.
+            You are a backend developer working on the <em>cross-border payment validation service</em>.
+            Your Scrum Master, David (based in Hong Kong), and your tech lead, Priya (based in the UK), are attending.
+        </p>
+        <p>
+            上午10点香港时间，汇丰支付团队在Teams上开每日站会。你是一名后端开发工程师，正在做
+            <em>跨境支付校验服务</em>。Scrum Master David 在香港，技术负责人 Priya 在英国。
+        </p>
+        <p>
+            Your turn comes. You need to report what you did yesterday, what you plan to do today, and whether you
+            have any blockers. Keep it short — 60 to 90 seconds is the norm.
+        </p>
+        <p>
+            轮到你发言，需要汇报昨天做了什么、今天计划做什么、有没有阻塞。控制在一分钟左右。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en">Morning, everyone. Let's go round. <em>Wei, you're up.</em></span><span class="cn">大家早上好，按顺序来。Wei，轮到你了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Morning, David, Priya. <strong>Quick update from me.</strong></span><span class="cn">David、Priya 早上好，我简单同步一下我的情况。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Yesterday</em>, I finished the unit tests for the <em>SWIFT MT103 parser</em> — coverage is now at 92 percent. I also <em>paired with Sam</em> on the sanctions screening integration. We hit a small issue with the <em>timeout threshold</em>, but it's fixed.</span><span class="cn">昨天我完成了 SWIFT MT103 解析器的单元测试，覆盖率达到 92%。还和 Sam结对做了制裁名单筛查集成，遇到一个超时阈值小问题，已经修好。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Today</em>, I'll start on the <em>retry logic for the HSBCnet API callback</em>. The story is <em>PAY-2847</em>, and I've sized it at <em>three points</em>.</span><span class="cn">今天我会开始 HSBCnet API 回调的重试逻辑，对应故事卡 PAY-2847，估时是3 个点。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>No blockers</em> on my side, though I might <em>need a quick chat with InfoSec</em> later about the new <em>API key rotation policy</em> — nothing urgent.</span><span class="cn">我这边没有阻塞，不过稍后可能需要和 InfoSec 简单对一下新的API key 轮换策略，不紧急。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Thanks, Wei. <em>Nice work</em> on the parser coverage. <em>Quick question</em> — is the sanctions screening work on track for the UAT window next week?</span><span class="cn">谢谢 Wei，解析器覆盖率做得不错。简单问一下——制裁名单筛查工作能赶上下周的 UAT 窗口吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yes, on track. The <em>happy path</em> is done, and I'm working through the <em>edge cases</em> today. I'll <em>flag it in the daily channel</em> if anything changes.</span><span class="cn">能，按计划推进。主流程已经做完，今天在做边界场景。如有变化我会在日常频道里同步。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en">Good. <em>Over to you, Sam.</em></span><span class="cn">好，下一位 Sam。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Start</span> <em>Quick update from me.</em></span>
+                <span class="chinese">我简单同步一下 (开头万能句)</span>
+                <span class="note">Shorter and friendlier than "Let me give my update".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pattern</span> <em>Yesterday, I… · Today, I'll… · No blockers.</em></span>
+                <span class="chinese">昨天我… / 今天我会… / 没有阻塞</span>
+                <span class="note">The classic 3-part standup structure. Memorize this rhythm.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pair</span> <em>I paired with Sam on…</em></span>
+                <span class="chinese">我和 Sam 一起结对做了…</span>
+                <span class="note">Use <strong>paired with</strong> (past) for collaboration done; <em>will pair with</em> for upcoming.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Size</span> <em>I've sized it at three points.</em></span>
+                <span class="chinese">我估时为 3 个点</span>
+                <span class="note">In Scrum, "points" = story points, a relative effort estimate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>No blockers on my side.</em></span>
+                <span class="chinese">我这边没有阻塞</span>
+                <span class="note">Always say this even if everything is fine — gives confidence to the team.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Soft</span> <em>I might need a quick chat with…</em></span>
+                <span class="chinese">我可能需要和…简单聊一下</span>
+                <span class="note"><em>might</em> + <em>quick</em> softens the request — non-urgent but pre-flagged.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>On track for…</em></span>
+                <span class="chinese">能赶上 / 按计划推进</span>
+                <span class="note">Use this to answer "is X on track?" questions. Opposite: <em>at risk</em> or <em>off track</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Channel</span> <em>I'll flag it in the daily channel.</em></span>
+                <span class="chinese">我会在日常频道里同步</span>
+                <span class="note">"Flag" = raise/bring up. "Daily channel" = the team chat channel for daily updates.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>standup</strong> /ˈstændʌp/ <span class="tag">n.</span></span>
+                <span class="chinese">站会 (每日Scrum同步会)</span>
+                <span class="note">Full name: <em>daily standup</em> or <em>daily Scrum</em>. Usually 15 min max.</span>
+            </li>
+            <li>
+                <span class="english"><strong>blocker</strong> /ˈblɒkər/ <span class="tag red">n.</span></span>
+                <span class="chinese">阻塞项 / 卡点</span>
+                <span class="note">Anything stopping you from making progress. <em>"I'm blocked on X"</em> means X must be resolved first.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SWIFT MT103</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">SWIFT MT103报文 (国际电汇标准格式)</span>
+                <span class="note">The most common message type for single customer credit transfer.</span>
+            </li>
+            <li>
+                <span class="english"><strong>sanctions screening</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">制裁名单筛查</span>
+                <span class="note">Checking customers/transactions against OFAC, EU, UN, HMT sanctions lists.</span>
+            </li>
+            <li>
+                <span class="english"><strong>HSBCnet</strong> <span class="tag gold">HSBC</span></span>
+                <span class="chinese">汇丰企业网银</span>
+                <span class="note">HSBC's global online banking platform for corporate clients.</span>
+            </li>
+            <li>
+                <span class="english"><strong>UAT</strong> (User Acceptance Testing) <span class="tag">n.</span></span>
+                <span class="chinese">用户验收测试</span>
+                <span class="note">The final testing phase before production release, usually done by business users.</span>
+            </li>
+            <li>
+                <span class="english"><strong>happy path / edge case</strong></span>
+                <span class="chinese">主流程 / 边界场景</span>
+                <span class="note"><em>Happy path</em> = the normal, expected flow. <em>Edge case</em> = unusual or boundary conditions.</span>
+            </li>
+            <li>
+                <span class="english"><strong>story points</strong> <span class="tag">n.</span></span>
+                <span class="chinese">故事点 (Scrum工作量估算单位)</span>
+                <span class="note">Fibonacci-based (1, 2, 3, 5, 8, 13…). Reflects effort + complexity + risk, not hours.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① Standup Tense Pattern — 站会时态节奏</h3>
+        <p>
+            Standup has a fixed tense pattern that's worth memorizing:
+        </p>
+        <ul>
+            <li><strong>Yesterday</strong> → <em>Past tense</em>: I <em>finished</em>, I <em>paired</em>, I <em>fixed</em></li>
+            <li><strong>Today</strong> → <em>Future with will / 'll</em>: I'll <em>start</em>, I'll <em>work on</em></li>
+            <li><strong>Blockers</strong> → <em>Present state</em>: I'm <em>blocked</em>, I <em>have</em> a question, I <em>need</em> help</li>
+        </ul>
+
+        <h3>② Softening with "might" and "quick"</h3>
+        <p>
+            Native speakers often soften non-urgent asks to avoid sounding demanding:
+        </p>
+        <ul>
+            <li>❌ <em>I need to talk to InfoSec.</em> (sounds urgent / demanding)</li>
+            <li>✅ <em>I <strong>might need a quick chat with</strong> InfoSec.</em> (sounds collegial)</li>
+        </ul>
+
+        <h3>③ "Sizing" a task</h3>
+        <p>
+            <em>"I've <strong>sized</strong> it at three points"</em> uses the verb <strong>size</strong> in its agile sense.
+            Other ways to say it:
+        </p>
+        <ul>
+            <li><em>I've <strong>estimated</strong> it at 3 points.</em></li>
+            <li><em>It's a <strong>3-pointer</strong>.</em> (informal)</li>
+            <li><em>I <strong>scoped</strong> it as a 3.</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🏦 HSBC Standup Culture</div>
+            <ul>
+                <li><strong>Keep it short.</strong> Aim for 60–90 seconds per person. Time yourself.</li>
+                <li><strong>Reference ticket IDs</strong> (e.g., <em>PAY-2847</em>). This shows professionalism and traceability.</li>
+                <li><strong>Don't dive into deep technical details</strong> in standup — say "let's take it offline" and discuss in a side channel.</li>
+                <li><strong>Always end with blocker status</strong> — even if it's "no blockers", say it explicitly.</li>
+                <li><strong>Turn on video when possible</strong> at HSBC, especially for cross-region calls — it builds trust with UK / HK colleagues.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes from Chinese Speakers</div>
+            <ul>
+                <li>❌ <em>"I have no problem."</em> (means "you're welcome" in some contexts — confusing!)</li>
+                <li>✅ <em>"<strong>No blockers on my side.</strong>"</em> or <em>"<strong>I'm all good.</strong>"</em></li>
+                <li>❌ Translating "卡点" literally as <em>"stuck point"</em> — sounds odd. Use <em>"blocker"</em>.</li>
+                <li>❌ Saying "I have question" — grammatically incomplete. Say <em>"I have <strong>a</strong> question"</em> or <em>"I have <strong>one</strong> question"</em>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (口语化):</div>
+                <p>"昨天我完成了账户验证模块的代码，今天会开始写对应的单元测试。没有阻塞。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Yesterday, I finished coding the <em>account validation</em> module. Today, I'll start writing the
+                    unit tests for it. No blockers."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the blank:</div>
+                <p>"<em>Yesterday, I _____ (pair) with Tom on the payment retry service. Today, I'll _____ (start) on
+                    the integration test. No _____ (blocker) on my side."</em></p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>paired</em> (past tense) / <em>start</em> (will + base form) / <em>blockers</em> (plural)
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Soften this standup line (make it sound less urgent):</div>
+                <p>"I need to talk to InfoSec about the new API key rotation policy."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "I <em>might need a quick chat with</em> InfoSec about the new API key rotation policy —
+                    <em>nothing urgent</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>Imagine you worked on these tasks yesterday: (1) fixed a NullPointerException in the SWIFT parser,
+                (2) reviewed 2 PRs from your teammates. Today you will: (1) start the retry logic for the HSBCnet
+                callback, (2) write documentation for the API. You have no blockers. Write your standup update in
+                60–90 seconds.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Morning, all. Quick update from me. Yesterday, I fixed the NPE we saw in the SWIFT parser
+                    yesterday morning, and I also reviewed two PRs from Sam and Lily — left a few comments.
+                    Today, I'll start the retry logic for the HSBCnet callback, and probably spend the afternoon
+                    on API documentation. No blockers on my side."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="../index.html">
+            <span class="label">← Module Index</span>
+            <span class="title">Back to Developer Articles</span>
+        </a>
+        <a class="next" href="02-cross-timezone-standup.html">
+            <span class="label">Next Article →</span>
+            <span class="title">02 · Cross-Timezone Standup</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 01 · Classic Standup Update · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

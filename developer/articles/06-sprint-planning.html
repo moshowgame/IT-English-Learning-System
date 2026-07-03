@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: Sprint Planning | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">06 · Sprint Planning</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Participating in Sprint Planning</h1>
+        <p class="subtitle">Article 06 · Module 2: Meeting Workshops · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>📋 Commit to user stories, raise dependencies, ask sharp questions</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Sprint Planning Day</strong> for the next 2-week sprint. The whole team is on a Teams call:
+            your Scrum Master <strong>David (HK)</strong>, tech lead <strong>Priya (UK)</strong>, BA <strong>Jonathan (HK)</strong>,
+            and three developers (you, Sam, Lily). Jonathan presents <strong>three candidate user stories</strong> for
+            the sprint, and you need to size them, raise dependencies, and commit to what you'll own.
+        </p>
+        <p>
+            <strong>冲刺规划日</strong>到了，下一个双周冲刺。团队在 Teams 上：Scrum Master <strong>David（香港）</strong>，
+            技术负责人 <strong>Priya（英国）</strong>，BA <strong>Jonathan（香港）</strong>，还有三个开发（你、Sam、Lily）。
+            Jonathan 介绍了 <strong>三张候选用户故事</strong>，你需要估时、提出依赖、确认你负责哪些。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">OK, <em>story number one</em> — <strong>ONB-1420</strong>: "<em>As a customer, I want to upload my proof of address as a PDF so I can complete onboarding.</em>" Acceptance criteria are: support PDF and JPG, max 5MB, virus scan must pass, store in <em>AWS S3</em> with <em>KMS encryption</em>. <em>Any takers?</em> <em>How do you size this?</em></span><span class="cn">好，第一个故事——ONB-1420：作为客户，我希望上传住址证明 PDF，以完成开户。验收标准：支持 PDF 和 JPG，最大 5MB，必须过病毒扫描，存到AWS S3用KMS 加密。谁来接？这个怎么估？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Quick sizing question</em>, Jonathan — does the virus scan need to be <em>synchronous</em> (block the upload) or <em>async</em> (scan in background)?</span><span class="cn">问一下 Jonathan——病毒扫描是同步（阻塞上传）还是异步（后台扫）？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Compliance said <em>async</em> — the file is quarantined first, scanned in the background, and the user is notified when it's <em>cleared</em>.</span><span class="cn">Compliance 说异步——文件先隔离，后台扫描，通过后通知用户。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. With async scanning, I'd say <em>5 points</em> — the upload itself is straightforward, but the <em>quarantine + scan + notify flow</em> has a few moving parts. <em>I can take this one.</em></span><span class="cn">明白。异步扫描的话我估5 个点——上传本身简单，但隔离+扫描+通知这条链路有几个环节。我来接。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Quick concern</em> — KMS encryption is in scope, right? We need to make sure the <em>InfoSec-approved key</em> is already provisioned, or we'll hit the same blocker we had last sprint.</span><span class="cn">一个关注点——KMS 加密在范围内吧？需要确保InfoSec 批准的密钥已配好，否则会像上个冲刺一样卡住。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Yes, I've <em>already raised</em> the KMS key request with InfoSec. <em>Should be ready</em> by sprint start.</span><span class="cn">已经提了KMS key 的申请给 InfoSec，冲刺开始前应该能就绪。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en">OK, ONB-1420 is <em>5 points</em>, owner Wei. <em>Moving on</em> — <strong>ONB-1425</strong>: <em>"As a customer, I want to receive an SMS OTP so I can verify my phone."</em> Sam, you picked this one up in refinement, <em>right?</em></span><span class="cn">好，ONB-1420 是5 个点，owner 是 Wei。下一张——ONB-1425：作为客户，我希望接收短信 OTP 以验证手机。Sam，你在 refinement 上接的，对吧？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam:</span>
+                <span class="text"><span class="en">Yeah, sized it at <em>3 points</em>. The <em>Twilio integration</em> is mostly done, just need to wire up the <em>OTP validation endpoint</em> and add <em>rate limiting</em>.</span><span class="cn">是的，我估了3 个点。Twilio 集成基本做完，只剩OTP 校验接口和限流。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Quick one on ONB-1425</em> — has the <em>OTP rate limit</em> been confirmed with InfoSec? <em>Last time</em> they wanted <em>max 5 attempts per hour per number</em>.</span><span class="cn">问一下 ONB-1425——OTP 限流和 InfoSec 确认了吗？上次他们要求每个号码每小时最多 5 次。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Good catch. <em>I'll double-check with InfoSec</em> and update the AC. <em>Not blocking</em> but should be confirmed by Wednesday.</span><span class="cn">抓得准。我和 InfoSec 再对一下，更新到 AC 里。不阻塞，但周三前要确认。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Cool, no blockers from my side.</em></span><span class="cn">好，我这边没阻塞。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (SM):</span>
+                <span class="text"><span class="en">Last story — <strong>ONB-1430</strong>: <em>"As a compliance officer, I want to download a daily KYC report so I can review onboarding activity."</em> This is a <em>reporting</em> story — pulling from the existing data warehouse, generating a CSV, and uploading to SFTP. <em>Anyone?</em></span><span class="cn">最后一张——ONB-1430：作为合规官，我希望下载每日 KYC 报告来审核开户情况。这是报表类故事——从现有数仓取数，生成 CSV，上传到 SFTP。有人接吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>I'll let Sam or Lily take this one</em> — I'm already <em>committed to two stories</em> this sprint. <em>Happy to help review the PR though.</em></span><span class="cn">让 Sam 或 Lily 接吧——这个冲刺我已经认领两张了。不过我可以帮忙 review PR。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lily:</span>
+                <span class="text"><span class="en">I can take it. Looks like <em>2-3 points</em> — most of the <em>ETL pipeline</em> is reusable from the trade reporting project.</span><span class="cn">我来接。看着是2-3 个点——大部分ETL 管道可以从交易报表项目复用。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Size</span> <em>How do you size this?</em></span>
+                <span class="chinese">这个怎么估？</span>
+                <span class="note">Standard Scrum phrase to ask for estimation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>I can take this one.</em></span>
+                <span class="chinese">我来接</span>
+                <span class="note">Use for taking ownership of a story. <em>Pick it up</em> is also common.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Concern</span> <em>Quick concern — KMS encryption is in scope, right?</em></span>
+                <span class="chinese">一个关注点——KMS加密在范围内吧？</span>
+                <span class="note">Use <em>quick concern / quick question</em> to flag something without derailing the meeting.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Catch</span> <em>Good catch.</em></span>
+                <span class="chinese">抓得好 / 提到点上了</span>
+                <span class="note">Acknowledges a sharp observation. <em>Good point</em> / <em>fair point</em> are alternatives.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Blocker</span> <em>Not blocking, but should be confirmed by Wednesday.</em></span>
+                <span class="chinese">不阻塞，但周三前需要确认</span>
+                <span class="note">Differentiates <em>blocking</em> (now) from <em>non-blocking risk</em> (later).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capacity</span> <em>I'm already committed to two stories this sprint.</em></span>
+                <span class="chinese">这个冲刺我已经认领两张了</span>
+                <span class="note">Use this to politely decline without sounding lazy. Capacity is a real constraint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Help</span> <em>Happy to help review the PR though.</em></span>
+                <span class="chinese">不过可以帮忙看PR</span>
+                <span class="note">Even when not taking, offer a smaller contribution. Builds team spirit.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">AC</span> <em>Update the AC.</em></span>
+                <span class="chinese">更新验收标准</span>
+                <span class="note">AC = Acceptance Criteria. Standard Scrum abbreviation.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>user story</strong> <span class="tag">n.</span></span>
+                <span class="chinese">用户故事</span>
+                <span class="note">A short description of a feature from the user's perspective. Format: <em>"As a…, I want…, so that…"</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>acceptance criteria (AC)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">验收标准</span>
+                <span class="note">Conditions that must be met for a story to be considered done.</span>
+            </li>
+            <li>
+                <span class="english"><strong>size / estimate</strong> <span class="tag">v.</span></span>
+                <span class="chinese">估时 (故事点)</span>
+                <span class="note">Use the Fibonacci sequence: 1, 2, 3, 5, 8, 13. Bigger = more uncertain.</span>
+            </li>
+            <li>
+                <span class="english"><strong>synchronous / asynchronous</strong></span>
+                <span class="chinese">同步 / 异步</span>
+                <span class="note">Sync = caller waits. Async = caller moves on, gets notified later.</span>
+            </li>
+            <li>
+                <span class="english"><strong>KMS (Key Management Service)</strong> <span class="tag">AWS</span></span>
+                <span class="chinese">AWS 密钥管理服务</span>
+                <span class="note">Managed encryption key service. Banks require InfoSec-approved keys.</span>
+            </li>
+            <li>
+                <span class="english"><strong>OTP (One-Time Password)</strong> <span class="tag">banking</span></span>
+                <span class="chinese">一次性密码 / 动态口令</span>
+                <span class="note">Common for phone / transaction verification. SMS-OTP and TOTP (authenticator app).</span>
+            </li>
+            <li>
+                <span class="english"><strong>rate limiting</strong> <span class="tag">n.</span></span>
+                <span class="chinese">速率限制 / 限流</span>
+                <span class="note">Restrict the number of requests per time window. Anti-abuse measure.</span>
+            </li>
+            <li>
+                <span class="english"><strong>ETL (Extract, Transform, Load)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">数据抽取-转换-加载</span>
+                <span class="note">A data pipeline pattern for reporting. Common in banking data warehousing.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SFTP (Secure File Transfer Protocol)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">安全文件传输协议</span>
+                <span class="note">Used to deliver reports to external parties (regulators, vendors).</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Quick concern" / "Quick question" — Soft Interruptions</h3>
+        <p>These phrases let you jump in without sounding rude:</p>
+        <ul>
+            <li><em><strong>Quick concern</strong> — KMS is in scope, right?</em></li>
+            <li><em><strong>Quick question</strong> on AC — has rate limit been confirmed?</em></li>
+            <li><em><strong>Quick one</strong> on the timeline — when do we need this by?</em></li>
+        </ul>
+
+        <h3>② "Happy to…" — 跨场景的礼貌万能句</h3>
+        <p>Already seen in Article 04, but it's the most versatile phrase in Scrum meetings:</p>
+        <ul>
+            <li><em>Happy to <strong>help review</strong>.</em></li>
+            <li><em>Happy to <strong>drive the spike</strong>.</em></li>
+            <li><em>Happy to <strong>sync offline</strong> on this.</em></li>
+        </ul>
+
+        <h3>③ Hedging Size with "I'd say…" / "My guess is…"</h3>
+        <p>Sizing is never exact. Use hedging language:</p>
+        <ul>
+            <li>❌ <em>"This is 5 points."</em> (over-confident)</li>
+            <li>✅ <em>"<strong>I'd say</strong> 5 points."</em></li>
+            <li>✅ <em>"<strong>My guess is</strong> 3, but it could be 5."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🎯 Sprint Planning Best Practices at HSBC</div>
+            <ul>
+                <li><strong>Always ask clarifying questions BEFORE sizing.</strong> Most estimation errors come from unclear AC.</li>
+                <li><strong>Flag dependencies early.</strong> KMS keys, InfoSec approvals, upstream teams — all are common blockers.</li>
+                <li><strong>Don't over-commit.</strong> Aim for 70-80% capacity utilization. Leave 20-30% for incident support and BAU.</li>
+                <li><strong>Use the "I can take / I can't take" structure.</strong> It's cleaner than <em>"I want to"</em> or <em>"I'll do"</em>.</li>
+                <li><strong>Speak up on concerns, even as a junior.</strong> Sprint Planning is the right time to flag risk. Better now than mid-sprint.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes</div>
+            <ul>
+                <li>❌ <em>"I'll take it."</em> (over-eager; sounds like over-commitment without thinking)</li>
+                <li>✅ <em>"Let me think about capacity… I can take it, but I won't be able to help on the other story."</em></li>
+                <li>❌ Staying silent when you spot a dependency — this is exactly when you should speak up.</li>
+                <li>❌ Sizing 1 point on a 5-point story to look good — damages the team and your credibility.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to natural English:</div>
+                <p>"问一下，KMS key 准备好了吗？没有的话要早点找 InfoSec 申请，否则会卡住。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "<em>Quick question</em> — is the KMS key <em>already provisioned</em>? If not, we should <em>raise the request to InfoSec</em> as early as possible, otherwise we'll <em>hit a blocker</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Politely decline a story while staying engaged:</div>
+                <p>"Wei, can you take ONB-1430 too? It's only 2 points."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>I'd love to help, but</em> I'm <em>already committed to two stories</em> this sprint — ONB-1420 and helping Sam on the OTP rate limit work. <em>Let me hand it over to Lily or Sam.</em> <em>Happy to be a secondary reviewer</em> on the PR though."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right Scrum phrase:</div>
+                <p>"This is _____ 3 points, but could be 5. / I'll _____ it. / Has the InfoSec approval been _____ yet? / Quick _____ on the AC — the rate limit is missing."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>I'd say</em> / <em>take</em> / <em>confirmed</em> / <em>question</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>In sprint planning, your BA presents ONB-1500: "As a customer, I want to set a daily transfer limit so I can control my spending." AC: configurable, default 50k HKD, requires SMS-OTP confirmation when changed. What 2-3 questions would you ask before sizing? What size would you give?</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Quick questions</em> before I size this:
+                    <ol>
+                        <li>Does the <em>SMS-OTP confirmation</em> use the same Twilio integration as ONB-1425? If yes, we can <em>reuse the OTP service</em> — saves effort.</li>
+                        <li>Is the <em>50k default</em> a <em>regulatory requirement</em> or <em>business-configurable</em>? If regulatory, where is it documented?</li>
+                        <li>Does changing the limit need to be <em>logged in the audit trail</em>? Compliance usually requires this for any limit change.</li>
+                    </ol>
+                    <em>I'd say 3 points</em> if we <em>reuse the OTP service</em>, 5 if it's a <em>fresh integration</em>. <em>I can take it</em>."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="05-asking-for-help.html">
+            <span class="label">← Previous</span>
+            <span class="title">05 · Asking for Help Gracefully</span>
+        </a>
+        <a class="next" href="07-sprint-retrospective.html">
+            <span class="label">Next Article →</span>
+            <span class="title">07 · Sprint Retrospective</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 06 · Sprint Planning · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

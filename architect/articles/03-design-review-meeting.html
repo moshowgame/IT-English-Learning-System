@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 03: Design Review Meeting | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">03 · Design Review Meeting</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Design Review Meeting</h1>
+        <p class="subtitle">Article 03 · Module 3: Running the Design Review · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Present an ADR, handle pushback, capture decisions</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday, 15:00 HKT</strong>. You are chairing a formal design-review meeting
+            for the <em>Wealth Self-Service</em> squad in the RBWM Digital tribe. The squad's Tech Lead,
+            <strong>Sam</strong>, is presenting his proposed design for a new
+            <em>event-driven portfolio rebalancing flow</em>. The ADR on the table is
+            <strong>ADR-0203</strong>, and the system in scope is the OneWealth platform.
+        </p>
+        <p>
+            周四下午 3 点香港时间，你在主持 <em>RBWM 数字化</em> tribe 下 Wealth 自助 squad 的正式设计评审。
+            squad 的 Tech Lead <strong>Sam</strong> 在讲解他新的<em>事件驱动投资组合再平衡流程</em>的设计。
+            评审的 ADR 是 <strong>ADR-0203</strong>，涉及 OneWealth 平台。
+        </p>
+        <p>
+            In the room (on Teams) are: <strong>Margaret</strong> (Chief Architect, HK),
+            <strong>Anika</strong> (InfoSec representative, also HK), <strong>Diego</strong> (peer
+            architect, UK), and <strong>Priya</strong> (architect, Bangalore, joining async). Sam is
+            recommending a Kafka-based event bus with a saga pattern to coordinate the rebalancing
+            steps. <strong>The contentious point:</strong> Diego thinks a simple request/response API
+            would be safer and easier to operate. Your job is to navigate the disagreement, capture the
+            decision, and close the meeting cleanly.
+        </p>
+        <p>
+            在场（Teams 上）的有：<strong>Margaret</strong>（Chief Architect，香港）、<strong>Anika</strong>
+            （InfoSec 代表，香港）、<strong>Diego</strong>（同侪架构师，英国），以及异步加入的
+            <strong>Priya</strong>（架构师，班加罗尔）。Sam 推荐用 Kafka 事件总线 + saga 模式来协调再平衡
+            各步骤。<strong>争议点：</strong>Diego 认为简单的 request/response API 更安全、更易运维。
+            你的任务是引导分歧、记录决策、干净地结束会议。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Chair, Architect):</span>
+                <span class="text"><span class="en">OK, everyone, thanks for joining. We've got <em>30 minutes for ADR-0203</em>. The goal is a <em>clean accept, revise, or reject</em> by the end. Sam, <em>over to you for the walkthrough</em>.</span><span class="cn">好的，感谢大家。这次 ADR-0203 评审 30 分钟，目标是在结束时给出一个干净的 accept、revise 或 reject。Sam，你来过一遍。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en">Thanks, Wei. So, <em>context first</em> — OneWealth's portfolio rebalancing today is a <em>batch job at 4 AM HKT</em>. The business wants <em>intra-day rebalancing</em> on large trades. The proposal in <em>ADR-0203</em> is a <em>Kafka event bus with a saga pattern</em> to coordinate the rebalance steps. <em>Honest answer — we considered request/response,</em> but the <em>choreography vs orchestration trade-off</em> tipped us toward the saga. <em>Diego, I know you have concerns</em> — I'll come to those.</span><span class="cn">谢谢 Wei。先讲<em>背景</em>——OneWealth 现在的组合再平衡是凌晨 4 点的<em>批处理</em>。业务希望在大额交易时<em>日内再平衡</em>。<em>ADR-0203</em> 提议用 <em>Kafka 事件总线 + saga 模式</em>协调再平衡步骤。说实话，我们也考虑过 request/response，但<em>choreography 与 orchestration 的取舍</em>让我们倒向 saga。<em>Diego，我知道你有顾虑</em>，我会讲到。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en"><em>Walkthrough of the design</em> — we publish a <em>RebalanceRequested</em> event to Kafka. A <em>saga orchestrator</em> on the OneWealth side coordinates the <em>three-step sequence</em>: position-calc, trade-order, settlement-notify. <em>Compensating transactions</em> handle failures.</span><span class="cn"><em>设计走查</em>——我们向 Kafka 发一个 <em>RebalanceRequested</em> 事件。OneWealth 这边的 <em>saga orchestrator</em> 协调<em>三步序列</em>：头寸计算、下单、结算通知。<em>补偿事务</em>处理失败。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en">Right, Sam, <em>genuine concern from me</em>. <em>How do we operate this?</em> The saga has <em>three failure modes</em> I can see — partial state, duplicate trade orders, and stuck sagas. <em>The UK ops team has zero muscle memory on saga debugging.</em> Have we considered the <em>operational cost</em>?</span><span class="cn">Sam，我有个真实顾虑。<em>这玩意儿怎么运维？</em>我能看到 saga 有 <em>3 种失败模式</em>——部分状态、重复下单、saga 卡住。<em>英国运维团队对 saga 调试零经验</em>。你们考虑过<em>运维成本</em>吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en">Good challenge. <em>Honest answer — operational cost is the top risk.</em> We're planning a <em>runbook for each failure mode</em>, a <em>stuck-saga dashboard</em> on Grafana, and a <em>monthly game-day</em> with the UK ops team. We've also <em>asked the SRE chapter for a designated on-call rota</em>.</span><span class="cn">好挑战。说实话，<em>运维成本是头号风险</em>。我们计划为<em>每种失败模式写 runbook</em>，在 Grafana 上做一个<em>卡住 saga 仪表盘</em>，并和英国运维一起<em>每月做一次演练日</em>。我们也已经<em>请 SRE 章节排了专门的 on-call 轮值</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Anika (InfoSec):</span>
+                <span class="text"><span class="en">From an InfoSec angle — <em>trade orders are sanctions-screened, so the event payload must be encrypted at rest and in transit.</em> Also, <em>every saga step needs to be auditable</em> for the MAS TRM and HKMA regulator reviews. <em>Can the design support per-step audit logs?</em></span><span class="cn">从 InfoSec 角度——<em>交易单要过制裁名单筛查，所以事件 payload 必须在传输和静态时加密</em>。另外，<em>每个 saga 步骤都要可审计</em>，以满足 MAS TRM 和 HKMA 的监管评审。<em>这个设计能支持逐步骤审计日志吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en">Yes — <em>each saga step writes to an immutable audit log on the OneWealth side</em>, with a <em>correlation ID</em> carried through the event payload. We can <em>share the audit schema with InfoSec</em> before chapter sign-off.</span><span class="cn">可以——<em>每个 saga 步骤都会在 OneWealth 这边写到不可变审计日志</em>，用 <em>correlation ID</em> 贯穿事件 payload。我们可以在 chapter 签批前<em>把审计 schema 同步给 InfoSec</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Chair, Architect):</span>
+                <span class="text"><span class="en">OK, <em>time check — we're at the 20-minute mark</em>. Let me <em>summarise the position</em>: Sam is proposing Kafka + saga with a <em>three-part risk mitigation</em> — runbooks, dashboard, game-day. <em>Diego, do you have a concrete change that would make this acceptable for you?</em></span><span class="cn">好，<em>时间到 20 分钟了</em>。我<em>总结一下立场</em>：Sam 提议 Kafka + saga，配套<em>三部分风险缓解</em>——runbook、仪表盘、演练日。<em>Diego，有什么具体改动能让你接受这个方案吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en">Yes, <em>one thing</em>. <em>Can the first deployment be in shadow mode for two weeks?</em> Saga runs but no real trades fire. If <em>we see the failure modes in shadow</em>, the ops team gets muscle memory <em>before</em> we go live. If we see anything scary, we can pull the cord.</span><span class="cn">有，<em>一件事</em>。<em>第一次部署能不能先跑 2 周影子模式？</em>Saga 跑但不下真实交易。如果<em>在影子模式里把失败模式都见一遍</em>，运维团队在<em>正式上线前</em>就积累经验。如果看到吓人的东西，我们可以紧急叫停。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en"><em>That's a fair ask</em>, and <em>honestly a good idea</em>. We can <em>scope the shadow mode into the ADR</em> as a <em>go-live precondition</em>. <em>Two weeks shadow, then a 48-hour hypercare, then steady state.</em></span><span class="cn"><em>合理的要求</em>，说实话是好主意。我们可以把<em>影子模式写进 ADR</em>，作为<em>上线的先决条件</em>。<em>2 周影子，然后 48 小时 hypercare，再进入稳态。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Chair, Architect):</span>
+                <span class="text"><span class="en"><em>Perfect, let's capture the decision.</em> The verdict is <strong>Accept with conditions</strong>. The conditions are: <em>one,</em> Diego's <em>two-week shadow mode</em> as a go-live precondition; <em>two,</em> Anika's <em>audit schema review</em> with InfoSec before chapter sign-off; <em>three,</em> a <em>monthly game-day</em> with UK ops for the first quarter post go-live. <em>Sam, can you update the ADR and re-circulate by EOD Friday?</em></span><span class="cn"><em>好，我们记录决策。</em>判定是 <strong>有条件接受</strong>。条件是：<em>一、</em>Diego 提的<em>2 周影子模式</em>作为上线先决条件；<em>二、</em>Anika 提的<em>审计 schema 与 InfoSec 评审</em>，在 chapter 签批前完成；<em>三、上线后第一季度</em>每月与英国运维做<em>演练日</em>。Sam，周五下班前能更新 ADR 并重新发给大家吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sam (Tech Lead):</span>
+                <span class="text"><span class="en">Will do. <em>Last thing — Priya is reviewing async and we owe her a follow-up</em> in the ADR comments. <em>Can I commit to that by Monday?</em></span><span class="cn">没问题。<em>最后——Priya 异步评审，我们要在 ADR 评论里给她一个回复</em>。<em>我能在下周一前完成，可以承诺吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Chair, Architect):</span>
+                <span class="text"><span class="en"><em>Yes, Monday works.</em> Right, <em>thanks all — meeting closed</em>. <em>Sam, you have the action; Anika, you have the review; Diego, you have the shadow-mode sign-off; Priya, async comments by Monday.</em> <em>Good session.</em></span><span class="cn"><em>好，下周一可以。</em>好，<em>感谢大家——会议结束</em>。<em>Sam，你负责 ADR 更新；Anika，你负责审计评审；Diego，你负责影子模式签批；Priya，下周一前给异步评论。</em><em>会议很顺利。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>We've got 30 minutes for ADR-0203.</em></span>
+                <span class="chinese">ADR-0203 评审 30 分钟</span>
+                <span class="note">Always state the timebox at the top. A design review without a timebox turns into an open-ended debate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Goal</span> <em>The goal is a clean accept, revise, or reject by the end.</em></span>
+                <span class="chinese">目标是在结束时给出 accept、revise 或 reject</span>
+                <span class="note">State the three valid verdicts up front. "Revise" is the most common one — it means "go fix these and re-circulate".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Handoff</span> <em>Sam, over to you for the walkthrough.</em></span>
+                <span class="chinese">Sam，你来过一遍</span>
+                <span class="note">"Walkthrough" is the design-review verb. The presenter walks the room through the design, section by section.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>The choreography vs orchestration trade-off tipped us toward the saga.</em></span>
+                <span class="chinese">choreography 和 orchestration 的取舍让我们倒向 saga</span>
+                <span class="note">Always name the trade-off you made. "Choreography vs orchestration" is the canonical event-driven trade-off vocabulary.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Concern</span> <em>Genuine concern from me — how do we operate this?</em></span>
+                <span class="chinese">我有个真实顾虑——这玩意儿怎么运维？</span>
+                <span class="note">"Genuine concern" = a serious, non-political objection. Use it when you want the presenter to address ops, not just the design.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk</span> <em>Operational cost is the top risk.</em></span>
+                <span class="chinese">运维成本是头号风险</span>
+                <span class="note">Identify the top risk explicitly. Don't list five — pick the one and address it head-on.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Constraint</span> <em>Every saga step needs to be auditable for MAS TRM and HKMA.</em></span>
+                <span class="chinese">每个 saga 步骤都要可审计，以满足 MAS TRM 和 HKMA</span>
+                <span class="note">Name the regulator by name. "For compliance" is weaker than "for MAS TRM and HKMA review".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Steer</span> <em>Time check — we're at the 20-minute mark.</em></span>
+                <span class="chinese">时间提示——20 分钟了</span>
+                <span class="note">Use the "time check" move to bring a debate back to the calendar. Three time-checks per meeting is normal.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Do you have a concrete change that would make this acceptable?</em></span>
+                <span class="chinese">有什么具体改动能让你接受这个方案？</span>
+                <span class="note">Always ask for a concrete change, not a vague concern. "Concrete change" forces a specific edit to the ADR.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Decision</span> <em>Let's capture the decision — Accept with conditions.</em></span>
+                <span class="chinese">记录决策——有条件接受</span>
+                <span class="note">Always capture the decision out loud. "Accept with conditions" is its own verdict — different from "Accept" and from "Revise".</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Design review</strong> n. 设计评审 A formal meeting where an architect and stakeholders walk through a proposed design and capture sign-off.</li>
+            <li><strong>Walkthrough</strong> n. 走查 The act of stepping through a design section by section in a design review.</li>
+            <li><strong>Accept with conditions</strong> phr. 有条件接受 A verdict where the ADR is approved, but specific conditions must be met before production.</li>
+            <li><strong>Revise</strong> v. 修订 A verdict where the ADR must be updated and re-circulated before it can be accepted.</li>
+            <li><strong>Saga pattern</strong> n. Saga 模式 A pattern for managing distributed transactions via a sequence of local transactions + compensating actions.</li>
+            <li><strong>Choreography</strong> n. 编排 Event-driven coordination with no central orchestrator; each service reacts to events.</li>
+            <li><strong>Orchestration</strong> n. 编排 Centralised coordination via an explicit orchestrator that drives the steps.</li>
+            <li><strong>Compensating transaction</strong> n. 补偿事务 A reverse action that undoes a previously committed step in a saga on failure.</li>
+            <li><strong>Shadow mode</strong> n. 影子模式 A deployment where the new system runs in parallel with the old one, but no real actions are taken.</li>
+            <li><strong>Hypercare</strong> n. 高强度运维期 A 24/7 enhanced-support period immediately after go-live, typically 48-72 hours.</li>
+            <li><strong>Game-day</strong> n. 演练日 A scheduled exercise where the team rehearses a failure scenario to build muscle memory.</li>
+            <li><strong>Correlation ID</strong> n. 关联 ID A unique identifier carried through a multi-step flow so all logs can be tied together.</li>
+            <li><strong>Async review</strong> n. 异步评审 A review where a stakeholder provides comments in writing after the meeting, rather than live.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "The trade-off tipped us toward X" — the design-review verb</h3>
+        <p>
+            <em>The choreography vs orchestration trade-off tipped us toward the saga</em> uses
+            <em>tipped us toward</em> instead of <em>we chose the saga</em>. The verb <em>tip</em>
+            signals that the decision was close and the trade-off was the deciding factor. Use
+            it when you've genuinely considered both options and want to acknowledge the loser.
+        </p>
+        <p>"The trade-off tipped us toward X" 比 "we chose X" 更有说服力——它表明这是经过慎重对比后的决定。</p>
+
+        <h3>② "Can the design support per-step audit logs?" — the architect's constraint probe</h3>
+        <p>
+            InfoSec and architects often ask <em>Can the design support X?</em> The grammatical
+            pattern is <em>Can the design support [constraint]?</em> — e.g., audit logs, encryption,
+            rollback, replay. The presenter answers <em>Yes — [mechanism]</em> or <em>No, but
+            here's the alternative</em>. Always probe for the constraint; never assume the
+            presenter has thought about regulators.
+        </p>
+        <p>InfoSec 和架构师常用"Can the design support X?"来探测约束，presenter 要明确回答 Yes — 机制 或 No — 备选方案。</p>
+
+        <h3>③ "Accept with conditions" — the verb-prep-noun verdict</h3>
+        <p>
+            The three primary verdicts are <em>Accept</em>, <em>Revise</em>, and <em>Reject</em>.
+            <em>Accept with conditions</em> is a fourth, common variant. The grammatical pattern
+            is <em>verb + with + [noun]</em>: <em>Accept with conditions</em>, <em>Approve with
+            caveats</em>, <em>Sign off subject to [review]</em>. Always name the conditions
+            explicitly. An "accept with conditions" without named conditions is just "approve".
+        </p>
+        <p>"Accept with conditions" 是评审的第四种判定。一定要明确列出条件，否则就只是"approve"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Always chair with a timebox.</strong> "We've got 30 minutes" is the first sentence. A design review without a timebox becomes a 90-minute open debate. Use the time check at 20 minutes, 25 minutes, and 28 minutes.</li>
+            <li><strong>Capture the decision out loud.</strong> The most important sentence in a design review is the verdict. If you leave the meeting without an explicit "accept, revise, reject", the ADR will sit in Confluence forever. Always verbalise the decision and the conditions.</li>
+            <li><strong>Translate concerns into concrete change requests.</strong> "I have concerns" is a vague objection. Your job as chair is to push for "what concrete change would make this acceptable?" The change request goes into the ADR.</li>
+            <li><strong>Group Cyber / Group Resilience constraints are non-negotiable.</strong> When Anika (InfoSec) asks about audit logs, the answer is "yes, and here's the mechanism" — not "we'll figure that out later". Always cite the regulator (MAS TRM, HKMA, FCA, GDPR) by name when setting a constraint.</li>
+            <li><strong>Cross-region async review is normal.</strong> Priya joining async from Bangalore is a feature, not a bug. Always read out her async comments and give a commitment date for the response. "Monday works" is the right reply.</li>
+            <li><strong>"Genuine concern" is a politeness device.</strong> When Diego says "genuine concern from me", he's signalling "this is serious, please don't brush it off". Honour the move by responding with "honest answer — operational cost is the top risk" and a specific mitigation.</li>
+            <li><strong>Don't relitigate offline decisions in the meeting.</strong> If Sam has already aligned with Diego offline on a point, don't re-open it in the room. The meeting is for new objections and for capturing the decision, not for replaying yesterday's 1:1.</li>
+            <li><strong>End with named actions, named owners, and named dates.</strong> "Sam, ADR update by Friday. Anika, audit review by chapter sign-off. Diego, shadow-mode sign-off. Priya, async comments by Monday." No floating actions. No "TBD".</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the design-review verdict</h3>
+        <p>Translate the following design-review verdict into natural Chinese. Pay attention to how the chair captures the conditions and the named actions.</p>
+        <blockquote>
+            "OK, time check — we're at the 25-minute mark. Let me capture the decision. The verdict
+            on ADR-0211 is Accept with conditions. The conditions are: one, the Mobile squad's
+            offline-first KYC design must include a 24-hour data-loss-window NFR, quantified, before
+            chapter sign-off. Two, InfoSec needs to sign off on the local-encryption-at-rest key
+            custody model — Anika, can you own that review? Three, the first production deployment
+            runs in shadow mode for one week with a 48-hour hypercare after. Sam, can you update the
+            ADR with these three conditions and re-circulate by Tuesday? Diego, you have the shadow-
+            mode sign-off. Margaret, can we book the chapter review for next Friday? Thanks all —
+            meeting closed."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，时间提示——25 分钟了。我来记录一下决策。ADR-0211 的判定是<strong>有条件接受</strong>。条件是：一、Mobile squad 的离线优先 KYC 设计必须包含 24 小时数据丢失窗口的 NFR，并量化数值，在 chapter 签批前完成；二、InfoSec 需要签批本地静态加密的密钥托管模型——Anika，这个评审你负责可以吗？三、首次生产部署先跑 1 周影子模式，之后有 48 小时 hypercare。Sam，能在周二前把这 3 个条件更新到 ADR 并重新发给大家吗？Diego，影子模式的签批交给你。Margaret，能约下周五的 chapter 评审吗？感谢大家——会议结束。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the chair mistake</h3>
+        <p>Which of these chair moves is most aligned with HSBC architecture culture? Why?</p>
+        <ol>
+            <li>"Diego, can you just go with this? It will be fine."</li>
+            <li>"Diego, do you have a concrete change that would make this acceptable for you?"</li>
+            <li>"OK, let's table this and discuss it later. Meeting over."</li>
+            <li>"Margaret, you decide — I don't want to chair this one."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is HSBC-aligned: it forces a specific edit to the ADR and keeps the chair in control. ① is dismissive and breaks cross-region etiquette. ③ abandons the verdict — the ADR will sit in Confluence forever. ④ delegates the chair's job to the Chief Architect, which is a politeness failure. The chair's job is to push for a concrete change and capture the decision.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're chairing a design review for ADR-0218 on the GPB Markets squad's new high-frequency pricing API. The Tech Lead is proposing gRPC with mutual TLS for service-to-service traffic, and Diego (UK) is concerned about the operational maturity of gRPC in HSBC — he flags that the UK ops team has no gRPC debugging experience. Anika (InfoSec) asks whether the design supports per-message audit logging for the FCA regulator. Write the closing 90 seconds of the design review in English — capture the decision, list the conditions, and name the owners and dates. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK, time check — we're at the 25-minute mark. Let me summarise the position. The Tech Lead is proposing gRPC with mutual TLS for the GPB Markets pricing API. The risks Diego raised on operational maturity and Anika raised on per-message audit logging are real, and the mitigations on the table — a runbook for gRPC failure modes, a published gRPC debugging guide, and a per-message audit schema — address both. Diego, do you have a concrete change that would make this acceptable? Right — one more thing, can the first deployment run in shadow mode for two weeks? That's a fair ask, and the squad has agreed. So the verdict is Accept with conditions. The conditions are: one, Diego's two-week shadow mode as a go-live precondition; two, Anika's per-message audit schema review with InfoSec before chapter sign-off; three, a published gRPC debugging runbook for the UK ops team before go-live. Tom, can you update the ADR with these three conditions and re-circulate by Tuesday? Anika, you have the audit review. Diego, you have the shadow-mode sign-off. Margaret, can we book the chapter review for next Friday? Thanks all — meeting closed."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="04-architecture-office-hours.html" class="btn btn-primary">Next: Article 04 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

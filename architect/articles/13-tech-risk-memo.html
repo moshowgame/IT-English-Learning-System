@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 13: Tech Risk Assessment Memo | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">13 · Tech Risk Assessment Memo</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Tech Risk Assessment Memo</h1>
+        <p class="subtitle">Article 13 · Module 4: Risk & Governance Communication · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Upper-intermediate</span>
+            <span>🎯 Quantify the risk, propose mitigation, name the residual risk — for the RIB and Risk forum</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday afternoon, 3:00 PM HKT</strong>. The <em>GPB Onboarding</em> squad
+            is preparing to onboard a new sanctions-screening vendor (Vendor X) for the
+            <em>high-net-worth customer screening</em> flow. The vendor is <em>30% cheaper</em> and
+            <em>~40% faster</em> than the incumbent, but it has never been used in production at HSBC,
+            and it sits outside the bank's <em>Group Cyber approved vendor list</em>.
+        </p>
+        <p>
+            周三下午 3 点香港时间，<em>GPB 开户</em> squad 准备接入一个新的制裁名单筛查厂商（Vendor X），
+            用于<em>高净值客户筛查</em>流程。厂商比现有方案<em>便宜 30%</em>、<em>速度快约 40%</em>，
+            但从未在汇丰生产环境使用过，也不在银行的<em>集团 Cyber 批准厂商名单</em>上。
+        </p>
+        <p>
+            As the Solution Architect covering GPB, you have been asked by <strong>Margaret</strong>
+            (Chief Architect, HK) to <em>draft a 1-page Tech Risk Assessment Memo</em> for next week's
+            <strong>Resilience & Risk Forum (RIB)</strong>. The forum includes representatives from
+            <em>Group Cyber</em>, <em>Group Resilience</em>, <em>Compliance</em>, and the <em>tribe lead</em>.
+            The memo must quantify the risk, propose mitigation, and explicitly name the
+            <strong>residual risk</strong> after mitigation.
+        </p>
+        <p>
+            作为覆盖 GPB 的 Solution 架构师，<strong>Margaret</strong>（Chief Architect，香港）请你
+            <em>起草一份 1 页的技术风险评估备忘录</em>，提交给下周的 <strong>Resilience & Risk Forum (RIB)</strong>。
+            论坛成员包括 <em>集团 Cyber</em>、<em>集团 Resilience</em>、<em>合规</em> 和 <em>tribe lead</em>。
+            备忘录必须量化风险、提出缓解措施，并明确指出缓解后的<strong>残留风险（residual risk）</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Wei, <em>quick one</em>. The GPB Onboarding squad wants to onboard Vendor X for sanctions screening. <em>It's not on the Group Cyber approved list.</em> I need a 1-pager for the RIB by Monday. <em>Can you draft it?</em></span><span class="cn">Wei，<em>插个会外的事</em>。GPB 开户 squad 想接入 Vendor X 做制裁名单筛查，<em>它不在集团 Cyber 批准名单上</em>。我需要一份 1 页的备忘录下周一前给 RIB，<em>你起草一下？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Will do.</em> Before I start, I want to <em>align on the structure</em> — the last RIB memo I read had: risk description, likelihood × impact, mitigation, residual risk, and <em>sign-off ask</em>. <em>Anything you want to add or cut?</em></span><span class="cn">没问题。开始前先<em>对齐一下结构</em>——我上次看的 RIB 备忘录包括：风险描述、可能性 × 影响、缓解、残留风险，以及<em>签批请求</em>。<em>有要加的或要删的吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Structure's fine. <em>One addition</em> — name the <em>regulatory exposure</em> explicitly. If Vendor X misses a sanctions hit, the exposure is <em>HKMA + MAS TRM + FCA</em>. <em>Quantify where you can.</em> "Significant" or "high" are not numbers.</span><span class="cn">结构没问题。<em>加一点</em>——明确写出<em>监管暴露</em>。如果 Vendor X 漏掉一次制裁命中，监管暴露是 <em>HKMA + MAS TRM + FCA</em>。<em>能量化就量化。</em>"显著"或"高"不是数字。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Got it.</em> I'll use a <em>5×5 heat map</em> — likelihood 3 (new vendor, no production track record) × impact 5 (regulatory + reputational). That's <em>inherent risk = 15,</em> which is <em>above the RIB escalation threshold of 12.</em></span><span class="cn"><em>明白了。</em>我用 <em>5×5 热力图</em>——可能性 3（新厂商，无生产记录）× 影响 5（监管 + 声誉），<em>固有风险 = 15，</em>超过 RIB 上报阈值 12。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Good.</em> For mitigation, I'm <em>thinking</em> — keep the incumbent vendor in <em>shadow mode for 90 days</em>, run a <em>parallel screening for the first 10,000 customers</em>, and require a <em>Group Cyber security assessment</em> before go-live. <em>Does that bring residual risk down to acceptable?</em></span><span class="cn"><em>好的。</em>缓解方面我<em>想</em>——让现有厂商<em>shadow 模式跑 90 天</em>，前 <em>10,000 个客户做并行筛查</em>，上线前必须有 <em>集团 Cyber 安全评估</em>。<em>这样能把残留风险降到可接受范围吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Honest answer</em> — it brings it to around <em>6 (likelihood 2 × impact 3)</em>, which is <em>below the 12 threshold</em>. But there's still a <em>residual risk on the data-residency side</em> — Vendor X's API is hosted in <em>Singapore, not HK</em>. <em>Does that breach our MAS TRM data-residency rule for SG-customer traffic?</em></span><span class="cn"><em>坦白说</em>——能降到大约 <em>6（可能性 2 × 影响 3）</em>，低于 12 阈值。但还有一个<em>数据驻留的残留风险</em>——Vendor X 的 API 托管在<em>新加坡而不是香港</em>。<em>这会违反 MAS TRM 对新加坡客户流量的数据驻留规则吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en"><em>Good flag.</em> Add it to the memo as a <em>second residual-risk item</em>. Loop in <strong>Daniel</strong> from InfoSec UK — he'll know the MAS TRM answer. <em>I want the memo to name both residual risks explicitly,</em> not bury them in a footnote.</span><span class="cn"><em>好问题。</em>把它加进备忘录作为<em>第二项残留风险</em>。拉上英国的 InfoSec <strong>Daniel</strong>——他清楚 MAS TRM 的答案。<em>我希望备忘录把两项残留风险都明确写出来，</em>不要藏在脚注里。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Noted.</em> I'll <em>send a draft to you and Daniel by Friday EOD HKT.</em> If the data-residency risk is a real breach, I'll <em>recommend a third mitigation</em> — a <em>HK-resident data proxy</em> in front of the Vendor X API. That <em>adds ~20ms latency</em> but keeps us compliant.</span><span class="cn"><em>明白。</em>我会在<em>香港时间周五 EOD 前发你和 Daniel 一份草稿</em>。如果数据驻留是真违反，我会<em>建议第三项缓解措施</em>——在 Vendor X API 前加<em>香港驻留的数据代理</em>。会<em>多约 20ms 延迟</em>，但能保持合规。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Perfect. <em>Just to flag</em> — the <em>tribe lead is pushing for go-live by end of Q3</em> to hit the cost-savings target. So the memo also needs an <em>explicit go / no-go recommendation</em>. <em>My instinct</em>: conditional go, contingent on the three mitigations. <em>You agree?</em></span><span class="cn">好的。<em>提一下</em>——<em>tribe lead 在推 Q3 底前上线</em>以达成成本节约目标。所以备忘录还要有<em>明确的 go / no-go 建议</em>。<em>我的判断是</em>：有条件放行，取决于 3 项缓解措施。<em>你同意吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>I agree</em> — conditional go, contingent on the three mitigations <em>and</em> the InfoSec sign-off on data residency. If the residency issue is a hard breach, <em>I'd flip it to no-go until resolved</em>. I'll <em>call that out explicitly in the recommendation section.</em></span><span class="cn"><em>同意</em>——有条件放行，3 项缓解<em>加上</em> InfoSec 数据驻留签批为前提。如果驻留问题是硬性违反，<em>我会把建议翻到 no-go</em>直到解决。<em>我会在建议章节明确写出来。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick one — I need a 1-pager for the RIB by Monday.</em></span>
+                <span class="chinese">插个会外的事——我需要一份 1 页的备忘录下周一前给 RIB</span>
+                <span class="note">"Quick one" is the chief-architect's signal that this is small but time-sensitive. Don't mistake it for low importance.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>"Significant" or "high" are not numbers. Quantify where you can.</em></span>
+                <span class="chinese">"显著"或"高"不是数字。能量化就量化</span>
+                <span class="note">The RIB will reject adjectives. Use a 5×5 heat map: likelihood × impact. Anything above 12 escalates.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Inherent</span> <em>Inherent risk = 15, which is above the RIB escalation threshold of 12.</em></span>
+                <span class="chinese">固有风险 = 15，超过 RIB 上报阈值 12</span>
+                <span class="note">"Inherent risk" = the risk before any mitigation. Always state it explicitly — it's the worst case.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Shadow</span> <em>Keep the incumbent vendor in shadow mode for 90 days.</em></span>
+                <span class="chinese">让现有厂商 shadow 模式跑 90 天</span>
+                <span class="note">"Shadow mode" = runs in parallel, no production traffic. Lets you diff outputs against the incumbent before cutover.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Residual</span> <em>The memo should name both residual risks explicitly.</em></span>
+                <span class="chinese">备忘录要把两项残留风险都明确写出来</span>
+                <span class="note">"Residual risk" = what's left after mitigation. Always name it, never bury it. The RIB will ask "and after all that, what's still on the table?"</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>If the residency issue is a hard breach, I'd flip it to no-go until resolved.</em></span>
+                <span class="chinese">如果驻留问题是硬性违反，我会把建议翻到 no-go</span>
+                <span class="note">"Hard breach" = a Group Standard, regulator, or law is violated. Soft breach = group preference. Always distinguish.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Conditional</span> <em>My instinct: conditional go, contingent on the three mitigations.</em></span>
+                <span class="chinese">我的判断是：有条件放行，取决于 3 项缓解</span>
+                <span class="note">Three RIB options: go / no-go / conditional go. "Conditional" is the most common and the safest. Always name the conditions.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Regulatory</span> <em>If Vendor X misses a sanctions hit, the exposure is HKMA + MAS TRM + FCA.</em></span>
+                <span class="chinese">如果 Vendor X 漏掉一次制裁命中，监管暴露是 HKMA + MAS TRM + FCA</span>
+                <span class="note">Always name the regulators by acronym. HKMA = Hong Kong; MAS TRM = Singapore; FCA = UK; OCC = US. The RIB expects acronyms.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Loop</span> <em>Loop in Daniel from InfoSec UK — he'll know the MAS TRM answer.</em></span>
+                <span class="chinese">拉上英国的 InfoSec Daniel——他清楚 MAS TRM 的答案</span>
+                <span class="note">"Loop in" = bring into the conversation. Use it for people whose input is needed before the memo can be finalised.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>I'll recommend a third mitigation — a HK-resident data proxy.</em></span>
+                <span class="chinese">我会建议第三项缓解措施——加一个香港驻留的数据代理</span>
+                <span class="note">Always pair mitigation with a cost (latency, money, complexity). The RIB weighs the trade-off, not just the benefit.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>RIB (Resilience & Risk Forum)</strong> n. 韧性 & 风险论坛 Monthly cross-functional forum that approves technology risks above a heat-map threshold.</li>
+            <li><strong>Tech Risk Assessment Memo</strong> n. 技术风险评估备忘录 A 1-page memo quantifying risk, mitigation, and residual risk for the RIB.</li>
+            <li><strong>Inherent risk</strong> n. 固有风险 The risk before any mitigation is applied. The "worst case" number.</li>
+            <li><strong>Residual risk</strong> n. 残留风险 The risk that remains after all mitigations are applied. Must be named, not buried.</li>
+            <li><strong>Heat map (5×5)</strong> n. 热力图 A risk-scoring matrix: likelihood (1–5) × impact (1–5). Anything above 12 escalates to the RIB.</li>
+            <li><strong>Shadow mode</strong> n. 影子模式 A vendor runs in parallel with the incumbent; outputs are compared but no production traffic is routed.</li>
+            <li><strong>Group Cyber approved vendor list</strong> n. 集团 Cyber 批准厂商名单 The bank's vetted vendor list. New vendors require a security assessment.</li>
+            <li><strong>MAS TRM (Monetary Authority of Singapore Technology Risk Management)</strong> n. 新加坡金管局技术风险管理指南 Singapore's regulator's technology risk guidelines.</li>
+            <li><strong>HKMA (Hong Kong Monetary Authority)</strong> n. 香港金管局 Hong Kong's banking regulator. Owns the SA-2 (outsourcing) and TM-G-1 (technology risk) circulars.</li>
+            <li><strong>FCA (Financial Conduct Authority, UK)</strong> n. 英国金融行为监管局 UK regulator; oversees operational resilience (PS21/3) and outsourcing (SYSC 8).</li>
+            <li><strong>Data residency</strong> n. 数据驻留 The legal requirement that customer data must reside in a specific jurisdiction (e.g., SG customer data in SG).</li>
+            <li><strong>Conditional go / no-go</strong> n. 有条件放行 / 不放行 The three RIB recommendation options. "Conditional" requires named conditions.</li>
+            <li><strong>Regulatory exposure</strong> n. 监管暴露 The set of regulators + frameworks that would respond to a failure. Always named by acronym.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Likelihood × impact" — the math of risk writing</h3>
+        <p>
+            HSBC risk memos use the <strong>5×5 heat map</strong>: likelihood (1–5) × impact (1–5) =
+            inherent risk score. A score of 12 or above escalates to the RIB. After mitigation, you
+            re-score to get the residual risk. The grammar pattern: <em>"Inherent risk = likelihood
+            3 × impact 5 = 15, above the RIB threshold of 12. Residual risk = likelihood 2 × impact
+            3 = 6, below threshold."</em> — always with the equation written out, never just the
+            number.
+        </p>
+        <p>HSBC 风险备忘录用 <strong>5×5 热力图</strong>：可能性 × 影响 = 风险分。12 分以上上报 RIB。</p>
+
+        <h3>② "I'd flip it to no-go until resolved" — the conditional past</h3>
+        <p>
+            The pattern <em>If X, I'd Y</em> uses the <strong>past subjunctive</strong> (<em>I'd</em>,
+            <em>I'd recommend</em>, <em>I'd flip</em>) to soften a recommendation. Compare:
+            <em>"If it's a breach, I recommend no-go."</em> (firmer) vs. <em>"If it's a breach,
+            I'd flip it to no-go."</em> (more measured). The past form signals "this is one possible
+            path" rather than "this is the verdict". Use it when the data isn't yet final.
+        </p>
+        <p><em>If X, I'd Y</em> 的过去时让建议更柔和——在数据没敲定时更合适。</p>
+
+        <h3>③ "Contingent on" vs "subject to" vs "pending"</h3>
+        <p>
+            Three prepositions to chain conditions:
+            <em>conditional go, contingent on the three mitigations</em> (= the conditions must happen
+            first);
+            <em>subject to InfoSec approval</em> (= a specific person/body must approve);
+            <em>pending the data-residency check</em> (= waiting on a specific event).
+            Mixing them up is a tell that the architect is thinking in their first language. Use
+            the right one for the right kind of dependency.
+        </p>
+        <p>三个连词区分不同的依赖关系：<em>contingent on</em>（条件前置）、<em>subject to</em>（须经…批准）、<em>pending</em>（等待某事）。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>The RIB expects numbers, not adjectives.</strong> "High" / "significant" / "concerning" are red flags that the architect didn't do the math. Use the 5×5 heat map. Show the equation.</li>
+            <li><strong>Always name the residual risk.</strong> The RIB's #1 question is "after all the mitigations, what's still on the table?". Burying residual risk in a footnote is a career-limiting move at HSBC.</li>
+            <li><strong>Pair every mitigation with a cost.</strong> "Add HK-resident proxy — adds 20ms latency, ~$8k/month infra" is good. "Add HK-resident proxy" is incomplete. The RIB weighs trade-offs, not just benefits.</li>
+            <li><strong>Loop in the right expert before the memo.</strong> Daniel (InfoSec) for MAS TRM; Margaret (Chief Architect) for chapter; tribe lead for cost-benefit. Don't write the memo in a vacuum and then ask for sign-off — that triggers a re-write.</li>
+            <li><strong>Cross-region timing: IST + HKT + GMT.</strong> Rohit thinks in IST, you in HKT, Daniel in GMT. Always state deadlines in two zones: <em>"Friday EOD HKT / 5 PM GMT"</em>. The RIB will assume you mean HKT unless told otherwise.</li>
+            <li><strong>Conditional go is the default recommendation.</strong> Blanket go is naïve; blanket no-go is obstructionist. Conditional go with named conditions is the architect's signature — and what the RIB expects.</li>
+            <li><strong>Cite the Group Standard by name.</strong> "G-SDL-2024-09", "G-DR-2023-11", "Group Cyber Standard 7.3" — the RIB knows the standards by number. Vague references ("the security policy") will be sent back.</li>
+            <li><strong>Distinguish hard breach from soft preference.</strong> "MAS TRM data residency is a hard breach (regulator)." vs. "Group prefers HK-resident; not a breach but a strong preference." The RIB reacts very differently to the two.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the risk memo intro</h3>
+        <p>Translate the following risk-memo opening into natural Chinese. Notice the math being done out loud.</p>
+        <blockquote>
+            "Risk: Onboarding of Vendor Y for KYC document OCR in the CMB Onboarding squad.
+            Inherent risk: likelihood 4 (new vendor, no production track record at HSBC) ×
+            impact 4 (regulatory exposure = HKMA + MAS TRM + GDPR for EU customers) = 16, above
+            the RIB escalation threshold of 12. Mitigation: (1) shadow mode for 60 days, (2)
+            Group Cyber security assessment before go-live, (3) data residency in HK or SG only.
+            Residual risk: estimated at 6 (likelihood 2 × impact 3), below threshold. Recommend:
+            conditional go, contingent on all three mitigations and InfoSec sign-off."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"风险：CMB 开户 squad 接入 Vendor Y 做 KYC 文件 OCR。固有风险：可能性 4（新厂商，在汇丰无生产记录）× 影响 4（监管暴露 = HKMA + MAS TRM + 欧盟客户的 GDPR）= 16，超过 RIB 上报阈值 12。缓解措施：(1) shadow 模式跑 60 天，(2) 上线前必须经集团 Cyber 安全评估，(3) 数据驻留仅限香港或新加坡。残留风险：估计为 6（可能性 2 × 影响 3），低于阈值。建议：有条件放行，3 项缓解措施全部到位、且经 InfoSec 签批为前提。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the difference: strong vs weak risk writing</h3>
+        <p>Which of these sentences would survive a RIB review, and which would be sent back? Why?</p>
+        <ol>
+            <li>"The risk is high and we need to be careful."</li>
+            <li>"Inherent risk = likelihood 3 × impact 5 = 15, above the RIB threshold of 12. Residual risk after mitigation ≈ 6, below threshold."</li>
+            <li>"Vendor X might have a data residency issue, which is bad."</li>
+            <li>"Vendor X API is hosted in Singapore. MAS TRM data-residency rule for SG-customer traffic requires SG-resident processing. This is a hard breach if SG customers are in scope. Recommend a HK/SG-resident data proxy as mitigation — adds ~20ms p99 latency."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ survive. ② uses the 5×5 heat map equation explicitly. ④ names the regulator (MAS TRM), the rule (data residency), the breach type (hard), the mitigation (HK/SG-resident proxy), and the cost (~20ms p99). ① and ③ fail — adjectives, no numbers, no regulator, no mitigation, no cost.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are the Solution Architect for the Wealth Self-Service squad. The squad wants to migrate the OneWealth portfolio-rebalancing API from on-prem to AWS Lambda. The new design has: (a) no DR drill yet, (b) a new dependency on AWS Step Functions, (c) regulatory exposure to HKMA (TM-G-1) and MAS TRM. Write a 1-paragraph Tech Risk Assessment Memo opening that: (1) names the inherent risk using a 5×5 score, (2) proposes two mitigations, (3) names the residual risk, (4) recommends conditional go / no-go. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Risk: migration of the OneWealth portfolio-rebalancing API from on-prem to AWS Lambda. Inherent risk: likelihood 4 (new platform, no production track record at HSBC, no DR drill yet) × impact 4 (regulatory exposure = HKMA TM-G-1 + MAS TRM, plus potential customer impact during rebalancing failure) = 16, above the RIB escalation threshold of 12. Mitigation: (1) shadow mode for 90 days running 5% of production traffic, (2) full DR drill before go-live with Group Resilience sign-off, (3) AWS Step Functions dependency reviewed by InfoSec for SDL compliance. Residual risk: estimated at 6 (likelihood 2 × impact 3), below threshold — but contingent on Group Cyber sign-off on Step Functions and a successful DR drill. Recommend: conditional go, contingent on the three mitigations and InfoSec sign-off. If the DR drill fails or Step Functions fails the SDL review, flip to no-go until resolved."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="14-pushback-overengineering.html" class="btn btn-primary">Next: Article 14 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

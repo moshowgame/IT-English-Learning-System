@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: Asking for Help Gracefully | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">05 · Asking for Help Gracefully</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Asking for Help Gracefully</h1>
+        <p class="subtitle">Article 05 · Module 1: Daily Standup · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🤲 How to ask without sounding weak or unprepared</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            You have been stuck for <strong>two hours</strong> on a tricky Spring Boot issue: a <em>transaction
+            rollback exception</em> that only happens in the <em>UAT environment</em> but not locally. You've
+            already done your homework — read logs, checked the <em>DataSource config</em>, reproduced it once.
+            You need help from your senior colleague Tom.
+        </p>
+        <p>
+            你在 Spring Boot 上卡了两个小时——一个 <em>事务回滚异常</em>，只在 <em>UAT 环境</em> 出现，本地复现不出来。
+            你已经做了功课——查了日志、检查了 <em>DataSource 配置</em>、复现了一次。需要找资深同事 Tom 帮忙。
+        </p>
+        <p>
+            The key is: show what you've tried first, then ask. Never ask blind.
+        </p>
+        <p>
+            关键：先展示你已经尝试过的，再问。永远不要盲目求助。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (IM):</span>
+                <span class="text"><span class="en">Hey Tom, <em>do you have 10 minutes</em>? I could use a <em>second pair of eyes</em> on a Spring Boot issue. <em>Not urgent</em> — I can wait until after your meeting if needed.</span><span class="cn">嘿 Tom，有空 10 分钟吗？有个 Spring Boot 的问题想请你帮我看两眼。不急，你开完会也行。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Sure, what's up?</span><span class="cn">没问题，怎么了？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">I'm seeing a <em>TransactionSystemException</em> in the UAT logs for the customer onboarding service. <em>Locally it works fine</em> — only fails in UAT. I've been <em>digging for about two hours</em>.</span><span class="cn">UAT 日志里客户开户服务报TransactionSystemException，本地跑没问题，只在 UAT 报。我查了大约两个小时。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Here's what I've <em>tried so far</em>: checked the <em>application-uat.yml</em> — datasource config looks the same as prod. Looked at the <em>HikariCP pool settings</em> — they're identical. Pulled the UAT logs and saw the <em>rollback is happening at commit time</em>, not at the SQL level. I also tried <em>reproducing it locally</em> with the UAT config and <em>couldn't trigger it</em>.</span><span class="cn">我已经试过的：查了application-uat.yml，datasource 配置和 prod 看起来一样。看了HikariCP 连接池配置也一样。拉了 UAT 日志，回滚发生在 commit 时，不是 SQL 层。还试过用 UAT 配置在本地复现，复现不出来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">My <em>hunch</em> is that it's <em>connection-pool related</em> — maybe UAT has a smaller pool and we're hitting a <em>timeout on commit</em>. But I'm not 100% sure. <em>Could you take a quick look with me?</em></span><span class="cn">我猜测是连接池相关——可能 UAT 池小，commit 超时了。但我不太确定。能一起快速看一下吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Yeah, let's pull it up. <em>Good thinking</em> on the connection pool — actually, <em>that reminds me</em>, there was a similar issue last quarter on the GLCM team. UAT was running on a <em>smaller container</em> with a default <em>HikariCP size of 10</em>. The fix was to bump it to 30 for UAT.</span><span class="cn">行，打开看看。连接池思路不错。其实提醒我了，上季度 GLCM 团队也遇到过类似问题。UAT 跑在小容器上，HikariCP 默认大小是 10。后来调到 30 修好的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Oh, <em>that's exactly it</em>. Let me check the container spec — <em>you're right</em>, UAT is on a <em>2-CPU 2GB</em> container. <em>Let me try the config bump</em> and see if it resolves.</span><span class="cn">哦，就是这个。我看下容器规格——你说得对，UAT 是2 核 2G。我先调一下配置看能不能解决。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Sounds good. <em>One thing though</em> — make sure you <em>check with the SRE team</em> before bumping the pool size, in case there's a <em>downstream impact</em> on the <em>shared UAT DB</em>.</span><span class="cn">好。不过注意——先和 SRE 团队确认下，共享的 UAT DB可能受下游影响。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Will do. <em>Thanks a lot, Tom</em> — I was <em>going in circles</em> before. <em>I'll let you know</em> if the bump fixes it.</span><span class="cn">好的。非常感谢 Tom，之前一直在原地打转。调好了告诉你。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Anytime. <em>Happy to help.</em></span><span class="cn">随时，乐意帮忙。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Soft Ask</span> <em>Do you have 10 minutes?</em></span>
+                <span class="chinese">你有10分钟吗？</span>
+                <span class="note">Always <em>state the time ask</em> upfront. <em>"Got a sec?"</em> is even softer for quick questions.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>I could use a second pair of eyes.</em></span>
+                <span class="chinese">我想请你帮我看下</span>
+                <span class="note">A <em>second pair of eyes</em> is a humble, idiomatic way to ask for review. Never say "please help me".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Show work</span> <em>Here's what I've tried so far.</em></span>
+                <span class="chinese">这是我目前试过的</span>
+                <span class="note">The single most important sentence. Always show your homework before asking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hypothesis</span> <em>My hunch is that…</em></span>
+                <span class="chinese">我猜测是…</span>
+                <span class="note"><em>Hunch</em> is more humble than <em>"I think"</em>. Other options: <em>"My guess is…"</em> / <em>"It looks like…"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confidence</span> <em>I'm not 100% sure.</em></span>
+                <span class="chinese">我不百分百确定</span>
+                <span class="note">Showing uncertainty is professional, not weak. <em>"I'm pretty sure but not certain"</em> works too.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Request</span> <em>Could you take a quick look with me?</em></span>
+                <span class="chinese">能一起快速看一下吗？</span>
+                <span class="note"><em>With me</em> (not "for me") signals collaboration, not delegation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Feedback</span> <em>Good thinking.</em></span>
+                <span class="chinese">思路不错</span>
+                <span class="note">When seniors acknowledge your work, it builds trust. <em>"That's a fair point"</em> is also common.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Process</span> <em>Check with the SRE team before…</em></span>
+                <span class="chinese">先和 SRE 团队确认下…</span>
+                <span class="note">Seniors often add <strong>process reminders</strong> — listen carefully, these are HSBC compliance hints.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Closing</span> <em>I'll let you know if it fixes it.</em></span>
+                <span class="chinese">修好了告诉你</span>
+                <span class="note">Always close the loop. <em>"I'll circle back"</em> / <em>"I'll update you"</em> are alternatives.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>second pair of eyes</strong> <span class="tag">n.</span></span>
+                <span class="chinese">另一双眼睛（指协助审查）</span>
+                <span class="note">Idiomatic. Use it to ask for review without sounding incompetent.</span>
+            </li>
+            <li>
+                <span class="english"><strong>TransactionSystemException</strong> <span class="tag">n.</span></span>
+                <span class="chinese">Spring 事务系统异常</span>
+                <span class="note">Thrown by Spring when a transaction cannot be committed or rolled back properly.</span>
+            </li>
+            <li>
+                <span class="english"><strong>HikariCP</strong> <span class="tag">n.</span></span>
+                <span class="chinese">HikariCP (Java 高性能JDBC连接池)</span>
+                <span class="note">The default JDBC connection pool in Spring Boot. Pool size matters for concurrency.</span>
+            </li>
+            <li>
+                <span class="english"><strong>DataSource</strong> <span class="tag">n.</span></span>
+                <span class="chinese">数据源 (Java EE 概念)</span>
+                <span class="note">A factory for database connections. Configured in <em>application.yml</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SRE (Site Reliability Engineering)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">站点可靠性工程团队</span>
+                <span class="note">Owns production / UAT infrastructure. Always consult before infra changes.</span>
+            </li>
+            <li>
+                <span class="english"><strong>downstream impact</strong> <span class="tag">n.</span></span>
+                <span class="chinese">下游影响</span>
+                <span class="note">A change in one place that affects other systems / teams / users.</span>
+            </li>
+            <li>
+                <span class="english"><strong>going in circles</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">原地打转 / 没有进展</span>
+                <span class="note">A casual way to admit you're stuck. Better than <em>"I don't know"</em>.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "I could use…" — Polite Self-Reference</h3>
+        <p><em>"I could use a hand"</em> / <em>"I could use a second pair of eyes"</em> is a humble, native pattern for asking help. Compare:</p>
+        <ul>
+            <li>❌ <em>"Please help me."</em> (too direct, sounds junior)</li>
+            <li>❌ <em>"I need help."</em> (urgent, sometimes hostile)</li>
+            <li>✅ <em>"I <strong>could use</strong> a <strong>second pair of eyes</strong>."</em> (collaborative, professional)</li>
+            <li>✅ <em>"I <strong>could use a hand</strong> on this."</em> (slightly more casual)</li>
+        </ul>
+
+        <h3>② "Hunch" vs. "I think" — Expressing Hypothesis with Humility</h3>
+        <p>When you have a guess but not certainty:</p>
+        <ul>
+            <li><em>My <strong>hunch</strong> is that…</em> (informal, humble)</li>
+            <li><em>My <strong>best guess</strong> is that…</em> (slightly stronger)</li>
+            <li><em>It <strong>looks like</strong>…</em> (based on evidence)</li>
+            <li><em><strong>From the logs</strong>, it seems…</em> (evidence-led)</li>
+            <li>❌ Avoid <em>"I think it's definitely…"</em> when you don't have proof.</li>
+        </ul>
+
+        <h3>③ Past Tense in Recap — 复盘时使用过去式</h3>
+        <p>When describing what you've tried, always use past tense:</p>
+        <ul>
+            <li><em>I <strong>checked</strong> the config.</em></li>
+            <li><em>I <strong>tried</strong> reproducing locally.</em></li>
+            <li><em>I <strong>pulled</strong> the logs.</em></li>
+            <li><em>I <strong>couldn't</strong> reproduce it.</em> ← Use <em>couldn't</em>, not <em>"can't"</em>, because it's a past attempt.</li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">💡 The "Show Your Work" Rule</div>
+            <p>
+                At HSBC (and most banks), asking for help without showing your work is seen as a red flag.
+                The rule of thumb: <strong>30 minutes of self-debugging minimum</strong> before asking. Come with:
+            </p>
+            <ul>
+                <li>1. <strong>What you observed</strong> (the symptom)</li>
+                <li>2. <strong>What you tried</strong> (your investigation steps)</li>
+                <li>3. <strong>What you think</strong> (your hypothesis)</li>
+                <li>4. <strong>What you need</strong> (the specific ask)</li>
+            </ul>
+            <p>This pattern shows you can solve problems independently — you only escalate when you genuinely need help.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ HSBC-Specific Tips</div>
+            <ul>
+                <li><strong>Don't say "I don't know" alone.</strong> Always pair it with <em>"…but here's my next step"</em>.</li>
+                <li><strong>Use Confluence / Jira to log the issue.</strong> When asking for help, link the ticket — it makes the conversation auditable.</li>
+                <li><strong>Respect seniors' time.</strong> Always <em>state the time ask</em>: <em>"Do you have 10 minutes?"</em> not <em>"Can I ask you something?"</em>.</li>
+                <li><strong>Close the loop.</strong> After they help, follow up with the result. <em>"Just to close the loop — the fix worked."</em></li>
+                <li><strong>Avoid "打扰一下" / "Sorry to bother you".</strong> Excessive apology in English sounds weak. <em>"Got a sec?"</em> is enough.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to natural English (口语化):</div>
+                <p>"打扰一下，你能帮我看一下吗？我在 Spring Cloud Gateway 上配 JWT 鉴权，本地 OK，但 UAT 上 401。已经试了2个小时。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Hey, <em>do you have a few minutes?</em> I could use a <em>second pair of eyes</em> on a Spring Cloud Gateway issue — JWT auth config. <em>Works locally</em>, but <em>UAT is throwing 401s</em>. I've been <em>digging for about two hours</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Rewrite this "ask for help" message in a more professional way:</div>
+                <p>"Help me, the Jenkins pipeline is broken, I don't know what to do."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Hey, I'm running into a <em>Jenkins pipeline</em> issue. The <em>build is failing at the Docker push step</em> with a <em>403 Forbidden</em>. Here's what I've <em>tried so far</em>: (1) checked the credentials in Jenkins — they look correct; (2) tried <em>re-pushing manually</em> with the same creds — works fine; (3) pulled the Jenkins logs and saw the error is from the <em>docker-credential-ecr-login</em> plugin. <em>My hunch</em> is the <em>IAM role trust policy</em> needs an update. <em>Not urgent</em> — but if you have 15 mins today, would <em>appreciate a second pair of eyes</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Reply when a senior acknowledges your finding:</div>
+                <p>Tom says: "Good catch on the connection pool. That was my hunch too."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Thanks, Tom. <em>Will run with that.</em> <em>Will let you know</em> if the <em>pool size bump</em> fixes it. <em>Appreciate the help</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>You are stuck on a Kafka consumer lag issue in production. You've checked the consumer group, the topic partition count, the broker health, and the JVM heap. You suspect the deserialization logic is slow. Write a 5-line Slack message to your senior asking for help, following the 4-step pattern (observation / tried / hypothesis / ask).</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Hey Priya, <em>got a sec?</em> I'm <em>seeing consumer lag spike to 50k+ on the trade-events topic</em> in prod since this morning. <em>Things I've checked</em>: (1) consumer group is healthy, no rebalances; (2) all 12 partitions are assigned; (3) brokers are green, no under-replicated partitions; (4) JVM heap on the consumer pod is at 60%. <em>My hunch</em> is the <em>JSON deserialization</em> for the new MT202 message type is slower than expected. <em>Any chance</em> you can take a <em>quick look with me</em> later today? <em>Not blocking the release</em>, but I want to <em>close it out before the weekend</em>."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="04-volunteering-for-tasks.html">
+            <span class="label">← Previous</span>
+            <span class="title">04 · Volunteering for Tasks</span>
+        </a>
+        <a class="next" href="../index.html">
+            <span class="label">Module Index</span>
+            <span class="title">Back to Developer Articles</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 05 · Asking for Help Gracefully · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

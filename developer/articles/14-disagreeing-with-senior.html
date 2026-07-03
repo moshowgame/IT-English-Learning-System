@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 14: Disagreeing with a Senior | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">14 · Disagreeing with a Senior</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Disagreeing with a Senior</h1>
+        <p class="subtitle">Article 14 · Module 4: Difficult Conversations · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎓 Challenge your tech lead or architect with respect</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            In a design review, your tech lead <strong>Priya</strong> (UK) has proposed using
+            <em>PostgreSQL for the trade order audit log</em>. You have a different view — you think
+            <strong>append-only Cassandra</strong> would be a better fit because of the <em>write-heavy,
+            never-updated</em> nature of audit logs. You are a mid-level developer, she's a senior tech lead
+            with 12 years of experience. You need to challenge her <strong>with evidence, not ego</strong>.
+        </p>
+        <p>
+            设计评审中，技术负责人 <strong>Priya</strong>（英国）提议用 <em>PostgreSQL 做交易订单审计日志</em>。
+            你有不同的看法——你认为 <strong>append-only Cassandra</strong> 更合适，因为审计日志是 <em>写多读少、从不更新</em>。
+            你是中级开发，她是12年经验的资深技术负责人。你需要 <strong>用证据、而不是自尊</strong> 挑战她。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">OK, <em>proposal</em>: we'll use <em>PostgreSQL for the trade order audit log</em>. We already have it in our tech stack, the team knows it, and it <em>supports JSON columns</em> for the flexible audit payload. <em>Any objections?</em></span><span class="cn">好的，方案：用 PostgreSQL 做交易订单审计日志。技术栈里已有，团队熟悉，而且支持 JSON 列存灵活的审计数据。有人反对吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Priya, <em>thanks for laying out the rationale</em> — the JSON column idea is <em>nice for the flexible payload</em>. <em>I'd like to challenge this</em> with an alternative, but <em>not at all suggesting we change direction lightly</em>. <em>Could I share a different perspective?</em></span><span class="cn">Priya，谢谢说明理由——JSON 列的想法不错，灵活的数据结构很好。我想挑战一下，提出另一种方案，但绝不是要轻率地改变方向。我可以说说不同看法吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Sure, go ahead.</em> I'm <em>open to alternatives</em> if there's a strong case.</span><span class="cn">好的，请讲。如果有强有力的情况，我愿意接受其他方案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Three things</em> make me think <em>Cassandra might be a better fit</em> for this specific workload:</span><span class="cn">三点让我觉得 Cassandra 可能更合适这个特定工作负载：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>One — write pattern.</em> Audit logs are <em>append-only by definition</em> — we <em>never update or delete</em> rows. PostgreSQL, while flexible, is <em>optimized for read-write mixed workloads</em>. Cassandra is <em>purpose-built for append-heavy, time-series-like data</em> and would <em>scale horizontally without sharding pain</em>.</span><span class="cn">第一——写入模式。审计日志本质上是只能追加的——从不更新或删除。PostgreSQL 虽然灵活，但针对读写混合负载做了优化。Cassandra 专门为追加密集型、时序类数据设计，能水平扩展而不需要分片。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Two — volume projection.</em> <em>From what I've modelled</em> with the BA, we expect <em>~5 million audit events per day</em> at peak. With PostgreSQL, this would <em>require aggressive partitioning and archiving</em> after 90 days. Cassandra's <em>TTL feature</em> would <em>auto-expire</em> old data without manual intervention.</span><span class="cn">第二——容量预测。根据我和 BA 的建模，峰值时每天约 500 万条审计事件。用 PostgreSQL 需要激进分区和 90 天后归档。Cassandra 的 TTL 功能可以自动过期旧数据，无需人工干预。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Three — query pattern.</em> Our <em>primary query</em> is <em>"give me all audit events for trade order X in the last 30 days"</em> — a <em>point-in-time lookup</em> by primary key. Cassandra is <em>designed exactly for this</em>. PostgreSQL would need a <em>heavily indexed time + order_id column</em> to do the same efficiently.</span><span class="cn">第三——查询模式。我们的主要查询是“给我某交易订单最近 30 天的所有审计事件”——按主键做时间点查询。这正是 Cassandra 的设计目标。PostgreSQL 需要在时间 + order_id 上建大量索引才能高效完成同样查询。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>That said</em>, I <em>completely see the merit</em> of your PostgreSQL choice — <em>less operational overhead</em>, <em>team familiarity</em>, <em>no new tech to learn</em>. Those are <em>legitimate trade-offs</em>.</span><span class="cn">不过我完全理解你选 PostgreSQL 的优点——运维开销小、团队熟悉、无需学新技术。这些都是合理的取舍。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My suggestion</em> is that we <em>don't decide in this meeting</em>. <em>How about</em> I <em>put together a 1-page comparison</em> — PostgreSQL vs Cassandra for this workload — with <em>rough cost and effort estimates</em>? We can <em>revisit at the next design review</em>. <em>That way we're deciding with data, not opinions.</em></span><span class="cn">我的建议是这次会议先不定。我做一份 1 页的对比——PostgreSQL vs Cassandra 在这个工作负载下的对比，附粗略的成本和工作量估算。下次设计评审再讨论。这样我们用数据决策，而不是凭观点。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Wei, that's a really mature take.</em> The <em>three points are well-argued</em>, and the <em>volume projection</em> is something I <em>didn't think through carefully</em>. <em>Yes, please do the comparison</em> — <em>by next Tuesday</em> would be great. <em>And please loop in Rajesh</em> (architect) — he'd have <em>input on the operational side</em>.</span><span class="cn">Wei，这个想法很成熟。三个论点很有力，容量预测我之前没仔细考虑。好，请做对比——下周二前可以吧。也让 Rajesh（架构师）参与一下——他对运维方面会有建议。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Will do.</em> I'll <em>have the comparison ready by Tuesday EOD HKT</em> and <em>share it in the channel</em>. <em>Thanks for being open to it, Priya.</em></span><span class="cn">好的。我会在下周二香港时间下班前出对比，发到频道里。谢谢你愿意听不同意见，Priya。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en"><em>Always open to a good argument with data.</em> <em>👍</em></span><span class="cn">一直欢迎有数据支撑的讨论 👍</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag gold">Open</span> <em>Could I share a different perspective?</em></span>
+                <span class="chinese">能分享一个不同视角吗？</span>
+                <span class="note">Always <em>ask permission</em> before challenging a senior. Shows respect.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Acknowledge</span> <em>Thanks for laying out the rationale — the JSON column idea is nice.</em></span>
+                <span class="chinese">谢谢阐述理由——JSON 字段的想法不错</span>
+                <span class="note">Open with what's good about the senior's proposal. Even if you disagree, find something to agree with.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Humble</span> <em>I'd like to challenge this, but not at all suggesting we change direction lightly.</em></span>
+                <span class="chinese">我想挑战，但不是说轻易改变方向</span>
+                <span class="note">Pre-empt the "you're being difficult" perception. Show you understand the cost of changing course.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Credit</span> <em>Completely see the merit of your choice — less operational overhead, team familiarity.</em></span>
+                <span class="chinese">完全理解你的选择优点——运维低、团队熟悉</span>
+                <span class="note">Always <strong>acknowledge the trade-offs</strong> the senior made. Shows you understand the bigger picture.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Data</span> <em>From what I've modelled, we expect ~5 million events per day.</em></span>
+                <span class="chinese">据我建模，峰值每天约500万事件</span>
+                <span class="note">Data > opinion. Always <em>do the math</em> before challenging.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Defer</span> <em>How about I put together a 1-page comparison?</em></span>
+                <span class="chinese">要不我做一份1页对比？</span>
+                <span class="note">Don't try to decide in the meeting. <em>Take it offline</em> for proper analysis.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Process</span> <em>That way we're deciding with data, not opinions.</em></span>
+                <span class="chinese">这样用数据决策，而不是观点</span>
+                <span class="note">Reframe the disagreement as <em>data-gathering</em>, not <em>you're wrong</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Receive</span> <em>That's a really mature take.</em></span>
+                <span class="chinese">这是非常成熟的看法</span>
+                <span class="note">When a senior praises your pushback, it builds your credibility for the future.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>append-only</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">仅追加 (不能修改/删除)</span>
+                <span class="note">A data pattern where records are only added, never modified. Audit logs are typically append-only.</span>
+            </li>
+            <li>
+                <span class="english"><strong>scale horizontally</strong> <span class="tag">v.</span></span>
+                <span class="chinese">水平扩展 (增加节点)</span>
+                <span class="note">Add more servers to handle load. Opposite of <em>scale vertically</em> (bigger server).</span>
+            </li>
+            <li>
+                <span class="english"><strong>sharding</strong> <span class="tag">n.</span></span>
+                <span class="chinese">分片</span>
+                <span class="note">Splitting data across multiple databases. Painful in PostgreSQL, native in Cassandra.</span>
+            </li>
+            <li>
+                <span class="english"><strong>TTL (Time To Live)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">生存时间 (自动过期)</span>
+                <span class="note">A setting that auto-expires data after N seconds. Native in Cassandra, requires jobs in PostgreSQL.</span>
+            </li>
+            <li>
+                <span class="english"><strong>point-in-time lookup</strong> <span class="tag">n.</span></span>
+                <span class="chinese">时间点查找</span>
+                <span class="note">A query that fetches records for a specific entity at a specific time range.</span>
+            </li>
+            <li>
+                <span class="english"><strong>trade-off</strong> <span class="tag">n.</span></span>
+                <span class="chinese">权衡</span>
+                <span class="note">A balance between two competing concerns. Every design decision is a trade-off.</span>
+            </li>
+            <li>
+                <span class="english"><strong>JSON column</strong> <span class="tag">n.</span></span>
+                <span class="chinese">JSON 字段 (关系数据库中的灵活字段)</span>
+                <span class="note">A column that stores JSON data. PostgreSQL's <em>jsonb</em> type is famous for this.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "I'd like to challenge this, but not at all suggesting…" — 加缓冲的反对</h3>
+        <p>The <em>but not at all suggesting…</em> pattern removes the confrontational edge:</p>
+        <ul>
+            <li><em>I'd like to challenge this, but <strong>not at all suggesting</strong> we change direction lightly.</em></li>
+            <li><em>I'd push back, but <strong>not on the overall goal</strong>.</em></li>
+            <li><em>I'd disagree, but <strong>not without understanding the constraints</strong> first.</em></li>
+        </ul>
+
+        <h3>② "That said" / "With that said" — Pivot Pattern</h3>
+        <p>When you've made your point and want to acknowledge the other side:</p>
+        <ul>
+            <li><em><strong>That said</strong>, I completely see the merit of your choice.</em></li>
+            <li><em><strong>With that said</strong>, we should still consider X.</em></li>
+            <li><em><strong>That being said</strong>, the time pressure is real.</em></li>
+        </ul>
+
+        <h3>③ "How about I…" — Soft Proposal</h3>
+        <p><em>"How about I…?"</em> is much softer than <em>"I'll do…"</em>:</p>
+        <ul>
+            <li>❌ <em>"I'll do the comparison."</em> (sounds presumptuous)</li>
+            <li>✅ <em>"<strong>How about I</strong> put together a comparison?"</em> (asks permission)</li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🎓 The Art of "Upward Pushback"</div>
+            <p>Disagreeing with a senior is one of the most important — and delicate — skills in a developer's career.
+            Done well, it builds your credibility. Done poorly, it ends it. Five rules:</p>
+            <ol>
+                <li><strong>Always ask permission first.</strong> <em>"Could I share a different perspective?"</em></li>
+                <li><strong>Open with what's good about their idea.</strong> Find something genuine to agree with.</li>
+                <li><strong>Bring data, not opinions.</strong> Numbers, benchmarks, projections. Never <em>"I feel…"</em></li>
+                <li><strong>Acknowledge the trade-offs they made.</strong> Show you understand the bigger picture.</li>
+                <li><strong>Don't decide in the meeting.</strong> Propose taking it offline for proper analysis.</li>
+            </ol>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Cross-Cultural Senior Pushback</div>
+            <ul>
+                <li><strong>UK seniors</strong> often appreciate <strong>structured, data-led pushback</strong>. Be direct, but professional.</li>
+                <li><strong>HK seniors</strong> may <strong>read pushback as "losing face"</strong>. Use softer framing, lead with the relationship.</li>
+                <li><strong>Indian seniors</strong> often welcome <strong>constructive debate</strong> and <strong>explicit alternatives</strong>.</li>
+                <li><strong>Never challenge in front of a wider audience</strong> without first raising it privately.</li>
+                <li><strong>If you lose the argument, lose gracefully.</strong> <em>"Fair point, let's go with your call."</em></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Soften this pushback to a senior:</div>
+                <p>"Priya, I think we should use Redis, not Memcached. Memcached doesn't support persistence."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Priya, <em>thanks for laying out the rationale</em> — Memcached's simplicity is appealing. <em>Could I share a different perspective?</em> <em>Not at all suggesting</em> we change direction lightly. <em>One thing</em> gives me pause on Memcached: <em>persistence</em>. In our setup, the cache needs to <em>survive a pod restart</em> — otherwise we get a <em>cold-cache storm</em> on every deployment. <em>From what I understand</em>, Memcached is <em>pure in-memory</em> with no native persistence, while Redis offers <em>RDB + AOF persistence</em>. <em>How about I</em> put together a <em>1-page comparison</em> on this specific point? We can <em>revisit next design review</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Translate to native-sounding English:</div>
+                <p>"我想挑战一下用PostgreSQL的想法。不是说轻易改变，但Cassandra对append-only日志更合适。让我做个对比页，下次会议讨论。"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Could I share a different perspective</em> on the PostgreSQL choice? <em>Not at all suggesting</em> we change direction lightly — but for an <em>append-only, write-heavy</em> workload like audit logs, Cassandra is <em>purpose-built</em> for this. <em>How about I</em> put together a <em>1-page comparison</em> with <em>rough cost and operational estimates</em>? We can <em>revisit at the next design review</em> and decide <em>with data, not opinions</em>."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right phrases:</div>
+                <p>"<em>Could I share a _____ (different)? / Not at all _____ (suggest) we change direction lightly. / That said, I completely see the _____ (merit). / How about I put together a 1-page _____ (compare)? / That way we're _____ (decide) with data, not opinions.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>perspective</em> / <em>suggesting</em> / <em>merit</em> / <em>comparison</em> / <em>deciding</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>Your tech lead Priya wants to use synchronous HTTP calls between 3 new microservices for simplicity. You think async messaging (Kafka) is more appropriate because of: (1) the request-response pattern can fail at multiple points, (2) audit logging is easier with events, (3) services can scale independently. Write a polite, structured pushback with 3 reasons and a proposal to take it offline.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Priya, <em>totally see the appeal of sync HTTP</em> — <em>simpler</em>, <em>less infra to manage</em>, <em>team knows it well</em>. <em>Could I share a different perspective?</em> <em>Not at all suggesting</em> we change direction lightly, but <em>three things</em> give me pause:
+                    <ol>
+                        <li><em>Failure modes</em> — sync HTTP means <em>every call can fail independently</em>, and we'd need <em>distributed tracing + circuit breakers</em> for every interaction. With async messaging, the <em>broker handles retry and persistence</em>.</li>
+                        <li><em>Audit logging</em> — events going through Kafka are <em>natively logged</em>. With sync HTTP, we'd need to <em>manually instrument</em> every call. Compliance will <em>appreciate</em> the event log.</li>
+                        <li><em>Independent scaling</em> — sync means <em>cascading load</em> — when Service A spikes, it <em>directly hammers</em> B and C. Async <em>decouples</em> them, so each can scale on its own.</li>
+                    </ol>
+                    <em>That said</em>, the operational overhead of Kafka is real — <em>new infra to learn</em>, <em>Zookeeper / KRaft</em>, <em>monitoring</em>. <em>Not a free win.</em>
+                    <br><br>
+                    <em>How about</em> I put together a <em>1-page comparison</em> — sync HTTP vs Kafka for this 3-service flow — with <em>effort and risk estimates</em>? <em>Re-evaluate at the next design review</em> with <em>Rajesh</em> in the room."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="13-politely-push-back.html">
+            <span class="label">← Previous</span>
+            <span class="title">13 · Politely Pushing Back</span>
+        </a>
+        <a class="next" href="15-uncertain-estimation.html">
+            <span class="label">Next Article →</span>
+            <span class="title">15 · Estimating Uncertain Tasks</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 14 · Disagreeing with a Senior · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

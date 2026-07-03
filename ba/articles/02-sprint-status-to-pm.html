@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 02: Sprint Status to PM | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">02 · Sprint Status to PM</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Sprint Status to PM</h1>
+        <p class="subtitle">Article 02 · Module 2: Sprint Reporting · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Reporting burndown, scope changes, and blockers to the PM — with RAG, no drama</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday, 4:00 PM HKT</strong>, end of week 2 of a 3-week sprint on the
+            HSBC <em>GPB (Global Private Banking)</em> OneWealth platform. You are the BA on the
+            <em>Tax Reporting Automation</em> squad, sitting in Hong Kong, with developers in
+            Bangalore and Shanghai. The PM, Olivia, based in London, has booked a 30-minute
+            <strong>sprint health check</strong> with you and the Scrum Master.
+        </p>
+        <p>
+            周四下午 4 点香港时间，GPB（全球私人银行）OneWealth 平台第 2 周冲刺结束，
+            3 周冲刺周期。你是 <em>税务申报自动化</em> squad 的 BA（base 香港），开发在
+            班加罗尔和上海。PM Olivia 在伦敦，约了你和 Scrum Master 一起做 30 分钟的
+            <strong>冲刺健康检查</strong>。
+        </p>
+        <p>
+            Your job is to give Olivia a clear, honest read on three things: <strong>burndown</strong>
+            (are we on track?), <strong>scope</strong> (what changed since sprint planning?), and
+            <strong>blockers</strong> (what does the PM need to unblock at her level?). Avoid
+            burying bad news — she needs it early so she can escalate to the HKMA reporting lead
+            and the GPB Head of Digital before the CAB review on Friday.
+        </p>
+        <p>
+            你的任务是给 Olivia 三件事的清晰、诚实的读数：<strong>燃尽图</strong>（是否按计划）、
+            <strong>范围</strong>（自 Sprint Planning 以来有什么变化）、<strong>阻塞</strong>
+            （需要 PM 级别升级什么）。坏消息别藏着——她需要尽早知道，才能在周五的 CAB 评审
+            前升级到 HKMA 申报负责人和 GPB 数字化负责人。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Olivia (PM):</span>
+                <span class="text"><span class="en"><em>Right, thanks for jumping on</em>, Wei, Sarah. <em>Quick sprint check</em> — give me the honest read, <em>no surprises</em>, please.</span><span class="cn">感谢加入，Wei、Sarah。冲刺快查——给我真实的读数，别藏着掖着。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en">OK, so <em>three quick things from the BA side</em>. <strong>Burndown, scope, blockers.</strong></span><span class="cn">好，BA 侧三点快说——燃尽、范围、阻塞。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>On burndown</em>, we're <em>tracking green</em> on the FATCA and CRS story points — 18 of 21 done, <em>on plan</em>. <em>However</em>, the <em>HKMA tax residency story</em> (TR-3340) is <em>slipping</em> — it's at 2 of 8 points done and we need 4 more days than we sized.</span><span class="cn">燃尽方面，FATCA 和 CRS 故事点跟踪为绿色——21 个点完成 18 个，按计划。但是，HKMA 税务居民认定 Story（TR-3340）<em>在滑</em>——8 个点只完成 2 个，比估算多 4 天。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Olivia (PM):</span>
+                <span class="text"><span class="en"><em>Flag that one</em> — what's the root cause?</span><span class="cn">这个标一下——根本原因是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Two reasons.</em> The HKMA <em>self-certification form</em> changed format in March, and the business PO only flagged it on Tuesday. <em>On top of that</em>, the data-masking rule from Risk came in late, so Akash had to <em>rework</em> the residency validation logic.</span><span class="cn">两个原因。HKMA 的<em>自证表格</em> 3 月换了格式，业务 PO 周二才同步给我们。叠加风险团队的数据脱敏规则来晚了，Akash 不得不重做税务居民校验逻辑。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>On scope</em>, we <em>added one story mid-sprint</em> — a <em>PEP (Politically Exposed Person) flagging fix</em> for Compliance. It came through eCAB last Friday as a <em>regulatory must-have</em>. We've <em>swapped out</em> the <em>low-priority UI polish</em> story to make room.</span><span class="cn">范围方面，Sprint 中加了一个 Story——合规要求的 <em>PEP（政治敏感人物）标记修复</em>。上周五 eCAB 走流程作为"监管必做"项进来的。我们用低优先级的 UI 打磨项腾出位置。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en"><em>Just to add</em> — that swap is captured in the <em>sprint goal</em> on Jira, and the velocity impact is <em>roughly neutral</em>.</span><span class="cn">补一句——这个替换在 Jira 的 Sprint Goal 里记了，对速率影响基本是中性。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>On blockers</em>, there's <em>one thing at your level, Olivia.</em> The <em>HKMA clarification</em> on the new self-cert form — the regulator hasn't published the final guidance yet. <em>If it doesn't land by next Wednesday</em>, I think we should <em>descope TR-3340 to the next sprint</em> and ship FATCA + CRS + PEP on time. <em>Would you be able to nudge</em> the HKMA reporting lead?</span><span class="cn">阻塞方面，有<em>一件是 PM 层面</em>的：HKMA 对新自证表格的澄清——监管还没发最终指引。<em>如果下周三前出不来</em>，我建议把 TR-3340 砍到下个 Sprint，本期按时交付 FATCA + CRS + PEP。<em>你能推一下</em> HKMA 申报负责人吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Olivia (PM):</span>
+                <span class="text"><span class="en"><em>Got it.</em> I'll <em>reach out to Vincent</em> at HKMA this evening UK time. <em>Just to be clear</em> — if the guidance doesn't come, are we <em>comfortable</em> descoping TR-3340 from a regulatory standpoint?</span><span class="cn">收到。我今晚英国时间联系 Vincent。<em>明确一下</em>——如果指引没来，从监管角度看我们<em>能接受</em>把 TR-3340 砍掉吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Yes,</em> I've <em>checked with HK Compliance</em> — the <em>existing manual workaround</em> stays in place until HKMA publishes the final form, so we're <em>not in breach</em>. I'll <em>send you the compliance note</em> after this call.</span><span class="cn">可以，我已经和香港合规确认——HKMA 最终表格发布前，<em>现有的人工流程</em> 保留，所以<em>不算违规</em>。会后我把合规说明发给你。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Olivia (PM):</span>
+                <span class="text"><span class="en"><em>Brilliant.</em> <em>One last thing</em> — for the CAB tomorrow, can you <em>send me a one-pager</em> with the burndown chart, the scope change log, and the descope recommendation? <em>Before 9 AM UK time</em>, please.</span><span class="cn">很好。最后一件事——明天 CAB 之前，你能<em>给我一页纸</em>，含燃尽图、范围变更日志、砍范围建议？<em>英国时间早上 9 点前</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Sure thing</em> — I'll have it in your inbox by <em>8 AM HKT</em>, which gives you a 30-min buffer before the CAB.</span><span class="cn">没问题——香港时间早上 8 点发到你邮箱，比 CAB 提前 30 分钟。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Give me the honest read, no surprises.</em></span>
+                <span class="chinese">给我真实读数，别藏着掖着</span>
+                <span class="note">A PM's way of saying "tell me the bad news first, don't sugarcoat it".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Three things: burndown, scope, blockers.</em></span>
+                <span class="chinese">三件事：燃尽、范围、阻塞</span>
+                <span class="note">Pre-frames your status — saves time and forces you to be structured.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag green">RAG</span> <em>Tracking green on…</em></span>
+                <span class="chinese">跟踪为绿灯</span>
+                <span class="note">RAG = Red/Amber/Green. Universal PM language. "Amber" = at risk, "Red" = off track.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Risk</span> <em>Slipping — we need 4 more days than we sized.</em></span>
+                <span class="chinese">在滑——比估算多 4 天</span>
+                <span class="note">"Slipping" = behind schedule. Always quantify (days, points), don't say "a bit late".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Root cause</span> <em>Two reasons. The form changed, and…</em></span>
+                <span class="chinese">两个原因。表格换了，而且…</span>
+                <span class="note">PMs love "two reasons" — it shows RCA thinking. Avoid "lots of reasons" or "it's complicated".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>We added one story mid-sprint via eCAB.</em></span>
+                <span class="chinese">Sprint 中加了一个 Story（eCAB 流程）</span>
+                <span class="note">Always cite the change-control route (eCAB, CAB) — proves governance was followed.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Swap</span> <em>We've swapped out the low-priority UI polish to make room.</em></span>
+                <span class="chinese">我们用低优先级的 UI 打磨项腾出位置</span>
+                <span class="note">"Swap out" = replace. "Descope" = remove without replacement. Different words, different implications.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Escalate</span> <em>One thing at your level, Olivia.</em></span>
+                <span class="chinese">有一件是你（PM）层面的</span>
+                <span class="note">"At your level" = requires PM authority. Polite way to escalate without sounding like you're pushing work up.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>I think we should descope TR-3340 to the next sprint.</em></span>
+                <span class="chinese">我建议把 TR-3340 砍到下个 Sprint</span>
+                <span class="note">Always bring a recommendation, not just a problem. "I think we should…" = BA advising, not deciding.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Ask</span> <em>Would you be able to nudge the HKMA reporting lead?</em></span>
+                <span class="chinese">你能推一下 HKMA 申报负责人吗？</span>
+                <span class="note">"Nudge" = soft ask. Use "would you be able to" (polite request) over "can you" (direct).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reassure</span> <em>We're not in breach.</em></span>
+                <span class="chinese">我们不算违规</span>
+                <span class="note">"In breach" = violating regulation. A banking PM's #1 fear. Always confirm or deny this explicitly.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>I'll have it in your inbox by 8 AM HKT.</em></span>
+                <span class="chinese">香港时间早上 8 点前发到你邮箱</span>
+                <span class="note">Always state a time and a buffer. PMs respect commitments that are specific.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Burndown</strong> n. 燃尽图 A chart showing remaining work (points or hours) over sprint time.</li>
+            <li><strong>RAG status</strong> n. 红黄绿状态 Red / Amber / Green — the standard PM health indicator.</li>
+            <li><strong>Scope change</strong> n. 范围变更 Any addition, removal, or modification to the sprint backlog.</li>
+            <li><strong>eCAB / CAB</strong> n. 紧急变更评审委员会 / 变更评审委员会 Emergency / Change Advisory Board — the governance forum for scope changes.</li>
+            <li><strong>Descope</strong> v. 砍范围 Remove a story from the current sprint, often deferred to a later sprint.</li>
+            <li><strong>Velocity</strong> n. 速率 The amount of work (in points) a squad typically completes per sprint.</li>
+            <li><strong>FATCA</strong> n. 美国海外账户税收合规法 Foreign Account Tax Compliance Act — US tax reporting regime.</li>
+            <li><strong>CRS</strong> n. 共同申报准则 Common Reporting Standard — OECD's global tax info exchange.</li>
+            <li><strong>HKMA</strong> n. 香港金管局 Hong Kong Monetary Authority — HK's banking regulator.</li>
+            <li><strong>PEP (Politically Exposed Person)</strong> n. 政治敏感人物 High-risk customer category requiring enhanced due diligence.</li>
+            <li><strong>OneWealth</strong> n. 一财富 HSBC's GPB integrated wealth management platform.</li>
+            <li><strong>RCA (Root Cause Analysis)</strong> n. 根本原因分析 The "5 whys" technique for finding the real reason behind a problem.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Tracking green" — verb + colour adjectives as project status</h3>
+        <p>
+            In HSBC project language, colours work as adjectives after tracking verbs: <em>tracking green</em>,
+            <em>going amber</em>, <em>turned red</em>. You can also say <em>we're green on this</em> or
+            <em>this is amber</em>. The colour is doing the work of "on track / at risk / off track" — short
+            and unmistakable on dashboards.
+        </p>
+        <p>HSBC 项目语言里，颜色做形容词：<em>tracking green</em>（按计划）/ <em>going amber</em>（有风险）/
+            <em>turned red</em>（已偏离）。在仪表盘上又短又清晰。</p>
+
+        <h3>② "We're slipping" — present continuous for active deterioration</h3>
+        <p>
+            <em>We're slipping</em> uses the present continuous to describe a situation that is actively
+            getting worse right now. Compare: <em>we slipped last sprint</em> (past, finished) vs
+            <em>we're slipping this sprint</em> (active). PMs react faster to the active form because it
+            implies "we can still intervene".
+        </p>
+        <p>现在进行时描述正在恶化的情况：<em>we're slipping</em>。PM 对进行时反应更快，因为暗示"还能介入"。</p>
+
+        <h3>③ "Would you be able to" vs "Can you" — the politeness ladder in PM asks</h3>
+        <p>
+            When asking a PM for action, you choose how much weight to put on the ask:
+        </p>
+        <ul>
+            <li>❌ <em>Can you nudge Vincent?</em> (direct, slightly demanding)</li>
+            <li>✅ <em><strong>Would you be able to</strong> nudge Vincent?</em> (polite, gives them an out)</li>
+            <li>✅✅ <em>I was wondering <strong>if you could</strong> nudge Vincent?</em> (very polite, used cross-region with senior PMs)</li>
+        </ul>
+        <p>三种礼貌等级：Can you（直接）/ Would you be able to（礼貌）/ I was wondering if you could（非常礼貌，适合跨时区或高级 PM）。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Pre-frame your status.</strong> Saying "three things: burndown, scope, blockers" before diving in saves the PM 5 minutes of follow-up questions. HSBC PMs love a clean frame because it goes straight into their own status deck.</li>
+            <li><strong>Quantify slippage in days, not vibes.</strong> "It's slipping a bit" is useless. "We need 4 more days" is actionable. Always bring a number.</li>
+            <li><strong>Always offer a recommendation.</strong> A PM does not want a problem without a proposed fix. "I think we should descope TR-3340" is better than "TR-3340 is at risk". You're advising, not deciding.</li>
+            <li><strong>Distinguish "add" from "swap" from "descope".</strong> Three different change-control conversations. Adding = "we got more". Swapping = "we replaced". Descoping = "we're cutting". Use the right verb; the PM needs it for the CAB minutes.</li>
+            <li><strong>Confirm regulatory exposure explicitly.</strong> "We're not in breach" is the sentence the PM is waiting to hear. If you can say it, say it. If you can't, say "I need to check with Compliance and come back to you" — never guess on regulatory exposure.</li>
+            <li><strong>Time zones are your ally if you plan them.</strong> Saying "8 AM HKT = midnight UK time, you'll have it before you wake up" shows the PM you've thought about her day, not just yours. Always state the deadline in the PM's local time when you can.</li>
+            <li><strong>The one-pager is sacred.</strong> Burndown chart + scope change log + descope recommendation = the CAB pack. Send it before the deadline, never at the deadline. Buffer is respect.</li>
+            <li><strong>Use the eCAB / CAB reference.</strong> Saying "it came through eCAB" tells the PM the change was properly governed, not snuck in. Governance trail = trust.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the PM update</h3>
+        <p>Translate the following PM update into natural Chinese. Pay attention to how the BA frames the slippage and the recommendation.</p>
+        <blockquote>
+            "Three things from the BA side. Burndown: we're tracking green on the onboarding stories — 22 of 25
+            points done. However, the PEP screening story (ONB-9921) is slipping — we need 3 more days. Two reasons:
+            the sanctions list update came late, and the Bangalore dev was pulled into a P1 incident. Scope: we
+            added one compliance story mid-sprint via eCAB and swapped out the legacy data migration. Blockers:
+            one thing at your level — the new FATCA guidance from the IRS. If it doesn't land by next Wednesday,
+            I recommend we descope ONB-9921 and ship the rest. I'd need you to nudge the IRS contact."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"BA 这边三件事。燃尽：开户 Stories 跟踪为绿色——25 个点完成 22 个。但是，PEP 筛查 Story（ONB-9921）在滑——多 3 天。原因是制裁名单更新来晚了，加上班加罗尔开发被拉去救 P1 故障。范围：Sprint 中通过 eCAB 加了一个合规 Story，把遗留数据迁移替换掉了。阻塞：有一件是 PM 层面的——IRS 的新 FATCA 指引。如果下周三前出不来，我建议砍掉 ONB-9921，其余按时上线。需要你推一下 IRS 的联系人。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the BA mistake</h3>
+        <p>Which of these PM update lines is most "BA-polished" and which would land worst with a PM? Why?</p>
+        <ol>
+            <li>"Yeah, things are a bit slow this sprint, but I'm sure we'll catch up."</li>
+            <li>"Three things: burndown, scope, blockers. Burndown is tracking green except for TR-3340 — we need 4 more days. Two reasons:…"</li>
+            <li>"We're behind. The HKMA is the problem."</li>
+            <li>"I recommend we descope TR-3340. I've checked with HK Compliance — we're not in breach. I'll send you the compliance note after this call."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are BA-polished — they pre-frame, quantify, recommend, and address regulatory exposure. ① is vague and unquantified (a PM will not accept "a bit slow"). ③ blames the regulator without offering a path forward — never do this. A PM hears ① and ③ and immediately loses trust in the rest of your status.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a BA on the GPB Cards squad. Sprint health check with the PM. Facts:
+            (a) the rewards recalculation story is tracking green, 8 of 8 points done.
+            (b) the digital wallet tokenisation story (CARD-4450) is slipping — 2 of 5 points done, 3 more days needed. Root cause: OnePay integration test environment went down on Tuesday.
+            (c) you added one "regulatory must-do" story via eCAB (PCI-DSS logging enhancement) and swapped out a low-priority dashboard story.
+            (d) blocker at PM level: the OnePay vendor (Vendor X) needs to confirm the test environment SLA — Olivia's contacts at Vendor X are stronger than yours.
+            Write the 60–90 second PM update in English. Use the "three things: burndown, scope, blockers" frame and quantify everything.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"OK, three things from the BA side. Burndown: rewards recalculation is tracking green, 8 of 8 done. However, the digital wallet tokenisation story, CARD-4450, is slipping — 2 of 5 points done, we need 3 more days. Two reasons: the OnePay integration test environment went down on Tuesday, and Akash had to switch context to the env recovery. Scope: we added one PCI-DSS logging enhancement via eCAB on Friday, and swapped out the low-priority dashboard story to make room. Velocity impact is roughly neutral. Blockers: one thing at your level, Olivia. The OnePay vendor, Vendor X, hasn't confirmed their test environment SLA after the Tuesday outage. I recommend we descope the OnePay story to the next sprint if Vendor X can't commit to a recovery date by tomorrow EOD. Would you be able to reach out to your contact at Vendor X? I'll send you the full one-pager with the burndown and scope change log by 8 AM HKT."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="03-defect-triage.html" class="btn btn-primary">Next: Article 03 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 17: Negotiating with Senior Stakeholders | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">17 · Negotiating with Senior Stakeholders</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Negotiating with Senior Stakeholders</h1>
+        <p class="subtitle">Article 17 · Module 4: Difficult Conversations · BA English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 Push back on MD-level asks while keeping them on side</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday afternoon, 3 PM HKT</strong>. You are the BA on the <em>HSBCnet Cash
+            Management</em> squad in Global Liquidity & Cash Management (GLCM). A 30-minute meeting has been
+            called at short notice in the MD's office — <strong>Margaret, MD of Payments &amp; Receivables
+            APAC</strong>, wants to add <em>real-time FX rate display</em> on the corporate client's payment
+            initiation screen. She wants it <em>live by next Friday</em>, ahead of a key client visit from
+            Standard Chartered.
+        </p>
+        <p>
+            周四下午 3 点香港时间。你是 <strong>GLCM（全球流动性与现金管理）HSBCnet 现金管理</strong> squad 的 BA。
+            MD 办公室临时召集了一个 30 分钟的会议——<strong>Margaret，亚太区收付款业务部 MD</strong>，希望在企业客户付款
+            发起页面上加上 <em>实时汇率展示</em>。她要求 <em>下周五前上线</em>，因为渣打银行要来做重要客户拜访。
+        </p>
+        <p>
+            You know the squad has <em>two stories committed this sprint</em> and the FX rate feed
+            integration involves a downstream dependency on the Group Treasury <em>OneFX</em> service plus
+            a <em>model risk sign-off</em>. You need to push back — but <em>without losing Margaret</em>.
+            The goal: <strong>find a workable compromise, not "no"</strong>.
+        </p>
+        <p>
+            你知道 squad 这个 sprint 已经承诺了 <em>2 个 Story</em>，而且汇率源接入涉及集团财政部 <em>OneFX</em> 服务的下游
+            依赖以及 <em>模型风险签字</em>。你需要 push back——但 <em>不能丢掉 Margaret 这个 sponsor</em>。目标：
+            <strong>找到一个可执行的折中方案，而不是简单的"不"</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (MD):</span>
+                <span class="text"><span class="en">Thanks for coming at short notice. <em>Quick context</em> — Standard Chartered is in next Friday, and they specifically asked about <em>real-time FX</em> on the payment screen. <em>Can we commit to having that live by then?</em></span><span class="cn">临时召集你过来，谢谢。简单背景——渣打下周五来访，他们特别问了付款页面的实时汇率。我们能承诺那时上线吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Thanks for the heads-up, Margaret.</em> <em>Absolutely</em> I want to help on this. <em>Let me just be transparent</em> on the constraints first, then <em>let's see if we can shape something workable</em>.</span><span class="cn">Margaret，谢谢提醒。这件事我非常想帮忙。我先把约束条件讲清楚，然后看能不能搞个可执行的方案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>From a build perspective,</em> the FX feed itself comes from <em>Group Treasury's OneFX service</em>, and that integration needs a <em>model risk sign-off</em> — <em>typically</em> that's a 10-day cycle, and we're already on day 3.</span><span class="cn">从开发角度看，汇率源是集团财政部的 OneFX 服务，集成需要模型风险签字——通常要 10 个工作日，我们现在已经过 3 天了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (MD):</span>
+                <span class="text"><span class="en"><em>Right, but</em> this is a competitive ask. If we don't show it, we lose the deal. <em>What are our options?</em></span><span class="cn">明白，但这是一个竞争性的诉求。如果我们不展示，就会丢单。我们有哪些选项？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Three options, in my view.</em> Option A: <em>we push the live FX to the following sprint</em> — solid, compliant, no risk. Option B: <em>we show indicative FX sourced from a public feed</em> with a clear disclaimer, <em>as a placeholder</em> for the demo — fast, but <em>carries reputational risk</em> if SC reads the fine print. Option C: <em>we cut one of the two stories already in flight</em> this sprint — <em>but</em> that breaks our commitment to Trade Finance.</span><span class="cn">我看到三个选项。方案A：实时 FX 推到下个 sprint——稳妥、合规、无风险。方案B：展示一个公开源的指示性汇率，附带明确的免责声明，作为 demo 占位——快，但渣打如果看小字会有声誉风险。方案C：砍掉本 sprint 已开工的 2 个 Story 之一——但这会破坏我们对贸易融资的承诺。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>My recommendation is Option B,</em> <em>provided</em> we get a 5-minute sign-off from <em>Compliance and Model Risk</em> first, and we <em>make it explicit</em> to SC that this is <em>indicative, not contractual</em>.</span><span class="cn">我推荐方案B，前提是我们先花 5 分钟拿到合规和模型风险的签字，并向渣打明确说明这是指示性的、不是合同性的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (MD):</span>
+                <span class="text"><span class="en"><em>Hmm.</em> I don't love the disclaimer. Clients don't read disclaimers. <em>Is there a way</em> to <em>frame it</em> as a <em>"preview feature"</em> rather than a placeholder?</span><span class="cn">嗯。免责声明我不喜欢，客户不会看的。有没有办法把它框定为"预览功能"而不是占位符？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>That's a smart reframe.</em> <em>How about</em> we call it an "<em>FX preview widget</em>" in the UI, with a small "<em>Beta — indicative rates</em>" label? <em>That way</em> it's <em>positioned as innovation</em>, not as a workaround. <em>I can have a mock-up to you by tomorrow noon</em> if that works.</span><span class="cn">这个重新定义很聪明。我们在 UI 里叫它"汇率预览小部件"，加一个小小的"Beta — 指示性汇率"标签。这样定位是创新、不是变通。如果可以的话，明天中午前我把 mock-up 发给你。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (MD):</span>
+                <span class="text"><span class="en"><em>OK, let's go with that.</em> <em>But I want the real OneFX live by end of next sprint.</em> <em>Can you book a checkpoint with me on Monday</em> to confirm the model risk sign-off is on track?</span><span class="cn">好的，就这么定。但下个 sprint 结束前我想要真正的 OneFX 实时汇率上线。能在周一和我约一个 checkpoint 确认模型风险签字的进度吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Done.</em> <em>I'll send a calendar invite for Monday 10 AM,</em> loop in the OneFX tech lead, and <em>circle back</em> on the mock-up by lunch tomorrow. <em>Thanks for being flexible on the framing, Margaret</em> — <em>I think</em> this is a much stronger story for SC.</span><span class="cn">搞定。我会发周一上午 10 点的会议邀请，拉上 OneFX 的技术负责人，明天中午前把 mock-up 反馈给您。Margaret，谢谢您对表述方式的灵活处理——我觉得这个故事对渣打来说更有力了。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Let me just be transparent on the constraints first.</em></span>
+                <span class="chinese">我先把约束条件讲清楚</span>
+                <span class="note">A polite way to introduce bad news. Frames honesty as a service, not a refusal.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>Let's see if we can shape something workable.</em></span>
+                <span class="chinese">看能否搞一个可执行的方案</span>
+                <span class="note">"Shape" here = co-design. Implies you're problem-solving together, not blocking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Trade-off</span> <em>It carries reputational risk if SC reads the fine print.</em></span>
+                <span class="chinese">如果客户看小字会有声誉风险</span>
+                <span class="note">Always quantify the risk, not just name it. MDs respond to "reputational risk" + a scenario.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Options</span> <em>Three options, in my view.</em></span>
+                <span class="chinese">我看到三个选项</span>
+                <span class="note">Never give one option. Three feels structured; two feels like a yes/no trap.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommend</span> <em>My recommendation is Option B, provided…</em></span>
+                <span class="chinese">我推荐方案B，前提是…</span>
+                <span class="note">Lead with a recommendation + conditions. Don't leave the MD to pick from three alone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reframe</span> <em>How about we call it an "FX preview widget"?</em></span>
+                <span class="chinese">我们把它叫做"FX 预览小部件"如何？</span>
+                <span class="note">"Reframe" = repackage the same thing in a way that wins buy-in. A senior BA move.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Position</span> <em>It's positioned as innovation, not a workaround.</em></span>
+                <span class="chinese">定位为创新、不是变通</span>
+                <span class="note">Stakeholders care about how things are framed. Same feature, different story.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>I want the real OneFX live by end of next sprint.</em></span>
+                <span class="chinese">下个 sprint 结束前要真正的 OneFX 上线</span>
+                <span class="note">When an MD says "I want X by Y", capture it explicitly — it becomes your next checkpoint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Checkpoint</span> <em>Can you book a checkpoint with me on Monday?</em></span>
+                <span class="chinese">周一能约一个 checkpoint 吗？</span>
+                <span class="note">"Checkpoint" = a 15-min status touchpoint. Slower than a meeting, faster than an email.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Close</span> <em>Thanks for being flexible on the framing, Margaret.</em></span>
+                <span class="chinese">谢谢您对表述的灵活处理</span>
+                <span class="note">Always credit the senior for the win. They "approved" the reframe — that's the story they tell upward.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>MD (Managing Director)</strong> n. 总经理 The most senior business rank below the CEO. Decisions are usually final at this level.</li>
+            <li><strong>Sponsor</strong> n. 发起人 The senior executive who "owns" the outcome of your squad's work and fights for budget.</li>
+            <li><strong>Squad</strong> n. 小队 HSBC's cross-functional delivery team (~6-9 people). One squad = one product slice.</li>
+            <li><strong>OneFX</strong> n. 集团外汇服务 Group Treasury's official FX rate service. The only "live" FX feed for client-facing products.</li>
+            <li><strong>Model risk sign-off</strong> n. 模型风险签字 Formal approval that a pricing/rate model is fit for production use.</li>
+            <li><strong>Indicative rate</strong> n. 指示性汇率 A non-binding market rate shown for reference only — never contractual.</li>
+            <li><strong>Disclaimer</strong> n. 免责声明 Legal text that limits liability. MDs dislike them; clients ignore them; Compliance insists on them.</li>
+            <li><strong>Reputational risk</strong> n. 声誉风险 Risk that a public-facing decision damages HSBC's brand or trust.</li>
+            <li><strong>Mock-up</strong> n. 模型/原型 A static design (Figma / PowerPoint) that shows the look — not the working product.</li>
+            <li><strong>Checkpoint</strong> n. 节点会议 A 15-min status touchpoint. Lighter than a steering meeting, heavier than an email.</li>
+            <li><strong>Group Treasury</strong> n. 集团财政部 The HSBC function that owns liquidity, FX, and interest rate policy globally.</li>
+            <li><strong>Standard Chartered (SC)</strong> n. 渣打银行 HSBC's main regional competitor in APAC corporate banking. Common in war stories.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Provided" / "On the condition that" — conditional softeners</h3>
+        <p>
+            <em>My recommendation is Option B, provided we get a 5-minute sign-off first.</em> "Provided"
+            (and its longer cousin <em>on the condition that</em>) is a <strong>subordinate conditional</strong>
+            that softens a recommendation. It says "yes, but with a condition" — much more diplomatic than
+            a plain <em>if</em> clause with an MD.
+        </p>
+        <p><em>provided</em> 是从属连词，比直接用 <em>if</em> 更有外交感——"可以，但有个前提"。</p>
+
+        <h3>② "I think / I would say / In my view" — the "hedge" family</h3>
+        <p>
+            When giving an opinion to an MD, always <strong>hedge</strong> with a personal-stance marker:
+            <em>I think, in my view, I'd say, my take on this is…</em>. Direct statements (<em>Option B is
+            the right choice</em>) sound presumptuous; hedges sound collaborative.
+        </p>
+        <p>给 MD 提建议时用"对冲"措辞：I think / in my view / I'd say——更协作、更不越界。</p>
+
+        <h3>③ "If we don't… we lose the deal" — first conditional for risk framing</h3>
+        <p>
+            <em>If we don't show it, we lose the deal.</em> The classic <strong>if + present, will + verb</strong>
+            structure is the standard pattern for framing business risk. Pair it with a concrete consequence
+            ("lose the deal", "miss the HKMA deadline") — not a vague outcome.
+        </p>
+        <p>业务风险描述的标准 if 句型：<em>if + 现在时, will + 动词</em>，一定配具体后果。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>MDs respond to options, not single answers.</strong> Walking in with one answer invites a yes/no fight. Three options — with a clear recommendation — show you've thought about the problem. Always lead with the recommendation; offer the alternatives as backup.</li>
+            <li><strong>"Reputational risk" is the magic phrase.</strong> At MD level, the words that move decisions are risk, revenue, and reputation. Cost comes second. Frame technical constraints in those terms.</li>
+            <li><strong>Never say "no" — say "yes, and".</strong> <em>Yes, we can absolutely do this. And here's what it would take to land it well…</em> The "and" reopens the conversation without making the MD feel blocked.</li>
+            <li><strong>Capture commitments in writing — same day.</strong> After an MD meeting, send a 3-line Teams message summarising what was agreed, the owner, and the date. If it's not in writing, it didn't happen.</li>
+            <li><strong>Credit the senior for the win.</strong> When Margaret re-frames the placeholder as a "preview widget", say "thanks for the framing" in the meeting. Politically, you want her to own the narrative going up.</li>
+            <li><strong>Cross-region MDs (London / HK) have different tolerances.</strong> UK MDs often want a written options paper first; HK MDs often want the conversation first, paper after. Read the room and adapt.</li>
+            <li><strong>"Model risk sign-off" is non-negotiable for FX.</strong> Even in a rush, never skip it. The Group Model Risk team is the gate; they can hold a release for weeks. Plan around their SLA, not around the demo date.</li>
+            <li><strong>Bring data, not opinions.</strong> "I think this is risky" loses. "Last time we showed an indicative rate to a Tier-1 client, the post-demo survey flagged a 22% trust drop" wins. Numbers stick.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the negotiation</h3>
+        <p>Translate the following BA response into natural Chinese. Pay attention to how the BA balances push-back with options.</p>
+        <blockquote>
+            "Thanks for the heads-up, Margaret. I absolutely want to help. From a build perspective,
+            the real-time FX needs Group Treasury sign-off plus a model risk review — typically ten working days.
+            Three options: (A) push to next sprint, solid and compliant; (B) show an indicative rate with a
+            clear 'Beta' label for the demo, with Compliance sign-off first; (C) descope one in-flight story.
+            My recommendation is Option B, provided we get a 5-minute sign-off from Compliance and Model Risk
+            before the demo. I can have a mock-up to you by tomorrow noon."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Margaret，谢谢提醒。这件事我肯定想帮。从开发角度看，实时 FX 需要集团财政部签字 + 模型风险评审，通常要 10 个工作日。三个方案：(A) 推到下个 sprint，稳妥合规；(B) 展示指示性汇率并打上明确的'Beta'标签用于 demo，事先要合规签字；(C) 砍掉一个已开工的 Story。我推荐方案 B，前提是 demo 前先花 5 分钟拿到合规和模型风险的签字。明天中午前我可以给您一个 mock-up。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the weak response</h3>
+        <p>An MD asks: "Can we go live with the new sanctions screening rules by Monday?" Which response is most "BA-grade" and which is weakest?</p>
+        <ol>
+            <li>"No, that's not possible. Model risk takes 10 days minimum."</li>
+            <li>"I'll try, but no promises. Maybe."</li>
+            <li>"Thanks for flagging. Let me be transparent on the constraints — Model Risk needs 10 days, and Compliance needs a parallel review. Three options: A) push to next sprint, B) phase the rules (only the 4 most critical for Monday), C) go live with a manual override flag for exceptions. My recommendation is B, with a checkpoint Wednesday. I can have a draft plan to you by EOD."</li>
+            <li>"Yes, sure, no problem. I'll have the team work over the weekend."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is the strongest — transparent, three options with a clear recommendation, time-bound next step. ① is a flat "no" with no alternatives — will alienate the MD. ② is vague — sounds unconfident. ④ is the worst — saying "yes" without checking the team sets up a weekend crunch and a broken promise. A common BA mistake is over-promising in the moment to please a senior.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're the BA on the <em>OneWealth onboarding</em> squad. An MD from RBWM Asia-Pacific wants to <em>add biometric login (Face ID) as a mandatory field</em> for new sign-ups — by end of next week — to address an MAS observation letter. You know (a) the squad is mid-sprint on a MAS-TRM remediation, (b) biometrics requires Infosec sign-off and a Data Privacy Impact Assessment, (c) the MAS deadline is actually 6 weeks away, not next week. Write a 4-6 sentence BA response that pushes back politely and proposes a workable compromise. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks for raising this, Rachel. I want to help close out the MAS observation — it's a high-priority item for the tribe. Let me just be transparent on the constraints: a mandatory Face ID field needs an Infosec sign-off and a Data Privacy Impact Assessment, which together run about two weeks. Looking at the MAS letter, the actual remediation deadline is six weeks away, so we have headroom. Three options: (A) we ship Face ID as <em>optional</em> in the next release — closes the MAS observation on intent, no sign-off blocker; (B) we go mandatory within the four-week window, gated on the DPIA; (C) we escalate to the Group Privacy Office for a fast-track DPIA. My recommendation is A for the MAS deadline, with B as the roadmap item — that way we meet the regulator without burning the squad's runway. I can have a draft plan to you by EOD, and book a checkpoint on Monday to align."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="18-compliance-regulatory.html" class="btn btn-primary">Next: Article 18 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

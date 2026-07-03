@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: Requirements Elicitation Interview | BA English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">BA</a></li>
+                <li class="breadcrumb-item active">06 · Requirements Elicitation Interview</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Requirements Elicitation Interview</h1>
+        <p class="subtitle">Article 06 · Module 6: Discovery & Elicitation · BA English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Asking sharp open questions to surface the real business need — not the stated one</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday, 3:00 PM HKT</strong>. You are the BA on the HSBC <em>CMB (Commercial
+            Banking)</em> Trade Finance squad, sitting in a small Hong Kong meeting room with
+            <strong>Mr. Cheng</strong>, the Head of Trade Finance Operations for the HK and
+            Shanghai regions. He's been with HSBC for 22 years, knows the SWIFT MT700 / MT798
+            trade-finance flows inside out, and is not a fan of "IT people wasting his time".
+        </p>
+        <p>
+            周二下午 3 点香港时间。你是 HSBC <em>CMB（公司银行）</em> 贸易融资 squad 的 BA，
+            坐在香港的小会议室里，对面是<strong>郑先生</strong>——香港及上海地区贸易融资
+            运营负责人。他在汇丰 22 年，SWIFT MT700 / MT798 贸易融资流程烂熟于心，对"IT 人
+            员浪费他时间"有强烈反感。
+        </p>
+        <p>
+            The meeting was scheduled to discuss a vague request raised via CAB: "<em>Add a real-time
+            shipment-tracking dashboard to the Trade Finance portal</em>". Cheng is already leaning
+            back in his chair with his arms crossed, expecting a 60-minute waste of his time. Your
+            job is to surface the <strong>real</strong> business need in 45 minutes — using sharp
+            open questions, not feature requests — and walk out with a 1-page problem statement
+            the PM can actually size.
+        </p>
+        <p>
+            这次会议是来讨论 CAB 上提出的一项模糊需求："<em>在贸易融资门户加一个实时货物跟踪
+            仪表盘</em>"。郑先生已经靠在椅背上抱着胳膊，准备熬过 60 分钟。你的任务是 45 分钟
+            内挖出<strong>真实</strong>的业务需求——用锋利的开放式问题，不是功能要求——并带走
+            一份 PM 真能估算的 1 页问题陈述。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Thanks for making the time, Mr. Cheng.</em> I want to <em>be upfront</em> — I'm not here to <em>sell you a dashboard</em>. I'm here to <em>understand the problem</em> first. <em>Is that fair?</em></span><span class="cn"><em>感谢您抽时间，郑先生</em>。<em>先说清楚</em>——我不是来<em>推仪表盘的</em>，我是先来<em>理解问题</em>的。<em>这样可以吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Hmph.</em> OK, <em>fair enough.</em> What do you want to know?</span><span class="cn"><em>哼。</em>行，<em>还算公道</em>。你想问什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Big-picture question first.</em> <em>If we had a magic wand</em> and could <em>solve one thing</em> in your trade-finance ops <em>tomorrow</em>, what would have the <em>biggest impact</em>? <em>Not the flashiest</em> — the most <em>painful</em>.</span><span class="cn"><em>先问个全局问题。</em><em>如果我们有一根魔法棒</em>，能<em>明天</em>解决你贸易融资运营中<em>一件事</em>，哪件<em>影响最大</em>？<em>不是最炫的</em>——是<em>最痛</em>的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Painful?</em> <em>Let me think…</em> It's not the dashboard. <em>Honestly,</em> the dashboard was my deputy's idea. The <em>real</em> pain is <em>discrepancies in the presentation documents.</em> We get bills of lading, packing lists, certificates of origin — and <em>half the time</em> the details don't match the LC (Letter of Credit) terms. <em>Every single discrepancy</em> means a <em>manual email</em> to the presenting bank, a 3-day hold, <em>and the customer is on the phone screaming.</em></span><span class="cn"><em>最痛？</em><em>让我想想…</em>不是仪表盘。<em>说实话</em>，仪表盘是我副手的想法。<em>真正</em>的痛是<em>交单文件的差异</em>。我们收到提单、装箱单、原产地证——<em>一半情况下</em>细节和信用证条款对不上。<em>每一处差异</em>都意味着要<em>手工发邮件</em>给交单行，3 天挂单，<em>客户在电话里咆哮。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>OK, that's a much sharper problem.</em> <em>Can I probe that a bit?</em> <em>Roughly,</em> out of every 10 presentations, how many have at least one discrepancy?</span><span class="cn">好，这是一个更尖锐的问题。<em>我能追问一下吗？</em><em>大致</em>，每 10 次交单里，多少有至少一处差异？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Seven. Maybe eight.</em> It's <em>the single biggest delay</em> in the HK desk.</span><span class="cn"><em>七次。可能八次</em>。这是香港台<em>最大的单一延迟源</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Seven out of ten — that's huge.</em> <em>What's the impact</em> in <em>plain numbers?</em> Days delayed, or hours per case, or…?</span><span class="cn"><em>十次七次——这个比例很高。</em><em>实际数字影响是什么？</em>延迟天数、还是每个 case 的小时数、还是…？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>On average,</em> 2.5 days per discrepant case. <em>Multiply that by 60 cases a month</em> per HK desk, and you're looking at <em>150 lost customer-days a month.</em> And <em>for the bank</em>, it's also <em>a regulatory smell</em> — HKMA has been <em>tightening</em> on trade-finance ops risk.</span><span class="cn"><em>平均</em>每个差异 case 2.5 天。<em>乘以香港台每月 60 个 case</em>，就是<em>每月 150 个客户日损失</em>。<em>对银行来说</em>，这也是<em>监管异味</em>——HKMA 一直在<em>收紧</em>贸易融资运营风险。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Two pain points at once</em> — customer experience <em>and</em> HKMA exposure. <em>Got it.</em> <em>Let me ask the awkward question</em> — <em>what have you already tried</em> to fix it? <em>Just so we don't reinvent the wheel.</em></span><span class="cn"><em>两个痛点</em>——客户体验<em>和</em>HKMA 风险。<em>收到。</em><em>我问一下敏感的问题</em>——<em>你们已经试过什么？</em><em>免得我们重复造轮子。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Manual checklist.</em> Excel macro. <em>We've tried both.</em> They <em>sort of work</em> but they <em>don't scale</em> across HK and Shanghai. <em>And</em> they <em>miss the new</em> UCP 600 (Uniform Customs and Practice) sub-clauses that came in last year.</span><span class="cn"><em>手工清单。</em>Excel 宏。<em>两个都试过。</em><em>勉强能用</em>，但<em>无法扩展</em>到香港和上海两地。<em>而且</em>漏掉了去年新增的 UCP 600（跟单信用证统一惯例）子条款。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>OK, so the gap is a rules engine</em> that <em>encodes the latest UCP 600</em> <em>and</em> scales across regions. <em>Just to stress-test the framing</em> — <em>if we built a discrepancy-detection service</em> that <em>flags 80% of issues before manual review,</em> <em>would that solve it?</em> Or <em>are we missing something?</em></span><span class="cn">好，所以缺口是一个<em>把最新 UCP 600 编进去</em><em>且</em>能跨区域扩展的规则引擎。<em>我反过来验证一下</em>——<em>如果我们建一个差异检测服务</em>，<em>在人工复核前标记出 80% 的问题，</em><em>能解决吗？</em>还是<em>漏了什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Eighty percent?</em> <em>Yes, that would be huge.</em> <em>Even fifty</em> would <em>be a massive win.</em> But the rule set has to <em>be maintained</em> by my team — I don't want to be <em>dependent on IT</em> for every UCP 600 update.</span><span class="cn"><em>80%？</em><em>那会是非常大的成果</em>。<em>50% 都已经</em>是<em>巨大胜利</em>。但规则集要由我们团队<em>维护</em>——我不想<em>依赖 IT</em> 来更新每一条 UCP 600。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Important constraint — Operations-owned rules.</em> <em>Got it.</em> <em>One last framing question</em> — <em>who else</em> in the bank <em>feels this pain?</em> GPB? RBWM? <em>Is it just you,</em> or is this a <em>bank-wide</em> problem?</span><span class="cn"><em>重要约束——规则由运营拥有。</em><em>收到。</em><em>最后一个定位问题</em>——<em>银行里还有谁</em>痛这个？GPB？RBWM？<em>就你一个</em>还是<em>全行</em>问题？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>It's <strong>bank-wide</strong>.</em> GPB does <em>trade-finance-backed lending,</em> RBWM has HNW trade clients. <em>Every desk has the same problem.</em> You're <em>talking about a platform play,</em> not a HK-only tool.</span><span class="cn"><em>是<strong>全行问题</strong>。</em>GPB 做<em>贸易融资支持的贷款</em>，RBWM 有高净值贸易客户。<em>每个台都有同样的问题。</em>你说的<em>是平台玩法</em>，不是香港单一工具。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Right, that changes the sizing dramatically.</em> <em>Let me read back what I've heard</em>, <em>just to check</em> — the problem is <em>7-out-of-10 discrepancy rate</em> in LC presentations, costing <em>150 customer-days a month</em> in HK alone, with <em>HKMA exposure</em> on top. The current workaround is <em>Excel macros</em> that <em>don't scale</em> and <em>miss new UCP 600 clauses</em>. The opportunity is <em>an Operations-owned rules engine</em> that <em>flags 80% of discrepancies pre-review</em>, and the scope is <em>bank-wide, not HK-only</em>. <em>Am I missing anything?</em></span><span class="cn">好，这大幅改变了估算。<em>我复述一下我听到的</em>，<em>确认一下</em>——问题是 LC 交单的<em>七成差异率</em>，仅香港每月就损失<em>150 个客户日</em>，外加<em>HKMA 风险</em>。当前 workaround 是<em>无法扩展</em>且<em>漏最新 UCP 600 子条款</em>的<em>Excel 宏</em>。机会是<em>运营拥有的规则引擎</em>，在复核前<em>标记 80% 差异</em>，范围是<em>全行而非仅香港</em>。<em>我漏了什么吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>You got it.</em> <em>One thing —</em> the rules engine <em>has to integrate with our existing case-management tool</em> (we use GLCM). <em>Don't build a new UI.</em> <em>Embed it.</em></span><span class="cn"><em>对。</em><em>还有一件——</em>规则引擎<em>必须和现有案件管理工具集成</em>（我们用 GLCM）。<em>别再做一个新 UI。</em><em>嵌进去。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (BA):</span>
+                <span class="text"><span class="en"><em>Embed, not replace — important.</em> <em>I'll add that.</em> <em>OK, Mr. Cheng,</em> <em>that's a much sharper problem than the dashboard</em>. <em>Can I take this back,</em> write it up as a <em>1-page problem statement</em>, and <em>come back next Tuesday</em> with the PM and a Tech Lead to talk scope?</span><span class="cn"><em>嵌入而非替换——重要。</em><em>我加上。</em><em>好，郑先生，</em><em>这比仪表盘的需求尖锐多了</em>。<em>我能把这个带回去</em>，写成<em>1 页问题陈述</em>，<em>下周二</em>带 PM 和技术负责人回来聊范围吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Cheng:</span>
+                <span class="text"><span class="en"><em>Now you're talking my language.</em> <em>Yeah, come back next Tuesday,</em> same time.</span><span class="cn"><em>这才像话。</em><em>行，下周二来</em>，同一时间。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Frame</span> <em>I'm not here to sell you a dashboard, I'm here to understand the problem.</em></span>
+                <span class="chinese">我不是来推仪表盘的，我是先来理解问题的</span>
+                <span class="note">Reframes the meeting as discovery, not delivery. Disarms the "waste of time" reflex. Always set the contract first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>If we had a magic wand and could solve one thing tomorrow…</em></span>
+                <span class="chinese">如果有一根魔法棒，能明天解决一件事</span>
+                <span class="note">A classic elicitation opener. Removes feasibility constraints and invites the stakeholder to think in outcomes, not features.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Probe</span> <em>Can I probe that a bit? Roughly, out of every 10, how many?</em></span>
+                <span class="chinese">我能追问一下吗？大致每 10 个里多少个？</span>
+                <span class="note">"Roughly" + ratio is the easiest way to get a hard number from a stakeholder who's used to speaking in anecdotes.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>What's the impact in plain numbers? Days delayed, hours per case…?</em></span>
+                <span class="chinese">实际数字影响是什么？延迟天数、还是每个 case 的小时数？</span>
+                <span class="note">"Plain numbers" is the magic phrase. Stakeholders default to stories; you have to ask for the digits.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Awkward</span> <em>Let me ask the awkward question — what have you already tried?</em></span>
+                <span class="chinese">我问一下敏感的问题——你们已经试过什么？</span>
+                <span class="note">"Awkward" disarms the awkwardness. Signals respect for prior work. Critical to avoid reinventing the wheel.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Stress-test</span> <em>Just to stress-test the framing — if we built X, would that solve it?</em></span>
+                <span class="chinese">我反过来验证一下——如果我们做 X，能解决吗？</span>
+                <span class="note">Stress-testing forces the stakeholder to think past the abstract. If the answer is "no, but…", the "but" is your real requirement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Constraint</span> <em>Important constraint — Operations-owned rules.</em></span>
+                <span class="chinese">重要约束——规则由运营拥有</span>
+                <span class="note">Constraints are free requirements. Capture every "I don't want to…" — each one is a non-functional AC.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Who else feels this pain? Is it just you, or bank-wide?</em></span>
+                <span class="chinese">银行里还有谁痛这个？就你一个还是全行问题？</span>
+                <span class="note">Scope question. Changes the entire sizing. A HK-only tool is 1 squad; a bank-wide platform is a tribe + multiple squads.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Read back</span> <em>Let me read back what I've heard, just to check.</em></span>
+                <span class="chinese">我复述一下我听到的，确认一下</span>
+                <span class="note">Always read back at the end of an elicitation interview. Catches the "I thought we agreed…" problem before it costs a sprint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Embed</span> <em>Embed, not replace — important.</em></span>
+                <span class="chinese">嵌入而非替换——重要</span>
+                <span class="note">"Embed" = integrate into existing tool. "Replace" = build new UI. Stakeholders almost always mean embed. Capture the verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Can I take this back, write it up, and come back next Tuesday with the PM?</em></span>
+                <span class="chinese">我能把这个带回去写成文档，下周二带 PM 回来吗？</span>
+                <span class="note">Always end with a specific next meeting — same time, same place, specific attendees. Stakeholders forget vague commitments.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Elicitation</strong> n. 需求挖掘 The BA activity of drawing out requirements from stakeholders (vs. "gathering" them).</li>
+            <li><strong>Magic wand question</strong> n. 魔法棒问题 An elicitation opener that asks the stakeholder to ignore feasibility and describe the ideal outcome.</li>
+            <li><strong>Problem statement</strong> n. 问题陈述 A 1-page doc describing the business problem, impact, and constraints — before any solution.</li>
+            <li><strong>Discrepancy</strong> n. 差异 In trade finance: a mismatch between documents presented and the LC terms. The #1 cause of delays.</li>
+            <li><strong>LC (Letter of Credit)</strong> n. 信用证 A bank guarantee of payment to the seller, conditional on document compliance.</li>
+            <li><strong>UCP 600</strong> n. 跟单信用证统一惯例 The Uniform Customs and Practice for Documentary Credits — ICC rules, currently UCP 600 (2007 revision).</li>
+            <li><strong>SWIFT MT700 / MT798</strong> n. SWIFT MT700/MT798 报文 MT700 = issue of LC; MT798 = bank-to-bank message (often used for trade-finance extensions).</li>
+            <li><strong>GLCM</strong> n. 全球案件管理工具 HSBC's Global Loan &amp; Case Management tool — used across CMB / GPB / RBWM trade-finance ops.</li>
+            <li><strong>Rules engine</strong> n. 规则引擎 A system that evaluates business rules (e.g. UCP 600 clauses) and returns pass/fail per document.</li>
+            <li><strong>Operations-owned</strong> adj. 由运营拥有 The business owns the rules; IT owns the platform. Critical governance split in HSBC.</li>
+            <li><strong>Bank-wide scope</strong> adj. 全行范围 Affecting multiple regions / business lines — usually requires PM-level sign-off, not just squad.</li>
+            <li><strong>Stress-test</strong> v. 压力测试 To push a proposed solution against the real need, looking for where it breaks down.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "If we had a magic wand" — the second conditional for hypotheticals</h3>
+        <p>
+            Elicitation relies on hypotheticals: <em>if we <strong>had</strong> a magic wand, what would you
+            <strong>do</strong>?</em> This is the second conditional: <em>if + past simple, would + base verb</em>.
+            It signals "this is imagination, not a commitment". Stakeholders relax and speak openly because
+            they know they're not being held to the answer.
+        </p>
+        <p>假设语气：<em>if + 过去式, would + 动词原形</em>。魔法棒问题让利益相关方放下防御，因为知道不会立刻被追问落地。</p>
+
+        <h3>② "Even fifty would be a massive win" — "even + number" for benchmarking</h3>
+        <p>
+            <em>Even 50% would be a massive win</em> uses <em>even</em> to set a low bar that the stakeholder finds
+            acceptable. The pattern <em>even + number + would be + adjective</em> is how you extract the
+            "minimum viable" outcome from a stakeholder who's used to asking for the moon. Once you have
+            the floor, you can size the real effort.
+        </p>
+        <p><em>Even 50% would be a massive win</em>——用 <em>even</em> 探出最低可接受门槛，再据此估时。</p>
+
+        <h3>③ "Read back what I've heard" — present perfect after a just-finished action</h3>
+        <p>
+            At the end of an interview, the present perfect is the right tense for summarising:
+            <em>let me read back what <strong>I've heard</strong></em>, <em>the points <strong>we've covered</strong></em>,
+            <em>the constraint <strong>you've raised</strong></em>. The present perfect signals "this is the result of
+            the conversation we just had" — a closed loop. The stakeholder hears it as: "we just did
+            something together, and here's the artefact".
+        </p>
+        <p>需求访谈结束用现在完成时：<em>what I've heard / we've covered / you've raised</em>。表示"刚刚完成的事"。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Senior stakeholders hate feature pitches.</strong> Mr. Cheng is 22 years in. He has seen every dashboard and every "transformation". Set the meeting as discovery, not delivery, in the first 30 seconds or you lose the room.</li>
+            <li><strong>"Magic wand" questions work because they're honest.</strong> Senior stakeholders know the answer won't literally happen — but the question invites them to think past constraints. Use it in the first 5 minutes, not the last.</li>
+            <li><strong>Quantitative > qualitative in HSBC elicitation.</strong> "7 out of 10 cases" beats "lots of cases". "150 customer-days a month" beats "huge impact". The PM and Tech Lead will re-size based on the number — a story with no number gets dropped.</li>
+            <li><strong>Always ask "what have you already tried?".</strong> The Excel macro, the manual checklist, the workaround email. Capture each one — they tell you what hasn't worked and why, which is your real design constraint.</li>
+            <li><strong>"I don't want to depend on IT for every UCP 600 update" is gold.</strong> That's an Operations-owned rules engine — a 5-point non-functional AC. Free requirements hide in stakeholder pain. Always ask "what don't you want?".</li>
+            <li><strong>"Embed, not replace" is a recurring HSBC theme.</strong> GLCM is the case-management tool of record for trade finance. New tools that "replace" GLCM get rejected at CAB. New tools that "embed" in GLCM get funded. Capture the verb.</li>
+            <li><strong>Read back at the end, every time.</strong> A 60-second read-back at the end of an elicitation interview is the single highest-ROI activity in BA work. Catches misunderstandings, makes the stakeholder feel heard, and gives you a 1-page problem statement for free.</li>
+            <li><strong>Always book the next meeting before you leave the room.</strong> "Can I come back next Tuesday with the PM?" — same time, same place, specific attendees. Vague commitments vanish. Calendar slots survive.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the elicitation</h3>
+        <p>Translate the following BA elicitation snippet into natural Chinese. Pay attention to the magic-wand question and the read-back.</p>
+        <blockquote>
+            "Thanks for making the time, Mr. Cheng. I want to be upfront — I'm not here to sell you a
+            dashboard, I'm here to understand the problem first. Is that fair? Big-picture question: if we
+            had a magic wand and could solve one thing in your trade-finance ops tomorrow, what would have
+            the biggest impact? Not the flashiest — the most painful. OK, that's a much sharper problem.
+            Can I probe that a bit? Roughly, out of every 10 presentations, how many have at least one
+            discrepancy? Seven? That's huge. What's the impact in plain numbers? Let me ask the awkward
+            question — what have you already tried? OK, so the gap is a rules engine that encodes the
+            latest UCP 600 and scales across regions. Let me read back what I've heard… Am I missing
+            anything?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"郑先生，感谢您抽时间。先说清楚——我不是来推仪表盘的，我是先来理解问题的。这样可以吗？全局问题：如果我们有一根魔法棒，能明天解决你贸易融资运营中一件事，哪件影响最大？不是最炫的，是最痛的。好，这是个更尖锐的问题。我能追问一下吗？大致每 10 次交单里，多少有至少一处差异？七次？这个比例很高。实际数字影响是什么？我问一下敏感的问题——你们已经试过什么？好，所以缺口是一个把最新 UCP 600 编进去且能跨区域扩展的规则引擎。我复述一下我听到的……我漏了什么吗？"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the BA mistake</h3>
+        <p>Which of these elicitation questions would a senior stakeholder most respect, and which would lose the room in the first 5 minutes? Why?</p>
+        <ol>
+            <li>"So Mr. Cheng, when do you want the dashboard delivered?"</li>
+            <li>"If we had a magic wand and could solve one thing in your trade-finance ops tomorrow, what would have the biggest impact — not the flashiest, the most painful?"</li>
+            <li>"Hi Mr. Cheng, can you tell me about the dashboard feature request your deputy raised?"</li>
+            <li>"Let me read back what I've heard, just to check. The problem is a 7-out-of-10 discrepancy rate in LC presentations, costing 150 customer-days a month in HK alone, with HKMA exposure on top. Current workaround is Excel macros that don't scale and miss new UCP 600 clauses. The opportunity is an Operations-owned rules engine that flags 80% of discrepancies pre-review, embedded in GLCM, bank-wide scope. Am I missing anything?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ would earn the most respect — ② invites the stakeholder to think past features; ④ captures the artefacts and gives the stakeholder a chance to correct. ① and ③ would lose the room — ① jumps to delivery date before understanding the problem; ③ takes the deputy's feature as given, which signals the BA hasn't done their own thinking. The difference between junior and senior BAs: juniors take the request, seniors dig for the problem.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are a BA on the RBWM Cards squad. A vague CAB request: "Add a chatbot to the HSBC HK mobile app for credit card customer service". The stakeholder is Mrs. Leung, Head of RBWM Customer Service HK, who's been with HSBC 18 years and is skeptical of "AI gimmicks".
+            (a) Write your opening 30 seconds (reframe the meeting as discovery, not delivery).
+            (b) Write the magic-wand question.
+            (c) Write 3 follow-up probes to surface the real problem (e.g. volume, channels tried, regulatory exposure, constraint).
+            (d) Write the 1-page read-back at the end.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"(a) Thanks for making the time, Mrs. Leung. I want to be upfront — I'm not here to sell you a chatbot. I'm here to understand the call-centre pain first, and then we can see if a chatbot helps. Is that fair? (b) Big-picture question: if we had a magic wand and could solve one thing in your customer-service ops tomorrow, what would have the biggest impact — not the flashiest, the most painful? (c) Q1: 'Roughly, how many credit-card calls does the HK desk take a day, and what % are repeat calls (i.e. same customer, same question, calling back)?' Q2: 'Let me ask the awkward question — what have you already tried? IVR menu changes, FAQ on the website, anything?' Q3: 'Quick constraint check — would you be comfortable with the chatbot handling PCI-DSS-scoped data, or does it need to escalate to a human for any card-detail query?' (d) Read-back: 'The problem is 4,200 calls a day into the HK credit-card desk, of which 38% are repeat calls for the same 5 issues (statement query, payment dispute, rewards balance, card replacement, PIN reset). Current state is an IVR with 6 menu options and a static FAQ on the public website. Constraint: the chatbot must escalate to a human for any PCI-DSS-scoped card-detail query. Opportunity: a chatbot handling the top 5 issues could deflect ~30% of calls, with full audit trail and a clean handoff to a human for anything sensitive. The deputy-raised chatbot request might be the right shape — but I'd want to validate against the call-deflection number, not the 'AI for AI's sake' framing. Am I missing anything?'"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to BA Home / 返回 BA 首页</a>
+            <a href="../index.html" class="btn btn-primary">End of Module 6 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

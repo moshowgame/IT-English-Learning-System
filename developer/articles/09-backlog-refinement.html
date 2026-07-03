@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: Backlog Refinement | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">09 · Backlog Refinement</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Backlog Refinement / Grooming</h1>
+        <p class="subtitle">Article 09 · Module 2: Meeting Workshops · Developer English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🔍 Ask sharp questions, clarify AC, raise technical concerns</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            The team is doing <strong>Backlog Refinement</strong> for the next sprint. Jonathan (BA) walks through
+            a story: <strong>PAY-2210</strong> — "<em>Allow customer service reps (CSRs) to view recent transaction
+            disputes for a customer account</em>." The story is in the next sprint, and you need to help
+            <strong>clarify the requirements, identify technical risks, and refine the AC</strong>.
+        </p>
+        <p>
+            团队在为下个冲刺做 <strong>需求澄清</strong>。Jonathan（BA）介绍一张卡：<strong>PAY-2210</strong>——
+            <em>允许客服代表（CSR）查看客户账户最近的交易争议记录</em>。这张卡在下个冲刺，
+            你需要 <strong>澄清需求、识别技术风险、完善 AC</strong>。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">OK, <em>story PAY-2210</em>. The high-level AC: CSRs should be able to <em>view a list of recent disputes</em> for a customer, <em>filtered by account</em>. <em>Initial estimate</em> — 5 points. <em>Thoughts?</em></span><span class="cn">好的，故事 PAY-2210：高级验收标准——客服坐席能查看某客户最近的争议列表，并按账户筛选。初步估算 5 个故事点。有什么想法？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Quick clarifying question</em> — by "recent", do we mean <em>last 30 days</em>, <em>last 90 days</em>, or <em>configurable</em>? And is this <em>read-only</em>, or do CSRs also need to <em>take actions</em> (e.g., add notes, escalate)?</span><span class="cn">快速澄清一下——“最近”是指最近 30 天、90 天，还是可配置的？另外这是只读，还是坐席也要能操作（比如添加备注、升级）？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Good question. <em>Read-only for now</em>, but we want to <em>leave room for actions</em> in the next release. <em>"Recent"</em> — let's say <em>last 90 days by default</em>, but with a <em>date range filter</em> in the UI.</span><span class="cn">好问题。暂时只读，但下一版要预留操作空间。“最近”默认按最近 90 天算，UI 上提供日期范围筛选。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Got it. <em>Two technical concerns</em> I'd like to flag:</span><span class="cn">明白。我想提两个技术上的顾虑：</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><strong>One — data source.</strong> Where does the dispute data live? Is it in the <em>same DB as the transaction</em>, or a <em>separate disputes service</em>? That'll affect the query approach.</span><span class="cn">第一——数据源。争议数据存在哪里？和交易同库，还是独立的争议服务？这会影响查询方案。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en"><em>Separate service</em> — the Disputes microservice owns it. There's a <em>REST API</em> we can call.</span><span class="cn">独立服务——Disputes 微服务拥有数据，提供 REST API 可调用。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">OK, that's <em>manageable</em>. <strong>Two — performance.</strong> If a CSR is viewing disputes for a <em>high-net-worth client</em> with hundreds of accounts, the <em>N+1 problem</em> could be an issue. <em>Have you thought about</em> whether we need <em>pagination</em> and <em>sorting</em> from day one?</span><span class="cn">好的，这好办。第二——性能。如果坐席查看高净值客户（几百个账户）的争议，N+1 问题会很严重。你们有没有考虑过从第一天起就加分页和排序？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Hmm, <em>good point</em>. Let's add pagination — <em>default 20 per page</em>, with the option to <em>filter by status</em> (open, closed, under review).</span><span class="cn">嗯，说得对。加分页——默认每页 20 条，可以按状态筛选（待处理、已关闭、审核中）。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">I'd add <em>access control</em> to the AC. CSRs <em>should only see</em> disputes for customers in <em>their portfolio</em>, not all customers. <em>RBAC check</em> at the API gateway.</span><span class="cn">我建议在验收标准里加权限控制。坐席只能看自己名下的客户争议，不能看所有客户。在 API 网关层做 RBAC 校验。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Second that</em> — and we should <em>log every dispute view</em> in the <em>audit log</em>. Compliance will <em>definitely ask</em> for this.</span><span class="cn">同意——而且我们应该把每次争议查看都记到审计日志里，合规部门一定会要求这点。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en">Good catch — I'll add <em>audit logging</em> as a <em>non-functional requirement</em>. <em>OK, revised estimate?</em></span><span class="cn">提得好——我把审计日志加为非功能性需求。好的，修正后的估算是多少？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">With pagination, RBAC, and audit logging, I'd <em>revise up to 8 points</em>. The <em>audit logging alone</em> is a 2-pointer — we need to <em>design the schema</em> with InfoSec first.</span><span class="cn">加上分页、RBAC 和审计日志，我修正为 8 个故事点。光审计日志就值 2 点——需要先和 InfoSec 一起设计 schema。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Jonathan (BA):</span>
+                <span class="text"><span class="en"><em>Fair enough</em> — 8 points, revised AC as discussed. <em>Anything else</em> before we move on?</span><span class="cn">没问题——8 个点，验收标准按讨论的修改。还有其他要补充的吗？</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Translation -->
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Clarify</span> <em>Quick clarifying question — by "recent", do we mean…?</em></span>
+                <span class="chinese">澄清一下——"最近"是指…？</span>
+                <span class="note">Vague terms (recent, fast, secure) must be quantified in refinement.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>Two technical concerns I'd like to flag.</em></span>
+                <span class="chinese">两个技术关注点想提一下</span>
+                <span class="note">Use <em>flag</em> for risks. Softens the delivery.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Affect</span> <em>That'll affect the query approach.</em></span>
+                <span class="chinese">这会影响查询方式</span>
+                <span class="note">Always link your question to a concrete technical consequence.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk</span> <em>The N+1 problem could be an issue.</em></span>
+                <span class="chinese">N+1 问题可能是个风险</span>
+                <span class="note">Use <em>could be / might be / could become</em> to soften risk statements.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Suggestion</span> <em>Have you thought about pagination from day one?</em></span>
+                <span class="chinese">考虑过从一开始就分页吗？</span>
+                <span class="note">A polite way to suggest adding a feature to the AC.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Agree</span> <em>Second that.</em></span>
+                <span class="chinese">同意</span>
+                <span class="note">Quick agreement. <em>"I second that"</em> is a formal version.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Predict</span> <em>Compliance will definitely ask for this.</em></span>
+                <span class="chinese">Compliance 一定会问这个</span>
+                <span class="note">When flagging a regulatory concern, name the team that will enforce it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Revise</span> <em>I'd revise up to 8 points.</em></span>
+                <span class="chinese">我会调整到 8 个点</span>
+                <span class="note">Always give a revised size when new AC is added. <em>Revise up / down</em>.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>backlog refinement / grooming</strong> <span class="tag">n.</span></span>
+                <span class="chinese">需求澄清会</span>
+                <span class="note">Ongoing meeting to break down, estimate, and prioritize backlog items.</span>
+            </li>
+            <li>
+                <span class="english"><strong>acceptance criteria (AC)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">验收标准</span>
+                <span class="note">Conditions that must be met for a story to be considered done.</span>
+            </li>
+            <li>
+                <span class="english"><strong>CSR (Customer Service Representative)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">客服代表</span>
+                <span class="note">Frontline staff handling customer queries, disputes, and account changes.</span>
+            </li>
+            <li>
+                <span class="english"><strong>RBAC (Role-Based Access Control)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">基于角色的访问控制</span>
+                <span class="note">Access control based on user's role. <em>CSR can only view their portfolio</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>audit log</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">审计日志</span>
+                <span class="note">Immutable log of who did what and when. Required by banking regulators.</span>
+            </li>
+            <li>
+                <span class="english"><strong>non-functional requirement (NFR)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">非功能需求</span>
+                <span class="note">Requirements about how the system behaves (performance, security, audit) rather than what it does.</span>
+            </li>
+            <li>
+                <span class="english"><strong>pagination</strong> <span class="tag">n.</span></span>
+                <span class="chinese">分页</span>
+                <span class="note">Splitting large result sets into pages (e.g., 20 per page).</span>
+            </li>
+            <li>
+                <span class="english"><strong>high-net-worth (HNW)</strong> <span class="tag gold">banking</span></span>
+                <span class="chinese">高净值客户</span>
+                <span class="note">HSBC's Premier / Jade / Private Bank segments serve HNW clients.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① Quantifying Vague Terms</h3>
+        <p>Always push for specific numbers in refinement:</p>
+        <ul>
+            <li><em>"Recent"</em> → <em>last 30 days? 90 days? Configurable?</em></li>
+            <li><em>"Fast"</em> → <em>p95 latency &lt; 200ms?</em></li>
+            <li><em>"All users"</em> → <em>which roles? Any exclusions?</em></li>
+            <li><em>"Soon"</em> → <em>by when? What's the deadline?</em></li>
+        </ul>
+
+        <h3>② "Could be / might be" for Risk</h3>
+        <p>When raising a technical concern, hedge:</p>
+        <ul>
+            <li>❌ <em>"This will fail in production."</em> (over-confident)</li>
+            <li>✅ <em>"This <strong>could be</strong> an issue <strong>if</strong> we have high-net-worth clients."</em></li>
+        </ul>
+
+        <h3>③ "Revise up / down"</h3>
+        <p>When new info changes the estimate:</p>
+        <ul>
+            <li><em>I'd <strong>revise up to</strong> 8 points.</em> (estimate increased)</li>
+            <li><em>I'd <strong>revise down to</strong> 3 points.</em> (estimate decreased)</li>
+            <li><em>I'd <strong>stick with</strong> 5 points.</em> (no change)</li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🔍 The Developer's Role in Refinement</div>
+            <p>Many developers think refinement is the BA's job. <strong>It's not.</strong> At HSBC, developers are
+            expected to:</p>
+            <ul>
+                <li><strong>Quantify vague requirements</strong> — "fast" must become a number.</li>
+                <li><strong>Flag technical risks early</strong> — N+1, RBAC, audit logging, KMS keys.</li>
+                <li><strong>Push back on under-sized stories</strong> — better now than in the sprint.</li>
+                <li><strong>Name compliance concerns</strong> — InfoSec, Audit, Data Privacy teams.</li>
+            </ul>
+            <p>Silent developers in refinement lead to under-sized stories, mid-sprint surprises, and missed regulatory requirements.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Common Mistakes</div>
+            <ul>
+                <li>❌ <em>"Looks fine, let's go."</em> (passive)</li>
+                <li>✅ <em>"Looks good overall. <strong>One thing to clarify</strong> — the data source is the Disputes service, right?"</em></li>
+                <li>❌ Nitpicking on minor wording instead of raising real technical risks.</li>
+                <li>❌ Saying "this will take 8 points" without explaining why — always <strong>justify the size</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to native-sounding refinement English:</div>
+                <p>"这个能说具体点吗？'最近'是几天？还有，CSR 能修改争议状态吗，还是只能看？"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "<em>Quick clarifying question</em> — by "<em>recent</em>", do we mean <em>last 30 days</em>, <em>90 days</em>, or <em>configurable</em>? And is this <em>read-only</em>, or can the CSR also <em>update the dispute status</em>?"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Flag a technical concern during refinement (sample):</div>
+                <p>The story: "Allow users to download their transaction history as CSV, last 12 months, max 100k rows." What technical concern would you raise?</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>One technical concern</em> — 100k rows as a synchronous CSV download could <em>timeout the request</em> and <em>block the worker thread</em>. <strong>Have you considered</strong> an <em>async generation</em> approach where the user <em>requests the export</em>, we <em>generate in the background</em>, and <em>email them the download link</em> when ready? It's a more <em>robust pattern</em> for large exports."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Fill in the right refinement phrases:</div>
+                <p>"<em>Quick _____ (clarify) question — by 'soon', do we mean this sprint or next? / I'd _____ (revise) up to 8 points with the audit logging added. / That'll _____ (affect) the API design. / Compliance will definitely _____ (ask) for this.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>clarifying</em> (gerund) / <em>revise</em> (base form after <em>I'd</em>) / <em>affect</em> (base form) / <em>ask</em> (base form)
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>The BA presents: "TRD-3300: Allow Relationship Managers (RMs) to assign a customer to a different RM, with email notification to both RMs. Initial estimate: 2 points." Write 3 questions / concerns you would raise, then give a revised estimate.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Quick questions / concerns</em>:
+                    <ol>
+                        <li><em>RBAC</em> — can <em>any RM</em> reassign any customer, or only <em>their own portfolio</em>? I'd guess the latter, but want to <em>confirm with InfoSec</em>.</li>
+                        <li><em>Audit logging</em> — reassigning a customer is a <em>sensitive action</em>. We should <em>log the old RM, new RM, timestamp, and reason</em>. Compliance will want this.</li>
+                        <li><em>Email</em> — is the email <em>transactional</em> (real-time) or <em>batched</em>? If real-time, we need to <em>design the email template with the comms team</em> and confirm the <em>SMTP / SES sender</em> is approved.</li>
+                    </ol>
+                    <em>With audit logging and email integration, I'd revise up to 5 points.</em> The base reassignment logic is straightforward, but the <em>audit + email + RBAC</em> is the real cost."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="08-code-review-politely.html">
+            <span class="label">← Previous</span>
+            <span class="title">08 · Code Review</span>
+        </a>
+        <a class="next" href="10-architecture-discussion.html">
+            <span class="label">Next Article →</span>
+            <span class="title">10 · Architecture Discussion</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 09 · Backlog Refinement · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

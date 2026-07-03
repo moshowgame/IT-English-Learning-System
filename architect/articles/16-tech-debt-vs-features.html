@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 16: Negotiating Tech Debt vs New Features | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">16 · Negotiating Tech Debt vs New Features</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Negotiating Tech Debt vs New Features</h1>
+        <p class="subtitle">Article 16 · Module 5: Difficult Conversations · Architect English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 Convince PM and business to fund a tech-debt sprint — make the cost of inaction visible</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday, 11:00 AM HKT</strong>. Quarterly planning is next week, and the
+            <em>RBWM Digital</em> tribe is allocating <em>~85% of next quarter's squad capacity to
+            new features</em> (KYC refresh, spending insights, OnePay fraud signals) and
+            <em>~15% to tech debt</em>. The 15% bucket is <em>not ringfenced</em> — the tribe lead
+            has informally said that any tech-debt item that "doesn't tie to a customer outcome"
+            will get deprioritised.
+        </p>
+        <p>
+            周二上午 11 点香港时间，季度规划下周进行。<em>RBWM 数字化</em> tribe 把下季度
+            <em>~85% 的 squad 容量分给新功能</em>（KYC 刷新、消费洞察、OnePay 欺诈信号），
+            <em>~15% 给技术债</em>。这 15% <em>没有专门圈出来</em>——tribe lead 非正式地说过，
+            任何"不挂钩客户产出"的技术债项会被降级。
+        </p>
+        <p>
+            You are the Solution Architect covering RBWM. The technical reality is <em>ugly</em>:
+            the <em>OneWealth portfolio-rebalancing service</em> is on a Java 8 monolith, deploys
+            take <em>45 minutes,</em> p99 latency is <em>~3.2 seconds</em> (SLA is 800ms), and the
+            last <em>3 production incidents in 6 months</em> all traced back to that service.
+            <em>If the team takes no tech-debt sprint,</em> the RBWM tribe will miss its Q4
+            customer-experience targets — not because the features aren't shipping, but because
+            the platform underneath them is collapsing.
+        </p>
+        <p>
+            你是覆盖 RBWM 的 Solution 架构师。技术现实<em>很糟糕</em>：<em>OneWealth 投资组合再平衡服务</em>
+            跑在 Java 8 monolith 上，部署要 <em>45 分钟，</em>p99 延迟 <em>~3.2 秒</em>（SLA 是 800ms），
+            过去 <em>6 个月的 3 起生产事件</em>全部溯源到这个服务。<em>如果团队不做一个技术债 Sprint，</em>
+            RBWM tribe 一定完不成 Q4 客户体验目标——不是因为功能没上线，而是因为底座在塌。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Product Owner, RBWM):</span>
+                <span class="text"><span class="en"><em>Morning, Wei.</em> We're <em>locking the Q4 capacity plan</em> on Friday. <em>85% to features, 15% to tech debt,</em> and even the 15% needs to <em>show a customer outcome</em> or it gets cut. <em>What's on your list?</em></span><span class="cn"><em>Wei 早上好。</em>我们<em>周五锁定 Q4 容量计划</em>。<em>85% 给功能，15% 给技术债，</em>这 15% 还<em>要能挂钩客户产出</em>，否则被砍。<em>你那边有什么想加的？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Morning, Priya — thanks for the slot.</em> I have <em>one ask,</em> and <em>I want to be upfront</em> — it's a <em>tech-debt sprint</em> on the OneWealth rebalancing service. <em>I know that doesn't sound like a customer outcome.</em> <em>Stay with me for 2 minutes and I'll show you the customer impact.</em></span><span class="cn"><em>Priya 早上好——感谢给时间。</em>我有一个<em>请求，</em><em>先说清楚</em>——是 <em>OneWealth 再平衡服务的技术债 Sprint</em>。<em>我知道这听起来不像客户产出。</em><em>给我 2 分钟，我给你看客户影响。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Three numbers I want to put on the table.</em> <em>First,</em> the OneWealth service has a <em>p99 latency of 3.2 seconds</em> — <em>SLA is 800ms.</em> <em>4× over SLA.</em> <em>Second,</em> deploys take <em>45 minutes</em>, which means <em>we ship features 3× slower</em> than the rest of the tribe. <em>Third,</em> the last <em>3 production incidents in 6 months</em> all traced back to this service.</span><span class="cn"><em>三个数字先放桌上。</em><em>第一，</em>OneWealth 服务 <em>p99 延迟 3.2 秒</em>——<em>SLA 是 800ms。</em><em>超 SLA 4 倍。</em><em>第二，</em>部署要 <em>45 分钟，</em>意味着<em>我们交付功能比 tribe 其它 squad 慢 3 倍</em>。<em>第三，</em>过去 <em>6 个月 3 起生产事件</em>全部溯源到这个服务。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Product Owner):</span>
+                <span class="text"><span class="en"><em>I hear you — but tech debt doesn't tie to a customer outcome.</em> <em>Honest answer,</em> I'd struggle to defend that to the tribe lead. <em>What does the customer see?</em></span><span class="cn"><em>听明白了——但技术债不挂钩客户产出。</em><em>坦白说，</em>我很难向 tribe lead 解释。<em>客户看到的是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Good question — let me reframe.</em> <em>The customer sees a 3-second spinner</em> on the portfolio page <em>3 times out of 10.</em> That's the <em>p99 bucket</em> — the worst 1% of requests, which <em>at our volume is thousands of high-net-worth customers per day.</em> <em>That's the customer outcome.</em></span><span class="cn"><em>好问题——我重新组织一下。</em><em>客户看到的是投资组合页面上 3 秒的转圈，</em>概率是 <em>10 次里有 3 次。</em>这就是 <em>p99 这一档</em>——最差的 1% 请求，按我们的量级<em>每天是几千个高净值客户</em>。<em>这就是客户产出。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>And there's a <em>regulatory exposure</em>.</em> HKMA's <em>TM-G-1 circular</em> expects banks to <em>measure and remediate</em> customer-facing latency that's <em>materially above SLA.</em> <em>3× over SLA, with incidents,</em> is a <em>ribbon-cutting risk</em> for HKMA's next tech-risk review. <em>That's not a tech-debt conversation anymore — that's a regulator conversation.</em></span><span class="cn"><em>还有一个<em>监管暴露。</em></em>HKMA 的 <em>TM-G-1 通告</em>要求银行<em>度量并修复</em><em>实质性超过 SLA</em> 的客户侧延迟。<em>超 SLA 3 倍，外加事故，</em>是 HKMA 下次技术风险审查<em>的切开风险</em>。<em>这不再是技术债对话了——这是监管对话。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Product Owner):</span>
+                <span class="text"><span class="en"><em>OK, that's a different frame.</em> <em>What does the ask look like</em> — what's the capacity, and <em>what's the deliverable by end of sprint?</em></span><span class="cn"><em>好，那这又是另一回事了。</em><em>要的东西长什么样</em>——要多少容量，<em>Sprint 结束能交付什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Honest answer</em> — I'm <em>not asking for the full rewrite.</em> I'm asking for a <em>2-sprint, 1-squad tech-debt sprint</em> that does three things: (1) <em>upgrade Java 8 → 17,</em> (2) <em>split the monolith into a single extracted service</em> (the rebalancing engine), (3) <em>add p99 observability</em> with alerts. <em>Capacity ask: 1 squad × 4 sprints</em> — which is <em>~12% of the tribe's Q4 capacity</em>, not 15%.</span><span class="cn"><em>坦白说</em>——<em>我不要完全重写。</em>我要一个 <em>2 个 Sprint、1 个 squad 的技术债 Sprint</em>，做 3 件事：(1) <em>Java 8 升到 17，</em>(2) <em>把 monolith 拆出一个独立服务</em>（再平衡引擎），(3) <em>加上 p99 可观测性和告警</em>。<em>容量：1 个 squad × 4 个 Sprint</em>——大概是 <em>tribe Q4 容量的 12%，</em>不是 15%。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>And <em>here's the deal I'd offer the tribe</em></em> — if we land this, the rebalancing squad <em>recovers ~30% feature velocity in Q1</em> (because deploys drop from 45 min to 8 min, and p99 drops from 3.2s to <800ms). <em>That's 30% more features you can sell to the business in Q1,</em> without spending a single extra squad-week on Q1 capacity. <em>It's a Q4 investment that buys Q1 velocity.</em></span><span class="cn"><em>还有一个<em>我可以和 tribe 谈的条件</em></em>——如果拿下这个，再平衡 squad <em>Q1 能回收约 30% 的功能速度</em>（部署从 45 分钟降到 8 分钟，p99 从 3.2 秒降到 <800ms）。<em>这意味着 Q1 你可以多卖 30% 功能给业务，</em>而且 Q1 不需要多花一个 squad-week。<em>这是一笔 Q4 的投资，买 Q1 的速度。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Product Owner):</span>
+                <span class="text"><span class="en"><em>OK, I'm in.</em> <em>Two asks from my side.</em> <em>First,</em> I want <em>a single dashboard</em> showing p99 latency, deploy time, and incident count — <em>updated weekly,</em> shared with me and the tribe lead. <em>Second,</em> if the p99 doesn't drop below 1 second by end of sprint 2, <em>we stop and re-evaluate.</em> <em>Deal?</em></span><span class="cn"><em>好，我加入。</em><em>我这边两个条件。</em><em>第一，</em>我要<em>一个 dashboard</em>展示 p99 延迟、部署时间、事故数——<em>每周更新，</em>共享给我和 tribe lead。<em>第二，</em>如果 Sprint 2 结束时 p99 没降到 1 秒以下，<em>我们就停并重新评估。</em><em>成交？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Deal.</em> <em>I'll send the ADR-0173 and the dashboard design by EOD Thursday.</em> <em>Thank you, Priya</em> — this buys the tribe a real Q1, not a short-term Q4 win that breaks in production.</span><span class="cn"><em>成交。</em><em>我 EOD 周四前发出 ADR-0173 和 dashboard 设计。</em><em>Priya，谢谢</em>——这给 tribe 买了一个真正的 Q1，而不是一个 Q4 短期胜利、生产里崩盘。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>I want to be upfront — it's a tech-debt sprint.</em></span>
+                <span class="chinese">先说清楚——是一个技术债 Sprint</span>
+                <span class="note">"Be upfront" is the politeness technology for naming the elephant in the room. Don't pretend it's a feature; name the ask, then make the case.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Outcome</span> <em>Stay with me for 2 minutes and I'll show you the customer outcome.</em></span>
+                <span class="chinese">给我 2 分钟，我给你看客户产出</span>
+                <span class="note">PMs and tribe leads live in "customer outcome". Re-route your tech-debt argument through that lens, not the "clean code" lens.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quant</span> <em>Three numbers I want to put on the table.</em></span>
+                <span class="chinese">三个数字先放桌上</span>
+                <span class="note">Always lead with numbers. PMs will listen to numbers; they will not listen to "the code is bad".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SLA</span> <em>p99 latency of 3.2 seconds — SLA is 800ms. 4× over SLA.</em></span>
+                <span class="chinese">p99 延迟 3.2 秒——SLA 是 800ms。超 SLA 4 倍</span>
+                <span class="note">The "X× over SLA" framing is the strongest tech-debt argument. SLA is a contract; being over SLA is a contract violation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocker</span> <em>We ship features 3× slower than the rest of the tribe.</em></span>
+                <span class="chinese">我们交付功能比 tribe 其它 squad 慢 3 倍</span>
+                <span class="note">"Velocity drag" is the PM's word. Tech debt is not abstract — it shows up as features-not-shipped.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Reframe</span> <em>Let me reframe. The customer sees a 3-second spinner 3 times out of 10.</em></span>
+                <span class="chinese">我重新组织一下。客户看到的是投资组合页面上 3 秒的转圈，10 次里有 3 次</span>
+                <span class="note">Translate the p99 number into a customer-visible behaviour. "3-second spinner, 3 in 10" lands. "p99 = 3.2s" doesn't.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Caution</span> <em>That's a ribbon-cutting risk for HKMA's next tech-risk review.</em></span>
+                <span class="chinese">那是 HKMA 下次技术风险审查的切开风险</span>
+                <span class="note">"Ribbon-cutting risk" = a regulator formally opening an issue. Mentioning HKMA / MAS / FCA immediately elevates the conversation above "tech debt".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>I'm not asking for the full rewrite. I'm asking for a 2-sprint, 1-squad tech-debt sprint.</em></span>
+                <span class="chinese">我不要完全重写。我要的是 2 个 Sprint、1 个 squad 的技术债 Sprint</span>
+                <span class="note">Always scope your ask tightly. "Full rewrite" loses; "1 squad × 2 sprints" is something a PM can defend in planning.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Deal</span> <em>Here's the deal I'd offer the tribe — Q4 investment that buys Q1 velocity.</em></span>
+                <span class="chinese">我可以和 tribe 谈的条件——Q4 的投资买 Q1 的速度</span>
+                <span class="note">Frame the tech-debt sprint as an investment with measurable return. "Velocity", "features", "shipped" are PM words.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Re-evaluate</span> <em>If p99 doesn't drop below 1s by end of sprint 2, we stop and re-evaluate.</em></span>
+                <span class="chinese">如果 Sprint 2 结束时 p99 没降到 1 秒以下，我们就停并重新评估</span>
+                <span class="note">A clear go/no-go gate protects both sides. The PM gets a defined exit; the architect gets the runway to deliver.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Tech debt (technical debt)</strong> n. 技术债 The accumulated cost of shortcuts in the codebase that slow future delivery.</li>
+            <li><strong>Tech-debt sprint</strong> n. 技术债 Sprint A dedicated sprint (or set of sprints) where a squad pays down technical debt instead of shipping features.</li>
+            <li><strong>Ringfenced capacity</strong> n. 圈定容量 Capacity that is explicitly reserved for a purpose (e.g., tech debt) and cannot be reallocated to features mid-quarter.</li>
+            <li><strong>Customer outcome</strong> n. 客户产出 A measurable change in customer behaviour, satisfaction, or value — the lens PMs and tribe leads use to evaluate all work.</li>
+            <li><strong>p99 latency</strong> n. p99 延迟 The 99th-percentile latency — the slowest 1% of requests. The standard measure for customer-visible slowness.</li>
+            <li><strong>SLA (Service Level Agreement)</strong> n. 服务等级协议 The contracted maximum latency / availability. p99 over SLA is a contract violation.</li>
+            <li><strong>Velocity drag</strong> n. 速度拖累 The phenomenon where tech debt slows feature delivery — the PM's reason to care about tech debt.</li>
+            <li><strong>Feature velocity</strong> n. 功能交付速度 The rate at which a squad ships features. A successful tech-debt sprint increases future feature velocity.</li>
+            <li><strong>Ribbon-cutting risk</strong> n. 切开风险 The risk that a regulator formally opens (or "ribbon-cuts") an issue at a review — usually triggered by a measurable breach + repeat incidents.</li>
+            <li><strong>HKMA TM-G-1</strong> n. 港金局 TM-G-1 Hong Kong Monetary Authority's technology risk management circular — sets expectations on customer-facing latency remediation.</li>
+            <li><strong>Go/no-go gate</strong> n. 继续 / 停止关卡 A pre-agreed point where a tech-debt sprint is evaluated against metrics; the squad either continues, re-scopes, or stops.</li>
+            <li><strong>Production incident</strong> n. 生产事件 A customer-facing outage or degradation. Repeat incidents on the same service are a tech-debt signal.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Stay with me for 2 minutes" — the time-boxed request</h3>
+        <p>
+            The pattern <em>Stay with me for X minutes and I'll show you Y</em> is the
+            politeness-technology for asking a PM to give you their most scarce resource:
+            attention. The grammar: <em>imperative + time duration + promise of value</em>. The
+            PM grants you 2 minutes because the alternative ("let me explain…") sounds open-ended.
+            Use this when you have a counter-intuitive ask (tech debt, no customer feature).
+        </p>
+        <p><em>Stay with me for X minutes and I'll show you Y</em>——时间盒 + 价值承诺。</p>
+
+        <h3>② "Let me reframe" — moving from your frame to theirs</h3>
+        <p>
+            PMs have a frame: <em>customer outcome, velocity, ship date</em>. Architects have a
+            frame: <em>clean code, observability, debt</em>. The <strong>reframe</strong> pattern
+            explicitly acknowledges the gap and translates: <em>"Let me reframe. The customer
+            sees a 3-second spinner 3 times out of 10. That's the customer outcome."</em> The
+            grammar: <em>imperative + translate their number into their frame</em>. Without the
+            reframe, the PM hears "tech debt = slow code = not my problem".
+        </p>
+        <p><em>Let me reframe</em> 显式承认双方视角不同，再把数字翻译成 PM 的语言。</p>
+
+        <h3>③ "Q4 investment that buys Q1 velocity" — the trade-off inversion</h3>
+        <p>
+            The strongest tech-debt argument inverts the trade-off. <em>Frame it as: spend X now,
+            get Y back next quarter, with Y &gt; X.</em> The grammar: <em>"It's a [time-period]
+            investment that buys [future-time-period] [gain]."</em> This is the pattern PMs
+            understand — it's how they think about every other investment. Apply the same lens to
+            tech debt.
+        </p>
+        <p>"Q4 的投资买 Q1 的速度"——把技术债 Sprint 框成<strong>投资回报</strong>，PM 听得懂。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Translate tech debt into customer language.</strong> PMs don't care about clean code; they care about shipped features and customer satisfaction. The architect's first job is to translate the technical reality into PM language: customer-visible behaviour, velocity, regulatory exposure.</li>
+            <li><strong>Lead with three numbers, not adjectives.</strong> "3.2s p99", "45 min deploys", "3 incidents in 6 months" — that's a story. "The service is in bad shape" is not.</li>
+            <li><strong>p99 is the PM's word, not the architect's.</strong> Architects default to average latency, error rate, MTTR. PMs default to p99 because it matches the customer experience. When talking to PMs, lead with p99.</li>
+            <li><strong>Mention the regulator once. Once is enough.</strong> "HKMA TM-G-1 expects remediation of customer-facing latency materially above SLA" is a single sentence. It changes the conversation from "tech debt" to "regulatory risk" without you needing to escalate.</li>
+            <li><strong>Scope the ask tightly. "Full rewrite" loses.</strong> PMs can defend "1 squad × 2 sprints = 12% capacity" in planning. They cannot defend "stop the world, rewrite the platform". Always come with a scoped, time-boxed ask.</li>
+            <li><strong>Offer a go/no-go gate.</strong> "If p99 doesn't drop below 1s by sprint 2, we stop" gives the PM a defined exit. They support tech debt when there's a measurable deliverable and a defined off-ramp.</li>
+            <li><strong>Use the dashboard as the artefact.</strong> A single dashboard with p99, deploy time, incident count — updated weekly — is the artefact that keeps the tech-debt sprint alive. Without it, the conversation dies in week 2.</li>
+            <li><strong>Frame it as investment, not cost.</strong> "Q4 investment that buys Q1 velocity" is a sentence PMs understand. "We need to fix the Java 8 monolith" is a sentence they don't. The word "investment" reframes the budget line.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the tech-debt pitch</h3>
+        <p>Translate the following tech-debt pitch into natural Chinese. Notice how the architect translates technical numbers into customer language.</p>
+        <blockquote>
+            "Thanks, Jonathan — quick one. I want to be upfront: I'm asking for a 2-sprint
+            tech-debt sprint on the HSBCnet payment callback service. Three numbers: p99 latency
+            is 4.1 seconds — SLA is 1 second. 4× over SLA. Deploys take 60 minutes, which means
+            we ship features 2× slower than the rest of the tribe. The last 4 production
+            incidents in 8 months all traced back to this service. Let me reframe — the customer
+            sees a 'payment submitted, please wait' spinner for 4 seconds, 1 time in 100.
+            That's 1% of payments, which at HSBCnet volume is thousands of customers per day.
+            My ask: 1 squad × 2 sprints. The deal: we recover ~25% feature velocity in Q1
+            because deploys drop to 12 min and p99 drops below 1s. It's a Q4 investment that
+            buys Q1 velocity."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Jonathan，谢谢——插一下会外的。我想说清楚：我要的是一个 2 Sprint 的 HSBCnet 支付回调服务技术债 Sprint。3 个数字：p99 延迟 4.1 秒——SLA 是 1 秒。超 SLA 4 倍。部署要 60 分钟，意味着我们交付功能比 tribe 其它 squad 慢 2 倍。过去 8 个月 4 起生产事件全部溯源到这个服务。让我重新组织一下——客户看到的是"支付已提交，请等待"的转圈 4 秒，100 次里有 1 次。按 HSBCnet 的量级，这是每天几千个客户。我的请求：1 个 squad × 2 个 Sprint。条件：Q1 能回收约 25% 的功能速度，因为部署降到 12 分钟、p99 降到 1 秒以下。这是一笔 Q4 的投资，买 Q1 的速度。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the difference: winning vs losing the pitch</h3>
+        <p>Which of these pitches would a HSBC PM likely approve, and which would be cut? Why?</p>
+        <ol>
+            <li>"We need a tech-debt sprint to clean up the code."</li>
+            <li>"Three numbers: p99 latency 3.2s vs SLA 800ms — 4× over. Deploys 45 min — 3× slower than the rest of the tribe. 3 production incidents in 6 months, all on this service. The customer sees a 3-second spinner 3 times in 10. My ask: 1 squad × 4 sprints, ~12% of Q4 capacity. The deal: Q1 we recover 30% feature velocity. Q4 investment, Q1 velocity. Go/no-go gate: if p99 doesn't drop below 1s by sprint 2, we stop."</li>
+            <li>"The Java 8 monolith is hard to maintain. We should refactor it."</li>
+            <li>"The OnePay fraud-signal service is hitting HKMA TM-G-1 ribbon-cutting risk. p99 2.8s vs SLA 600ms, 4 incidents in 6 months, customer-visible as 'transaction under review' spinner. Ask: 1 squad × 2 sprints, 10% of Q4 capacity. Deal: Q1 velocity +20% and HKMA risk closes. Gate: p99 &lt; 800ms by sprint 2 or stop."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ would be approved. ② leads with three numbers, reframes in customer language, scopes the ask tightly (1 squad × 4 sprints = 12%), names the deal (Q1 +30% velocity), and offers a go/no-go gate. ④ adds the HKMA TM-G-1 ribbon-cutting risk, which elevates it above pure tech debt. ① and ③ are cut — they speak only architect language ("clean up", "refactor") with no numbers, no customer translation, no scoped ask, and no deal. PMs cannot defend those in planning.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You are the Solution Architect for the CMB Onboarding squad. The KYC document OCR service has: (a) p99 latency 6.2s vs SLA 1.5s (4× over), (b) deploys take 90 minutes, (c) 2 production incidents in 4 months, (d) 1.2% of KYC submissions are failing OCR and falling back to manual review, costing the squad ~$50k/month in ops. The PM is sceptical of tech-debt sprints. Write a 5–6 sentence pitch that: (1) thanks the PM and is upfront, (2) gives 2-3 numbers, (3) reframes in customer language, (4) names the regulator if relevant, (5) gives a scoped ask, (6) offers a go/no-go gate. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Mei, thanks for the slot. <em>I want to be upfront</em> — I'm asking for a <em>2-sprint tech-debt sprint</em> on the KYC OCR service. <em>Three numbers I want to put on the table.</em> <em>p99 latency 6.2s, SLA 1.5s — 4× over SLA.</em> Deploys take 90 minutes, which means <em>we ship features 2× slower</em> than the rest of the tribe. And <em>1.2% of KYC submissions are falling back to manual review</em>, costing the squad ~$50k/month in ops. <em>Let me reframe</em> — the customer sees a KYC submission hang for 6 seconds 1 time in 25, and 1 in 80 submissions needs a manual rework, which means the customer gets a 'we'll be in touch' email instead of same-day approval. <em>There's also a regulatory angle</em> — HKMA TM-G-1 explicitly expects <em>remediation of customer-facing latency materially above SLA,</em> and this is one ribbon-cutting risk away from a review. <em>My ask: 1 squad × 2 sprints, ~10% of Q4 capacity.</em> <em>The deal:</em> Q1 we recover ~25% feature velocity and the $50k/month manual-review cost drops below $10k. <em>Go/no-go gate: if p99 doesn't drop below 2s by end of sprint 2, we stop and re-evaluate.</em> Deal?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="../index.html" class="btn btn-primary">Back to Architect Index →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

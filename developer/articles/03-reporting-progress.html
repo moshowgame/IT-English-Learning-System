@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 03: Reporting Progress | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">03 · Reporting Progress: On Track / At Risk / Blocked</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Reporting Progress: On Track / At Risk / Blocked</h1>
+        <p class="subtitle">Article 03 · Module 1: Daily Standup · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🚦 Three core status states with the right tone</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            You are working on the <em>OneWealth trade order service</em> in the Shenzhen office. Today is the
+            <strong>10th day of a two-week sprint</strong>. Your PM, Sarah (London), and tech lead, Priya (London),
+            are checking in on your three active tickets. You need to give an honest, calibrated update on each.
+        </p>
+        <p>
+            你在深圳做 <em>OneWealth 交易订单服务</em>，今天是一个双周冲刺的 <strong>第10天</strong>。你的PM Sarah
+            在伦敦，技术负责人 Priya 也在伦敦，他们要检查你三张活跃卡片的进度。你需要诚实、恰当地汇报每一张卡的状态。
+        </p>
+        <ul>
+            <li><strong>TRD-882</strong>: You are <em style="color:var(--success);">on track</em>, just finished the happy path yesterday.</li>
+            <li><strong>TRD-901</strong>: You are <em style="color:var(--warning);">at risk</em> because the upstream API team hasn't delivered their stub yet.</li>
+            <li><strong>TRD-915</strong>: You are <em style="color:var(--hsbc-red);">blocked</em> on a database access request that's been pending with DBA team for 3 days.</li>
+        </ul>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en">Wei, before we wrap, can you <em>give us a status on your three tickets?</em> We need to update the <em>sprint burndown</em> for the SteerCo on Friday.</span><span class="cn">Wei，结束前能同步一下三张卡的状态吗？周五 SteerCo 要更新冲刺燃尽图。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Sure, Sarah. <em>Here's the latest.</em></span><span class="cn">没问题 Sarah，最新情况如下。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><strong>On TRD-882,</strong> the trade order placement is <strong>fully on track.</strong> <em>Happy path is done</em>, and I'm <em>running the regression suite</em> today. Should be code-complete by EOD tomorrow.</span><span class="cn">TRD-882，交易下单功能完全按计划推进。主流程已经做完，今天在跑回归测试，明天 EOD 应该能 code-complete。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><strong>On TRD-901,</strong> I'm <strong>flagging this as at risk.</strong> The upstream <em>market data team</em> hasn't delivered the <em>price feed stub</em> yet — they <em>slipped from Wednesday to Monday</em>. I can keep working on the <em>consumer side</em>, but the <em>end-to-end test</em> depends on their stub. There's a <em>risk</em> we might slip into the next sprint if they slip again.</span><span class="cn">TRD-901，我标记为 at risk。上游行情数据团队的价格源 stub还没交付——他们从周三延到了周一。我可以继续做消费侧，但端到端测试依赖他们的 stub。如果他们再延一次，有风险会滑到下个冲刺。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Hmm, <em>good to know early</em>. Have you <em>escalated</em> to the market data team's lead?</span><span class="cn">嗯，早点知道好。你升级到行情团队的负责人了吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Not yet. I was <em>going to reach out to Rajesh today</em>. Should I also <em>loop in</em> Sarah in case we need to <em>re-prioritise at the SteerCo</em>?</span><span class="cn">还没，我打算今天联系 Rajesh。要不要也把 Sarah拉进来，万一要在 SteerCo 上重新排优先级？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (PM):</span>
+                <span class="text"><span class="en">Yes, please <em>keep me in the loop</em>. If it slips again, we'll need to <em>flag it up to the portfolio level</em>. Go ahead with Rajesh first.</span><span class="cn">好的，请保持同步。如果再延就要升级到组合层面。先联系 Rajesh。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Will do. <strong>And finally, TRD-915 is blocked.</strong> I need <em>read access to the historical trade database</em> — the DBA ticket's been <em>pending for three business days</em>. <em>I've chased twice</em> in the DBA channel but no movement. <em>I'd appreciate some help unblocking it.</em></span><span class="cn">好的。最后，TRD-915 被阻塞。我需要历史交易数据库的读权限，DBA 工单已经pending 三个工作日了。在 DBA 频道里催了两次没动静，麻烦帮忙解除阻塞。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Let me <em>drop a message in the DBA channel</em> — I know their team lead. <em>Apologies</em>, Wei, this shouldn't have sat for three days. We'll get it sorted today.</span><span class="cn">我在DBA 频道里发个消息——我认识他们的负责人。抱歉Wei，不应该卡三天的，今天搞定。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Thanks, Priya. <em>Appreciate it.</em> I'll <em>keep the ticket moving</em> as soon as the access is granted.</span><span class="cn">感谢 Priya。辛苦了。权限一开我立刻推进。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Green</span> <em>Fully on track.</em></span>
+                <span class="chinese">完全按计划推进</span>
+                <span class="note">The strongest positive status. Use when you're confident of meeting the deadline.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">At Risk</span> <em>I'm flagging this as at risk.</em></span>
+                <span class="chinese">我把这个标记为 at risk</span>
+                <span class="note"><em>Flag as at risk</em> is the standard verb. Don't just say "this is late" — always <em>flag</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">Blocked</span> <em>TRD-915 is blocked.</em></span>
+                <span class="chinese">TRD-915 被卡了</span>
+                <span class="note"><em>Blocked</em> = I literally cannot make progress. <em>At risk</em> = I can progress, but the deadline is in danger.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Slip</span> <em>They slipped from Wednesday to Monday.</em></span>
+                <span class="chinese">他们从周三延后到周一</span>
+                <span class="note"><strong>Slip</strong> (verb) = to miss a deadline. <em>Slipped by 2 days</em> is a common phrase.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Escalate</span> <em>Have you escalated to the team lead?</em></span>
+                <span class="chinese">你升级到团队负责人了吗？</span>
+                <span class="note"><strong>Escalate</strong> = take the issue to a higher authority. Always offer to escalate, don't just do it unilaterally.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Loop in</span> <em>Loop in Sarah in case we need to re-prioritise.</em></span>
+                <span class="chinese">把 Sarah 拉进来（万一要重新排优先级）</span>
+                <span class="note"><em>Loop in</em> = keep someone informed / bring them into the conversation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Chase</span> <em>I've chased twice in the DBA channel.</em></span>
+                <span class="chinese">我在 DBA 频道催了两次</span>
+                <span class="note"><strong>Chase</strong> = actively follow up to get something done. Pairs with <em>"chase it up"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Unblock</span> <em>I'd appreciate some help unblocking it.</em></span>
+                <span class="chinese">麻烦帮忙解除阻塞</span>
+                <span class="note">Asking for unblock help is completely normal. <strong>Unblock</strong> is a verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Polite</span> <em>Apologies — this shouldn't have sat for three days.</em></span>
+                <span class="chinese">抱歉，不应该卡三天的</span>
+                <span class="note">A graceful apology when someone is at fault. <em>"This shouldn't have happened"</em> is a common pattern.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>on track</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">按计划推进 / 在轨</span>
+                <span class="note">Positive status. Opposite: <em>off track</em> / <em>at risk</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>at risk</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">有风险 / 状态变红</span>
+                <span class="note">May slip. Not yet blocked, but trajectory is concerning.</span>
+            </li>
+            <li>
+                <span class="english"><strong>blocked</strong> <span class="tag red">adj.</span></span>
+                <span class="chinese">被阻塞 / 状态卡死</span>
+                <span class="note">Cannot make progress without external intervention.</span>
+            </li>
+            <li>
+                <span class="english"><strong>sprint burndown</strong> <span class="tag">n.</span></span>
+                <span class="chinese">冲刺燃尽图</span>
+                <span class="note">Chart showing remaining work over sprint duration. Key SteerCo artifact.</span>
+            </li>
+            <li>
+                <span class="english"><strong>SteerCo (Steering Committee)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">指导委员会 (高层汇报会)</span>
+                <span class="note">Senior leadership meeting to review project status.</span>
+            </li>
+            <li>
+                <span class="english"><strong>code-complete</strong> <span class="tag">adj.</span></span>
+                <span class="chinese">代码完成 (开发完成, 待测试)</span>
+                <span class="note">All code written, not yet tested. Milestone in delivery.</span>
+            </li>
+            <li>
+                <span class="english"><strong>stub / mock</strong> <span class="tag">n.</span></span>
+                <span class="chinese">桩代码 / 模拟实现</span>
+                <span class="note">A simplified implementation used to test integration before the real one is ready.</span>
+            </li>
+            <li>
+                <span class="english"><strong>end-to-end test (e2e)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">端到端测试</span>
+                <span class="note">Test that exercises the full flow from start to finish.</span>
+            </li>
+            <li>
+                <span class="english"><strong>DBA (Database Administrator)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">数据库管理员</span>
+                <span class="note">Owns database access, performance, and schema changes.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① Three Status Verbs — 状态动词三件套</h3>
+        <p>Memorize these three structures — they appear in every standup:</p>
+        <ul>
+            <li><em>The ticket <strong>is on track</strong>.</em> (state)</li>
+            <li><em>The ticket <strong>is at risk</strong> because…</em> (state + reason)</li>
+            <li><em>The ticket <strong>is blocked on</strong> X.</em> (state + dependency)</li>
+        </ul>
+
+        <h3>② Hedging on Risk</h3>
+        <p>When flagging risk, soften the prediction to avoid over-committing or alarming the team:</p>
+        <ul>
+            <li>❌ <em>"It will slip."</em> (over-confident)</li>
+            <li>✅ <em>"There's a <strong>risk</strong> it <strong>might</strong> slip."</em></li>
+            <li>✅ <em>"I'm <strong>concerned</strong> we <strong>could</strong> slip if X happens."</em></li>
+        </ul>
+
+        <h3>③ "I'd appreciate…" — Polite Asks for Help</h3>
+        <p><em>"I'd <strong>appreciate</strong> some help unblocking it"</em> is a graceful way to ask for help. Alternatives:</p>
+        <ul>
+            <li><em>"Could you <strong>help me unblock</strong> this?"</em></li>
+            <li><em>"<strong>Any chance</strong> you could push this with the DBA team?"</em></li>
+            <li><em>"<strong>Would you mind</strong> taking a look?"</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🚦 The Traffic Light Metaphor 交通灯比喻</div>
+            <p>HSBC and most banks use a "traffic light" status reporting system. The status you give in standup
+            flows up to SteerCo reports. Be honest — overstating <em>"on track"</em> is a much worse mistake than
+            flagging <em>"at risk"</em> early. Better to surface risk 5 days early than 1 day late.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ HSBC-Specific Risk Culture</div>
+            <ul>
+                <li><strong>Flag early, flag often.</strong> If you see risk forming, <em>flag it the same day</em>. Don't wait for the next standup.</li>
+                <li><strong>Never say "I can recover" without a plan.</strong> Always pair the optimistic claim with a recovery plan and an owner.</li>
+                <li><strong>Status accountability.</strong> Your status updates feed into the <em>portfolio dashboard</em> and the <em>group risk register</em>. Inaccurate statuses are taken seriously.</li>
+                <li><strong>"Pending" is a status, not an excuse.</strong> When something is "pending for 3 days", it's your responsibility to chase or escalate — not wait.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to professional English (口语化):</div>
+                <p>"PAY-3301 完全按计划，今天会做最后的压力测试。PAY-3310 我标记为 at risk，因为需要等安全团队的渗透测试报告，他们说周五才能给。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "PAY-3301 is <em>fully on track</em> — I'll be running the final stress test today. PAY-3310 — <em>I'm flagging this as at risk</em>. We're waiting on the pen-test report from the security team, and they say it'll be Friday. I'll keep working on the integration side in the meantime."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the right status verb:</div>
+                <p>"This ticket <em>_____ on track</em>. / This ticket <em>_____ at risk</em> because… / This ticket <em>_____ blocked on</em> the API access."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>is</em> / <em>is</em> / <em>is</em> — all use the linking verb "is" because they're states, not actions.
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Make this status update more diplomatic and clear:</div>
+                <p>"This ticket is late. The DBA team is slow. I can't work."</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "TRD-915 is <em>currently blocked on</em> the database access request. The DBA ticket has been <em>pending for three business days</em>. I've <em>chased twice</em> in the DBA channel but haven't had movement. <em>I'd appreciate some help unblocking it</em> — happy to provide more context if needed."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play scenario:</div>
+                <p>It's day 9 of a 2-week sprint. You have 4 tickets:
+                (a) 2 are on track; (b) 1 is at risk because the upstream team slipped; (c) 1 is blocked on a credential from a different team.
+                Write a 90-second status update to your PM and TL.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Sure, here's the latest. <em>Two are on track</em> — PAY-2100 and PAY-2115 are both code-complete, and I'm running the regression tests today. <em>One is at risk</em> — PAY-2120 depends on the upstream payments team's API stub, which slipped from yesterday to next Tuesday. I'm continuing on the consumer side, but the e2e test can't start until the stub is ready. I'll <em>reach out to the upstream lead</em> today to see if we can unblock earlier. <em>And one is blocked</em> — PAY-2130 needs a new OAuth credential from the platform team, the ticket's been <em>pending since Monday</em>. I've chased once in the channel. <em>Could someone help escalate?</em> Once unblocked, I can finish all four by sprint end."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="02-cross-timezone-standup.html">
+            <span class="label">← Previous</span>
+            <span class="title">02 · Cross-Timezone Standup</span>
+        </a>
+        <a class="next" href="04-volunteering-for-tasks.html">
+            <span class="label">Next Article →</span>
+            <span class="title">04 · Volunteering for Tasks</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 03 · Reporting Progress · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

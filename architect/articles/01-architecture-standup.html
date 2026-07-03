@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 01: Architecture Standup | Architect English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">01 · Architecture Standup</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Architecture Standup</h1>
+        <p class="subtitle">Article 01 · Module 1: Daily Architecture Communication · Architect English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 The architect standup rhythm: ADRs in flight / design reviews / NFRs / blockers</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>10:00 AM HKT</strong>. The HSBC Architecture Chapter holds its daily standup on
+            Microsoft Teams. You are a Solution Architect in the <em>RBWM Digital</em> tribe, supporting
+            three squads: <em>Onboarding</em>, <em>Mobile Banking</em>, and <em>Wealth Self-Service</em>.
+            Joining the standup are: <strong>Margaret</strong>, your Chief Architect (Hong Kong),
+            <strong>Diego</strong>, a peer architect in the UK, and <strong>Mei</strong>, a Tech Lead
+            from Shanghai sitting in today to escalate a design issue.
+        </p>
+        <p>
+            上午10点香港时间，汇丰架构师 chapter 在 Teams 上开每日站会。你是 <em>RBWM 数字化</em> tribe 的
+            Solution 架构师，支持 3 个 squad：<em>客户开户</em>、<em>手机银行</em> 和 <em>财富自助服务</em>。
+            参加站会的有：Chief Architect Margaret（香港）、同侪架构师 Diego（英国），以及今天来 escalation
+            设计问题的 Tech Lead Mei（上海）。
+        </p>
+        <p>
+            Your turn comes. As an architect, your standup is different from a dev's — you report on
+            <strong>ADRs in flight</strong>, <strong>design reviews scheduled this week</strong>,
+            <strong>NFR sign-offs pending</strong>, and any <strong>cross-tribe dependencies</strong>.
+            Keep it tight: 60 to 90 seconds.
+        </p>
+        <p>
+            轮到你发言。架构师的站会和开发不同——你汇报的是<strong>进行中的 ADR</strong>、
+            <strong>本周排程的设计评审</strong>、<strong>待签的 NFR</strong>，以及<strong>跨 tribe 依赖</strong>。
+            控制在一分钟左右。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Morning, everyone. Let's go round. <em>Wei, you're up.</em></span><span class="cn">大家早上好，按顺序来。Wei，你先说。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Morning, Margaret, Diego, Mei. <strong>Quick architecture update from me.</strong></span><span class="cn">Margaret、Diego、Mei 早上好，我简单同步一下架构这边的情况。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Yesterday</em>, I <em>finalised ADR-0142 on the OneWealth API gateway strategy</em> — recommending <em>AWS API Gateway with mutual TLS</em> as the north-south entry. The ADR is <em>in the chapter review queue</em> and I expect sign-off by Thursday.</span><span class="cn">昨天我把 ADR-0142（OneWealth API gateway 策略）收尾了，推荐用 <em>AWS API Gateway + 双向 TLS</em> 作为南北向入口。ADR 已经在 chapter 评审队列里，预计周四前能签下来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">I also <em>reviewed the Mobile squad's design for the offline-first KYC capture</em>. <em>Two NFR items are not yet quantified</em> — the local-encryption-at-rest requirement and the data-loss-window on sync conflict. I've <em>raised comments on the Confluence page</em> and booked a 30-min with the Mobile TL to close them out.</span><span class="cn">另外我评审了 Mobile squad 的离线优先 KYC 采集设计，有 2 条 NFR 还没量化——本地静态加密要求和同步冲突时的数据丢失窗口。我已经在 Confluence 页面加了评论，并约了 Mobile TL 30 分钟来收尾。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>Today</em>, I have <em>two design reviews</em> — the Onboarding squad's <em>eKYC vendor selection</em> at 11, and the Wealth squad's <em>event-driven rebalancing flow</em> at 3. <em>Mei's escalation on the GLCM integration pattern</em> is on the queue after that.</span><span class="cn">今天我有 2 场设计评审——11 点的 Onboarding squad <em>eKYC 厂商选型</em>，和 3 点的 Wealth squad <em>事件驱动的再平衡流程</em>。Mei 提的 GLCM 集成模式 escalation 排在之后。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en"><em>No blockers</em> on the architecture side, but I'm <em>flagging a soft dependency on InfoSec</em> for the <em>mutual TLS certificate rotation policy</em> — if that doesn't land by Friday, the ADR-0142 sign-off slips to next sprint.</span><span class="cn">架构这边没有阻塞，但提一个软依赖：<em>InfoSec 的双向 TLS 证书轮换策略</em>。如果周五前不到位，ADR-0142 的签批要推迟到下个 Sprint。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Diego (Architect, UK):</span>
+                <span class="text"><span class="en"><em>Thanks, Wei.</em> Quick one — for ADR-0142, are you proposing <em>API Gateway</em> for <em>all</em> traffic, or only the <em>partner-facing</em> side? I have a view on the <em>internal RBWM traffic</em> that I want to align before chapter review.</span><span class="cn">谢谢 Wei。问一句——ADR-0142 里你建议 API Gateway 覆盖<em>所有</em>流量，还是只覆盖<em>合作方</em>侧？我对<em>RBWM 内部流量</em>有个想法，想在 chapter 评审前对齐一下。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text"><span class="en">Good question. <em>Partner-facing only</em>, for now. Internal traffic stays on the <em>existing private API mesh</em>. I can <em>walk you through the trade-off offline</em> — let's grab 15 min after this standup.</span><span class="cn">好问题。目前只覆盖合作方侧。内部流量走现有的<em>私有 API mesh</em>。我可以线下跟你过一下 trade-off——站会后约 15 分钟。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Chief Architect):</span>
+                <span class="text"><span class="en">Perfect. <em>Mei, you're next</em> — and we will get to your GLCM question after Wei's reviews.</span><span class="cn">好的。Mei 接着——你提的 GLCM 问题，等 Wei 评审完我们专门过一下。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Quick architecture update from me.</em></span>
+                <span class="chinese">我简单同步一下架构进展</span>
+                <span class="note">Differentiates you from a dev's standup. Mark yourself as the architect slot.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">ADR</span> <em>I finalised ADR-0142 on…</em></span>
+                <span class="chinese">我把 ADR-0142（关于…）收尾了</span>
+                <span class="note">Always cite the ADR number. ADRs are immutable once accepted; "finalised" = ready for review.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Recommending AWS API Gateway with mutual TLS.</em></span>
+                <span class="chinese">推荐用 AWS API Gateway + 双向 TLS</span>
+                <span class="note">Architects never say "use X". They say "recommend X because Y". Always include the rationale.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">NFR</span> <em>Two NFR items are not yet quantified.</em></span>
+                <span class="chinese">2 条 NFR 还没量化</span>
+                <span class="note">"Quantified" = with numbers (latency, RPS, retention). Unquantified NFRs are not real NFRs.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Review</span> <em>In the chapter review queue.</em></span>
+                <span class="chinese">在 chapter 评审队列里</span>
+                <span class="note">"Chapter" = functional community of practice. ADRs go through chapter before they go wider.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag gold">Soft</span> <em>Flagging a soft dependency on InfoSec.</em></span>
+                <span class="chinese">提一个软依赖给 InfoSec</span>
+                <span class="note">Soften dependencies that aren't blocking today. Reserve "blocker" for things stopping your day.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Escalation</span> <em>Mei's escalation on the GLCM integration pattern.</em></span>
+                <span class="chinese">Mei 提的 GLCM 集成模式 escalation</span>
+                <span class="note">"Escalation" = a Tech Lead asking an architect for a decision. Always name who escalated.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Align</span> <em>I have a view I want to align before chapter review.</em></span>
+                <span class="chinese">我有个想法，想在 chapter 评审前对齐</span>
+                <span class="note">"Align" = get on the same page. Architects use this word a lot — it's a politeness word for "let's not fight in the chapter meeting".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>I can walk you through the trade-off offline.</em></span>
+                <span class="chinese">我可以线下跟你过一下 trade-off</span>
+                <span class="note">"Walk through the trade-off" = step through options + pros/cons. Do this in 1:1s, not in chapter meetings.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Partner-facing only, for now.</em></span>
+                <span class="chinese">目前只覆盖合作方侧</span>
+                <span class="note">"For now" = the architect's safety word. It promises a future review without committing to scope creep now.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>ADR (Architecture Decision Record)</strong> n. 架构决策记录 A short, immutable document capturing one decision + its context + consequences.</li>
+            <li><strong>NFR (Non-Functional Requirement)</strong> n. 非功能需求 Performance, security, scalability, auditability — quantified with numbers.</li>
+            <li><strong>Chapter</strong> n. 职能社区 HSBC's functional community of practice. Architects belong to the Architecture chapter; devs to the Dev chapter.</li>
+            <li><strong>Tribe</strong> n. 部落 A collection of squads aligned to a business outcome (e.g., RBWM Digital tribe).</li>
+            <li><strong>Squad</strong> n. 小队 HSBC's cross-functional delivery team, typically 6-9 people.</li>
+            <li><strong>North-South traffic</strong> n. 南北向流量 Traffic between client and server (vs. East-West = service-to-service).</li>
+            <li><strong>API mesh</strong> n. API 服务网格 Internal service-to-service API layer (e.g., Istio, Envoy-based).</li>
+            <li><strong>Mutual TLS (mTLS)</strong> n. 双向 TLS Both client and server present certificates. Common for partner-facing banking APIs.</li>
+            <li><strong>Design review</strong> n. 设计评审 A meeting where an architect and stakeholders walk through a proposed design and capture sign-off.</li>
+            <li><strong>Escalation</strong> n. 升级 When a Tech Lead or dev cannot resolve a technical issue and asks the architect to decide.</li>
+            <li><strong>Soft dependency</strong> n. 软依赖 Not blocking today, but will block if not addressed in N days.</li>
+            <li><strong>Trade-off</strong> n. 取舍 The explicit comparison of options — usually 2 or 3 — with pros, cons, and the chosen one.</li>
+            <li><strong>Group Standard</strong> n. 集团标准 A bank-wide mandatory standard (e.g., SDL, Group Cyber). Overrides local preferences.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I recommend X" — the architect's signature verb</h3>
+        <p>
+            Architects don't say "we should use X" or "let's go with X" — they say <em>I recommend X</em>
+            or <em>we recommend X</em>. <strong>Recommend</strong> signals that an evaluation has been done
+            and a position has been taken. Use it for every ADR conclusion and every design-review
+            outcome.
+        </p>
+        <p>架构师不说 "we should use X"，而是 <em>I recommend X</em>。"Recommend" 表明做过评估并已选定方向。</p>
+
+        <h3>② "Flagging" as a soft announcement</h3>
+        <p>
+            <em>I'm flagging a soft dependency on InfoSec</em> is softer than <em>InfoSec is blocking us</em>.
+            The <strong>-ing form</strong> (flagging, raising, escalating) signals "I want you to know, but
+            I'm not demanding action right now". The same trick a BA uses — see BA Article 01.
+        </p>
+        <p>"I'm flagging…" 比 "InfoSec is blocking us" 软得多。-ing 形式表示"告知但不强求立刻处理"。</p>
+
+        <h3>③ "For now" — the architect's safety word</h3>
+        <p>
+            Add <em>for now</em> when you don't want to commit to a permanent scope: <em>partner-facing only,
+            for now</em>. It signals "this might change" without forcing a debate today. Pair it with an
+            explicit <em>we'll re-evaluate next quarter</em> to make the intent crystal clear.
+        </p>
+        <p>"For now" 是架构师的安全词——不承诺永久范围，但保留未来重新评估的可能。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Architect standup ≠ dev standup.</strong> Don't report on lines of code or test coverage. Report on ADRs, design reviews, NFR sign-offs, and cross-tribe dependencies. Your value is at the design layer, not the implementation layer.</li>
+            <li><strong>Always cite the ADR number.</strong> Saying "ADR-0142" gives traceability and lets people look it up live in Confluence. Numbers beat descriptions in architecture discussions.</li>
+            <li><strong>"Soft dependency" is a politeness device.</strong> If you say "blocker", Margaret will drop everything. If you say "soft dependency", she knows to nudge InfoSec but won't burn her runway. Save "blocker" for things that genuinely stop your day.</li>
+            <li><strong>Cross-region etiquette:</strong> When Diego (UK) wants to "align" before chapter review, take it offline — don't relitigate in front of the chapter. Same for Mei's escalation: book a slot, don't drop everything live.</li>
+            <li><strong>End with an action, not a complaint.</strong> Bad: "InfoSec is slow and we don't have the cert rotation policy." Good: "I'm flagging a soft dependency on InfoSec — if the cert rotation policy doesn't land by Friday, ADR-0142 slips to next sprint."</li>
+            <li><strong>Group Standards override local preferences.</strong> If a Tech Lead proposes something that conflicts with SDL, Group Cyber, or Group Resilience — even if technically cleaner — you push back. Always cite the Group Standard by name.</li>
+            <li><strong>"Recommend" is your signature verb.</strong> Use it in every ADR, every design review, every email. It signals you've done the work and signals seniority. Avoid "we should…" and "let's go with…".</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Translate the architect standup</h3>
+        <p>Translate the following architect standup snippet into natural Chinese. Pay attention to how the architect frames the soft dependency and the recommendation.</p>
+        <blockquote>
+            "Morning. Quick architecture update. Yesterday I finalised ADR-0158 on the OnePay
+            idempotency-key strategy — recommending a UUID v7 key generated at the API edge with
+            Redis-backed dedup for 24 hours. The ADR is in chapter review. I also sat with the
+            Mobile squad on their offline-first sync design; raised three NFR comments on the
+            Confluence page. Today I have the OnePay DR drill review at 11 and the GPB API gateway
+            design review at 3. No blockers, but flagging a soft dependency on the Model Risk team
+            for the sanctions-screening change — if their sign-off doesn't land by Wednesday, the
+            ADR-0158 chapter review gets pushed to next sprint."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"早上好，简单同步一下架构。昨天我把 ADR-0158（OnePay 幂等键策略）收尾了——推荐在 API 入口生成 UUID v7 做 key，用 Redis 做 24 小时去重。ADR 已经在 chapter 评审里。我还和 Mobile squad 一起过了他们离线优先的同步设计，在 Confluence 上提了 3 条 NFR 评论。今天 11 点有 OnePay 容灾演练评审，3 点有 GPB API gateway 设计评审。架构这边没有阻塞，但提一个软依赖：Model Risk 团队对制裁名单筛查改造的签批，如果周三前没到位，ADR-0158 的 chapter 评审就要推到下个 Sprint。"</p>
+        </div>
+
+        <h3>Exercise 2 — Spot the architect mistake</h3>
+        <p>Which of these standup lines is most "architect-like" and which is most "dev-like"? Why?</p>
+        <ol>
+            <li>"Yesterday I finished the unit tests for the OnePay idempotency layer. Coverage is at 94%."</li>
+            <li>"Yesterday I finalised ADR-0158 on the OnePay idempotency strategy — recommending UUID v7 keys with Redis dedup."</li>
+            <li>"Yesterday I fixed the bug in the HSBCnet callback. The fix is deployed to UAT."</li>
+            <li>"Yesterday I reviewed the Mobile squad's offline-first sync design and raised three NFR comments."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are architect-like (ADR finalised with a recommendation; design review with NFR comments). ① and ③ are dev-like (unit tests, bug fix, deployment). A common mistake new architects make is dropping into implementation-status reports. Reframe yours at the design and decision layer.</p>
+        </div>
+
+        <h3>Exercise 3 — Your turn</h3>
+        <p>It's 10:00 AM HKT. You're a Solution Architect in the GPB Digital tribe. You have: (a) finalised ADR-0161 on the GPB onboarding event-driven flow — recommending Kafka with a saga pattern, (b) a pending NFR sign-off on the data-encryption-at-rest requirement from InfoSec, (c) a design review today at 2 PM for the Wealth squad's rebalancing API. Write your 60-second architect standup update in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Morning, all. Quick architecture update. Yesterday I finalised ADR-0161 on the GPB onboarding event-driven flow — recommending Kafka with a saga pattern for cross-service consistency. The ADR is in chapter review. I also chased the InfoSec NFR sign-off on data-encryption-at-rest — still pending, but I'm hopeful for end of week. Today I have the Wealth squad's rebalancing API design review at 2 PM. No blockers on the architecture side, but I'm flagging a soft dependency on the platform team for the Kafka topic-naming standard — if that doesn't land by Friday, the ADR-0161 chapter review slips. Diego, you're next."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Architect Home / 返回 Architect 首页</a>
+            <a href="02-tech-radar-review.html" class="btn btn-primary">Next: Article 02 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

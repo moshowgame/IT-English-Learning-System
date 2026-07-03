@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: Code Review — Polite Suggestions | Developer English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">08 · Code Review — Polite Suggestions</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Code Review — Polite Suggestions</h1>
+        <p class="subtitle">Article 08 · Module 2: Meeting Workshops · Developer English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>💬 Suggest improvements without sounding judgmental or arrogant</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            Your colleague Sam has submitted a PR for the <em>OneWealth statement service</em>. The code works,
+            but you noticed a few things during review: (1) the <em>retry logic</em> doesn't have a <em>max retry count</em>,
+            (2) the SQL query is doing an <em>N+1 pattern</em>, (3) some <em>hardcoded test values</em> are still in
+            a config file. You need to give feedback that's <strong>constructive, not condescending</strong>.
+        </p>
+        <p>
+            同事 Sam 提交了 <em>OneWealth 对账单服务</em> 的 PR。代码能跑，但你在 review 时发现：(1) <em>重试逻辑</em>
+            没有 <em>最大重试次数</em>；(2) SQL 查询是 <em>N+1 模式</em>；(3) 配置里还有一些 <em>硬编码的测试值</em>。
+            你需要给出 <strong>建设性、而不是居高临下</strong> 的反馈。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Sample PR Comments 评审示例</h2>
+
+        <h3>💬 Comment 1: Suggesting max retry</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Reviewer):</span>
+                <span class="text"><span class="en"><em>Thanks for the PR, Sam — overall looks good.</em> <em>One small thing</em> on the <em>retry logic</em>: I noticed we don't have a <em>max retry count</em>. <em>Could we add one</em> to avoid the risk of <em>infinite retries</em> if the downstream is consistently down? <em>Happy to suggest a default of 3</em> if useful. <em>Just a thought</em> — let me know what you think.</span><span class="cn">感谢 PR，Sam——整体不错。关于重试逻辑有一个小建议：我注意到没有最大重试次数，能不能加一个，避免下游持续不可用时出现无限重试的风险？可以建议默认 3 次，看是否有用。只是想法——看你怎么想。</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Comment 2: N+1 query</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Reviewer):</span>
+                <span class="text"><span class="en"><em>Quick observation</em> on the customer query in <em>CustomerService.java#L142</em> — looks like we might be hitting an <em>N+1 pattern</em> with the orders fetch. <em>Have you considered</em> doing a <em>single JOIN query</em> instead? I did a quick benchmark — the JOIN approach took ~80ms vs. the current 600ms+ on 100 customers. <em>Up to you</em>, but <em>might be worth optimising</em> before we hit UAT.</span><span class="cn">一个快速观察——CustomerService.java#L142里的客户查询，看起来取订单可能是N+1 模式。考虑过用单次 JOIN 查询吗？我快速 benchmark 了一下——JOIN 方案 100 个客户约 80ms，当前是 600ms+。由你决定，但UAT 前值得优化。</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Comment 3: Hardcoded test values</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Reviewer):</span>
+                <span class="text"><span class="en"><em>Heads up</em> — I spotted a few <em>hardcoded test values</em> in <em>application-dev.yml</em> (e.g., the <em>test customer ID</em> on line 38 and the <em>test account number</em> on line 45). <em>Could you move them</em> to <em>application-dev-sample.yml</em> or use <em>@Value</em> placeholders? Otherwise we risk <em>leaking test data</em> into prod by accident. <em>Worth a follow-up ticket</em> if it's out of scope for this PR.</span><span class="cn">提醒一下——我在application-dev.yml里发现几个硬编码的测试值（比如 38 行测试客户 ID和 45 行测试账号）。能挪到application-dev-sample.yml，或者用@Value占位符吗？否则可能误把测试数据带到生产。如果这个 PR 范围外，值得做一张 follow-up ticket。</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Closing comment</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Wei (Reviewer):</span>
+                <span class="text"><span class="en">Overall <em>solid work</em>, Sam — the <em>structure is clean</em> and the <em>test coverage is good</em>. <em>Just the three points above.</em> <em>Let me know</em> if you want to <em>walk through any of them</em> — happy to pair on it.</span><span class="cn">整体做得不错，Sam——结构清晰，测试覆盖到位，就上面三点。有需要随时叫我一起过一下，可以结对。</span></span>
+            </div>
+        </div>
+
+        <h3>💬 Sam's reply</h3>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">@Sam:</span>
+                <span class="text"><span class="en">Thanks Wei, <em>good catches</em> — all three valid. The retry one is a quick fix, I'll <em>push an update</em> shortly. The N+1 one is <em>interesting</em>, can we <em>hop on a quick call</em> to discuss the JOIN approach? I'd like to <em>keep the eager-loading as an option</em> for the bulk export use case.</span><span class="cn">谢谢 Wei，三条都抓得好。重试那个我马上推个更新。N+1 那个有意思，能约个短会聊下 JOIN 方案吗？批量导出场景我想保留急加载作为备选。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">@Wei:</span>
+                <span class="text"><span class="en"><em>Sure, let's do it.</em> I've got a <em>30-min slot</em> at 3pm HKT — <em>grab it from my calendar</em> if it works for you.</span><span class="cn">好，没问题。我香港时间下午 3 点有个30 分钟的空档——你从日历上直接订就行。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Thanks for the PR — overall looks good.</em></span>
+                <span class="chinese">感谢 PR——整体不错</span>
+                <span class="note">ALWAYS open with a positive. Sets a collaborative tone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Soften</span> <em>One small thing… / Quick observation…</em></span>
+                <span class="chinese">一个小建议 / 简单观察</span>
+                <span class="note">Use <em>small / quick / minor</em> to defuse the suggestion. Never start with <em>"This is wrong"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hedge</span> <em>Just a thought — let me know what you think.</em></span>
+                <span class="chinese">只是想法——看你怎么想</span>
+                <span class="note">Make suggestions feel like options, not orders. <em>"Happy to discuss"</em> closes the loop.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk</span> <em>To avoid the risk of X…</em></span>
+                <span class="chinese">为了避免 X 风险</span>
+                <span class="note">Frame suggestions around <em>risk</em>, not <em>correctness</em>. Lower friction.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Question</span> <em>Have you considered…?</em></span>
+                <span class="chinese">你考虑过…吗？</span>
+                <span class="note">An indirect suggestion pattern. <em>"Could we…?"</em> / <em>"What if we…?"</em> work too.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Data</span> <em>I did a quick benchmark — the JOIN approach took 80ms vs. 600ms+.</em></span>
+                <span class="chinese">我快速 benchmark 了一下——JOIN 80ms 对比 600ms+</span>
+                <span class="note">Data is the most persuasive argument. Show numbers when possible.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Defer</span> <em>Worth a follow-up ticket if it's out of scope.</em></span>
+                <span class="chinese">超出范围的话值得做 follow-up ticket</span>
+                <span class="note">Don't block the PR for non-critical issues. Suggest a separate ticket.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Close</span> <em>Let me know if you want to walk through any of them.</em></span>
+                <span class="chinese">有需要随时叫我一起过一下</span>
+                <span class="note">Offer to help — shows you're collaborative, not just critical.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Praise</span> <em>Solid work — the structure is clean.</em></span>
+                <span class="chinese">做得很扎实——结构清晰</span>
+                <span class="note">Be specific in praise. <em>"Clean code"</em> / <em>"good test coverage"</em> beat generic <em>"nice job"</em>.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>PR / Pull Request</strong> <span class="tag">n.</span></span>
+                <span class="chinese">合并请求</span>
+                <span class="note">A formal request to merge code changes. Reviewed before integration.</span>
+            </li>
+            <li>
+                <span class="english"><strong>code review</strong> <span class="tag">n.</span></span>
+                <span class="chinese">代码评审</span>
+                <span class="note">The process of peer-reviewing code before merge. Mandatory at HSBC.</span>
+            </li>
+            <li>
+                <span class="english"><strong>N+1 pattern</strong> <span class="tag">n.</span></span>
+                <span class="chinese">N+1 查询模式 (反模式)</span>
+                <span class="note">Querying parent + N children in N+1 separate queries. Should use JOIN or eager loading.</span>
+            </li>
+            <li>
+                <span class="english"><strong>JOIN / eager loading</strong> <span class="tag">n.</span></span>
+                <span class="chinese">JOIN 查询 / 急加载</span>
+                <span class="note">Two ways to avoid N+1. JOIN in SQL, eager loading in ORM.</span>
+            </li>
+            <li>
+                <span class="english"><strong>hardcoded value</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">硬编码值</span>
+                <span class="note">A literal value in code rather than a configurable parameter. Anti-pattern.</span>
+            </li>
+            <li>
+                <span class="english"><strong>infinite retry</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">无限重试</span>
+                <span class="note">A retry loop with no termination condition. Causes resource exhaustion.</span>
+            </li>
+            <li>
+                <span class="english"><strong>benchmark</strong> <span class="tag">v. / n.</span></span>
+                <span class="chinese">基准测试 / 性能对比</span>
+                <span class="note">Measure performance. Always <em>benchmark before optimising</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>test coverage</strong> <span class="tag">n.</span></span>
+                <span class="chinese">测试覆盖率</span>
+                <span class="note">% of code covered by automated tests. HSBC requires &gt; 80% for critical services.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① Softening Pattern: "Have you considered…?"</h3>
+        <p>Indirect suggestions are much more polite than direct ones:</p>
+        <ul>
+            <li>❌ <em>"You should use a JOIN query."</em> (commanding)</li>
+            <li>✅ <em>"<strong>Have you considered</strong> a JOIN query?"</em> (suggestion)</li>
+            <li>✅ <em>"<strong>Could we</strong> add a max retry count?"</em> (collaborative)</li>
+            <li>✅ <em>"<strong>What if we</strong> use @Value placeholders?"</em> (exploratory)</li>
+        </ul>
+
+        <h3>② Past Tense in "I noticed…" / "I spotted…"</h3>
+        <p>When reporting findings, use past tense for facts:</p>
+        <ul>
+            <li><em>I <strong>noticed</strong> we don't have…</em></li>
+            <li><em>I <strong>spotted</strong> a few hardcoded values.</em></li>
+            <li><em>Looks like we <strong>might be hitting</strong> an N+1 pattern.</em></li>
+        </ul>
+
+        <h3>③ Modal verbs for Suggestion</h3>
+        <p>Five levels of softness in suggestions:</p>
+        <ol>
+            <li><em>"We <strong>need to</strong> add a max retry."</em> (strongest, almost demanding)</li>
+            <li><em>"We <strong>should</strong> add a max retry."</em> (strong)</li>
+            <li><em>"We <strong>could</strong> add a max retry."</em> (neutral)</li>
+            <li><em>"<strong>Could we</strong> add a max retry?"</em> (polite question)</li>
+            <li><em>"<strong>Have you considered</strong> adding a max retry?"</em> (most polite)</li>
+        </ol>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">💬 The "Sandwich" Method in Code Review</div>
+            <p>Most senior engineers at HSBC follow the "sandwich" pattern in code reviews:</p>
+            <ol>
+                <li><strong>Top bun (positive):</strong> What works well — overall structure, tests, naming.</li>
+                <li><strong>Filling (constructive):</strong> Specific, actionable suggestions with reasoning.</li>
+                <li><strong>Bottom bun (positive):</strong> Reaffirm overall quality, offer to help.</li>
+            </ol>
+            <p>This pattern keeps reviews <strong>psychologically safe</strong> and avoids the "you're bad at code" feeling.</p>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Code Review Anti-Patterns</div>
+            <ul>
+                <li>❌ <em>"This is wrong."</em> (judgmental, not actionable)</li>
+                <li>✅ <em>"<strong>Have you considered</strong> a JOIN query? I saw the perf difference in a benchmark."</em></li>
+                <li>❌ <em>"Why didn't you write tests?"</em> (rhetorical, hostile)</li>
+                <li>✅ <em>"<strong>Could we add</strong> a test for the retry edge case?"</em></li>
+                <li>❌ Nitpicking naming conventions when logic is correct — pick your battles.</li>
+                <li>❌ Reviewing without trying to understand intent — always read the linked ticket first.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Soften this review comment using "Have you considered" or "Could we":</div>
+                <p>"This method is too long. Break it into smaller methods."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "<em>Quick one</em> on <em>processOrder()</em> — it's <em>getting a bit long</em> (~80 lines). <strong>Have you considered</strong> <em>breaking it down</em> into smaller methods, e.g., <em>validateOrder</em>, <em>applyDiscounts</em>, <em>saveOrder</em>? Might be <em>easier to test and reuse</em>. <em>Up to you</em> — just a thought."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Apply the "sandwich" method to this review:</div>
+                <p>The PR adds a new endpoint. The good: tests are comprehensive. The bad: there's a hardcoded API URL, and no input validation. Write a 3-part review.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Thanks for the PR, Lily — overall solid work.</em> The <em>test coverage is comprehensive</em> and the <em>endpoint structure</em> is clean. <br><br>
+                    <em>Two small things</em>:
+                    <ol>
+                        <li>I noticed the <em>API URL is hardcoded</em> in <em>OrderController.java#L42</em>. <strong>Could we move it</strong> to <em>application.yml</em> as a configurable property? Otherwise, switching between UAT and prod will require a code change.</li>
+                        <li>I'd suggest adding <em>input validation</em> on the <em>request body</em> — e.g., <em>@Valid</em> + <em>@NotNull</em> on the customer ID. Right now a <em>null</em> ID would throw a <em>NullPointerException</em> deep in the service layer.</li>
+                    </ol>
+                    <em>Happy to pair</em> on the validation if helpful. <em>Otherwise, solid PR</em> — just the two points above."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Translate to native-sounding review English:</div>
+                <p>"这个方法有bug。在空集合的时候会抛 NullPointerException。建议加个 null check。"</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Quick one</em> — I noticed <em>getOrders()</em> in <em>CustomerService.java#L88</em> might throw a <em>NullPointerException</em> if the orders list is empty. <strong>Have you considered</strong> adding a <em>null check</em> (or using <em>Optional</em>)? <em>Easy fix</em>, but might cause <em>unexpected errors in production</em> otherwise."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q4. Role-play:</div>
+                <p>Your colleague Lily submitted a PR with: (a) 200 lines of changes, (b) no tests, (c) one method that does 3 things, (d) uses an outdated library. Write 4 polite, specific review comments — one for each issue. Use the sandwich structure overall.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "<em>Thanks for the PR, Lily — the new endpoint looks promising</em> and the API contract is <em>well-thought-out</em>.<br><br>
+                    <em>A few suggestions</em>:
+                    <ol>
+                        <li><em>Tests</em> — I see <em>no test coverage</em> in this PR. <strong>Could we add at least the happy path + 1-2 edge case tests</strong> before merging? I can <em>help with the test setup</em> if needed.</li>
+                        <li><em>Single responsibility</em> — <em>processPayment()</em> in <em>PaymentService.java#L55</em> seems to be doing <em>3 things</em>: validation, fee calculation, and persistence. <strong>Have you considered splitting it</strong> into <em>validate()</em>, <em>calculateFees()</em>, <em>savePayment()</em>? <em>Easier to test and reuse.</em></li>
+                        <li><em>Outdated library</em> — we're using <em>commons-lang3 v3.9</em>, but the team upgraded to <em>v3.14</em> last month (security patches). <strong>Could you bump the version</strong> in pom.xml?</li>
+                    </ol>
+                    <em>Happy to walk through any of these</em>. <em>Solid foundation overall</em> — just needs a bit of cleanup."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="07-sprint-retrospective.html">
+            <span class="label">← Previous</span>
+            <span class="title">07 · Sprint Retrospective</span>
+        </a>
+        <a class="next" href="09-backlog-refinement.html">
+            <span class="label">Next Article →</span>
+            <span class="title">09 · Backlog Refinement</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 08 · Code Review — Polite Suggestions · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>
