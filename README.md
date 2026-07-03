@@ -177,8 +177,7 @@ php -S localhost:8000
 
 | 微信 | 支付宝 |
 | :---: | :---: |
-| 扫一扫 | 扫一扫 |
-| 详见 `assets/images/wechat-qr.jpg` | 详见 `assets/images/alipay-qr.jpg` |
+| ![WeChat Pay QR](assets/images/wechat-qr.jpg) | ![Alipay QR](assets/images/alipay-qr.jpg) |
 
 > 💡 **页面内体验**：在每个页面的 footer 点击二维码图片，可全屏放大便于扫码。
 
