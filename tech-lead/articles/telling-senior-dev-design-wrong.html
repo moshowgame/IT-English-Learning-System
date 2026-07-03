@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: Telling a Senior Dev Their Design is Wrong | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">15 · Telling a Senior Dev Their Design is Wrong</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Telling a Senior Dev Their Design is Wrong</h1>
+        <p class="subtitle">Article 15 · Module 4: Difficult Conversations · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Disagreeing without demeaning, principle-based pushback, private conversations</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 11:00 AM HKT</strong>. <strong>Mei</strong> (senior dev, 8 years experience) proposed a design for the new <em>event-sourcing ledger</em> using a single Kafka topic with 50 partitions and no schema registry. You've reviewed it; you see 3 concerns: (a) coupling 50 services to one schema, (b) no evolution strategy, (c) operational risk if partitions need to grow.</p><p>周二上午11点香港时间。<strong>Mei</strong>（senior dev，8 年经验）为新<em>事件溯源账本</em>提了个设计：单一 Kafka topic，50 个分区，无 schema registry。你 review 后看到 3 个问题：(a) 50 个服务耦合到同一个 schema，(b) 无演进策略，(c) 分区需要扩容时的运维风险。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Mei (design doc):</span><span class="text"><span class="en">Wei, <em>I've drafted the event-sourcing design.</em> <em>Single Kafka topic, 50 partitions, no schema registry — keeps it simple.</em> Can you review?</span><span class="cn">Wei，<em>我把事件溯源设计起草好了。</em><em>单一 Kafka topic、50 分区、无 schema registry——保持简单。</em>能帮我 review 吗？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, in 1:1):</span><span class="text"><span class="en">Mei, <em>thanks for the design — it's clean and the single-topic approach is a valid trade-off.</em> <em>I have 3 concerns I'd like to walk through with you.</em> <em>None of them are about you — they're about the design.</em></span><span class="cn">Mei，<em>谢谢你的设计——很干净，单一 topic 路径是合理的取舍。</em><em>我有 3 个关切想跟你过一下。</em><em>跟你本人无关——是关于设计的。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Concern 1: 50 services coupled to one schema.</em> <em>If we change the schema, we touch 50 services at once.</em> <em>What's our migration path?</em></span><span class="cn"><em>关切 1：50 个服务耦合到同一个 schema。</em><em>如果改 schema，要同时动 50 个服务。</em><em>我们的迁移路径是什么？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en">We'll <em>version the events</em> in the payload. <em>Backward-compatible for 2 versions.</em></span><span class="cn">我们<em>在 payload 里版本化事件</em>。<em>向后兼容 2 个版本。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>OK, that works for 2 versions.</em> <em>What about version 3?</em> <em>Do we deprecate, dual-write, or migrate?</em></span><span class="cn"><em>好，2 个版本能行。</em><em>第 3 个版本呢？</em><em>弃用、双写、还是迁移？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en">Hmm, <em>I hadn't thought that far.</em></span><span class="cn">嗯，<em>没想那么远。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>That's a concern, not a criticism.</em> <em>It's a 1-day exercise to write a 3-version evolution plan.</em> <em>Want to pair on it tomorrow?</em></span><span class="cn"><em>这是关切，不是批评。</em><em>写 3 版本演进计划是 1 天的活儿。</em><em>明天配对写？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en">Sure. <em>What's concern 2?</em></span><span class="cn">好。<em>关切 2 呢？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Concern 2: no schema registry.</em> <em>Schema registry gives us a contract test in CI</em> — <em>if a producer breaks the schema, the build fails</em>. <em>Without it, we find out in production.</em></span><span class="cn"><em>关切 2：无 schema registry。</em><em>Schema registry 让 CI 有契约测试</em>——<em>如果 producer 破坏 schema，构建会失败</em>。<em>没它就只能在生产发现问题。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en"><em>Schema registry is extra ops complexity.</em></span><span class="cn"><em>Schema registry 是额外的运维复杂度。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Valid concern.</em> <em>Can we use the managed Confluent Schema Registry</em>? <em>Group Cyber already operates it for the other tribes.</em> <em>Zero additional ops for us.</em></span><span class="cn"><em>合理的关切。</em><em>我们能用托管的 Confluent Schema Registry 吗？</em><em>Group Cyber 已经在为其他 tribe 运维。</em><em>我们零额外运维。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en"><em>Oh, I didn't know that.</em> <em>That changes my view.</em></span><span class="cn"><em>哦，我之前不知道。</em><em>这改变我的看法。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Concern 3: 50 partitions.</em> <em>If we hit 10x growth, do we add partitions?</em> <em>Adding partitions to an active topic is risky — rebalancing causes consumer lag spikes.</em> <em>What's the headroom plan?</em></span><span class="cn"><em>关切 3：50 个分区。</em><em>如果业务涨 10 倍，加分区吗？</em><em>在用 topic 上加分区有风险——rebalance 导致 consumer lag 尖峰。</em><em>容量余量怎么规划？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en"><em>I assumed we'd just add partitions.</em></span><span class="cn"><em>我以为直接加分区就行。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Adding partitions mid-flight is a 2-day ops exercise</em> — <em>coordination with all 50 consumers.</em> <em>Better to start with 100 partitions and over-provision</em>. <em>Disk cost is 2x, but ops risk is 0.</em></span><span class="cn"><em>在用 topic 加分区是 2 天的运维活儿</em>——<em>和 50 个 consumer 协调。</em><em>不如一开始用 100 分区过度配置。</em><em>磁盘成本翻倍，但运维风险归零。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en"><em>OK, I'm convinced on all 3.</em> <em>Let me revise: schema registry from Group Cyber, 100 partitions, 3-version evolution plan.</em> <em>I'll have it by Thursday.</em></span><span class="cn"><em>好，3 个我都被说服了。</em><em>我改一下：用 Group Cyber 的 schema registry、100 分区、3 版本演进计划。</em><em>周四前出。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Perfect.</em> <em>And Mei — thanks for taking the feedback in the spirit it was given.</em> <em>It's a strong design, just with 3 risk-mitigation tweaks.</em></span><span class="cn"><em>好。</em><em>Mei——谢谢你按原意接住反馈。</em><em>设计本身很强，只是 3 处风险缓解微调。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Frame</span> <em>None of these are about you — they're about the design.</em></span><span class="chinese">跟你本人无关——是关于设计的。</span><span class="note">Open by separating the person from the work. Disagreement on the design is not disagreement on them.</span></li>
+<li><span class="english"><span class="tag">Concern, not criticism</span> <em>That's a concern, not a criticism.</em></span><span class="chinese">这是关切，不是批评。</span><span class="note">Use 'concern' instead of 'problem' or 'issue'. Concerns are discussable; problems are negotiable; criticisms are personal.</span></li>
+<li><span class="english"><span class="tag">Elicit</span> <em>What's our migration path?</em></span><span class="chinese">我们的迁移路径是什么？</span><span class="note">Elicit their answer before offering yours. The senior's answer is part of the design; your job is to make the gap visible.</span></li>
+<li><span class="english"><span class="tag">Info-bridge</span> <em>Oh, I didn't know that. That changes my view.</em></span><span class="chinese">哦，我之前不知道。这改变我的看法。</span><span class="note">Often the senior doesn't push back — they just don't know. Info-bridge is a non-confrontational way to share context.</span></li>
+<li><span class="english"><span class="tag">Cost-frame</span> <em>Disk cost is 2x, but ops risk is 0.</em></span><span class="chinese">磁盘成本翻倍，但运维风险归零。</span><span class="note">Pair every over-engineering concern with the cost trade-off. The cost is real; the risk is also real.</span></li>
+<li><span class="english"><span class="tag">Close on praise</span> <em>It's a strong design, just with 3 risk-mitigation tweaks.</em></span><span class="chinese">设计本身很强，只是 3 处风险缓解微调。</span><span class="note">End on the strength of the design, not the gaps. The senior leaves the room with their reputation intact.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Event sourcing</strong> n.. An architecture pattern where state changes are stored as a sequence of events. 事件溯源</li>
+<li><strong>Schema registry</strong> n.. A service that stores and validates event schemas. Schema 注册中心</li>
+<li><strong>Backward-compatible</strong> adj.. A change that doesn't break existing consumers. 向后兼容</li>
+<li><strong>Deprecation</strong> n.. Marking a feature as outdated, with a removal date. 弃用</li>
+<li><strong>Dual-write</strong> n.. Writing to two systems at once during a migration. 双写</li>
+<li><strong>Partition rebalance</strong> n.. Kafka's mechanism for redistributing partitions across consumers. 分区再平衡</li>
+<li><strong>Consumer lag</strong> n.. The delay between a producer writing an event and a consumer reading it. Consumer 滞后</li>
+<li><strong>Headroom</strong> n.. Extra capacity reserved for future growth. 容量余量</li>
+<li><strong>Over-provision</strong> v.. To allocate more resources than current need, for future safety. 过度配置</li>
+<li><strong>Person vs work</strong> n.. Separating feedback about the person from feedback about the work. 对人 vs 对事</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'None of these are about you — they're about the design' — separating person from work</h3><p>Open design feedback with <em>none of these are about you — they're about the design / the work, not the person</em>. Disagreement on the work is not disagreement on them.</p><p>用 <em>none of these are about you — they're about the design</em> 区分。</p>
+<h3>② 'That's a concern, not a criticism' — softer vocabulary</h3><p>Use 'concern' instead of 'problem' or 'issue'. <em>That's a concern, not a criticism / that's a risk, not a fault</em>. Concerns are discussable; problems are negotiable; criticisms are personal.</p><p>用 'concern' 代替 'problem'/'issue'/'criticism'。</p>
+<h3>③ 'Info-bridge: I didn't know that' — the non-confrontational update</h3><p>When you have new info that changes the design, share it as <em>info-bridge</em>: <em>FYI, Group Cyber already operates Confluent Schema Registry. Oh, I didn't know that.</em></p><p>用 info-bridge 分享新信息。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Open by separating the person from the work.</strong> 'None of these are about you — they're about the design'.</li>
+<li><strong>Use 'concern' instead of 'problem' or 'issue'.</strong> Concerns are discussable; problems are negotiable; criticisms are personal.</li>
+<li><strong>Elicit their answer before offering yours.</strong> The senior's answer is part of the design.</li>
+<li><strong>Info-bridge is non-confrontational.</strong> 'I didn't know Group Cyber operates it' is gentler than 'you should have known'.</li>
+<li><strong>Pair every over-engineering concern with the cost trade-off.</strong> The cost is real; the risk is also real.</li>
+<li><strong>End on the strength of the design, not the gaps.</strong> The senior leaves the room with their reputation intact.</li>
+<li><strong>Always in private, never in public.</strong> Design feedback is 1:1, never in front of the squad.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the design pushback</h3>
+    <p>Translate the following design conversation into natural Chinese.</p>
+    <blockquote>"Mei, thanks for the design — it's clean and the single-topic approach is a valid trade-off. I have 3 concerns I'd like to walk through with you. None of them are about you — they're about the design. Concern 1: 50 services coupled to one schema. If we change the schema, we touch 50 services at once. What's our migration path? We'll version the events in the payload. Backward-compatible for 2 versions. OK, that works for 2 versions. What about version 3? Do we deprecate, dual-write, or migrate? Hmm, I hadn't thought that far. That's a concern, not a criticism. It's a 1-day exercise to write a 3-version evolution plan. Want to pair on it tomorrow? Concern 2: no schema registry. Schema registry gives us a contract test in CI — if a producer breaks the schema, the build fails. Without it, we find out in production. Valid concern. Can we use the managed Confluent Schema Registry? Group Cyber already operates it for the other tribes. Zero additional ops for us. Oh, I didn't know that. That changes my view. Concern 3: 50 partitions. If we hit 10x growth, do we add partitions? Adding partitions to an active topic is risky — rebalancing causes consumer lag spikes. What's the headroom plan? I assumed we'd just add partitions. Adding partitions mid-flight is a 2-day ops exercise — coordination with all 50 consumers. Better to start with 100 partitions and over-provision. Disk cost is 2x, but ops risk is 0. OK, I'm convinced on all 3. Let me revise: schema registry from Group Cyber, 100 partitions, 3-version evolution plan. I'll have it by Thursday. Perfect. And Mei — thanks for taking the feedback in the spirit it was given. It's a strong design, just with 3 risk-mitigation tweaks."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"Mei，谢谢你的设计——很干净，单一 topic 路径是合理的取舍。我有 3 个关切想跟你过一下。跟你本人无关——是关于设计的。关切 1：50 个服务耦合到同一个 schema。如果改 schema，要同时动 50 个服务。我们的迁移路径是什么？我们在 payload 里版本化事件。向后兼容 2 个版本。好，2 个版本能行。第 3 个版本呢？弃用、双写、还是迁移？嗯，没想那么远。这是关切，不是批评。写 3 版本演进计划是 1 天的活儿。明天配对写？关切 2：无 schema registry。Schema registry 让 CI 有契约测试——如果 producer 破坏 schema，构建会失败。没它就只能在生产发现问题。合理的关切。我们能用托管的 Confluent Schema Registry 吗？Group Cyber 已经在为其他 tribe 运维。我们零额外运维。哦，我之前不知道。这改变我的看法。关切 3：50 个分区。如果业务涨 10 倍，加分区吗？在用 topic 上加分区有风险——rebalance 导致 consumer lag 尖峰。容量余量怎么规划？我以为直接加分区就行。在用 topic 加分区是 2 天的运维活儿——和 50 个 consumer 协调。不如一开始用 100 分区过度配置。磁盘成本翻倍，但运维风险归零。好，3 个我都被说服了。我改一下：用 Group Cyber 的 schema registry、100 分区、3 版本演进计划。周四前出。好。Mei——谢谢你按原意接住反馈。设计本身很强，只是 3 处风险缓解微调。"</p></div>
+    <h3>Exercise 2 — Spot the TL mistake</h3>
+    <p>Which of these is the most 'TL-as-design-mentor' (not gate-keeper, not people-pleaser)?</p>
+    <ol><li>'Mei, this design is wrong. Rewrite it.'</li><li>'Mei, this design is great. Ship it.'</li><li>'Mei, the design is strong. I have 3 concerns about the design (not about you). Concern 1: 50 services coupled to one schema. What's our migration path?'</li><li>'Mei, I would have done it differently.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>③ is the TL-as-mentor. ① is gate-keeping. ② is people-pleasing. ④ is ego. A common mistake is either gate-keeping (imposing your design) or people-pleasing (rubber-stamping). The TL's job is to make the gaps visible, then trust the senior to close them.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>Your senior dev proposed using MongoDB for a new transaction ledger. Your concerns: (a) no ACID transactions, (b) no regulatory audit trail, (c) operational team has zero MongoDB experience. Write the design pushback in English. Use 'concerns, not criticisms', elicit the migration path, info-bridge, cost-frame, end on the strength of the design.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"Mei, thanks for the design — it's a clean MongoDB proposal. I have 3 concerns about the design — none about you, all about the tech fit. Concern 1: no ACID transactions. A transaction ledger needs cross-document atomicity. What's the migration path if we hit a partial-write failure? Concern 2: no regulatory audit trail. HKMA expects an immutable audit log. Can we layer a Kafka append-log for the audit, or do we need a different store? Concern 3: operational team has zero MongoDB experience. The bank has PostgreSQL expertise across 5 tribes. Going MongoDB means we hire 3 DBAs or retrain the team. Cost-frame: $300k/year for 3 DBAs vs. $0 retraining. Disk cost is 0, but ops risk is high. Info-bridge: PG has a JSONB extension — we can keep the document flexibility AND keep ACID. Oh, I didn't know that. That changes my view. It's a strong design, just with 3 risk-mitigation tweaks."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="saying-no-quick-fix.html" class="btn btn-primary">Next: Article 16: Saying No to a 'Quick Fix' Request →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

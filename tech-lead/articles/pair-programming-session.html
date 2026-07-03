@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: Pair Programming Session | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">09 · Pair Programming Session</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Pair Programming Session</h1>
+        <p class="subtitle">Article 09 · Module 2: Design & Code Quality · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Driver/navigator rhythm, teaching vs gatekeeping, async handoff</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday, 2:00 PM HKT</strong>. You are pairing with <strong>Lin</strong>, a junior developer, on a tricky bug: the <em>idempotency key collision</em> in the payment service, where 1 in 10,000 transactions is generating a duplicate key. You have 90 minutes before your next meeting.</p><p>周四下午2点香港时间。你和 junior <strong>Lin</strong> 配对修一个棘手 bug：支付服务的<em>幂等键冲突</em>，1/10000 的交易生成了重复键。下一个会议前你只有 90 分钟。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">OK Lin, <em>let's pair on this.</em> You drive, I navigate. <em>Switch every 15 minutes.</em></span><span class="cn">好 Lin，<em>我们配对一下。</em>你写，我导航。<em>每 15 分钟切换一次。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">Wait, <em>the user said 1 in 10,000</em>. That sounds like a race condition. <em>Where do we start?</em></span><span class="cn">等等，<em>用户说是 1/10000</em>。这听起来像竞态条件。<em>从哪里开始？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Good instinct.</em> <em>Start with the reproduction.</em> <em>Don't guess the root cause yet.</em> <em>Get a test that fails 1 in 10,000 times.</em></span><span class="cn"><em>直觉不错。</em><em>先复现。</em><em>先别猜根因。</em><em>先写一个 1/10000 失败的测试。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">How do I <em>reliably reproduce</em> a 1 in 10,000 race?</span><span class="cn">怎么<em>稳定复现</em> 1/10000 的竞态？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Stress test with 1 million calls in a tight loop.</em> If the race exists, you'll see it. <em>Run it 5 times in parallel</em> to amplify the chance.</span><span class="cn"><em>紧凑循环里压 100 万次调用。</em>如果竞态存在，你会看到。<em>并行跑 5 次</em>放大机会。</span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin (typing):</span><span class="text"><span class="en">OK, I'm writing the stress test now… <em>Got the failure!</em> It's deterministic when we run 5x in parallel. <em>The collision happens when 2 threads enter the key-gen block at the same nanosecond.</em></span><span class="cn">OK，我在写压测……<em>复现成功了！</em>并行跑 5 次是确定性的。<em>两个线程在同一个纳秒进入 key-gen 块时就冲突。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Excellent.</em> <em>That's the root cause.</em> <em>What's the fix?</em></span><span class="cn"><em>漂亮。</em><em>这就是根因。</em><em>怎么修？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">I think we need <em>atomic increment</em> on the counter. <em>Use synchronized block</em> or <em>AtomicLong</em>?</span><span class="cn">我觉得需要对计数器做<em>原子自增</em>。<em>用 synchronized 块</em>还是 <em>AtomicLong</em>？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>AtomicLong is cleaner.</em> <em>Lock-free, single-counter hot path.</em> <em>Write a test that fails with the old code, passes with AtomicLong.</em> <em>Show me the diff.</em></span><span class="cn"><em>AtomicLong 更干净。</em><em>无锁，单计数器热路径。</em><em>写个测试，旧代码失败、AtomicLong 通过。</em><em>给我看 diff。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin (after 10 min):</span><span class="text"><span class="en">Done. <em>Test passes, stress test passes 10/10.</em></span><span class="cn">好了。<em>测试通过，压测 10/10 过。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Nice work.</em> <em>Document the race in a comment</em> — future maintainers need to know <em>why</em> it's AtomicLong, not just <em>that</em> it is. <em>Open the PR and Slack me the link.</em></span><span class="cn"><em>漂亮。</em><em>在注释里把竞态记下来</em>——以后的维护者需要知道<em>为什么</em>用 AtomicLong，不只是<em>用了</em>。<em>提 PR，链接发我 Slack。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Roles</span> <em>You drive, I navigate. Switch every 15 minutes.</em></span><span class="chinese">你写，我导航。每 15 分钟切换。</span><span class="note">Always declare driver/navigator. Unstructured pairing becomes silent rubber-ducking.</span></li>
+<li><span class="english"><span class="tag">Hypothesis</span> <em>Good instinct.</em></span><span class="chinese">直觉不错。</span><span class="note">Acknowledge the junior's hypothesis before steering. Otherwise you're just lecturing.</span></li>
+<li><span class="english"><span class="tag">Order</span> <em>Start with the reproduction. Don't guess the root cause yet.</em></span><span class="chinese">先复现，先别猜根因。</span><span class="note">Reproduction first, hypothesis second. The reverse is how juniors spend a day chasing ghosts.</span></li>
+<li><span class="english"><span class="tag">Method</span> <em>Stress test with 1 million calls in a tight loop.</em></span><span class="chinese">紧凑循环里压 100 万次调用。</span><span class="note">Show the method, not the answer. 'How do I prove this exists?' is a better lesson than 'use AtomicLong'.</span></li>
+<li><span class="english"><span class="tag">Elicit</span> <em>What's the fix?</em></span><span class="chinese">怎么修？</span><span class="note">Elicit the answer from the junior, don't dictate. Pairing = teaching, not typing-for.</span></li>
+<li><span class="english"><span class="tag">Why</span> <em>Document the why, not just the that.</em></span><span class="chinese">记下为什么，不只是做了什么。</span><span class="note">Comments that explain the why are 10x more valuable than comments that explain the what.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Pair programming</strong> n.. Two developers working on the same code at the same time. 配对编程</li>
+<li><strong>Driver</strong> n.. The person typing the code in a pair. 驾驶员</li>
+<li><strong>Navigator</strong> n.. The person reviewing and steering the code in a pair. 导航员</li>
+<li><strong>Reproduction</strong> n.. A test that reliably triggers the bug. 复现</li>
+<li><strong>Stress test</strong> n.. A test that pushes the system to its limits to expose failures. 压测</li>
+<li><strong>Race condition</strong> n.. A bug where the output depends on unpredictable timing. 竞态条件</li>
+<li><strong>Atomic operation</strong> n.. An operation that completes in a single, uninterruptible step. 原子操作</li>
+<li><strong>AtomicLong</strong> n.. A Java class for lock-free thread-safe long counters. Java 原子长整型</li>
+<li><strong>Hot path</strong> n.. The most-executed code in a system, where performance matters most. 热路径</li>
+<li><strong>Lock-free</strong> adj.. Concurrency design that avoids explicit locks for performance. 无锁</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'You drive, I navigate' — the role declaration</h3><p>Open every pair session with <em>you drive, I navigate / let's switch every 15 min</em>. The role declaration prevents silent rubber-ducking.</p><p>每次配对开头声明角色。</p>
+<h3>② 'What's the fix?' — eliciting over dictating</h3><p>Use <em>what's the fix / how would you approach this / what does the test look like</em> to elicit. Pairing is teaching, not typing-for.</p><p>用 <em>what's the fix / how would you approach this</em> 引导。</p>
+<h3>③ 'Document the why, not just the that' — the junior's growth</h3><p>Use <em>document the why, not just the that / explain the rationale, not the rule</em> in code review and pair review.</p><p>用 <em>document the why, not just the that</em>。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Always declare driver/navigator.</strong> Unstructured pairing becomes silent rubber-ducking.</li>
+<li><strong>Acknowledge the junior's hypothesis before steering.</strong> Otherwise you're lecturing, not pairing.</li>
+<li><strong>Reproduction first, hypothesis second.</strong> The reverse is how juniors spend a day chasing ghosts.</li>
+<li><strong>Show the method, not the answer.</strong> 'How do I prove this exists?' is a better lesson than 'use AtomicLong'.</li>
+<li><strong>Elicit, don't dictate.</strong> 'What's the fix?' is teaching. 'Use AtomicLong' is lecturing.</li>
+<li><strong>Document the why.</strong> Comments that explain the why are 10x more valuable than comments that explain the what.</li>
+<li><strong>End with the next action.</strong> 'Open the PR and Slack me the link' is a clean handoff.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the pair session</h3>
+    <p>Translate the following pair programming dialogue into natural Chinese.</p>
+    <blockquote>"OK Lin, let's pair on this. You drive, I navigate. Switch every 15 minutes. Wait, the user said 1 in 10,000. That sounds like a race condition. Where do we start? Good instinct. Start with the reproduction. Don't guess the root cause yet. Get a test that fails 1 in 10,000 times. Stress test with 1 million calls in a tight loop. If the race exists, you'll see it. Run it 5 times in parallel. Excellent. That's the root cause. What's the fix? AtomicLong is cleaner. Lock-free, single-counter hot path. Write a test that fails with the old code, passes with AtomicLong. Show me the diff. Nice work. Document the race in a comment — future maintainers need to know why it's AtomicLong, not just that it is. Open the PR and Slack me the link."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"好 Lin，我们配对一下。你写，我导航。每 15 分钟切换。等等，用户说是 1/10000。这听起来像竞态条件。从哪里开始？直觉不错。先复现。先别猜根因。先写一个 1/10000 失败的测试。紧凑循环里压 100 万次调用。如果竞态存在，你会看到。并行跑 5 次。漂亮。这就是根因。怎么修？AtomicLong 更干净。无锁，单计数器热路径。写个测试，旧代码失败、AtomicLong 通过。给我看 diff。漂亮。在注释里把竞态记下来——以后的维护者需要知道为什么用 AtomicLong，不只是用了。提 PR，链接发我 Slack。"</p></div>
+    <h3>Exercise 2 — Spot the pair mistake</h3>
+    <p>Which of these is the most 'TL-as-teacher' pair behaviour?</p>
+    <ol><li>'Lin, watch me type. This is how you fix a race.'</li><li>'Good instinct. Start with the reproduction. What's the fix? Show me the diff.'</li><li>'AtomicLong. Done. Next ticket.'</li><li>'Lin, can you watch while I fix this in 5 minutes?'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>② is TL-as-teacher. ① and ④ are TL-as-typist. ③ skips the teaching entirely. A common mistake is taking the keyboard away from the junior to 'just fix it'. That saves 10 minutes and costs 10 weeks of growth.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>You're pairing with a junior on a NPE in a Spring Boot service. The NPE only happens in prod, never locally. Write your opening lines as a TL: declare roles, ask for the junior's hypothesis, propose the next debugging step. Write in English.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"OK Lin, let's pair on this. You drive, I navigate. Switch every 15 minutes. The NPE only happens in prod, never locally — what's your first hypothesis? Good instinct. Let's pull the prod logs and look at the stack trace first. Don't guess yet — let's see what the JVM actually says. Show me the relevant log lines. Got it. Now, what does the local test environment look like? How is it different from prod? Good. Document the difference in a comment in the code — future maintainers need to know why this only blows up in prod, not just that it does. Open the PR and Slack me the link."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="tech-debt-sprint-planning.html" class="btn btn-primary">Next: Article 10: Tech Debt Sprint Planning →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

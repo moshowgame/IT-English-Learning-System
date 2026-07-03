@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 18: Banking Compliance for Tech Leads | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">18 · Banking Compliance for Tech Leads</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Banking Compliance for Tech Leads</h1>
+        <p class="subtitle">Article 18 · Module 5: Banking Context · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Compliance vocabulary, PCI-DSS, MAS TRM, HKMA, Group Standards</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 10:00 AM HKT</strong>. You are joining a call with <strong>Steven</strong> from Group Compliance, <strong>Rachel</strong> from InfoSec, and <strong>James (PO)</strong>. The new <em>customer onboarding flow</em> collects HKID, passport, address proof, and selfie. You need to understand the compliance landscape before writing the design.</p><p>周二上午10点香港时间。你正加入一个电话会议，与会者：集团合规的 <strong>Steven</strong>、InfoSec 的 <strong>Rachel</strong>、PO <strong>James</strong>。新的<em>客户开户流程</em>收集香港身份证、护照、地址证明、自拍照。在写设计之前你需要理解合规的全景。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Steven (Group Compliance):</span><span class="text"><span class="en">Wei, <em>welcome to the compliance walkthrough.</em> <em>The onboarding flow touches 4 regulatory frameworks</em> — <em>HKMA, MAS TRM, PCI-DSS, and GDPR.</em> <em>Each has a different data-classification rule.</em></span><span class="cn">Wei，<em>欢迎参加合规走查。</em><em>开户流程触及 4 个监管框架</em>——<em>HKMA、MAS TRM、PCI-DSS、GDPR。</em><em>每个有不同的数据分类规则。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Thanks Steven. Can you walk me through the 4 frameworks and the data-classification matrix?</em></span><span class="cn"><em>谢谢 Steven。你能带我过一下 4 个框架和数据分类矩阵吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>HKMA</em> classifies HKID, passport, address proof as <em>Customer Due Diligence (CDD) data</em> — <em>7-year retention, encrypted at rest, HK data residency.</em></span><span class="cn"><em>HKMA</em>把香港身份证、护照、地址证明归类为<em>客户尽职调查（CDD）数据</em>——<em>7 年保留、静态加密、香港数据驻留。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>MAS TRM</em> adds <em>source-of-funds documentation</em> for amounts >SGD 5,000 — <em>5-year retention, Singapore data residency if the customer is Singapore-domiciled.</em></span><span class="cn"><em>MAS TRM</em>追加<em>资金来源证明文件</em>（金额 >5000 新币）——<em>5 年保留，如果客户在新加坡居住则新加坡数据驻留。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>PCI-DSS</em> covers the payment card data — <em>no full PAN storage, tokenization only, 1-year retention for tokens.</em></span><span class="cn"><em>PCI-DSS</em>覆盖支付卡数据——<em>不存完整 PAN，只用 token 化，token 1 年保留。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>GDPR</em> covers EU residents — <em>right to be forgotten, data portability, explicit consent</em> — <em>2-year retention for marketing data, opt-in only.</em></span><span class="cn"><em>GDPR</em>覆盖欧盟居民——<em>被遗忘权、数据可携、显式同意</em>——<em>营销数据 2 年保留，仅 opt-in。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Rachel (InfoSec):</span><span class="text"><span class="en"><em>Add to that our internal Group Standards</em> — <em>SDL (Secure Development Lifecycle) for the code, Group Cyber for the network, Group Resilience for the DR plan.</em></span><span class="cn"><em>加上我们的内部集团标准</em>——<em>代码的 SDL（安全开发生命周期）、网络的 Group Cyber、容灾的 Group Resilience。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>That is a lot.</em> <em>Let me confirm the data-classification matrix:</em></span><span class="cn"><em>挺多的。</em><em>我确认一下数据分类矩阵：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">(1) HKID / passport / address proof: <em>CDD, 7-year retention, encrypted, HK data residency.</em> (2) Source of funds: <em>TRM, 5-year retention, SG residency if applicable.</em> (3) PAN: <em>no full storage, token only, 1-year token retention.</em> (4) Marketing data: <em>GDPR opt-in, 2-year retention.</em> (5) Selfie: <em>treat as CDD, 7-year retention, encrypted.</em> <em>Did I miss anything?</em></span><span class="cn">(1) 香港身份证/护照/地址证明：<em>CDD，7 年保留，加密，香港数据驻留。</em>(2) 资金来源：<em>TRM，5 年保留，适用则新加坡驻留。</em>(3) PAN：<em>不存完整，只 token，token 1 年保留。</em>(4) 营销数据：<em>GDPR opt-in，2 年保留。</em>(5) 自拍：<em>按 CDD 处理，7 年保留，加密。</em><em>我漏了什么吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>Perfect summary.</em> <em>One more: the selfie is biometric data</em> — <em>GDPR treats it as 'special category'</em>, <em>HKMA treats it as CDD.</em> <em>Default to the stricter rule.</em></span><span class="cn"><em>完美的总结。</em><em>还有：自拍是生物特征数据</em>——<em>GDPR 当作"特殊类别"</em>，<em>HKMA 当 CDD。</em><em>默认按更严的规则。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Got it. Default to the stricter rule across all 4 frameworks.</em> <em>I will incorporate the matrix into the design doc and the data-classification section of the Confluence page.</em> <em>Rachel, can you sign off on the SDL checklist by Friday?</em> <em>James, can you confirm the source-of-funds threshold with the business?</em></span><span class="cn"><em>好。所有 4 个框架默认按更严的规则。</em><em>我会把矩阵纳入设计文档和 Confluence 页面数据分类部分。</em><em>Rachel，你能在周五前签 SDL checklist 吗？</em><em>James，你能跟业务确认资金来源阈值吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Rachel:</span><span class="text"><span class="en"><em>Yes, Friday EOD.</em></span><span class="cn"><em>好，周五 EOD。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>Yes, will confirm by Thursday.</em></span><span class="cn"><em>好，周四前确认。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Perfect. Design doc draft by next Tuesday.</em> <em>Steven, Rachel, James — thanks for the walkthrough.</em></span><span class="cn"><em>好。设计文档下周二前起草。</em><em>Steven、Rachel、James——谢谢走查。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Compliance walkthrough</span> <em>Welcome to the compliance walkthrough.</em></span><span class="chinese">欢迎参加合规走查。</span><span class="note">The first call with compliance is a walkthrough, not a debate. Listen, take notes, summarize at the end.</span></li>
+<li><span class="english"><span class="tag">Frameworks</span> <em>The onboarding flow touches 4 regulatory frameworks.</em></span><span class="chinese">开户流程触及 4 个监管框架。</span><span class="note">Name the frameworks upfront. HKMA, MAS TRM, PCI-DSS, GDPR — and internal Group Standards.</span></li>
+<li><span class="english"><span class="tag">Data classification</span> <em>Each has a different data-classification rule.</em></span><span class="chinese">每个有不同的数据分类规则。</span><span class="note">Each framework classifies the same data differently. The data-classification matrix is the source of truth.</span></li>
+<li><span class="english"><span class="tag">CDD data</span> <em>HKID, passport, address proof as Customer Due Diligence (CDD) data.</em></span><span class="chinese">香港身份证、护照、地址证明归类为客户尽职调查（CDD）数据。</span><span class="note">CDD is the regulator term for 'know your customer' data. 7-year retention is the HKMA default.</span></li>
+<li><span class="english"><span class="tag">Data residency</span> <em>HK data residency. Singapore data residency if applicable.</em></span><span class="chinese">香港数据驻留。适用则新加坡驻留。</span><span class="note">Data residency = where the data physically lives. HKMA says HK. MAS says SG. Cross-border transfer requires additional approval.</span></li>
+<li><span class="english"><span class="tag">Tokenization</span> <em>No full PAN storage, tokenization only.</em></span><span class="chinese">不存完整 PAN，只用 token 化。</span><span class="note">PCI-DSS forbids storing full PAN (Primary Account Number). Tokenization replaces PAN with a non-reversible token.</span></li>
+<li><span class="english"><span class="tag">Default to stricter</span> <em>Default to the stricter rule across all 4 frameworks.</em></span><span class="chinese">所有 4 个框架默认按更严的规则。</span><span class="note">When frameworks conflict, default to the stricter rule. The cost is real, the audit-clean is real too.</span></li>
+<li><span class="english"><span class="tag">Matrix summary</span> <em>Let me confirm the data-classification matrix.</em></span><span class="chinese">我确认一下数据分类矩阵。</span><span class="note">End the walkthrough with a matrix summary. This is your written record and your team source of truth.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>HKMA</strong> n.. Hong Kong Monetary Authority — the banking regulator. 香港金管局</li>
+<li><strong>MAS TRM</strong> n.. Monetary Authority of Singapore Technology Risk Management guidelines. 新加坡金管局技术风险管理指引</li>
+<li><strong>PCI-DSS</strong> n.. Payment Card Industry Data Security Standard. 支付卡行业数据安全标准</li>
+<li><strong>GDPR</strong> n.. General Data Protection Regulation (EU). 欧盟通用数据保护条例</li>
+<li><strong>CDD (Customer Due Diligence)</strong> n.. KYC data — identity, address, source of funds. 客户尽职调查</li>
+<li><strong>Source of funds</strong> n.. Documentation proving where a customer's money comes from. 资金来源</li>
+<li><strong>Data residency</strong> n.. The geographic location where data is stored. 数据驻留</li>
+<li><strong>PAN (Primary Account Number)</strong> n.. The 16-digit number on a payment card. 主账号</li>
+<li><strong>Tokenization</strong> n.. Replacing sensitive data with a non-reversible token. Token 化</li>
+<li><strong>Biometric data</strong> n.. Face, fingerprint, voice — GDPR 'special category'. 生物特征数据</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Welcome to the compliance walkthrough' — the framing</h3><p>Frame the first call as a <em>walkthrough</em>, not a debate. The compliance team walks you through; you listen and summarize.</p><p>把第一次会议框定为 <em>walkthrough</em>，不是辩论。</p>
+<h3>② 'Default to the stricter rule' — the conflict-resolution principle</h3><p>When frameworks conflict, <em>default to the stricter rule / take the union of the rules</em>. The audit team will accept the stricter; they will not accept the looser.</p><p>框架冲突时 <em>默认按更严的规则</em>。</p>
+<h3>③ 'Let me confirm the data-classification matrix' — the matrix summary</h3><p>End every compliance walkthrough with a matrix summary. <em>Did I miss anything?</em> The summary is your written record.</p><p>用矩阵总结结束合规走查。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Frame the first call as a walkthrough, not a debate.</strong> Listen, take notes, summarize.</li>
+<li><strong>Name the frameworks upfront.</strong> HKMA, MAS TRM, PCI-DSS, GDPR — and internal Group Standards.</li>
+<li><strong>Each framework classifies the same data differently.</strong> The matrix is the source of truth.</li>
+<li><strong>Default to the stricter rule.</strong> The cost is real, the audit-clean is real too.</li>
+<li><strong>End with a matrix summary.</strong> Did I miss anything? is the right closer.</li>
+<li><strong>Data residency matters.</strong> HKMA says HK, MAS says SG. Cross-border transfer requires approval.</li>
+<li><strong>Tokenization for PAN.</strong> PCI-DSS forbids full PAN storage. Tokenization is the only acceptable approach.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the compliance walkthrough</h3><p>Translate the following compliance walkthrough into natural Chinese.</p><blockquote>"Welcome to the compliance walkthrough. The onboarding flow touches 4 regulatory frameworks — HKMA, MAS TRM, PCI-DSS, and GDPR. Each has a different data-classification rule. HKMA classifies HKID, passport, address proof as Customer Due Diligence (CDD) data — 7-year retention, encrypted at rest, HK data residency. MAS TRM adds source-of-funds documentation for amounts >SGD 5,000 — 5-year retention, Singapore data residency if the customer is Singapore-domiciled. PCI-DSS covers the payment card data — no full PAN storage, tokenization only, 1-year retention for tokens. GDPR covers EU residents — right to be forgotten, data portability, explicit consent — 2-year retention for marketing data, opt-in only. Add to that our internal Group Standards — SDL for the code, Group Cyber for the network, Group Resilience for the DR plan. That is a lot. Let me confirm the data-classification matrix. HKID / passport / address proof: CDD, 7-year retention, encrypted, HK data residency. Source of funds: TRM, 5-year retention, SG residency if applicable. PAN: no full storage, token only, 1-year token retention. Marketing data: GDPR opt-in, 2-year retention. Selfie: treat as CDD, 7-year retention, encrypted. Did I miss anything? Perfect summary. One more: the selfie is biometric data — GDPR treats it as special category, HKMA treats it as CDD. Default to the stricter rule. Got it. Default to the stricter rule across all 4 frameworks. I will incorporate the matrix into the design doc. Rachel, can you sign off on the SDL checklist by Friday? James, can you confirm the source-of-funds threshold with the business? Design doc draft by next Tuesday. Thanks for the walkthrough."</blockquote><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>"欢迎参加合规走查。开户流程触及 4 个监管框架——HKMA、MAS TRM、PCI-DSS、GDPR。每个有不同的数据分类规则。HKMA 把香港身份证、护照、地址证明归类为客户尽职调查（CDD）数据——7 年保留、静态加密、香港数据驻留。MAS TRM 追加资金来源证明文件（金额 >5000 新币）——5 年保留，如果客户在新加坡居住则新加坡数据驻留。PCI-DSS 覆盖支付卡数据——不存完整 PAN，只用 token 化，token 1 年保留。GDPR 覆盖欧盟居民——被遗忘权、数据可携、显式同意——营销数据 2 年保留，仅 opt-in。加上我们的内部集团标准——代码的 SDL、网络的 Group Cyber、容灾的 Group Resilience。挺多的。我确认一下数据分类矩阵。香港身份证/护照/地址证明：CDD，7 年保留，加密，香港数据驻留。资金来源：TRM，5 年保留，适用则新加坡驻留。PAN：不存完整，只 token，token 1 年保留。营销数据：GDPR opt-in，2 年保留。自拍：按 CDD 处理，7 年保留，加密。我漏了什么吗？完美的总结。还有：自拍是生物特征数据——GDPR 当作"特殊类别"，HKMA 当 CDD。默认按更严的规则。好。所有 4 个框架默认按更严的规则。我会把矩阵纳入设计文档。Rachel，你能在周五前签 SDL checklist 吗？James，你能跟业务确认资金来源阈值吗？设计文档下周二前起草。谢谢走查。"</p></div><h3>Exercise 2 — Spot the compliance mistake</h3><p>Which of these is the most TL-as-compliance-aware?</p><ol><li>We will just store everything in a single Postgres table. Easier.</li><li>I will apply the data-classification matrix: HKID/passport/address: CDD, 7-year retention, encrypted, HK residency. Source of funds: TRM, 5-year retention, SG if applicable. PAN: tokenization only. Marketing: GDPR opt-in. Default to stricter rule across all 4 frameworks.</li><li>Compliance is the legal team problem, not mine.</li><li>We do not need to worry about retention — that is storage engineering.</li></ol><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>② is the compliance-aware TL. ① ignores retention/residency. ③ delegates ownership. ④ silos. A common mistake is treating compliance as someone else problem. In a bank, compliance is the TL problem — they own the design.</p></div><h3>Exercise 3 — Your turn</h3><p>Your new feature collects: (a) email, (b) phone number, (c) residential address, (d) employment status, (e) annual income. The feature serves HK, SG, and EU residents. Write the data-classification matrix in English. Use the 4 frameworks. Default to the stricter rule.</p><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button><div class="answer-box" style="display:none;"><p>"Data-classification matrix: (a) email: PII, 3-year retention, encrypted, multi-jurisdiction (HKMA, GDPR, MAS), opt-in for marketing. (b) phone number: PII, 3-year retention, encrypted, multi-jurisdiction. (c) residential address: CDD, 7-year retention (HKMA), 5-year (TRM), encrypted, residency matches customer domicile. (d) employment status: PII, 3-year retention, encrypted. (e) annual income: source-of-wealth context, 7-year retention (HKMA), 5-year (TRM), encrypted. Default to stricter rule: 7-year retention for income and address, encrypted at rest, residency matches customer. Did I miss anything?"</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="kyc-aml-engineering-practices.html" class="btn btn-primary">Next: Article 19: KYC / AML Engineering Practices →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

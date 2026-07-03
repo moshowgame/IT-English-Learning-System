@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: Cross-Timezone Squad Sync (UK / HK / IN) | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">05 · Cross-Timezone Squad Sync (UK / HK / IN)</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cross-Timezone Squad Sync (UK / HK / IN)</h1>
+        <p class="subtitle">Article 05 · Module 1: Daily Tech-Lead Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Async-friendly updates, handoff etiquette, overlap hours</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday, 5:00 PM HKT</strong>. Your Payments squad is spread across London, Hong Kong, and Bangalore. <strong>Raj</strong> (Bangalore) is about to start his day; <strong>Sarah</strong> (London) is wrapping up hers. You are in Hong Kong, in the 90-minute overlap window where all three regions are online.</p>
+        <p>周五下午5点香港时间。你的支付 squad 分布在伦敦、香港、班加罗尔。<strong>Raj</strong>（班加罗尔）刚开始一天，<strong>Sarah</strong>（伦敦）准备收工。你在香港，正处在三个地区都在线的 90 分钟重叠窗口。</p>
+        <p>You need to: <strong>run a quick async handoff, surface blockers, and decide what to take offline</strong>. The squad uses Slack, Confluence, and Microsoft Teams.</p>
+        <p>你需要：<strong>快速做异步交接、暴露阻塞、决定什么下到线下</strong>。Squad 用 Slack、Confluence 和 Microsoft Teams。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (London, wrapping up):</span>
+                <span class="text"><span class="en">Hey Wei, <em>before I drop off for the day</em> — quick handoff: ONB-210 PR is <em>approved and merged</em>. The integration tests <em>passed locally</em>, but I <em>flagged a flaky test</em> on the eKYC retry path — it passes 4 out of 5 times. <em>Can Raj pick it up tomorrow?</em></span><span class="cn">嘿 Wei，<em>在我下线前</em>——快速交接：ONB-210 PR <em>已批准合并</em>。集成测试<em>本地通过</em>，但我<em>提了一个 flaky 测试</em>在 eKYC 重试路径上——5 次过 4 次。<em>Raj 明天能接手吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Thanks, Sarah. <em>I'll loop Raj in now</em> — he's just coming online. <em>Quick one before you sign off</em>: did InfoSec respond on the encryption-at-rest NFR for ONB-218?</span><span class="cn">谢谢 Sarah。<em>我现在把 Raj 拉进来</em>——他刚上线。<em>你下线前问一个</em>：InfoSec 对 ONB-218 的静态加密 NFR 回应了吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (London):</span>
+                <span class="text"><span class="en"><em>No response yet</em>. I <em>poked them on Slack</em> this morning and <em>tagged the InfoSec lead</em>. <em>Nothing came back.</em> I'd <em>flag this as a soft dependency</em> for next sprint.</span><span class="cn"><em>还没回</em>。我<em>今早在 Slack 上戳了</em>，<em>@了 InfoSec lead</em>。<em>没动静。</em>我<em>提为下个 Sprint 的软依赖</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Got it. <em>I'll chase it from HK</em> in the morning — I have the InfoSec lead in my network. <em>Have a good evening.</em></span><span class="cn">明白。<em>明早我从香港催</em>——我和 InfoSec lead 认识。<em>晚上愉快。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Bangalore, just online):</span>
+                <span class="text"><span class="en">Hey all, <em>good morning from Bangalore.</em> Wei, I see the ONB-210 handoff. <em>I'll take the flaky test</em> and have it <em>reproduced and fixed by EOD tomorrow</em>. Also, <em>heads up on Kafka</em>: the topic-naming standard from the Platform team <em>landed in Confluence this morning</em>. <em>I'll work it into the consumer</em> today.</span><span class="cn">大家好，<em>班加罗尔早上好</em>。Wei，我看到 ONB-210 交接。<em>我接手 flaky 测试</em>，<em>明天 EOD 前复现并修好</em>。还有，<em>Kafka 通知一下</em>：Platform 团队的 topic-naming 规范<em>今早到 Confluence 了</em>。<em>我今天就把它写进 consumer</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Great. <em>That's a blocker un-blocker</em> — well done chasing that. <em>Two more things</em> before I sign off. <em>First</em>, the <em>PO has a hard deadline for ONB-225</em> next Wednesday — <em>can we make that in the overlap window?</em> <em>Second</em>, the <em>regulator demo is on Tuesday</em> at 3 PM HKT. I need <em>at least one dev online from each region</em> for the live Q&A. <em>Can you confirm by Monday?</em></span><span class="cn">太好了。<em>那是个解除阻塞的进展</em>——追得好。<em>我下线前两件事</em>。<em>第一</em>，<em>PO 给 ONB-225 下了硬截止，下周三</em>——<em>我们能在重叠窗口搞定吗？</em><em>第二</em>，<em>监管 demo 是周二</em>下午 3 点香港时间。<em>每个地区至少要有一名开发在线</em>做实时 Q&A。<em>你们周一前能确认吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj:</span>
+                <span class="text"><span class="en"><em>ONB-225 is doable</em> — I'll <em>block Tuesday morning for it</em>. For the regulator demo, <em>I can be online</em> from Bangalore — 12:30 PM IST works for me.</span><span class="cn"><em>ONB-225 能做</em>——我<em>周二上午留时间</em>。监管 demo，<em>我能上线</em>从班加罗尔——IST 12:30 我可以。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Perfect. <em>I'll write all of this up in a Confluence sync note</em> so Sarah sees it Monday morning. <em>Anything else before I drop?</em></span><span class="cn">好。<em>我把所有这些写一份 Confluence 同步笔记</em>，Sarah 周一早上能看到。<em>我下线前还有别的吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj:</span>
+                <span class="text"><span class="en"><em>All good from me.</em></span><span class="cn"><em>我这边没了</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Handoff</span> <em>Before I drop off for the day — quick handoff.</em></span>
+                <span class="chinese">在我下线前——快速交接。</span>
+                <span class="note">Always start the handoff with a clear signal: "before I drop off / before I sign off / before I log out".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>I flagged a flaky test on the eKYC retry path.</em></span>
+                <span class="chinese">我提了一个 flaky 测试在 eKYC 重试路径。</span>
+                <span class="note">Use "flag" for everything that's not blocking today. It tells the next timezone "this needs attention".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Loop in</span> <em>I'll loop Raj in now.</em></span>
+                <span class="chinese">我现在把 Raj 拉进来。</span>
+                <span class="note">"Loop in" is async-friendly. It means "add to the conversation", not "interrupt the meeting".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Chase</span> <em>I'll chase it from HK in the morning.</em></span>
+                <span class="chinese">明早我从香港催。</span>
+                <span class="note">"Chase" is the polite word for "nag the upstream team until they respond". Always own the chase.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Overlap</span> <em>Can we make that in the overlap window?</em></span>
+                <span class="chinese">我们能在重叠窗口搞定吗？</span>
+                <span class="note">"Overlap window" is the 90-min period when all timezones are online. Use it for live work, async for everything else.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sync note</span> <em>I'll write all of this up in a Confluence sync note.</em></span>
+                <span class="chinese">我把所有这些写一份 Confluence 同步笔记。</span>
+                <span class="note">Always leave a written record for the next timezone. Verbal handoffs disappear; written ones don't.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Unblocker</span> <em>That's a blocker un-blocker.</em></span>
+                <span class="chinese">那是个解除阻塞的进展。</span>
+                <span class="note">Celebrate wins in async — it builds the habit of unblocking. "Unblocker" is your favourite word.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Confirm</span> <em>Can you confirm by Monday?</em></span>
+                <span class="chinese">你们周一前能确认吗？</span>
+                <span class="note">Always set a deadline for confirmations. "By Monday" beats "soon" by 100x.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Handoff</strong> n. 交接 Passing work, status, and blockers to the next timezone.</li>
+            <li><strong>Overlap window</strong> n. 重叠窗口 The 60-90 minutes when all squad timezones are online at once.</li>
+            <li><strong>Async</strong> adj. 异步的 Work that doesn't need real-time presence (Slack, Confluence, PR comments).</li>
+            <li><strong>Sync</strong> adj. 同步的 Work that needs real-time presence (Teams calls, in-person).</li>
+            <li><strong>Flaky test</strong> n. 不稳定测试 A test that passes sometimes and fails sometimes — usually a timing or environment issue.</li>
+            <li><strong>Repro / reproduce</strong> v. 复现 Find a reliable way to make the bug happen on demand.</li>
+            <li><strong>Soft dependency</strong> n. 软依赖 Not blocking today, but will block in N days if not addressed.</li>
+            <li><strong>Loop in</strong> v. 拉进群 Add someone to an existing conversation, usually via Slack/Teams.</li>
+            <li><strong>Chase</strong> v. 催促 Politely but persistently follow up on an open question.</li>
+            <li><strong>Sync note</strong> n. 同步笔记 A short Confluence page recording the daily/weekly squad sync.</li>
+            <li><strong>Unblocker</strong> n. 解除阻塞的事 An action that removes a blocker for the squad.</li>
+            <li><strong>Hard deadline</strong> n. 硬截止 A non-negotiable date, usually set by a regulator, PO, or executive.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Before I drop off / sign off / log out" — closing signals</h3>
+        <p>Use a closing signal to mark the end of your workday. <em>Before I drop off / Before I sign off / Before I log out</em>. This cues the next timezone: "wrap up your questions now". Always leave 5 minutes for handoff.</p>
+        <p>用收工信号标记一天结束。<em>Before I drop off / sign off / log out</em>。给下一时区留 5 分钟交接。</p>
+        <h3>② "Can we make that in the overlap window?" — availability question</h3>
+        <p>Don't say "are you free Tuesday?" — say <em>can we make that in the overlap window?</em> It anchors the question to the squad's shared time, not your personal calendar. TLs schedule around overlap, not around themselves.</p>
+        <p>别说 "are you free Tuesday?" ——说 <em>can we make that in the overlap window?</em>。TL 围绕重叠窗口安排，不是自己。</p>
+        <h3>③ "I'll chase it from HK" — ownership of the follow-up</h3>
+        <p>Use <em>I'll chase / I'll own / I'll drive</em> to take explicit ownership. <em>I'll chase it from HK in the morning</em> is much more useful than <em>someone should chase it</em>. Async teams need owners, not volunteers.</p>
+        <p>用 <em>I'll chase / I'll own / I'll drive</em> 显式承担。<em>I'll chase it from HK in the morning</em> 比 <em>someone should chase it</em> 有用得多。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Use the overlap window for live work only.</strong> Save the 90-min overlap for design reviews, escalations, and complex handoffs. Use async for status updates, code reviews, and routine handoffs.</li>
+            <li><strong>Always leave a written record.</strong> Verbal handoffs in Teams calls are forgotten by the next timezone. Confluence sync notes are not. Always write it up.</li>
+            <li><strong>Own the chase, don't delegate it.</strong> "Can someone chase InfoSec?" gets no answer. "I'll chase it from HK in the morning" gets results.</li>
+            <li><strong>Celebrate unblockers loudly.</strong> Async teams lose moral fast. When someone unblocks a squad, say so in the channel. "Blocker un-blocker" is your favourite phrase.</li>
+            <li><strong>Be explicit about your time zone.</strong> "Morning" means different things in London, Hong Kong, and Bangalore. Use absolute times with timezone: <em>3 PM HKT / 12:30 PM IST / 7 AM GMT</em>.</li>
+            <li><strong>5 minutes for handoff, always.</strong> Don't drop off without a 5-minute handoff. It's the difference between a smooth async flow and a 24-hour bug.</li>
+            <li><strong>Set confirmation deadlines.</strong> "Can you confirm by Monday?" beats "let me know". Async teams need dates, not vibes.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the cross-timezone sync</h3>
+        <p>Translate the following cross-timezone sync into natural Chinese. Pay attention to the handoff language and the ownership phrases.</p>
+        <blockquote>
+            "Hey Wei, before I drop off for the day — quick handoff: ONB-210 PR is approved and merged. The integration tests passed locally, but I flagged a flaky test on the eKYC retry path — it passes 4 out of 5 times. Can Raj pick it up tomorrow? Thanks, Sarah. I'll loop Raj in now — he's just coming online. Quick one before you sign off: did InfoSec respond on the encryption-at-rest NFR for ONB-218? No response yet. I poked them on Slack this morning and tagged the InfoSec lead. Nothing came back. I'd flag this as a soft dependency for next sprint. Got it. I'll chase it from HK in the morning — I have the InfoSec lead in my network. Have a good evening. Hey all, good morning from Bangalore. Wei, I see the ONB-210 handoff. I'll take the flaky test and have it reproduced and fixed by EOD tomorrow."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"嘿 Wei，在我下线前——快速交接：ONB-210 PR 已批准合并。集成测试本地通过，但我提了一个 flaky 测试在 eKYC 重试路径上——5 次过 4 次。Raj 明天能接手吗？谢谢 Sarah。我现在把 Raj 拉进来——他刚上线。你下线前问一个：InfoSec 对 ONB-218 的静态加密 NFR 回应了吗？还没回。我今早在 Slack 上戳了，@了 InfoSec lead。没动静。我提为下个 Sprint 的软依赖。明白。明早我从香港催——我和 InfoSec lead 认识。晚上愉快。大家好，班加罗尔早上好。Wei，我看到 ONB-210 交接。我接手 flaky 测试，明天 EOD 前复现并修好。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the TL mistake</h3>
+        <p>Which of these cross-timezone lines is most "TL-like" and which is most "individual-contributor-like"? Why?</p>
+        <ol>
+            <li>"Yesterday I finished the unit tests for the eKYC vendor callback. Coverage is at 91%."</li>
+            <li>"Before I drop off — quick handoff. I'll loop Raj in. I'll chase the InfoSec NFR from HK."</li>
+            <li>"Yesterday I fixed the bug in the offline-first KYC capture. The fix is deployed to UAT."</li>
+            <li>"Can we make that in the overlap window? Can you confirm by Monday?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are TL-like (handoff, ownership, overlap window). ① and ③ are individual-contributor-like (status reports). A common mistake new TLs make in cross-timezone teams is dropping into personal status updates. Reframe yours at the handoff and ownership layer.</p>
+        </div>
+        <h3>Exercise 3 — Your turn</h3>
+        <p>It's Friday 5 PM HKT. Sarah (London) is signing off, Raj (Bangalore) is just coming online. You have: (a) an InfoSec NFR sign-off still pending, (b) a flaky test to hand off, (c) a regulator demo on Tuesday at 3 PM HKT, (d) one PO hard deadline next Wednesday. Write your TL's cross-timezone sync script in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Hey Sarah, before you drop off for the day — quick handoff. Did InfoSec respond on the encryption-at-rest NFR for ONB-218? No response yet. I poked them on Slack this morning. I'll chase it from HK in the morning. Have a good evening. Hey Raj, good morning from Bangalore. I see the handoff from Sarah. Can you take the flaky test on the eKYC retry path? I'll loop you in. Two more things before I sign off. First, the PO has a hard deadline for ONB-225 next Wednesday — can we make that in the overlap window? Second, the regulator demo is on Tuesday at 3 PM HKT. I need at least one dev online from each region. Can you confirm by Monday? Great. I'll write all of this up in a Confluence sync note so Sarah sees it Monday morning. Anything else before I drop?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="running-code-review.html" class="btn btn-primary">Next: Article 06: Running a Code Review Session →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

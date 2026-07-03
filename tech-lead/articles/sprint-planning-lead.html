@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 02: Running a Sprint Planning Meeting | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">02 · Running a Sprint Planning Meeting</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Running a Sprint Planning Meeting</h1>
+        <p class="subtitle">Article 02 · Module 1: Daily Tech-Lead Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Drive the planning: capacity, sequencing, dependencies, commitments</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday, 2:00 PM HKT</strong>. Sprint Planning for Sprint 24 is starting. You are the Tech Lead of the <em>Payments</em> squad (6 developers). The product owner, <strong>James</strong>, is online from Singapore. The scrum master, <strong>Sarah</strong>, facilitates. <strong>Priya</strong>, a senior developer, is dialing in from London.</p>
+        <p>周一下午2点香港时间，Sprint 24 的 Sprint Planning 开始。你是<em>支付</em>squad 的 Tech Lead（6 名开发）。PO James 从新加坡上线，SM Sarah 主持，高级开发 Priya 从伦敦接入。</p>
+        <p>James has brought 28 story points to the sprint. Last sprint, the team delivered 22. You're worried about over-commitment, and there's a hard dependency on the <em>Risk Engine team</em> for the new sanctions screening API.</p>
+        <p>James 带了 28 个故事点。上个 Sprint 团队交付了 22。你担心过度承诺，并且有个对 <em>Risk Engine 团队</em>新制裁名单筛查 API 的硬依赖。</p>
+        <p>As TL, you need to: <strong>challenge the commitment, raise the dependency, and sequence the work</strong>. You are the technical authority in this room — the PO proposes, the team commits, but you make sure the commitments are realistic.</p>
+        <p>作为 TL，你需要：<strong>挑战承诺、提依赖、排优先级</strong>。PO 提议，团队承诺，但你确保承诺是现实的。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">OK, sprint goal this time: <em>ship the new sanctions screening integration to UAT</em>. I have 28 points ready. Let's get started.</span><span class="cn">好，本 Sprint 目标：<em>把新制裁名单筛查集成交付到 UAT</em>。我准备好了 28 个点，开始吧。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Thanks, James. Before we commit, <em>can we walk through capacity first?</em></span><span class="cn">谢谢 James。承诺之前，<em>我们先过一下容量？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en">Sure. Wei, go ahead.</span><span class="cn">好，Wei 请。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Squad has 6 devs. <em>Subtracting PTO, public holidays, and ceremonies</em>, we have <em>22 dev-days</em> this sprint. At our <em>average velocity of 22 points</em>, 28 is <em>over-commitment by 27%</em>. I'd <em>cap the sprint at 24 points</em> and <em>carry the remaining 4 into the backlog</em>.</span><span class="cn">Squad 6 个开发。<em>扣除休假、公共假期和会议</em>，本 Sprint 有 <em>22 个开发日</em>。按<em>平均速度 22 个点</em>，28 已经是<em>过度承诺 27%</em>。我建议<em>封顶 24 个点</em>，<em>剩下 4 个进 backlog</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">Hmm. We <em>promised the regulator</em> a UAT-ready release by end of sprint. If we cut 4 points, we miss that.</span><span class="cn">嗯。我们<em>跟监管承诺了</em>Sprint 末 UAT 准备就绪。砍 4 个点就赶不上了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">I hear you. <em>But here's the dependency risk</em>: the new sanctions API from the Risk Engine team <em>isn't signed off yet</em>. If they slip by even 3 days, <em>our 28-point sprint falls apart</em>. I'd rather <em>commit to 24 with a high-confidence delivery</em> than <em>commit to 28 and miss the regulator deadline</em>.</span><span class="cn">我理解。但<em>有个依赖风险</em>：Risk Engine 团队的新制裁名单 API <em>还没签批</em>。如果他们推迟 3 天，<em>我们 28 点的 Sprint 整个崩掉</em>。我宁愿<em>承诺 24 个点、高信心交付</em>，也不要<em>承诺 28 但错过监管期限</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (Senior Dev):</span>
+                <span class="text"><span class="en">Wei is right. <em>If the API slips, the whole sprint is at risk</em>. Better to <em>sequence the work</em>: let's pull the lowest-priority 4 points and <em>slot them into Sprint 25</em>.</span><span class="cn">Wei 说得对。<em>API 一推迟，整个 Sprint 都风险</em>。不如<em>排个序</em>：把优先级最低的 4 个点拉出来，<em>放到 Sprint 25</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">OK, <em>agreed commitment is 24 points</em>. <em>Stretch goal is 4 more if the API lands early</em>. James, are you OK with that?</span><span class="cn">好，<em>承诺 24 个点</em>，<em>如果 API 早到就冲刺加 4 个</em>。James，这样可以吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">OK. 24 with a stretch. <em>Let's lock it in.</em></span><span class="cn">好。24 加冲刺。<em>就这么定</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Capacity</span> <em>Can we walk through capacity first?</em></span>
+                <span class="chinese">我们先过一下容量？</span>
+                <span class="note">Always start sprint planning with capacity, not stories. Capacity first, commitment second.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Velocity</span> <em>At our average velocity of 22 points…</em></span>
+                <span class="chinese">按平均速度 22 个点……</span>
+                <span class="note">Use 3-sprint average velocity, not last sprint alone. One sprint is a sample, three is a trend.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Commit</span> <em>28 is over-commitment by 27%.</em></span>
+                <span class="chinese">28 是过度承诺 27%</span>
+                <span class="note">Always quantify over-commitment as a percentage. Numbers are harder to argue with than adjectives.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Commit to 24 with a high-confidence delivery vs. 28 and miss the regulator.</em></span>
+                <span class="chinese">承诺 24 高信心 vs. 承诺 28 错过监管</span>
+                <span class="note">Frame as a trade-off, not a refusal. The PO can choose if they hear both sides.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Dependency</span> <em>If the API slips, the whole sprint is at risk.</em></span>
+                <span class="chinese">如果 API 推迟，整个 Sprint 都风险</span>
+                <span class="note">Always name the upstream team and the consequence. Vague "dependency risk" is ignored.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Stretch</span> <em>Stretch goal is 4 more if the API lands early.</em></span>
+                <span class="chinese">如果 API 早到就冲刺加 4 个</span>
+                <span class="note">Stretch goals protect the core commitment. If the stretch fails, the sprint is still on track.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sequence</span> <em>Let's sequence the work.</em></span>
+                <span class="chinese">我们排一下顺序</span>
+                <span class="note">"Sequence" is more professional than "reorder". It implies dependencies and risk management.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Lock</span> <em>Let's lock it in.</em></span>
+                <span class="chinese">就这么定</span>
+                <span class="note">The PO's signal that the commitment is final. Once locked, no more mid-sprint scope changes without re-planning.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Velocity</strong> n. 速度 Story points a team delivers per sprint, averaged over 3 sprints.</li>
+            <li><strong>Capacity</strong> n. 容量 Total dev-days available in a sprint, after subtracting PTO, holidays, ceremonies.</li>
+            <li><strong>Commitment</strong> n. 承诺 The points the team signs up to deliver this sprint.</li>
+            <li><strong>Stretch goal</strong> n. 冲刺目标 Additional work the team takes on if the core sprint finishes early.</li>
+            <li><strong>Over-commitment</strong> n. 过度承诺 Committing to more than capacity supports, usually >20% over velocity.</li>
+            <li><strong>Sequencing</strong> n. 排序 Deciding the order of stories based on dependencies and risk.</li>
+            <li><strong>Risk Engine team</strong> n. 风险引擎团队 The team that owns the sanctions screening and AML services.</li>
+            <li><strong>Regulator deadline</strong> n. 监管期限 A binding date from HKMA, MAS, FCA, etc.</li>
+            <li><strong>Sprint goal</strong> n. Sprint 目标 A one-sentence summary of what the sprint will deliver.</li>
+            <li><strong>Carry (a story)</strong> v. 推到下期 Move a story to the next sprint because of capacity or dependency.</li>
+            <li><strong>Re-planning</strong> n. 重新规划 The full team meeting called when a mid-sprint scope change requires a new commitment.</li>
+            <li><strong>Sprint 25</strong> n. 下个 Sprint The next sprint after the current one.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "I'd cap the sprint at 24 points" — soft authority language</h3>
+        <p>TLs use <em>I'd / I'd rather / I suggest</em> instead of <em>we will / we must</em> in planning. The team commits; the TL recommends. This is a politeness device: it keeps the team in the driver's seat while you steer.</p>
+        <p>TL 在规划中用 <em>I'd / I'd rather / I suggest</em> 而不是 <em>we will / we must</em>。团队承诺；TL 推荐。</p>
+        <h3>② "If the API slips" — the conditional trap</h3>
+        <p>Use <em>if X slips by N days, then Y falls apart</em> to make risk concrete. The structure: <em>condition + consequence + timeline</em>. Vague risk is ignored; quantified risk gets action.</p>
+        <p>用 <em>if X slips by N days, then Y falls apart</em> 把风险具体化。结构：<em>条件 + 后果 + 时间</em>。</p>
+        <h3>③ "Stretch goal" — the safety valve</h3>
+        <p><em>Stretch</em> is a noun that means "additional work beyond commitment". Pair it with <em>if / when</em> to make it conditional: <em>stretch goal is 4 more if the API lands early</em>. The team can deliver the stretch without breaking the core commitment.</p>
+        <p><em>Stretch</em> 是"承诺之外的工作"。配 <em>if / when</em> 让它有条件：<em>如果 API 早到，就冲刺加 4 个</em>。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>PO proposes, team commits.</strong> Even when you know the commitment is wrong, frame your push-back as a recommendation, not a veto. The team owns the commitment.</li>
+            <li><strong>Capacity before commitment.</strong> Insist on this order: capacity → velocity → commitment. Skipping capacity leads to sprint failure.</li>
+            <li><strong>Use 3-sprint average velocity.</strong> One good sprint inflates expectations. One bad sprint depresses them. Three is the gold standard for planning.</li>
+            <li><strong>Quantify over-commitment.</strong> "We're over-committed" is an opinion. "We're over-committed by 27%" is a fact. The second one wins arguments.</li>
+            <li><strong>Always name the upstream team.</strong> "The new sanctions API" is vague. "The Risk Engine team's sanctions API, which is in design phase" is specific. Specific dependencies get chased.</li>
+            <li><strong>Regulator deadlines are sacred.</strong> A regulator deadline is not a stretch goal. If you risk it, the SM and PO will remember. If you protect it, you build political capital.</li>
+            <li><strong>End with a clear "lock".</strong> Don't leave planning ambiguous. End with "OK, locked at 24 with a stretch of 4". The team needs clarity to commit.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the planning discussion</h3>
+        <p>Translate the following sprint planning snippet into natural Chinese. Pay attention to how the TL frames the trade-off and the stretch goal.</p>
+        <blockquote>
+            "OK, sprint goal this time: ship the new payment validation engine to UAT. I have 32 points ready. Wei, capacity first? Sure. Squad has 7 devs. Subtracting PTO, public holidays, and ceremonies, we have 24 dev-days this sprint. At our average velocity of 24 points, 32 is over-commitment by 33%. I'd cap the sprint at 26 points and carry the remaining 6 into the backlog. I hear you, but here's the dependency risk: the new validation library from the Platform team isn't signed off yet. If they slip by even 3 days, our 32-point sprint falls apart. I'd rather commit to 26 with a high-confidence delivery than commit to 32 and miss the regulator deadline. OK, agreed commitment is 26 points. Stretch goal is 6 more if the library lands early. Let's lock it in."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，本 Sprint 目标：把新支付校验引擎交付到 UAT。我准备了 32 个点。Wei，先过容量？好。Squad 7 个开发。扣除休假、公共假期和会议，本 Sprint 有 24 个开发日。按平均速度 24 个点，32 是过度承诺 33%。我建议封顶 26 个点，剩下 6 个进 backlog。我理解，但有个依赖风险：Platform 团队的新校验库还没签批。如果他们推迟 3 天，我们 32 点的 Sprint 整个崩掉。我宁愿承诺 26 高信心交付，也不要承诺 32 但错过监管期限。好，承诺 26 个点。如果库早到就冲刺加 6 个。就这么定。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the TL mistake</h3>
+        <p>Which of these planning lines is most "TL-like" and which is most "dev-like"? Why?</p>
+        <ol>
+            <li>"Yesterday I finished the unit tests for the eKYC vendor callback. Coverage is at 91%."</li>
+            <li>"I'd cap the sprint at 24 points. 28 is over-commitment by 27%."</li>
+            <li>"Yesterday I fixed the bug in the offline-first KYC capture. The fix is deployed to UAT."</li>
+            <li>"Stretch goal is 4 more if the API lands early."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are TL-like (capacity-based commitment, stretch framing). ① and ③ are dev-like (unit tests, bug fix). A common mistake new TLs make is dropping into implementation-status reports in planning. Reframe yours at the capacity and commitment layer.</p>
+        </div>
+        <h3>Exercise 3 — Your turn</h3>
+        <p>It's sprint planning. The PO has brought 30 points. Your squad has 5 devs with 18 dev-days capacity. Average velocity is 20. One critical dependency on InfoSec NFR sign-off is pending. Write your TL's sprint planning response in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thanks, James. Can we walk through capacity first? Squad has 5 devs. Subtracting PTO and ceremonies, we have 18 dev-days this sprint. At our average velocity of 20 points, 30 is over-commitment by 50%. I'd cap the sprint at 22 points and carry the remaining 8 into the backlog. I hear you, but here's the dependency risk: the InfoSec NFR sign-off is still pending. If they slip by even 2 days, our 30-point sprint falls apart. I'd rather commit to 22 with a high-confidence delivery than commit to 30 and miss the regulator deadline. OK, agreed commitment is 22 points. Stretch goal is 8 more if the NFR sign-off lands early. Let's lock it in."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="backlog-refinement-tl.html" class="btn btn-primary">Next: Article 03 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

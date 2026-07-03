@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 19: KYC / AML Engineering Practices | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">19 · KYC / AML Engineering Practices</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>KYC / AML Engineering Practices</h1>
+        <p class="subtitle">Article 19 · Module 5: Banking Context · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 KYC/AML engineering, sanctions screening, transaction monitoring, audit trail</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday, 2:00 PM HKT</strong>. You are the TL for the Onboarding squad. The new <em>KYC (Know Your Customer)</em> flow needs to integrate with the bank <em>World-Check One</em> (sanctions/PEP screening) and the <em>AML transaction monitoring</em> system. <strong>Karen</strong> from FCC (Financial Crime Compliance) is your stakeholder.</p><p>周三下午2点香港时间。你是 Onboarding squad 的 TL。新的<em>KYC（了解你的客户）</em>流程需要集成银行的<em>World-Check One</em>（制裁/政要人物筛查）和<em>AML 交易监控系统</em>。<strong>Karen</strong> 来自 FCC（金融犯罪合规），是你的 stakeholder。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Karen (FCC):</span><span class="text"><span class="en">Wei, <em>the KYC flow needs 4 integration points.</em> (1) <em>World-Check One</em> for sanctions and PEP screening. (2) <em>Internal blacklist</em> for known fraudsters. (3) <em>Document verification</em> via the eKYC vendor. (4) <em>AML transaction monitoring</em> feeds for ongoing monitoring.</span><span class="cn">Wei，<em>KYC 流程需要 4 个集成点。</em>(1) <em>World-Check One</em> 做制裁和 PEP 筛查。(2) <em>内部黑名单</em> 做已知欺诈者。(3) <em>证件验证</em> 通过 eKYC 厂商。(4) <em>AML 交易监控</em> 喂给做持续监控。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Got it. Let me confirm the 4 integration points and the audit-trail requirements.</em> <em>Each integration point needs an immutable audit log — who screened whom, when, with what result.</em> <em>Is that right?</em></span><span class="cn"><em>好。我确认一下 4 个集成点和审计日志要求。</em><em>每个集成点需要不可变审计日志——谁筛查了谁、何时、结果。</em><em>对吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Yes. And the audit trail must be queryable by FCC for 7 years.</em> <em>No exceptions.</em></span><span class="cn"><em>对。审计日志必须可被 FCC 查询 7 年。</em><em>无例外。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Understood. 7-year retention, queryable, immutable.</em> <em>Now the design questions:</em></span><span class="cn"><em>明白。7 年保留、可查询、不可变。</em><em>现在设计问题：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Q1: World-Check One — sync or async?</em> <em>If sync, the user waits for the screening result.</em> <em>If async, the user submits, gets a 'pending review' state, and we screen in the background.</em> <em>What is the bank standard?</em></span><span class="cn"><em>Q1：World-Check One——同步还是异步？</em><em>同步则用户等筛查结果。</em><em>异步则用户提交，得到"待审"状态，后台筛查。</em><em>银行标准是什么？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Async, with a 4-hour SLA.</em> <em>Customer gets 'pending review' state immediately.</em> <em>Background job screens and updates the state.</em></span><span class="cn"><em>异步，4 小时 SLA。</em><em>客户立即得到"待审"状态。</em><em>后台 job 筛查并更新状态。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Q2: AML transaction monitoring — push or pull?</em> <em>If push, we send every transaction to the AML system.</em> <em>If pull, the AML system reads from our ledger.</em> <em>What is the bank standard?</em></span><span class="cn"><em>Q2：AML 交易监控——推还是拉？</em><em>推则每笔交易发到 AML 系统。</em><em>拉则 AML 系统读我们的账本。</em><em>银行标准是什么？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Push, with idempotency keys.</em> <em>Every transaction gets a unique key.</em> <em>AML de-dupes on the key.</em> <em>This is regulator-required — duplicate transactions are a P1 finding.</em></span><span class="cn"><em>推，带幂等键。</em><em>每笔交易有唯一键。</em><em>AML 按键去重。</em><em>这是监管要求——重复交易是 P1 发现项。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Q3: PEP (Politically Exposed Person) screening — what is the bank risk appetite?</em> <em>Do we auto-reject, auto-approve with flag, or manual review for all PEPs?</em></span><span class="cn"><em>Q3：PEP（政要人物）筛查——银行风险偏好是什么？</em><em>PEP 自动拒绝、带 flag 自动通过、还是全人工审？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Manual review for all PEPs.</em> <em>FCC analyst reviews and approves/rejects.</em> <em>No auto-approval for PEPs — that is the bank standard.</em></span><span class="cn"><em>PEP 全人工审。</em><em>FCC 分析员 review 后通过/拒绝。</em><em>PEP 不自动通过——这是银行标准。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Q4: Ongoing monitoring — what is the refresh cadence?</em> <em>Daily, weekly, monthly?</em></span><span class="cn"><em>Q4：持续监控——刷新频率是？</em><em>日、周、月？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Daily for high-risk customers</em> (PEP, high-net-worth, sanctions hit). <em>Weekly for medium-risk.</em> <em>Monthly for low-risk.</em> <em>The risk classification is automatic — driven by the AML rules engine.</em></span><span class="cn"><em>高风险客户日刷</em>（PEP、高净值、制裁命中）。<em>中风险周刷。</em><em>低风险月刷。</em><em>风险分类是自动的——AML 规则引擎驱动。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Perfect. Design summary:</em> (1) <em>async World-Check One with 4-hour SLA</em>; (2) <em>async internal blacklist check</em>; (3) <em>sync eKYC document verification</em>; (4) <em>push AML transaction monitoring with idempotency keys</em>; (5) <em>PEP → manual review, no auto-approval</em>; (6) <em>ongoing monitoring: daily/weekly/monthly by risk class</em>; (7) <em>audit trail: 7-year retention, queryable, immutable.</em> <em>Did I capture everything?</em></span><span class="cn"><em>好。设计总结：</em>(1) <em>异步 World-Check One 配 4 小时 SLA</em>；(2) <em>异步内部黑名单检查</em>；(3) <em>同步 eKYC 证件验证</em>；(4) <em>推 AML 交易监控配幂等键</em>；(5) <em>PEP → 人工审，不自动通过</em>；(6) <em>持续监控：按风险分日/周/月</em>；(7) <em>审计日志：7 年保留、可查询、不可变。</em><em>我都记下了吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Karen:</span><span class="text"><span class="en"><em>Perfect. Two more things.</em> <em>First: the audit trail must include the FCC analyst decision, not just the system.</em> <em>Second: sanctions hits trigger a hard-block — no manual override.</em> <em>Override is regulator-reportable.</em></span><span class="cn"><em>好。还有两件事。</em><em>第一：审计日志必须包含 FCC 分析员的决策，不只是系统的。</em><em>第二：制裁命中触发硬阻塞——不能人工覆盖。</em><em>覆盖需要上报监管。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Got it. FCC analyst decision in audit trail, sanctions hit = hard-block, no override.</em> <em>I will incorporate both into the design doc.</em> <em>Draft by next Wednesday, design review with you the following Monday.</em></span><span class="cn"><em>好。审计日志含 FCC 分析员决策，制裁命中 = 硬阻塞，不能覆盖。</em><em>两件事都纳入设计文档。</em><em>下周三前起草，下下周一跟你做设计评审。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Audit trail</span> <em>Audit trail: 7-year retention, queryable, immutable.</em></span><span class="chinese">审计日志：7 年保留、可查询、不可变。</span><span class="note">Audit trail is non-negotiable. 7-year retention, queryable by FCC, immutable.</span></li>
+<li><span class="english"><span class="tag">Sync vs async</span> <em>If sync, the user waits. If async, the user submits and gets a 'pending review' state.</em></span><span class="chinese">同步则用户等。异步则用户提交，得到"待审"状态。</span><span class="note">Sync vs async is a design question, not an opinion. The bank standard is the answer.</span></li>
+<li><span class="english"><span class="tag">Push vs pull</span> <em>If push, we send every transaction. If pull, the AML system reads from our ledger.</em></span><span class="chinese">推则每笔交易发到 AML。拉则 AML 读我们的账本。</span><span class="note">Push vs pull is also a design question. Push with idempotency keys is the bank standard for AML.</span></li>
+<li><span class="english"><span class="tag">Idempotency key</span> <em>Every transaction gets a unique key. AML de-dupes on the key.</em></span><span class="chinese">每笔交易有唯一键。AML 按键去重。</span><span class="note">Idempotency keys are regulator-required for AML. Duplicate transactions are a P1 finding.</span></li>
+<li><span class="english"><span class="tag">Hard-block</span> <em>Sanctions hits trigger a hard-block — no manual override.</em></span><span class="chinese">制裁命中触发硬阻塞——不能人工覆盖。</span><span class="note">Sanctions hits are a hard-block. Override is regulator-reportable. This is non-negotiable.</span></li>
+<li><span class="english"><span class="tag">Risk class</span> <em>Daily for high-risk. Weekly for medium. Monthly for low.</em></span><span class="chinese">高风险日刷。中风险周刷。低风险月刷。</span><span class="note">Refresh cadence is driven by risk class. High-risk = PEP, HNW, sanctions hit.</span></li>
+<li><span class="english"><span class="tag">Design summary</span> <em>Design summary: 1, 2, 3, 4, 5, 6, 7. Did I capture everything?</em></span><span class="chinese">设计总结：1、2、3、4、5、6、7。我都记下了吗？</span><span class="note">End with a numbered design summary. Did I capture everything? is the right closer.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>KYC (Know Your Customer)</strong> n.. The regulatory process of verifying a customer's identity. 了解你的客户</li>
+<li><strong>AML (Anti-Money Laundering)</strong> n.. Regulations to prevent money laundering. 反洗钱</li>
+<li><strong>FCC (Financial Crime Compliance)</strong> n.. The bank team that handles KYC, AML, sanctions. 金融犯罪合规</li>
+<li><strong>World-Check One</strong> n.. A commercial sanctions/PEP screening service. World-Check One 制裁筛查</li>
+<li><strong>PEP (Politically Exposed Person)</strong> n.. A person in a prominent public function — higher AML risk. 政要人物</li>
+<li><strong>Sanctions hit</strong> n.. A match against a sanctions list (e.g., OFAC, UN, EU). 制裁命中</li>
+<li><strong>eKYC</strong> n.. Electronic KYC — verifying identity via documents and biometrics. 电子 KYC</li>
+<li><strong>Idempotency key</strong> n.. A unique key that ensures a transaction is processed exactly once. 幂等键</li>
+<li><strong>Hard-block</strong> n.. A system-level block that cannot be overridden manually. 硬阻塞</li>
+<li><strong>Risk class</strong> n.. A customer's AML risk classification: high / medium / low. 风险等级</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Q1: sync or async? What is the bank standard?' — the design question</h3><p>Frame design questions as binary choices + bank standard. <em>Sync or async? Push or pull? Auto-approve or manual review?</em></p><p>把设计问题框定为二元选择 + 银行标准。</p>
+<h3>② 'Idempotency key — duplicate transactions are a P1 finding' — the regulator requirement</h3><p>Cite the regulator requirement, not the preference. <em>Idempotency keys are regulator-required. Duplicate transactions are a P1 finding.</em></p><p>引用监管要求，不是偏好。</p>
+<h3>③ 'Sanctions hit = hard-block, no override' — the non-negotiable</h3><p>Some rules are non-negotiable. <em>Sanctions hit = hard-block, no override. Override is regulator-reportable.</em></p><p>有些规则不可谈判。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Audit trail is non-negotiable.</strong> 7-year retention, queryable, immutable.</li>
+<li><strong>Frame design questions as binary choices + bank standard.</strong> Sync or async? What is the bank standard?</li>
+<li><strong>Cite the regulator requirement, not the preference.</strong> Idempotency keys are regulator-required beats I think we need idempotency.</li>
+<li><strong>Some rules are non-negotiable.</strong> Sanctions hit = hard-block, no override.</li>
+<li><strong>End with a numbered design summary.</strong> Did I capture everything? is the right closer.</li>
+<li><strong>PEP is manual review, no auto-approval.</strong> Bank standard.</li>
+<li><strong>Refresh cadence is risk-driven.</strong> Daily/weekly/monthly by risk class.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the KYC/AML design</h3><p>Translate the following design conversation into natural Chinese.</p><blockquote>"The KYC flow needs 4 integration points. World-Check One for sanctions and PEP screening. Internal blacklist for known fraudsters. Document verification via the eKYC vendor. AML transaction monitoring feeds for ongoing monitoring. Got it. Let me confirm the 4 integration points and the audit-trail requirements. Each integration point needs an immutable audit log — who screened whom, when, with what result. Is that right? Yes. And the audit trail must be queryable by FCC for 7 years. No exceptions. Understood. 7-year retention, queryable, immutable. Now the design questions. Q1: World-Check One — sync or async? If sync, the user waits. If async, the user submits and gets a pending review state. What is the bank standard? Async, with a 4-hour SLA. Q2: AML transaction monitoring — push or pull? If push, we send every transaction. If pull, the AML system reads from our ledger. What is the bank standard? Push, with idempotency keys. Every transaction gets a unique key. AML de-dupes on the key. This is regulator-required — duplicate transactions are a P1 finding. Q3: PEP screening — auto-reject, auto-approve with flag, or manual review? Manual review for all PEPs. No auto-approval for PEPs. Q4: ongoing monitoring — daily, weekly, monthly? Daily for high-risk, weekly for medium, monthly for low. Perfect. Design summary: 1. async World-Check One with 4-hour SLA. 2. async internal blacklist check. 3. sync eKYC document verification. 4. push AML transaction monitoring with idempotency keys. 5. PEP → manual review, no auto-approval. 6. ongoing monitoring: daily/weekly/monthly by risk class. 7. audit trail: 7-year retention, queryable, immutable. Did I capture everything? Two more things. First: the audit trail must include the FCC analyst decision, not just the system. Second: sanctions hits trigger a hard-block — no manual override. Override is regulator-reportable. Got it. Draft by next Wednesday, design review with you the following Monday."</blockquote><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>"KYC 流程需要 4 个集成点。World-Check One 做制裁和 PEP 筛查。内部黑名单做已知欺诈者。证件验证通过 eKYC 厂商。AML 交易监控喂给做持续监控。好。我确认一下 4 个集成点和审计日志要求。每个集成点需要不可变审计日志——谁筛查了谁、何时、结果。对吗？对。审计日志必须可被 FCC 查询 7 年。无例外。明白。7 年保留、可查询、不可变。现在设计问题。Q1：World-Check One——同步还是异步？同步则用户等。异步则用户提交，得到"待审"状态。银行标准是什么？异步，4 小时 SLA。Q2：AML 交易监控——推还是拉？推则每笔交易发到 AML。拉则 AML 读我们的账本。银行标准是什么？推，带幂等键。每笔交易有唯一键。AML 按键去重。这是监管要求——重复交易是 P1 发现项。Q3：PEP 筛查——自动拒绝、带 flag 自动通过、还是人工审？PEP 全人工审。PEP 不自动通过。Q4：持续监控——日、周、月？高风险日刷，中风险周刷，低风险月刷。好。设计总结：1. 异步 World-Check One 配 4 小时 SLA。2. 异步内部黑名单检查。3. 同步 eKYC 证件验证。4. 推 AML 交易监控配幂等键。5. PEP → 人工审，不自动通过。6. 持续监控：按风险分日/周/月。7. 审计日志：7 年保留、可查询、不可变。我都记下了吗？还有两件事。第一：审计日志必须包含 FCC 分析员的决策，不只是系统的。第二：制裁命中触发硬阻塞——不能人工覆盖。覆盖需要上报监管。好。下周三前起草，下下周一跟你做设计评审。"</p></div><h3>Exercise 2 — Spot the KYC mistake</h3><p>Which of these is the most TL-as-FCC-aligned design?</p><ol><li>Sync World-Check One. The user waits. We have a 30-second SLA.</li><li>Async World-Check One with 4-hour SLA. Push AML with idempotency keys. PEP → manual review. Sanctions hit = hard-block. Audit trail: 7-year retention, queryable, immutable. FCC analyst decision in audit trail.</li><li>Auto-approve PEPs if their risk score is below threshold.</li><li>We do not need an audit trail — that is a logging concern.</li></ol><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>② is FCC-aligned. ① violates async standard. ③ violates PEP bank standard. ④ violates audit trail requirement. A common mistake is treating KYC/AML as just compliance — but in a bank, these are TL design requirements, not afterthoughts.</p></div><h3>Exercise 3 — Your turn</h3><p>Your new feature is a high-value transfer (>USD 100k) between two customers. It needs: (a) World-Check One screening, (b) internal blacklist check, (c) AML transaction monitoring, (d) audit trail. Design the integration in English. Use sync/async, push/pull, idempotency keys, hard-blocks, audit trail, design summary.</p><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button><div class="answer-box" style="display:none;"><p>"Design summary for high-value transfer: (1) Async World-Check One with 4-hour SLA — both sender and recipient screened. (2) Async internal blacklist check for both parties. (3) Sync AML transaction monitoring — push the transfer with idempotency key before the money moves. AML returns approve/reject in real time. (4) Sanctions hit = hard-block, no override. Override is regulator-reportable. (5) PEP or sanctions hit → manual FCC review. (6) Audit trail: 7-year retention, queryable, immutable. Include the FCC analyst decision, not just the system. Did I capture everything?"</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="banking-systems-integration.html" class="btn btn-primary">Next: Article 20: Banking Systems & Integration →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

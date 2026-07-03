@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 17: Handling a Production Incident Escalation | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">17 · Handling a Production Incident Escalation</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Handling a Production Incident Escalation</h1>
+        <p class="subtitle">Article 17 · Module 4: Difficult Conversations · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Incident command, war-room discipline, calm under pressure, post-mortem ownership</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday, 9:47 PM HKT</strong>. You are at home. Your phone rings. <strong>Diego</strong> (UK on-call) is on the line. The payment service is down. 3,000 transactions queued. P1 incident. You are the most senior engineer online in HK.</p><p>周五晚9:47香港时间。你在家。电话响了。<strong>Diego</strong>（英国 on-call）在线上。支付服务挂了。3000 笔交易排队。P1 事件。你是香港能联系上的最资深工程师。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Diego (UK on-call, phone):</span><span class="text"><span class="en">Wei, <em>P1 incident. Payment service is down.</em> <em>3,000 transactions queued, growing at 200/min.</em> <em>I am the incident commander.</em> <em>Need you as engineering lead.</em></span><span class="cn">Wei，<em>P1 事件。支付服务挂了。</em><em>3000 笔交易排队，每分钟涨 200。</em><em>我是 incident commander。</em><em>需要你做工程 lead。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>On it.</em> <em>Opening my laptop.</em> <em>What is the war-room channel?</em> <em>Who is in it?</em></span><span class="cn"><em>马上。</em><em>开电脑。</em><em>War-room 频道是哪个？</em><em>谁在里面？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Diego:</span><span class="text"><span class="en"><em>War-room: #incident-pay-2024-07-04.</em> <em>Me, SRE James from London, the SRE from Shanghai.</em> <em>I have notified the bank comms team.</em></span><span class="cn"><em>War-room：#incident-pay-2024-07-04。</em><em>我、伦敦 SRE James、上海 SRE。</em><em>已经通知银行 comms 团队。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, joining war-room):</span><span class="text"><span class="en"><em>I am in.</em> <em>Status snapshot: payment service down, 3k queued, 200/min growth.</em> <em>Diego is IC.</em> <em>I am engineering lead.</em> <em>Three things in parallel:</em> (1) <em>stop the bleed</em> — <em>is the upstream still sending?</em> (2) <em>customer comms</em> — <em>what is the public-facing message?</em> (3) <em>root cause hypothesis</em> — <em>what changed in the last hour?</em></span><span class="cn"><em>到了。</em><em>状态快照：支付服务挂，3000 排队，每分钟涨 200。</em><em>Diego 是 IC。</em><em>我是工程 lead。</em><em>三件事并行：</em>(1) <em>止血</em>——<em>上游还在发吗？</em>(2) <em>客户沟通</em>——<em>对外公开说什么？</em>(3) <em>根因假设</em>——<em>过去一小时变了什么？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">SRE Shanghai:</span><span class="text"><span class="en"><em>Upstream is still sending.</em> <em>We cannot stop it without coordination with the upstream team.</em></span><span class="cn"><em>上游还在发。</em><em>不跟上游团队协调停不下来。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>OK, don't stop upstream.</em> <em>We'll let them queue.</em> <em>SRE Shanghai, throttle the consumer to 50/min so the queue doesn't grow.</em> <em>Diego, can you Slack the upstream team to throttle at source?</em></span><span class="cn"><em>好，不停上游。</em><em>让它们排队。</em><em>上海 SRE，把 consumer 限流到 50/分钟，别让队列再涨。</em><em>Diego，你能 Slack 上游团队源头限流吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Diego:</span><span class="text"><span class="en"><em>Done. Upstream team acknowledged. Throttling in 5 min.</em></span><span class="cn"><em>好了。上游团队确认。5 分钟内限流。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Good. Root cause: SRE Shanghai, what changed in the last hour?</em> <em>Deployment? Config change? Traffic spike?</em></span><span class="cn"><em>好。根因：上海 SRE，过去一小时变了什么？</em><em>发版？配置变更？流量尖峰？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">SRE Shanghai:</span><span class="text"><span class="en"><em>PR #442 — the thread pool config change — deployed 30 min before the incident.</em></span><span class="cn"><em>PR #442——线程池配置变更——事件前 30 分钟发版。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>That's our prime suspect.</em> <em>Roll back PR #442 now.</em> <em>SRE Shanghai, can you do the rollback in 2 min?</em></span><span class="cn"><em>头号嫌疑。</em><em>立即回滚 PR #442。</em><em>上海 SRE，2 分钟内能回滚吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">SRE Shanghai:</span><span class="text"><span class="en"><em>Rolling back. Done in 90 seconds.</em></span><span class="cn"><em>回滚中。90 秒内完成。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, 10 min later):</span><span class="text"><span class="en"><em>Status?</em></span><span class="cn"><em>状态？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">SRE Shanghai:</span><span class="text"><span class="en"><em>Queue draining. Down to 800 transactions. Throughput back to normal.</em></span><span class="cn"><em>队列在排空。降到 800 笔。吞吐回到正常。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Incident contained.</em> <em>Diego, can you mark P1 → P3 and post the all-clear?</em> <em>Post-mortem owner: me.</em> <em>Post-mortem due: Wednesday.</em> <em>All-clear to comms team.</em></span><span class="cn"><em>事件已遏制。</em><em>Diego，能把 P1 → P3 标一下并发全清通知吗？</em><em>Post-mortem owner：我。</em><em>Post-mortem 截止：周三。</em><em>通知 comms 团队。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Diego:</span><span class="text"><span class="en"><em>Done. Thanks all. War-room closing in 5 min.</em></span><span class="cn"><em>好了。谢谢各位。War-room 5 分钟后关。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, post-war-room, Slack DM to Diego):</span><span class="text"><span class="en">Diego — <em>clean incident command.</em> <em>Three things I want to add to the post-mortem:</em> (1) <em>why did PR #442 skip the canary?</em> (2) <em>why did the thread-pool config not have a circuit breaker?</em> (3) <em>why did upstream not have backpressure?</em> <em>Wednesday, post-mortem doc.</em></span><span class="cn">Diego——<em>incident command 很干净。</em><em>post-mortem 里要加三件事：</em>(1) <em>为什么 PR #442 跳过了金丝雀？</em>(2) <em>为什么线程池配置没有熔断器？</em>(3) <em>为什么上游没有背压？</em><em>周三，post-mortem 文档。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Open</span> <em>On it. Opening my laptop. War-room channel?</em></span><span class="chinese">马上。开电脑。War-room 频道是哪个？</span><span class="note">When paged at 9:47 PM, the first 30 seconds set the tone. Calm, on it, war-room channel.</span></li>
+<li><span class="english"><span class="tag">Status snapshot</span> <em>Status snapshot: payment service down, 3k queued, 200/min growth.</em></span><span class="chinese">状态快照：支付服务挂，3000 排队，每分钟涨 200。</span><span class="note">Open with a status snapshot. Everyone in the war-room is now on the same page.</span></li>
+<li><span class="english"><span class="tag">Roles</span> <em>Diego is IC. I am engineering lead.</em></span><span class="chinese">Diego 是 IC。我是工程 lead。</span><span class="note">IC = incident commander. The IC owns the war-room; engineering lead owns the technical decisions.</span></li>
+<li><span class="english"><span class="tag">Three things in parallel</span> <em>Three things in parallel: stop the bleed, customer comms, root cause hypothesis.</em></span><span class="chinese">三件事并行：止血、客户沟通、根因假设。</span><span class="note">Three parallel tracks. The war-room does not wait for one to finish before starting the next.</span></li>
+<li><span class="english"><span class="tag">Stop the bleed</span> <em>Stop the bleed. Throttle, not stop.</em></span><span class="chinese">止血。限流，不是停。</span><span class="note">Stop the bleeding first. Throttling is the safest stop.</span></li>
+<li><span class="english"><span class="tag">Prime suspect</span> <em>That's our prime suspect. Roll back.</em></span><span class="chinese">头号嫌疑。回滚。</span><span class="note">Frame the suspicion as 'prime suspect', not 'I think this is the cause'. Then roll back. The post-mortem confirms.</span></li>
+<li><span class="english"><span class="tag">Roll back</span> <em>Roll back PR #442 now. Can you do the rollback in 2 min?</em></span><span class="chinese">立即回滚 PR #442。2 分钟内能回滚吗？</span><span class="note">Roll back first, debug later. The cost of a wrong rollback is small; the cost of a 4-hour P1 is huge.</span></li>
+<li><span class="english"><span class="tag">Post-mortem owner</span> <em>Post-mortem owner: me. Post-mortem due: Wednesday.</em></span><span class="chinese">Post-mortem owner：我。Post-mortem 截止：周三。</span><span class="note">Always name the post-mortem owner. 'Me' is fine — it shows ownership.</span></li>
+<li><span class="english"><span class="tag">Three things to add</span> <em>Three things I want to add to the post-mortem: why, why, why.</em></span><span class="chinese">post-mortem 里要加三件事：为什么、为什么、为什么。</span><span class="note">Post-mortem is blameless, but it is also curious. Three 'why' questions beat one.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>P1 incident</strong> n.. A highest-severity production incident with major customer impact. P1 事件</li>
+<li><strong>Incident commander (IC)</strong> n.. The person who owns the war-room and the decisions. 事件指挥官</li>
+<li><strong>War-room</strong> n.. A dedicated chat channel for real-time incident handling. 战时频道</li>
+<li><strong>Status snapshot</strong> n.. A 30-second summary of where the incident stands. 状态快照</li>
+<li><strong>Stop the bleed</strong> v.. To take the immediate action that stops the incident from growing. 止血</li>
+<li><strong>Throttle at source</strong> v.. To reduce the rate at the upstream service, not at the consumer. 源头限流</li>
+<li><strong>Backpressure</strong> n.. A mechanism where a slow consumer signals the producer to slow down. 背压</li>
+<li><strong>Roll back</strong> v.. To revert a deployment to the previous version. 回滚</li>
+<li><strong>Post-mortem</strong> n.. A blameless document analyzing what happened and what to fix. Post-mortem 复盘</li>
+<li><strong>Blameless post-mortem</strong> n.. A post-mortem focused on systems, not individuals. 无指责复盘</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'On it. Opening my laptop.' — the calm opener</h3><p>When paged, open with <em>on it / I am in / I am here</em>. Calm beats panicky. The first 30 seconds set the war-room tone.</p><p>被呼叫时用 <em>on it / I am in</em> 开头。冷静胜过慌张。</p>
+<h3>② 'Three things in parallel: X, Y, Z' — the parallel tracks</h3><p>Use <em>three things in parallel: stop the bleed, customer comms, root cause hypothesis</em> to structure a war-room. The war-room does not wait.</p><p>用 <em>三件事并行</em> 结构化战时沟通。</p>
+<h3>③ 'That is our prime suspect. Roll back.' — rollback framing</h3><p>Frame the suspected cause as <em>prime suspect</em>, not <em>I think this is the cause</em>. Then roll back. The post-mortem confirms.</p><p>把怀疑的原因框定为 <em>头号嫌疑</em>，然后回滚。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Calm sets the tone.</strong> The first 30 seconds of the war-room set the tone. On it beats Oh no.</li>
+<li><strong>Status snapshot in 30 seconds.</strong> Everyone in the war-room is on the same page.</li>
+<li><strong>Three parallel tracks.</strong> Stop the bleed, customer comms, root cause hypothesis. Do not wait.</li>
+<li><strong>Throttle, not stop.</strong> Throttling is the safest stop. Stopping requires coordination.</li>
+<li><strong>Roll back first, debug later.</strong> The cost of a wrong rollback is small; the cost of a 4-hour P1 is huge.</li>
+<li><strong>Always name the post-mortem owner and due date.</strong> Me, Wednesday shows ownership.</li>
+<li><strong>Post-mortem is blameless, but it is also curious.</strong> Three why questions beat one.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the incident handling</h3><p>Translate the following incident handling into natural Chinese.</p><blockquote>"On it. Opening my laptop. War-room channel? Status snapshot: payment service down, 3k queued, 200/min growth. Diego is IC. I am engineering lead. Three things in parallel: stop the bleed — is the upstream still sending? customer comms — what is the public-facing message? root cause hypothesis — what changed in the last hour? Upstream is still sending. We cannot stop it without coordination. OK, do not stop upstream. We will let them queue. SRE Shanghai, throttle the consumer to 50/min so the queue does not grow. Diego, can you Slack the upstream team to throttle at source? Done. Upstream team acknowledged. Throttling in 5 min. Good. Root cause: what changed in the last hour? Deployment? Config change? Traffic spike? PR #442 — the thread pool config change — deployed 30 min before the incident. That is our prime suspect. Roll back PR #442 now. Rolling back. Done in 90 seconds. Status? Queue draining. Down to 800 transactions. Throughput back to normal. Incident contained. Diego, can you mark P1 → P3 and post the all-clear? Post-mortem owner: me. Post-mortem due: Wednesday."</blockquote><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>"马上。开电脑。War-room 频道是哪个？状态快照：支付服务挂，3000 排队，每分钟涨 200。Diego 是 IC。我是工程 lead。三件事并行：止血——上游还在发吗？客户沟通——对外公开说什么？根因假设——过去一小时变了什么？上游还在发。不跟上游团队协调停不下来。好，不停上游。让它们排队。上海 SRE，把 consumer 限流到 50/分钟，别让队列再涨。Diego，你能 Slack 上游团队源头限流吗？好了。上游团队确认。5 分钟内限流。好。根因：过去一小时变了什么？发版？配置变更？流量尖峰？PR #442——线程池配置变更——事件前 30 分钟发版。头号嫌疑。立即回滚 PR #442。回滚中。90 秒内完成。状态？队列在排空。降到 800 笔。吞吐回到正常。事件已遏制。Diego，能把 P1 → P3 标一下并发全清通知吗？Post-mortem owner：我。Post-mortem 截止：周三。"</p></div><h3>Exercise 2 — Spot the war-room mistake</h3><p>Which of these is the most TL-as-war-room-lead (calm, structured, owns the post-mortem)?</p><ol><li>Oh no. What do we do? Someone help!</li><li>Status: P1, payment down. I am IC. Three things in parallel: stop the bleed, customer comms, root cause. Diego, throttle upstream. SRE Shanghai, throttle consumer. Roll back PR #442 now. Post-mortem owner: me, due Wednesday.</li><li>I think it is the database. Let me check.</li><li>Wait for senior to come online. Do not roll back yet.</li></ol><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>② is the war-room lead. ① is panic. ③ is debugging during the war-room (wrong order — stop the bleed first). ④ is paralysis. A common mistake is debugging during the war-room. The war-room is for stopping the bleed, not for understanding. The post-mortem is for understanding.</p></div><h3>Exercise 3 — Your turn</h3><p>You are paged at 11:00 PM. The mobile app is throwing 500 errors on login. Diego is the IC, you are the engineering lead. Last hour: 2 deployments (PR #501 and PR #503). PR #501 is a config change to the auth service. PR #503 is a UI bug fix. War-room is #incident-mobile-2024-08-01. Write your war-room opening lines and the 3 parallel tracks in English.</p><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button><div class="answer-box" style="display:none;"><p>"On it. Opening my laptop. War-room channel: #incident-mobile-2024-08-01. Status snapshot: mobile app throwing 500 on login. Diego is IC. I am engineering lead. Three things in parallel: (1) stop the bleed — can we route mobile traffic to the old auth endpoint while we debug? (2) customer comms — what is the public-facing message? The status page should say we are investigating login issues. (3) root cause hypothesis — what changed in the last hour? Two deployments: PR #501 (auth config) and PR #503 (UI bug fix). PR #501 is the prime suspect. Diego, can you throttle mobile traffic to the old auth endpoint? SRE Shanghai, roll back PR #501 now. Post-mortem owner: me, due Wednesday."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="banking-compliance-tech-lead.html" class="btn btn-primary">Next: Article 18: Banking Compliance for Tech Leads →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

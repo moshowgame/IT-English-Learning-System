@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: Tech Debt Sprint Planning | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">10 · Tech Debt Sprint Planning</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Tech Debt Sprint Planning</h1>
+        <p class="subtitle">Article 10 · Module 2: Design & Code Quality · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Negotiating tech-debt capacity with PM, framing ROI, sequencing</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday, 11:00 AM HKT</strong>. Sprint planning for the next 2-week sprint. <strong>James (PO)</strong> wants 100% feature capacity. You, as TL, are pushing for <em>20% tech-debt capacity</em>. You have a backlog of 8 tech-debt items. The squad has 8 story points per developer.</p><p>周五上午11点香港时间。下个 2 周 Sprint 计划会。<strong>James（PO）</strong>想要 100% 业务功能容量。你作为 TL 争取 <em>20% 技术债容量</em>。你有一个 8 项的技术债 backlog。Squad 每人每 Sprint 8 个 story point。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">James (PO):</span><span class="text"><span class="en">Wei, <em>I need 100% feature capacity next sprint.</em> The regulator demo is in 3 weeks. <em>Can we push all tech debt to the sprint after?</em></span><span class="cn">Wei，<em>下个 Sprint 我需要 100% 业务功能容量。</em>3 周后监管 demo。<em>技术债能不能都推到下下个 Sprint？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">James, <em>I hear the deadline pressure</em> — but <em>pushing all tech debt is a false economy.</em> <em>Two of the 8 items are blocking the demo</em> — the audit-log retention bug and the rate-limiter reset. <em>The other 6 can wait.</em></span><span class="cn">James，<em>我理解 deadline 压力</em>——但<em>全部推后是假节约。</em><em>8 项里有 2 项阻塞 demo</em>——审计日志保留时长 bug 和限流器 reset。<em>另外 6 项可以等。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>Why are they blocking?</em> The features work, right?</span><span class="cn"><em>为什么阻塞？</em>功能不是跑得起来吗？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>The features work today, but they won't survive the demo.</em> The audit-log bug means <em>we can't produce the regulator's retention report</em>. The rate-limiter bug means <em>we'll throttle legitimate traffic</em> when the demo goes live. <em>Both are 1-point fixes.</em></span><span class="cn"><em>今天跑得起来，但撑不过 demo。</em>审计日志 bug 意味着<em>我们交不出监管要的保留时长报告</em>。限流器 bug 意味着<em>demo 上线后正常流量会被限流</em>。<em>都是 1 点的修复。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en">OK, <em>2 points is fine.</em> What about the other 6?</span><span class="cn">OK，<em>2 点可以。</em>其他 6 项呢？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>None of them are demo-blocking, but one is a slow-burn risk.</em> The Kafka consumer-group rebalance has been <em>causing 5-minute outages</em> every 2 weeks for 3 months. <em>It's a 3-point fix and it eats one full day of on-call pain per month.</em> <em>I'd like to take it.</em></span><span class="cn"><em>都不阻塞 demo，但有一项是慢燃风险。</em>Kafka consumer-group rebalance 已经<em>3 个月每 2 周造成 5 分钟故障</em>。<em>3 点修复，每月能省一天的 on-call 痛苦。</em><em>我想接。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>5 points out of 48 is a lot.</em></span><span class="cn"><em>5 点（48 点里）太多了。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>5 points is 10% capacity.</em> <em>90% on features.</em> <em>The 2 demo-blockers are non-negotiable.</em> The Kafka fix <em>is a one-time investment that pays back every month</em>. <em>Compromise: take the 2 demo-blockers this sprint, queue the Kafka fix as the first item of next sprint.</em> <em>That keeps us at 4% tech-debt this sprint and 8% next sprint.</em></span><span class="cn"><em>5 点是 10% 容量。</em><em>90% 投业务。</em><em>2 个 demo 阻塞项不可谈。</em>Kafka 修复<em>是一次性投资，每月都有回报</em>。<em>折中：demo 阻塞项本 Sprint 修，Kafka 排下个 Sprint 第一项。</em><em>本 Sprint 4% 技术债，下个 Sprint 8%。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en">Deal. <em>Can you write up the 2 demo-blockers in the sprint goal doc?</em> <em>I want them visible to the regulator track lead.</em></span><span class="cn">成交。<em>你能把 2 个 demo 阻塞项写到 Sprint 目标文档里吗？</em><em>我想让监管 track lead 看到。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Done. <em>I'll also add the 6 deferred items to the tech-debt backlog with ROI tags</em> — <em>so when we come back to this in 6 weeks, we have the data.</em></span><span class="cn">好。<em>我也会把 6 个延后的加进技术债 backlog，带 ROI 标签</em>——<em>6 周后回头看时数据都在。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Acknowledge</span> <em>I hear the deadline pressure.</em></span><span class="chinese">我理解 deadline 压力。</span><span class="note">Acknowledge first, then push. Otherwise you're just saying 'no'.</span></li>
+<li><span class="english"><span class="tag">Frame</span> <em>Pushing all tech debt is a false economy.</em></span><span class="chinese">全部推后是假节约。</span><span class="note">Reframe the 'all or nothing' to a 'which ones are critical'.</span></li>
+<li><span class="english"><span class="tag">Demo-blocker</span> <em>Two of the 8 items are blocking the demo.</em></span><span class="chinese">8 项里有 2 项阻塞 demo。</span><span class="note">Demo-blockers are non-negotiable. Non-demo-blockers are negotiable.</span></li>
+<li><span class="english"><span class="tag">ROI</span> <em>One-time investment that pays back every month.</em></span><span class="chinese">一次性投资，每月都有回报。</span><span class="note">Frame tech debt as ROI, not as cost. 'Hours saved per month' beats 'I don't like this code'.</span></li>
+<li><span class="english"><span class="tag">Compromise</span> <em>Take the 2 demo-blockers this sprint, queue the Kafka fix as the first item of next sprint.</em></span><span class="chinese">demo 阻塞项本 Sprint 修，Kafka 排下个 Sprint 第一项。</span><span class="note">Always have a compromise ready: this sprint + next sprint split.</span></li>
+<li><span class="english"><span class="tag">Visible</span> <em>I want them visible to the regulator track lead.</em></span><span class="chinese">我想让监管 track lead 看到。</span><span class="note">Make tech debt visible to the stakeholder that cares. They become your champion.</span></li>
+<li><span class="english"><span class="tag">Data</span> <em>Add the 6 deferred items to the tech-debt backlog with ROI tags.</em></span><span class="chinese">把 6 个延后的加进技术债 backlog，带 ROI 标签。</span><span class="note">Don't lose the items you didn't take. Tag them with ROI so the next conversation is data-driven.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Tech debt</strong> n.. Suboptimal code/design that slows future development. 技术债</li>
+<li><strong>Tech-debt capacity</strong> n.. The percentage of sprint capacity reserved for tech-debt work. 技术债容量</li>
+<li><strong>False economy</strong> n.. A saving that costs more in the long run. 假节约</li>
+<li><strong>Demo-blocker</strong> n.. A bug or tech-debt item that prevents a planned demo from succeeding. Demo 阻塞项</li>
+<li><strong>Audit-log retention</strong> n.. How long logs are kept, often required by regulators (e.g., 7 years). 审计日志保留</li>
+<li><strong>Rate limiter</strong> n.. A component that caps the number of requests per second. 限流器</li>
+<li><strong>Slow-burn risk</strong> n.. A risk that doesn't block today but accumulates pain over time. 慢燃风险</li>
+<li><strong>Consumer-group rebalance</strong> n.. Kafka's mechanism for redistributing partitions across consumers. 消费者组再平衡</li>
+<li><strong>On-call pain</strong> n.. The operational burden of being paged for production issues. On-call 痛苦</li>
+<li><strong>ROI tag</strong> n.. A label on a tech-debt item quantifying the expected return. ROI 标签</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'I hear the X' — acknowledge before push</h3><p>Use <em>I hear the X / I understand the X / I get the X</em> to acknowledge the other side's pressure. Then push. <em>I hear the deadline pressure, but…</em></p><p>用 <em>I hear the X</em> 先认后推。</p>
+<h3>② 'That's a false economy' — the cost-frame reframe</h3><p>Use <em>that's a false economy / that's short-term thinking / that costs us later</em> to reframe cost conversations.</p><p>用 <em>that's a false economy</em> 重新框定成本对话。</p>
+<h3>③ 'Compromise: X this sprint, Y next sprint' — the split</h3><p>Use <em>compromise: this sprint X, next sprint Y</em> when both sides have valid points. The split gives both sides a win.</p><p>用 <em>this sprint X, next sprint Y</em> 分摊。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Acknowledge the pressure first.</strong> 'I hear the deadline' before 'but pushing all is a false economy'.</li>
+<li><strong>Demo-blockers are non-negotiable.</strong> Non-demo-blockers are negotiable.</li>
+<li><strong>Frame tech debt as ROI, not as cost.</strong> 'Hours saved per month' beats 'I don't like this code'.</li>
+<li><strong>Always have a compromise ready.</strong> 'This sprint 2, next sprint 1' is a 60% win, not 100%.</li>
+<li><strong>Make tech debt visible to the stakeholder that cares.</strong> They become your champion.</li>
+<li><strong>Tag the items you didn't take with ROI.</strong> The next conversation is data-driven, not opinion-driven.</li>
+<li><strong>Document the split in the sprint goal doc.</strong> If it's not in the doc, it didn't happen.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the tech-debt negotiation</h3>
+    <p>Translate the following negotiation into natural Chinese.</p>
+    <blockquote>"I hear the deadline pressure — but pushing all tech debt is a false economy. Two of the 8 items are blocking the demo — the audit-log retention bug and the rate-limiter reset. The other 6 can wait. The features work today, but they won't survive the demo. The audit-log bug means we can't produce the regulator's retention report. The rate-limiter bug means we'll throttle legitimate traffic. Both are 1-point fixes. The Kafka consumer-group rebalance has been causing 5-minute outages every 2 weeks for 3 months. It's a 3-point fix and it eats one full day of on-call pain per month. Compromise: take the 2 demo-blockers this sprint, queue the Kafka fix as the first item of next sprint. That keeps us at 4% tech-debt this sprint and 8% next sprint."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"我理解 deadline 压力——但全部推后是假节约。8 项里有 2 项阻塞 demo——审计日志保留时长 bug 和限流器 reset。其他 6 项可以等。今天跑得起来，但撑不过 demo。审计日志 bug 意味着我们交不出监管要的保留时长报告。限流器 bug 意味着 demo 上线后正常流量会被限流。都是 1 点的修复。Kafka consumer-group rebalance 已经 3 个月每 2 周造成 5 分钟故障。3 点修复，每月能省一天的 on-call 痛苦。折中：demo 阻塞项本 Sprint 修，Kafka 排下个 Sprint 第一项。本 Sprint 4% 技术债，下个 Sprint 8%。"</p></div>
+    <h3>Exercise 2 — Spot the TL mistake</h3>
+    <p>Which of these is the most 'TL-as-tech-debt-champion' move?</p>
+    <ol><li>'No, I need 30% tech-debt capacity. Final answer.'</li><li>'Tech debt is important, but I can't fight the PO this sprint. We'll see next sprint.'</li><li>'I hear the deadline. 2 demo-blockers this sprint, Kafka fix first item next sprint. 4% this sprint, 8% next.'</li><li>'You don't understand. The code is bad. We need to refactor.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>③ is the TL-as-champion move. ① is gate-keeping. ② is capitulation. ④ is opinion-driven. A common mistake is either all-or-nothing or zero. The TL's job is to negotiate the 60% win that the squad can actually ship.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>Your PO wants 100% feature capacity. You have 4 tech-debt items: (a) 1-point broken health-check blocking prod deploy, (b) 2-point refactor of legacy auth, (c) 1-point flaky test blocking CI, (d) 3-point monolith-to-microservice split. Negotiate in English. Use 'I hear the X' / 'false economy' / 'compromise'.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"I hear the deadline pressure. But of the 4 items, 2 are deploy-blockers — the health-check and the flaky test. Both are 1-point fixes. The legacy-auth refactor is 2 points and de-risks next quarter's PCI audit. The monolith split is 5 points and not negotiable this quarter. Compromise: take the 2 deploy-blockers this sprint, queue the auth refactor as first item next sprint, defer the monolith split to Q3. That keeps us at 4% tech-debt this sprint and 6% next. Deal?"</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="code-review-summary-email.html" class="btn btn-primary">Next: Article 11: Code Review Summary Email →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

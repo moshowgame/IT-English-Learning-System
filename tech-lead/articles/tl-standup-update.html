@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 01: Tech Lead Standup Update | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">01 · Tech Lead Standup Update</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Tech Lead Standup Update</h1>
+        <p class="subtitle">Article 01 · Module 1: Daily Tech-Lead Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 TL standup rhythm: capacity, blockers, sprint health, escalations</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>10:00 AM HKT</strong>. Your squad's daily standup runs on Microsoft Teams. You are the <em>Tech Lead</em> for the <em>Mobile Onboarding</em> squad, supporting 5 developers across the UK, Hong Kong, and India. Joining the standup are: <strong>Sarah</strong>, your Scrum Master (London), <strong>Raj</strong>, a senior developer (Bangalore), and <strong>Lin</strong>, a backend dev (Hong Kong).</p>
+        <p>上午10点香港时间，你的 squad 在 Teams 上开每日站会。你是<em>移动开户</em>squad 的 <em>Tech Lead</em>，带领 5 名分布在英国、香港和印度的开发。参会有：Scrum Master Sarah（伦敦）、高级开发 Raj（班加罗尔），以及后端开发 Lin（香港）。</p>
+        <p>Unlike a developer's standup, your update focuses on <strong>squad capacity, sprint burndown, blockers that need escalation, and any cross-team dependencies</strong>. You speak in squad-level language, not personal task status.</p>
+        <p>和开发人员不同，你的更新聚焦<strong>squad 容量、Sprint 燃尽、需升级的阻塞，以及跨团队依赖</strong>。用 squad 级别语言，而不是个人任务状态。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en">Morning, everyone. Wei, you first as TL.</span><span class="cn">大家早上好，Wei，TL 先来。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Morning. <strong>Squad update from me.</strong></span><span class="cn">早上好，squad 层面同步一下。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><em>Sprint health</em> is <em>amber</em> — we're <em>3 points behind</em> on the burndown. Two stories: <em>ONB-204</em> (eKYC vendor callback) is <em>on track</em>, but <em>ONB-218</em> (offline-first KYC capture) is <em>slipping</em> — the encryption-at-rest NFR is still <em>pending InfoSec sign-off</em>.</span><span class="cn">Sprint 状态<em>琥珀色</em>——燃尽落后 3 个点。两个故事：<em>ONB-204</em>（eKYC 厂商回调）按计划，但 <em>ONB-218</em>（离线优先 KYC 采集）<em>在滑</em>——静态加密 NFR 还在等 InfoSec 签批。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><em>Capacity check</em>: Raj is on PTO Thursday and Friday, and Lin is <em>paired with InfoSec</em> on the encryption work — so realistically we have <em>3.5 dev-days</em> at risk this week.</span><span class="cn">容量检查：Raj 周四周五休假，Lin 在和 InfoSec 配对做加密工作——所以这周实际有 <em>3.5 个开发日</em>风险。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><em>No hard blockers</em>, but <em>flagging a soft dependency</em> on the <em>Platform team</em> for the <em>mutual TLS certificate rotation policy</em> — if it doesn't land by Wednesday, I want to <em>pull ONB-218 from this sprint</em> and slot it into next.</span><span class="cn">没有硬阻塞，但<em>提一个软依赖</em>给 <em>Platform 团队</em>——<em>双向 TLS 证书轮换策略</em>。如果周三前不到位，我想把 ONB-218 拉出本 Sprint，放到下一个。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en">Understood. <em>Can you confirm the impact</em> if we have to pull it?</span><span class="cn">明白。拉出去的话，<em>能确认影响吗</em>？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Sure. Pulling ONB-218 means <em>the UAT window slips by one week</em>. We still <em>meet the regulator milestone</em> on 31st because we have <em>two weeks of buffer</em>. I'd rather <em>trade sprint scope for a clean NFR sign-off</em> than <em>ship and rework</em>.</span><span class="cn">可以。拉出去意味着 <em>UAT 窗口推迟一周</em>。但 31 号的<em>监管里程碑</em>不受影响，因为有<em>两周缓冲</em>。我宁愿<em>用 Sprint 范围换干净的 NFR 签批</em>，也不要<em>上了再改</em>。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Open</span> <em>Squad update from me.</em></span>
+                <span class="chinese">squad 层面同步一下</span>
+                <span class="note">Mark yourself as TL. You're not speaking for yourself — you're speaking for the squad.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Sprint</span> <em>Sprint health is amber.</em></span>
+                <span class="chinese">Sprint 状态是琥珀色（中等风险）</span>
+                <span class="note">Use traffic-light language: green / amber / red. Everyone understands it instantly.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Capacity</span> <em>Capacity check: Raj is on PTO Thursday and Friday.</em></span>
+                <span class="chinese">容量检查：Raj 周四五休假</span>
+                <span class="note">Always surface PTO in your standup. The squad is only as available as its calendar says.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Soft</span> <em>Flagging a soft dependency on the Platform team.</em></span>
+                <span class="chinese">提一个软依赖给 Platform 团队</span>
+                <span class="note">Same politeness device architects use. Reserve "blocker" for things that stop the squad's day.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Trade sprint scope for a clean NFR sign-off.</em></span>
+                <span class="chinese">用 Sprint 范围换干净的 NFR 签批</span>
+                <span class="note">This is TL vocabulary. You always offer a trade — never just a complaint.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk</span> <em>Ship and rework is worse than pull and slot.</em></span>
+                <span class="chinese">上线再改比拉出再排更糟</span>
+                <span class="note">A TL's job is to protect quality. Always frame in terms of risk, not preference.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Impact</span> <em>Can you confirm the impact if we have to pull it?</em></span>
+                <span class="chinese">能确认影响吗</span>
+                <span class="note">SMs always ask about impact. Have a number ready: stories, points, days, regulator milestones.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Buffer</span> <em>We have two weeks of buffer to the regulator milestone.</em></span>
+                <span class="chinese">到监管里程碑有两周缓冲</span>
+                <span class="note">Buffer is your safety net. Always quantify it in weeks or days.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Sprint health</strong> n. Sprint 状态 TL's overall view of the sprint — green / amber / red.</li>
+            <li><strong>Burndown</strong> n. 燃尽图 Chart showing remaining story points vs. ideal pace.</li>
+            <li><strong>Capacity</strong> n. 容量 How much work the squad can deliver, given PTO, holidays, ceremonies.</li>
+            <li><strong>Squad</strong> n. 小队 HSBC's cross-functional delivery team — 6-9 people, 1 TL, 1 SM, devs, QA.</li>
+            <li><strong>Soft dependency</strong> n. 软依赖 Not blocking today, but will block in N days if not addressed.</li>
+            <li><strong>Hard blocker</strong> n. 硬阻塞 Something that stops the squad from making progress today.</li>
+            <li><strong>PTO (Paid Time Off)</strong> n. 休假 Annual leave, sick days, public holidays.</li>
+            <li><strong>Pair programming</strong> n. 结对编程 Two devs at one machine, one typing, one reviewing.</li>
+            <li><strong>NFR (Non-Functional Requirement)</strong> n. 非功能需求 Performance, security, scalability — must be quantified.</li>
+            <li><strong>Regulator milestone</strong> n. 监管里程碑 A binding date set by HKMA, MAS, FCA, or another regulator.</li>
+            <li><strong>Buffer</strong> n. 缓冲 Time built into the plan to absorb slips.</li>
+            <li><strong>Pull (a story)</strong> v. 拉出 Remove a story from the current sprint and slot it into the next.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Squad update from me" — speaking for the team, not yourself</h3>
+        <p>As a TL, your standup is not about <em>what I did</em> — it's about <em>what we did and what we need</em>. Use <strong>squad / we / the team</strong> instead of <em>I</em> in 80% of your sentences. Save <em>I</em> for personal actions like "I raised the escalation".</p>
+        <p>TL 的站会不是说<em>我做了什么</em>——而是<em>我们做了什么，需要什么</em>。80% 句子用 squad/we/team 而不是 I。</p>
+        <h3>② "Is amber" / "is slipping" — naming the risk, not hiding it</h3>
+        <p>TLs don't say "everything is fine" until it's red — they say <em>is amber</em> or <em>is at risk</em> early. This gives the SM time to act. Use present-tense state-of-being: <em>is on track / is slipping / is blocked</em>.</p>
+        <p>TL 不要等到红了才说"有问题"——早一点用<em>琥珀色 / 有风险</em>。用现在时：<em>is on track / is slipping / is blocked</em>。</p>
+        <h3>③ "Trade X for Y" — the TL's signature frame</h3>
+        <p>Every TL decision is a trade. Use <em>trade X for Y</em> or <em>swap X for Y</em> to frame it: <em>trade sprint scope for a clean NFR sign-off</em>. This makes the trade visible and lets the SM push back if needed.</p>
+        <p>每个 TL 决策都是 trade。用 <em>trade X for Y</em> 来表达：<em>trade sprint scope for a clean NFR sign-off</em>。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>TL standup ≠ dev standup.</strong> Don't report your own stories. Report <em>squad health, capacity, escalations, cross-team dependencies</em>. Your value is at the team level.</li>
+            <li><strong>Always surface PTO.</strong> Hidden PTO = sprint surprise. A good TL says "Raj is on PTO Thursday" before anyone asks. Calendar is the source of truth.</li>
+            <li><strong>"Pull" is a polite word.</strong> Saying "I want to pull ONB-218" sounds much more professional than "we can't finish it". Both mean the same thing — but one is TL vocabulary.</li>
+            <li><strong>Buffer is political capital.</strong> Every buffer day is one day you can afford a slip. Spend it carefully. Don't burn buffer in sprint 1.</li>
+            <li><strong>Trade-off framing wins arguments.</strong> "We can't do it" loses. "We can do it if we trade ONB-218 for a clean NFR" wins. Always show the trade, not the complaint.</li>
+            <li><strong>Numbers beat adjectives.</strong> "3.5 dev-days at risk" is better than "we're tight on time". Quantify everything: points, days, weeks, NFRs, sign-offs.</li>
+            <li><strong>Regulator milestones are sacred.</strong> Never let a soft dependency put a regulator milestone at risk. Pull stories, not deadlines.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the TL standup</h3>
+        <p>Translate the following TL standup into natural Chinese. Pay attention to how the TL frames the capacity issue and the trade-off.</p>
+        <blockquote>
+            "Morning. Squad update. Sprint health is amber — we're 5 points behind on the burndown. Three stories: PAY-301 is on track, but PAY-314 (HSBCnet idempotency layer) is slipping because the Redis cluster upgrade is pending, and PAY-322 (regulator reporting) is blocked on the Model Risk team's sign-off. Capacity: two devs are on a training course Tuesday and Wednesday, so we have 2 dev-days at risk. No hard blockers, but flagging a soft dependency on the Model Risk team — if their sign-off doesn't land by Friday, I'll pull PAY-322 and slot it into next sprint. That trades one regulator-reporting story for a clean Model Risk sign-off. UAT window stays on track."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"早上好，squad 层面同步。Sprint 状态琥珀色——燃尽落后 5 个点。三个故事：PAY-301 按计划，但 PAY-314（HSBCnet 幂等层）在滑，Redis 集群升级还没做；PAY-322（监管报送）被 Model Risk 团队签批阻塞。容量：两个开发周二三在上课，所以有 2 个开发日风险。没有硬阻塞，但提一个软依赖给 Model Risk 团队——如果周五前签批不到位，我把 PAY-322 拉出本 Sprint，放到下一个。用一个监管报送故事换一个干净的 Model Risk 签批。UAT 窗口不变。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the TL mistake</h3>
+        <p>Which of these standup lines is most "TL-like" and which is most "dev-like"? Why?</p>
+        <ol>
+            <li>"Yesterday I finished the unit tests for the eKYC vendor callback. Coverage is at 91%."</li>
+            <li>"Squad update. Sprint health is amber — we're 3 points behind. ONB-218 is slipping because the NFR sign-off is pending."</li>
+            <li>"Yesterday I fixed the bug in the offline-first KYC capture. The fix is deployed to UAT."</li>
+            <li>"Capacity check: Lin is on PTO Wednesday, so I want to swap ONB-220 with ONB-225 to balance the load."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are TL-like (squad-level status, capacity trade). ① and ③ are dev-like (unit tests, bug fix). A common mistake new TLs make is dropping into personal implementation reports. Reframe yours at the squad and decision layer.</p>
+        </div>
+        <h3>Exercise 3 — Your turn</h3>
+        <p>It's 10:00 AM HKT. You're the TL for a 6-person squad. You have: (a) sprint health amber, 4 points behind, (b) one story slipping because InfoSec NFR sign-off is pending, (c) one dev on PTO tomorrow, (d) a soft dependency on the Platform team for Kafka topic-naming standard. Write your 60-second TL standup in English. Use at least 3 patterns from the Key Phrases section.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Morning. Squad update. Sprint health is amber — we're 4 points behind. One story is slipping because the InfoSec NFR sign-off is pending; I've booked a 30-min with the InfoSec lead to chase it. Capacity check: Anil is on PTO tomorrow, so we have 1 dev-day at risk. No hard blockers, but flagging a soft dependency on the Platform team for the Kafka topic-naming standard — if it doesn't land by Thursday, I'll pull that story and slot it into next sprint. Trade sprint scope for a clean naming standard. UAT window stays on track. Raj, you're next."</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="sprint-planning-lead.html" class="btn btn-primary">Next: Article 02 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

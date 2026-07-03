@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 11: Code Review Summary Email | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">11 · Code Review Summary Email</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Code Review Summary Email</h1>
+        <p class="subtitle">Article 11 · Module 3: Written Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Async written updates, structured review summaries, blockers up</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday, 6:00 PM HKT</strong>. You are wrapping up the week. Three PRs are still open: <strong>PR #428 (idempotency-key generator)</strong>, <strong>PR #431 (rate-limiter)</strong>, and <strong>PR #435 (audit-log retention)</strong>. You need to send a weekly code-review summary to the squad, your Chief Architect <strong>Margaret</strong>, and PM <strong>James</strong>.</p><p>周五晚6点香港时间。收尾这一周。还有 3 个 PR 开着：<strong>PR #428（幂等键生成器）</strong>、<strong>PR #431（限流器）</strong>、<strong>PR #435（审计日志保留）</strong>。你需要给 squad、首席架构师 <strong>Margaret</strong>、PM <strong>James</strong> 发一份本周 code review 摘要。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">You (TL, draft email):</span><span class="text"><span class="en">Subject: <em>Weekly code review summary — Week 27</em></span><span class="cn">主题：<em>本周 code review 摘要——第 27 周</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Hi all,</em></span><span class="cn"><em>大家好，</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Quick summary of the 3 open PRs and the 2 that merged this week.</em> <em>Two items need attention from Margaret and James</em> — flagged at the bottom.</span><span class="cn"><em>3 个未合并 PR 和 2 个本周已合并 PR 的简明摘要。</em><em>2 项需要 Margaret 和 James 关注</em>——在邮件底部标出。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Merged this week:</em></span><span class="cn"><em>本周已合并：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">✅ PR #419 (login refactor) — <em>merged, deployed to UAT, no regressions</em>.</span><span class="cn">✅ PR #419（登录重构）——<em>已合并，已部署 UAT，无回归</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">✅ PR #422 (Kafka consumer-group rebalance fix) — <em>merged, in canary, monitoring for 48h</em>.</span><span class="cn">✅ PR #422（Kafka consumer-group rebalance 修复）——<em>已合并，canary 中，监控 48 小时</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Open PRs:</em></span><span class="cn"><em>未合并 PR：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">🟡 PR #428 (idempotency-key generator) — <em>3 blocking items, 4 non-blocking suggestions</em>. <em>Author Lin targeting Monday.</em></span><span class="cn">🟡 PR #428（幂等键生成器）——<em>3 个阻塞项，4 个非阻塞建议</em>。<em>作者 Lin 计划周一完成</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">🟡 PR #431 (rate-limiter reset) — <em>2 blocking items, 1 design question</em>. <em>Need Margaret's view on the design — see comment thread.</em> ⚠️ <em>flagged for Margaret.</em></span><span class="cn">🟡 PR #431（限流器 reset）——<em>2 个阻塞项，1 个设计问题</em>。<em>需要 Margaret 对设计的意见——见评论串。</em>⚠️ <em>请 Margaret 关注。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">🟡 PR #435 (audit-log retention) — <em>compliance review pending, ETA Tuesday.</em> ⚠️ <em>flagged for James — this is the regulator demo item.</em></span><span class="cn">🟡 PR #435（审计日志保留）——<em>合规审核中，预计周二。</em>⚠️ <em>请 James 关注——这是监管 demo 项。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Two things I need from you:</em></span><span class="cn"><em>两件事需要你们支持：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Margaret</em> — <em>can you weigh in on PR #431's design comment by Monday?</em> The current approach works but I'm not sure it scales to 50k TPS.</span><span class="cn"><em>Margaret</em>——<em>周一前能在 PR #431 的设计评论里给个意见吗？</em>当前方案能用，但我不确定能不能撑到 5 万 TPS。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>James</em> — <em>can you confirm the regulator demo still uses 7-year retention, or has it changed?</em> PR #435's logic depends on the answer.</span><span class="cn"><em>James</em>——<em>能确认监管 demo 仍然是 7 年保留吗？还是变了？</em>PR #435 的逻辑取决于答案。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Thanks all — happy weekend.</em> Wei</span><span class="cn"><em>各位辛苦——周末愉快。</em>Wei</span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Subject</span> <em>Weekly code review summary — Week 27</em></span><span class="chinese">本周 code review 摘要——第 27 周</span><span class="note">Subject line is the only thing 80% of people read. Lead with what + when.</span></li>
+<li><span class="english"><span class="tag">Structure</span> <em>Quick summary of the X open PRs and the Y that merged.</em></span><span class="chinese">X 个未合并 PR 和 Y 个本周已合并 PR 的简明摘要。</span><span class="note">Structure first: open vs merged. Readers scan the structure, not the prose.</span></li>
+<li><span class="english"><span class="tag">Status icons</span> <em>✅ / 🟡 / ⚠️</em></span><span class="chinese">✅ / 🟡 / ⚠️</span><span class="note">Icons are scannable. ✅ merged, 🟡 in flight, ⚠️ needs action.</span></li>
+<li><span class="english"><span class="tag">Flag</span> <em>Flagged for Margaret / Flagged for James.</em></span><span class="chinese">请 Margaret 关注 / 请 James 关注</span><span class="note">Tag the action-owner in the email body. Don't make them guess.</span></li>
+<li><span class="english"><span class="tag">Ask</span> <em>Can you weigh in by Monday?</em></span><span class="chinese">周一前能给个意见吗？</span><span class="note">End with the ask. 'FYI' emails without an ask get archived, not answered.</span></li>
+<li><span class="english"><span class="tag">Blocker framing</span> <em>The current approach works but I'm not sure it scales to 50k TPS.</em></span><span class="chinese">当前方案能用，但我不确定能不能撑到 5 万 TPS。</span><span class="note">Frame the design question as a scaling concern, not a personal preference.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Code review summary</strong> n.. A weekly written digest of PR statuses and blockers. Code review 摘要</li>
+<li><strong>PR status</strong> n.. Where a PR stands: open, approved, merged, deployed. PR 状态</li>
+<li><strong>Regression</strong> n.. A new bug introduced by a code change. 回归</li>
+<li><strong>Canary</strong> n.. A deployment to a small percentage of traffic to test in production. 金丝雀发布</li>
+<li><strong>Design question</strong> n.. A PR comment that asks for a senior's view on the approach. 设计问题</li>
+<li><strong>Compliance review</strong> n.. A check by InfoSec/risk/compliance teams that a change meets regulations. 合规审核</li>
+<li><strong>ETA (Estimated Time of Arrival)</strong> n.. When something is expected to be done. 预计完成时间</li>
+<li><strong>TPS (Transactions Per Second)</strong> n.. A measure of system throughput. 每秒交易数</li>
+<li><strong>Flag for action</strong> v.. To mark an item as needing someone's attention. 标出需关注</li>
+<li><strong>FYI vs Ask</strong> n.. An 'FYI' is informational; an 'ask' requires action. 知会 vs 请求</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Quick summary of the X' — opening line</h3><p>Open with <em>quick summary of / quick update on / short note on</em>. This sets the register: not a novel, just the highlights.</p><p>用 <em>quick summary of / quick update on</em> 开头，定调。</p>
+<h3>② 'Can you weigh in by Monday?' — the closing ask</h3><p>Close every written update with a specific ask: <em>can you weigh in / can you confirm / can you review</em>. The closer is what gets action.</p><p>每封书面更新结尾用具体 ask。</p>
+<h3>③ 'The current approach works but…' — the design-question framing</h3><p>Frame a design question as a scaling or risk concern, not a personal preference. <em>It works, but I'm not sure it scales / I'm worried about the operational risk / I see a regulator exposure.</em></p><p>把设计问题框定为可扩展性或风险。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Subject line is everything.</strong> 80% of readers see the subject and decide whether to open. Lead with what + when.</li>
+<li><strong>Structure first: open vs merged.</strong> Readers scan the structure, not the prose.</li>
+<li><strong>Use icons (✅ 🟡 ⚠️) for scannability.</strong> A senior scans 20 emails a day. Make yours scannable.</li>
+<li><strong>Tag the action-owner in the body, not just in the To-line.</strong> 'Flagged for Margaret' is unmissable.</li>
+<li><strong>End with the ask.</strong> 'FYI' emails without an ask get archived.</li>
+<li><strong>Frame the design question as a scaling or risk concern.</strong> 'I'm not sure it scales' beats 'I don't like it'.</li>
+<li><strong>Keep it to 1 screen.</strong> If it's longer than 1 screen, the key items get lost.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the code review summary</h3>
+    <p>Translate the following weekly summary into natural Chinese.</p>
+    <blockquote>"Subject: Weekly code review summary — Week 27. Hi all. Quick summary of the 3 open PRs and the 2 that merged this week. Two items need attention from Margaret and James — flagged at the bottom. Merged this week: PR #419 (login refactor) — merged, deployed to UAT, no regressions. PR #422 (Kafka consumer-group rebalance fix) — merged, in canary, monitoring for 48h. Open PRs: PR #428 (idempotency-key generator) — 3 blocking items, 4 non-blocking suggestions. Author Lin targeting Monday. PR #431 (rate-limiter reset) — 2 blocking items, 1 design question. Need Margaret's view on the design — see comment thread. Flagged for Margaret. PR #435 (audit-log retention) — compliance review pending, ETA Tuesday. Flagged for James — this is the regulator demo item. Margaret — can you weigh in on PR #431's design comment by Monday? The current approach works but I'm not sure it scales to 50k TPS. James — can you confirm the regulator demo still uses 7-year retention, or has it changed? PR #435's logic depends on the answer. Thanks all — happy weekend. Wei."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"主题：本周 code review 摘要——第 27 周。大家好。3 个未合并 PR 和 2 个本周已合并 PR 的简明摘要。2 项需要 Margaret 和 James 关注——在邮件底部标出。本周已合并：PR #419（登录重构）——已合并，已部署 UAT，无回归。PR #422（Kafka consumer-group rebalance 修复）——已合并，canary 中，监控 48 小时。未合并 PR：PR #428（幂等键生成器）——3 个阻塞项，4 个非阻塞建议。作者 Lin 计划周一完成。PR #431（限流器 reset）——2 个阻塞项，1 个设计问题。需要 Margaret 对设计的意见——见评论串。请 Margaret 关注。PR #435（审计日志保留）——合规审核中，预计周二。请 James 关注——这是监管 demo 项。Margaret——周一前能在 PR #431 的设计评论里给个意见吗？当前方案能用，但我不确定能不能撑到 5 万 TPS。James——能确认监管 demo 仍然是 7 年保留吗？还是变了？PR #435 的逻辑取决于答案。各位辛苦——周末愉快。Wei。"</p></div>
+    <h3>Exercise 2 — Spot the email anti-pattern</h3>
+    <p>Which of these weekly code review summaries is the most 'TL-as-async-communicator'?</p>
+    <ol><li>'Hi all, lots of PRs this week. Reviewing them. Will update Monday.'</li><li>'Quick summary. 3 open, 2 merged. PR #428 has 3 blocking items. PR #431 needs Margaret's view. PR #435 needs James's confirmation. See comments for details. Thanks.'</li><li>'Long essay on every PR with full diff links and my opinions on each.'</li><li>'Quick summary. 3 open, 2 merged. PR #428 3 blocking items, author Lin Monday. PR #431 2 blocking + 1 design Q, flagged for Margaret by Monday. PR #435 compliance review ETA Tuesday, flagged for James.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>④ is the most scannable and action-oriented. ② is acceptable. ① is a non-update. ③ is a 5-screen novel. A common mistake is either (a) 'too short — no info' or (b) 'too long — 5 screens, key items lost'. The TL's job is to compress 50 PR comments into 1 screen.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>You have 4 open PRs this week: (a) PR #501 — payment retry logic, 1 blocking item, author Mei, (b) PR #502 — DB migration script, 2 blocking items, need DBA sign-off, (c) PR #503 — UI flag toggle, 3 blocking items, blocking mobile release, (d) PR #504 — observability dashboard, 0 blocking, just FYI. Write a 1-screen weekly summary email in English. Use icons. Tag the action-owner for each flagged item.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"Subject: Weekly PR summary — Week 30. Hi all. 4 open PRs, 0 merged this week (release freeze). Open: 🟡 PR #501 (payment retry logic) — 1 blocking item, author Mei targeting Mon. 🟡 PR #502 (DB migration) — 2 blocking items, need DBA sign-off. Flagged for [DBA name]. ⚠️ PR #503 (UI flag toggle) — 3 blocking items, blocking mobile release. Flagged for [Mobile TL name] — please prioritize. ✅ PR #504 (observability dashboard) — 0 blocking, FYI. Two asks: [DBA name] — can you sign off on PR #502 by Tuesday? The migration window is Friday night. [Mobile TL name] — can you align with Mei on the flag-toggle design? The mobile release is at risk. Thanks. Wei."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="adr-decision-email.html" class="btn btn-primary">Next: Article 12: Architecture Decision Record (ADR) Email →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

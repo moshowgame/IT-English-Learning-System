@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 03: Backlog Refinement as Tech Lead | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">03 · Backlog Refinement as Tech Lead</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Backlog Refinement as Tech Lead</h1>
+        <p class="subtitle">Article 03 · Module 1: Daily Tech-Lead Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Ask sharp questions, clarify AC, raise technical concerns</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday, 11:00 AM HKT</strong>. Your squad's weekly backlog refinement is running. The product owner, <strong>James</strong>, walks through 8 stories for the next sprint. Two of them have technical concerns: <em>ONE-401</em> requires integrating with a third-party sanctions list that has rate limits, and <em>ONE-415</em> involves storing PII data subject to <em>HKMA</em> reporting.</p>
+        <p>周四上午11点香港时间，你的 squad 周会 backlog refinement 正在进行。PO James 介绍下个 Sprint 的 8 个故事。其中 2 个有技术问题：<em>ONE-401</em> 需要对接有速率限制的第三方制裁名单，<em>ONE-415</em> 涉及存储受 <em>HKMA</em> 报送约束的 PII 数据。</p>
+        <p>As TL, your job is to: <strong>challenge assumptions, clarify acceptance criteria, surface technical risks</strong>. You are not the one writing the story — but you are the one who has to make it work.</p>
+        <p>作为 TL，你的职责：<strong>质疑假设、澄清验收标准、暴露技术风险</strong>。你不用写故事，但你要让它能跑通。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">OK, next one — <em>ONE-401</em>. We need to integrate with <em>Refinitiv's World-Check API</em> for sanctions screening. <em>Five points</em>.</span><span class="cn">好，下一个——<em>ONE-401</em>。我们要对接 <em>Refinitiv 的 World-Check API</em> 做制裁名单筛查。<em>5 个点</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Hold on, James. <em>Can we walk through the acceptance criteria?</em> Specifically, <em>what's our expected peak QPS?</em> World-Check has <em>a published rate limit of 10 QPS per API key</em> — if we expect 50 QPS at peak, <em>5 points isn't enough</em> for the rate-limiting work.</span><span class="cn">等一下 James。<em>我们过一下验收标准？</em>具体地，<em>预期峰值 QPS 是多少？</em> World-Check <em>每个 API key 公开限速 10 QPS</em>——如果我们预期峰值 50 QPS，<em>5 个点不够做限流工作</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">Hmm, the regulator asks for <em>real-time screening</em> on every payment above HKD 100,000. We process about 200 of those per hour at peak.</span><span class="cn">嗯，监管要求每笔 10 万港币以上的支付都要<em>实时筛查</em>。我们峰值时每小时大约 200 笔。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">200 per hour is <em>way below the rate limit</em> — about 0.06 QPS average. <em>But the burst pattern matters</em>: if 50 payments arrive in the same second, <em>we'll hit the 10 QPS cap and fail screening</em>. I'd <em>add a 2-point spike</em> for a <em>token bucket + retry queue</em> to absorb the burst.</span><span class="cn">每小时 200 笔<em>远低于限速</em>——平均 0.06 QPS。<em>但突发模式很关键</em>：如果 50 笔支付同一秒到达，<em>会撞到 10 QPS 上限导致筛查失败</em>。我建议<em>加 2 个点做令牌桶 + 重试队列</em>来吸收突发。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text"><span class="en">Good catch. <em>Updated estimate: 7 points for ONE-401</em>.</span><span class="cn">好眼力。<em>ONE-401 改成 7 个点</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">OK, noted. Next — <em>ONE-415</em>. We need to <em>store customer PII for 7 years</em> for HKMA reporting. <em>Three points</em>.</span><span class="cn">好，记下。下一个——<em>ONE-415</em>。我们<em>把客户 PII 存 7 年</em>给 HKMA 报送。<em>3 个点</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Wait. <em>Which data fields are PII here?</em> If it's just the HKID number, we can <em>mask it at rest with AES-256</em>. But if it's <em>full name, address, DOB, and account number</em>, <em>we'll need field-level encryption plus a key rotation policy</em> — that's <em>more like 8 points</em>, not 3.</span><span class="cn">等等。<em>哪些字段是 PII？</em>如果只是香港身份证号，<em>用 AES-256 静态加密</em>就行。但如果是<em>全名、地址、生日和账号</em>，<em>需要字段级加密加上密钥轮换策略</em>——那要<em>8 个点左右</em>，不是 3 个。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (PO):</span>
+                <span class="text"><span class="en">It's <em>HKID + name + DOB</em> — the minimum the regulator asks for.</span><span class="cn">是<em>香港身份证 + 姓名 + 生日</em>——监管要求的最小字段集。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">OK, <em>3 PII fields is doable at 5 points</em> — but <em>I'd flag a dependency on InfoSec for the key rotation policy</em>. If they don't sign off by sprint start, <em>we can't ship</em>. <em>Can you raise that escalation this week?</em></span><span class="cn">好，<em>3 个 PII 字段 5 个点能做</em>——但<em>我得提个依赖给 InfoSec 签密钥轮换策略</em>。如果 Sprint 开始前签不下来，<em>我们交付不了</em>。<em>你这周能提一下这个 escalation 吗？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">AC</span> <em>Can we walk through the acceptance criteria?</em></span>
+                <span class="chinese">我们过一下验收标准？</span>
+                <span class="note">Never accept a story with vague AC. Always walk through it line by line.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Quantify</span> <em>What's our expected peak QPS?</em></span>
+                <span class="chinese">预期峰值 QPS 是多少？</span>
+                <span class="note">Always ask for numbers in refinement. "A lot" doesn't size a story. "50 QPS" does.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>5 points isn't enough for the rate-limiting work.</em></span>
+                <span class="chinese">5 个点做限流不够</span>
+                <span class="note">Challenge estimates with technical reasoning, not gut feel. "The rate limit forces a retry queue" wins.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Burst</span> <em>The burst pattern matters.</em></span>
+                <span class="chinese">突发模式很关键</span>
+                <span class="note">Average load hides burst load. Always ask "what's the peak-second rate, not just the average-hour rate?"</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Which data fields are PII here?</em></span>
+                <span class="chinese">哪些字段是 PII？</span>
+                <span class="note">PII scope drives the encryption scope. Always clarify the data fields before sizing the story.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Flag</span> <em>I'd flag a dependency on InfoSec for the key rotation policy.</em></span>
+                <span class="chinese">提一个依赖给 InfoSec 签密钥轮换策略</span>
+                <span class="note">Use "flag" for soft dependencies, "block" for hard ones. Both need to be raised before sprint start.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Escalate</span> <em>Can you raise that escalation this week?</em></span>
+                <span class="chinese">你这周能提一下这个 escalation 吗？</span>
+                <span class="note">Don't carry the escalation alone. Ask the PO to raise it — they have more political weight.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Acceptance criteria (AC)</strong> n. 验收标准 The list of conditions a story must satisfy to be "done".</li>
+            <li><strong>QPS (queries per second)</strong> n. 每秒查询数 A measure of API throughput.</li>
+            <li><strong>Rate limit</strong> n. 速率限制 A cap on the number of API calls allowed per second.</li>
+            <li><strong>Token bucket</strong> n. 令牌桶 A rate-limiting algorithm that allows controlled bursts.</li>
+            <li><strong>Retry queue</strong> n. 重试队列 A buffer that holds failed requests for later retry.</li>
+            <li><strong>Burst pattern</strong> n. 突发模式 How requests cluster in time, not just the average rate.</li>
+            <li><strong>PII (Personally Identifiable Information)</strong> n. 个人身份信息 Any data that can identify a specific person.</li>
+            <li><strong>HKMA</strong> n. 香港金管局 Hong Kong Monetary Authority — the local banking regulator.</li>
+            <li><strong>Field-level encryption</strong> n. 字段级加密 Encrypting individual fields in a database row, not just the whole row.</li>
+            <li><strong>Key rotation policy</strong> n. 密钥轮换策略 Rules for how often encryption keys are replaced.</li>
+            <li><strong>Spike</strong> n. 探索性工作 A short time-boxed investigation to reduce technical risk.</li>
+            <li><strong>Estimation</strong> n. 估算 The team's collective guess of how many points a story is worth.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "If it's just X, we can Y" — branching by scope</h3>
+        <p>Use <em>if X, then Y / but if Z, then W</em> to size stories by scope. <em>If it's just HKID, we can mask it. But if it's full name + DOB, we need field-level encryption.</em> This is the cleanest way to defend a re-estimate.</p>
+        <p>用 <em>if X, then Y / but if Z, then W</em> 按 scope 估故事。</p>
+        <h3>② "I'd flag a dependency on X" — soft authority</h3>
+        <p>Use <em>I'd flag / I'd raise / I'd recommend</em> instead of <em>we need / we must have</em>. You're surfacing a risk, not demanding an action. The PO can decide whether to act on it.</p>
+        <p>用 <em>I'd flag / I'd raise / I'd recommend</em> 而不是 <em>we need / we must have</em>。</p>
+        <h3>③ "The burst pattern matters" — present-tense emphasis</h3>
+        <p>Use present-tense verbs (<em>matters / drives / hides</em>) to make a technical point hit hard. <em>The burst pattern matters</em> is more impactful than <em>the burst pattern will matter</em>.</p>
+        <p>用现在时动词（<em>matters / drives / hides</em>）让技术观点更有力。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Never accept a story without clear AC.</strong> "Implement sanctions screening" is not a story. "Implement sanctions screening with 10 QPS capacity and 99.5% success rate" is. Always push for the second.</li>
+            <li><strong>Quantify in refinement, not in sprint.</strong> If the story goes into sprint without numbers, you'll discover the gap mid-sprint. Always size before commitment.</li>
+            <li><strong>Burst beats average.</strong> Averages hide peaks. "200 per hour" sounds fine; "50 in one second" is the actual problem. Always ask for the burst pattern.</li>
+            <li><strong>Soft dependencies need POs.</strong> "I have a soft dependency on InfoSec" is weaker than "PO, can you raise this escalation with InfoSec this week?". POs have political weight.</li>
+            <li><strong>Frame re-estimates as scope-driven.</strong> "5 points isn't enough" is opinion. "5 points isn't enough because the rate limit forces a retry queue" is engineering. The second one wins.</li>
+            <li><strong>PII stories are never just 3 points.</strong> Once you say "PII", you're signing up for encryption, key rotation, audit logs, and InfoSec review. Always add a flag for InfoSec dependency.</li>
+            <li><strong>Challenge assumptions, not people.</strong> "5 points isn't enough because the rate limit forces a retry queue" is a technical challenge. "James, you underestimated this" is personal. Always choose the first.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the refinement discussion</h3>
+        <p>Translate the following backlog refinement into natural Chinese. Pay attention to how the TL questions the assumptions.</p>
+        <blockquote>
+            "OK, next one — PAY-501. We need to integrate with Refinitiv's World-Check API for sanctions screening. Five points. Hold on, James. Can we walk through the acceptance criteria? Specifically, what's our expected peak QPS? World-Check has a published rate limit of 10 QPS per API key. 200 per hour is way below the rate limit — about 0.06 QPS average. But the burst pattern matters: if 50 payments arrive in the same second, we'll hit the 10 QPS cap and fail screening. I'd add a 2-point spike for a token bucket + retry queue to absorb the burst. Good catch. Updated estimate: 7 points for PAY-501. OK, noted. Next — PAY-515. We need to store customer PII for 7 years for HKMA reporting. Three points. Wait. Which data fields are PII here? If it's just the HKID number, we can mask it at rest with AES-256. But if it's full name, address, DOB, and account number, we'll need field-level encryption plus a key rotation policy — that's more like 8 points, not 3."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"好，下一个——PAY-501。我们要对接 Refinitiv 的 World-Check API 做制裁名单筛查。5 个点。等一下 James。我们过一下验收标准？具体地，预期峰值 QPS 是多少？World-Check 每个 API key 公开限速 10 QPS。每小时 200 笔远低于限速——平均 0.06 QPS。但突发模式很关键：如果 50 笔支付同一秒到达，会撞到 10 QPS 上限导致筛查失败。我建议加 2 个点做令牌桶 + 重试队列来吸收突发。好眼力。PAY-501 改成 7 个点。好，记下。下一个——PAY-515。我们把客户 PII 存 7 年给 HKMA 报送。3 个点。等等。哪些字段是 PII？如果只是香港身份证号，用 AES-256 静态加密就行。但如果是全名、地址、生日和账号，需要字段级加密加上密钥轮换策略——那要 8 个点左右，不是 3 个。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the TL mistake</h3>
+        <p>Which of these refinement lines is most "TL-like" and which is most "dev-like" or "PO-like"? Why?</p>
+        <ol>
+            <li>"Yesterday I finished the unit tests for the eKYC vendor callback. Coverage is at 91%."</li>
+            <li>"Hold on, James. Can we walk through the acceptance criteria? What's our expected peak QPS?"</li>
+            <li>"We need to integrate with Refinitiv's World-Check API for sanctions screening."</li>
+            <li>"I'd add a 2-point spike for a token bucket + retry queue to absorb the burst."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② and ④ are TL-like (challenge AC, propose technical spike). ① is dev-like. ③ is PO-like (story statement, no challenge). A common mistake new TLs make is accepting the PO's framing without questioning. Always push for the AC and the burst pattern.</p>
+        </div>
+        <h3>Exercise 3 — Your turn</h3>
+        <p>You're in backlog refinement. The PO has brought a story: "We need to integrate with a third-party credit bureau API for real-time credit checks. Five points." Write your TL's challenge in English. Use at least 3 patterns from the Key Phrases section. Assume the bureau has a 5 QPS rate limit, your peak is 80 checks/minute with bursts of 20 in 1 second, and the response contains PII (name, HKID, income).</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Hold on, James. Can we walk through the acceptance criteria? Specifically, what's our expected peak QPS? The bureau has a published rate limit of 5 QPS per API key. 80 per minute is about 1.3 QPS average — well below the limit. But the burst pattern matters: if 20 checks arrive in the same second, we'll hit the 5 QPS cap and fail credit checks. I'd add a 2-point spike for a token bucket + retry queue. Also, which data fields are PII in the response? If it's just HKID, we can mask it. But if it's name, HKID, and income, we'll need field-level encryption plus a key rotation policy. I'd estimate 7 points, not 5. I'd flag a dependency on InfoSec for the key rotation policy — if they don't sign off by sprint start, we can't ship. Can you raise that escalation this week?"</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="one-on-one-mentoring.html" class="btn btn-primary">Next: Article 04 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

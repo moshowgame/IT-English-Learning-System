@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: Choosing Between Two Tech Approaches | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">07 · Choosing Between Two Tech Approaches</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Choosing Between Two Tech Approaches</h1>
+        <p class="subtitle">Article 07 · Module 2: Design & Code Quality · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Trade-off framing, evaluation criteria, decision ownership</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday, 3:00 PM HKT</strong>. The squad needs to choose between two technical approaches for the new <em>real-time fraud detection</em> pipeline: <strong>Approach A: Kafka Streams</strong> (already in the bank, mature) and <strong>Approach B: Apache Flink</strong> (newer, more powerful, but no operational expertise). The squad is split: <strong>Raj</strong> and <strong>Mei</strong> prefer Flink for exactly-once semantics; <strong>Lin</strong> and <strong>James</strong> (PO) prefer Kafka Streams for speed-to-market.</p><p>周三下午3点香港时间。Squad 需要为新的<em>实时反欺诈</em>管道在两个技术方案间选：<strong>方案 A：Kafka Streams</strong>（银行内已有，成熟）和<strong>方案 B：Apache Flink</strong>（较新，更强大，但银行内无运维经验）。Squad 有分歧：<strong>Raj</strong> 和 <strong>Mei</strong> 因 exactly-once 偏好 Flink；<strong>Lin</strong> 和 <strong>James</strong>（PO）因上市速度偏好 Kafka Streams。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Raj:</span><span class="text"><span class="en">Wei, <em>I strongly recommend Flink.</em> The exactly-once semantics are critical for fraud detection — we <em>cannot</em> miss a chargeback.</span><span class="cn">Wei，<em>我强烈推荐 Flink。</em>Exactly-once 语义对反欺诈很关键——我们<em>不能</em>漏掉一笔 chargeback。</span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">But Flink has <em>a steep learning curve</em> and <em>no operational expertise in the bank</em>. Kafka Streams is <em>already in production</em> — we can ship in 2 sprints. Flink is 5 sprints.</span><span class="cn">但 Flink <em>学习曲线陡</em>，<em>银行内无运维经验</em>。Kafka Streams <em>已经生产</em>——2 个 Sprint 就能上。Flink 要 5 个 Sprint。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">OK, <em>let's frame the trade-off properly.</em> <em>Three evaluation criteria</em>: time-to-market, exactly-once guarantee, and operational risk. <em>Raj, score Flink on each.</em></span><span class="cn">好，<em>我们正经地框定一下取舍。</em><em>三个评估标准</em>：上市时间、exactly-once 保证、运维风险。<em>Raj，给 Flink 在每个上打分。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Raj:</span><span class="text"><span class="en">Time-to-market: <em>2 out of 5</em>. Exactly-once: <em>5 out of 5</em>. Operational risk: <em>2 out of 5</em>.</span><span class="cn">上市时间：<em>2 / 5</em>。Exactly-once：<em>5 / 5</em>。运维风险：<em>2 / 5</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Lin, score Kafka Streams.</em></span><span class="cn"><em>Lin，给 Kafka Streams 打分。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">Time-to-market: <em>5 out of 5</em>. Exactly-once: <em>3 out of 5</em>. Operational risk: <em>5 out of 5</em>.</span><span class="cn">上市时间：<em>5 / 5</em>。Exactly-once：<em>3 / 5</em>。运维风险：<em>5 / 5</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">OK. <em>Weighted score</em>: time-to-market 30%, exactly-once 50%, operational 20%. <em>Flink: 3.5</em>. <em>Kafka Streams: 4.0</em>. <em>Kafka Streams wins on weighted score.</em></span><span class="cn">好。<em>加权分</em>：上市 30%，exactly-once 50%，运维 20%。<em>Flink: 3.5</em>。<em>Kafka Streams: 4.0</em>。<em>Kafka Streams 加权分胜出。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Raj:</span><span class="text"><span class="en">But Wei, the <em>chargeback risk</em> if we miss exactly-once — <em>that's regulator territory</em>.</span><span class="cn">但 Wei，如果我们漏掉 exactly-once 的 <em>chargeback 风险</em>——<em>那是监管问题</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Good point.</em> Let me <em>re-weight</em>: for fraud, exactly-once should be 70%. <em>Flink: 4.1</em>. <em>Kafka Streams: 3.6</em>. <em>Now Flink wins.</em> And the <em>regulator risk outweighs time-to-market</em>. <em>My recommendation: Flink.</em></span><span class="cn"><em>好观点。</em>我<em>重新加权</em>：反欺诈 exactly-once 应该 70%。<em>Flink: 4.1</em>。<em>Kafka Streams: 3.6</em>。<em>现在 Flink 胜。</em><em>监管风险压倒上市时间</em>。<em>我建议：Flink。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James (PO):</span><span class="text"><span class="en"><em>But 5 sprints is too long.</em> The business wants fraud detection <em>live by Q3</em>.</span><span class="cn"><em>但 5 个 Sprint 太久了。</em>业务希望反欺诈<em>Q3 上线</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Compromise: Flink, but in two phases.</em> <em>Phase 1: ship Kafka Streams in 2 sprints to hit Q3</em> — with at-least-once + 24-hour dedup. <em>Phase 2: re-platform to Flink in 3 sprints</em>. <em>Hits Q3 and de-risks regulator exposure.</em> <em>Anyone object?</em></span><span class="cn"><em>折中：用 Flink，但分两期。</em><em>阶段 1：2 个 Sprint 先上 Kafka Streams 保 Q3</em>——配至少一次+ 24 小时去重。<em>阶段 2：3 个 Sprint 切到 Flink</em>。<em>既保 Q3 又降监管风险。</em><em>有反对吗？</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Frame</span> <em>Let's frame the trade-off properly.</em></span><span class="chinese">我们正经地框定一下取舍。</span><span class="note">'Frame the trade-off' is TL vocabulary. It signals: we're going to be rigorous, not emotional.</span></li>
+<li><span class="english"><span class="tag">Criteria</span> <em>Three evaluation criteria.</em></span><span class="chinese">三个评估标准。</span><span class="note">Always name your criteria upfront.</span></li>
+<li><span class="english"><span class="tag">Score</span> <em>Score this on each.</em></span><span class="chinese">在每个上打分。</span><span class="note">Forcing people to score reduces opinion-driven arguments.</span></li>
+<li><span class="english"><span class="tag">Weight</span> <em>Weighted score: time-to-market 30%, exactly-once 50%.</em></span><span class="chinese">加权分：上市 30%，exactly-once 50%。</span><span class="note">Weights force you to declare what matters most.</span></li>
+<li><span class="english"><span class="tag">Reweight</span> <em>Let me re-weight.</em></span><span class="chinese">我重新加权。</span><span class="note">Don't be afraid to re-weight when new info arrives.</span></li>
+<li><span class="english"><span class="tag">Recommend</span> <em>My recommendation: Flink.</em></span><span class="chinese">我建议：Flink。</span><span class="note">TLs recommend. They don't vote.</span></li>
+<li><span class="english"><span class="tag">Compromise</span> <em>Compromise: Flink, but in two phases.</em></span><span class="chinese">折中：用 Flink，但分两期。</span><span class="note">A good TL always has a compromise ready.</span></li>
+<li><span class="english"><span class="tag">Consent</span> <em>Anyone object?</em></span><span class="chinese">有反对吗？</span><span class="note">End with a consent check.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Trade-off</strong> n.. The explicit comparison of options with pros, cons, and the chosen one. 取舍</li>
+<li><strong>Evaluation criteria</strong> n.. The dimensions you score an option against (e.g., time, cost, risk). 评估标准</li>
+<li><strong>Weighted score</strong> n.. A score where each criterion is multiplied by its importance (weight). 加权分</li>
+<li><strong>Exactly-once semantics</strong> n.. A guarantee that each event is processed exactly one time. 精确一次语义</li>
+<li><strong>Operational risk</strong> n.. The risk of running the system in production, including on-call pain. 运维风险</li>
+<li><strong>Time-to-market</strong> n.. How long until the feature is live in production. 上市时间</li>
+<li><strong>Chargeback</strong> n.. A reversal of a credit card transaction, often triggered by fraud. 退款请求</li>
+<li><strong>Regulator risk</strong> n.. The risk of non-compliance with HKMA, MAS, FCA, etc. 监管风险</li>
+<li><strong>Phased approach</strong> n.. Rolling out a solution in two or more stages. 分期实施</li>
+<li><strong>De-risk</strong> v.. Reduce the worst-case outcome without solving the whole problem. 降低风险</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Let's frame the trade-off properly' — the meta-frame</h3><p>Use <em>let's frame X properly / let's be rigorous about this</em> to set the tone.</p><p>用 <em>let's frame X properly</em> 定调。</p>
+<h3>② 'My recommendation: X' — the TL's signature phrase</h3><p>Use <em>my recommendation / I recommend</em> in technical decisions. Avoid <em>I think / I vote for</em>.</p><p>用 <em>my recommendation / I recommend</em>。</p>
+<h3>③ 'Compromise: X, but in Y phases' — the de-risk pattern</h3><p>Use <em>compromise: X, but in Y phases</em> when stakeholders disagree.</p><p>用 <em>compromise: X, but in Y phases</em> 处理分歧。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>TLs drive technical decisions, not vote on them.</strong> Your job is to recommend, with reasoning, and own the outcome.</li>
+<li><strong>Frame the trade-off, don't argue the option.</strong> Frames win.</li>
+<li><strong>Always name the criteria upfront.</strong> Once named, you can't sneak in a new criterion mid-debate.</li>
+<li><strong>Weights are the real trade-off.</strong> Stakeholders often argue about the weights, not the scores.</li>
+<li><strong>Re-weight when new info arrives.</strong> 'Let me re-weight' is honest.</li>
+<li><strong>Always have a compromise ready.</strong> The first phase hits the deadline; the second solves the long-term risk.</li>
+<li><strong>End with a consent check.</strong> 'Anyone object?' beats 'agreed?'.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the trade-off</h3>
+    <p>Translate the following trade-off discussion into natural Chinese.</p>
+    <blockquote>"OK, let's frame the trade-off properly. Three evaluation criteria: time-to-market, exactly-once guarantee, and operational risk. Score Flink: time-to-market 2/5, exactly-once 5/5, operational 2/5. Score Kafka Streams: 5/5, 3/5, 5/5. Weighted: time-to-market 30%, exactly-once 50%, operational 20%. Flink: 3.5. Kafka Streams: 4.0. Kafka Streams wins. But the chargeback risk if we miss exactly-once — that's regulator territory. Good point. Let me re-weight: for fraud, exactly-once should be 70%. New scores: Flink 4.1. Kafka Streams 3.6. Now Flink wins. My recommendation: Flink. But 5 sprints is too long. Compromise: Flink, but in two phases. Phase 1: ship Kafka Streams in 2 sprints. Phase 2: re-platform to Flink in 3 sprints. Anyone object?"</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"好，我们正经地框定一下取舍。三个评估标准：上市时间、exactly-once 保证、运维风险。Flink 打分：上市 2/5，exactly-once 5/5，运维 2/5。Kafka Streams：5/5、3/5、5/5。加权：上市 30%，exactly-once 50%，运维 20%。Flink: 3.5。Kafka Streams: 4.0。Kafka Streams 胜。但 chargeback 风险——监管问题。好观点。我重新加权：反欺诈 exactly-once 应该 70%。新分数：Flink 4.1。Kafka Streams 3.6。现在 Flink 胜。我建议：Flink。但 5 个 Sprint 太久了。折中：用 Flink，但分两期。阶段 1：2 个 Sprint 上 Kafka Streams。阶段 2：3 个 Sprint 切到 Flink。有反对吗？"</p></div>
+    <h3>Exercise 2 — Spot the TL mistake</h3>
+    <p>Which of these is most 'TL-decision-driver-like'?</p>
+    <ol><li>'Flink is better. Let's do Flink.'</li><li>'Let's frame the trade-off. Three criteria. Here's the score, here's the weight, here's the recommendation.'</li><li>'What do you all think?'</li><li>'My recommendation: Flink, in two phases, with a re-evaluation in Q4. Anyone object?'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>② and ④ are TL-decision-driver-like. ① is opinion-only. ③ is abdication. A common mistake new TLs make is asking the team to vote on a technical decision. Your job is to recommend with reasoning.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>Choose between PostgreSQL (mature, 2 sprints) and Cassandra (5 sprints, scales 10x) for a global transaction ledger. Write your TL trade-off in English. Include a compromise and a consent check.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"OK, let's frame the trade-off properly. Three criteria: time-to-market, write throughput, operational risk. Score PostgreSQL: 5/5, 3/5, 5/5. Score Cassandra: 2/5, 5/5, 2/5. Weighted: 30%, 50%, 20%. PostgreSQL: 4.0. Cassandra: 3.6. PostgreSQL wins on weighted score. But for a global fraud-detection ledger, throughput is critical — re-weight: throughput 70%. New scores: PostgreSQL 3.6, Cassandra 4.1. Now Cassandra wins. My recommendation: Cassandra, but in two phases. Phase 1: PostgreSQL in 2 sprints with sharding. Phase 2: re-platform to Cassandra in 3 sprints. This hits the deadline and de-risks the 10x growth. Anyone object?"</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="tech-spike-poc-planning.html" class="btn btn-primary">Next: Article 08: Tech Spike / POC Planning →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

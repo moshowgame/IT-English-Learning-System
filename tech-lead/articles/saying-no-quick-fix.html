@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 16: Saying No to a 'Quick Fix' Request | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">16 · Saying No to a 'Quick Fix' Request</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Saying No to a 'Quick Fix' Request</h1>
+        <p class="subtitle">Article 16 · Module 4: Difficult Conversations · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Pushing back on 'just patch it', total cost of ownership, principled refusal</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday, 4:30 PM HKT</strong>. <strong>James (PO)</strong> walks over: <em>"Wei, can we just patch the rate-limiter to whitelist the partner IP for the demo? It's a 5-minute fix."</em> The fix: add the partner's IP to the rate-limiter whitelist, bypassing it for the regulator demo. The risk: that whitelist stays in production long after the demo, silently bypassing the rate-limiter.</p><p>周四下午4:30香港时间。<strong>James（PO）</strong>走过来：<em>"Wei，能不能给限流器打个补丁把合作方 IP 加白名单？就 5 分钟的活儿。"</em>方案：把合作方 IP 加进限流器白名单，监管 demo 期间绕过。风险：白名单在 demo 结束后还留在生产里，静默绕过限流器。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">James (PO):</span><span class="text"><span class="en">Wei, <em>can we just patch the rate-limiter to whitelist the partner IP for the demo?</em> <em>It's a 5-minute fix.</em></span><span class="cn">Wei，<em>能不能给限流器打个补丁把合作方 IP 加白名单？</em><em>5 分钟的活儿。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">James, <em>I hear the demo pressure.</em> <em>But that 5-minute fix has a 6-month tail of risk.</em> <em>Can I walk you through it?</em></span><span class="cn">James，<em>我理解 demo 压力。</em><em>但这 5 分钟的活儿会带来 6 个月的风险尾巴。</em><em>我跟你过一下？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>5 minutes vs 6 months — what could go wrong?</em></span><span class="cn"><em>5 分钟 vs 6 个月——能出啥事？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Three things.</em> <em>One: the whitelist stays in prod</em> — <em>we've seen this before, no one removes it.</em> <em>Two: when the partner gets compromised</em>, <em>the rate-limiter doesn't protect us.</em> <em>Three: the regulator asks 'why is this IP whitelisted?'</em> <em>and we don't have a good answer.</em></span><span class="cn"><em>三件事。</em><em>一：白名单会留在生产里</em>——<em>我们见过，没有人会去删它。</em><em>二：合作方被攻破时</em>，<em>限流器保护不了我们。</em><em>三：监管问"为什么这个 IP 在白名单里"</em><em>我们答不上来。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>But the demo is in 2 days.</em> <em>If we don't whitelisting, the rate-limiter will throttle the demo traffic.</em></span><span class="cn"><em>但 demo 还有 2 天。</em><em>不加白名单，限流器会限流 demo 流量。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Compromise: temporary whitelist, with a hard expiry.</em> <em>Config flag with a TTL of 48 hours</em> — <em>the whitelist auto-removes after the demo.</em> <em>Logged in the audit trail.</em> <em>InfoSec sign-off needed — but it's a 1-hour conversation, not a 5-minute hack.</em></span><span class="cn"><em>折中：临时白名单，硬过期。</em><em>配一个 48 小时 TTL 的开关</em>——<em>demo 一结束白名单自动失效。</em><em>审计日志留痕。</em><em>需要 InfoSec 签——但这是 1 小时的对话，不是 5 分钟的黑活。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en"><em>Will InfoSec sign off in 2 days?</em></span><span class="cn"><em>InfoSec 2 天内能签下来吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Yes, if we frame it as a 'demo-day temporary relaxation with audit-trail logging'.</em> <em>It's a known pattern, not a hack.</em> <em>I'll Slack Margaret now and get it on her desk this afternoon.</em></span><span class="cn"><em>能，如果我们把它框定为"demo 日临时放宽，带审计日志"。</em><em>这是已知模式，不是黑活。</em><em>我现在 Slack Margaret，今天下午就摆到她桌上。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">James:</span><span class="text"><span class="en">OK. <em>Let me know by EOD.</em></span><span class="cn">好。<em>EOD 前告诉我。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Will do. <em>And James — the 5-minute fix would have come back to bite us.</em> <em>Thanks for letting me push back.</em></span><span class="cn">好。<em>James——5 分钟的活儿会回来咬我们的。</em><em>谢谢你让我顶回去。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Acknowledge</span> <em>I hear the demo pressure.</em></span><span class="chinese">我理解 demo 压力。</span><span class="note">Acknowledge first, push back second.</span></li>
+<li><span class="english"><span class="tag">Tail risk</span> <em>That 5-minute fix has a 6-month tail of risk.</em></span><span class="chinese">这 5 分钟的活儿会带来 6 个月的风险尾巴。</span><span class="note">Quantify the tail, not the cost. '6-month tail' beats 'it's risky'.</span></li>
+<li><span class="english"><span class="tag">Three things</span> <em>Three things: one, two, three.</em></span><span class="chinese">三件事：一、二、三。</span><span class="note">Three things is the right number for a structured pushback. Not one (weak), not seven (overwhelming).</span></li>
+<li><span class="english"><span class="tag">Stay in prod</span> <em>We've seen this before, no one removes it.</em></span><span class="chinese">我们见过，没有人会去删它。</span><span class="note">Cite the pattern. 'Whitelists never get removed' is a real-world lesson, not opinion.</span></li>
+<li><span class="english"><span class="tag">Compromise</span> <em>Temporary whitelist with a hard expiry.</em></span><span class="chinese">临时白名单，硬过期。</span><span class="note">Compromise is a TTL, not a removal. The expiry is the safety net.</span></li>
+<li><span class="english"><span class="tag">Audit trail</span> <em>Logged in the audit trail.</em></span><span class="chinese">审计日志留痕。</span><span class="note">Audit-trail logging transforms a hack into a controlled operation. Regulators accept logged exceptions.</span></li>
+<li><span class="english"><span class="tag">Pattern, not hack</span> <em>It's a known pattern, not a hack.</em></span><span class="chinese">这是已知模式，不是黑活。</span><span class="note">Reframe the workaround as a recognized pattern. 'Demo-day temporary relaxation' is a known banking pattern.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Quick fix</strong> n.. A small, tactical change to address an immediate problem. 快速修复</li>
+<li><strong>Whitelist</strong> n.. A list of IPs/entities allowed to bypass a security control. 白名单</li>
+<li><strong>Tail risk</strong> n.. The long-term risk that follows a short-term fix. 尾部风险</li>
+<li><strong>Compromised</strong> adj.. A system/account that has been breached by an attacker. 被攻破</li>
+<li><strong>Hard expiry</strong> n.. A TTL that auto-removes the change, with no manual removal needed. 硬过期</li>
+<li><strong>TTL (Time To Live)</strong> n.. The duration a config flag or credential remains active. 生存时间</li>
+<li><strong>Audit trail</strong> n.. An immutable log of who did what and when. 审计日志</li>
+<li><strong>Demo-day relaxation</strong> n.. A temporary control bypass, with audit logging, for a regulated demo. Demo 日临时放宽</li>
+<li><strong>Total cost of ownership</strong> n.. The long-term cost of a 'cheap' fix (ops, audit, security). 总拥有成本</li>
+<li><strong>Known pattern</strong> n.. A workaround recognized by InfoSec and risk teams. 已知模式</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'That X has a Y-month tail of risk' — quantifying the tail</h3><p>Quantify the tail risk: <em>that 5-minute fix has a 6-month tail of risk / that workaround has a 1-year audit exposure</em>. Numbers beat adjectives.</p><p>量化尾部风险。</p>
+<h3>② 'Three things: one, two, three' — the structured pushback</h3><p>Use <em>three things / two reasons / one concern</em> to structure a pushback. The number is part of the frame.</p><p>用 <em>三件事 / 两条理由 / 一个关切</em> 结构化反对。</p>
+<h3>③ 'It's a known pattern, not a hack' — the reframe</h3><p>Reframe a workaround as a recognized pattern: <em>it's a known pattern, not a hack / it's a temporary relaxation with audit logging, not an exception</em>.</p><p>把 workaround 重新框定为已知模式。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Acknowledge first, push back second.</strong> I hear the demo pressure before but that has a 6-month tail.</li>
+<li><strong>Quantify the tail, not the cost.</strong> 6-month tail beats it is risky.</li>
+<li><strong>Three things is the right number.</strong> Not one (weak), not seven (overwhelming).</li>
+<li><strong>Cite the pattern, not the principle.</strong> Whitelists never get removed is real-world, not opinion.</li>
+<li><strong>Compromise is a TTL, not a removal.</strong> The expiry is the safety net.</li>
+<li><strong>Audit-trail logging transforms a hack into a controlled operation.</strong> Regulators accept logged exceptions.</li>
+<li><strong>Reframe the workaround as a recognized pattern.</strong> Demo-day temporary relaxation is a known banking pattern.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the quick-fix pushback</h3><p>Translate the following pushback into natural Chinese.</p><blockquote>"I hear the demo pressure. But that 5-minute fix has a 6-month tail of risk. Can I walk you through it? Three things. One: the whitelist stays in prod — we have seen this before, no one removes it. Two: when the partner gets compromised, the rate-limiter does not protect us. Three: the regulator asks why is this IP whitelisted and we do not have a good answer. But the demo is in 2 days. If we do not whitelist, the rate-limiter will throttle the demo traffic. Compromise: temporary whitelist, with a hard expiry. Config flag with a TTL of 48 hours — the whitelist auto-removes after the demo. Logged in the audit trail. InfoSec sign-off needed — but it is a 1-hour conversation, not a 5-minute hack. Will InfoSec sign off in 2 days? Yes, if we frame it as a demo-day temporary relaxation with audit-trail logging. It is a known pattern, not a hack. I will Slack Margaret now and get it on her desk this afternoon. The 5-minute fix would have come back to bite us. Thanks for letting me push back."</blockquote><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>"我理解 demo 压力。但这 5 分钟的活儿会带来 6 个月的风险尾巴。我跟你过一下？三件事。一：白名单会留在生产里——我们见过，没有人会去删它。二：合作方被攻破时，限流器保护不了我们。三：监管问为什么这个 IP 在白名单里我们答不上来。但 demo 还有 2 天。不加白名单，限流器会限流 demo 流量。折中：临时白名单，硬过期。配一个 48 小时 TTL 的开关——demo 一结束白名单自动失效。审计日志留痕。需要 InfoSec 签——但这是 1 小时的对话，不是 5 分钟的黑活。InfoSec 2 天内能签下来吗？能，如果我们把它框定为 demo 日临时放宽，带审计日志。这是已知模式，不是黑活。我现在 Slack Margaret，今天下午就摆到她桌上。5 分钟的活儿会回来咬我们的。谢谢你让我顶回去。"</p></div><h3>Exercise 2 — Spot the TL mistake</h3><p>Which of these is the most TL-as-principled-engineer move?</p><ol><li>No. Do not do it. Find another way.</li><li>Sure, let me whitelist it now.</li><li>I hear the demo pressure. That 5-minute fix has a 6-month tail. Three things. One: whitelist stays in prod. Two: regulator exposure. Three: security incident. Compromise: temporary whitelist with TTL 48h, audit-trail logging, InfoSec sign-off.</li><li>I will do it, but I am telling you it is wrong.</li></ol><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>③ is the principled TL. ① is gate-keeping. ② is capitulation. ④ is passive-aggressive. A common mistake is either no, I refuse (no compromise) or yes, but it is wrong (capitulation + complaint). The TL job is to give the PO a third option: a controlled workaround with safety nets.</p></div><h3>Exercise 3 — Your turn</h3><p>The PM wants to skip encryption-at-rest for the new analytics database to ship faster. Your concerns: (a) the data is customer PII, (b) HKMA requires encryption at rest, (c) the audit team will flag it. Write the pushback in English. Use I hear the X, quantify the tail, three things, propose a compromise (e.g., column-level encryption for PII fields only). End by reframe as a known pattern.</p><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button><div class="answer-box" style="display:none;"><p>"I hear the ship-faster pressure. But skipping encryption-at-rest has a regulator tail of risk. Three things. One: it is customer PII — HKMA data classification policy requires encryption at rest. Two: audit will flag it, and remediation is a 3-month project. Three: if we have a breach, encryption-at-rest is the difference between a reportable incident and a near-miss. Compromise: column-level encryption for the PII fields only, 2-week delta. Use the existing Group Cyber KMS — zero new infra. It is a known pattern (PII column encryption), not a hack. Ship in 2 weeks, regulator-safe, audit-clean."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="handling-production-incident-escalation.html" class="btn btn-primary">Next: Article 17: Handling a Production Incident Escalation →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

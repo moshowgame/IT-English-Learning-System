@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 20: Banking Systems & Integration | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">20 · Banking Systems & Integration</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Banking Systems & Integration</h1>
+        <p class="subtitle">Article 20 · Module 5: Banking Context · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Core banking systems, integration patterns, ownership boundaries, migration risk</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday, 11:00 AM HKT</strong>. You are the TL for the RBWM Digital tribe. The new <em>OneWealth platform</em> needs to integrate with 5 core banking systems: <em>core banking (FCDB)</em>, <em>customer master (GLCM)</em>, <em>trading platform (Midas)</em>, <em>treasury (Opics)</em>, and <em>document store (Filenet)</em>. <strong>Steven</strong> (Group Architecture) is the system-owner liaison.</p><p>周五上午11点香港时间。你是 RBWM 数字化 tribe 的 TL。新的<em>OneWealth 平台</em>需要和 5 个银行核心系统集成：<em>核心银行（FCDB）</em>、<em>客户主数据（GLCM）</em>、<em>交易平台（Midas）</em>、<em>资金（Opics）</em>、<em>文档存储（Filenet）</em>。<strong>Steven</strong>（集团架构）是系统 owner 联络人。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Steven (Group Architecture):</span><span class="text"><span class="en">Wei, <em>OneWealth needs to integrate with 5 core systems.</em> <em>Each has a different ownership boundary, SLA, and integration pattern.</em> <em>Let me walk you through the matrix.</em></span><span class="cn">Wei，<em>OneWealth 需要和 5 个核心系统集成。</em><em>每个有不同的 owner 边界、SLA、集成模式。</em><em>我带你过一下矩阵。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Thanks Steven. Please go through the 5 systems one by one.</em> <em>I'll capture the matrix in the design doc.</em></span><span class="cn"><em>谢谢 Steven。请一个一个过这 5 个系统。</em><em>我会把矩阵记到设计文档里。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>System 1: FCDB (core banking).</em> <em>Owner: Group Core Banking, HK.</em> <em>SLA: 99.95% uptime, 200 TPS sustained.</em> <em>Integration: REST + message queue (Kafka).</em> <em>Latency budget: 100ms P99.</em> <em>Sandbox: yes.</em></span><span class="cn"><em>系统 1：FCDB（核心银行）。</em><em>Owner：集团核心银行，香港。</em><em>SLA：99.95% 可用，200 TPS 持续。</em><em>集成：REST + 消息队列（Kafka）。</em><em>延迟预算：100ms P99。</em><em>沙箱：有。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>System 2: GLCM (customer master).</em> <em>Owner: Group Customer Data, UK.</em> <em>SLA: 99.9% uptime, 1k TPS.</em> <em>Integration: REST only (no MQ).</em> <em>Latency budget: 200ms P99.</em> <em>Sandbox: yes.</em></span><span class="cn"><em>系统 2：GLCM（客户主数据）。</em><em>Owner：集团客户数据，英国。</em><em>SLA：99.9% 可用，1k TPS。</em><em>集成：仅 REST（无 MQ）。</em><em>延迟预算：200ms P99。</em><em>沙箱：有。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>System 3: Midas (trading platform).</em> <em>Owner: Group Trading Tech, HK.</em> <em>SLA: 99.99% uptime, 50 TPS.</em> <em>Integration: REST + FIX protocol (for orders).</em> <em>Latency budget: 50ms P99.</em> <em>Sandbox: limited (only market hours).</em></span><span class="cn"><em>系统 3：Midas（交易平台）。</em><em>Owner：集团交易技术，香港。</em><em>SLA：99.99% 可用，50 TPS。</em><em>集成：REST + FIX 协议（下单）。</em><em>延迟预算：50ms P99。</em><em>沙箱：有限（仅交易时段）。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>System 4: Opics (treasury).</em> <em>Owner: Group Treasury Tech, UK.</em> <em>SLA: 99.95% uptime, batch + real-time.</em> <em>Integration: batch file (CSV) at EOD + REST for intraday.</em> <em>Latency budget: 1s P99 for REST, 24h for batch.</em> <em>Sandbox: yes.</em></span><span class="cn"><em>系统 4：Opics（资金）。</em><em>Owner：集团资金技术，英国。</em><em>SLA：99.95% 可用，批量+实时。</em><em>集成：EOD 批量文件（CSV）+ 盘中 REST。</em><em>延迟预算：REST 1s P99，批量 24h。</em><em>沙箱：有。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>System 5: Filenet (document store).</em> <em>Owner: Group Content Management, IN.</em> <em>SLA: 99.9% uptime.</em> <em>Integration: REST + SFTP for bulk upload.</em> <em>Latency budget: 500ms P99 for retrieval, hours for upload.</em> <em>Sandbox: yes.</em></span><span class="cn"><em>系统 5：Filenet（文档存储）。</em><em>Owner：集团内容管理，印度。</em><em>SLA：99.9% 可用。</em><em>集成：REST + SFTP 批量上传。</em><em>延迟预算：读取 500ms P99，上传小时级。</em><em>沙箱：有。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Got it. Let me confirm the integration matrix:</em></span><span class="cn"><em>好。我确认一下集成矩阵：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">(1) <em>FCDB: REST + Kafka, 100ms P99, 200 TPS, sandbox yes.</em> (2) <em>GLCM: REST only, 200ms P99, 1k TPS, sandbox yes.</em> (3) <em>Midas: REST + FIX, 50ms P99, 50 TPS, sandbox limited (market hours).</em> (4) <em>Opics: EOD batch + REST, 1s P99 for REST, 24h for batch.</em> (5) <em>Filenet: REST + SFTP, 500ms P99 retrieval, hours for upload.</em> <em>Did I miss anything?</em></span><span class="cn">(1) <em>FCDB：REST + Kafka，100ms P99，200 TPS，沙箱有。</em>(2) <em>GLCM：仅 REST，200ms P99，1k TPS，沙箱有。</em>(3) <em>Midas：REST + FIX，50ms P99，50 TPS，沙箱有限（交易时段）。</em>(4) <em>Opics：EOD 批量 + REST，REST 1s P99，批量 24h。</em>(5) <em>Filenet：REST + SFTP，读取 500ms P99，上传小时级。</em><em>我漏了什么吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>Perfect. Three things to flag for OneWealth:</em></span><span class="cn"><em>好。三件事需要给 OneWealth 标出来：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>One: Midas has a 50ms P99 budget — that is tighter than our other integrations.</em> <em>If OneWealth adds even 10ms of processing, we blow the budget.</em> <em>Plan for async or skip Midas for v1.</em></span><span class="cn"><em>一：Midas 50ms P99 预算——比其他集成紧。</em><em>如果 OneWealth 加 10ms 处理，就爆预算。</em><em>v1 规划异步或者跳过 Midas。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>Two: Opics is batch + REST.</em> <em>The batch window is 22:00-02:00 HKT.</em> <em>Anything submitted after 22:00 HKT goes into the next day batch.</em> <em>Plan your intraday reconciliation accordingly.</em></span><span class="cn"><em>二：Opics 是批量+REST。</em><em>批量窗口是 22:00-02:00 香港时间。</em><em>22:00 香港时间后提交进下一天的批量。</em><em>相应规划你的盘中对账。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>Three: Filenet upload takes hours.</em> <em>Do not wait for the upload to complete before responding to the user.</em> <em>Async upload with a status check.</em></span><span class="cn"><em>三：Filenet 上传要几小时。</em><em>别等上传完成再响应用户。</em><em>异步上传+状态查询。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Got it. Three constraints:</em> (1) <em>Midas 50ms budget — async or skip for v1.</em> (2) <em>Opics batch window 22:00-02:00 HKT — plan reconciliation accordingly.</em> (3) <em>Filenet async upload — do not block user response.</em> <em>I will incorporate these into the OneWealth design.</em> <em>Draft by next Friday, design review with you and the 5 system owners the following week.</em></span><span class="cn"><em>好。三个约束：</em>(1) <em>Midas 50ms 预算——v1 异步或跳过。</em>(2) <em>Opics 批量窗口 22:00-02:00 香港时间——相应规划对账。</em>(3) <em>Filenet 异步上传——别阻塞用户响应。</em><em>我会把这些纳入 OneWealth 设计。</em><em>下周五前起草，下下周跟你和 5 个系统 owner 做设计评审。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Steven:</span><span class="text"><span class="en"><em>Sounds good. Send the design to all 5 system owners when it is drafted.</em> <em>Each owner will sign off on their integration.</em></span><span class="cn"><em>好。设计文档起草后发给 5 个系统 owner。</em><em>每个 owner 签自己的集成。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Will do. Thanks Steven — clean walkthrough.</em></span><span class="cn"><em>好。谢谢 Steven——走查很干净。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Ownership boundary</span> <em>Each has a different ownership boundary, SLA, and integration pattern.</em></span><span class="chinese">每个有不同的 owner 边界、SLA、集成模式。</span><span class="note">When integrating with core systems, the first question is: who owns it, what is the SLA, what is the pattern.</span></li>
+<li><span class="english"><span class="tag">Latency budget</span> <em>Latency budget: 100ms P99. 50ms P99. 500ms P99.</em></span><span class="chinese">延迟预算：100ms P99。50ms P99。500ms P99。</span><span class="note">P99 = 99th percentile latency. Bank integrations have tight P99 budgets. 50ms for trading is normal.</span></li>
+<li><span class="english"><span class="tag">Sandbox</span> <em>Sandbox: yes. Sandbox: limited (market hours).</em></span><span class="chinese">沙箱：有。沙箱：有限（交易时段）。</span><span class="note">Sandbox availability affects test strategy. Midas has limited sandbox (market hours only) — plan tests accordingly.</span></li>
+<li><span class="english"><span class="tag">Integration matrix</span> <em>Let me confirm the integration matrix.</em></span><span class="chinese">我确认一下集成矩阵。</span><span class="note">End every system walkthrough with an integration matrix. Owner, SLA, pattern, latency, sandbox.</span></li>
+<li><span class="english"><span class="tag">Three constraints</span> <em>Three constraints: Midas 50ms, Opics batch window, Filenet async.</em></span><span class="chinese">三个约束：Midas 50ms、Opics 批量窗口、Filenet 异步。</span><span class="note">When system owners flag constraints, capture them as a numbered list. The list is your design input.</span></li>
+<li><span class="english"><span class="tag">Async upload</span> <em>Do not wait for the upload to complete before responding to the user.</em></span><span class="chinese">别等上传完成再响应用户。</span><span class="note">Async upload is a UX pattern. The user gets a pending upload state; the system uploads in the background.</span></li>
+<li><span class="english"><span class="tag">Design review with owners</span> <em>Design review with you and the 5 system owners the following week.</em></span><span class="chinese">下周跟你和 5 个系统 owner 做设计评审。</span><span class="note">Always include the system owners in the design review. Each owner signs off on their integration.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Core banking system</strong> n.. The system of record for customer accounts and balances. 核心银行系统</li>
+<li><strong>FCDB</strong> n.. The bank main core banking ledger. FCDB 核心账本</li>
+<li><strong>GLCM</strong> n.. Global Legal Customer Master — the canonical customer record. 全球客户主数据</li>
+<li><strong>Midas</strong> n.. A trading platform used in major banks for FX, rates, equities. Midas 交易平台</li>
+<li><strong>Opics</strong> n.. A treasury / risk management system. Opics 资金系统</li>
+<li><strong>Filenet</strong> n.. An enterprise document management system. Filenet 文档系统</li>
+<li><strong>P99 latency</strong> n.. 99th-percentile latency — the slowest 1% of requests. P99 延迟</li>
+<li><strong>TPS (Transactions Per Second)</strong> n.. A throughput measure. 每秒交易数</li>
+<li><strong>FIX protocol</strong> n.. A messaging standard for financial trading. FIX 协议</li>
+<li><strong>Batch window</strong> n.. The time period when batch jobs run (e.g., EOD reconciliation). 批量窗口</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Each has a different X, Y, Z' — the system-owner walkthrough</h3><p>When the system owner walks you through integrations, listen and capture: <em>owner, SLA, integration pattern, latency, sandbox</em>. The matrix is your design input.</p><p>系统 owner 走查时，记 5 件事：owner、SLA、集成模式、延迟、沙箱。</p>
+<h3>② 'Latency budget: 100ms P99' — quantifying latency</h3><p>Quantify latency: <em>100ms P99, 50ms P99, 500ms P99</em>. P99 is the standard bank latency metric. Numbers beat adjectives.</p><p>用 P99 量化延迟。</p>
+<h3>③ 'Three constraints: X, Y, Z' — the design input list</h3><p>When system owners flag constraints, capture them as a numbered list. <em>Three constraints: Midas 50ms, Opics batch window, Filenet async.</em></p><p>把 owner 提的约束整理成编号清单。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>When integrating with core systems, the first question is: who owns it.</strong> Owner, SLA, pattern, latency, sandbox.</li>
+<li><strong>Quantify latency in P99.</strong> 100ms P99 for core banking is normal. 50ms P99 for trading is tight.</li>
+<li><strong>Sandbox availability affects test strategy.</strong> Midas has market-hours-only sandbox — plan tests accordingly.</li>
+<li><strong>End every walkthrough with an integration matrix.</strong> Owner, SLA, pattern, latency, sandbox.</li>
+<li><strong>Capture constraints as a numbered list.</strong> The list is your design input.</li>
+<li><strong>Async upload is a UX pattern.</strong> User gets pending upload state; system uploads in background.</li>
+<li><strong>Always include system owners in the design review.</strong> Each owner signs off on their integration.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the systems walkthrough</h3><p>Translate the following walkthrough into natural Chinese.</p><blockquote>"OneWealth needs to integrate with 5 core systems. Each has a different ownership boundary, SLA, and integration pattern. Let me walk you through the matrix. System 1: FCDB. Owner: Group Core Banking, HK. SLA: 99.95% uptime, 200 TPS. Integration: REST + Kafka. Latency budget: 100ms P99. Sandbox: yes. System 2: GLCM. Owner: Group Customer Data, UK. SLA: 99.9% uptime, 1k TPS. Integration: REST only. Latency budget: 200ms P99. Sandbox: yes. System 3: Midas. Owner: Group Trading Tech, HK. SLA: 99.99% uptime, 50 TPS. Integration: REST + FIX protocol. Latency budget: 50ms P99. Sandbox: limited (market hours). System 4: Opics. Owner: Group Treasury Tech, UK. SLA: 99.95% uptime, batch + real-time. Integration: batch CSV at EOD + REST intraday. Latency: 1s P99 for REST, 24h for batch. System 5: Filenet. Owner: Group Content Management, IN. SLA: 99.9% uptime. Integration: REST + SFTP. Latency: 500ms P99 retrieval, hours for upload. Let me confirm the integration matrix. Three constraints. One: Midas 50ms — async or skip for v1. Two: Opics batch window 22:00-02:00 HKT — plan reconciliation accordingly. Three: Filenet async upload — do not block user response. Got it. Three constraints. I will incorporate these into the OneWealth design. Draft by next Friday, design review with you and the 5 system owners the following week. Send the design to all 5 system owners when drafted. Each owner will sign off on their integration."</blockquote><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>"OneWealth 需要和 5 个核心系统集成。每个有不同的 owner 边界、SLA、集成模式。我带你过一下矩阵。系统 1：FCDB。Owner：集团核心银行，香港。SLA：99.95% 可用，200 TPS。集成：REST + Kafka。延迟预算：100ms P99。沙箱：有。系统 2：GLCM。Owner：集团客户数据，英国。SLA：99.9% 可用，1k TPS。集成：仅 REST。延迟预算：200ms P99。沙箱：有。系统 3：Midas。Owner：集团交易技术，香港。SLA：99.99% 可用，50 TPS。集成：REST + FIX 协议。延迟预算：50ms P99。沙箱：有限（交易时段）。系统 4：Opics。Owner：集团资金技术，英国。SLA：99.95% 可用，批量+实时。集成：EOD 批量 CSV + 盘中 REST。延迟：REST 1s P99，批量 24h。系统 5：Filenet。Owner：集团内容管理，印度。SLA：99.9% 可用。集成：REST + SFTP。延迟：读取 500ms P99，上传小时级。我确认一下集成矩阵。三个约束。一：Midas 50ms——v1 异步或跳过。二：Opics 批量窗口 22:00-02:00 香港时间——相应规划对账。三：Filenet 异步上传——别阻塞用户响应。好。三个约束。我会把这些纳入 OneWealth 设计。下周五前起草，下下周跟你和 5 个系统 owner 做设计评审。设计文档起草后发给 5 个系统 owner。每个 owner 签自己的集成。"</p></div><h3>Exercise 2 — Spot the integration mistake</h3><p>Which of these is the most TL-as-integration-aware?</p><ol><li>We will just call the APIs directly. Easy.</li><li>I will capture the integration matrix: FCDB (REST+Kafka, 100ms P99, 200 TPS), GLCM (REST, 200ms P99, 1k TPS), Midas (REST+FIX, 50ms P99, market-hours sandbox), Opics (batch EOD + REST, 1s P99), Filenet (REST+SFTP, 500ms P99 retrieval). Three constraints: Midas 50ms tight, Opics batch window 22:00-02:00, Filenet async upload.</li><li>Sandbox? We can just test in production.</li><li>We will figure out the SLAs after we go live.</li></ol><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button><div class="answer-box" style="display:none;"><p>② is the integration-aware TL. ① ignores the matrix. ③ violates no testing in production (regulator-reportable). ④ is post-hoc. A common mistake is treating core-system integration as just calling APIs — but each system has unique SLA, latency, and sandbox constraints.</p></div><h3>Exercise 3 — Your turn</h3><p>Your new mobile app needs to integrate with 3 systems: (a) Customer Profile (REST, 300ms P99, 5k TPS, sandbox yes), (b) Payments (REST + ISO 20022, 1s P99, 500 TPS, sandbox yes, batch reconciliation at 23:00 HKT), (c) Notifications (REST + WebSocket, 200ms P99, 10k TPS, sandbox yes). Write the integration matrix in English. Include 2-3 constraints you have identified for the mobile app design.</p><button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button><div class="answer-box" style="display:none;"><p>"Integration matrix: (1) Customer Profile: REST, 300ms P99, 5k TPS, sandbox yes. (2) Payments: REST + ISO 20022, 1s P99, 500 TPS, sandbox yes, batch reconciliation 23:00 HKT. (3) Notifications: REST + WebSocket, 200ms P99, 10k TPS, sandbox yes. Three constraints: (1) Payments batch reconciliation at 23:00 HKT — plan retry logic for payments submitted between 22:00 and 23:00. (2) WebSocket is a long-lived connection — need reconnection logic on mobile network switches (3G/4G/5G/WiFi). (3) Customer Profile is the highest-volume (5k TPS) — must implement client-side caching to avoid hitting the API on every screen. Got it. Three constraints. I will incorporate these into the mobile app design. Draft by next Friday, design review with all 3 system owners the following week."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

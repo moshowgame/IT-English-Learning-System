@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: Tech Spike / POC Planning | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">08 · Tech Spike / POC Planning</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Tech Spike / POC Planning</h1>
+        <p class="subtitle">Article 08 · Module 2: Design & Code Quality · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Time-boxed investigation, hypothesis-driven POC, evidence over opinion</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday, 10:00 AM HKT</strong>. The squad is considering a tech spike to evaluate <em>Redis vs Memcached</em> for a new session cache. There is strong opinion in the team but no data. You, as TL, propose a <strong>3-day time-boxed spike</strong> with clear hypotheses. The squad needs to align on what success looks like.</p><p>周一上午10点香港时间。Squad 在考虑用 tech spike 评估新 session 缓存：<em>Redis vs Memcached</em>。团队里意见强烈但没数据。你作为 TL，提出一个<strong>3 天时间盒的 spike</strong>，带着明确的假设。Squad 需要对齐"成功"长什么样。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">James (PO):</span><span class="text"><span class="en">Wei, before we commit to Redis, <em>can we do a quick spike?</em> The team is divided.</span><span class="cn">Wei，在我们选定 Redis 之前，<em>能不能做个快速 spike？</em>团队里意见有分歧。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Good call. <em>I propose a 3-day time-boxed spike.</em> <em>Not 5 days, not 1 week.</em> <em>3 days max</em>, with a clear deliverable at the end.</span><span class="cn">好提议。<em>我建议 3 天时间盒的 spike。</em><em>不要 5 天，不要 1 周。</em><em>最多 3 天</em>，最后产出明确的交付物。</span></span></div>
+<div class="dialogue-line"><span class="speaker">Raj:</span><span class="text"><span class="en">What <em>hypothesis</em> are we testing?</span><span class="cn">我们要测<em>什么假设</em>？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Three hypotheses.</em> H1: Redis <em>single-node throughput</em> is at least <em>2x Memcached</em> on our workload. H2: Redis <em>persistence overhead</em> is <em>under 15% latency cost</em>. H3: Redis <em>operational complexity</em> is <em>manageable</em> for the team. <em>If all three hold, we go with Redis.</em></span><span class="cn"><em>三个假设。</em>H1: 在我们工作负载下，Redis <em>单节点吞吐</em>至少是 Memcached 的 <em>2 倍</em>。H2: Redis <em>持久化开销</em>在 <em>15% 延迟以内</em>。H3: Redis <em>运维复杂度</em>对团队<em>可承受</em>。<em>三个都成立就选 Redis。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Mei:</span><span class="text"><span class="en">Who's <em>on the spike</em>?</span><span class="cn"><em>谁</em>参与 spike？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Raj owns it.</em> He's our Redis champion. <em>Lin pairs</em> — she has Memcached experience from the old system. <em>James sponsors</em> — he gets the business context. <em>Mei, you shadow</em> — you may own the implementation next quarter.</span><span class="cn"><em>Raj 负责。</em>他最支持 Redis。<em>Lin 配对</em>——她有老系统 Memcached 经验。<em>James 发起人</em>——他懂业务。<em>Mei，你旁观</em>——下季度你可能负责实现。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Daily standup at 9:30 AM</em> in the spike room. <em>15 minutes max.</em> <em>Day 3, 2 PM: spike review</em> — we present findings, decide.</span><span class="cn"><em>每天 9:30 早会</em>，spike 会议室，<em>最多 15 分钟</em>。<em>第 3 天下午 2 点：spike 评审</em>，我们汇报结果，做决定。</span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin:</span><span class="text"><span class="en">What if the spike <em>doesn't conclude</em> in 3 days?</span><span class="cn">如果 3 天 <em>还没结论</em>呢？</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en"><em>Then we stop and present what we have.</em> <em>A spike is a time-box, not a goal.</em> <em>If we don't know by day 3, we de-risk with the safer option</em> — which is Memcached, since it's already in production.</span><span class="cn"><em>那就停，把已知的拿出来。</em><em>Spike 是时间盒，不是目标。</em><em>第 3 天还没结论，我们就选更稳的方案</em>——Memcached，因为它已经在生产。</span></span></div>
+<div class="dialogue-line"><span class="speaker">Raj:</span><span class="text"><span class="en">Sounds good. <em>I'll set up the benchmark harness today.</em></span><span class="cn">好的。<em>我今天搭好基准测试工具。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Perfect. <em>Document the hypotheses in the spike ticket.</em> <em>Add the success criteria.</em> <em>Link to the spike channel.</em> <em>Let's go.</em></span><span class="cn">好。<em>把假设写进 spike ticket。</em><em>加成功标准。</em><em>挂上 spike 频道链接。</em><em>开干。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Frame</span> <em>I propose a 3-day time-boxed spike.</em></span><span class="chinese">我建议 3 天时间盒的 spike。</span><span class="note">Always time-box a spike. Open-ended spikes become holidays.</span></li>
+<li><span class="english"><span class="tag">Not-this</span> <em>Not 5 days, not 1 week. 3 days max.</em></span><span class="chinese">不要 5 天，不要 1 周，最多 3 天。</span><span class="note">Pre-empt scope creep by naming what it's NOT.</span></li>
+<li><span class="english"><span class="tag">Hypothesis</span> <em>Three hypotheses.</em></span><span class="chinese">三个假设。</span><span class="note">Spikes test hypotheses, not opinions. If you can't name the hypothesis, you don't have a spike.</span></li>
+<li><span class="english"><span class="tag">Owner</span> <em>Raj owns it.</em></span><span class="chinese">Raj 负责。</span><span class="note">Always name an owner. 'We' is not an owner.</span></li>
+<li><span class="english"><span class="tag">Pair</span> <em>Lin pairs.</em></span><span class="chinese">Lin 配对。</span><span class="note">Pair spreads knowledge. A spike done by one person is a knowledge silo.</span></li>
+<li><span class="english"><span class="tag">Sponsor</span> <em>James sponsors.</em></span><span class="chinese">James 发起人。</span><span class="note">A PO or senior dev sponsors the spike to keep the business lens.</span></li>
+<li><span class="english"><span class="tag">Timebox</span> <em>A spike is a time-box, not a goal.</em></span><span class="chinese">Spike 是时间盒，不是目标。</span><span class="note">Reframe when someone forgets. 'We didn't finish' is fine; 'we need 2 more weeks' is not.</span></li>
+<li><span class="english"><span class="tag">De-risk</span> <em>De-risk with the safer option.</em></span><span class="chinese">用更稳的方案降低风险。</span><span class="note">If the spike is inconclusive, default to the existing/proven option.</span></li>
+<li><span class="english"><span class="tag">Deliverable</span> <em>Document the hypotheses in the spike ticket.</em></span><span class="chinese">把假设写进 spike ticket。</span><span class="note">Spikes need a written deliverable. Slack threads are not deliverables.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>Tech spike</strong> n.. A short, time-boxed investigation to test a technical hypothesis. 技术 spike</li>
+<li><strong>POC (Proof of Concept)</strong> n.. A small implementation to prove a tech approach works. 概念验证</li>
+<li><strong>Time-box</strong> n.. A fixed amount of time allocated to a task. 时间盒</li>
+<li><strong>Hypothesis-driven</strong> adj.. A spike style where you declare what you're testing upfront. 假设驱动</li>
+<li><strong>Benchmark harness</strong> n.. A repeatable script/test that measures performance. 基准测试工具</li>
+<li><strong>Operational complexity</strong> n.. How hard it is to run, monitor, and debug a system. 运维复杂度</li>
+<li><strong>Persistence overhead</strong> n.. The latency cost of writing data to disk. 持久化开销</li>
+<li><strong>Single-node throughput</strong> n.. How many requests per second one server can handle. 单节点吞吐</li>
+<li><strong>Spike review</strong> n.. A meeting at the end of a spike to present findings. Spike 评审</li>
+<li><strong>Knowledge silo</strong> n.. Information that only one person on the team knows. 知识孤岛</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'Not X, not Y. Z max.' — pre-empting scope creep</h3><p>Use <em>not X, not Y, Z max</em> when proposing a time-box. The negation pre-empts the inevitable 'can we have more time?'. <em>Not 5 days, not 1 week. 3 days max.</em></p><p>用 <em>not X, not Y, Z max</em> 防止范围蔓延。</p>
+<h3>② 'X owns / pairs / sponsors' — clear spike roles</h3><p>Use <em>X owns / X pairs / X sponsors / X shadows</em> to assign roles. Each role has a clear function: owner drives, pair spreads knowledge, sponsor aligns with business, shadow learns.</p><p>用 <em>owns / pairs / sponsors / shadows</em> 分配角色。</p>
+<h3>③ 'A spike is a time-box, not a goal' — reframe the metric</h3><p>Use <em>X is a Y, not a Z</em> to reframe how success is measured. <em>A spike is a time-box, not a goal / A POC is a learning, not a deliverable</em>.</p><p>用 <em>X is a Y, not a Z</em> 重新定义成功的衡量方式。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Spikes test hypotheses, not opinions.</strong> If you can't name the hypothesis, you don't have a spike.</li>
+<li><strong>Always time-box. Always.</strong> 3 days is typical. 5 days is the upper bound. 1 week is a small project, not a spike.</li>
+<li><strong>Name the owner, the pair, the sponsor, the shadow.</strong> Unassigned spikes become abandoned tickets.</li>
+<li><strong>Daily standup during the spike.</strong> 15 minutes. Just to keep the time-box honest.</li>
+<li><strong>Day 3 review is mandatory.</strong> 'I need more time' is not acceptable. The spike either concluded or didn't.</li>
+<li><strong>If inconclusive, default to the existing/proven option.</strong> This is the bank's bias for safety.</li>
+<li><strong>Document the deliverable.</strong> Spike ticket with hypotheses, success criteria, results, decision. Slack is not a deliverable.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the spike framing</h3>
+    <p>Translate the following spike planning into natural Chinese.</p>
+    <blockquote>"Good call. I propose a 3-day time-boxed spike. Not 5 days, not 1 week. 3 days max, with a clear deliverable at the end. Three hypotheses. H1: Redis single-node throughput is at least 2x Memcached on our workload. H2: Redis persistence overhead is under 15% latency cost. H3: Redis operational complexity is manageable for the team. If all three hold, we go with Redis. Raj owns it. Lin pairs — she has Memcached experience. James sponsors. Mei shadows. Daily standup at 9:30 AM. 15 minutes max. Day 3, 2 PM: spike review. A spike is a time-box, not a goal. If we don't know by day 3, we de-risk with the safer option — Memcached, since it's already in production."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"好提议。我建议 3 天时间盒的 spike。不要 5 天，不要 1 周，最多 3 天，最后产出明确的交付物。三个假设。H1: 在我们工作负载下，Redis 单节点吞吐至少是 Memcached 的 2 倍。H2: Redis 持久化开销在 15% 延迟以内。H3: Redis 运维复杂度对团队可承受。三个都成立就选 Redis。Raj 负责。Lin 配对——她有 Memcached 经验。James 发起人。Mei 旁观。每天 9:30 早会，最多 15 分钟。第 3 天下午 2 点：spike 评审。Spike 是时间盒，不是目标。第 3 天还没结论，我们就用更稳的方案——Memcached，因为它已经在生产。"</p></div>
+    <h3>Exercise 2 — Spot the spike anti-pattern</h3>
+    <p>Which of these spike setups is the most 'spike-as-tool' (not anti-pattern)?</p>
+    <ol><li>'Let's spike for 2 weeks to see if Kafka is good.'</li><li>'3-day spike, 3 hypotheses, Raj owns, daily 15-min standup, day-3 review.'</li><li>'Lin will investigate MongoDB and report back when ready.'</li><li>'We need to spike this before we commit. Raj, let me know how it goes.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>② is the proper spike. ① is too long. ③ and ④ are open-ended investigations, not time-boxed spikes. A common mistake is calling every investigation a 'spike' when it has no time-box, no owner, no hypothesis, no deliverable.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>Your squad is choosing between gRPC and REST for a new internal service. Propose a 3-day spike: hypotheses, owner, pair, sponsor, success criteria, and what you default to if inconclusive. Write in English.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"I propose a 3-day time-boxed spike. Not 5 days, not 1 week. Three hypotheses. H1: gRPC latency is at least 30% lower than REST on our workload. H2: gRPC schema evolution is manageable for the team. H3: gRPC debugging tools are good enough for our SRE. If all three hold, we go with gRPC. Raj owns it. Lin pairs — she has REST expertise. James sponsors. Daily standup at 9:30. Day 3 review. A spike is a time-box, not a goal. If we don't know by day 3, we de-risk with REST — it's the bank standard."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="pair-programming-session.html" class="btn btn-primary">Next: Article 09: Pair Programming Session →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

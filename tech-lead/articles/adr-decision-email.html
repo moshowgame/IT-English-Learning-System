@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 12: Architecture Decision Record (ADR) Email | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">12 · Architecture Decision Record (ADR) Email</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Architecture Decision Record (ADR) Email</h1>
+        <p class="subtitle">Article 12 · Module 3: Written Communication · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Decision announcement, context + decision + consequences, addressing dissent</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 11:00 AM HKT</strong>. The chapter review for <strong>ADR-0142 (OneWealth API Gateway strategy)</strong> concluded. The decision is final: <em>AWS API Gateway with mutual TLS</em> for partner-facing traffic only. <strong>Raj</strong> voted against — he wanted to include internal traffic. <strong>Diego</strong> was neutral. <strong>Margaret</strong> approved. You are sending the formal decision email to the wider RBWM Digital tribe.</p><p>周二上午11点香港时间。<strong>ADR-0142（OneWealth API Gateway 策略）</strong>的 chapter 评审结束。决策定稿：<em>合作方侧用 AWS API Gateway + 双向 TLS</em>。<strong>Raj</strong> 投了反对——他希望把内部流量也包含进来。<strong>Diego</strong> 中立。<strong>Margaret</strong> 批准。你正在向更广的 RBWM 数字化 tribe 发正式的决策邮件。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">You (TL, draft email):</span><span class="text"><span class="en">Subject: <em>ADR-0142 final decision — OneWealth API Gateway strategy</em></span><span class="cn">主题：<em>ADR-0142 最终决策——OneWealth API Gateway 策略</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Hi RBWM Digital tribe,</em></span><span class="cn"><em>RBWM 数字化 tribe 大家好，</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>ADR-0142 (OneWealth API Gateway strategy) has been finalised</em> after chapter review yesterday. <em>TL;DR: AWS API Gateway with mutual TLS for partner-facing traffic only. Internal RBWM traffic stays on the existing private API mesh.</em></span><span class="cn"><em>ADR-0142（OneWealth API Gateway 策略）昨天 chapter 评审后定稿</em>。<em>TL;DR：合作方侧用 AWS API Gateway + 双向 TLS。RBWM 内部流量继续走现有的私有 API mesh。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Context:</em></span><span class="cn"><em>背景：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">We <em>evaluated three options</em> for north-south API traffic: (1) AWS API Gateway with mTLS, (2) Kong with mTLS, (3) extend the existing on-prem gateway. <em>Scoring was on 4 criteria</em>: time-to-market, cost, operational fit, security alignment.</span><span class="cn">我们<em>评估了 3 个方案</em>用于南北向 API 流量：(1) AWS API Gateway + mTLS，(2) Kong + mTLS，(3) 扩展现有 on-prem 网关。<em>按 4 个标准打分</em>：上市时间、成本、运维契合度、安全对齐度。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Decision:</em></span><span class="cn"><em>决策：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>AWS API Gateway with mTLS, partner-facing traffic only</em>. <em>Rationale: best security alignment with Group Cyber, lowest time-to-market, and lowest operational risk (fully managed).</em> <em>Internal traffic is out of scope for this ADR — it stays on the existing private API mesh.</em></span><span class="cn"><em>AWS API Gateway + mTLS，仅合作方流量</em>。<em>理由：与 Group Cyber 安全对齐最佳、上市最快、运维风险最低（全托管）。</em><em>内部流量不在本 ADR 范围——继续走现有的私有 API mesh。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Consequences:</em></span><span class="cn"><em>影响：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en">(1) <em>Partner-facing squads</em>: design your integrations against the AWS API Gateway, <em>target go-live in Q3</em>. (2) <em>Internal squads</em>: no change. (3) <em>InfoSec</em>: <em>mutual TLS certificate rotation policy is a hard dependency</em> — flagged last week, ETA Friday.</span><span class="cn">(1) <em>合作方 squad</em>：按 AWS API Gateway 设计集成，<em>Q3 上线</em>。(2) <em>内部 squad</em>：无变化。(3) <em>InfoSec</em>：<em>双向 TLS 证书轮换策略是硬依赖</em>——上周已标，预计周五。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Why not internal traffic (Raj's view):</em></span><span class="cn"><em>为什么不含内部流量（Raj 的观点）：</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Raj raised a valid concern</em> — extending API Gateway to internal traffic would give us consistent observability and policy enforcement. <em>However</em>, <em>internal traffic has different NFRs</em> (lower latency, no mutual TLS) and <em>we don't have evidence the current private mesh is failing</em>. <em>We will revisit internal traffic in ADR-0150 (Q4)</em> — Raj is on the working group.</span><span class="cn"><em>Raj 提了合理关切</em>——把 API Gateway 扩展到内部能给我们一致的观测性和策略执行。<em>然而</em>，<em>内部流量的 NFR 不同</em>（低延迟、不需要 mTLS），<em>且我们没有证据说现有私有 mesh 不行</em>。<em>会在 ADR-0150（Q4）重审内部流量</em>——Raj 在工作小组里。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Read the full ADR here:</em> [link to Confluence]. <em>Questions or push-back</em>: <em>reply-all by Friday</em>. After Friday, <em>the decision is locked</em>.</span><span class="cn"><em>完整 ADR 见：</em>[Confluence 链接]。<em>有疑问或反对</em>：<em>周五前 reply-all</em>。周五后，<em>决策锁定</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, email body):</span><span class="text"><span class="en"><em>Thanks all. Wei (TL, RBWM Digital)</em></span><span class="cn"><em>各位辛苦。Wei（TL，RBWM 数字化）</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Subject</span> <em>ADR-0142 final decision — OneWealth API Gateway strategy</em></span><span class="chinese">ADR-0142 最终决策——OneWealth API Gateway 策略</span><span class="note">Subject = ADR number + 'final decision' + topic. Scannable, specific.</span></li>
+<li><span class="english"><span class="tag">TL;DR</span> <em>TL;DR: AWS API Gateway with mTLS for partner-facing traffic only.</em></span><span class="chinese">TL;DR：合作方侧用 AWS API Gateway + mTLS。</span><span class="note">Always lead with a TL;DR. Most readers will only read the TL;DR.</span></li>
+<li><span class="english"><span class="tag">Context</span> <em>We evaluated three options for north-south API traffic.</em></span><span class="chinese">我们评估了 3 个方案用于南北向 API 流量。</span><span class="note">Context = the alternative options that were considered. Skipping the context turns the ADR into a 'because I said so'.</span></li>
+<li><span class="english"><span class="tag">Decision</span> <em>AWS API Gateway with mTLS, partner-facing traffic only.</em></span><span class="chinese">AWS API Gateway + mTLS，仅合作方流量。</span><span class="note">The decision is one short sentence. If it takes more than one sentence, you don't have a decision.</span></li>
+<li><span class="english"><span class="tag">Rationale</span> <em>Rationale: best security alignment, lowest time-to-market, lowest operational risk.</em></span><span class="chinese">理由：安全对齐最佳、上市最快、运维风险最低。</span><span class="note">Rationale is the 'why'. 3 short reasons. No essays.</span></li>
+<li><span class="english"><span class="tag">Consequences</span> <em>Consequences: who is impacted, what changes, hard dependencies.</em></span><span class="chinese">影响：谁受影响、什么变化、硬依赖。</span><span class="note">Consequences = the action items. The decision is not done until consequences are listed.</span></li>
+<li><span class="english"><span class="tag">Dissent</span> <em>Raj raised a valid concern — however, we will revisit in ADR-0150.</em></span><span class="chinese">Raj 提了合理关切——然而，我们会在 ADR-0150 重审。</span><span class="note">Address dissent explicitly. 'Valid concern, however, X' is the right register. Burying dissent breeds resentment.</span></li>
+<li><span class="english"><span class="tag">Lock</span> <em>After Friday, the decision is locked.</em></span><span class="chinese">周五后，决策锁定。</span><span class="note">Set a lock date. ADR emails without a lock date invite endless re-debate.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>ADR (Architecture Decision Record)</strong> n.. A short document capturing a decision + context + consequences. 架构决策记录</li>
+<li><strong>Chapter review</strong> n.. The architecture community of practice's review meeting. Chapter 评审</li>
+<li><strong>TL;DR</strong> n.. Too Long; Didn't Read — a one-sentence summary. 一句话摘要</li>
+<li><strong>Rationale</strong> n.. The reasoning behind a decision. 理由</li>
+<li><strong>Consequences</strong> n.. The downstream effects of a decision. 影响</li>
+<li><strong>North-south traffic</strong> n.. Traffic between client and server (vs. east-west = service-to-service). 南北向流量</li>
+<li><strong>Private API mesh</strong> n.. An internal service-to-service API layer. 私有 API mesh</li>
+<li><strong>mTLS (mutual TLS)</strong> n.. Both client and server present certificates. 双向 TLS</li>
+<li><strong>Group Cyber</strong> n.. The bank's central cybersecurity function. 集团网安</li>
+<li><strong>Lock date</strong> n.. The date after which a decision can no longer be re-debated. 锁定日期</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'TL;DR: X' — the one-sentence summary</h3><p>Open with <em>TL;DR: [decision in one sentence]</em>. Most executives and stakeholders will only read the TL;DR.</p><p>用 <em>TL;DR: [决策]</em> 开头。</p>
+<h3>② 'X raised a valid concern — however, Y' — addressing dissent</h3><p>Address dissent explicitly. <em>X raised a valid concern / X's point is well-taken — however, [reasoning]. We will revisit in [next ADR / Q4].</em></p><p>显式回应反对意见。</p>
+<h3>③ 'After Friday, the decision is locked' — the lock</h3><p>End with a lock date. <em>After [date], the decision is locked. Reply-all by [date].</em> The lock date prevents endless re-debate.</p><p>结尾加锁定日期。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>Subject = ADR number + 'final decision' + topic.</strong> Scannable, specific.</li>
+<li><strong>Always lead with TL;DR.</strong> Most readers will only read the TL;DR.</li>
+<li><strong>Context = the alternatives considered.</strong> Skipping the context turns the ADR into 'because I said so'.</li>
+<li><strong>Decision is one short sentence.</strong> If it takes more than one sentence, you don't have a decision.</li>
+<li><strong>Rationale = 3 short reasons.</strong> No essays.</li>
+<li><strong>Consequences = who/what/dependencies.</strong> The decision is not done until consequences are listed.</li>
+<li><strong>Address dissent explicitly.</strong> 'Valid concern, however, X' is the right register.</li>
+<li><strong>Set a lock date.</strong> ADR emails without a lock date invite endless re-debate.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the ADR email</h3>
+    <p>Translate the following ADR email into natural Chinese.</p>
+    <blockquote>"Subject: ADR-0142 final decision — OneWealth API Gateway strategy. Hi RBWM Digital tribe. ADR-0142 (OneWealth API Gateway strategy) has been finalised after chapter review yesterday. TL;DR: AWS API Gateway with mTLS for partner-facing traffic only. Internal RBWM traffic stays on the existing private API mesh. Context: We evaluated three options for north-south API traffic: AWS API Gateway with mTLS, Kong with mTLS, and extending the existing on-prem gateway. Scoring was on 4 criteria: time-to-market, cost, operational fit, security alignment. Decision: AWS API Gateway with mTLS, partner-facing traffic only. Rationale: best security alignment with Group Cyber, lowest time-to-market, lowest operational risk. Consequences: Partner-facing squads design your integrations against AWS API Gateway, target go-live Q3. Internal squads: no change. InfoSec: mutual TLS certificate rotation policy is a hard dependency, ETA Friday. Raj raised a valid concern — however, we don't have evidence the current private mesh is failing. We will revisit internal traffic in ADR-0150 (Q4) — Raj is on the working group. Read the full ADR here: [link]. Questions or push-back: reply-all by Friday. After Friday, the decision is locked. Thanks all. Wei (TL, RBWM Digital)."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"主题：ADR-0142 最终决策——OneWealth API Gateway 策略。RBWM 数字化 tribe 大家好。ADR-0142（OneWealth API Gateway 策略）昨天 chapter 评审后定稿。TL;DR：合作方侧用 AWS API Gateway + mTLS。RBWM 内部流量继续走现有的私有 API mesh。背景：我们评估了 3 个方案用于南北向 API 流量：AWS API Gateway + mTLS、Kong + mTLS、扩展现有 on-prem 网关。按 4 个标准打分：上市时间、成本、运维契合度、安全对齐度。决策：AWS API Gateway + mTLS，仅合作方流量。理由：与 Group Cyber 安全对齐最佳、上市最快、运维风险最低。影响：合作方 squad：按 AWS API Gateway 设计集成，Q3 上线。内部 squad：无变化。InfoSec：双向 TLS 证书轮换策略是硬依赖，预计周五。Raj 提了合理关切——然而，我们没有证据说现有私有 mesh 不行。我们会在 ADR-0150（Q4）重审内部流量——Raj 在工作小组里。完整 ADR 见：[Confluence 链接]。有疑问或反对：周五前 reply-all。周五后，决策锁定。各位辛苦。Wei（TL，RBWM 数字化）。"</p></div>
+    <h3>Exercise 2 — Spot the ADR mistake</h3>
+    <p>Which of these ADR emails is the most 'TL-as-decision-driver'?</p>
+    <ol><li>'Hi all, we decided to go with AWS. Thanks.'</li><li>'Hi all, we considered AWS, Kong, and on-prem. We're going with AWS. Read the wiki for details.'</li><li>'Hi all, TL;DR: AWS API Gateway + mTLS, partner-facing only. Context: 3 options evaluated. Decision: AWS + mTLS, partner-facing. Rationale: best security, lowest TTM, lowest ops risk. Consequences: partner squads target Q3; InfoSec mTLS rotation hard dep, ETA Friday. Dissent: Raj wanted internal; addressed — revisit in ADR-0150 Q4. Reply-all by Friday. After Friday, locked. — Wei.'</li><li>'Hi all, Raj thinks we should use Kong. I think we should use AWS. Let's discuss.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>③ is the model ADR. ① has no context. ② has context but no rationale/consequences/lock date. ④ is a debate, not a decision. A common mistake is calling the decision 'final' but not setting a lock date. Without a lock date, the decision isn't final — it's just the latest opinion.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>Your chapter just approved ADR-0201 (use PostgreSQL with read-replica for the new audit ledger). The alternatives considered were: (1) PostgreSQL with read-replica, (2) Cassandra, (3) MongoDB. Scoring was on 4 criteria: time-to-market, cost, scalability, operational fit. The decision: PostgreSQL with read-replica, 2-sprint POC first, then full migration. Mei wanted MongoDB. Write the ADR email in English. Include TL;DR, context, decision, rationale, consequences, dissent handling, and a lock date.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"Subject: ADR-0201 final decision — Audit ledger on PostgreSQL. Hi RBWM tribe. ADR-0201 finalised after chapter review. TL;DR: PostgreSQL with read-replica, 2-sprint POC, then full migration. Context: Evaluated PostgreSQL with read-replica, Cassandra, and MongoDB. Scoring: time-to-market, cost, scalability, operational fit. Decision: PostgreSQL with read-replica, 2-sprint POC, then full migration. Rationale: best time-to-market, lowest cost, sufficient scalability for our 5-year projection, mature operational fit. Consequences: Audit squad designs against PostgreSQL, POC target Q2, full migration Q3. InfoSec: encryption-at-rest hard dep, ETA Friday. Mei wanted MongoDB — valid concern about document flexibility, however, our access pattern is 95% keyed lookup, not document scan. We will revisit in ADR-0210 (Q4) if access patterns change. Read the full ADR: [link]. Reply-all by Friday. After Friday, locked. — Wei."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="engineering-all-hands-update.html" class="btn btn-primary">Next: Article 13: Engineering All-Hands Update →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>

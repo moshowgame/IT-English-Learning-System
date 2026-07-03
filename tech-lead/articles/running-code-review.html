@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: Running a Code Review Session | Tech Lead English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">ITSO</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">06 · Running a Code Review Session</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Running a Code Review Session</h1>
+        <p class="subtitle">Article 06 · Module 2: Design & Code Quality · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 PR review etiquette, blocking vs non-blocking, mentoring</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 2:00 PM HKT</strong>. You are reviewing a pull request from <strong>Lin</strong>, a junior developer. The PR implements the new <em>idempotency key generator</em> for the payment service. The PR has 240 lines of code changes, and you notice: (a) the function is 80 lines long, (b) 6 places where exceptions are swallowed silently, and (c) no test for the 11-digit HKID edge case.</p><p>周二下午2点香港时间，你正在 review <strong>Lin</strong>（junior 开发）的 PR。这个 PR 实现了支付服务的<em>幂等键生成器</em>。PR 改了 240 行代码，你发现：(a) 函数 80 行，(b) 6 处异常被静默吞掉，(c) 11 位香港身份证边界场景没测试。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line"><span class="speaker">Lin (Slack DM):</span><span class="text"><span class="en">Hey Wei, I just pushed PR #428. <em>Could you take a look when you get a chance?</em></span><span class="cn">嘿 Wei，我刚推了 PR #428。<em>有空能帮我看一下吗？</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Sure, Lin. <em>Give me 30 minutes</em> — I'll do a full pass and <em>leave inline comments</em>.</span><span class="cn">好 Lin。<em>给我 30 分钟</em>——我完整过一遍，<em>留行内评论</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, PR comment):</span><span class="text"><span class="en">Thanks for the PR, Lin — <em>great work overall</em>. I've left <em>three blocking comments</em> and <em>four non-blocking suggestions</em>. Let me walk you through the blocking ones first.</span><span class="cn">谢谢你 PR Lin——<em>整体做得不错</em>。我留了<em>3 条阻塞评论</em>和<em>4 条非阻塞建议</em>。我先过一下阻塞的。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, PR comment):</span><span class="text"><span class="en"><em>Blocking 1: the function is 80 lines.</em> I'd <em>extract the HKID-validation logic into a separate method</em> — single-responsibility principle. <em>This is a structural change, not a style change.</em></span><span class="cn"><em>阻塞 1：函数 80 行。</em>我建议<em>把香港身份证校验逻辑抽到单独方法</em>——单一职责原则。<em>这是结构改动，不是风格改动。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, PR comment):</span><span class="text"><span class="en"><em>Blocking 2: 6 places where exceptions are silently swallowed.</em> Each <code>catch (Exception e) { }</code> is <em>a debugging nightmare waiting to happen</em>. <em>At minimum, log the exception with context</em>.</span><span class="cn"><em>阻塞 2：6 处异常被静默吞掉。</em>每个 <code>catch (Exception e) { }</code> 都是<em>调试噩梦的伏笔</em>。<em>至少记录异常加上下文</em>。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, PR comment):</span><span class="text"><span class="en"><em>Blocking 3: missing test for the 11-digit HKID edge case.</em> HKID can be 8 or 11 chars. <em>Can you add a unit test for both forms</em> — and a 7-char invalid form?</span><span class="cn"><em>阻塞 3：缺 11 位香港身份证边界场景测试。</em>香港身份证可以是 8 或 11 位。<em>能给两种形式都加单元测试吗？</em>再加一个 7 位无效形式。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL, PR comment):</span><span class="text"><span class="en"><em>Non-blocking suggestions</em>: variable naming in lines 87-92, adding Javadoc on the public method, comment explaining <em>why</em> you chose UUID v7 over v4. <em>These are nice-to-haves, not must-haves.</em></span><span class="cn"><em>非阻塞建议</em>：第 87-92 行变量命名、给 public 方法加 Javadoc、加注释解释<em>为什么</em>选 UUID v7。<em>这些是 nice-to-have，不是 must-have。</em></span></span></div>
+<div class="dialogue-line"><span class="speaker">Lin (Slack DM):</span><span class="text"><span class="en">Got it, Wei. <em>The blocking items make sense</em>. Quick question — for exception handling, <em>is it OK to use a global handler</em> instead of logging in each catch?</span><span class="cn">明白了 Wei。<em>阻塞项有道理</em>。问一句——异常处理，<em>用全局 handler 行吗？</em>不用每个 catch 都记录。</span></span></div>
+<div class="dialogue-line"><span class="speaker">You (TL):</span><span class="text"><span class="en">Yes, <em>that's actually a cleaner approach</em>. Use a global <code>@ControllerAdvice</code> handler, and <em>log with a correlation ID</em>. <em>Nice instinct.</em></span><span class="cn">可以，<em>这其实更干净</em>。用全局 <code>@ControllerAdvice</code> handler，<em>记日志时带上 correlation ID</em>。<em>直觉不错。</em></span></span></div>
+
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list"><li><span class="english"><span class="tag">Open</span> <em>Great work overall.</em></span><span class="chinese">整体做得不错。</span><span class="note">Always open a code review with a positive. The junior needs to know what's right, not just what's wrong.</span></li>
+<li><span class="english"><span class="tag">Tag</span> <em>Three blocking comments and four non-blocking suggestions.</em></span><span class="chinese">3 条阻塞评论和 4 条非阻塞建议。</span><span class="note">Always label comments as blocking or non-blocking. The author needs to know what blocks merge.</span></li>
+<li><span class="english"><span class="tag">Reason</span> <em>This is a structural change, not a style change.</em></span><span class="chinese">这是结构改动，不是风格改动。</span><span class="note">Explain WHY something is blocking. Structure is a maintainability concern; style is a preference.</span></li>
+<li><span class="english"><span class="tag">Risk</span> <em>A debugging nightmare waiting to happen.</em></span><span class="chinese">调试噩梦的伏笔。</span><span class="note">Frame the consequence, not the rule.</span></li>
+<li><span class="english"><span class="tag">Specific</span> <em>Can you add a unit test for both forms?</em></span><span class="chinese">能给两种形式都加单元测试吗？</span><span class="note">Ask for the specific test, not 'more tests'.</span></li>
+<li><span class="english"><span class="tag">Soft</span> <em>Won't block merge.</em></span><span class="chinese">不阻塞合并。</span><span class="note">Make non-blocking explicitly non-blocking.</span></li>
+<li><span class="english"><span class="tag">Praise</span> <em>Nice instinct.</em></span><span class="chinese">直觉不错。</span><span class="note">End with a small praise when the junior proposes a good idea.</span></li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list"><li><strong>PR (Pull Request)</strong> n.. A proposed code change submitted for review before merge. 拉取请求</li>
+<li><strong>Blocking comment</strong> n.. A review comment that must be addressed before merge. 阻塞评论</li>
+<li><strong>Non-blocking suggestion</strong> n.. A review comment that should be considered but won't stop merge. 非阻塞建议</li>
+<li><strong>Inline comment</strong> n.. A review comment attached to a specific line in the diff. 行内评论</li>
+<li><strong>Single-responsibility principle</strong> n.. Each function should do one thing well. 单一职责原则</li>
+<li><strong>Exception swallowing</strong> n.. Catching an exception and doing nothing with it. 静默吞掉异常</li>
+<li><strong>Correlation ID</strong> n.. A unique ID that ties together all log lines for one request. 关联 ID</li>
+<li><strong>ControllerAdvice</strong> n.. Spring annotation for global exception handlers. Spring 全局异常处理</li>
+<li><strong>Idempotency key</strong> n.. A unique key that ensures a payment is processed only once. 幂等键</li>
+<li><strong>Mentoring via PR</strong> n.. Using code review as a teaching tool, not a gate. PR 中的导师制</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① 'This is X, not Y' — distinguishing the kind of issue</h3><p>Use <em>this is X, not Y</em> to label the type of feedback. <em>This is a structural change / This is a security concern, not a style preference</em>. The label tells the author how seriously to take it.</p><p>用 <em>this is X, not Y</em> 标记反馈类型。</p>
+<h3>② 'Nice-to-haves, not must-haves' — the de-escalation</h3><p>Use <em>nice-to-have / must-have / should-have / could-have</em> to label priority. Pair with <em>not</em> to soften: <em>nice-to-haves, not must-haves</em>.</p><p>用 <em>nice-to-have / must-have / should-have / could-have</em> 标记优先级。</p>
+<h3>③ 'Nice instinct' — micro-praise in code review</h3><p>Use short micro-praise phrases when a junior proposes a good idea. <em>Nice instinct / Good catch / I like that / That's cleaner</em>.</p><p>用简短的微表扬词。</p>
+
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul><li><strong>PRs are mentoring tools, not gates.</strong> A TL's code review is the cheapest mentoring you do.</li>
+<li><strong>Label every comment: blocking or non-blocking.</strong> The author needs to know what blocks merge.</li>
+<li><strong>Open with a positive.</strong> 'Great work overall' sets the tone.</li>
+<li><strong>Explain the WHY for blocking items.</strong> 'Extract this method' is a rule. The principle is a teaching.</li>
+<li><strong>Frame the consequence for risky patterns.</strong> 'Swallowing exceptions = debugging nightmare' is more memorable.</li>
+<li><strong>Make non-blocking explicitly non-blocking.</strong> 'Won't block merge' is the magic phrase.</li>
+<li><strong>End with a micro-praise when earned.</strong> It reinforces the next good idea.</li>
+</ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the code review</h3>
+    <p>Translate the following code review comments into natural Chinese.</p>
+    <blockquote>"Thanks for the PR, Lin — great work overall. I've left three blocking comments and four non-blocking suggestions. Let me walk you through the blocking ones first. Blocking 1: the function is 80 lines. I'd extract the HKID-validation logic into a separate method — single-responsibility principle. This is a structural change, not a style change. Blocking 2: 6 places where exceptions are silently swallowed. Each catch is a debugging nightmare waiting to happen. At minimum, log the exception with context. Blocking 3: missing test for the 11-digit HKID edge case. Can you add a unit test for both forms — and a 7-char invalid form? Non-blocking suggestions (won't block merge, but worth doing): variable naming in lines 87-92, adding Javadoc on the public method, and a comment explaining why you chose UUID v7 over v4. These are nice-to-haves, not must-haves."</blockquote>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>"谢谢你 PR Lin——整体做得不错。我留了 3 条阻塞评论和 4 条非阻塞建议。我先过一下阻塞的。阻塞 1：函数 80 行。我建议把香港身份证校验逻辑抽到单独方法——单一职责原则。这是结构改动，不是风格改动。阻塞 2：6 处异常被静默吞掉。每个 catch 都是调试噩梦的伏笔。至少记录异常加上下文。阻塞 3：缺 11 位香港身份证边界场景测试。能给两种形式都加单元测试吗？再加一个 7 位无效形式。非阻塞建议（不阻塞合并，但值得做）：第 87-92 行变量命名、给 public 方法加 Javadoc，加注释解释为什么选 UUID v7。这些是 nice-to-have，不是 must-have。"</p></div>
+    <h3>Exercise 2 — Spot the TL mistake</h3>
+    <p>Which of these code review lines is most 'TL-mentor-like'? Why?</p>
+    <ol><li>'This is bad. Rewrite the whole thing.'</li><li>'Thanks for the PR — great work overall. Three blocking items, four non-blocking. The first blocking: extract this method. This is a structural change, not a style change.'</li><li>'LGTM.'</li><li>'Variable names are wrong. Fix.'</li></ol>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+    <div class="answer-box" style="display:none;"><p>② is TL-mentor-like. ① and ④ are gate-keeper-like. ③ is rubber-stamping. A common mistake is either gate-keeping or rubber-stamping. The middle path is the TL's path.</p></div>
+    <h3>Exercise 3 — Your turn</h3>
+    <p>You're reviewing a PR from a junior. The PR has 200 lines. You found: (a) one missing test for an edge case, (b) two places where exceptions are swallowed, (c) a 60-line function. Write your TL code review in English. Use at least 3 patterns from Key Phrases.</p>
+    <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+    <div class="answer-box" style="display:none;"><p>"Thanks for the PR — great work overall. The new validation logic is much cleaner. I've left two blocking comments and three non-blocking suggestions. Blocking 1: the function is 60 lines. I'd extract the email-format validation into a separate method — single-responsibility principle. This is a structural change, not a style change. Blocking 2: two places where exceptions are silently swallowed. Each catch is a debugging nightmare waiting to happen. At minimum, log the exception with context. Plus a missing test for the empty-string edge case. Can you add a unit test that confirms the validator rejects empty input? Non-blocking suggestions (won't block merge, but worth doing): variable naming in lines 23-27, adding Javadoc on the public method. These are nice-to-haves, not must-haves. Nice instinct on the new error-message structure, by the way."</p></div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Tech Lead Home / 返回 Tech Lead 首页</a>
+            <a href="choosing-tech-approach.html" class="btn btn-primary">Next: Article 07: Choosing Between Two Tech Approaches →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+</body>
+</html>
