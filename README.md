@@ -24,7 +24,7 @@ This learning system is designed for **IT professionals working in foreign banks
 |---|---|
 | 🏦 **真实业务场景** | SWIFT、KYC、AML、PCI-DSS 等外企银行专有术语 |
 | 🗣️ **实用口语优先** | 每篇文章均配 1 段英文对话 + 紧跟小字体中文解读 |
-| 👥 **六大角色全覆盖** | BA / Developer / Tech Lead / Architect / PM / ITSO |
+| 👥 **六大角色全覆盖** | BA / Developer / Tech Lead / Architect / PM / CyberSecurity&IAM |
 | 📚 **五大训练模块** | Daily Standup · Meeting · Written · Difficult Conversations · Banking Context |
 | 🌍 **跨地区协作** | UK / HK / CN / IN 跨时区沟通话术 |
 | 📱 **响应式设计** | Bootstrap 5，PC / Pad / 手机自适应 |
