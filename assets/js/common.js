@@ -209,3 +209,31 @@ function injectAuthorAndDonate() {
         $existing.wrapAll('<div class="footer-copyright-line"></div>');
     }
 }
+
+/* ============================================
+   AI Config Card wiring (home page only)
+   ============================================ */
+function updateAiStatusBadge() {
+    var $badge = $('#aiStatusBadge');
+    if ($badge.length === 0) return;
+    if (window.AIConfig && window.AIConfig.isConfigured()) {
+        var cfg = window.AIConfig.load();
+        var model = (cfg && cfg.model) ? cfg.model : '?';
+        $badge.text('🟢 已配置 / Configured (' + model + ')')
+              .addClass('configured');
+    } else {
+        $badge.text('⚪ 未配置 / Not Configured')
+              .removeClass('configured');
+    }
+}
+
+$(function () {
+    var $openBtn = $('#aiOpenSettings');
+    if ($openBtn.length > 0 && window.AISettings) {
+        $openBtn.on('click', function () {
+            window.AISettings.show();
+        });
+    }
+    updateAiStatusBadge();
+    document.addEventListener('ai-config-updated', updateAiStatusBadge);
+});

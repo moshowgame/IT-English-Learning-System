@@ -86,6 +86,29 @@
         </ul>
     </section>
 
+    <!-- AI Config Card -->
+    <div class="ai-config-card" id="aiConfigCard">
+        <h3>🤖 AI 阅读助手 / AI Reading Assistant
+            <span class="ai-status-badge" id="aiStatusBadge">⚪ 未配置 / Not Configured</span>
+        </h3>
+        <p>配置你自己的 AI（支持 DeepSeek、OpenAI、Moonshot、Qwen 等 OpenAI 兼容服务），即可在每篇文章中调用 AI 进行详细翻译、文化注释、角色扮演练习和出题。<br>
+        Configure your own AI (supports DeepSeek, OpenAI, Moonshot, Qwen — any OpenAI-compatible service) to enable AI translation, cultural notes, role-play practice and quizzes on every article.</p>
+        <div class="ai-providers">
+            <span class="ai-provider-tag">🌊 DeepSeek</span>
+            <span class="ai-provider-tag">🤖 OpenAI</span>
+            <span class="ai-provider-tag">🌙 Moonshot Kimi</span>
+            <span class="ai-provider-tag">🐪 Qwen</span>
+            <span class="ai-provider-tag">🧠 GLM (智谱)</span>
+            <span class="ai-provider-tag">+ 自定义 Custom</span>
+        </div>
+        <button type="button" class="btn-ai-open" id="aiOpenSettings">
+            ⚙️ 打开 AI 配置 / Open AI Settings
+        </button>
+    </div>
+
+    <!-- Status bar (floating toast) -->
+    <div class="ai-status-bar" id="aiStatusBar"></div>
+
     <!-- Role Cards -->
     <section class="article-section">
         <h2>Choose Your Role / 选择你的角色</h2>
@@ -207,5 +230,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/common.js"></script>
+<script src="assets/js/ai-config.js"></script>
+<script src="assets/js/ai-reader.js"></script>
 </body>
 </html>
