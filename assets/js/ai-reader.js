@@ -82,7 +82,7 @@
                     'Authorization': 'Bearer ' + cfg.token
                 },
                 body: JSON.stringify({
-                    model: cfg.model || 'deepseek-chat',
+                    model: cfg.model || 'deepseek-v4-flash',
                     messages,
                     temperature: cfg.temperature ?? 0.3,
                     stream: false

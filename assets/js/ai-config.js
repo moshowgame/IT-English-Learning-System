@@ -13,7 +13,7 @@
         deepseek: {
             label: 'DeepSeek (推荐 / Recommended)',
             url: 'https://api.deepseek.com/v1/chat/completions',
-            model: 'deepseek-chat',
+            model: 'deepseek-v4-flash',
             temperature: 0.3
         },
         openai: {
@@ -126,7 +126,7 @@
                     <div class="ai-form-row">
                         <label>Model 模型</label>
                         <input type="text" id="aiModel" class="form-control"
-                               placeholder="deepseek-chat" value="${escapeAttr(cfg.model || 'deepseek-chat')}">
+                               placeholder="deepseek-v4-flash" value="${escapeAttr(cfg.model || 'deepseek-v4-flash')}">
                     </div>
 
                     <div class="ai-form-row">
@@ -176,7 +176,7 @@
         modal.querySelector('#aiSaveBtn').addEventListener('click', () => {
             const url = modal.querySelector('#aiUrl').value.trim();
             const token = modal.querySelector('#aiToken').value.trim();
-            const model = modal.querySelector('#aiModel').value.trim() || 'deepseek-chat';
+            const model = modal.querySelector('#aiModel').value.trim() || 'deepseek-v4-flash';
             const temperature = parseFloat(modal.querySelector('#aiTemperature').value) || 0.3;
 
             if (!url) { alert('请填写 API URL / Please enter API URL'); return; }
@@ -193,7 +193,7 @@
                 AIConfig.clear();
                 modal.querySelector('#aiUrl').value = '';
                 modal.querySelector('#aiToken').value = '';
-                modal.querySelector('#aiModel').value = 'deepseek-chat';
+                modal.querySelector('#aiModel').value = 'deepseek-v4-flash';
                 modal.querySelector('#aiTemperature').value = '0.3';
                 flashStatus('🗑 已清除 / Cleared');
             }
