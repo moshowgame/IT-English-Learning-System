@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: M&A IT Due Diligence | SM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Senior Manager</a></li>
+                <li class="breadcrumb-item active">06 · M&A IT Due Diligence</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>M&amp;A IT Due Diligence — Tech Debt, Regulator Readiness, Integration Cost, Risk Rating</h1>
+        <p class="subtitle">Article 06 · Module 2: Strategic Decisions · SM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Expert</span>
+            <span>🎯 Tech debt, regulator readiness, integration cost, risk rating, deal go / no-go</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 10:00 HKT</strong>. You are the <em>Group CIO</em>. The <strong>Group M&amp;A Committee</strong> meets in 4 hours to decide whether to bid <strong>$1.2B</strong> for a mid-tier regional bank (Target Bank, 2.4M retail customers, 320 branches across Hong Kong and mainland China). You have spent 3 weeks on the IT due diligence. The findings sit in a <strong>60-page IT DD report</strong>; you have 10 minutes to present to the Committee. Present: <strong>Group CEO</strong>, <strong>Group CFO</strong>, <strong>Group CRO</strong>, <strong>Head of M&amp;A</strong>, <strong>Group General Counsel</strong>. One decision: IT go / no-go for the bid.</p>
+        <p>周三 10:00 HKT，你是<em>集团 CIO</em>。<strong>集团并购委员会</strong>4 小时后开会，决定是否以 <strong>12 亿美元</strong>收购一家区域中型银行（目标银行，香港和中国大陆 240 万零售客户、320 家网点）。你花了 3 周做 IT 尽职调查。结论装在<strong>60 页 IT DD 报告</strong>里；你有 10 分钟向委员会汇报。参会：<strong>集团 CEO</strong>、<strong>集团 CFO</strong>、<strong>集团 CRO</strong>、<strong>并购负责人</strong>、<strong>集团总法律顾问</strong>。一个决策：IT 是否支持竞标。</p>
+        <p>IT DD is the <strong>silent veto</strong> in any bank M&amp;A. The pattern: <em>tech debt first, regulator readiness second, integration cost third, risk rating fourth, recommendation last</em>. The Committee will not buy the bank if the IT is a 3-year remediation project.</p>
+        <p>IT DD 是任何银行并购中的<strong>静默否决者</strong>。模式：<em>技术债第一、监管就绪第二、集成成本第三、风险评级第四、推荐最后</em>。如果 IT 是 3 年修复项目，委员会不会买。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The IT DD Read-out — 5 Sections, 10 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Tech debt.</em> <em>Target Bank runs 4 core systems: a 22-year-old mainframe deposits,</em> <em>an 11-year-old loans platform,</em> <em>a 7-year-old digital channel (mobile + web),</em> <em>and a 4-year-old data lake.</em> <em>Mainframe is the issue —</em> <em>12.4M lines of COBOL, 3 staff who can maintain it,</em> <em>no documentation on 38% of modules.</em> <em>End-of-life 2027, no vendor support after that.</em></span><span class="cn"><em>技术债。</em><em>目标银行跑 4 个核心系统：22 岁的主机存款、</em><em>11 岁的贷款平台、</em><em>7 岁的数字渠道（移动 + Web）、</em><em>4 岁的数据湖。</em><em>主机是大问题——</em><em>1,240 万行 COBOL、3 名维护人员、</em><em>38% 模块无文档。</em><em>2027 年生命周期结束，之后无厂商支持。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Regulator readiness.</em> <em>Target Bank has 2 open supervisory letters from HKMA,</em> <em>1 from CBIRC, and 3 MAS findings on cyber hygiene.</em> <em>None are Tier-1 findings,</em> <em>but 4 are past their original remediation date</em> <em>— that's a 'yellow flag' for the HKMA supervisor.</em></span><span class="cn"><em>监管就绪。</em><em>目标银行有 2 封 HKMA 未关闭监管函、</em><em>1 封 CBIRC、3 项 MAS 网络卫生发现。</em><em>均非 Tier-1 发现，</em><em>但 4 项已超过原定修复日期</em><em>——对 HKMA supervisor 是"黄旗"。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Integration cost.</em> <em>5-year integration: $340M.</em> <em>Mainframe decommission: $120M.</em> <em>Core banking consolidation onto Group platform: $140M.</em> <em>Cyber uplift to Group baseline: $42M.</em> <em>Data migration: $38M.</em> <em>Integration FTE: 180 over 3 years.</em></span><span class="cn"><em>集成成本。</em><em>5 年集成：3.4 亿。</em><em>主机下线：1.2 亿。</em><em>核心银行整合到集团平台：1.4 亿。</em><em>网络提升至集团基线：4,200 万。</em><em>数据迁移：3,800 万。</em><em>集成 FTE：3 年 180 个。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CRO:</span>
+                <span class="text"><span class="en">CRO: <em>Cyber DD?</em></span><span class="cn">CRO：<em>网络 DD？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Cyber DD rating: Amber.</em> <em>Target runs 47 unpatched critical CVEs,</em> <em>no MFA on 23% of privileged accounts,</em> <em>no SOC, only log collection.</em> <em>Remediation to Group baseline: 14 months, $42M,</em> <em>must complete before customer data is consolidated.</em></span><span class="cn"><em>网络 DD 评级：Amber。</em><em>目标有 47 个未修补关键 CVE，</em><em>23% 特权账户无 MFA，</em><em>无 SOC，只有日志采集。</em><em>提升至集团基线：14 个月、4,200 万，</em><em>必须在客户数据整合前完成。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Risk rating: Amber overall.</em> <em>Deal is acquirable, but only with conditions.</em> <em>Three conditions.</em> <em>Condition 1: $42M cyber uplift, complete before Day 1 customer migration.</em> <em>Condition 2: 4 open supervisory findings remediated within 12 months of close.</em> <em>Condition 3: mainframe decommission funded, $120M over Years 2-3.</em> <em>Recommendation: bid, with conditions,</em> <em>$1.2B bid price acceptable if conditions are written into the SPA.</em></span><span class="cn"><em>风险评级：总体 Amber。</em><em>交易可收购，但有条件。</em><em>三个条件。</em><em>条件 1：4,200 万网络提升，在 Day 1 客户迁移前完成。</em><em>条件 2：4 个未关闭监管发现在交割后 12 个月内修复。</em><em>条件 3：主机下线资金到位，第 2-3 年 1.2 亿。</em><em>推荐：在条件下竞标，</em><em>12 亿报价可接受，前提是条件写入 SPA。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CEO:</span>
+                <span class="text"><span class="en">CEO: <em>Conditions accepted in principle.</em> <em>M&amp;A lead to draft the SPA language by Friday,</em> <em>with Wei, Sarah and Daniel as reviewers.</em></span><span class="cn">CEO：<em>原则接受条件。</em><em>并购负责人周五前起草 SPA 措辞，</em><em>Wei、Sarah、Daniel 评审。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Tech debt, end-of-life</span> <em>22-year-old mainframe, 12.4M lines of COBOL, end-of-life 2027, no vendor support after that.</em></span>
+                <span class="chinese">22 岁主机、1,240 万行 COBOL、2027 年生命周期结束、之后无厂商支持</span>
+                <span class="note">Pair the age with end-of-life. A 22-year-old mainframe is fine if vendor support extends; a 22-year-old with no support is a deal-breaker.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Open supervisory letters, past remediation date</span> <em>2 open supervisory letters from HKMA, 4 past their original remediation date.</em></span>
+                <span class="chinese">2 封未关闭 HKMA 监管函、4 项超过原定修复日期</span>
+                <span class="note">"Past their original remediation date" is the precise phrase. The regulator tracks dates; so do you.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Integration cost, 5-year</span> <em>5-year integration: $340M. Mainframe decommission: $120M.</em></span>
+                <span class="chinese">5 年集成：3.4 亿，主机下线：1.2 亿</span>
+                <span class="note">Always break the integration cost into named workstreams. The CFO approves a cost when each line has a number and a workstream.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Risk rating: Amber</span> <em>Cyber DD rating: Amber. 47 unpatched critical CVEs.</em></span>
+                <span class="chinese">网络 DD 评级：Amber，47 个未修补关键 CVE</span>
+                <span class="note">A traffic-light rating (Green / Amber / Red) is the language of M&amp;A committees. The committee buys / declines on the colour, not the pages.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Bid with conditions</span> <em>Bid, with conditions. Three conditions written into the SPA.</em></span>
+                <span class="chinese">在条件下竞标，三个条件写入 SPA</span>
+                <span class="note">"Bid with conditions" is the M&amp;A phrase. Conditions are written into the Sale and Purchase Agreement so they survive price negotiations.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Day 1 customer migration</span> <em>Complete cyber uplift before Day 1 customer migration.</em></span>
+                <span class="chinese">在 Day 1 客户迁移前完成网络提升</span>
+                <span class="note">"Day 1" is the moment customer data is moved. Cyber uplift is non-negotiable before that date — never after.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>IT DD (Due Diligence)</strong> n. IT 尽职调查 The IT-side investigation before an acquisition.</li>
+            <li><strong>Tech debt</strong> n. 技术债 The legacy cost of older systems that slow delivery and risk resilience.</li>
+            <li><strong>End-of-life (EOL)</strong> n. 生命周期结束 The date after which a vendor will not support a product.</li>
+            <li><strong>Supervisory letter</strong> n. 监管函 A formal written communication from a regulator.</li>
+            <li><strong>Integration cost</strong> n. 集成成本 The cost of merging target IT into the acquirer's IT.</li>
+            <li><strong>Mainframe decommission</strong> n. 主机下线 The planned shutdown of a mainframe system.</li>
+            <li><strong>Day 1</strong> n. Day 1 The first day after deal close, when the target is legally part of the acquirer.</li>
+            <li><strong>SPA (Sale and Purchase Agreement)</strong> n. 买卖协议 The legal contract for the deal.</li>
+            <li><strong>Risk rating: Amber</strong> n. 风险评级：Amber A traffic-light rating — proceed with conditions.</li>
+            <li><strong>Privileged account</strong> n. 特权账户 An account with administrative access.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Bid, with conditions" — the M&amp;A decision verb</h3>
+        <p>The M&amp;A decision is never a clean yes or no. <em>Bid, with conditions.</em> <em>Declined, regulatory risk too high.</em> <em>Bid, price renegotiated.</em> "Bid / declined" is the verb; "with conditions" is the modifier that survives price renegotiation.</p>
+        <p>并购决策从来不是干净的是或否。<em>Bid, with conditions</em>。Bid 是动词，with conditions 是修饰语，存活于价格重谈。</p>
+        <h3>② "Past their original remediation date" — the precise past-tense phrase</h3>
+        <p>"Past their date" is the precise phrase. "Overdue" is informal; "behind schedule" is ambiguous. <em>Past their original remediation date</em> is the regulator's own language. The committee writes minutes that survive audit.</p>
+        <p><em>Past their original remediation date</em>是监管自己的语言。委员会写的会议纪要要能扛过审计。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Tech debt has an age and an EOL date.</strong> "Old mainframe" loses. "22-year-old mainframe, EOL 2027, no vendor support after that" wins.</li>
+            <li><strong>Supervisory letters and findings have dates.</strong> Track original remediation date, current status, and the regulator who issued them. The committee reads dates.</li>
+            <li><strong>Integration cost is a workstream, not a number.</strong> Break $340M into mainframe decommission, core consolidation, cyber uplift, data migration, FTE. The CFO approves workstreams.</li>
+            <li><strong>Use traffic-light ratings.</strong> Green / Amber / Red is the M&amp;A committee language. Avoid prose like "moderate concerns".</li>
+            <li><strong>Bid with conditions, write them into the SPA.</strong> A condition that is not in the SPA is a verbal promise. The SPA survives price renegotiation; verbal conditions do not.</li>
+            <li><strong>Day 1 is the milestone, not close.</strong> Customer data migration happens at Day 1, not close. Cyber uplift must complete before Day 1, not before close.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the IT DD recommendation</h3>
+        <p>Translate the recommendation sentence.</p>
+        <blockquote>
+            "Risk rating: Amber overall. Deal is acquirable, but only with conditions. Three conditions. Condition 1: $42M cyber uplift, complete before Day 1 customer migration. Condition 2: 4 open supervisory findings remediated within 12 months of close. Condition 3: mainframe decommission funded, $120M over Years 2-3. Recommendation: bid, with conditions, $1.2B bid price acceptable if conditions are written into the SPA."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"风险评级：总体 Amber。交易可收购，但有条件。三个条件。条件 1：4,200 万网络提升，在 Day 1 客户迁移前完成。条件 2：4 个未关闭监管发现在交割后 12 个月内修复。条件 3：主机下线资金到位，第 2-3 年 1.2 亿。推荐：在条件下竞标，12 亿报价可接受，前提是条件写入 SPA。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the IT DD mistake</h3>
+        <p>Which line would lose credibility in an M&amp;A IT DD read-out? Why?</p>
+        <ol>
+            <li>"22-year-old mainframe, EOL 2027, no vendor support after that."</li>
+            <li>"The IT is a bit old, but probably fine."</li>
+            <li>"Cyber DD rating: Amber. 47 unpatched critical CVEs."</li>
+            <li>"Bid, with conditions, written into the SPA."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "A bit old, probably fine" is a feeling, not a DD. ① pairs age with EOL. ③ uses a traffic-light rating and a number. ④ makes the conditions legal. M&amp;A committees buy ratings and conditions, not feelings.</p>
+        </div>
+        <h3>Exercise 3 — Run a 5-minute IT DD read-out</h3>
+        <p>You are the CIO. Target is a 18-year-old core banking system, EOL 2028, 9M lines of COBOL, 4 staff. 3 open supervisory letters, 2 past remediation date. Integration: $280M, 150 FTE. Cyber: Red. Recommendation?</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Tech debt: 18-year-old core banking, EOL 2028, 9M lines of COBOL, 4 staff. Regulator readiness: 3 open supervisory letters, 2 past remediation date. Integration: $280M, 150 FTE. Cyber: Red — full Group baseline uplift required, $52M, 18 months. Risk rating: Amber-Red. Recommendation: bid with 4 conditions. Condition 1: $52M cyber uplift complete before Day 1. Condition 2: 2 past-date findings remediated within 9 months of close. Condition 3: core banking decommission funded, $130M Years 2-4. Condition 4: $8M retention package for the 4 COBOL staff through decommission. Bid price acceptable only if all 4 conditions in the SPA."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="05-vendor-rfp-decision.html" class="btn btn-outline-secondary">← Previous: Article 05</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to SM Home / 返回 SM 首页</a>
+            <a href="07-cloud-strategy-direction.html" class="btn btn-primary">Next: Article 07 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

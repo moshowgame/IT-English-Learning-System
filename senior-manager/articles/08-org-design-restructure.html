@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: IT Org Design & Restructure | SM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Senior Manager</a></li>
+                <li class="breadcrumb-item active">08 · IT Org Design &amp; Restructure</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>IT Org Design &amp; Restructure — Span of Control, Squad vs Chapter, BAU vs Project</h1>
+        <p class="subtitle">Article 08 · Module 2: Strategic Decisions · SM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Span of control, squad vs chapter, BAU vs project, headcount, named roles</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 11:00 HKT</strong>. You are the <em>Group CIO</em>. The <strong>Group People Committee</strong> meets this afternoon to approve the IT organisation redesign for next year. The redesign responds to three forces: (1) the cloud migration creates a demand for <strong>cloud engineers</strong> and <strong>site reliability engineers (SRE)</strong> the current org cannot fill; (2) the regulator trajectory requires <strong>30% more cyber and risk FTE</strong> over 2 years; (3) the squad model has matured, but the chapter model has not — engineering excellence is fragmented across 14 squads. The redesign moves IT from 5 layers to 4, from 14 squads to 9 chapters, and adds 2 new senior roles. Present: <strong>Group CHRO</strong>, <strong>Group CFO</strong>, <strong>Group General Counsel</strong>, <strong>3 Regional IT Heads</strong>. One decision: approve the new org design and the headcount envelope.</p>
+        <p>周五 11:00 HKT，你是<em>集团 CIO</em>。<strong>集团人员委员会</strong>今天下午开会，批准明年的 IT 组织重新设计。重新设计响应三股力量：(1) 云迁移产生对<strong>云工程师</strong>和<strong>站点可靠性工程师 (SRE)</strong>的需求，现组织无法满足；(2) 监管轨迹要求<strong>2 年内网络和风险 FTE 增加 30%</strong>；(3) squad 模型已成熟，但 chapter 模型未成熟——工程卓越在 14 个 squad 间碎片化。重新设计将 IT 从 5 层减为 4 层、14 个 squad 整合为 9 个 chapter、新增 2 个高级岗位。参会：<strong>集团 CHRO</strong>、<strong>集团 CFO</strong>、<strong>集团总法律顾问</strong>、<strong>3 位区域 IT 负责人</strong>。一个决策：批准新组织设计和 headcount 额度。</p>
+        <p>Org design is the <strong>5-year people bet</strong>. The pattern: <em>drivers first, target operating model second, span of control third, headcount envelope fourth, named senior roles last</em>. The CHRO owns the people, the CIO owns the operating model.</p>
+        <p>组织设计是<strong>5 年人才赌注</em>。模式：<em>驱动因素第一、目标运营模型第二、管理幅度第三、headcount 额度第四、具名高级岗位最后</em>。CHRO 拥有员工，CIO 拥有运营模型。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Redesign — 5 Sections, 60 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Three drivers.</em> <em>Driver 1:</em> <em>cloud migration creates demand for 24 cloud engineers and 12 SREs —</em> <em>current org has 6 cloud engineers and 4 SREs.</em> <em>Driver 2:</em> <em>regulator trajectory (Article 04) requires 30% more cyber and risk FTE over 2 years,</em> <em>72 net new roles, 18 named, 54 internal move / upskill.</em> <em>Driver 3:</em> <em>engineering excellence is fragmented across 14 squads,</em> <em>no chapter model to enforce standards.</em></span><span class="cn"><em>三个驱动因素。</em><em>驱动 1：</em><em>云迁移产生 24 名云工程师和 12 名 SRE 需求——</em><em>现组织有 6 名云工程师和 4 名 SRE。</em><em>驱动 2：</em><em>监管轨迹（文章 04）要求 2 年内网络和风险 FTE 增加 30%，</em><em>净增 72 个岗位，18 个具名外招，54 个内部调动/提升。</em><em>驱动 3：</em><em>工程卓越在 14 个 squad 间碎片化，无 chapter 模型执行标准。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Target operating model.</em> <em>From 5 layers to 4.</em> <em>Layer 1: Group CIO.</em> <em>Layer 2: Group CTO, Group CISO, Group CDO, Group Head of Delivery.</em> <em>Layer 3: 9 Chapter Leads (Engineering, Cloud, Data, Cyber, Risk, Apps, Platform, SRE, Quality).</em> <em>Layer 4: 32 Squad Leads.</em> <em>Removed: the regional 'solution architecture' layer — folded into chapters.</em></span><span class="cn"><em>目标运营模型。</em><em>从 5 层减为 4 层。</em><em>第 1 层：集团 CIO。</em><em>第 2 层：集团 CTO、集团 CISO、集团 CDO、集团交付负责人。</em><em>第 3 层：9 个 Chapter Lead（工程、云、数据、网络、风险、应用、平台、SRE、质量）。</em><em>第 4 层：32 个 Squad Lead。</em><em>删除：区域"解决方案架构"层——并入 chapter。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Span of control.</em> <em>Group CIO → 4 directs.</em> <em>Each Group function head → 6-9 chapter leads.</em> <em>Each Chapter Lead → 3-5 squad leads.</em> <em>Total layers: 4 (down from 5).</em> <em>Total report lines reduced by 38%.</em> <em>Decision latency: from 11 days to 5 days (target).</em></span><span class="cn"><em>管理幅度。</em><em>集团 CIO → 4 个直接下属。</em><em>每个集团职能负责人 → 6-9 个 chapter lead。</em><em>每个 Chapter Lead → 3-5 个 squad lead。</em><em>总层级：4（从 5 减）。</em><em>汇报线减少 38%。</em><em>决策延迟：从 11 天降至 5 天（目标）。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CHRO:</span>
+                <span class="text"><span class="en">CHRO: <em>Headcount envelope?</em></span><span class="cn">CHRO：<em>headcount 额度？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Headcount envelope.</em> <em>Current: 1,420 FTE.</em> <em>Year-end: 1,492 FTE (+72 net).</em> <em>Mix:</em> <em>+24 cloud engineers, +12 SREs, +18 cyber (named hire), +54 internal move / upskill,</em> <em>-36 from chapter consolidation (no involuntary severance).</em> <em>Net cost: $11M annualised by Year-end,</em> <em>covered by the $42M productivity run-rate.</em></span><span class="cn"><em>headcount 额度。</em><em>当前：1,420 FTE。</em><em>年底：1,492 FTE（净增 72）。</em><em>结构：</em><em>+24 云工程师、+12 SRE、+18 网络（具名外招）、+54 内部调动/提升，</em><em>-36 来自 chapter 整合（无强制裁员）。</em><em>净成本：年底年化 1,100 万，</em><em>由 4,200 万生产力运行率覆盖。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>2 new senior roles.</em> <em>Role 1: Group Head of Engineering Excellence (VP).</em> <em>Mandate:</em> <em>chapter standards, inner-source, eng productivity metrics.</em> <em>Role 2: Group Head of Cloud Platform (VP).</em> <em>Mandate:</em> <em>two-cloud governance, exit cost, FinOps.</em> <em>Both roles: named hire, search starts Q1 next year, in seat by Q3.</em> <em>Reporting line: both to Group CTO.</em></span><span class="cn"><em>2 个新高级岗位。</em><em>岗位 1：集团工程卓越负责人 (VP)。</em><em>职责：</em><em>chapter 标准、内源、工程生产力指标。</em><em>岗位 2：集团云平台负责人 (VP)。</em><em>职责：</em><em>双云治理、退出成本、FinOps。</em><em>两个岗位：具名外招，明年 Q1 启动招聘，Q3 到位。</em><em>汇报线：均向集团 CTO 汇报。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>BAU vs project.</em> <em>BAU FTE: 1,180 (83%).</em> <em>Project FTE: 312 (17%, includes regulator and cloud migration).</em> <em>Project FTE expected to drop to 220 by Year 2</em> <em>as cloud migration completes.</em> <em>Chapter leads own BAU + project split for their chapter,</em> <em>no 'pool' of project resources.</em></span><span class="cn"><em>BAU vs 项目。</em><em>BAU FTE：1,180（83%）。</em><em>项目 FTE：312（17%，含监管和云迁移）。</em><em>项目 FTE 预计第 2 年降至 220</em><em>（云迁移完成）。</em><em>Chapter lead 负责本 chapter 的 BAU + 项目拆分，</em><em>无项目资源池。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>One decision.</em> <em>Approve the 4-layer, 9-chapter org design.</em> <em>Approve +72 net headcount, $11M annualised cost,</em> <em>covered by productivity.</em> <em>Authorise search for the 2 new VPs (Group Head of Engineering Excellence, Group Head of Cloud Platform),</em> <em>in seat by Q3 next year.</em> <em>Effective date: 1 January next year.</em></span><span class="cn"><em>一个决策。</em><em>批准 4 层 9 chapter 组织设计。</em><em>批准净增 72 headcount、年化 1,100 万成本，</em><em>由生产力覆盖。</em><em>授权启动 2 个 VP 岗位招聘（工程卓越负责人、云平台负责人），</em><em>明年 Q3 到位。</em><em>生效日：明年 1 月 1 日。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CHRO:</span>
+                <span class="text"><span class="en">CHRO: <em>Org design approved.</em> <em>Effective 1 January.</em> <em>Wei and I to align on the 2 VP role profiles by 15 December.</em></span><span class="cn">CHRO：<em>组织设计批准。</em><em>1 月 1 日生效。</em><em>Wei 和我 12 月 15 日前对齐 2 个 VP 岗位画像。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Three drivers</span> <em>Three drivers: cloud migration, regulator trajectory, engineering excellence fragmentation.</em></span>
+                <span class="chinese">三个驱动因素：云迁移、监管轨迹、工程卓越碎片化</span>
+                <span class="note">An org redesign must have drivers, not a target. "We need to flatten" loses. "Three drivers: cloud, regulator, engineering fragmentation" wins.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Target operating model, from 5 to 4 layers</span> <em>From 5 layers to 4. Removed: regional 'solution architecture' layer.</em></span>
+                <span class="chinese">从 5 层减为 4 层，删除区域"解决方案架构"层</span>
+                <span class="note">Always name the layer that is removed. "Flatten" is vague; "removed: the regional SA layer" is a specific cut.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Span of control, decision latency</span> <em>Span of control: 1:6 to 1:9. Decision latency: from 11 days to 5 days (target).</em></span>
+                <span class="chinese">管理幅度 1:6 至 1:9，决策延迟从 11 天降至 5 天（目标）</span>
+                <span class="note">Span of control matters because of decision latency. The committee buys a number-of-days improvement, not a layer count.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Headcount envelope, mix</span> <em>+24 cloud engineers, +12 SREs, +18 cyber (named hire), +54 internal move / upskill, -36 chapter consolidation.</em></span>
+                <span class="chinese">+24 云工程师、+12 SRE、+18 网络（具名外招）、+54 内部调动/提升、-36 chapter 整合</span>
+                <span class="note">Headcount mix is the CHRO's question. Always break the net number into named hire, internal move, upskill, and consolidation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No involuntary severance</span> <em>-36 from chapter consolidation, no involuntary severance.</em></span>
+                <span class="cn" style="display:none;"></span><span class="note">"No involuntary severance" is the precise phrase. The CHRO and the unions read the phrase. "Some re-allocation" is ambiguous.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">BAU vs project, no pool</span> <em>BAU FTE 1,180 (83%), project FTE 312 (17%). No 'pool' of project resources.</em></span>
+                <span class="chinese">BAU FTE 1,180（83%），项目 FTE 312（17%），无项目资源池</span>
+                <span class="note">"No pool" is the chapter-model decision. A pool is a project artefact; chapters own their people end-to-end. The chapter-model talk says "no pool".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Effective date</span> <em>Effective date: 1 January next year.</em></span>
+                <span class="chinese">生效日：明年 1 月 1 日</span>
+                <span class="note">The CHRO needs an effective date. "Q1 next year" is vague. "1 January next year" is a date the payroll system can read.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Span of control</strong> n. 管理幅度 The number of direct reports per manager.</li>
+            <li><strong>Target operating model (TOM)</strong> n. 目标运营模型 The future-state organisation structure.</li>
+            <li><strong>Squad</strong> n. Squad 小组 A cross-functional delivery team (3-9 people).</li>
+            <li><strong>Chapter</strong> n. Chapter 章节 A community of practice across squads (same skill, different squads).</li>
+            <li><strong>BAU FTE</strong> n. 日常运营 FTE FTE allocated to business-as-usual work.</li>
+            <li><strong>Project FTE</strong> n. 项目 FTE FTE allocated to projects.</li>
+            <li><strong>Named hire</strong> n. 具名外招 A specific external candidate, not a placeholder.</li>
+            <li><strong>Internal move / upskill</strong> n. 内部调动/技能提升 Re-allocation of existing staff.</li>
+            <li><strong>Chapter consolidation</strong> n. Chapter 整合 Reducing chapters, removing overlap.</li>
+            <li><strong>Involuntary severance</strong> n. 强制裁员 Firing someone for org reasons.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "From X to Y" — the operating model change frame</h3>
+        <p>Org design is always a count: <em>from 5 layers to 4</em>, <em>from 14 squads to 9 chapters</em>, <em>from 11 days to 5 days</em>. The "from X to Y" frame forces a specific before / after. "Flatten the org" is opinion; "from 5 layers to 4" is a change.</p>
+        <p>组织设计总是数字：<em>从 5 层到 4 层</em>、<em>从 14 squad 到 9 chapter</em>。</p>
+        <h3>② "No involuntary severance" — the precise negative</h3>
+        <p>When proposing a re-org, the precise negative is: <em>no involuntary severance.</em> "Some re-allocation" is ambiguous. "Re-deployment with 6-month transition" is bureaucratic. "No involuntary severance" is the precise negative the CHRO and the unions both understand.</p>
+        <p><em>No involuntary severance</em>是精确的否定。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Drivers first, target second.</strong> An org redesign is approved because of drivers, not because the CIO wants a flatter org. Cloud + regulator + engineering fragmentation is the answer to "why now".</li>
+            <li><strong>Name the removed layer.</strong> "Flatten" is vague. "Removed: regional solution architecture" is a specific cut. The committee needs to see what is gone.</li>
+            <li><strong>Span of control is decision latency.</strong> "1:9" is a number on a slide. "Decision latency: 11 days to 5 days" is a benefit. The CHRO buys the benefit, not the ratio.</li>
+            <li><strong>Headcount mix breaks the net number.</strong> A "+72" headline is met with "from where?". Mix breaks the number: named hire, internal move, upskill, consolidation.</li>
+            <li><strong>"No involuntary severance" is a deal term.</strong> The committee approves a re-org that does not fire people. The phrase is the deal term.</li>
+            <li><strong>BAU vs project, no pool.</strong> The chapter model breaks the project pool. Chapters own their people end-to-end. The chapter-model talk says "no pool" three times.</li>
+            <li><strong>Effective date is a payroll date.</strong> "1 January next year" lets the CHRO run the payroll change. "Q1 next year" requires a second meeting.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the org design recommendation</h3>
+        <p>Translate the recommendation sentence.</p>
+        <blockquote>
+            "One decision. Approve the 4-layer, 9-chapter org design. Approve +72 net headcount, $11M annualised cost, covered by productivity. Authorise search for the 2 new VPs (Group Head of Engineering Excellence, Group Head of Cloud Platform), in seat by Q3 next year. Effective date: 1 January next year."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"一个决策。批准 4 层 9 chapter 组织设计。批准净增 72 headcount、年化 1,100 万成本，由生产力覆盖。授权启动 2 个 VP 岗位招聘（工程卓越负责人、云平台负责人），明年 Q3 到位。生效日：明年 1 月 1 日。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the org design mistake</h3>
+        <p>Which line would lose credibility in a People Committee? Why?</p>
+            <ol>
+                <li>"Three drivers: cloud migration, regulator trajectory, engineering fragmentation."</li>
+                <li>"We need to flatten the org."</li>
+                <li>"From 5 layers to 4. Removed: regional SA layer."</li>
+                <li>"No involuntary severance."</li>
+            </ol>
+            <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+            <div class="answer-box" style="display:none;">
+                <p>② is the credibility-damager. "We need to flatten the org" is opinion. ① names three drivers. ③ names a before / after and a removed layer. ④ is the deal term. People committees buy drivers and deal terms, not opinions.</p>
+            </div>
+            <h3>Exercise 3 — Run a 5-minute org design pitch</h3>
+            <p>You are the CIO. Drivers: 1) AI demands 30 new data engineers, 2) regulator demands +20 cyber, 3) squads duplicating platform work. Current: 1,200 FTE, 6 layers, 12 squads. New: 4 layers, 8 chapters, +50 net. Headcount mix: 30 named AI, 20 named cyber, 50 internal move / upskill, -50 from chapter consolidation. Recommendation?</p>
+            <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+            <div class="answer-box" style="display:none;">
+                <p>"Three drivers: AI demand, regulator trajectory, platform work duplication. Target operating model: from 6 layers to 4, from 12 squads to 8 chapters. Removed: the 'platform engineering' duplicate layer — folded into chapters. Span of control: 1:7. Decision latency target: 12 days to 5 days. Headcount envelope: +50 net, current 1,200 to 1,250. Mix: +30 named AI hire, +20 named cyber hire, +50 internal move / upskill, -50 chapter consolidation. No involuntary severance. 1 new senior role: Group Head of AI Engineering, VP, in seat by Q3 next year. One decision: approve 4-layer, 8-chapter design, +50 net headcount, $9M annualised cost covered by AI productivity. Effective 1 April next year."</p>
+            </div>
+        </section>
+
+        <section class="article-section text-center">
+            <p>
+                <a href="07-cloud-strategy-direction.html" class="btn btn-outline-secondary">← Previous: Article 07</a>
+                <a href="../index.html" class="btn btn-outline-secondary">Back to SM Home / 返回 SM 首页</a>
+                <a href="09-pip-conversation.html" class="btn btn-primary">Next: Article 09 →</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/common.js"></script>
+    <script src="../../assets/js/ai-config.js"></script>
+    <script src="../../assets/js/ai-reader.js"></script>
+    </body>
+    </html>

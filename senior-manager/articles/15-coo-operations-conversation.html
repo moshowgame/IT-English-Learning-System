@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: COO Conversation on IT Operations | SM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Senior Manager</a></li>
+                <li class="breadcrumb-item active">15 · COO Conversation on IT Operations</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>COO Conversation on IT Operations — SLA, MTTR, Change Failure Rate, BAU vs Project</h1>
+        <p class="subtitle">Article 15 · Module 4: Cross-Function Alignment · SM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 COO conversation, SLA, MTTR, change failure rate, BAU vs project, productivity</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday 14:00 HKT</strong>. You are the <em>Group CIO</em>. You have a 60-minute <strong>COO 1:1</strong> with <strong>Mark</strong> (Group COO). The agenda: IT operational SLA performance, MTTR trend, change failure rate, BAU vs project mix, and the productivity programme (Article 04 $42M annualised target). The COO has signalled the bank's P1 incident count is up 22% YoY and customer-impacting incidents are up 14%. He wants a plan to reverse the trend without slowing cloud migration.</p>
+        <p>周一 14:00 HKT，你是<em>集团 CIO</em>。你与<strong>Mark</strong>（集团 COO）有 60 分钟<strong>COO 1:1</strong>。议程：IT 运营 SLA 表现、MTTR 趋势、变更失败率、BAU vs 项目组合、生产力项目（文章 04 4,200 万年化目标）。COO 已示意集团 P1 事件数同比上升 22%、客户影响事件上升 14%。他希望在不减缓云迁移的前提下扭转趋势。</p>
+        <p>A COO 1:1 is the <strong>operational excellence conversation</strong>. The pattern: <em>SLAs first, trend second, root cause third, plan fourth, productivity fifth</em>. Speak the COO's language: MTTR, change failure rate, BAU cost, productivity per FTE.</p>
+        <p>COO 1:1 是<strong>运营卓越对话</strong>。模式：<em>SLA 第一、趋势第二、根因第三、计划第四、生产力第五</em>。说 COO 的语言：MTTR、变更失败率、BAU 成本、人均生产力。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The COO 1:1 — 4 Sections, 60 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mark (COO):</span>
+                <span class="text"><span class="en"><em>Wei, the IT operational story this year.</em> <em>P1 incidents up 22% YoY, customer-impacting up 14%.</em> <em>Walk me through the trend and the plan.</em></span><span class="cn"><em>Wei，今年 IT 运营情况。</em><em>P1 事件同比上升 22%，客户影响上升 14%。</em><em>讲讲趋势和计划。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>SLA performance.</em> <em>Customer-facing availability: 99.94% against 99.95% target.</em> <em>MTTR P1: 78 minutes against 60-minute target.</em> <em>Change failure rate: 11% against 8% target.</em> <em>Top 3 systems by P1 volume:</em> <em>core banking (32%), digital onboarding (24%), payments (18%).</em></span><span class="cn"><em>SLA 表现。</em><em>面向客户可用性：99.94% 对 99.95% 目标。</em><em>P1 MTTR：78 分钟对 60 分钟目标。</em><em>变更失败率：11% 对 8% 目标。</em><em>P1 数量前 3 系统：</em><em>核心银行（32%）、数字开户（24%）、支付（18%）。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Trend.</em> <em>P1 up 22% YoY, but 67% of the increase is concentrated in 4 systems:</em> <em>core banking mainframe (EOL 2027), digital onboarding (cloud migration in flight),</em> <em>payments (vendor change), and a single legacy CRM.</em> <em>Customer-impacting up 14% is more concerning — it's a 1.5x multiplier of P1, against the historical 0.7x.</em></span><span class="cn"><em>趋势。</em><em>P1 同比上升 22%，但 67% 增量集中在 4 个系统：</em><em>核心银行主机（EOL 2027）、数字开户（云迁移中）、</em><em>支付（厂商变更）、单一遗留 CRM。</em><em>客户影响上升 14% 更值得关注——是 P1 的 1.5 倍乘数，对历史 0.7 倍。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark (COO):</span>
+                <span class="text"><span class="en"><em>Root cause?</em></span><span class="cn"><em>根因？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Root cause, three.</em> <em>Cause 1:</em> <em>change failure rate is up because the cloud migration is changing the deploy pattern —</em> <em>2 of 3 deploys now touch both on-prem and cloud, doubling the failure surface.</em> <em>Cause 2:</em> <em>MTTR is up because the on-call rotation is 6 engineers across 4 squads,</em> <em>no dedicated incident commander during business hours.</em> <em>Cause 3:</em> <em>customer-impacting 1.5x is the customer notification lag — we detect fast, we notify the customer 38 minutes late on average.</em></span><span class="cn"><em>根因，三条。</em><em>原因 1：</em><em>变更失败率上升，因为云迁移改变了部署模式——</em><em>3 个部署中 2 个同时涉及本地和云，失败面翻倍。</em><em>原因 2：</em><em>MTTR 上升，因为 on-call 轮值是 4 个 squad 6 个工程师，</em><em>工作时间无专职事件指挥。</em><em>原因 3：</em><em>客户影响 1.5 倍是客户通知延迟——我们检测快，但客户通知平均延迟 38 分钟。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>The plan.</em> <em>Three actions, 90 days.</em> <em>Action 1:</em> <em>introduce canary deploys for the 2 mixed-pattern deploys —</em> <em>10% traffic for 30 minutes, rollback automated, target change failure rate back to 8%.</em> <em>Action 2:</em> <em>name a dedicated incident commander during business hours,</em> <em>rotating weekly, 5 named commanders.</em> <em>Target MTTR back to 60 minutes.</em> <em>Action 3:</em> <em>automate customer notification from the SIEM alert —</em> <em>target notification lag from 38 minutes to 5 minutes.</em> <em>No slowdown to cloud migration.</em></span><span class="cn"><em>计划。</em><em>三个行动，90 天。</em><em>行动 1：</em><em>对 2 个混合模式部署引入金丝雀发布——</em><em>10% 流量 30 分钟、自动回滚、目标变更失败率回到 8%。</em><em>行动 2：</em><em>工作时间具名专职事件指挥，</em><em>每周轮值，5 名具名指挥。</em><em>目标 MTTR 回到 60 分钟。</em><em>行动 3：</em><em>从 SIEM 告警自动化客户通知——</em><em>目标通知延迟从 38 分钟降至 5 分钟。</em><em>不减缓云迁移。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Productivity.</em> <em>$42M annualised target from Article 04 is on track for Year 3.</em> <em>Year 1 actual: $11M realised.</em> <em>$31M remaining across Years 2-3.</em> <em>BAU FTE: 1,180 (83% of IT), project FTE 312 (17%, includes cloud migration).</em> <em>BAU cost: $182M annualised,</em> <em>down 4% YoY despite headcount stable — productivity per FTE up 6%.</em></span><span class="cn"><em>生产力。</em><em>文章 04 4,200 万年化目标第 3 年可达。</em><em>第 1 年实际：已实现 1,100 万。</em><em>第 2-3 年剩余 3,100 万。</em><em>BAU FTE：1,180（IT 83%），项目 FTE 312（17%，含云迁移）。</em><em>BAU 成本：年化 1.82 亿，</em><em>同比下降 4%，尽管 headcount 稳定——人均生产力上升 6%。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark (COO):</span>
+                <span class="text"><span class="en">Mark: <em>90-day plan approved.</em> <em>One condition:</em> <em>monthly P1 and customer-impacting review at our 1:1,</em> <em>with the trend chart,</em> <em>until both metrics are back to target.</em> <em>Productivity on track.</em></span><span class="cn">Mark：<em>90 天计划批准。</em><em>一个条件：</em><em>P1 和客户影响每月在我 1:1 上评审，</em><em>附趋势图，</em><em>直到两个指标回到目标。</em><em>生产力达标。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">SLA performance, against target</span> <em>Customer-facing availability: 99.94% against 99.95% target.</em></span>
+                <span class="chinese">面向客户可用性 99.94% 对 99.95% 目标</span>
+                <span class="note">Always pair the actual with the target. "We're 99.94%" loses; "99.94% against 99.95% target" wins. The COO buys the gap.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Top 3 systems by P1 volume</span> <em>Top 3 systems by P1 volume: core banking 32%, digital onboarding 24%, payments 18%.</em></span>
+                <span class="chinese">P1 数量前 3 系统：核心银行 32%、数字开户 24%、支付 18%</span>
+                <span class="note">Concentration analysis. "P1s are up" loses; "67% of the increase is in 4 systems" wins. The COO buys the concentration.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Customer-impacting 1.5x multiplier</span> <em>Customer-impacting up 14% is a 1.5x multiplier of P1, against the historical 0.7x.</em></span>
+                <span class="chinese">客户影响上升 14% 是 P1 的 1.5 倍乘数，对历史 0.7 倍</span>
+                <span class="note">Multipliers are COO language. "1.5x of P1 against 0.7x historical" is a sharp trend. The COO buys the multiplier.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Named incident commander, 5 named</span> <em>Name a dedicated incident commander, rotating weekly, 5 named commanders.</em></span>
+                <span class="chinese">具名专职事件指挥，每周轮值，5 名具名指挥</span>
+                <span class="note">Names, not "a team". The COO buys the named owner. "5 named" is the deal term.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Notification lag, 38 to 5 minutes</span> <em>Automate customer notification from SIEM — target lag 38 minutes to 5 minutes.</em></span>
+                <span class="chinese">从 SIEM 自动化客户通知——目标延迟 38 分钟降至 5 分钟</span>
+                <span class="note">Customer-impacting is a notification problem as much as a detection problem. The fix is automated notification, not faster humans.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Productivity per FTE, up 6%</span> <em>BAU cost down 4% YoY despite headcount stable — productivity per FTE up 6%.</em></span>
+                <span class="chinese">BAU 成本同比下降 4%，headcount 稳定——人均生产力上升 6%</span>
+                <span class="note">Productivity per FTE is COO language. Pair cost trend with headcount stable, then name the productivity gain.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>SLA (Service Level Agreement)</strong> n. 服务等级协议 The committed performance target.</li>
+            <li><strong>MTTR (Mean Time To Recover)</strong> n. 平均恢复时间 The average time to recover from an incident.</li>
+            <li><strong>Change failure rate</strong> n. 变更失败率 The percentage of changes that cause an incident.</li>
+            <li><strong>Canary deploy</strong> n. 金丝雀发布 A small-percentage rollout to detect failure early.</li>
+            <li><strong>On-call rotation</strong> n. On-call 轮值 The schedule of engineers responsible for incidents.</li>
+            <li><strong>Incident commander</strong> n. 事件指挥 The person accountable for managing an incident.</li>
+            <li><strong>Customer-impacting</strong> n. 客户影响 An incident that affected end customers.</li>
+            <li><strong>Notification lag</strong> n. 通知延迟 The time between detection and customer notification.</li>
+            <li><strong>BAU FTE</strong> n. 日常运营 FTE FTE allocated to business-as-usual work.</li>
+            <li><strong>Productivity per FTE</strong> n. 人均生产力 The output per FTE, the COO's metric.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "X against Y target" — the SLA sentence</h3>
+        <p>SLA performance is always <em>X against Y target.</em> <em>99.94% against 99.95% target.</em> "We're at 99.94%" loses; the gap is the story.</p>
+        <p>SLA 表现总是 <em>X 对 Y 目标</em>。</p>
+        <h3>② "X multiplier against Y historical" — the trend sentence</h3>
+        <p>Trend language is <em>X multiplier against Y historical.</em> The multiplier is sharper than a percentage change. <em>1.5x of P1 against 0.7x historical</em> is a 2x deterioration.</p>
+        <p>趋势语言是 <em>X 倍数对 Y 历史</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Pair actual with target.</strong> "We're 99.94%" loses; "99.94% against 99.95% target" wins. The COO buys the gap.</li>
+            <li><strong>Concentration analysis on the trend.</strong> "P1s are up" loses; "67% of the increase is in 4 systems" wins. The COO buys the concentration.</li>
+            <li><strong>Multipliers are sharper than percentages.</strong> "1.5x of P1 against 0.7x historical" is a 2x deterioration. The COO buys the multiplier.</li>
+            <li><strong>Three root causes, named.</strong> "Things are bad" loses; "deploy pattern, on-call rotation, customer notification lag" wins. The COO buys the three named causes.</li>
+            <li><strong>Three actions with named owners and dates.</strong> "We'll fix it" loses; "5 named incident commanders, rotating weekly, 90 days" wins. The COO buys the named action.</li>
+            <li><strong>Productivity per FTE pairs cost with headcount.</strong> "BAU cost down 4% YoY, headcount stable, productivity per FTE up 6%" is the COO's metric. Pair cost trend with headcount stable.</li>
+            <li><strong>End with a monthly review condition.</strong> The COO closes with a date, not a feeling. "Monthly P1 review until back to target" is the named condition.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the root causes</h3>
+        <p>Translate the three root causes.</p>
+        <blockquote>
+            "Root cause, three. Cause 1: change failure rate is up because the cloud migration is changing the deploy pattern — 2 of 3 deploys now touch both on-prem and cloud. Cause 2: MTTR is up because the on-call rotation is 6 engineers across 4 squads, no dedicated incident commander during business hours. Cause 3: customer-impacting 1.5x is the customer notification lag — we detect fast, we notify the customer 38 minutes late on average."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"根因，三条。原因 1：变更失败率上升，因为云迁移改变了部署模式——3 个部署中 2 个同时涉及本地和云。原因 2：MTTR 上升，因为 on-call 轮值是 4 个 squad 6 个工程师，工作时间无专职事件指挥。原因 3：客户影响 1.5 倍是客户通知延迟——我们检测快，但客户通知平均延迟 38 分钟。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the COO mistake</h3>
+        <p>Which line would lose credibility in a COO 1:1? Why?</p>
+        <ol>
+                <li>"Things are not great, we need to improve."</li>
+                <li>"Customer-facing availability 99.94% against 99.95% target. MTTR 78 minutes against 60-minute target."</li>
+                <li>"Top 3 systems by P1 volume: core banking 32%, digital onboarding 24%, payments 18%."</li>
+                <li>"Productivity per FTE up 6%, BAU cost down 4% YoY."</li>
+            </ol>
+            <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+            <div class="answer-box" style="display:none;">
+                <p>① is the credibility-damager. "Things are not great" is opinion, not COO language. ② pairs actuals with targets. ③ names the concentration. ④ pairs cost with productivity. COO 1:1s run on actuals-vs-targets, concentration, and productivity-per-FTE — not on feelings.</p>
+            </div>
+            <h3>Exercise 3 — Run a 5-minute COO plan</h3>
+            <p>You are the CIO. COO wants P1 reduction. P1 up 18% YoY, 4 of 5 in 2 systems. MTTR up 25%. Change failure rate 14%. Pitch the plan.</p>
+            <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+            <div class="answer-box" style="display:none;">
+                <p>"SLA performance. P1 up 18% YoY, 4 of 5 in 2 systems (core banking + payments). MTTR 92 minutes against 60 target. Change failure rate 14% against 8% target. Top 2 systems by P1: core banking 56%, payments 24%. Root cause, three. Cause 1: change failure up because both systems have legacy change windows, no canary. Cause 2: MTTR up because on-call is 4 engineers, no dedicated IC. Cause 3: customer notification lag 42 minutes. Plan, 3 actions, 90 days. Action 1: canary deploy for core banking and payments, target change failure back to 8%. Action 2: 4 named incident commanders, rotating weekly, target MTTR 60 minutes. Action 3: automate customer notification, target lag 42 to 5 minutes. Monthly P1 review at our 1:1 until both metrics back to target."</p>
+            </div>
+        </section>
+
+        <section class="article-section text-center">
+            <p>
+                <a href="14-cro-cyber-conversation.html" class="btn btn-outline-secondary">← Previous: Article 14</a>
+                <a href="../index.html" class="btn btn-outline-secondary">Back to SM Home / 返回 SM 首页</a>
+                <a href="16-business-md-priorities.html" class="btn btn-primary">Next: Article 16 →</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/common.js"></script>
+    <script src="../../assets/js/ai-config.js"></script>
+    <script src="../../assets/js/ai-reader.js"></script>
+    </body>
+    </html>

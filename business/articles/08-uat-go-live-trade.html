@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: UAT vs Go-Live Trade | Business English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Business</a></li>
+                <li class="breadcrumb-item active">08 · UAT Sign-off vs Go-Live Trade</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>UAT Sign-off vs Go-Live Trade — Defects, Regulator Date, Go/No-Go</h1>
+        <p class="subtitle">Article 08 · Module 2: Requirements &amp; Prioritisation · Business English</p>
+        <div class="meta">
+            <span>⏱ 7 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Severity, regulator date, go/no-go, named decision, slip cost</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 16:00 HKT</strong>. UAT for <em>Digital Onboarding 2.0</em> closes in 24 hours. The system is functional but has <strong>3 Sev-2 defects</strong> that cannot be fixed before the regulator date. The HKMA C-RAF submission deadline is <strong>Monday 25 August, 09:00</strong>. The bank's reputation with the supervisor depends on hitting the date. The defects: (1) eKYC timeout for non-HK ID affecting 8% of applications, (2) audit log timestamp drift of 2 seconds on high-volume days, (3) FIDO2 fallback path broken in Safari. You have 60 minutes to make the go/no-go call with your MD, Karen, and Group Cyber, Steve.</p>
+        <p>周五 16:00 HKT，<em>数字开户 2.0</em>的 UAT 还有 24 小时关闭。系统功能正常但有<strong>3 个 Sev-2 缺陷</strong>无法在监管日期前修复。HKMA C-RAF 提交截止<strong>8 月 25 日周一 09:00</strong>。银行与监管的声誉取决于能否踩准日期。缺陷：(1) 非香港身份证 eKYC 超时影响 8% 申请，(2) 高流量日审计日志时间戳漂移 2 秒，(3) FIDO2 回退路径在 Safari 中中断。你有 60 分钟和 MD Karen、集团 Cyber Steve 一起做 go/no-go 决定。</p>
+        <p>The UAT vs go-live trade is the <em>hardest business-IT call</em>: ship with known defects, or slip and lose regulator credibility. The pattern: name the defects, name the customer/regulator impact, name the go/no-go criteria, name the slip cost.</p>
+        <p>UAT vs 上线权衡是<em>最难的业务-IT 决定</em>：带着已知缺陷上线，还是推迟损失监管信用。模式：列出缺陷、列出客户/监管影响、列出 go/no-go 标准、列出推迟代价。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Business Sponsor):</span>
+                <span class="text"><span class="en"><em>60 minutes, go/no-go on Monday 25 August, 09:00 HKMA submission.</em> <em>Walk me through the 3 Sev-2 defects, the customer impact, and the regulator impact for each.</em></span><span class="cn"><em>60 分钟，周一 8 月 25 日 09:00 HKMA 提交，go/no-go。</em><em>给我过 3 个 Sev-2 缺陷，每个的客户影响和监管影响。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara (IT PM):</span>
+                <span class="text"><span class="en">Sara: <em>Defect 1, eKYC timeout for non-HK ID.</em> <em>8% of applications affected,</em> <em>those customers fall back to manual onboarding with 4-day SLA instead of 4-hour.</em> <em>Regulator impact: HKMA accepts the fallback as long as it's documented in the BRD v3.4.</em></span><span class="cn">Sara：<em>缺陷 1，非香港身份证 eKYC 超时。</em><em>8% 申请受影响，</em><em>这些客户回退到人工开户，SLA 4 天而不是 4 小时。</em><em>监管影响：HKMA 接受这个回退，只要在 BRD v3.4 里有记录。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Defect 2, audit log timestamp drift.</em></span><span class="cn"><em>缺陷 2，审计日志时间戳漂移。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>2-second drift on high-volume days,</em> <em>affects the ordering of audit events for the regulator's replay.</em> <em>Customer impact: none.</em> <em>Regulator impact: Group Cyber and HKMA both flagged it,</em> <em>but the drift is within the MAS tolerance of 5 seconds.</em></span><span class="cn">Sara：<em>高流量日 2 秒漂移，</em><em>影响监管回放时审计事件的顺序。</em><em>客户影响：无。</em><em>监管影响：集团 Cyber 和 HKMA 都标记了，</em><em>但漂移在 MAS 5 秒容差内。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Defect 3, FIDO2 fallback in Safari.</em></span><span class="cn"><em>缺陷 3，FIDO2 在 Safari 中回退。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>Safari users on Mac cannot complete the FIDO2 fallback path,</em> <em>they have to switch to Chrome or Edge.</em> <em>Customer impact: ~5% of HNW clients use Safari on Mac.</em> <em>Regulator impact: zero</em> — <em>we are FIDO2-compliant,</em> <em>fallback to OTP is a UX issue, not a control issue.</em></span><span class="cn">Sara：<em>Safari on Mac 用户无法完成 FIDO2 回退路径，</em><em>必须切到 Chrome 或 Edge。</em><em>客户影响：约 5% 高净值客户用 Safari on Mac。</em><em>监管影响：零</em>——<em>我们是 FIDO2 合规的，</em><em>回退到 OTP 是 UX 问题，不是控制问题。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>What's the slip cost if we push to 15 September?</em></span><span class="cn"><em>如果我们推到 9 月 15 日，推迟代价是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">">Karen (MD):</span>
+                <span class="text"><span class="en">Karen: <em>3 things.</em> <em>One</em> — <em>HKMA supervisory letter,</em> <em>because we missed the C-RAF submission deadline,</em> <em>and the next slot is 30 days out.</em> <em>Two</em> — <em>$4M revenue slip</em> — <em>the November product launch is tied to the C-RAF attestation.</em> <em>Three</em> — <em>reputational: we become the only Tier-1 bank missing the C-RAF date,</em> <em>the supervisor will mention it in the next industry meeting.</em></span><span class="cn">Karen：<em>3 件。</em><em>一</em>——<em>HKMA 监管函，</em><em>因为错过 C-RAF 提交截止，</em><em>下一个空位要 30 天后。</em><em>二</em>——<em>400 万美元收入推迟</em>——<em>11 月产品发布和 C-RAF 合规声明绑定。</em><em>三</em>——<em>声誉：我们成为唯一错过 C-RAF 日期的 Tier-1 银行，</em><em>监管会在下次行业会议上提到。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Steve, Group Cyber view on the 3 defects.</em></span><span class="cn"><em>Steve，集团 Cyber 对 3 个缺陷的看法。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (Cyber):</span>
+                <span class="text"><span class="en">Steve: <em>Defect 1 —</em> <em>acceptable, BRD v3.4 documents the fallback.</em> <em>Defect 2 —</em> <em>acceptable, within MAS tolerance,</em> <em>fix in next sprint, 2 weeks.</em> <em>Defect 3 —</em> <em>acceptable, UX issue,</em> <em>add to the backlog, fix in 4 weeks.</em> <em>No control failures.</em></span><span class="cn">Steve：<em>缺陷 1——</em><em>可接受，BRD v3.4 记录了回退。</em><em>缺陷 2——</em><em>可接受，在 MAS 容差内，</em><em>下个 sprint 修复，2 周。</em><em>缺陷 3——</em><em>可接受，UX 问题，</em><em>加入 backlog，4 周内修复。</em><em>无控制失效。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My call.</em> <em>Go for Monday 25 August 09:00 HKMA submission.</em></span><span class="cn"><em>我的决定。</em><em>周一 8 月 25 日 09:00 HKMA 提交，go。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Conditions.</em> <em>Defect 1</em> — <em>BRD v3.4 documents the manual fallback, Priya by EOD today.</em> <em>Defect 2</em> — <em>fix in 2 weeks, owner Daniel, retest by 8 September.</em> <em>Defect 3</em> — <em>backlog, fix in 4 weeks, owner Daniel, retest by 22 September.</em></span><span class="cn"><em>条件。</em><em>缺陷 1</em>——<em>BRD v3.4 记录人工回退，Priya 今天 EOD 前。</em><em>缺陷 2</em>——<em>2 周内修复，负责人 Daniel，9 月 8 日重测。</em><em>缺陷 3</em>——<em>backlog，4 周内修复，负责人 Daniel，9 月 22 日重测。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Customer comms.</em> <em>Safari users on Mac get a banner: "For best experience, use Chrome or Edge",</em> <em>live from Monday,</em> <em>owner Karen's team.</em></span><span class="cn"><em>客户沟通。</em><em>Safari on Mac 用户显示横幅："为获得最佳体验，请使用 Chrome 或 Edge"，</em><em>周一生效，</em><em>Karen 团队负责。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Karen:</span>
+                <span class="text"><span class="en">Karen: <em>Go.</em> <em>Sara, send me the closure report by Sunday 17:00.</em> <em>I'll co-sign with you.</em></span><span class="cn">Karen：<em>Go。</em><em>Sara，周日 17:00 前把关闭报告发我。</em><em>我和你联签。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Customer impact, regulator impact, per defect</span> <em>Customer impact: 8% of applications, manual onboarding, 4-day SLA. Regulator impact: HKMA accepts the fallback as long as it's documented in BRD v3.4.</em></span>
+                <span class="chinese">客户影响：8% 申请、人工开户、4 天 SLA。监管影响：HKMA 接受只要 BRD v3.4 记录</span>
+                <span class="note">Each defect has two impacts: customer and regulator. State both. "It's a bug" loses. "8% of customers, manual fallback, HKMA accepts if documented" wins.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Slip cost, named items</span> <em>Slip cost: HKMA supervisory letter, $4M revenue slip, reputational hit.</em></span>
+                <span class="chinese">推迟代价：HKMA 监管函、400 万收入推迟、声誉影响</span>
+                <span class="note">The slip cost is always a list: regulator consequence, $ consequence, reputational consequence. The MD buys the list. "It would be bad" loses.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Control failure vs UX issue</span> <em>FIDO2 fallback is a UX issue, not a control issue.</em></span>
+                <span class="chinese">FIDO2 回退是 UX 问题，不是控制问题</span>
+                <span class="note">The most important distinction in cyber. A control failure blocks go-live. A UX issue is a backlog item. The Group Cyber lead must name the category.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Go / no-go, with named conditions</span> <em>Go for Monday 25 August 09:00 HKMA submission. Conditions: Defect 1 in BRD v3.4 today, Defect 2 fix in 2 weeks, Defect 3 backlog 4 weeks.</em></span>
+                <span class="chinese">周一 8 月 25 日 09:00 HKMA 提交，go。条件：缺陷 1 今日入 BRD v3.4，缺陷 2 两周内修，缺陷 3 backlog 四周</span>
+                <span class="note">The go/no-go call is always 1 sentence: "Go" or "No-go", with the date. Then 2-4 conditions with named owners and dates.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Customer comms, named channel</span> <em>Safari users on Mac get a banner: "For best experience, use Chrome or Edge."</em></span>
+                <span class="chinese">Safari on Mac 用户显示横幅："为获得最佳体验，请使用 Chrome 或 Edge"</span>
+                <span class="note">Customer comms is part of the go decision. Always name the channel (banner, email, in-app), the message, the live date, and the owner.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Co-sign the closure report</span> <em>Send me the closure report by Sunday 17:00. I'll co-sign with you.</em></span>
+                <span class="cn">周日 17:00 前把关闭报告发我，我和你联签</span>
+                <span class="note">For material go/no-go, the MD co-signs the closure report. The MD's signature is the regulator's evidence that the business owns the call.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Go / no-go</strong> n. Go / 停止 The call on whether to ship on the planned date.</li>
+            <li><strong>Customer impact</strong> n. 客户影响 The effect of a defect on customer experience, segment, manual workaround.</li>
+            <li><strong>Regulator impact</strong> n. 监管影响 The effect of a defect on the regulator's view (acceptable, supervisory letter, breach).</li>
+            <li><strong>Slip cost</strong> n. 推迟代价 The consequence of missing the date: regulator letter, $ loss, reputation.</li>
+            <li><strong>Control failure</strong> n. 控制失效 A defect that breaks a regulator or audit control. Blocks go-live.</li>
+            <li><strong>UX issue</strong> n. UX 问题 A defect that affects user experience but not a control. Backlog item.</li>
+            <li><strong>Manual fallback</strong> n. 人工回退 A non-system way to handle a customer when the system fails.</li>
+            <li><strong>Customer comms</strong> n. 客户沟通 The message, channel, and date for telling customers about a known issue.</li>
+            <li><strong>Closure report</strong> n. 关闭报告 The document signed by sponsor and MD confirming the go/no-go call.</li>
+            <li><strong>C-RAF attestation</strong> n. C-RAF 合规声明 The formal regulator submission confirming cyber resilience.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Customer impact: X. Regulator impact: Y." — the parallel pair</h3>
+        <p>Each defect has two impacts, stated in parallel: <em>Customer impact: X. Regulator impact: Y.</em> The grammar is <em>Category: detail.</em> Two sentences per defect. The MD reads the customer/regulator split in 5 seconds.</p>
+        <p>每个缺陷有两个影响，平行陈述：<em>客户影响：X。监管影响：Y。</em>。</p>
+        <h3>② "Go for [date]" — the go/no-go sentence</h3>
+        <p>The call is one sentence: <em>Go for [date] [milestone].</em> The grammar is <em>Go / No-go for [named date] [named event].</em> One sentence, with the date and the milestone. The MD co-signs the closure report against this sentence.</p>
+        <p>决定是一句话：<em>【日期】【里程碑】go</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Always state customer and regulator impact, per defect.</strong> Two impacts, two sentences. "It's a bug" loses.</li>
+            <li><strong>Name the slip cost in 3 categories: regulator, $, reputation.</strong> "It would be bad" loses. "HKMA supervisory letter, $4M slip, reputational hit" wins.</li>
+            <li><strong>Distinguish control failure from UX issue.</strong> Control failure = blocks go-live. UX issue = backlog. The Group Cyber lead names the category.</li>
+            <li><strong>The go/no-go is one sentence, with conditions.</strong> "Go for Monday 09:00 HKMA submission" is the call. Conditions are 2-4 numbered items with owners and dates.</li>
+            <li><strong>Customer comms is part of the go decision.</strong> Name the channel, message, live date, owner. Safari users get a banner; the message is in the banner.</li>
+            <li><strong>MD co-signs the closure report for material calls.</strong> Sponsor signs first, MD co-signs. The MD's signature is regulator evidence.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Customer and regulator impact</h3>
+        <p>A defect breaks the audit log export for transactions over $1M. Write the customer impact and the regulator impact in two parallel sentences.</p>
+
+        <h3>Exercise 2 — Slip cost</h3>
+        <p>You must decide between go on Friday with 2 Sev-2 defects, or slip to next Friday. Write the slip cost in 3 categories (regulator, $, reputation) for a MAS TRM submission.</p>
+
+        <h3>Exercise 3 — Control failure vs UX issue</h3>
+        <p>For each defect, say whether it is a control failure or a UX issue, and what the consequence is for the go/no-go call:</p>
+        <ol>
+            <li>Safari users cannot see the confirmation page.</li>
+            <li>Audit log timestamp drifts by 10 seconds under load.</li>
+            <li>Typo on the welcome screen.</li>
+        </ol>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to Business Home / 返回业务首页</a>
+            <a href="09-email-to-it-pm.html" class="btn btn-primary">Next: Article 09 (Module 3) →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

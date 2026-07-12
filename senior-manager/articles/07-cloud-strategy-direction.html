@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: Cloud Strategy Direction | SM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Senior Manager</a></li>
+                <li class="breadcrumb-item active">07 · Cloud Strategy Direction</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cloud Strategy Direction — Build vs Buy, Multi-Cloud, Regulator Expectation, Exit Cost</h1>
+        <p class="subtitle">Article 07 · Module 2: Strategic Decisions · SM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🔴 Expert</span>
+            <span>🎯 Cloud strategy, build vs buy, multi-cloud, regulator expectation, exit cost</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday 09:30 HKT</strong>. You are the <em>Group CIO</em>. The <strong>Group Technology Committee</strong> meets this afternoon to set the cloud direction for the next 3 years. The current state: <strong>38%</strong> of workloads run on cloud (mostly AWS, some Azure), <strong>62%</strong> still on on-prem (3 data centres, 22-year-old mainframe, 4 mid-range servers). The 5 cloud provider proposals have been evaluated by Group Architecture and Group Cyber. The <strong>HKMA</strong> has published its final <em>Cloud Computing Guidance</em> last month. The committee must decide: single-cloud, multi-cloud, or hybrid — and the exit cost envelope. Present: <strong>Group CTO</strong>, <strong>Group CRO</strong>, <strong>Group CFO</strong>, <strong>Head of Group Architecture</strong>, <strong>Head of Group Cyber</strong>.</p>
+        <p>周一 09:30 HKT，你是<em>集团 CIO</em>。<strong>集团技术委员会</strong>今天下午开会，确定未来 3 年云方向。当前状态：<strong>38%</strong> 工作负载在云上（主要是 AWS，部分 Azure），<strong>62%</strong> 仍在本地（3 个数据中心、22 岁主机、4 个中型服务器）。集团架构和集团网络已评估 5 家云厂商提案。<strong>HKMA</strong> 上月发布最终版<em>云计算指引</em>。委员会必须决策：单云、多云还是混合——以及退出成本额度。参会：<strong>集团 CTO</strong>、<strong>集团 CRO</strong>、<strong>集团 CFO</strong>、<strong>集团架构负责人</strong>、<strong>集团网络负责人</strong>。</p>
+        <p>Cloud strategy is the <strong>5-year bet</strong> of any CIO. The pattern: <em>regulator expectation first, build vs buy second, multi-cloud third, exit cost fourth, recommendation last</em>. The regulator now treats cloud concentration as a Tier-2 risk.</p>
+        <p>云战略是任何 CIO 的<strong>5 年赌注</strong>。模式：<em>监管期望第一、自建 vs 购买第二、多云第三、退出成本第四、推荐最后</em>。监管现在把云集中度视为 Tier-2 风险。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Cloud Direction — 5 Sections, 60 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Regulator expectation.</em> <em>HKMA final guidance: 4 explicit asks.</em> <em>Ask 1:</em> <em>data localisation for customer PII — must reside in HK or Group-approved jurisdiction.</em> <em>Ask 2:</em> <em>concentration risk register — top-3 cloud providers disclosed, exit plan documented.</em> <em>Ask 3:</em> <em>sovereign cloud option for regulated workloads.</em> <em>Ask 4:</em> <em>annual attestation to HKMA on cloud resilience.</em></span><span class="cn"><em>监管期望。</em><em>HKMA 最终指引：4 项明确要求。</em><em>要求 1：</em><em>客户 PII 数据本地化——必须位于香港或集团批准法域。</em><em>要求 2：</em><em>集中度风险登记——披露前 3 大云厂商，文档化退出计划。</em><em>要求 3：</em><em>受监管工作负载的 sovereign cloud 选项。</em><em>要求 4：</em><em>每年向 HKMA 提交云韧性合规声明。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Build vs buy.</em> <em>Build (private cloud on-prem) is rejected —</em> <em>5-year TCO $620M, regulator expects cloud, talent is hard to retain.</em> <em>Buy (public cloud) is recommended —</em> <em>5-year TCO $310M, native regulator controls, faster delivery.</em></span><span class="cn"><em>自建 vs 购买。</em><em>自建（本地私有云）已否决——</em><em>5 年 TCO 6.2 亿，监管期望云上、人才难留。</em><em>购买（公有云）推荐——</em><em>5 年 TCO 3.1 亿，原生监管控制，交付更快。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CRO:</span>
+                <span class="text"><span class="en">CRO: <em>Multi-cloud or single-cloud?</em></span><span class="cn">CRO：<em>多云还是单云？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Two-cloud strategy.</em> <em>AWS as primary for customer-facing workloads,</em> <em>Azure as secondary for regulated data and DR.</em> <em>Single-cloud rejected: HKMA treats concentration as Tier-2 risk.</em> <em>Three-cloud rejected: operational complexity, no incremental regulator benefit, +18% TCO.</em></span><span class="cn"><em>双云策略。</em><em>AWS 作为面向客户工作负载的主云，</em><em>Azure 作为受监管数据和 DR 的副云。</em><em>单云否决：HKMA 将集中度视为 Tier-2 风险。</em><em>三云否决：运营复杂度高，无增量监管收益，TCO 增加 18%。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Exit cost envelope.</em> <em>Exit cost from AWS or Azure:</em> <em>data egress $14M, application re-architecture $42M, contract termination $8M.</em> <em>Total exit cost from one provider: $64M over 18 months.</em> <em>Exit cost is the reason for two-cloud, not feature comparison.</em></span><span class="cn"><em>退出成本额度。</em><em>退出 AWS 或 Azure：</em><em>数据出口 1,400 万、应用重新架构 4,200 万、合同终止 800 万。</em><em>从一家厂商退出总成本：18 个月内 6,400 万。</em><em>退出成本是双云的原因，不是功能比较。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CFO:</span>
+                <span class="text"><span class="en">CFO: <em>3-year capex for cloud migration?</em></span><span class="cn">CFO：<em>3 年云迁移 capex？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>3-year cloud migration capex: $185M.</em> <em>Year 1: $58M (regulator-priority workloads, 18% of estate),</em> <em>Year 2: $72M (core banking partial, 30% of estate),</em> <em>Year 3: $55M (long tail, 52% of estate).</em> <em>Cumulative cloud: 78% by Year 3, mainframe fully decommissioned.</em> <em>Data centres: 3 to 1.</em> <em>Annual run-rate saving at Year 3: $42M.</em></span><span class="cn"><em>3 年云迁移 capex：1.85 亿。</em><em>第 1 年：5,800 万（监管优先工作负载，资产 18%），</em><em>第 2 年：7,200 万（核心银行部分，资产 30%），</em><em>第 3 年：5,500 万（长尾，资产 52%）。</em><em>第 3 年累计云上 78%，主机完全下线。</em><em>数据中心：3 个变 1 个。</em><em>第 3 年年化运行节省：4,200 万。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Recommendation: two-cloud strategy.</em> <em>AWS primary, Azure secondary.</em> <em>Exit cost envelope $64M per provider, documented in the concentration risk register.</em> <em>3-year migration capex $185M, inside the $280M envelope.</em> <em>Annual run-rate saving $42M from Year 3.</em> <em>HKMA attestation cycle aligned with annual cloud resilience review.</em> <em>One decision: approve two-cloud direction, $185M 3-year capex.</em></span><span class="cn"><em>推荐：双云策略。</em><em>AWS 主、Azure 副。</em><em>退出成本额度每家 6,400 万，在集中度风险登记中文档化。</em><em>3 年迁移 capex 1.85 亿，在 2.8 亿额度内。</em><em>第 3 年起年化节省 4,200 万。</em><em>HKMA 合规声明周期与年度云韧性评审对齐。</em><em>一个决策：批准双云方向、3 年 capex 1.85 亿。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CTO:</span>
+                <span class="text"><span class="en">CTO: <em>Two-cloud approved.</em> <em>Exit plan and concentration risk register to HKMA by Q1 next year.</em></span><span class="cn">CTO：<em>双云批准。</em><em>退出计划和集中度风险登记明年 Q1 提交 HKMA。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Regulator expectation, 4 explicit asks</span> <em>HKMA final guidance: 4 explicit asks. Data localisation, concentration risk, sovereign option, annual attestation.</em></span>
+                <span class="chinese">HKMA 最终指引：4 项明确要求</span>
+                <span class="note">"Explicit asks" is the precise phrase. The regulator publishes "asks", not "suggestions". The committee cannot debate what the regulator has asked for.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Build vs buy, 5-year TCO</span> <em>Build: 5-year TCO $620M, rejected. Buy: 5-year TCO $310M, recommended.</em></span>
+                <span class="chinese">自建 5 年 TCO 6.2 亿否决；购买 5 年 TCO 3.1 亿推荐</span>
+                <span class="note">Pair the decision with a TCO. "Build vs buy" without a number is opinion. The CFO approves TCO, not direction.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Two-cloud, exit cost is the reason</span> <em>Exit cost is the reason for two-cloud, not feature comparison.</em></span>
+                <span class="chinese">退出成本是双云的原因，不是功能比较</span>
+                <span class="note">Multi-cloud is not about features. It is about exit cost and concentration risk. The CRO owns the concentration risk, not the feature debate.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Exit cost envelope, $64M per provider</span> <em>Total exit cost from one provider: $64M over 18 months.</em></span>
+                <span class="chinese">从一家厂商退出总成本：18 个月内 6,400 万</span>
+                <span class="note">The exit cost envelope is what makes two-cloud possible. Without an exit cost, the concentration risk is unbounded.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Concentration risk register</span> <em>Top-3 cloud providers disclosed, exit plan documented in the concentration risk register.</em></span>
+                <span class="chinese">披露前 3 大云厂商，退出计划在集中度风险登记中文档化</span>
+                <span class="note">The concentration risk register is a regulator artefact. It is the document the HKMA will read at the next supervisory meeting.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Annual run-rate saving</span> <em>Annual run-rate saving at Year 3: $42M.</em></span>
+                <span class="chinese">第 3 年年化运行节省 4,200 万</span>
+                <span class="note">"Run-rate saving" is the language of CFO. It is the year-3 annual figure, not the 3-year cumulative. Always name the year and the run-rate.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Single-cloud</strong> n. 单云 Using one cloud provider for all workloads.</li>
+            <li><strong>Multi-cloud</strong> n. 多云 Using multiple cloud providers (two, three, etc.).</li>
+            <li><strong>Two-cloud strategy</strong> n. 双云策略 Using exactly two cloud providers — primary and secondary.</li>
+            <li><strong>Hybrid cloud</strong> n. 混合云 A mix of on-prem and public cloud.</li>
+            <li><strong>Sovereign cloud</strong> n. 主权云 A cloud deployment in a regulator-approved jurisdiction.</li>
+            <li><strong>Data localisation</strong> n. 数据本地化 The requirement that data resides in a specific jurisdiction.</li>
+            <li><strong>Concentration risk</strong> n. 集中度风险 The risk that too much workload depends on one provider.</li>
+            <li><strong>Exit cost</strong> n. 退出成本 The cost to move away from a cloud provider.</li>
+            <li><strong>Data egress</strong> n. 数据出口 The cost of moving data out of a cloud provider.</li>
+            <li><strong>Run-rate saving</strong> n. 年化节省 The annual saving once migration is complete.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Build vs buy" — the binary decision frame</h3>
+        <p>Cloud strategy is presented as a binary: <em>build vs buy</em>, <em>single vs multi</em>, <em>primary vs secondary</em>. The binary forces the committee to choose. Three-way frames ("single, two, or three") let the committee defer. Always end the frame at two.</p>
+        <p>云战略以二元呈现：<em>build vs buy</em>、<em>single vs multi</em>。二元强迫委员会选择。三元让委员会拖延。</p>
+        <h3>② "Exit cost is the reason, not feature comparison" — the precise rebuttal</h3>
+        <p>When challenged on multi-cloud, the rebuttal is: <em>exit cost is the reason, not feature comparison.</em> The phrase signals the decision is about risk, not preference. The CRO and CFO understand risk; they do not care about feature wars.</p>
+        <p>当被挑战多云决策时，反驳是：<em>退出成本是原因，不是功能比较</em>。这句话表明决策是关于风险，不是偏好。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Lead with regulator expectation.</strong> The committee that ignores the regulator loses. Cloud decisions are regulator decisions now.</li>
+            <li><strong>Build vs buy is a TCO decision.</strong> "Cloud-native is the future" is opinion. "Build $620M vs buy $310M, 5-year TCO" is a decision.</li>
+            <li><strong>Multi-cloud is exit cost, not features.</strong> The moment you say "AWS has better Lambda", you are in a feature war. The exit cost frame keeps you in risk language.</li>
+            <li><strong>Document the exit cost in the concentration risk register.</strong> A number that is not documented is a number that does not exist. The regulator reads the register.</li>
+            <li><strong>Run-rate saving is the year-3 annual figure, not cumulative.</strong> "$42M over 3 years" loses. "$42M annual run-rate from Year 3" wins. The CFO remembers the run-rate.</li>
+            <li><strong>Annual attestation is the regulator deadline.</strong> The cloud strategy must align with the regulator's annual attestation cycle. The committee approves the cycle, not the strategy alone.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the cloud direction</h3>
+        <p>Translate the recommendation sentence.</p>
+        <blockquote>
+            "Recommendation: two-cloud strategy. AWS primary, Azure secondary. Exit cost envelope $64M per provider, documented in the concentration risk register. 3-year migration capex $185M, inside the $280M envelope. Annual run-rate saving $42M from Year 3. HKMA attestation cycle aligned with annual cloud resilience review. One decision: approve two-cloud direction, $185M 3-year capex."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"推荐：双云策略。AWS 主、Azure 副。退出成本额度每家 6,400 万，在集中度风险登记中文档化。3 年迁移 capex 1.85 亿，在 2.8 亿额度内。第 3 年起年化节省 4,200 万。HKMA 合规声明周期与年度云韧性评审对齐。一个决策：批准双云方向、3 年 capex 1.85 亿。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the cloud strategy mistake</h3>
+        <p>Which line would lose credibility in a cloud strategy committee? Why?</p>
+        <ol>
+            <li>"AWS has better Lambda, so we should go single-cloud."</li>
+            <li>"Build: 5-year TCO $620M, rejected. Buy: 5-year TCO $310M, recommended."</li>
+            <li>"Exit cost envelope $64M per provider."</li>
+            <li>"Annual run-rate saving $42M from Year 3."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>① is the credibility-damager. "AWS has better Lambda" is a feature war, not a strategy. ② pairs build / buy with TCO. ③ names the exit cost. ④ names the run-rate saving. Cloud strategy is TCO + exit cost, not Lambda.</p>
+        </div>
+        <h3>Exercise 3 — Run a 5-minute cloud recommendation</h3>
+        <p>You are the CIO. Build TCO $580M, buy TCO $340M. AWS and Azure both pre-approved by Group Cyber. HKMA requires sovereign option. Recommendation?</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Regulator expectation: HKMA sovereign option mandatory. Build vs buy: build $580M 5-year TCO, rejected — regulator expects cloud. Buy $340M, recommended. Single vs multi: single-cloud rejected — concentration is Tier-2 risk. Two-cloud: AWS primary for customer-facing, Azure secondary for regulated data and sovereign option. Exit cost: $52M per provider over 18 months. 3-year migration capex $165M, inside the $280M envelope. Annual run-rate saving $38M from Year 3. Recommendation: two-cloud, $165M 3-year capex, exit cost documented in concentration risk register."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="06-ma-due-diligence.html" class="btn btn-outline-secondary">← Previous: Article 06</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to SM Home / 返回 SM 首页</a>
+            <a href="08-org-design-restructure.html" class="btn btn-primary">Next: Article 08 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

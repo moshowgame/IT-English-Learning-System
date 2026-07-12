@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 04: UAT Business Review | Business English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Business</a></li>
+                <li class="breadcrumb-item active">04 · UAT Business Review</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>UAT Business Review — Defect Severity, Sign-off, Go-Live Readiness</h1>
+        <p class="subtitle">Article 04 · Module 1: Daily Business Touchpoints · Business English</p>
+        <div class="meta">
+            <span>⏱ 6 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Severity 1/2/3, sign-off, conditional approval, regulator evidence</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 14:00 HKT, end of UAT week 2</strong>. You are the <em>Head of Customer Onboarding</em>, sitting in the UAT exit review for the <em>Digital Onboarding 2.0</em> programme. Present: <strong>Sara</strong> (IT PM), <strong>Daniel</strong> (Tech Lead), <strong>Priya</strong> (BA), and <strong>Karen</strong> (your MD, joining remotely). UAT has 47 test cases. 41 passed, 4 are Sev-2 defects, 2 are Sev-3 defects. Go-Live is targeted for <strong>Monday 18 August</strong>. You have 60 minutes to make a sign-off call. The MD is watching for regulator evidence: HKMA, MAS.</p>
+        <p>周五 14:00 HKT，UAT 第 2 周结束。你是<em>客户开户业务负责人</em>，坐在<em>数字开户 2.0</em>项目群的 UAT 退场评审会上。参会有：<strong>Sara</strong>（IT PM）、<strong>Daniel</strong>（Tech Lead）、<strong>Priya</strong>（BA）、<strong>Karen</strong>（你的 MD，远程）。UAT 共 47 个测试用例。41 个通过，4 个 Sev-2 缺陷，2 个 Sev-3 缺陷。Go-Live 目标<strong>8 月 18 日周一</strong>。你有 60 分钟做签批决定。MD 关注监管证据：HKMA、MAS。</p>
+        <p>UAT sign-off is the business owner's most consequential decision. The pattern: <em>defect list by severity, regulator evidence, conditional approval with named dates, named go/no-go criteria</em>. A sign-off without conditions is reckless; a sign-off with conditions is professional.</p>
+        <p>UAT 签批是业务方最重要的决定。模式：<em>按严重度列缺陷清单、监管证据、带具名日期的有条件批准、具名 go/no-go 标准</em>。无条件签批是鲁莽；有条件签批是专业。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Business Sponsor):</span>
+                <span class="text"><span class="en"><em>Walk me through the defect list by severity.</em> <em>How many Sev-1, Sev-2, Sev-3?</em></span><span class="cn"><em>按严重度给我过一下缺陷清单。</em><em>Sev-1、Sev-2、Sev-3 各多少？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara (IT PM):</span>
+                <span class="text"><span class="en">Sara: <em>Zero Sev-1.</em> <em>4 Sev-2</em> — <em>eKYC timeout for non-HK ID, audit log missing timestamp, journey broken for joint accounts, FIDO2 fallback path.</em> <em>2 Sev-3</em> — <em>typo on confirmation screen, slow report load.</em></span><span class="cn">Sara：<em>零 Sev-1。</em><em>4 个 Sev-2</em>——<em>非香港身份证 eKYC 超时、审计日志缺时间戳、共同账户旅程中断、FIDO2 回退路径。</em><em>2 个 Sev-3</em>——<em>确认屏打字错、报表加载慢。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Fix plan for the 4 Sev-2?</em> <em>Who, by when?</em></span><span class="cn"><em>4 个 Sev-2 的修复计划？</em><em>谁、什么时候？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>Daniel, by EOD Tuesday next week.</em> <em>eKYC timeout goes to Onfido for vendor fix, expected by Thursday.</em> <em>Audit log timestamp — Priya, fix Friday.</em> <em>Joint account journey — Priya with engineering, Monday.</em> <em>FIDO2 fallback — Daniel, fix Monday, retest Tuesday.</em></span><span class="cn">Sara：<em>Daniel，下周二 EOD 前。</em><em>eKYC 超时给 Onfido 做厂商修复，预计周四。</em><em>审计日志时间戳——Priya，周五修复。</em><em>共同账户旅程——Priya 和工程，周一。</em><em>FIDO2 回退——Daniel，周一修复，周二重测。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Retest plan?</em> <em>Who signs off the retest?</em></span><span class="cn"><em>重测计划？</em><em>谁签批重测？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>Retest by my UAT lead, Anna,</em> <em>Wednesday and Thursday.</em> <em>Closure report by Friday EOD.</em> <em>You sign the closure report.</em></span><span class="cn">Sara：<em>由我的 UAT 负责人 Anna 重测，</em><em>周三和周四。</em><em>周五 EOD 前出关闭报告。</em><em>你签关闭报告。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Regulator evidence — HKMA and MAS.</em> <em>What's the pack?</em></span><span class="cn"><em>监管证据——HKMA 和 MAS。</em><em>材料是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>HKMA</em> — <em>eKYC threshold letter (received 25 July), C-RAF self-assessment, FIDO2 risk assessment, 14 cyber hygiene attestation.</em> <em>MAS</em> — <em>TRM control evidence, 14 cyber hygiene, MAS notification for the biometric, completed 1 August.</em> <em>All in the regulator pack on Confluence.</em></span><span class="cn">Sara：<em>HKMA</em>——<em>eKYC 阈值函（7 月 25 日已收）、C-RAF 自评、FIDO2 风险评估、14 项网络卫生合规声明。</em><em>MAS</em>——<em>TRM 控制证据、14 项网络卫生、人脸生物识别 MAS 报备（8 月 1 日完成）。</em><em>全在 Confluence 的监管包里。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My decision.</em> <em>Conditional sign-off today.</em> <em>3 conditions for go-live on 18 August.</em></span><span class="cn"><em>我的决定。</em><em>今天有条件签批。</em><em>8 月 18 日 go-live 的 3 个条件。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Condition 1:</em> <em>all 4 Sev-2 closed and retest-passed by Thursday EOD, 14 August,</em> <em>closure report signed by me Friday morning, 15 August.</em></span><span class="cn"><em>条件 1：</em><em>4 个 Sev-2 全部关闭并在 8 月 14 日周四 EOD 前重测通过，</em><em>关闭报告 8 月 15 日周五上午我签。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Condition 2:</em> <em>Group Cyber final sign-off on the FIDO2 retest by Friday EOD, 15 August.</em></span><span class="cn"><em>条件 2：</em><em>集团 Cyber 在 8 月 15 日周五 EOD 前对 FIDO2 重测做最终签批。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Condition 3:</em> <em>MAS notification acknowledgement received,</em> <em>expected by 12 August.</em></span><span class="cn"><em>条件 3：</em><em>MAS 报备确认回执收到，</em><em>预计 8 月 12 日前。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>If any condition fails,</em> <em>we go to 25 August,</em> <em>and we brief the MD and the regulator in writing.</em> <em>Karen, any push-back?</em></span><span class="cn"><em>任一条件未达成，</em><em>推迟到 8 月 25 日，</em><em>并书面告知 MD 和监管。</em><em>Karen，有什么异议？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Karen (MD):</span>
+                <span class="text"><span class="en">Karen: <em>No push-back.</em> <em>Send me the closure report by Friday 17:00, 15 August,</em> <em>I'll co-sign with you.</em></span><span class="cn">Karen：<em>没异议。</em><em>8 月 15 日周五 17:00 前把关闭报告发我，</em><em>我和你联签。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Defect list by severity</span> <em>Walk me through the defect list by severity.</em></span>
+                <span class="chinese">按严重度给我过一下缺陷清单</span>
+                <span class="note">Always start with severity. Sev-1 blocks go-live. Sev-2 blocks go-live unless explicitly accepted. Sev-3 is a backlog item. The MD buys the severity counts, not the defect names.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fix plan, who by when</span> <em>Fix plan for the 4 Sev-2? Who, by when?</em></span>
+                <span class="chinese">修复计划？谁、什么时候？</span>
+                <span class="note">Every Sev-2 must have a named owner and a named date. "We'll fix it" loses. "Daniel, by Tuesday EOD" wins.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Retest, closure report</span> <em>Retest by Anna, Wednesday and Thursday. Closure report by Friday EOD. You sign the closure report.</em></span>
+                <span class="chinese">Anna 周三周四重测，周五 EOD 前关闭报告，你签</span>
+                <span class="note">The retest-then-closure-report pattern is the only sign-off path. Without a closure report, there is no sign-off. The business owner signs the closure report, not the IT PM.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Regulator evidence, named items</span> <em>HKMA — eKYC threshold letter, C-RAF, FIDO2 risk assessment, 14 cyber hygiene.</em></span>
+                <span class="chinese">HKMA——eKYC 阈值函、C-RAF、FIDO2 风险评估、14 项网络卫生</span>
+                <span class="note">Regulator evidence is always a list of named items. The MD buys the list. Anything missing is a sign-off blocker.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Conditional sign-off, with 3 conditions</span> <em>Conditional sign-off today. 3 conditions for go-live on 18 August.</em></span>
+                <span class="chinese">今天有条件签批。8 月 18 日 go-live 的 3 个条件</span>
+                <span class="note">A sign-off is always conditional or unconditional. Conditional is professional; unconditional is reckless. Always state the conditions in numbered form.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">If any condition fails, slip with named date</span> <em>If any condition fails, we go to 25 August.</em></span>
+                <span class="chinese">任一条件未达成，推迟到 8 月 25 日</span>
+                <span class="note">Always state the slip date in the conditional sign-off. "We'll let you know" loses. "We go to 25 August" wins. The MD buys the slip date.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Sev-1 / Sev-2 / Sev-3</strong> n. 严重度 1/2/3 Defect severity. Sev-1 = blocks go-live (system down, data loss). Sev-2 = blocks go-live unless accepted (broken journey, missing audit). Sev-3 = backlog (typo, slow load).</li>
+            <li><strong>Closure report</strong> n. 关闭报告 The document that says all defects are fixed, retested, and signed off by the business owner.</li>
+            <li><strong>Conditional sign-off</strong> n. 有条件签批 A sign-off that lists 2-4 conditions that must close before go-live.</li>
+            <li><strong>Retest</strong> n. 重测 The second pass of UAT after defects are fixed, to confirm the fix works and did not break anything else.</li>
+            <li><strong>Regulator evidence / regulator pack</strong> n. 监管证据 / 监管包 The set of named documents the regulator expects to see (C-RAF, TRM, MAS notification, 14 cyber hygiene).</li>
+            <li><strong>Go-live</strong> n. 上线 The date the system goes into production.</li>
+            <li><strong>Slip</strong> v. 推迟 To move a go-live date, always with a new date and a reason.</li>
+            <li><strong>Co-sign</strong> v. 联签 Two people signing the same document (sponsor + MD).</li>
+            <li><strong>Fallback path</strong> n. 回退路径 The alternative flow when the primary flow fails (e.g., FIDO2 fallback to OTP).</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Walk me through the defect list by severity" — the framing sentence</h3>
+        <p>The phrase <em>by severity</em> forces the PM to group the defects into Sev-1, Sev-2, Sev-3 buckets before listing names. The MD can then read the count of Sev-1 (the only go-live blocker) in 5 seconds. Listing by name is unparseable; listing by severity is a sign-off-ready report.</p>
+        <p><em>按严重度</em>迫使 PM 先把缺陷分到严重度桶里再列名字。</p>
+        <h3>② "If any condition fails, we go to 25 August" — the conditional slip</h3>
+        <p>A conditional sign-off has a built-in slip date. <em>If any condition fails, we go to [date]</em>. The grammar is conditional (if) plus named slip (date). "If something goes wrong, we'll see" is not a sign-off; the slip date is.</p>
+        <p>有条件签批内置推迟日期。<em>任一条件未达成，推迟至【日期】</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Start the review with severity, not names.</strong> Sev-1 / Sev-2 / Sev-3 first, names second. The MD buys the severity counts.</li>
+            <li><strong>Every Sev-2 needs a named owner and a named date.</strong> "We'll fix it" is not a fix plan. "Daniel, Tuesday EOD" is.</li>
+            <li><strong>Retest-then-closure-report is the only sign-off path.</strong> No closure report, no sign-off. The business owner signs the closure, not the IT PM.</li>
+            <li><strong>Regulator evidence is a named list, not a folder.</strong> "C-RAF, FIDO2 risk assessment, 14 cyber hygiene" is a list. "The regulator pack" is a folder. The MD buys the list.</li>
+            <li><strong>Always sign off conditionally.</strong> Unconditional sign-off is reckless. 2-4 numbered conditions are professional.</li>
+            <li><strong>Always state the slip date in the conditional.</strong> "If any condition fails, we go to 25 August" is a slip date. The MD buys the date.</li>
+            <li><strong>Co-sign with the MD for material sign-offs.</strong> Sponsor signs first, MD co-signs. The MD's signature is the regulator's evidence that the business owns the outcome.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Write a conditional sign-off</h3>
+        <p>UAT has 0 Sev-1, 3 Sev-2, 5 Sev-3. Go-live is 25 September. Write a conditional sign-off with 3 numbered conditions and a slip date.</p>
+
+        <h3>Exercise 2 — Build the retest-then-closure report plan</h3>
+        <p>For the 3 Sev-2 above, write the retest plan (who, when) and the closure report (who signs, by when). Use the pattern from the dialogue.</p>
+
+        <h3>Exercise 3 — Spot the missing severity</h3>
+        <p>A PM says: "We have a few bugs, mostly minor, but the eKYC one is a problem." What is missing? Rewrite the PM's update so it has clear severity counts.</p>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to Business Home / 返回业务首页</a>
+            <a href="05-brd-signoff.html" class="btn btn-primary">Next: Article 05 (Module 2) →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

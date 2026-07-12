@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: BRD Sign-off | Business English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Business</a></li>
+                <li class="breadcrumb-item active">05 · BRD Sign-off Discussion</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>BRD Sign-off — Acceptance Criteria, Edge Cases, Conditional Approval</h1>
+        <p class="subtitle">Article 05 · Module 2: Requirements &amp; Prioritisation · Business English</p>
+        <div class="meta">
+            <span>⏱ 6 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Acceptance criteria, edge cases, conditional sign-off, out-of-scope list</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 14:00 HKT</strong>. You are the <em>Head of Customer Onboarding</em>. The <strong>BRD v3.2</strong> for <em>Digital Onboarding 2.0</em> has been circulated for 5 working days. Priya (BA) and Sara (IT PM) are in your office for the sign-off discussion. The BRD has 14 functional requirements, 8 non-functional, and 6 explicit out-of-scope items. Your job: walk through acceptance criteria line by line, surface edge cases, and either sign off or sign off with conditions. You have 60 minutes.</p>
+        <p>周二 14:00 HKT，你是<em>客户开户业务负责人</em>。<em>数字开户 2.0</em>的<strong>BRD v3.2</strong>已分发 5 个工作日。Priya（BA）和 Sara（IT PM）在你办公室进行签批讨论。BRD 有 14 个功能需求、8 个非功能需求、6 个明确的超出范围项。你的工作：逐条过验收标准、暴露边界情况、签批或有条件签批。你有 60 分钟。</p>
+        <p>BRD sign-off is the <em>contract</em> between business and IT. Everything in the BRD is in scope; everything not in it is out of scope. The sign-off locks both sides. After sign-off, scope changes require a formal process.</p>
+        <p>BRD 签批是业务和 IT 之间的<em>合同</em>。BRD 里的都在范围内；不在的都不在范围内。签批锁定双方。签批后，范围变更需要正式流程。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Business Sponsor):</span>
+                <span class="text"><span class="en"><em>60-minute walkthrough.</em> <em>Goal: sign off BRD v3.2 today, with conditions if needed.</em> <em>Priya, walk me through the 14 functional requirements and their acceptance criteria.</em></span><span class="cn"><em>60 分钟过一遍。</em><em>目标：今天签批 BRD v3.2，必要时附条件。</em><em>Priya，给我过 14 个功能需求和验收标准。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text"><span class="en">Priya: <em>14 functional requirements grouped into 4 capabilities.</em> <em>Identity verification</em> — <em>3 requirements.</em> <em>Customer journey</em> — <em>5 requirements.</em> <em>Audit and compliance</em> — <em>3 requirements.</em> <em>Integration</em> — <em>3 requirements.</em> <em>Each requirement has 2 to 4 acceptance criteria.</em></span><span class="cn">Priya：<em>14 个功能需求分为 4 个能力。</em><em>身份核验</em>——<em>3 个需求。</em><em>客户旅程</em>——<em>5 个需求。</em><em>审计与合规</em>——<em>3 个需求。</em><em>集成</em>——<em>3 个需求。</em><em>每个需求有 2 到 4 个验收标准。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Stop at FR-04, customer journey, joint account.</em> <em>What's the acceptance criteria for the joint-account flow?</em></span><span class="cn"><em>停在 FR-04，客户旅程，共同账户。</em><em>共同账户流程的验收标准是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya:</span>
+                <span class="text"><span class="en">Priya: <em>AC-1: both parties complete eKYC independently.</em> <em>AC-2: relationship manager reviews and signs off.</em> <em>AC-3: account is opened in 4 hours.</em></span><span class="cn">Priya：<em>AC-1：双方独立完成 eKYC。</em><em>AC-2：客户经理审核签批。</em><em>AC-3：账户在 4 小时内开立。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Edge case.</em> <em>What if one party fails eKYC and the other passes?</em> <em>What's the system behaviour?</em></span><span class="cn"><em>边界情况。</em><em>如果一方 eKYC 失败、另一方通过，</em><em>系统行为是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya:</span>
+                <span class="text"><span class="en">Priya: <em>The BRD is silent on that.</em> <em>Sara, what's the design?</em></span><span class="cn">Priya：<em>BRD 没说这个。</em><em>Sara，设计是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>The current design blocks the joint account until both pass.</em> <em>The relationship manager can manually override with a 4-eyes approval.</em></span><span class="cn">Sara：<em>当前设计是双方都通过才能开共同账户。</em><em>客户经理可以通过 4-eyes 审批手工放行。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Add AC-4: failure handling</em> — <em>if one party fails eKYC, the system blocks the joint account; relationship manager can override with 4-eyes approval; override is logged in the audit trail.</em> <em>Priya, update the BRD and re-circulate by EOD tomorrow.</em></span><span class="cn"><em>加 AC-4：失败处理</em>——<em>一方 eKYC 失败，系统阻止共同账户；客户经理可 4-eyes 审批放行；放行记入审计日志。</em><em>Priya，更新 BRD，明天 EOD 前重新分发。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Next, out-of-scope list.</em> <em>What's in and what's out?</em></span><span class="cn"><em>下一个，超出范围清单。</em><em>什么在内、什么在外？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya:</span>
+                <span class="text"><span class="en">Priya: <em>6 items out of scope.</em> <em>Video-based identity verification, voice biometrics, joint account with non-HK ID, corporate onboarding, offshore onboarding, and credit card onboarding.</em> <em>All flagged for Phase 2.</em></span><span class="cn">Priya：<em>6 个超出范围项。</em><em>视频身份核验、声纹生物识别、非香港身份证共同账户、企业开户、离岸开户、信用卡开户。</em><em>全部标记为第 2 阶段。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Confirm: video-based identity verification is out of scope for Phase 1.</em> <em>We will not deliver it.</em> <em>And if the MD asks for it, it's an ad-hoc scope change with cost and timeline impact.</em></span><span class="cn"><em>确认：视频身份核验在第 1 阶段超出范围。</em><em>我们不会交付。</em><em>如果 MD 要求，那就是有成本和时间线影响的临时范围变更。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sara:</span>
+                <span class="text"><span class="en">Sara: <em>Confirmed.</em></span><span class="cn">Sara：<em>确认。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>My decision.</em> <em>Conditional sign-off.</em> <em>Condition 1: Priya updates BRD v3.3 with AC-4 for FR-04 and re-circulates by EOD Wednesday.</em> <em>Condition 2: out-of-scope list is final, no additions without formal scope change.</em> <em>Sign-off effective when v3.3 is in the repo.</em></span><span class="cn"><em>我的决定。</em><em>有条件签批。</em><em>条件 1：Priya 更新 BRD v3.3 加入 FR-04 的 AC-4，周三 EOD 前重新分发。</em><em>条件 2：超出范围清单是终版，未经正式范围变更不增加。</em><em>v3.3 入库后签批生效。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya:</span>
+                <span class="text"><span class="en">Priya: <em>Confirmed.</em> <em>v3.3 by EOD Wednesday.</em></span><span class="cn">Priya：<em>确认。</em><em>周三 EOD 前 v3.3。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Walk me through, with criteria</span> <em>Walk me through the 14 functional requirements and their acceptance criteria.</em></span>
+                <span class="chinese">给我过 14 个功能需求和验收标准</span>
+                <span class="note">Always ask for requirements + acceptance criteria together. A requirement without an acceptance criterion is a wish, not a contract.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Edge case, system behaviour</span> <em>What if one party fails eKYC? What's the system behaviour?</em></span>
+                <span class="chinese">如果一方 eKYC 失败，系统行为是什么？</span>
+                <span class="note">Edge cases are how the system behaves when input is bad. The 3 most common: failure, partial, exception. The PM must answer for each.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Add AC-N, with named behaviour</span> <em>Add AC-4: failure handling — if one party fails eKYC, the system blocks; relationship manager can override with 4-eyes; override is logged.</em></span>
+                <span class="chinese">加 AC-4：失败处理——一方 eKYC 失败，系统阻止；客户经理可 4-eyes 放行；放行记入审计</span>
+                <span class="note">Edge case handling becomes a new AC, numbered, with the system behaviour described in one sentence. The new AC goes into the BRD as v3.3.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Out of scope, final, no additions</span> <em>Out-of-scope list is final, no additions without formal scope change.</em></span>
+                <span class="chinese">超出范围清单是终版，未经正式范围变更不增加</span>
+                <span class="note">"Final" is the lock. After sign-off, the out-of-scope list is closed. New items require a formal scope change with cost and timeline impact. The MD buys the closure.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Conditional sign-off, effective when vN.M in repo</span> <em>Conditional sign-off. Sign-off effective when v3.3 is in the repo.</em></span>
+                <span class="chinese">有条件签批，v3.3 入库后签批生效</span>
+                <span class="note">A conditional BRD sign-off always has a "effective when" clause. Without it, the sign-off is ambiguous. "v3.3 in the repo" is a verifiable event.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">4-eyes approval</span> <em>Relationship manager can override with 4-eyes approval.</em></span>
+                <span class="chinese">客户经理可 4-eyes 审批放行</span>
+                <span class="note">4-eyes is a control term: two people must approve. Always used for overrides and exceptions. The audit log captures both names.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>BRD (Business Requirements Document)</strong> n. 业务需求文档 The contract between business and IT for what will be built.</li>
+            <li><strong>Acceptance criteria (AC)</strong> n. 验收标准 The testable conditions that define "done" for a requirement.</li>
+            <li><strong>Edge case</strong> n. 边界情况 A scenario where the input is partial, bad, or unexpected. Must be defined for each requirement.</li>
+            <li><strong>Out of scope</strong> n. 超出范围 Explicitly excluded in the BRD. New items require a formal scope change.</li>
+            <li><strong>Scope change</strong> n. 范围变更 A formal addition to the BRD with cost, timeline, and FTE impact.</li>
+            <li><strong>4-eyes approval</strong> n. 4-eyes 审批 A control requiring two people to approve an action; logged in the audit trail.</li>
+            <li><strong>Override</strong> n. 放行 A manual action that bypasses the system default. Always requires 4-eyes and audit logging.</li>
+            <li><strong>Audit trail</strong> n. 审计日志 The system log of who did what, when. Required for regulator evidence.</li>
+            <li><strong>Sign-off effective when</strong> phr. 签批生效条件 The verifiable event that triggers the sign-off to take effect (e.g., v3.3 in the repo).</li>
+            <li><strong>Repo</strong> n. 文档库 The Confluence or SharePoint location where the document of record lives.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "AC-N: failure handling — if X, system Y" — the AC pattern</h3>
+        <p>An acceptance criterion has a fixed structure: <em>AC-N: [name] — if [condition], [system behaviour].</em> The grammar is conditional (if) plus imperative (system does X). One sentence per AC, numbered, with a name. The MD can read the AC list in 30 seconds.</p>
+        <p>验收标准有固定结构：<em>AC-N：[名称]——若【条件】、【系统行为】</em>。</p>
+        <h3>② "Out-of-scope list is final, no additions without..." — the closure clause</h3>
+        <p>The closure clause uses <em>final</em> (the lock) and <em>no X without Y</em> (the process). "We won't add things casually" loses; "the list is final, no additions without a formal scope change" wins. The MD buys the closure.</p>
+        <p>关闭条款使用 <em>final</em>（锁定）和 <em>no X without Y</em>（流程）。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Always sign off conditionally if there are open items.</strong> Unconditional sign-off on a v3.2 with a known gap is reckless. "Sign-off effective when v3.3 is in the repo" is professional.</li>
+            <li><strong>Walk the BRD by FR, with ACs.</strong> Functional requirement, then acceptance criteria, then edge case. One FR at a time.</li>
+            <li><strong>Surface edge cases for every FR.</strong> The 3 most common: failure, partial, exception. The PM must answer for each.</li>
+            <li><strong>Edge case handling becomes a new AC, numbered.</strong> AC-4: failure handling — if X, system Y. One sentence per AC.</li>
+            <li><strong>The out-of-scope list is a lock, not a wish list.</strong> "Final" is the word. New items require a formal scope change with cost and timeline impact.</li>
+            <li><strong>Always name the "effective when" event.</strong> v3.3 in the repo is verifiable. "When Priya's done" is not.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Write an AC for an edge case</h3>
+        <p>Requirement: "Customer can reset password via OTP." Edge case: customer enters wrong OTP 3 times. Write AC-2 (the failure handling) in the pattern "AC-N: name — if X, system Y."</p>
+
+        <h3>Exercise 2 — Spot the missing acceptance criterion</h3>
+        <p>A requirement says "Customer can update address." The BRD has 2 ACs. What is the most likely missing AC? Write it in the AC pattern.</p>
+
+        <h3>Exercise 3 — Write a conditional sign-off</h3>
+        <p>You find 2 edge cases during the BRD walkthrough. Write a conditional sign-off with 2 conditions, an effective-when event, and a slip date.</p>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to Business Home / 返回业务首页</a>
+            <a href="06-moscow-workshop.html" class="btn btn-primary">Next: Article 06 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

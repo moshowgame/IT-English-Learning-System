@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: Major Vendor Selection (RFP) | SM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Senior Manager</a></li>
+                <li class="breadcrumb-item active">05 · Major Vendor Selection (RFP)</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Major Vendor Selection (RFP) — Shortlist, Scoring, TCO, Decision Memo</h1>
+        <p class="subtitle">Article 05 · Module 2: Strategic Decisions · SM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 RFP shortlist, weighted scoring, TCO, decision memo, board endorsement</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday 14:00 HKT</strong>. You are the <em>Group CIO</em>. You chair the <strong>Vendor Selection Committee</strong> for a $42M, 5-year <em>Core Banking Modernisation</em> platform. The RFP closed 6 weeks ago with <strong>7 bidders</strong>. After Group Procurement's mandatory pre-screening (financial stability, sanctions, Group-approved panel), <strong>4 bidders</strong> are on the shortlist: Vendor A (global incumbent), Vendor B (cloud-native challenger), Vendor C (regional mid-tier), Vendor D (open-source-led boutique). Present: <strong>Group CFO</strong> (capex approver), <strong>Group CRO</strong> (cyber approver), <strong>Group Procurement</strong>, <strong>Group Legal</strong>, and the <strong>Workstream Lead</strong>. One decision: select the recommended vendor, approve the TCO envelope, and authorise entry into contract negotiation.</p>
+        <p>周四 14:00 HKT，你是<em>集团 CIO</em>。你主持 4,200 万美元、5 年期<em>核心银行现代化</em>平台的<strong>厂商选型委员会</strong>。RFP 6 周前结束，共 <strong>7 家投标</strong>。经集团采购部强制预筛（财务稳健、制裁、集团合格 panel），<strong>4 家进入短名单</strong>：厂商 A（全球现有厂商）、厂商 B（云原生挑战者）、厂商 C（区域中端）、厂商 D（开源精品）。参会：<strong>集团 CFO</strong>（capex 批准人）、<strong>集团 CRO</strong>（网络批准人）、<strong>集团采购</strong>、<strong>集团法务</strong>、<strong>工作流负责人</strong>。一个决策：选定推荐厂商、批准 TCO 额度、授权进入合同谈判。</p>
+        <p>The vendor selection is a <strong>weighted scoring</strong> exercise — never a feeling, never a relationship call. The pattern: <em>shortlist criteria first, weighted scorecard second, TCO third, reference calls fourth, recommendation fifth, decision sixth</em>. The committee owns the scorecard, not the CIO. The CIO owns the recommendation.</p>
+        <p>厂商选型是<strong>加权评分</strong>游戏——不是感觉，不是关系。模式：<em>短名单标准第一、加权评分卡第二、TCO 第三、参考电话第四、推荐第五、决策第六</em>。委员会拥有评分卡，CIO 拥有推荐。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Decision — 6 Sections, 90 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Shortlist criteria.</em> <em>Three gates.</em> <em>Gate 1: financial stability</em> — investment-grade rating, 5-year P&amp;L positive, no going-concern opinion. <em>Gate 2: regulator-clean</em> — no open supervisory letters, no major enforcement actions in the last 5 years. <em>Gate 3: Group-approved panel</em> — must be on the Group Vendor Panel. <em>Vendor E, F, G failed one or more gates.</em> <em>Shortlist: A, B, C, D.</em></span><span class="cn"><em>短名单标准。</em><em>三道关。</em><em>关 1：财务稳健</em>——投资级评级、5 年 P&amp;L 为正、无持续经营疑虑。<em>关 2：监管清白</em>——无未关闭监管函，过去 5 年无重大执法行动。<em>关 3：集团合格 panel</em>——必须在集团厂商 panel 上。<em>厂商 E、F、G 一项或多项未通过。</em><em>短名单：A、B、C、D。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Weighted scorecard.</em> <em>Five dimensions, weights approved by the committee:</em> <em>Functional fit 30%,</em> <em>Technical architecture 25%,</em> <em>Cyber &amp; regulator readiness 20%,</em> <em>Total cost of ownership 15%,</em> <em>Implementation track record 10%.</em> <em>Total: 100%.</em></span><span class="cn"><em>加权评分卡。</em><em>五个维度，权重委员会已批准：</em><em>功能匹配 30%，</em><em>技术架构 25%，</em><em>网络和监管就绪 20%，</em><em>TCO 15%，</em><em>实施往绩 10%。</em><em>合计 100%。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Workstream Lead:</span>
+                <span class="text"><span class="en">Workstream Lead: <em>Scores from the joint evaluation:</em> <em>Vendor A 78,</em> <em>Vendor B 86,</em> <em>Vendor C 71,</em> <em>Vendor D 68.</em> <em>Vendor B leads on every dimension except functional fit,</em> <em>where A leads by 3 points on legacy integration.</em></span><span class="cn">工作流负责人：<em>联合评估得分：</em><em>A 78，</em><em>B 86，</em><em>C 71，</em><em>D 68。</em><em>B 在每个维度领先，功能匹配除外</em>——<em>A 因遗留集成领先 3 分。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>TCO envelope.</em> <em>5-year TCO:</em> <em>Vendor A $48M,</em> <em>Vendor B $42M,</em> <em>Vendor C $39M,</em> <em>Vendor D $36M.</em> <em>Vendor B saves $6M vs A and brings cloud-native architecture.</em> <em>Payback delta vs A: 22 months.</em></span><span class="cn"><em>TCO 额度。</em><em>5 年 TCO：</em><em>A 4,800 万，</em><em>B 4,200 万，</em><em>C 3,900 万，</em><em>D 3,600 万。</em><em>B 比 A 节省 600 万，且带来云原生架构。</em><em>与 A 的回收期差：22 个月。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CRO:</span>
+                <span class="text"><span class="en">CRO: <em>Cyber dimension:</em> <em>Vendor B is the only shortlist vendor with native FIDO2,</em> <em>built-in MAS TRM and HKMA Cyber Resilience control mapping,</em> <em>and a clean security incident record in the last 36 months.</em> <em>Vendor A had a major breach in 2023 disclosed in their 10-K.</em></span><span class="cn">CRO：<em>网络维度：</em><em>B 是短名单中唯一原生支持 FIDO2、</em><em>内置 MAS TRM 和 HKMA 网络韧性控制映射、</em><em>过去 36 个月无安全事件的厂商。</em><em>A 在 2023 年发生重大泄露，已在 10-K 中披露。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Group CFO:</span>
+                <span class="text"><span class="en">CFO: <em>Capex impact of B is $11M Year 1, $9M Year 2, $7M Year 3, $8M Year 4, $7M Year 5.</em> <em>Inside the $280M 3-year envelope,</em> <em>leaves $26M capacity for other initiatives.</em> <em>NPV positive at the Group WACC of 8.5%.</em></span><span class="cn">CFO：<em>B 的 capex 影响是第 1 年 1,100 万、第 2 年 900 万、第 3 年 700 万、第 4 年 800 万、第 5 年 700 万。</em><em>在 2.8 亿 3 年额度内，</em><em>为其他项目留 2,600 万容量。</em><em>按集团 WACC 8.5% NPV 为正。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CIO):</span>
+                <span class="text"><span class="en"><em>Recommendation: Vendor B.</em> <em>Highest weighted score, lowest regulator risk, cloud-native architecture, $6M TCO saving, native FIDO2.</em> <em>Trade-off:</em> <em>Vendor A has deeper legacy integration,</em> <em>mitigated by a 6-month parallel-run during cutover.</em> <em>One decision:</em> <em>approve Vendor B, $42M TCO envelope,</em> <em>authorise contract negotiation with target execution by 31 October.</em></span><span class="cn"><em>推荐：厂商 B。</em><em>加权得分最高、监管风险最低、云原生架构、节省 TCO 600 万、原生 FIDO2。</em><em>Trade-off：</em><em>A 遗留集成更深，</em><em>通过 6 个月并行运行缓解。</em><em>一个决策：</em><em>批准 B、4,200 万 TCO 额度、</em><em>授权合同谈判，目标 10 月 31 日签署。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CFO:</span>
+                <span class="text"><span class="en">CFO: <em>Vendor B approved.</em> <em>Bring the contract to the November ExCo for ratification.</em></span><span class="cn">CFO：<em>厂商 B 批准。</em><em>合同提交 11 月 ExCo 批准。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Shortlist criteria, three gates</span> <em>Three gates: financial stability, regulator-clean, Group-approved panel.</em></span>
+                <span class="chinese">三道关：财务稳健、监管清白、集团合格 panel</span>
+                <span class="note">Pre-screening is a separate step from scoring. Never score a vendor that failed a gate. Gates are pass / fail, not weighted.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Weighted scorecard</span> <em>Five dimensions, weights approved by the committee.</em></span>
+                <span class="chinese">五个维度，权重委员会已批准</span>
+                <span class="note">The committee owns the weights. The CIO owns the recommendation. Never let a vendor challenge the weights after the fact — they were pre-agreed.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">TCO envelope, 5-year</span> <em>5-year TCO: $42M. Payback delta vs incumbent: 22 months.</em></span>
+                <span class="chinese">5 年 TCO：4,200 万，与现有厂商的回收期差：22 个月</span>
+                <span class="note">Always pair TCO with a time window and a payback delta. The CFO remembers the payback, not the absolute TCO.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Native FIDO2, control mapping</span> <em>Native FIDO2, built-in MAS TRM and HKMA Cyber Resilience control mapping.</em></span>
+                <span class="chinese">原生 FIDO2，内置 MAS TRM 和 HKMA 网络韧性控制映射</span>
+                <span class="note">"Native" is the cyber word. "Built-in" means the control is shipped, not bolted on. Cyber and regulator weight is non-negotiable in a bank RFP.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off, mitigated</span> <em>Trade-off: Vendor A has deeper legacy integration, mitigated by a 6-month parallel-run.</em></span>
+                <span class="chinese">Trade-off：A 遗留集成更深，通过 6 个月并行运行缓解</span>
+                <span class="note">Never present a recommendation without naming the trade-off and the mitigation. The committee must choose with eyes open.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">One decision</span> <em>One decision: approve Vendor B, $42M TCO envelope, authorise contract negotiation.</em></span>
+                <span class="chinese">一个决策：批准 B、4,200 万 TCO 额度、授权合同谈判</span>
+                <span class="note">End with the decision, not the discussion. The committee approves a vendor, a number, and an authorisation — three things, in one sentence.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>RFP (Request for Proposal)</strong> n. 提案征求书 A formal invitation to vendors to submit a proposal.</li>
+            <li><strong>Shortlist</strong> n. 短名单 The vendors that passed pre-screening and are scored in detail.</li>
+            <li><strong>Gate (Gate 1, Gate 2, Gate 3)</strong> n. 关 A pass / fail pre-screening criterion.</li>
+            <li><strong>Weighted scorecard</strong> n. 加权评分卡 A multi-dimension scoring tool with pre-agreed weights.</li>
+            <li><strong>TCO (Total Cost of Ownership)</strong> n. 总拥有成本 All costs over the contract life: license, implementation, run, exit.</li>
+            <li><strong>Payback delta</strong> n. 回收期差 The difference in payback period between two options.</li>
+            <li><strong>Native (vs bolted-on)</strong> adj. 原生 Built into the product, not added on afterwards.</li>
+            <li><strong>Control mapping</strong> n. 控制映射 How a product's features map to a regulatory control framework.</li>
+            <li><strong>Going concern opinion</strong> n. 持续经营意见 An auditor's opinion that the company can survive the next 12 months.</li>
+            <li><strong>Capex envelope</strong> n. 资本支出额度 The approved total capital spending over a period.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Approve X, $Y TCO envelope, authorise Z" — three-verb decision sentence</h3>
+        <p>A committee decision is a sentence with three verbs: <em>approve</em> (the vendor), <em>at $Y</em> (the envelope), <em>authorise</em> (the next step). <em>Approve Vendor B, $42M TCO envelope, authorise contract negotiation.</em> One sentence, three decisions, no ambiguity.</p>
+        <p>委员会决策是带三个动词的句子：<em>approve</em>（厂商）、<em>at $Y</em>（额度）、<em>authorise</em>（下一步）。</p>
+        <h3>② "Mitigated by" — trade-off language</h3>
+        <p>Every trade-off needs a mitigation. <em>Trade-off: legacy integration gap, mitigated by a 6-month parallel-run.</em> "Mitigated by" is the verb that signals the trade-off is not ignored but actively managed.</p>
+        <p>每个 trade-off 都需要 mitigation。<em>Mitigated by</em>是表示 trade-off 没有被忽视而是主动管理的动词。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Pre-screen before scoring.</strong> Gates (financial, regulator, panel) are pass / fail. Never score a vendor that failed a gate — that re-opens the gate debate.</li>
+            <li><strong>Weights are pre-agreed, not negotiated.</strong> If a vendor challenges the weights, point to the pre-meeting minutes. The committee owns the weights.</li>
+            <li><strong>Always pair TCO with a time window.</strong> "$42M" is a number. "$42M over 5 years" is a TCO. The window is what makes it comparable.</li>
+            <li><strong>"Native" beats "supported".</strong> "Native FIDO2" is shipped; "supports FIDO2" may mean a partner integration. Cyber weight rewards native.</li>
+            <li><strong>Name the trade-off, then the mitigation.</strong> Never recommend without naming what you gave up and how you manage it.</li>
+            <li><strong>One decision, three parts.</strong> Approve the vendor, the TCO envelope, the next step. The committee minutes read cleaner when these are in one sentence.</li>
+            <li><strong>Reference calls before recommendation.</strong> Always call 2 reference customers of the recommended vendor. The reference call can break a recommendation.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the RFP decision</h3>
+        <p>Translate the recommendation sentence.</p>
+        <blockquote>
+            "Recommendation: Vendor B. Highest weighted score, lowest regulator risk, cloud-native architecture, $6M TCO saving, native FIDO2. Trade-off: Vendor A has deeper legacy integration, mitigated by a 6-month parallel-run during cutover. One decision: approve Vendor B, $42M TCO envelope, authorise contract negotiation with target execution by 31 October."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"推荐：厂商 B。加权得分最高、监管风险最低、云原生架构、节省 TCO 600 万、原生 FIDO2。Trade-off：A 遗留集成更深，通过 6 个月并行运行缓解。一个决策：批准 B、4,200 万 TCO 额度、授权合同谈判，目标 10 月 31 日签署。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the RFP mistake</h3>
+        <p>Which line would lose credibility in a vendor selection committee? Why?</p>
+        <ol>
+            <li>"Shortlist: A, B, C, D. Vendor E, F, G failed one or more gates."</li>
+            <li>"We like Vendor B because they have a good sales team."</li>
+            <li>"5-year TCO: $42M, payback delta 22 months."</li>
+            <li>"Native FIDO2, built-in MAS TRM control mapping."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We like Vendor B because they have a good sales team" is a relationship, not a scorecard. ① shows gate discipline. ③ pairs TCO with window and payback. ④ names the cyber native capability. RFPs run on scorecards and TCO, not feelings.</p>
+        </div>
+        <h3>Exercise 3 — Run a 5-minute vendor recommendation</h3>
+        <p>You are the CIO. 4 shortlist vendors. Vendor X scores 84, Y scores 79, Z scores 72, W scores 65. TCO: $38M, $44M, $36M, $41M. Cyber: X has native FIDO2, others have partner integrations. Recommendation?</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Recommendation: Vendor X. Highest weighted score (84), 5-year TCO $38M, native FIDO2, $6M TCO saving vs Y. Trade-off: Z is the lowest TCO at $36M but scored 12 points lower on functional fit. Mitigation: bring in 2 Z reference customers during due diligence to validate the score gap. One decision: approve Vendor X, $38M TCO envelope, authorise contract negotiation, target execution 15 November."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="04-annual-it-strategy.html" class="btn btn-outline-secondary">← Previous: Article 04</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to SM Home / 返回 SM 首页</a>
+            <a href="06-ma-due-diligence.html" class="btn btn-primary">Next: Article 06 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>
