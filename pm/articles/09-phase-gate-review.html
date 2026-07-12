@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: Phase Gate Review | PM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">PM</a></li>
+                <li class="breadcrumb-item active">09 · Phase Gate Review</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Phase Gate Review — Passing (or Failing) the Gate</h1>
+        <p class="subtitle">Article 09 · Module 2: Governance & Steering · PM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Exit criteria, readiness, gate decision, conditional pass, hold vs proceed</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 10:00 HKT</strong>. You are running a <strong>Phase Gate 2 → Phase 3 review</strong> for the <em>Group-wide Sanctions Screening Platform</em>. The gate is the official sign-off to move from <em>Design</em> to <em>Build</em>. Present: <strong>Margaret</strong> (Sponsor, MD), <strong>Yuki</strong> (Chief Architect, Tokyo), <strong>Steve</strong> (Group Cyber), <strong>Mei</strong> (Compliance Lead), and <strong>Karen</strong> (PMO). You have 15 minutes to walk the exit criteria and ask for the gate decision.</p>
+        <p>周三 10:00 香港时间，你在主持<em>集团级制裁名单筛查平台</em>的 <strong>Phase 2 → Phase 3 门评审</strong>。这道门是从<em>设计</em>进入<em>构建</em>的官方签批。参会有：Margaret（Sponsor，MD）、Yuki（首席架构师，东京）、Steve（集团 Cyber）、Mei（合规负责人）、Karen（PMO）。你有 15 分钟过出口标准并 ask 门决策。</p>
+        <p>Phase gates are <strong>go / no-go decisions</strong>. You don't get to gloss over weak criteria. The gate committee will judge you on <em>evidence, not narrative</em>. Your job is to present the evidence honestly and accept the decision — pass, conditional pass, or hold.</p>
+        <p>阶段门是<strong>go / no-go 决策</strong>。你不能粉饰弱项。门委员会按<em>证据，不是叙述</em>判断你。你的职责是诚实呈现证据并接受决策——通过、有条件通过、暂停。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Thanks all. <em>Goal of today's gate</em>: walk the <em>exit criteria for Phase 2</em> and ask for a <em>gate decision</em>: proceed to Phase 3, hold, or <em>conditional pass</em>. Karen, please <em>capture the decision and conditions</em> in the minutes.</span><span class="cn">感谢各位。<em>今天门评审的目标</em>：过<em>Phase 2 出口标准</em>，ask 一个<em>门决策</em>：进入 Phase 3、暂停、或<em>有条件通过</em>。Karen，请把<em>决策和条件</em>记入会议纪要。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Exit criteria, six items.</em> <em>Item 1</em>: <em>BRD signed off</em> by Compliance and Business — <em>complete, signed 14th August.</em> <em>Item 2</em>: <em>Solution architecture approved</em> by Chief Architect — <em>complete, Yuki's sign-off 22nd August.</em></span><span class="cn"><em>出口标准，6 项。</em><em>项 1</em>：<em>BRD 由合规和业务签批</em>——<em>已完成，8 月 14 日签字。</em><em>项 2</em>：<em>解决方案架构由首席架构师批准</em>——<em>已完成，Yuki 8 月 22 日签批。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Item 3</em>: <em>Group Cyber design review</em> — <em>in progress, pen test plan agreed, final report due 15th September.</em> <em>Item 4</em>: <em>Vendor contract executed</em> with AcmeTech — <em>complete, signed 25th August.</em> <em>Item 5</em>: <em>Regulator engagement plan</em> — <em>complete, Group Compliance endorsed 28th August.</em></span><span class="cn"><em>项 3</em>：<em>集团 Cyber 设计评审</em>——<em>进行中，渗透测试计划已达成，最终报告 9 月 15 日到期。</em><em>项 4</em>：<em>与 AcmeTech 厂商合同签署</em>——<em>已完成，8 月 25 日签字。</em><em>项 5</em>：<em>监管沟通计划</em>——<em>已完成，集团合规 8 月 28 日背书。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Item 6</em>: <em>cost forecast confidence</em> — <em>at risk.</em> EAC is <em>5.4% over budget</em>. <em>Plan to close the gap</em>: <em>draw $200K from contingency</em>, plus <em>recover $250K from offshore saving</em>. <em>Recommendation</em>: <em>conditional pass</em>, with the cost gap closed before M3 build start.</span><span class="cn"><em>项 6</em>：<em>成本预测可信度</em>——<em>有风险。</em>EAC <em>超预算 5.4%</em>。<em>关闭差距的计划</em>：<em>从 contingency 动用 20 万美元</em>，<em>从离岸节省回收 25 万美元</em>。<em>建议</em>：<em>有条件通过</em>，条件是 M3 构建启动前关闭成本差距。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Yuki (Architect):</span>
+                <span class="text"><span class="en">Yuki: <em>Architecture is solid.</em> I <em>support proceeding</em>, <em>provided</em> the <em>API rate-limiting decision</em> lands by the end of Phase 3 design.</span><span class="cn">Yuki：<em>架构扎实。</em>我<em>支持进入</em>，<em>前提是</em><em>API 限流决策</em>在 Phase 3 设计结束前落地。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (Cyber):</span>
+                <span class="text"><span class="en">Steve: <em>Cyber sign-off is conditional</em> on the <em>pen test report landing by 15th September.</em> <em>If it slips, we hold.</em></span><span class="cn">Steve：<em>Cyber 签批是有条件的</em>——<em>9 月 15 日前渗透测试报告到位。</em><em>如果推迟，我们暂停。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret (Sponsor):</span>
+                <span class="text"><span class="en">Margaret: <em>What's the impact on the regulator date</em> if we hold?</span><span class="cn">Margaret：<em>暂停对监管日期的影响是什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">If we hold, <em>M3 build slips by 4 weeks</em>, which <em>puts the HKMA date at risk</em>. <em>Strong recommendation</em>: <em>conditional pass</em> with the two conditions Steve and Yuki raised, plus the cost gap closed before M3 start.</span><span class="cn">如果暂停，<em>M3 构建推迟 4 周</em>，<em>危及 HKMA 日期</em>。<em>强烈建议</em>：<em>有条件通过</em>——加上 Steve 和 Yuki 提的两个条件，以及 M3 启动前关闭成本差距。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret:</span>
+                <span class="text"><span class="en">Margaret: <em>Approved, conditional pass.</em> <em>Three conditions:</em> pen test by 15th September, API rate-limiting decision by end of Phase 3 design, and cost gap closed before M3 start. <em>Karen, please capture these in the gate decision log.</em></span><span class="cn">Margaret：<em>批准，有条件通过。</em><em>三个条件</em>：9 月 15 日前渗透测试，Phase 3 设计结束前 API 限流决策，M3 启动前关闭成本差距。<em>Karen，请记入门决策日志。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Thank you. <em>Phase 3 starts Monday.</em> <em>I'll circulate the gate decision log by EOD today</em> for sign-off.</span><span class="cn">谢谢。<em>Phase 3 周一启动。</em><em>门决策日志今日 EOD 前发出</em>签字。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Goal</span> <em>Goal of today's gate: walk the exit criteria and ask for a gate decision.</em></span>
+                <span class="chinese">今天门评审的目标：过出口标准，ask 门决策</span>
+                <span class="note">Open with the goal and the three options. The committee should know the decision shape up front.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Exit criteria</span> <em>Exit criteria, six items. Item 1: BRD signed off — complete.</em></span>
+                <span class="chinese">出口标准，6 项。项 1：BRD 签批——已完成</span>
+                <span class="note">Number the criteria. Status: complete / in progress / at risk / not met. No narrative needed for "complete".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Status</span> <em>Complete / In progress / At risk / Not met</em></span>
+                <span class="chinese">已完成 / 进行中 / 有风险 / 未达成</span>
+                <span class="note">Four-state status is gate vocabulary. Never use "almost done" or "going well".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Conditional</span> <em>Cyber sign-off is conditional on the pen test landing by 15th September.</em></span>
+                <span class="chinese">Cyber 签批是有条件的——9 月 15 日前渗透测试到位</span>
+                <span class="note">"Conditional on X" is the gate committee's favourite phrase. Always state the condition clearly.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Impact</span> <em>What's the impact on the regulator date if we hold?</em></span>
+                <span class="chinese">暂停对监管日期的影响是什么？</span>
+                <span class="note">Always frame the hold option in regulator-date impact. That focuses the committee.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recommendation</span> <em>Strong recommendation: conditional pass with the three conditions.</em></span>
+                <span class="chinese">强烈建议：有条件通过，附三个条件</span>
+                <span class="note">Always have a recommendation. Don't dump the criteria and ask the committee to decide. PMs recommend.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Approved</span> <em>Approved, conditional pass. Three conditions: ...</em></span>
+                <span class="chinese">批准，有条件通过。三个条件：……</span>
+                <span class="note">The chair announces the decision. Number the conditions. They'll go in the gate decision log.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Decision log</span> <em>Karen, please capture these in the gate decision log.</em></span>
+                <span class="chinese">Karen，请记入门决策日志</span>
+                <span class="note">A gate decision without a written log is informal. The log is the auditable artefact.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Phase Gate</strong> n. 阶段门 A formal go/no-go decision point between project phases.</li>
+            <li><strong>Exit criteria</strong> n. 出口标准 The conditions that must be met to leave the current phase.</li>
+            <li><strong>Gate decision</strong> n. 门决策 The formal outcome of a gate review: pass, conditional pass, or hold.</li>
+            <li><strong>Conditional pass</strong> n. 有条件通过 The phase proceeds, but specific conditions must be met first.</li>
+            <li><strong>Hold</strong> n. 暂停 The phase does not proceed; the project waits for conditions.</li>
+            <li><strong>Proceed</strong> n. 进入 The phase proceeds unconditionally.</li>
+            <li><strong>BRD (Business Requirements Document)</strong> n. 业务需求文档 The document defining business needs and acceptance criteria.</li>
+            <li><strong>Solution architecture</strong> n. 解决方案架构 The technical blueprint for the system being built.</li>
+            <li><strong>Design review</strong> n. 设计评审 A formal review of the design by stakeholders and governance.</li>
+            <li><strong>Endorsement</strong> n. 背书 Formal approval or support, usually by a Group function.</li>
+            <li><strong>Confidence</strong> n. 可信度 How much trust the committee has in the cost and schedule forecast.</li>
+            <li><strong>Gate decision log</strong> n. 门决策日志 The auditable record of the gate decision and its conditions.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Complete / In progress / At risk / Not met" — the four-state status</h3>
+        <p>Every exit criterion is one of four states. <em>Complete / In progress / At risk / Not met.</em> No other adjectives. "Almost done" is not a state. "Going well" is not a state. The committee reads the state in 2 seconds.</p>
+        <p>每个出口标准都是四个状态之一。<em>Complete / In progress / At risk / Not met.</em></p>
+        <h3>② "Conditional on X" — the committee's safety net</h3>
+        <p>Committees rarely give unconditional approval. <em>Conditional on X, Y, Z</em> is the default. State the conditions as dates or artefacts: <em>pen test by 15th September, decision by end of Phase 3 design.</em> Vague conditions get forgotten.</p>
+        <p>委员会很少给无条件批准。<em>Conditional on X, Y, Z</em>是默认的。条件要写明确日期或产物。</p>
+        <h3>③ "Strong recommendation" — the PM's privilege</h3>
+        <p>PMs recommend. <em>Strong recommendation: conditional pass.</em> Don't dump the criteria and ask the committee to decide. The PM synthesises the evidence, makes a call, and defends it. The committee can override — but the PM has done the thinking.</p>
+        <p>PM 要给建议。<em>Strong recommendation: conditional pass.</em> 不要把标准丢给委员会决定。PM 综合证据、做出判断并捍卫它。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Honesty wins the gate.</strong> Marking a weak criterion as "complete" is career-damaging. The committee will find out. Mark it "at risk" and propose a mitigation.</li>
+            <li><strong>Four-state status only.</strong> Complete / In progress / At risk / Not met. The committee reads the state in 2 seconds. No adjectives.</li>
+            <li><strong>Always have a recommendation.</strong> PMs recommend; committees decide. "Strong recommendation: conditional pass with three conditions" is the gold-standard PM line.</li>
+            <li><strong>Conditions are dates or artefacts, not feelings.</strong> "Pen test by 15th September" is a condition. "Improve cyber coverage" is not.</li>
+            <li><strong>Hold is a real option.</strong> Don't be afraid to recommend hold if the criteria aren't met. A hold is a managed slip; a forced proceed is a disaster.</li>
+            <li><strong>Anchor hold to regulator date.</strong> "If we hold, HKMA is at risk" focuses the committee. The regulator date is the final backstop.</li>
+            <li><strong>Capture the decision in writing.</strong> A gate decision without a log is informal. The log is the auditable artefact — auditors will read it.</li>
+            <li><strong>Conditional pass is the default.</strong> Most gates are conditional passes. Be ready to capture 2-3 specific conditions and circulate the log by EOD.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the gate review</h3>
+        <p>Translate the following gate review into natural Chinese.</p>
+        <blockquote>
+            "Goal of today's gate: walk the exit criteria for Phase 1 and ask for a gate decision. Exit criteria, four items. Item 1: Business case approved by SteerCo — complete, approved 5th July. Item 2: PM assigned — complete, assigned 8th July. Item 3: High-level architecture endorsed by Chief Architect — complete, endorsed 12th July. Item 4: Budget envelope approved — at risk, Group Finance has a question on the Opex vs Capex split. Plan to close: walk Finance through the split on Monday, expect resolution by Wednesday. Recommendation: conditional pass, with the Opex/Capex split resolved before Phase 2 design kick-off. Margaret: Approved, conditional pass. One condition: Opex/Capex split resolved by Wednesday. Karen, please capture this in the gate decision log. Phase 2 starts next Monday. I'll circulate the gate decision log by EOD today for sign-off."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"今天门评审的目标：过 Phase 1 出口标准，ask 门决策。出口标准，4 项。项 1：业务案例由 SteerCo 批准——已完成，7 月 5 日批准。项 2：PM 任命——已完成，7 月 8 日任命。项 3：高层架构由首席架构师背书——已完成，7 月 12 日背书。项 4：预算包批准——有风险，集团财务对 Opex vs Capex 划分有疑问。关闭计划：周一和财务过划分，预计周三解决。建议：有条件通过，Phase 2 设计 kick-off 前解决 Opex/Capex 划分。Margaret：批准，有条件通过。一个条件：周三前解决 Opex/Capex 划分。Karen，请记入门决策日志。Phase 2 下周一启动。门决策日志今日 EOD 前发出签字。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the gate mistake</h3>
+        <p>Which line would damage the PM's credibility most? Why?</p>
+        <ol>
+            <li>"Exit criteria, four items. Item 1: complete. Item 2: in progress. Item 3: at risk. Item 4: not met."</li>
+            <li>"We're almost done with the design — pretty much complete."</li>
+            <li>"Strong recommendation: conditional pass with three conditions."</li>
+            <li>"Karen, please capture the decision in the gate decision log."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "Almost done" and "pretty much complete" are not gate vocabulary. The committee will mark it as "at risk" themselves — and the PM loses the right to recommend. ① uses the four-state status correctly. ③ has a recommendation. ④ captures the decision.</p>
+        </div>
+        <h3>Exercise 3 — Run a gate review</h3>
+        <p>You are the PM. Build a 10-minute gate review for Phase 2 → Phase 3 of a 12-month project. Exit criteria: (1) BRD signed (complete), (2) architecture approved (complete), (3) Group Cyber review (in progress, pen test due 20th), (4) vendor contract (complete), (5) regulator engagement plan (at risk, Group Compliance review on 25th), (6) cost confidence (at risk, 7% over budget, recovery plan in place). Recommend conditional pass with two conditions.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Goal of today's gate: walk the exit criteria for Phase 2 and ask for a gate decision. Exit criteria, six items. Item 1: BRD signed — complete, signed 10th August. Item 2: architecture approved — complete, approved 15th August. Item 3: Group Cyber design review — in progress, pen test report due 20th September. Item 4: vendor contract — complete, signed 22nd August. Item 5: regulator engagement plan — at risk, Group Compliance review on 25th September. Plan to close: walk Group Compliance on 25th, expect resolution by 30th. Item 6: cost confidence — at risk, 7% over budget. Recovery plan: draw $250K from contingency, $400K recoverable from the offshore saving. Recommendation: conditional pass with two conditions — pen test by 20th September, regulator engagement plan signed off by 30th September. Margaret: Approved, conditional pass. Karen, please capture the conditions in the gate decision log. Phase 3 starts Monday. Decision log by EOD today for sign-off."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="08-budget-tracking.html" class="btn btn-outline-secondary">← Previous: Article 08</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to PM Home / 返回 PM 首页</a>
+            <a href="10-resource-planning.html" class="btn btn-primary">Next: Article 10 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

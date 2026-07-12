@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 14: Lessons Learned Document | PM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">PM</a></li>
+                <li class="breadcrumb-item active">14 · Lessons Learned Document</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Lessons Learned Document — Closing the Loop</h1>
+        <p class="subtitle">Article 14 · Module 3: Written Communication · PM English</p>
+        <div class="meta">
+            <span>⏱ 7 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 What went well, what didn't, what we change, retrospective, blame-free language</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 14:00 HKT</strong>. You are running the <strong>Project Closure Retrospective</strong> for the <em>Group-wide Sanctions Screening Platform</em>. The project went live 6 weeks ago and is now in BAU (Business as Usual). The Sponsor and the workstream leads are in the room. Your job is to capture <em>what went well, what didn't, and what we will change next time</em> — and circulate the lessons learned document by EOD Monday.</p>
+        <p>周五 14:00 香港时间，你在主持<em>集团级制裁名单筛查平台</em>的<strong>项目收尾回顾会</strong>。项目 6 周前已上线，现进入 BAU（日常运营）。Sponsor 和工作流负责人在场。你的职责是捕获<em>什么做得好、什么没做好、下次我们要改什么</em>，并在下周一 EOD 前发出经验教训文档。</p>
+        <p>A lessons learned document is the PM's <strong>institutional memory</strong>. Without it, the next project repeats the same mistakes. With it, the bank gets smarter. The document must be <em>blame-free</em>, <em>actionable</em>, and <em>circulated</em>.</p>
+        <p>经验教训文档是 PM 的<strong>组织记忆</strong>。没有它，下个项目重蹈覆辙。有了它，银行变聪明。文档必须<em>不追责</em>、<em>可操作</em>、<em>已发出</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Sample Retrospective 回顾会样例</h2>
+        <p>The following is a <strong>dialogue from the retrospective</strong>, then a <strong>lessons learned document</strong> structure.</p>
+        <p>以下是<strong>回顾会的对话</strong>，以及<strong>经验教训文档</strong>的结构。</p>
+
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Thanks all. <em>Goal of today's retrospective</em>: capture <em>what went well, what didn't, and what we will do differently next time</em>. Karen, please <em>take notes</em>; I'll circulate the document by Monday EOD.</span><span class="cn">感谢各位。<em>今天回顾会的目标</em>：捕获<em>什么做得好、什么没做好、下次怎么做不同</em>。Karen 请<em>记笔记</em>，我下周一 EOD 前发出文档。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Blame-free ground rule:</em> this is <em>about the system, not the people</em>. <em>Let's start with what went well.</em></span><span class="cn"><em>不追责基本规则</em>：这是<em>关于系统，不是关于个人</em>。<em>先说什么做得好。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (TL):</span>
+                <span class="text"><span class="en"><em>What went well:</em> the <em>phase gate reviews</em> caught the architecture issue early. We <em>caught the NFR gap in Phase 2</em> and fixed it before M3 build started. <em>Lesson:</em> invest in phase gate discipline, it pays back in build quality.</span><span class="cn"><em>做得好：</em><em>阶段门评审</em>早期捕获了架构问题。我们<em>在 Phase 2 捕获 NFR 缺口</em>，M3 构建前修复。<em>教训：</em>投入阶段门纪律，会在构建质量上回报。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark (Data Quality):</span>
+                <span class="text"><span class="en"><em>What didn't go well:</em> we <em>discovered the data migration mapping issue in M4 SIT</em> — too late. We should have <em>discovered it in M2 design</em>. <em>Lesson:</em> build a <em>data migration mock-up in M2</em>, not in M4. <em>Action: Wei to add this to the lessons learned document.</em></span><span class="cn"><em>没做好：</em>我们在 <em>M4 SIT 才发现数据迁移映射问题</em>——太晚。我们应该<em>在 M2 设计阶段就发现</em>。<em>教训：</em>在 M2 做<em>数据迁移 mock-up</em>，而不是 M4。<em>Action: Wei 写进经验教训文档。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Compliance):</span>
+                <span class="text"><span class="en"><em>What went well:</em> the <em>regulator engagement plan</em> worked. We had <em>no findings, no exceptions, no escalations</em> across HKMA, MAS TRM, and FCA. <em>Lesson:</em> <em>engage regulators early, not at submission time</em>. We started 8 months before submission.</span><span class="cn"><em>做得好：</em><em>监管沟通计划</em>有效。HKMA、MAS TRM、FCA <em>无新发现、无例外、无升级</em>。<em>教训：</em><em>早沟通监管，不要等到提交时</em>。我们提前 8 个月开始。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (Cyber):</span>
+                <span class="text"><span class="en"><em>What didn't go well:</em> the <em>pen test was scheduled too late</em> — it landed 2 weeks before go-live, leaving <em>no time to remediate findings</em>. <em>Lesson:</em> <em>schedule the pen test at M3 build completion, not M4 SIT.</em> <em>Action: Wei to reflect this in the lessons learned.</em></span><span class="cn"><em>没做好：</em><em>渗透测试排得太晚</em>——上线前 2 周才做，<em>没时间修复发现</em>。<em>教训：</em><em>渗透测试排在 M3 构建完成时，不是 M4 SIT。</em><em>Action: Wei 写进经验教训。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Top 3 changes for next time.</em> <em>One:</em> data migration mock-up in M2. <em>Two:</em> pen test at M3 build completion. <em>Three:</em> regulator engagement from project kick-off, not from M4. <em>Margaret, anything to add?</em></span><span class="cn"><em>下次要改的前 3 项。</em><em>一：</em>M2 做数据迁移 mock-up。<em>二：</em>渗透测试排在 M3 构建完成时。<em>三：</em>监管沟通从项目 kick-off 开始，不是 M4。<em>Margaret，要补充吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret:</span>
+                <span class="text"><span class="en"><em>Add one more</em>: the <em>vendor cutover workshop should be a formal gate, not an informal session</em>. We caught the cutover issue, but only because Wei hosted the workshop. <em>Make it a standard gate</em> in the next project.</span><span class="cn"><em>再加一个</em>：<em>厂商切换工作坊应作为正式门，不是非正式会</em>。我们捕获了切换问题，但只是因为 Wei 主持了工作坊。<em>下次作为标准门</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Captured. Four changes for next time.</em> <em>Action: Karen to circulate the lessons learned by Monday EOD for review.</em> <em>Margaret, please sign off on the document before I file it in the Group PMO repository.</em></span><span class="cn"><em>已记。下次要改的 4 项。</em><em>Action: Karen 周一 EOD 前发出经验教训供 review。</em><em>Margaret，在我归档到集团 PMO 仓库前请签批文档。</em></span></span>
+            </div>
+        </div>
+
+        <h3>Lessons Learned Document Structure 经验教训文档结构</h3>
+        <div class="email-block">
+            <h3>1. Project summary</h3>
+            <ul>
+                <li>Name: Group-wide Sanctions Screening Platform</li>
+                <li>Duration: 18 months (Jan 2025 – Jun 2026)</li>
+                <li>Outcome: Delivered on time, on budget. HKMA and MAS TRM milestones met with zero findings.</li>
+            </ul>
+
+            <h3>2. What went well</h3>
+            <ul>
+                <li>Phase gate reviews caught the NFR gap in Phase 2, before M3 build. Saved an estimated 6 weeks of rework.</li>
+                <li>Regulator engagement from project kick-off produced zero findings across HKMA, MAS TRM, FCA.</li>
+                <li>Cross-team sync meetings kept the four workstreams aligned on dependencies and handoffs.</li>
+            </ul>
+
+            <h3>3. What didn't go well</h3>
+            <ul>
+                <li>Data migration mapping issue was discovered in M4 SIT. Should have been caught in M2 design.</li>
+                <li>Pen test scheduled too late (2 weeks before go-live). Left no time to remediate findings.</li>
+                <li>Vendor cutover workshop was informal. Should have been a formal gate.</li>
+            </ul>
+
+            <h3>4. Top changes for next time</h3>
+            <ol>
+                <li>Build a data migration mock-up in M2 design, not in M4 SIT.</li>
+                <li>Schedule the pen test at M3 build completion, not in M4 SIT.</li>
+                <li>Start regulator engagement from project kick-off, not from M4.</li>
+                <li>Make the vendor cutover workshop a formal gate with documented exit criteria.</li>
+            </ol>
+
+            <h3>5. Owner of follow-up</h3>
+            <ul>
+                <li>PM (Wei): circulate by Monday EOD; file in Group PMO repository.</li>
+                <li>Sponsor (Margaret): sign off the document.</li>
+                <li>Group PMO (Karen): incorporate the four changes into the next programme charter template.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Goal</span> <em>Goal: capture what went well, what didn't, and what we will do differently next time.</em></span>
+                <span class="chinese">目标：捕获做得好、没做好、下次怎么做不同</span>
+                <span class="note">Always open a retrospective with the three buckets. Drift is the enemy of retrospectives.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Blame-free</span> <em>Blame-free ground rule: this is about the system, not the people.</em></span>
+                <span class="chinese">不追责基本规则：这是关于系统，不是关于个人</span>
+                <span class="note">State the ground rule at the start. People only speak honestly when they feel safe.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Went well</span> <em>What went well: the phase gate reviews caught the NFR gap early.</em></span>
+                <span class="chinese">做得好：阶段门评审早期捕获 NFR 缺口</span>
+                <span class="note">Always start with what went well. It sets the tone and surfaces practices to keep.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Didn't go well</span> <em>What didn't go well: data migration discovered in M4 SIT, too late.</em></span>
+                <span class="chinese">没做好：M4 SIT 才发现数据迁移问题，太晚</span>
+                <span class="note">"Didn't go well" is blame-free language. Never "Steve messed up" or "we failed".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Lesson</span> <em>Lesson: invest in phase gate discipline, it pays back in build quality.</em></span>
+                <span class="chinese">教训：投入阶段门纪律，会在构建质量上回报</span>
+                <span class="note">A lesson is the <em>generalisation</em> from a specific event. The generalisation is what next project uses.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Change for next time</span> <em>Top 3 changes for next time.</em></span>
+                <span class="chinese">下次要改的前 3 项</span>
+                <span class="note">Three is the magic number. Fewer feels thin. More is too many to remember.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Owner of follow-up</span> <em>Owner of follow-up: PM to circulate, Sponsor to sign off, Group PMO to template.</em></span>
+                <span class="chinese">跟进 owner：PM 发出，Sponsor 签批，集团 PMO 模板化</span>
+                <span class="note">A lesson without an owner of follow-up is a wish. Always name the owner who will template it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">File</span> <em>File in the Group PMO repository.</em></span>
+                <span class="chinese">归档到集团 PMO 仓库</span>
+                <span class="note">Lessons learned that don't get filed don't get reused. The repository is the institutional memory.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Retrospective</strong> n. 回顾会 A meeting at the end of a project to capture lessons learned.</li>
+            <li><strong>Lessons learned</strong> n. 经验教训 Documented findings from a closed project, kept for future projects.</li>
+            <li><strong>What went well</strong> n. 做得好 Practices and decisions that worked, to be repeated.</li>
+            <li><strong>What didn't go well</strong> n. 没做好 Practices and decisions that didn't work, to be changed.</li>
+            <li><strong>What we will do differently</strong> n. 下次怎么做不同 The actionable changes for the next project.</li>
+            <li><strong>Blame-free</strong> n. 不追责 A ground rule that ensures the conversation is about the system, not people.</li>
+            <li><strong>Institutional memory</strong> n. 组织记忆 The bank's accumulated lessons across projects, stored in repositories.</li>
+            <li><strong>Group PMO repository</strong> n. 集团 PMO 仓库 The central store where lessons learned are filed and searched.</li>
+            <li><strong>Generalisation</strong> n. 普遍性 The lesson abstracted from a specific event, applicable to future projects.</li>
+            <li><strong>Owner of follow-up</strong> n. 跟进 owner The person responsible for circulating, signing off, and templating the lessons.</li>
+            <li><strong>BAU (Business as Usual)</strong> n. 日常运营 The steady state of running a system, after the project is done.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "What went well / didn't go well" — past simple as retrospective tense</h3>
+        <p>Retrospectives use past simple. <em>What went well? What didn't go well? What will we do differently?</em> Three tenses, three buckets. Memorise the rhythm. The present-tense and future-tense phrases pair with the past-tense phrases.</p>
+        <p>回顾会用过去时。<em>什么做得好？什么没做好？下次怎么做不同？</em></p>
+        <h3>② "Lesson: invest in X, it pays back in Y" — the generalisation pattern</h3>
+        <p>A lesson is a generalisation, not a story. <em>Lesson: invest in phase gate discipline, it pays back in build quality.</em> The pattern is: <em>practice + consequence</em>. "We did X" is a story. "Investing in X pays back in Y" is a lesson.</p>
+        <p>教训是普遍性，不是故事。<em>教训：投入 X 会在 Y 上回报。</em></p>
+        <h3>③ "PM to circulate, Sponsor to sign off, Group PMO to template" — the owner chain</h3>
+        <p>The follow-up section names an owner chain. Each owner has one verb. <em>PM to circulate, Sponsor to sign off, Group PMO to template.</em> Same infinitive-verb pattern for each. The chain is auditable.</p>
+        <p>跟进部分列出 owner 链。每个 owner 一个动词。<em>PM 发出，Sponsor 签批，集团 PMO 模板化。</em></p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>State the blame-free ground rule first.</strong> People only speak honestly when they feel safe. Say it out loud at the start of the retrospective.</li>
+            <li><strong>Start with what went well.</strong> It sets the tone and surfaces practices to keep. Pure-blame retrospectives get shorter attendance next time.</li>
+            <li><strong>Lessons are generalisations, not stories.</strong> "We did X" is a story. "Investing in X pays back in Y" is a lesson. Train yourself to abstract.</li>
+            <li><strong>Three changes for next time.</strong> Fewer feels thin. More is too many to remember. Three is the magic number.</li>
+            <li><strong>Owner of follow-up is the close-out.</strong> A lesson without an owner is a wish. Name the owner who will template it into the next charter.</li>
+            <li><strong>File in the Group PMO repository.</strong> Lessons learned that don't get filed don't get reused. The repository is the institutional memory.</li>
+            <li><strong>Sign-off from the Sponsor.</strong> Sponsor sign-off on the lessons learned document is the formal close. Without it, the document is informal.</li>
+            <li><strong>Circulate by Monday EOD.</strong> Late lessons learned are wasted lessons learned. The retrospective on Friday, the document on Monday.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the retrospective</h3>
+        <p>Translate the retrospective excerpt into natural Chinese.</p>
+        <blockquote>
+            "Goal of today's retrospective: capture what went well, what didn't, and what we will do differently next time. Blame-free ground rule: this is about the system, not the people. Let's start with what went well. Daniel: What went well — the daily standups caught the integration issue in week 2. We saved 2 weeks of rework. Lesson: invest in standup discipline. What didn't go well: we discovered the data quality issue in UAT, too late. Lesson: build a data quality check into M3, not UAT. Action: Wei to add this to the lessons learned. Top 3 changes for next time: one, data quality check in M3; two, contractor SOW signed at project kick-off, not M2; three, vendor cutover workshop as formal gate. Margaret, please sign off the document before I file it in the Group PMO repository."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"今天回顾会的目标：捕获做得好、没做好、下次怎么做不同。不追责基本规则：这是关于系统，不是关于个人。先说什么做得好。Daniel：做得好——每日站会第 2 周捕获了集成问题。我们节省了 2 周返工。教训：投入站会纪律。没做好：UAT 才发现数据质量问题，太晚。教训：M3 做数据质量检查，不要到 UAT。Action: Wei 写进经验教训。下次要改的前 3 项：一、M3 数据质量检查；二、外包 SOW 项目 kick-off 签，不要到 M2；三、厂商切换工作坊作为正式门。Margaret，在我归档到集团 PMO 仓库前请签批文档。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the retrospective mistake</h3>
+        <p>Which retrospective line is most blame-free and useful? Why?</p>
+        <ol>
+            <li>"Steve missed the pen test schedule."</li>
+            <li>"The pen test was scheduled too late, leaving no remediation time. Lesson: schedule at M3 build completion."</li>
+            <li>"Pen tests are always chaotic, what can you do."</li>
+            <li>"We should try harder next time."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the most blame-free and useful. It names the problem (pen test late) and the lesson (schedule at M3). ① names a person, not a system. ③ is fatalism. ④ is hand-waving. Lessons must generalise the system, not blame the person.</span>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute retrospective</h3>
+        <p>You are the PM. Build a 30-minute retrospective for a project that: (a) delivered on time and on budget, (b) had 1 vendor slip recovered, (c) had 1 pen test late, (d) had a successful regulator engagement. Capture: 2 went well, 2 didn't, 3 changes, 3 owner of follow-up.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Goal: capture what went well, what didn't, what we change next time. Blame-free ground rule. What went well: 1) phase gate reviews caught the NFR gap in Phase 2; 2) regulator engagement from kick-off produced zero findings. What didn't go well: 1) vendor slipped M3 by 1 week; 2) pen test landed 2 weeks before go-live. Top 3 changes: 1) include a vendor SLA review at M2; 2) schedule pen test at M3 build completion; 3) start regulator engagement at kick-off, not M4. Owner of follow-up: PM to circulate by Mon EOD, Sponsor to sign off, Group PMO to template the 3 changes into the next charter."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="13-risk-escalation-email.html" class="btn btn-outline-secondary">← Previous: Article 13</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to PM Home / 返回 PM 首页</a>
+            <a href="15-telling-sponsor-slip.html" class="btn btn-primary">Next: Article 15 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

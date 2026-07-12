@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 16: Negotiating Scope with Senior Stakeholder | PM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">PM</a></li>
+                <li class="breadcrumb-item active">16 · Negotiating Scope with Senior Stakeholder</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Negotiating Scope with a Senior Stakeholder — MoSCoW and Trade-offs</h1>
+        <p class="subtitle">Article 16 · Module 4: Difficult Conversations · PM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 MoSCoW, business value, protected list, scope cut, phase 2, win-win</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday 14:00 HKT</strong>. You have a 60-minute scope negotiation with <strong>Richard</strong>, the Head of Wholesale Banking (MD-level stakeholder, sits on the Group ExCo). Richard has just sent an email asking for 4 new features in the <em>Real-Time Cross-Border Payments</em> project — 3 of which are not in the current scope. The HKMA milestone is in 4 months. You have 60 minutes to negotiate without damaging the relationship.</p>
+        <p>周四 14:00 香港时间，你和 <strong>Richard</strong>（批发银行部负责人，MD 级 stakeholder，集团 ExCo 成员）有 60 分钟范围谈判。Richard 刚发邮件要求在<em>实时跨境支付</em>项目中增加 4 项新功能——其中 3 项不在当前范围内。HKMA 里程碑还有 4 个月。你有 60 分钟谈判，不损害关系。</p>
+        <p>Scope negotiation is the PM's <strong>core commercial skill</strong>. Saying "yes" to everything burns the team. Saying "no" without alternatives loses the relationship. The professional pattern is: <em>acknowledge, MoSCoW, propose, phase 2, ask</em>. The stakeholder leaves with a yes; the project keeps its scope.</p>
+        <p>范围谈判是 PM 的<strong>核心商业技能</em>。对所有事说 yes 会烧掉团队。没有替代方案说 no 会失去关系。专业模式是：<em>acknowledge, MoSCoW, propose, phase 2, ask</em>。Stakeholder 带着 yes 离开；项目保留范围。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Richard:</span>
+                <span class="text"><span class="en">Wei, <em>thanks for making time.</em> <em>I've asked for 4 features</em> in the email. <em>Can we fit them in?</em></span><span class="cn">Wei，<em>感谢抽时间</em>。<em>我在邮件里要求了 4 项功能</em>。<em>能加进去吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Richard, <em>thank you for the email.</em> <em>I've walked the 4 features with the Tech Lead and the BA.</em> <em>I'd like to walk you through what we can do</em> — <em>not just a yes or no, but options.</em></span><span class="cn">Richard，<em>感谢你的邮件</em>。<em>我和 Tech Lead、BA 过过这 4 项功能</em>。<em>我想给你过一下我们能做的</em>——<em>不只是 yes 或 no，而是方案</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Of the 4 features</em>: <em>Feature A (FX hedging on the corridor)</em> — <em>MoSCoW Must Have</em>, fits the HKMA milestone, <em>we can include it.</em> <em>Feature B (multi-currency wallet for the customer)</em> — <em>MoSCoW Should Have</em>, <em>doesn't fit HKMA</em> but <em>fits the FCA Q3 milestone</em>. <em>Feature C (sanctions screening rework)</em> — <em>MoSCoW Won't Have for this phase</em>. It's <em>out of scope per the charter</em> and <em>needs a separate programme</em>.</span><span class="cn"><em>这 4 项功能中</em>：<em>功能 A（corridor 上 FX 对冲）</em>——<em>MoSCoW 必须有</em>，符合 HKMA 里程碑，<em>我们可以纳入</em>。<em>功能 B（客户多币种钱包）</em>——<em>MoSCoW 应该有</em>，<em>不符合 HKMA</em>，但<em>符合 FCA Q3 里程碑</em>。<em>功能 C（制裁筛查重构）</em>——<em>本阶段不做</em>。<em>章程中已排除</em>，<em>需要独立项目群</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Feature D (instant FX rate display)</em> — <em>MoSCoW Could Have</em>, <em>low effort</em> (about 2 dev-weeks), <em>low business value</em> on the wholesale side. <em>I'd recommend deferring</em> — but <em>if you can name the specific business value</em>, we can <em>swap it in for a lower-priority Could Have</em> in the backlog.</span><span class="cn"><em>功能 D（即时 FX 汇率显示）</em>——<em>MoSCoW 可以有</em>，<em>工作量小</em>（约 2 个开发周），<em>批发侧业务价值低</em>。<em>我建议推迟</em>——但<em>如果你能说出具体业务价值</em>，我们可以<em>在 backlog 中替换一个低优先级的 Could Have</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Richard:</span>
+                <span class="text"><span class="en"><em>Feature B is important to me.</em> Wholesale clients have been <em>asking for the multi-currency wallet for 18 months</em>. <em>Can we push it into Phase 1?</em></span><span class="cn"><em>功能 B 对我很重要。</em>批发客户<em>18 个月来一直在要求多币种钱包</em>。<em>能推到 Phase 1 吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>I hear that.</em> <em>Counter-proposal:</em> we <em>pull Feature B into the HKMA milestone</em> <em>provided</em> we <em>drop one Could Have</em> — the <em>instant FX rate display</em> — and <em>recover 2 dev-weeks</em>. <em>Net scope impact: 0.</em> <em>Risk:</em> the FCA Q3 milestone loses 1 Could Have, but <em>we have 2 more in the backlog</em> we can promote.</span><span class="chinese"><em>我听到了。</em><em>反建议：</em>我们<em>把功能 B 拉进 HKMA 里程碑</em>，<em>前提是</em>我们<em>砍掉一个 Could Have</em>——<em>即时 FX 汇率显示</em>——<em>回收 2 个开发周</em>。<em>净范围影响：0。</em><em>风险：</em>FCA Q3 里程碑失去 1 个 Could Have，但我们<em>backlog 中还有 2 个可以提</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Richard:</span>
+                <span class="text"><span class="en"><em>That works.</em> <em>What about Feature C?</em></span><span class="cn"><em>可以。</em><em>功能 C 呢？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Feature C is a separate programme.</em> The <em>scope charter</em> explicitly excludes it, and the <em>sanctions platform is owned by a different programme</em> (the Group-wide Sanctions Screening Platform). <em>I'd like to introduce you to that PM</em> so we can <em>sequence the two programmes</em>. <em>Best outcome:</em> Feature C lands in <em>Phase 2 of the sanctions platform</em>, and we <em>align the API contracts now</em> so the integration is clean.</span><span class="cn"><em>功能 C 是独立项目群。</em><em>章程明确排除</em>，<em>制裁平台由不同项目群拥有</em>（集团级制裁名单筛查平台）。<em>我想介绍那个 PM 给你认识</em>，我们可以<em>排序两个项目群</em>。<em>最好结果：</em>功能 C 落地<em>制裁平台 Phase 2</em>，我们现在<em>对齐 API 契约</em>，集成更干净。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Richard:</span>
+                <span class="text"><span class="en"><em>I appreciate the introduction.</em> <em>What do you need from me?</em></span><span class="cn"><em>感谢介绍。</em><em>你需要我做什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Two things.</em> <em>One</em>: <em>sign off the MoSCoW change</em> (Feature B in, Feature D out) at SteerCo next week. <em>Two</em>: <em>endorse the introduction to the sanctions platform PM</em> so we can start the API contract conversation this week.</span><span class="cn"><em>两件事。</em><em>一</em>：<em>下周 SteerCo 签批 MoSCoW 变更</em>（功能 B 进，功能 D 出）。<em>二</em>：<em>背书与制裁平台 PM 的介绍</em>，本周开始 API 契约对话。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Richard:</span>
+                <span class="text"><span class="en"><em>Both approved.</em> <em>Thank you, Wei.</em> <em>I appreciate the options rather than a flat no.</em></span><span class="cn"><em>两件都批准。</em><em>谢谢你，Wei。</em><em>感谢你给方案而不是直接拒绝。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Options</span> <em>I'd like to walk you through what we can do — not just a yes or no, but options.</em></span>
+                <span class="chinese">我想给你过一下我们能做的——不只是 yes 或 no，而是方案</span>
+                <span class="note">Open with options, not a yes/no. Sponsors respect PMs who bring choices, not refusals.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">MoSCoW</span> <em>MoSCoW Must Have / Should Have / Could Have / Won't Have.</em></span>
+                <span class="chinese">MoSCoW 必须有 / 应该有 / 可以有 / 不做</span>
+                <span class="note">MoSCoW is the universal scope framework. Use it to put each feature in a bucket.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Fits / Doesn't fit</span> <em>Fits the HKMA milestone. Doesn't fit HKMA but fits FCA Q3.</em></span>
+                <span class="chinese">符合 HKMA 里程碑。不符合 HKMA，但符合 FCA Q3</span>
+                <span class="note">Anchor every feature to a milestone. "Fits X" is the test for MoSCoW.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Out of scope</span> <em>Out of scope per the charter, needs a separate programme.</em></span>
+                <span class="chinese">章程中已排除，需要独立项目群</span>
+                <span class="note">"Out of scope per the charter" is the polite way to say "we already agreed this". The charter is your friend.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Business value</span> <em>If you can name the specific business value, we can swap it in.</em></span>
+                <span class="chinese">如果你能说出具体业务价值，我们可以替换进来</span>
+                <span class="note">Business value is the gate. PMs ask for value, not preference. Stakeholders respond to the question.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Counter-proposal</span> <em>Counter-proposal: we pull Feature B in provided we drop one Could Have.</em></span>
+                <span class="chinese">反建议：把功能 B 拉进，前提是砍掉一个 Could Have</span>
+                <span class="note">Counter-proposal is the PM's secret weapon. Always pair the yes with a trade.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Net scope impact</span> <em>Net scope impact: 0.</em></span>
+                <span class="chinese">净范围影响：0</span>
+                <span class="note">"Net scope impact" is the Sponsors' favourite number. It says: you got what you asked for, the team didn't take on more.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Appreciate</span> <em>I appreciate the options rather than a flat no.</em></span>
+                <span class="chinese">感谢你给方案而不是直接拒绝</span>
+                <span class="note">The stakeholder's gratitude for options is the PM's reward. Build the habit. Sponsors remember who brought choices.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>MoSCoW</strong> n. MoSCoW 优先级 Must Have / Should Have / Could Have / Won't Have — the universal scope framework.</li>
+            <li><strong>Business value</strong> n. 业务价值 The measurable benefit a feature brings to the business.</li>
+            <li><strong>Counter-proposal</strong> n. 反建议 An alternative offer made in response to a request that can't be met as asked.</li>
+            <li><strong>Swap</strong> v. 替换 Replace a lower-priority item with a higher-priority one at the same effort.</li>
+            <li><strong>Drop</strong> v. 砍掉 Remove a Could Have from the current scope to make room for something else.</li>
+            <li><strong>Promote</strong> v. 提升 Move a Could Have up to a Should or Must Have based on new value.</li>
+            <li><strong>Net scope impact</strong> n. 净范围影响 The total scope change after adds and drops are netted.</li>
+            <li><strong>Scope charter</strong> n. 项目章程 The boundary document defining in-scope and out-of-scope.</li>
+            <li><strong>API contract</strong> n. API 契约 The formal interface agreement between two systems.</li>
+            <li><strong>Sequencing</strong> n. 排序 Deciding the order of related programmes or workstreams.</li>
+            <li><strong>Win-win</strong> n. 双赢 An outcome where both sides get value and neither loses.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "MoSCoW Must Have" — categorise, don't describe</h3>
+        <p>When the stakeholder asks for a feature, categorise it. <em>MoSCoW Must Have / Should Have / Could Have / Won't Have.</em> The category drives the next sentence: fit, don't fit, swap, drop, phase 2.</p>
+        <p>当 stakeholder 要求功能时，分类它。<em>MoSCoW 必须有 / 应该有 / 可以有 / 不做。</em></p>
+        <h3>② "Provided we drop X" — conditional counter-proposal</h3>
+        <p>The counter-proposal is conditional. <em>Provided we drop one Could Have, we can pull Feature B in.</em> The word <em>provided</em> signals the trade. Without it, the counter-proposal looks like a gift; with it, the trade is visible.</p>
+        <p>反建议是有条件的。<em>前提是砍掉一个 Could Have，我们可以拉功能 B 进来。</em> <em>provided</em> 一词信号着 trade。</p>
+        <h3>③ "Net scope impact: 0" — the headline number</h3>
+        <p>Sponsors love the net number. <em>Net scope impact: 0.</em> It says: you got what you asked for, the team didn't take on more work. One number, ten seconds, the deal closes.</p>
+        <p>Sponsor 喜欢净数字。<em>净范围影响：0。</em> 一个数字，10 秒钟，成交。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Bring options, not yes/no.</strong> Sponsors respect PMs who bring choices, not refusals. The MoSCoW framework gives you four options per feature.</li>
+            <li><strong>Anchor to milestones.</strong> "Fits HKMA, doesn't fit FCA" is the test. Every feature gets a milestone anchor.</li>
+            <li><strong>Out of scope is your friend.</strong> When a feature is out of scope, say so — and cite the charter. The charter is the document the sponsor signed.</li>
+            <li><strong>Ask for business value, not preference.</strong> "Why is this important?" beats "I want it". Sponsors respond to value questions.</li>
+            <li><strong>Counter-proposal is the secret weapon.</strong> Pair every yes with a trade. "Yes, if we drop X". The trade is what makes the yes sustainable.</li>
+            <li><strong>Net scope impact is the headline.</strong> "Net scope impact: 0" closes the deal. Sponsors love the net number.</li>
+            <li><strong>Phase 2 is a valid answer.</strong> "We'll do it in phase 2" is a yes that protects phase 1. Always have a phase 2 envelope.</li>
+            <li><strong>End with the stakeholder's question.</strong> "What do you need from me?" — let the stakeholder close the agenda, not you.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the scope negotiation</h3>
+        <p>Translate the scope negotiation excerpt into natural Chinese.</p>
+        <blockquote>
+            "Of the 4 features: Feature A (single-customer view across corridors) — MoSCoW Must Have, fits the HKMA milestone, we can include it. Feature B (instant payment notifications) — MoSCoW Should Have, doesn't fit HKMA but fits the FCA Q3 milestone. Feature C (blockchain-based reconciliation) — MoSCoW Won't Have for this phase. It's out of scope per the charter and needs a separate programme. Feature D (in-app customer chat support) — MoSCoW Could Have, low effort (about 1 dev-week), low business value on the wholesale side. I'd recommend deferring — but if you can name the specific business value, we can swap it in for a lower-priority Could Have in the backlog. Counter-proposal: we pull Feature B into the HKMA milestone provided we drop one Could Have — the in-app chat support — and recover 1 dev-week. Net scope impact: 0. Two things I need. One: sign off the MoSCoW change at SteerCo next week. Two: endorse the introduction to the reconciliation platform PM so we can start the API contract conversation this week."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"这 4 项功能中：功能 A（跨 corridor 单一客户视图）——MoSCoW 必须有，符合 HKMA 里程碑，我们可以纳入。功能 B（即时支付通知）——MoSCoW 应该有，不符合 HKMA，但符合 FCA Q3 里程碑。功能 C（基于区块链的对账）——本阶段不做。章程中已排除，需要独立项目群。功能 D（应用内客户聊天支持）——MoSCoW 可以有，工作量小（约 1 个开发周），批发侧业务价值低。我建议推迟——但如果你能说出具体业务价值，我们可以替换 backlog 中一个低优先级的 Could Have。反建议：把功能 B 拉进 HKMA 里程碑，前提是砍掉一个 Could Have——应用内聊天——回收 1 个开发周。净范围影响：0。我需要两件事。一：下周 SteerCo 签批 MoSCoW 变更。二：背书与对账平台 PM 的介绍，本周开始 API 契约对话。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the negotiation mistake</h3>
+        <p>Which line would damage the negotiation most? Why?</p>
+        <ol>
+            <li>"I'd like to walk you through what we can do — options, not just a yes or no."</li>
+            <li>"We can't do any of that, the project is locked."</li>
+            <li>"Feature B is MoSCoW Should Have. Counter-proposal: pull B in provided we drop one Could Have."</li>
+            <li>"What do you need from me?"</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the negotiation-damager. "We can't do any of that" is a flat no with no options. The stakeholder leaves angry. ① brings options. ③ categorises and counters. ④ gives the stakeholder control. PMs bring options, not refusals.</span>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute scope negotiation</h3>
+        <p>You are the PM. A senior stakeholder asks for 3 new features in the next sprint. Build a 30-minute script: (1) acknowledge, (2) MoSCoW each, (3) recommend 1 in / 1 out via swap, (4) push 1 to phase 2, (5) end with 2 asks.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Thank you for the email. I've walked the 3 features with the Tech Lead. Options, not a yes or no. Feature A (regulator dashboard) — MoSCoW Must Have, fits HKMA, we can include it. Feature B (real-time alerts) — MoSCoW Should Have, doesn't fit HKMA but fits FCA Q3. Feature C (AI-based anomaly detection) — MoSCoW Won't Have for this phase, out of scope per the charter, separate programme. Counter-proposal: pull Feature A in, drop one Could Have (the in-app chat support) to recover 1 dev-week. Net scope impact: 0. Feature B goes to FCA Q3, we plan it now. Feature C goes to phase 2, I'll introduce you to the AI platform PM. Two asks. One: sign off the MoSCoW swap at SteerCo next week. Two: endorse the introduction to the AI platform PM. What do you need from me?"</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="15-telling-sponsor-slip.html" class="btn btn-outline-secondary">← Previous: Article 15</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to PM Home / 返回 PM 首页</a>
+            <a href="17-managing-underperformer.html" class="btn btn-primary">Next: Article 17 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/javascript.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

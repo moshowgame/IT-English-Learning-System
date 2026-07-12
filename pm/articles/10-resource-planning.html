@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: Resource & Capacity Planning | PM English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">PM</a></li>
+                <li class="breadcrumb-item active">10 · Resource & Capacity Planning</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Resource &amp; Capacity Planning — Closing the Demand / Supply Gap</h1>
+        <p class="subtitle">Article 10 · Module 2: Governance & Steering · PM English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 FTE, named resources, contractors, capacity vs demand, recovery options</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 15:00 HKT</strong>. You are running a 45-minute <strong>resource planning workshop</strong> for the next two quarters of the <em>Regulatory Reporting Modernisation</em> programme. Present: <strong>Priya</strong> (Group PMO), <strong>Steve</strong> (Group Cyber resourcing lead), <strong>Daniel</strong> (Tech Lead, Engineering), and <strong>Mark</strong> (Workstream Lead, Data Quality). The goal: lock the named resources, expose any FTE gap, and propose recovery options.</p>
+        <p>周二 15:00 香港时间，你在主持<em>监管报送现代化</em>项目群下两个季度的 45 分钟<strong>资源规划工作坊</strong>。参会有：Priya（集团 PMO）、Steve（集团 Cyber 资源负责人）、Daniel（工程 Tech Lead）、Mark（数据质量工作流负责人）。目标：锁定具名资源、暴露 FTE 缺口、提出恢复方案。</p>
+        <p>Resource planning is a <strong>number game</strong>: you have a demand (work to do) and a supply (people available). The PM's job is to <em>close the gap</em> — by adding, swapping, deferring, or contracting. The language is precise: <em>FTE, named resource, contractor, gap, recovery option</em>.</p>
+        <p>资源规划是<strong>数字游戏</strong>：你有需求（要做的工作）和供给（可用的人）。PM 的职责是<em>关闭缺口</em>——通过增加、替换、推迟或外包。语言要精确：<em>FTE, named resource, contractor, gap, recovery option</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Thanks all. <em>Goal of today's workshop</em>: lock the <em>named resources for Q3 and Q4</em>, expose any <em>FTE gap</em>, and agree <em>recovery options</em> for the gaps we can't close.</span><span class="cn">感谢各位。<em>今天工作坊的目标</em>：锁定<em>Q3 和 Q4 的具名资源</em>，暴露<em>FTE 缺口</em>，并对无法关闭的缺口达成<em>恢复方案</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Demand by workstream</em>: <em>Reporting Engine</em> needs <em>8 FTE for 6 months</em>; <em>Data Quality</em> needs <em>5 FTE for 9 months</em>; <em>Integration</em> needs <em>6 FTE for 4 months</em>; <em>Group Cyber</em> needs <em>3 FTE for 12 months</em> (longest tail). <em>Total demand: 22 named FTE, 7.5 average over the year.</em></span><span class="cn"><em>按工作流的需求</em>：<em>报送引擎</em>需要<em>6 个月 8 个 FTE</em>；<em>数据质量</em>需要<em>9 个月 5 个 FTE</em>；<em>集成</em>需要<em>4 个月 6 个 FTE</em>；<em>集团 Cyber</em>需要<em>12 个月 3 个 FTE</em>（最长尾）。<em>总需求：22 个具名 FTE，年均 7.5。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Supply confirmed</em>: Reporting Engine 7 FTE, Data Quality 4 FTE, Integration 6 FTE, Group Cyber <em>1 FTE — 2 short of demand</em>. <em>Total gap: 3 FTE</em> across the programme.</span><span class="cn"><em>已确认供给</em>：报送引擎 7 FTE，数据质量 4 FTE，集成 6 FTE，集团 Cyber <em>1 FTE——比需求少 2 个</em>。<em>总缺口：3 个 FTE</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (Cyber):</span>
+                <span class="text"><span class="en">Steve: <em>Realistic recovery on the 2-FTE Cyber gap</em>? We're <em>stretched across 4 programmes</em>.</span><span class="cn">Steve：<em>2 个 Cyber FTE 缺口的现实恢复方案？</em>我们在<em>4 个项目群都被占用</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Two recovery options for Cyber.</em> <em>Option A</em>: <em>contract uplift</em> — bring in <em>2 cyber contractors</em> from the existing panel, <em>cost $320K for 9 months</em>. <em>Option B</em>: <em>defer 2 of the 4 pen tests</em> to Q1 next year, <em>slipping the MAS milestone by 6 weeks</em> — <em>not recommended</em> because it's regulator-tied.</span><span class="cn"><em>Cyber 有两个恢复方案。</em><em>方案 A</em>：<em>合同增补</em>——从现有 panel 引入<em>2 名 Cyber 外包</em>，<em>9 个月 32 万美元</em>。<em>方案 B</em>：<em>4 个渗透测试中推迟 2 个</em>到明年 Q1，<em>MAS 里程碑推迟 6 周</em>——<em>不推荐</em>，因为和监管相关。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve:</span>
+                <span class="text"><span class="en">Steve: <em>Option A works.</em> I'll <em>engage the panel this week</em>.</span><span class="cn">Steve：<em>方案 A 可行。</em>我<em>本周启动 panel 流程</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Data Quality gap is 1 FTE</em>. Mark, any <em>internal move</em> we can make?</span><span class="cn"><em>数据质量缺口 1 个 FTE</em>。Mark，有<em>内部调动</em>可以做吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark (Data Quality):</span>
+                <span class="text"><span class="en">Mark: <em>Yes</em> — <em>Lin from the KYC squad</em> has <em>free capacity in Q3</em>. <em>She's agreed in principle</em>. <em>I'll formalise the move this week.</em></span><span class="cn">Mark：<em>可以</em>——<em>KYC squad 的 Lin</em><em>Q3 有空闲容量</em>。<em>她原则上同意</em>。<em>本周正式调动。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en">Good. <em>Reporting Engine gap is 1 FTE</em>. Daniel?</span><span class="cn">好。<em>报送引擎缺口 1 个 FTE</em>。Daniel？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (TL):</span>
+                <span class="text"><span class="en">Daniel: <em>1 FTE contractor</em>, <em>already pre-cleared with HR</em>, <em>starts 1st August</em>. <em>Cost $180K for 6 months</em>.</span><span class="cn">Daniel：<em>1 名外包 FTE</em>，<em>已和 HR 预审</em>，<em>8 月 1 日入职</em>。<em>6 个月 18 万美元</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PM):</span>
+                <span class="text"><span class="en"><em>Total recovery cost: $500K</em> — 2 Cyber contractors $320K, 1 Reporting Engine contractor $180K. <em>Action:</em> Steve to engage Cyber panel by Friday; Mark to formalise Lin's move by Wednesday; Daniel to issue the contractor SOW by Friday. <em>Anything else?</em></span><span class="cn"><em>总恢复成本：50 万美元</em>——2 名 Cyber 外包 32 万，1 名报送引擎外包 18 万。<em>Action</em>：Steve 周五前启动 Cyber panel；Mark 周三前正式调动 Lin；Daniel 周五前发出外包 SOW。<em>还有别的吗？</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Demand</span> <em>Reporting Engine needs 8 FTE for 6 months.</em></span>
+                <span class="chinese">报送引擎需要 6 个月 8 个 FTE</span>
+                <span class="note">Always pair FTE count with a duration. "8 FTE" alone is meaningless without a time window.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Supply</span> <em>Supply confirmed: 7 FTE, 1 short of demand.</em></span>
+                <span class="chinese">已确认供给：7 FTE，比需求少 1 个</span>
+                <span class="note">State supply against demand. The gap is the difference, not a feeling.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Gap</span> <em>Total gap: 3 FTE across the programme.</em></span>
+                <span class="chinese">总缺口：项目群 3 个 FTE</span>
+                <span class="note">Always name the gap in numbers, not adjectives. "Tight" is not a gap. "3 FTE" is.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Recovery option</span> <em>Two recovery options for Cyber.</em></span>
+                <span class="chinese">Cyber 有两个恢复方案</span>
+                <span class="note">Always present options. Don't just say "we need more people". Show how to close the gap.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Defer 2 pen tests, slipping MAS by 6 weeks — not recommended.</em></span>
+                <span class="chinese">推迟 2 个渗透测试，MAS 推迟 6 周——不推荐</span>
+                <span class="note">Always attach the trade-off to an option. The committee chooses with eyes open.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Internal move</span> <em>Any internal move we can make?</em></span>
+                <span class="chinese">有内部调动可以做吗？</span>
+                <span class="note">Internal moves are cheaper than contractors. Always ask the workstream lead first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pre-cleared</span> <em>Already pre-cleared with HR.</em></span>
+                <span class="chinese">已和 HR 预审</span>
+                <span class="note">"Pre-cleared" is HR language. It means the contract is ready to issue, no further approvals.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SOW</span> <em>Issue the contractor SOW by Friday.</em></span>
+                <span class="chinese">周五前发出外包 SOW</span>
+                <span class="note">SOW (Statement of Work) is the contract for a contractor. Always state when it will be issued.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>FTE (Full-Time Equivalent)</strong> n. 全职等效 One full-time person, or multiple people totalling one.</li>
+            <li><strong>Named resource</strong> n. 具名资源 A specific person assigned by name, not a placeholder.</li>
+            <li><strong>Demand</strong> n. 需求 The work to be done, expressed in FTE and duration.</li>
+            <li><strong>Supply</strong> n. 供给 The people available, expressed in FTE and duration.</li>
+            <li><strong>Gap</strong> n. 缺口 The difference between demand and supply.</li>
+            <li><strong>Recovery option</strong> n. 恢复方案 A way to close the gap (add, swap, defer, contract).</li>
+            <li><strong>Contractor / Contract uplift</strong> n. 外包 / 合同增补 An external person brought in under a contract.</li>
+            <li><strong>Internal move</strong> n. 内部调动 Moving a person from one team to another within the bank.</li>
+            <li><strong>Panel</strong> n. 供应商 panel A pre-approved list of vendors for fast engagement.</li>
+            <li><strong>SOW (Statement of Work)</strong> n. 工作说明书 The contract for a contractor's work.</li>
+            <li><strong>Pre-cleared</strong> n. 预审 Already approved by HR or procurement, ready to issue.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "8 FTE for 6 months" — pair count with duration</h3>
+        <p>An FTE count without a duration is meaningless. <em>8 FTE for 6 months</em> is 4 person-years. <em>8 FTE</em> is a number on a slide. Always pair count with duration.</p>
+        <p>FTE 数字没有时长没有意义。<em>8 FTE for 6 months</em> 是 4 人年。<em>8 FTE</em> 是 slide 上的数字。</p>
+        <h3>② "Option A / Option B" — the two-option frame</h3>
+        <p>When presenting recovery options, present two — one preferred, one trade-off. <em>Option A: contract uplift. Option B: defer pen tests.</em> The committee chooses. You recommend. Never present one option — that's not a choice.</p>
+        <p>呈现恢复方案时，给两个——一个推荐，一个 trade-off。<em>Option A: 合同增补。Option B: 推迟渗透测试。</em></p>
+        <h3>③ "Already pre-cleared" — past participle as status flag</h3>
+        <p>Pre-cleared, signed off, approved, in flight, blocked — past participles are status flags. <em>Already pre-cleared with HR</em> tells the committee the contractor is one signature away from starting. Saves meeting time.</p>
+        <p>Pre-cleared, signed off, approved, in flight, blocked——过去分词是状态标志。<em>Already pre-cleared with HR</em>告诉委员会外包只差一个签字就能启动。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Always pair FTE with duration.</strong> "8 FTE" is a number. "8 FTE for 6 months" is a resource. The duration is what makes it comparable across workstreams.</li>
+            <li><strong>State the gap, not the feeling.</strong> "We're tight on resources" loses. "We have a 3-FTE gap across the programme" wins.</li>
+            <li><strong>Present two options.</strong> Option A (preferred) and Option B (trade-off). The committee chooses. Never present one option.</li>
+            <li><strong>Internal moves beat contractors.</strong> Internal moves are cheaper, faster, and carry less risk. Always ask workstream leads about internal moves before contracting.</li>
+            <li><strong>Name the cost on every option.</strong> "$320K for 9 months" beats "we can get contractors". Costs let the committee choose with eyes open.</li>
+            <li><strong>Pre-cleared saves meeting time.</strong> If a contractor is pre-cleared with HR, say so. The committee approves faster when the path is clear.</li>
+            <li><strong>Anchor trade-offs to regulator dates.</strong> "Defer pen tests, MAS slips 6 weeks — not recommended" is the trade-off. The regulator date is the final backstop.</li>
+            <li><strong>Recovery options are about closing the gap, not complaining.</strong> Always leave the workshop with named actions, owners, and dates for the chosen recovery.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the resource planning workshop</h3>
+        <p>Translate the following resource workshop into natural Chinese.</p>
+        <blockquote>
+            "Demand by workstream: Cross-Border Payments needs 6 FTE for 8 months; FX Engine needs 4 FTE for 6 months; Compliance needs 3 FTE for 12 months. Total demand: 13 FTE, average 8.7 over the year. Supply confirmed: Cross-Border Payments 5 FTE, FX Engine 4 FTE, Compliance 1 FTE — 2 short. Total gap: 3 FTE. Two recovery options for Compliance. Option A: 2 contract uplifts from the existing panel, cost $280K for 12 months. Option B: defer 2 of 4 reg reports to Q1 next year, slipping the HKMA milestone by 8 weeks — not recommended. Steve: Option A works. I'll engage the panel this week. Total recovery cost: $280K. Action: Steve to engage Compliance panel by Friday, Mark to issue SOW by next Wednesday. Anything else?"
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"按工作流的需求：跨境支付需要 8 个月 6 个 FTE；FX 引擎需要 6 个月 4 个 FTE；合规需要 12 个月 3 个 FTE。总需求：13 个 FTE，年均 8.7。已确认供给：跨境支付 5 FTE，FX 引擎 4 FTE，合规 1 FTE——少 2 个。总缺口：3 个 FTE。合规有两个恢复方案。方案 A：从现有 panel 增补 2 个合同，12 个月 28 万美元。方案 B：4 个监管报告中推迟 2 个到明年 Q1，HKMA 里程碑推迟 8 周——不推荐。Steve：方案 A 可行。本周启动 panel。总恢复成本：28 万美元。Action：Steve 周五前启动合规 panel，Mark 下周三前发出 SOW。还有别的吗？"</p>
+        </div>
+        <h3>Exercise 2 — Spot the resource mistake</h3>
+        <p>Which line would lose credibility in a resource workshop? Why?</p>
+        <ol>
+            <li>"Total gap: 3 FTE across the programme."</li>
+            <li>"We need more people, this is unsustainable."</li>
+            <li>"Option A: contract uplift, $320K. Option B: defer 2 pen tests, MAS slips 6 weeks."</li>
+            <li>"Total recovery cost: $500K, three contractors."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We need more people" is a complaint, not a resource plan. ① states the gap in numbers. ③ presents two options with trade-offs. ④ names the cost. Resource workshops run on numbers and options, not feelings.</p>
+        </div>
+        <h3>Exercise 3 — Run a 10-minute resource workshop</h3>
+        <p>You are the PM. Build a 10-minute resource workshop for: demand Reporting 8 FTE 6 months, Data Quality 5 FTE 9 months, Cyber 3 FTE 12 months. Supply: 7, 4, 1. Gap: 1, 1, 2. Recovery options: contractor for Reporting, internal move for Data Quality, contract uplift for Cyber. End with named actions.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Goal: lock named resources for the next two quarters, expose FTE gaps, agree recovery options. Demand: Reporting 8 FTE 6 months, Data Quality 5 FTE 9 months, Cyber 3 FTE 12 months. Total demand 16 FTE. Supply: Reporting 7, Data Quality 4, Cyber 1. Total gap: 4 FTE. Recovery: Reporting 1 contractor, $180K 6 months, pre-cleared with HR. Data Quality 1 internal move — Lin from KYC squad, free in Q3. Cyber 2 contract uplifts from existing panel, $320K 9 months. Total recovery cost: $500K. Actions: Daniel to issue Reporting SOW by Friday, Mark to formalise Lin's move by Wednesday, Steve to engage Cyber panel by Friday. Priya, please reflect the recovery in the SteerCo pack. Anything else?"</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="09-phase-gate-review.html" class="btn btn-outline-secondary">← Previous: Article 09</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to PM Home / 返回 PM 首页</a>
+            <a href="11-project-status-email.html" class="btn btn-primary">Next: Article 11 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>
