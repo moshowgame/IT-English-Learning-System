@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 17: Stopping a Risky Deploy | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">17 · Stopping a Risky Deploy</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Stopping a Risky Deploy — Pre-Prod Finding, Blast Radius, Decision Tree</h1>
+        <p class="subtitle">Article 17 · Module 4: Difficult Security Conversations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Pre-prod finding, blast radius, decision tree, alternative, no surprise</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday 21:00 HKT</strong>, the night before a scheduled <strong>M4 production deploy</strong>. You are the <em>AppSec Lead</em>. A pre-production security scan has just flagged a <strong>Critical SQL injection</strong> in the new <em>customer-onboarding-svc</em> endpoint. The endpoint touches customer PII (name, HKID, address). The deploy is scheduled for 02:00 HKT Friday. The Engineering Lead, <strong>Mark</strong>, has called an emergency call with you, the Tech Lead <strong>Daniel</strong>, and the PM <strong>Wei</strong>. The business has been promised the feature for a Monday launch. You have 30 minutes to decide: <em>go, no-go, or deferred go with conditions</em>.</p>
+        <p>周四 21:00 香港时间，M4 生产发布前一晚。你是<em>AppSec 负责人</em>。生产前安全扫描刚在新的<em>customer-onboarding-svc</em>端点标记了一个<strong>严重 SQL 注入</strong>。端点接触客户 PII（姓名、HKID、地址）。发布定于周五 02:00 HKT。工程负责人 <strong>Mark</strong> 召集了与你、Tech Lead <strong>Daniel</strong>、PM <strong>Wei</strong> 的紧急电话。业务已被承诺该功能周一上线。你有 30 分钟决定：<em>go、no-go、或有条件延迟 go</em>。</p>
+        <p>Stopping a risky deploy is a 30-minute decision under uncertainty. The instinct is to let it go and "fix in production". The professional pattern is: <em>present the finding, name the blast radius, walk the decision tree, propose an alternative, no surprise to the CISO or the sponsor</em>. The deploy is the symptom; the decision is the discipline.</p>
+        <p>叫停高风险发布是不确定性下的 30 分钟决策。本能是放行然后"生产中修复"。专业模式是：<em>陈述发现、具名爆炸半径、过决策树、提出替代方案、不让 CISO 或 sponsor 意外</em>。发布是症状；决策是纪律。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Emergency Call — 5 Sections, 30 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mark (Eng Lead):</span>
+                <span class="text"><span class="en">Mark: <em>AppSec scan flagged a Critical SQL injection in customer-onboarding-svc at 20:30 HKT.</em> <em>Deploy is in 5 hours.</em> <em>What's the call?</em></span><span class="cn">Mark：<em>AppSec 扫描 20:30 HKT 标记 customer-onboarding-svc 严重 SQL 注入。</em><em>5 小时后发布。</em><em>怎么决定？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Three pieces of info first, then the call.</em></span><span class="cn"><em>先三块信息，再决定。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Finding.</em> <em>SQL injection in the new /onboard/validate endpoint.</em> <em>The endpoint accepts a customer name and a HKID;</em> <em>both are concatenated into a raw SQL string without parameterisation.</em> <em>Exploit: a single crafted request returns any customer's PII from the database.</em> <em>CVSS 9.1 (Critical).</em> <em>Public exploit pattern: well-known.</em></span><span class="cn"><em>发现。</em><em>新 /onboard/validate 端点 SQL 注入。</em><em>端点接收客户姓名和 HKID；</em><em>两者未参数化直接拼接到 SQL 字符串中。</em><em>利用：单个构造请求可返回数据库中任何客户的 PII。</em><em>CVSS 9.1（严重）。</em><em>公开利用模式：广为人知。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Blast radius if exploited in production.</em> <em>The endpoint is customer-facing,</em> <em>reachable from the public internet</em> <em>(no authentication required for /onboard/validate —</em> <em>it's a pre-auth check used by the marketing site).</em> <em>Database affected: customer-onboarding-db,</em> <em>~3.2M customer records (HK retail, PII only, no transaction history).</em> <em>Estimated impact: full PII exfiltration in less than 1 hour</em> <em>using a single automated script.</em> <em>Regulator exposure:</em> <em>PDPO data breach notification required,</em> <em>HKMA Cyber Resilience finding likely.</em></span><span class="cn"><em>生产中被利用的爆炸半径。</em><em>端点是客户面，</em><em>可从公网访问</em><em>（/onboard/validate 无需认证——</em><em>是营销网站使用的预认证检查）。</em><em>受影响数据库：customer-onboarding-db，</em><em>约 320 万客户记录（HK 零售，仅 PII，无交易历史）。</em><em>预计影响：使用单个自动化脚本不到 1 小时完整 PII 外泄。</em><em>监管暴露：</em><em>需 PDPO 数据泄露通知，</em><em>可能 HKMA 网络韧性发现。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Fix.</em> <em>Replace the raw SQL with a parameterised query.</em> <em>Code change in 1 place, the DAO layer.</em> <em>Daniel, how long to fix, test, and re-deploy?</em></span><span class="cn"><em>修复。</em><em>将原始 SQL 替换为参数化查询。</em><em>1 处代码变更，DAO 层。</em><em>Daniel，修复、测试、重新发布要多长时间？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Tech Lead):</span>
+                <span class="text"><span class="en">Daniel: <em>Code change: 1 hour.</em> <em>Unit test: 1 hour.</em> <em>Re-scan: 1 hour.</em> <em>Re-deploy: 30 minutes.</em> <em>Total: 3.5 hours.</em> <em>Deploy at 06:00 HKT Friday instead of 02:00.</em> <em>4-hour delay.</em></span><span class="cn">Daniel：<em>代码变更：1 小时。</em><em>单元测试：1 小时。</em><em>重新扫描：1 小时。</em><em>重新发布：30 分钟。</em><em>总计：3.5 小时。</em><em>周五 06:00 HKT 发布代替 02:00。</em><em>延迟 4 小时。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Decision tree.</em> <em>Three options.</em> <em>Option A — go at 02:00 HKT as planned.</em> <em>Critical SQL injection in production, public endpoint, no auth.</em> <em>I cannot recommend this.</em> <em>The blast radius is full PII exfiltration, regulator exposure, and a likely PDPO notification within 72 hours.</em> <em>Option B — defer to 06:00 HKT, fix in the meantime.</em> <em>4-hour delay, no production exposure, no regulator exposure.</em> <em>The Monday launch is still on track.</em> <em>Option C — go at 02:00 HKT with the endpoint disabled (dark-launch the deployment, do not enable the route).</em> <em>The deployment ships, the feature is on standby, the endpoint is not yet reachable.</em> <em>Fix on Friday, re-enable on Saturday morning.</em> <em>0-hour delay to the business, 24-hour delay to the feature.</em></span><span class="cn"><em>决策树。</em><em>三个方案。</em><em>方案 A——02:00 HKT 按计划发布。</em><em>生产中严重 SQL 注入，公网端点，无需认证。</em><em>我不能推荐。</em><em>爆炸半径是完整 PII 外泄、监管暴露、72 小时内可能的 PDPO 通知。</em><em>方案 B——推迟到 06:00 HKT，期间修复。</em><em>延迟 4 小时，无生产暴露，无监管暴露。</em><em>周一上线仍在轨道上。</em><em>方案 C——02:00 HKT 发布但端点禁用（暗启动部署，不启用路由）。</em><em>部署发布，功能待机，端点暂不可达。</em><em>周五修复，周六早上重新启用。</em><em>业务 0 延迟，功能 24 小时延迟。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Wei (PM):</span>
+                <span class="text"><span class="en">Wei: <em>Option C.</em> <em>Monday launch is intact.</em> <em>The 24-hour feature delay is acceptable to the sponsor — I checked.</em></span><span class="cn">Wei：<em>方案 C。</em><em>周一上线完整。</em><em>功能 24 小时延迟 sponsor 可接受——我确认过。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark:</span>
+                <span class="text"><span class="en">Mark: <em>Option C from engineering too.</em> <em>Deploy the binary, leave the route off, fix in the morning.</em> <em>No rollback risk.</em></span><span class="cn">Mark：<em>工程也方案 C。</em><em>部署二进制，路由关闭，早上修复。</em><em>无回滚风险。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (AppSec):</span>
+                <span class="text"><span class="en"><em>Agreed: Option C.</em> <em>Three things to confirm before 02:00 HKT.</em> <em>One: Daniel, the route stays off —</em> <em>verified by the load balancer health check at 02:30 HKT.</em> <em>Two: the fix is in by 09:00 HKT Friday,</em> <em>re-scan by AppSec by 10:00 HKT,</em> <em>route enabled by Wei with PM sign-off by 11:00 HKT.</em> <em>Three: I will brief the Group CISO at 22:00 HKT tonight,</em> <em>so the CISO is not surprised.</em> <em>No surprise to the CISO, no surprise to the sponsor.</em></span><span class="cn"><em>同意：方案 C。</em><em>02:00 HKT 前确认三件事。</em><em>一：Daniel，路由保持关闭——</em><em>02:30 HKT 负载均衡健康检查验证。</em><em>二：修复周五 09:00 HKT 前完成，</em><em>AppSec 10:00 HKT 前重新扫描，</em><em>Wei 11:00 HKT 前 PM 签批启用路由。</em><em>三：我今晚 22:00 HKT 简报集团 CISO，</em><em>不让 CISO 意外。</em><em>不让 CISO 意外，不让 sponsor 意外。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Three pieces of info first, then the call</span> <em>Three pieces of info first, then the call.</em></span>
+                <span class="chinese">先三块信息，再决定</span>
+                <span class="note">The discipline that prevents decisions under panic. Finding, blast radius, fix time — in that order. The call comes after, never before.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Blast radius if exploited in production</span> <em>Blast radius if exploited in production: full PII exfiltration in less than 1 hour.</em></span>
+                <span class="chinese">生产中被利用的爆炸半径：不到 1 小时完整 PII 外泄</span>
+                <span class="note">"Blast radius" is the language that makes the risk concrete. Numbers (3.2M records, 1 hour) are what the CISO remembers.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">I cannot recommend this</span> <em>Critical SQL injection in production, public endpoint, no auth. I cannot recommend this.</em></span>
+                <span class="chinese">生产中严重 SQL 注入，公网端点，无需认证。我不能推荐</span>
+                <span class="note">"I cannot recommend" is the polite refusal. It states the risk and refuses the option, without taking the decision away from the call owner.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Decision tree</span> <em>Decision tree. Three options. Option A, Option B, Option C.</em></span>
+                <span class="chinese">决策树。三个方案。方案 A、方案 B、方案 C</span>
+                <span class="note">A decision tree replaces panic with structure. Three options is the cognitive budget for a 30-minute call.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Dark-launch</span> <em>Go at 02:00 HKT with the endpoint disabled (dark-launch the deployment, do not enable the route).</em></span>
+                <span class="chinese">02:00 HKT 发布但端点禁用（暗启动部署，不启用路由）</span>
+                <span class="note">"Dark-launch" is the engineering word for shipping the binary without enabling the route. The deploy lands; the feature is on standby.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No surprise to the CISO</span> <em>I will brief the Group CISO at 22:00 HKT tonight, so the CISO is not surprised.</em></span>
+                <span class="chinese">我今晚 22:00 HKT 简报集团 CISO，不让 CISO 意外</span>
+                <span class="note">"No surprise to the CISO" is the discipline that protects the AppSec Lead. The CISO hears the news first, from the AppSec Lead, not from the Slack channel.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No rollback risk</span> <em>Deploy the binary, leave the route off, fix in the morning. No rollback risk.</em></span>
+                <span class="chinese">部署二进制，路由关闭，早上修复。无回滚风险</span>
+                <span class="note">"No rollback risk" is the engineering word that makes Option C safe. If the fix doesn't land, the production state is unchanged because the route is off.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>AppSec (Application Security)</strong> n. 应用安全 The team responsible for secure coding and pre-production scanning.</li>
+            <li><strong>Pre-production finding</strong> n. 生产前发现 A security issue flagged before the code reaches production.</li>
+            <li><strong>SQL injection</strong> n. SQL 注入 A vulnerability class where user input is concatenated into a SQL string.</li>
+            <li><strong>Parameterised query</strong> n. 参数化查询 The fix for SQL injection — user input is bound, not concatenated.</li>
+            <li><strong>Blast radius</strong> n. 爆炸半径 The scope of damage if a vulnerability is exploited in production.</li>
+            <li><strong>Decision tree</strong> n. 决策树 A structured set of options (go, no-go, deferred go) under uncertainty.</li>
+            <li><strong>Dark-launch</strong> n. 暗启动 Shipping a binary without enabling the route — the feature is on standby.</li>
+            <li><strong>No surprise</strong> n. 不意外 The discipline of briefing the CISO and the sponsor before the news reaches Slack.</li>
+            <li><strong>Route</strong> n. 路由 The load balancer or API gateway path that exposes an endpoint.</li>
+            <li><strong>Re-scan</strong> n. 重新扫描 Running the security scan again after the fix to confirm the finding is closed.</li>
+            <li><strong>Rollback risk</strong> n. 回滚风险 The risk that a fix or rollback itself causes an outage.</li>
+            <li><strong>PII exfiltration</strong> n. PII 外泄 The unauthorised transfer of personally identifiable information out of the bank.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>5 sections, fixed order.</strong> Finding, blast radius, fix time, decision tree, no surprise. The call owner reads the structure, not the prose.</li>
+            <li><strong>Three pieces of info first, then the call.</strong> The discipline that prevents decisions under panic. Finding, blast radius, fix time — in that order.</li>
+            <li><strong>"Blast radius" with numbers, not adjectives.</strong> "Bad" is not a blast radius. "3.2M records, full PII exfiltration in 1 hour" is a blast radius.</li>
+            <li><strong>"I cannot recommend" is the polite refusal.</strong> It states the risk and refuses the option, without taking the decision away from the call owner. The call owner decides; the AppSec Lead recommends.</li>
+            <li><strong>Decision tree replaces panic with structure.</strong> Three options, named (A, B, C), each with a clear trade. The call owner picks; the call moves forward.</li>
+            <li><strong>Dark-launch is the engineering compromise.</strong> The binary ships; the route is off. The deploy lands; the feature is on standby. No rollback risk; no business delay.</li>
+            <li><strong>No surprise to the CISO or the sponsor.</strong> Both hear the news from the AppSec Lead, not from Slack. The CISO respects the AppSec Lead who briefs first; the sponsor respects the PM who briefs first.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the decision tree</h3>
+        <p>Translate the decision tree into natural Chinese.</p>
+        <blockquote>
+            "Decision tree. Three options. Option A — go at 02:00 HKT as planned. Critical SQL injection in production, public endpoint, no auth. I cannot recommend this. Blast radius: full PII exfiltration in less than 1 hour. Option B — defer to 06:00 HKT, fix in the meantime. 4-hour delay, no production exposure, no regulator exposure. Monday launch still on track. Option C — go at 02:00 HKT with the endpoint disabled (dark-launch the deployment, do not enable the route). Deploy the binary, route off, fix in the morning, route on Saturday. 0-hour business delay, 24-hour feature delay. No rollback risk."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"决策树。三个方案。方案 A——02:00 HKT 按计划发布。生产中严重 SQL 注入，公网端点，无需认证。我不能推荐。爆炸半径：不到 1 小时完整 PII 外泄。方案 B——推迟到 06:00 HKT，期间修复。延迟 4 小时，无生产暴露，无监管暴露。周一上线仍在轨道上。方案 C——02:00 HKT 发布但端点禁用（暗启动部署，不启用路由）。部署二进制，路由关闭，早上修复，周六启用路由。业务 0 延迟，功能 24 小时延迟。无回滚风险。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the deploy call mistake</h3>
+        <p>Which line would damage the deploy call the most? Why?</p>
+            <ol>
+                <li>"Critical SQL injection, CVSS 9.1, public endpoint, no auth. Blast radius: 3.2M PII, full exfiltration in 1 hour. PDPO notification likely. Fix: parameterised query, 1 place, 3.5 hours. Decision tree: A, B, C. I recommend C."</li>
+                <li>"It's just a small bug, ship it, we'll fix in production. The business is waiting."</li>
+                <li>"No surprise to the CISO. I will brief the CISO at 22:00 HKT tonight. No surprise to the sponsor — Wei briefs the sponsor at 22:30 HKT."</li>
+                <li>"Option C: dark-launch. Deploy the binary, leave the route off, fix in the morning, route on Saturday. No rollback risk. The deploy lands; the feature is on standby."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "It's just a small bug, ship it, fix in production" replaces the finding, the blast radius, and the decision tree with a hope. If the SQL injection is exploited in production, the bank is looking at 3.2M records, a PDPO notification, and a HKMA Cyber Resilience finding. ① names the finding, the CVSS, the blast radius, the PDPO exposure, the fix, and the recommendation. ③ commits to no surprise to the CISO and the sponsor. ④ names the dark-launch, the route, the no-rollback-risk. ② is the path to the 02:00 HKT call the CISO does not want to take.</p>
+        </div>
+        <h3>Exercise 3 — Build a deploy call</h3>
+        <p>Pre-prod scan flags a Critical SSRF (server-side request forgery) in a new payment-gateway endpoint, 2 hours before the 02:00 HKT deploy. The endpoint is internal-only, no internet exposure, but it can reach internal services that are not customer-facing. Database affected: none directly. Regulator exposure: low. Fix: input validation on the URL field, 1 place, 2 hours. Build the 5 sections: (1) finding, (2) blast radius, (3) fix, (4) decision tree, (5) no surprise.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Section 1 — Finding. Critical SSRF in the new /payment/validate-callback endpoint. The endpoint accepts a callback URL from an upstream service and fetches it server-side. The URL is not validated. An attacker who can submit a callback URL can point it to internal services (e.g., the AWS metadata service, the internal admin API on 169.254.169.254) and read the response. CVSS 8.6 (High — rated Critical by the bank's internal standard for SSRF on payment paths). Section 2 — Blast radius if exploited in production. Endpoint is internal-only, no internet exposure. But the endpoint can reach internal services, including the AWS metadata service, which exposes IAM credentials. If exploited, the attacker can pivot to the bank's AWS account using the metadata credentials. Database affected: none directly, but a successful pivot can reach the payment-gateway-db via the IAM credentials. Estimated impact: potential unauthorised access to the payment-gateway-db (~12M records, transaction history). Regulator exposure: medium (PCI-DSS scope expansion if IAM credentials are exfiltrated). Section 3 — Fix. Input validation on the URL field — allowlist of internal callback hosts, reject any URL pointing to a non-allowlisted host. Code change in 1 place, the URL parser. Daniel, how long? Section 4 — Decision tree. Option A — go at 02:00 HKT. SSRF in production, internal pivot to AWS credentials. I cannot recommend this. Option B — defer to 04:00 HKT, fix in the meantime. 2-hour delay, no production exposure. Option C — go at 02:00 HKT with the callback validation in 'log-only' mode (the validation runs but does not block the request; only logs the violation). The deploy lands, the validation logs suspicious callbacks, the fix is in by 04:00 HKT, the validation is in 'block' mode. 0-hour business delay, 2-hour window of log-only. I recommend Option C — log-only mode is a known mitigation, the bank has run it before, and it provides visibility without exposing the production state. Section 5 — No surprise. I will brief the Group CISO at 23:00 HKT tonight. Wei, please brief the sponsor at 23:30 HKT. No surprise to the CISO, no surprise to the sponsor."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="16-pushback-security-waiver.html" class="btn btn-outline-secondary">← Previous: Article 16</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="18-convincing-md-mfa-pam.html" class="btn btn-primary">Next: Article 18 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

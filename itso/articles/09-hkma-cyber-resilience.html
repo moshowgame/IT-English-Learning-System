@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 09: HKMA Cyber Resilience Assessment | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">09 · HKMA Cyber Resilience Assessment</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>HKMA Cyber Resilience Assessment — iCAST, Stress Test, RTO / RPO</h1>
+        <p class="subtitle">Article 09 · Module 2: Security Governance &amp; Compliance · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 iCAST, stress test, RTO/RPO, recovery, regulator expectations</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday 10:00 HKT</strong>. You are the <em>Cyber Resilience Programme Manager</em> at a global bank's Hong Kong subsidiary. The <strong>HKMA Cyber Resilience Assessment Framework (C-RAF)</strong> is in year 3. The <em>HKMA iCAST (Intelligence-led Cyber Attack Simulation Testing)</em> is scheduled for next quarter, and the <em>Joint Supervisory Team</em> has just sent a list of pre-read documents. You have 60 minutes to walk the <em>3i maturity assessment</em> status, the <em>RTO / RPO</em> for the 7 critical systems, the iCAST scope, and the regulator's pre-reads. Joining you: <strong>Karen</strong>, the Head of Regulatory Compliance, and <strong>David</strong>, the Group Legal Director.</p>
+        <p>周四 10:00 香港时间，你是全球银行香港子公司的<em>网络韧性项目经理</em>。<strong>HKMA 网络韧性评估框架（C-RAF）</strong>进入第 3 年。<em>HKMA iCAST（情报主导的网络攻击模拟测试）</em>排在下季度，<em>联合监管组</em>刚发了预读文件清单。60 分钟过完<em>3i 成熟度评估</em>状态、7 个关键系统的<em>RTO / RPO</em>、iCAST 范围、监管预读。参加：监管合规负责人 <strong>Karen</strong>、集团法务总监 <strong>David</strong>。</p>
+        <p>HKMA Cyber Resilience is Hong Kong's most prescriptive cyber regulation for major banks. The framework has 5 pillars and 3 maturity levels. The professional pattern is: <em>3i maturity, RTO/RPO, iCAST scope, regulator pre-reads</em>.</p>
+        <p>HKMA 网络韧性是香港对主要银行最具体的网络监管。框架有 5 大支柱和 3 个成熟度等级。专业模式是：<em>3i 成熟度、RTO/RPO、iCAST 范围、监管预读</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Karen (Reg Compliance):</span>
+                <span class="text"><span class="en">"<em>Walk the 3i maturity assessment first.</em> <em>Where are we on the 5 pillars, and what's the gap to the next maturity level?</em>"</span><span class="cn">"<em>先过 3i 成熟度评估。</em><em>5 大支柱我们在哪？距下一成熟度等级的差距？</em>"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>3i maturity — Intermediate level,</em> <em>per the 2024 self-assessment,</em> <em>externally validated by Group Internal Audit in March 2025.</em> <em>5 pillars — Identify, Protect, Detect, Respond, Recover.</em> <em>Today:</em> <em>Identify is at Intermediate-plus,</em> <em>Protect at Intermediate,</em> <em>Detect at Intermediate,</em> <em>Respond at Intermediate,</em> <em>Recover at Intermediate.</em> <em>Gap to Advanced:</em> <em>concentrated in Detect and Respond —</em> <em>we need full automation of incident triage and threat-hunting capacity.</em></span><span class="cn"><em>3i 成熟度——中级，</em><em>按 2024 年自评，</em><em>2025 年 3 月由集团内审外部验证。</em><em>5 大支柱——识别、保护、检测、响应、恢复。</em><em>今天：</em><em>识别中级偏上，</em><em>保护中级，</em><em>检测中级，</em><em>响应中级，</em><em>恢复中级。</em><em>距高级的差距：</em><em>集中在检测和响应——</em><em>我们需要事件分流全自动化和威胁猎捕能力。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Karen (Reg Compliance):</span>
+                <span class="text"><span class="en"><em>And the 7 critical systems — what's the RTO / RPO?</em></span><span class="cn"><em>7 个关键系统——RTO / RPO？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>HKMA's expectation is RTO 2 hours, RPO 15 minutes for Tier-1 systems.</em> <em>Our 7 Tier-1 systems today.</em> <em>Payments — RTO 1 hour, RPO 5 minutes.</em> <em>Core banking — RTO 1 hour, RPO 15 minutes.</em> <em>Trading — RTO 2 hours, RPO 10 minutes.</em> <em>Customer portal — RTO 2 hours, RPO 30 minutes — this one is over the 15-minute RPO target.</em> <em>Trade finance — RTO 4 hours, RPO 1 hour — both over the Tier-1 target,</em> <em>but trade finance is being re-classified to Tier-2 in the new framework.</em> <em>Treasury — RTO 2 hours, RPO 15 minutes.</em> <em>API gateway — RTO 2 hours, RPO 15 minutes.</em> <em>Customer portal RPO is the open gap.</em></span><span class="cn"><em>HKMA 期望一级系统 RTO 2 小时、RPO 15 分钟。</em><em>我们的 7 个一级系统今天。</em><em>支付——RTO 1 小时，RPO 5 分钟。</em><em>核心银行——RTO 1 小时，RPO 15 分钟。</em><em>交易——RTO 2 小时，RPO 10 分钟。</em><em>客户门户——RTO 2 小时，RPO 30 分钟——这个超 15 分钟 RPO 目标。</em><em>贸易融资——RTO 4 小时，RPO 1 小时——两个都超一级目标，</em><em>但贸易融资在新框架中正被重新归类为二级。</em><em>资金——RTO 2 小时，RPO 15 分钟。</em><em>API 网关——RTO 2 小时，RPO 15 分钟。</em><em>客户门户 RPO 是开放差距。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Group Legal):</span>
+                <span class="text"><span class="en"><em>Customer portal RPO 30 vs target 15 —</em> <em>what's the closure plan?</em></span><span class="cn"><em>客户门户 RPO 30 vs 目标 15——</em><em>关闭计划？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>Closure plan: continuous data replication from primary to secondary site,</em> <em>reducing RPO from 30 minutes to 5 minutes,</em> <em>with a 4-hour maintenance window in November 2026.</em> <em>Compensating control today:</em> <em>4-hour backup at the secondary site,</em> <em>with a documented recovery runbook</em> <em>and a quarterly DR test in September 2026.</em> <em>Closure date 30 November 2026,</em> <em>attested by the platform engineering lead and the CISO.</em></span><span class="cn"><em>关闭计划：从主站到备站的持续数据复制，</em><em>把 RPO 从 30 分钟降到 5 分钟，</em><em>2026 年 11 月 4 小时维护窗口。</em><em>今日补偿控制：</em><em>备站 4 小时备份，</em><em>有书面恢复 runbook，</em><em>2026 年 9 月季度 DR 测试。</em><em>关闭日期 2026 年 11 月 30 日，</em><em>由平台工程负责人和 CISO 声明。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Karen (Reg Compliance):</span>
+                <span class="text"><span class="en"><em>iCAST — what's the scope, and the timeline?</em></span><span class="cn"><em>iCAST——范围、时间线？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>iCAST is scheduled for Q1 2027,</em> <em>externally facilitated by an approved vendor,</em> <em>scope: Tier-1 systems — payments, core banking, customer portal, API gateway.</em> <em>Scenario: an end-to-end ransomware attack on the customer portal,</em> <em>with lateral movement to the API gateway,</em> <em>exfiltration attempt,</em> <em>and a regulator-mandated recovery time pressure.</em> <em>Tabletop walkthrough next Tuesday,</em> <em>full simulation 15 February 2027.</em></span><span class="cn"><em>iCAST 排期 2027 年 Q1，</em><em>由批准厂商外部主持，</em><em>范围：一级系统——支付、核心银行、客户门户、API 网关。</em><em>情景：针对客户门户的端到端勒索攻击，</em><em>横向移动到 API 网关，</em><em>外泄尝试，</em><em>加监管要求的恢复时间压力。</em><em>桌面演练下周二，</em><em>完整模拟 2027 年 2 月 15 日。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David (Group Legal):</span>
+                <span class="text"><span class="en"><em>And the regulator's pre-reads?</em> <em>What have they asked for, and when?</em></span><span class="cn"><em>监管预读呢？</em><em>他们要什么，何时要？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>Six documents requested by the Joint Supervisory Team.</em> <em>One</em>: <em>3i maturity self-assessment, externally validated,</em> <em>due 31 October.</em> <em>Two</em>: <em>RTO / RPO register for the 7 Tier-1 systems,</em> <em>due 31 October.</em> <em>Three</em>: <em>the customer portal RPO closure plan,</em> <em>due 31 October.</em> <em>Four</em>: <em>iCAST scope and scenario,</em> <em>due 15 November.</em> <em>Five</em>: <em>DR test reports for the last 12 months,</em> <em>due 15 November.</em> <em>Six</em>: <em>attestation pack signed by the Country CEO and the Group CISO,</em> <em>due 15 December.</em></span><span class="cn"><em>联合监管组要 6 份文件。</em><em>一</em>：<em>3i 成熟度自评（外部验证），</em><em>10 月 31 日交。</em><em>二</em>：<em>7 个一级系统的 RTO / RPO 登记册，</em><em>10 月 31 日交。</em><em>三</em>：<em>客户门户 RPO 关闭计划，</em><em>10 月 31 日交。</em><em>四</em>：<em>iCAST 范围和情景，</em><em>11 月 15 日交。</em><em>五</em>：<em>过去 12 个月的 DR 测试报告，</em><em>11 月 15 日交。</em><em>六</em>：<em>由国家 CEO 和集团 CISO 签署的声明包，</em><em>12 月 15 日交。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Karen (Reg Compliance):</span>
+                <span class="text"><span class="en"><em>All on track,</em> <em>with named owners and weekly progress to the CISO.</em> <em>Anything for next week?</em></span><span class="cn"><em>全部按计划，</em><em>有指定 owner，每周给 CISO 进度。</em><em>下周有什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Resilience PM):</span>
+                <span class="text"><span class="en"><em>Two items.</em> <em>One</em>: <em>the iCAST tabletop walkthrough next Tuesday,</em> <em>with the platform engineering lead, the SOC lead, the CISO, and an external facilitator.</em> <em>Two</em>: <em>a draft of the 3i maturity self-assessment for Karen's review,</em> <em>by Friday EOD.</em></span><span class="cn"><em>两项。</em><em>一</em>：<em>下周二 iCAST 桌面演练，</em><em>和平台工程负责人、SOC 负责人、CISO、外部主持人一起。</em><em>二</em>：<em>周五 EOD 前给 Karen 一份 3i 成熟度自评草稿审阅。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">3i maturity</span> <em>3i maturity — Intermediate level, per the 2024 self-assessment, externally validated by Group IA in March 2025.</em></span>
+                <span class="chinese">3i 成熟度——中级，按 2024 年自评，2025 年 3 月由集团内审外部验证</span>
+                <span class="note">Always name the level, the self-assessment date, and the external validation. The HKMA reads the validation, not the self-assessment alone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">RTO / RPO</span> <em>Payments — RTO 1 hour, RPO 5 minutes. Customer portal — RTO 2 hours, RPO 30 minutes, this one is over target.</em></span>
+                <span class="chinese">支付——RTO 1 小时，RPO 5 分钟。客户门户——RTO 2 小时，RPO 30 分钟，这个超目标</span>
+                <span class="note">Always quote RTO and RPO per system. The HKMA reads the table, not the average.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating control</span> <em>Compensating control: 4-hour backup at the secondary site, with quarterly DR test.</em></span>
+                <span class="chinese">补偿控制：备站 4 小时备份，季度 DR 测试</span>
+                <span class="note">Compensating control is the answer to an RPO / RTO gap. Always name at least one.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">iCAST scope</span> <em>iCAST scope: Tier-1 systems — payments, core banking, customer portal, API gateway. Scenario: ransomware on the customer portal, lateral move to API gateway, exfiltration.</em></span>
+                <span class="chinese">iCAST 范围：一级系统——支付、核心银行、客户门户、API 网关。情景：客户门户勒索，横向移动到 API 网关，外泄</span>
+                <span class="note">iCAST scope is always system + scenario. Name both. The HKMA reads the scenario, not just the system list.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Pre-reads</span> <em>Six documents requested by the Joint Supervisory Team, with named due dates.</em></span>
+                <span class="chinese">联合监管组要 6 份文件，有指定截止日期</span>
+                <span class="note">Pre-reads are never a vague list. Always name the document, the owner, the due date.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">On track</span> <em>All on track, with named owners and weekly progress to the CISO.</em></span>
+                <span class="chinese">全部按计划，有指定 owner，每周给 CISO 进度</span>
+                <span class="note">"On track" is binary. Always name the owners and the cadence. "We're working on it" is not on track.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>HKMA (Hong Kong Monetary Authority)</strong> n. 香港金管局 Hong Kong's integrated banking supervisor.</li>
+            <li><strong>C-RAF (Cyber Resilience Assessment Framework)</strong> n. 网络韧性评估框架 HKMA's framework for major banks' cyber resilience.</li>
+            <li><strong>iCAST (Intelligence-led Cyber Attack Simulation Testing)</strong> n. 情报主导的网络攻击模拟测试 HKMA's threat-led red-team exercise.</li>
+            <li><strong>3i maturity</strong> n. 3i 成熟度 HKMA's three-level rating: Initial, Intermediate, Advanced.</li>
+            <li><strong>5 pillars</strong> n. 5 大支柱 Identify, Protect, Detect, Respond, Recover.</li>
+            <li><strong>Tier-1 system</strong> n. 一级系统 A critical system whose disruption would have systemic impact.</li>
+            <li><strong>RTO (Recovery Time Objective)</strong> n. 恢复时间目标 Maximum acceptable time to restore service after an incident.</li>
+            <li><strong>RPO (Recovery Point Objective)</strong> n. 恢复点目标 Maximum acceptable data loss measured in time.</li>
+            <li><strong>Joint Supervisory Team</strong> n. 联合监管组 HKMA-led team that conducts the C-RAF assessment.</li>
+            <li><strong>Continuous replication</strong> n. 持续复制 Real-time or near-real-time data copy from primary to secondary site.</li>
+            <li><strong>DR test</strong> n. 灾难恢复测试 Scheduled exercise to validate the recovery runbook.</li>
+            <li><strong>Tabletop walkthrough</strong> n. 桌面演练 A discussion-based rehearsal of an incident scenario.</li>
+            <li><strong>Externally facilitated</strong> n. 外部主持 Run by an approved independent vendor, not internal staff.</li>
+            <li><strong>Pre-read</strong> n. 预读 Documents the regulator requests before the next meeting.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "3i maturity — Intermediate — self-assessment — external validation" — four facts</h3>
+        <p>Always quote 3i maturity as four facts: level, self-assessment date, validation date, validator. The HKMA reads the validation, not the self-assessment alone.</p>
+        <p>3i 成熟度总是报四个事实：等级、自评日期、验证日期、验证方。HKMA 看的是验证，不是仅看自评。</p>
+        <h3>② "RTO X, RPO Y" — quote per system</h3>
+        <p>Always quote RTO and RPO per system. <em>Payments — RTO 1, RPO 5. Customer portal — RTO 2, RPO 30.</em> The HKMA reads the table, not the average.</p>
+        <p>每个系统单独报 RTO 和 RPO。<em>支付——RTO 1、RPO 5。客户门户——RTO 2、RPO 30。</em>HKMA 看的是表格，不是平均数。</p>
+        <h3>③ "On track with named owners and weekly cadence" — the binary close</h3>
+        <p>"On track" is binary, not vague. Always name the owners and the cadence. <em>All on track, with named owners and weekly progress to the CISO.</em> "We're working on it" is not on track.</p>
+        <p>"按计划"是二元的，不是模糊的。总报 owner 和节奏。<em>全部按计划，有指定 owner，每周给 CISO 进度。</em>"我们在做"不算按计划。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>3i maturity is four facts, in order.</strong> Level, self-assessment, validation, validator. Skip the validation and the regulator doesn't believe the level.</li>
+            <li><strong>RTO / RPO per system, not the average.</strong> The HKMA reads the table. The worst system is the gap.</li>
+            <li><strong>Compensating control is the answer to an RPO / RTO gap.</strong> Name at least one. No control = unmanaged gap.</li>
+            <li><strong>iCAST scope = systems + scenario.</strong> Name both. The scenario is the test; the system list is the scope.</li>
+            <li><strong>Pre-reads are never vague.</strong> Always name the document, the owner, the due date. The regulator scans the table.</li>
+            <li><strong>"On track" with named owners and weekly cadence.</strong> Binary close. "We're working on it" is not on track.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the HKMA C-RAF walk</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Walk the 3i maturity assessment first. Where are we on the 5 pillars, and what's the gap to the next maturity level?"
+            "3i maturity — Intermediate, per the 2024 self-assessment, externally validated by Group Internal Audit in March 2025. 5 pillars: Identify at Intermediate-plus, Protect at Intermediate, Detect at Intermediate, Respond at Intermediate, Recover at Intermediate. Gap to Advanced: concentrated in Protect and Recover — we need full encryption-at-rest coverage and 4-hour cross-region DR. RTO / RPO: HKMA expectation for Tier-1 is RTO 2 hours, RPO 15 minutes. Our 7 Tier-1 systems today. Payments — RTO 1, RPO 5. Core banking — RTO 1, RPO 15. Trading — RTO 2, RPO 10. Customer portal — RTO 2, RPO 45 — over the 15-minute RPO. Trade finance — RTO 4, RPO 1 hour — re-classifying to Tier-2. Treasury — RTO 2, RPO 15. API gateway — RTO 2, RPO 15. Customer portal RPO is the open gap, closure plan: continuous replication to secondary site, RPO 5, November 2026 maintenance window. iCAST scope: Tier-1 — payments, core banking, customer portal, API gateway. Scenario: ransomware on the customer portal, lateral move, exfiltration. Tabletop Tuesday, full simulation 15 Feb 2027. Six pre-reads, all with named owners and due dates: 3i maturity, RTO/RPO register, customer portal closure plan, iCAST scope, DR reports, attestation pack. All on track, weekly progress to the CISO."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"先过 3i 成熟度评估。5 大支柱我们在哪？距下一等级的差距？"
+            "3i 成熟度——中级，按 2024 年自评，2025 年 3 月由集团内审外部验证。5 大支柱：识别中级偏上，保护中级，检测中级，响应中级，恢复中级。距高级的差距：集中在保护和恢复——我们需要全量静态加密覆盖和 4 小时跨区 DR。RTO / RPO：HKMA 对一级系统期望 RTO 2 小时、RPO 15 分钟。我们的 7 个一级系统今天。支付——RTO 1、RPO 5。核心银行——RTO 1、RPO 15。交易——RTO 2、RPO 10。客户门户——RTO 2、RPO 45——超 15 分钟 RPO。贸易融资——RTO 4、RPO 1 小时——正重新归类为二级。资金——RTO 2、RPO 15。API 网关——RTO 2、RPO 15。客户门户 RPO 是开放差距，关闭计划：持续复制到备站，RPO 5，2026 年 11 月维护窗口。iCAST 范围：一级——支付、核心银行、客户门户、API 网关。情景：客户门户勒索，横向移动，外泄。桌面演练周二，完整模拟 2027 年 2 月 15 日。6 份预读，全有指定 owner 和截止日期：3i 成熟度、RTO/RPO 登记册、客户门户关闭计划、iCAST 范围、DR 报告、声明包。全部按计划，每周给 CISO 进度。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the HKMA mistake</h3>
+        <p>Which line would damage the C-RAF walk the most? Why?</p>
+        <ol>
+            <li>"3i maturity — Intermediate, 2024 self-assessment, externally validated by Group IA in March 2025. Payments RTO 1, RPO 5."</li>
+            <li>"We are doing OK on resilience, no major concerns."</li>
+            <li>"Customer portal RPO 30 vs target 15, closure plan: continuous replication, RPO 5, November 2026 maintenance window."</li>
+            <li>"iCAST scope: Tier-1 systems, ransomware scenario, tabletop Tuesday, full simulation 15 Feb 2027. Six pre-reads, all on track."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We are doing OK on resilience" replaces the 3i maturity, the 5 pillars, the RTO/RPO, the iCAST scope, and the pre-reads with a feeling. The HKMA will always bounce this back: which level, which pillar, which system, which RTO/RPO, which pre-read. ① leads with the 3i facts and the system RTO/RPO. ③ names the gap and the closure. ④ covers iCAST and pre-reads. ② is an immature cyber resilience programme; the regulator will write a finding.</p>
+        </div>
+        <h3>Exercise 3 — Run a 60-minute C-RAF walk</h3>
+        <p>You are the Cyber Resilience PM. 3i maturity Intermediate, validated March 2025. 7 Tier-1 systems, average RTO 1.5 hours, average RPO 20 minutes. Two systems over RPO target: customer portal (RPO 45), trade finance (RPO 60, re-classifying to Tier-2). iCAST Q2 2027, scope payments + core banking. Build a 60-minute script: (1) 3i maturity, (2) 5 pillars, (3) RTO/RPO per system, (4) gap closures, (5) iCAST scope, (6) 6 pre-reads on track.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"3i maturity — Intermediate, per the 2024 self-assessment, externally validated by Group Internal Audit in March 2025. 5 pillars: Identify Intermediate-plus, Protect Intermediate, Detect Intermediate, Respond Intermediate, Recover Intermediate. Gap to Advanced: Detect and Respond. RTO / RPO per Tier-1. Payments RTO 1, RPO 5. Core banking RTO 1, RPO 15. Trading RTO 2, RPO 10. Customer portal RTO 2, RPO 45 — over the 15-minute RPO target, closure plan: continuous replication, RPO 5, November 2026 maintenance window. Trade finance RTO 4, RPO 60 — re-classifying to Tier-2 in the new framework. Treasury RTO 2, RPO 15. API gateway RTO 2, RPO 15. Customer portal RPO is the open gap, compensating control: 4-hour backup at secondary, quarterly DR test. iCAST scope: Tier-1 — payments, core banking. Scenario: ransomware on payments, lateral move to core banking, fraudulent wire. Tabletop walkthrough 1 March 2027, full simulation 15 May 2027. Six pre-reads on track with named owners and due dates: 3i maturity, RTO/RPO register, customer portal closure plan, iCAST scope, DR reports, attestation pack. All on track, weekly progress to the CISO."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="08-mas-trm-cyber-hygiene.html" class="btn btn-outline-secondary">← Previous: Article 08</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="10-iso27001-sox-evidence.html" class="btn btn-primary">Next: Article 10 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

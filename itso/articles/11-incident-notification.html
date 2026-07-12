@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 11: Security Incident Notification Email | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">11 · Security Incident Notification Email</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Security Incident Notification Email — Facts, Scope, Containment</h1>
+        <p class="subtitle">Article 11 · Module 3: Written Security Communication · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Regulator, board, customer — facts, scope, containment, next steps</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 16:00 HKT</strong>. You are the <em>Head of SOC</em> at a global bank. A confirmed <strong>data exposure incident</strong> just closed the containment phase. A <em>misconfigured cloud storage bucket</em> exposed 2,300 retail-banking customer records (name, account number, balance — no password, no transaction history) to the public internet for 36 hours before detection. The bucket has been secured, IAM policy corrected, exposure closed at 14:00 HKT. You need to draft a notification email that goes to <em>three audiences</em>: the HKMA supervisor, the Group Board Risk Committee, and the affected customers. The Group Legal and Group Communications have approved the facts; you have 60 minutes to draft the master email and the three variants.</p>
+        <p>周五 16:00 香港时间，你是全球银行的<em>SOC 负责人</em>。一个已确认的<strong>数据暴露事件</strong>刚完成遏制阶段。一个<em>云存储桶配置错误</em>导致 2,300 个零售银行客户记录（姓名、账号、余额——无密码、无交易历史）在公网暴露 36 小时后被检测到。存储桶已加固，IAM 策略已修正，14:00 HKT 暴露关闭。你需要起草一封通知邮件发到<em>三个受众</em>：HKMA supervisor、集团董事会风险委员会、受影响客户。集团法务和集团传播已批准事实；你有 60 分钟起草主邮件和三个变体。</p>
+        <p>An incident notification is the most politically loaded email a security professional writes. The structure must be identical across audiences: <em>facts, scope, containment, regulator exposure, customer impact, next steps</em>. The tone changes by audience, never the facts.</p>
+        <p>事件通知是安全专业人士写的政治性最强的邮件。结构在所有受众中必须一致：<em>事实、范围、遏制、监管暴露、客户影响、下一步</em>。语气按受众变化，事实不变。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Master Email — 6 Sections, Fixed</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><strong>To:</strong> [audience distribution] · <strong>From:</strong> Head of SOC · <strong>Date:</strong> Friday 16:00 HKT · <strong>Subject:</strong> [CONFIRMED] Retail Banking Customer Data Exposure — Containment Complete, Notification in Progress</span><span class="cn"><strong>收件人：</strong>[受众列表] · <strong>发件人：</strong>SOC 负责人 · <strong>日期：</strong>周五 16:00 HKT · <strong>主题：</strong>[已确认] 零售银行客户数据暴露——遏制完成，通知进行中</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 1 — Facts.</em> On Thursday 02:00 HKT, a misconfigured cloud storage bucket exposed 2,300 retail-banking customer records to the public internet. <em>Detection at 14:00 HKT on Friday by the SOC monitoring rule.</em> <em>Containment at 14:00 HKT — bucket secured, IAM policy corrected.</em> <em>Total exposure window: 36 hours.</em></span><span class="cn"><em>第 1 节——事实。</em>周四 02:00 HKT，一个云存储桶配置错误导致 2,300 个零售银行客户记录在公网暴露。<em>周五 14:00 HKT 由 SOC 监控规则检测到。</em><em>14:00 HKT 完成遏制——存储桶加固，IAM 策略修正。</em><em>总暴露窗口：36 小时。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 2 — Scope.</em> 2,300 customer records. <em>Data fields: customer name, account number, available balance.</em> <em>No passwords, no transaction history, no payment card data, no identity document numbers were exposed.</em> <em>Affected region: Hong Kong retail-banking only.</em> <em>No other lines of business, no other geographies.</em></span><span class="cn"><em>第 2 节——范围。</em>2,300 客户记录。<em>数据字段：客户姓名、账号、可用余额。</em><em>未暴露密码、交易历史、支付卡数据、身份证件号。</em><em>受影响区域：仅香港零售银行。</em><em>无其他业务线，无其他地区。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 3 — Containment.</em> <em>Bucket secured at 14:00 HKT Friday.</em> <em>IAM policy corrected at 14:15 HKT.</em> <em>Public access revoked.</em> <em>Audit trail confirms no external download during the exposure window —</em> <em>cloud provider access logs show 0 GET requests from non-bank IPs.</em> <em>Forensic review in progress;</em> <em>preliminary conclusion: no evidence of data exfiltration.</em></span><span class="cn"><em>第 3 节——遏制。</em><em>14:00 HKT 周五存储桶加固。</em><em>14:15 HKT IAM 策略修正。</em><em>公网访问吊销。</em><em>审计跟踪确认暴露窗口内无外部下载——</em><em>云厂商访问日志显示非银行 IP 0 次 GET 请求。</em><em>取证复核进行中；</em><em>初步结论：无数据外泄证据。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 4 — Regulator exposure.</em> <em>PDPO (Personal Data (Privacy) Ordinance) notification:</em> <em>the Hong Kong Privacy Commissioner is notified under the data-breach guidance.</em> <em>Initial notification this evening,</em> <em>full notification within 5 business days per the PDPO timeline.</em> <em>HKMA supervisor:</em> <em>proactively notified via the standard supervisory channel</em> <em>— call placed at 15:30 HKT, written follow-up by 17:00 HKT.</em></span><span class="cn"><em>第 4 节——监管暴露。</em><em>PDPO（个人资料（私隐）条例）通知：</em><em>已按数据泄露指南通知香港私隐专员公署。</em><em>今晚初步通知，</em><em>5 个工作日内按 PDPO 时间线正式通知。</em><em>HKMA supervisor：</em><em>通过标准监管渠道主动通知</em><em>——15:30 HKT 已通话，17:00 HKT 书面跟进。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 5 — Customer impact.</em> <em>No fraud detected to date.</em> <em>Account-level monitoring increased for the 2,300 customers for the next 90 days.</em> <em>Customer notification will be sent by 18:00 HKT Saturday,</em> <em>via secure email and the in-app message centre,</em> <em>with a dedicated hotline and FAQ.</em> <em>No password reset required — passwords were not exposed.</em></span><span class="cn"><em>第 5 节——客户影响。</em><em>至今无欺诈检测。</em><em>2,300 客户未来 90 天账户级监控加强。</em><em>客户通知 18:00 HKT 周六发出，</em><em>通过安全邮件和应用内消息中心，</em><em>含专属热线和 FAQ。</em><em>无需重置密码——密码未暴露。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 6 — Next steps.</em> <em>Three workstreams.</em> <em>Workstream 1:</em> <em>forensic and root-cause analysis,</em> <em>closure 26 September.</em> <em>Workstream 2:</em> <em>preventive control — automated cloud config compliance scan, daily,</em> <em>closure 31 October.</em> <em>Workstream 3:</em> <em>lessons learned for the next Cyber Risk Forum,</em> <em>closure 15 October.</em> <em>Progress reported daily to the CISO;</em> <em>next regulator update Friday 26 September.</em></span><span class="cn"><em>第 6 节——下一步。</em><em>三个工作流。</em><em>工作流 1：</em><em>取证和根因分析，</em><em>9 月 26 日关闭。</em><em>工作流 2：</em><em>预防控制——云配置合规自动扫描，每日，</em><em>10 月 31 日关闭。</em><em>工作流 3：</em><em>为下次 Cyber Risk Forum 起草经验教训，</em><em>10 月 15 日关闭。</em><em>进度每日报 CISO；</em><em>下次监管更新 9 月 26 日周五。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. The Three Variants — Tone, Not Facts</h2>
+        <p>The master email is sent to all three audiences. The variant is the salutation line and the closing, not the body.</p>
+        <p>主邮件发给三个受众。变体是称呼行和落款，不是正文。</p>
+        <ul class="vocab-list">
+            <li><strong>To HKMA supervisor:</strong> <em>Dear Mr. Chan,</em> <em>Following our call at 15:30 HKT,</em> <em>please find the written confirmation below.</em> <em>Regards, Head of SOC,</em> <em>cc: Group CISO, Group Legal, Head of Compliance.</em></li>
+            <li><strong>To Group Board Risk Committee:</strong> <em>To the Board Risk Committee,</em> <em>please find below the formal notification of a confirmed retail-banking customer data exposure,</em> <em>as required by the Group Cyber Incident Reporting Standard.</em> <em>Submitted by: Head of SOC,</em> <em>endorsed by: Group CISO.</em></li>
+            <li><strong>To affected customers (2,300):</strong> <em>Dear [Customer Name],</em> <em>we are writing to inform you of a security incident that involved your account information.</em> <em>We are writing to you directly because we believe in transparency,</em> <em>and because you trust us with your banking.</em> <em>— Head of SOC,</em> <em>cc: Group Communications.</em></li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">6 sections, fixed</span> <em>Facts, scope, containment, regulator exposure, customer impact, next steps — in that order.</em></span>
+                <span class="chinese">事实、范围、遏制、监管暴露、客户影响、下一步——按顺序</span>
+                <span class="note">The 6 sections are the standard for any incident notification. The structure is fixed; the content varies. Skipping a section signals a weak incident.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">What was NOT exposed</span> <em>No passwords, no transaction history, no payment card data, no identity document numbers were exposed.</em></span>
+                <span class="chinese">未暴露密码、交易历史、支付卡数据、身份证件号</span>
+                <span class="note">Always name what was NOT exposed. Customers and regulators want to know the limits of the damage.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No evidence of exfiltration</span> <em>Cloud provider access logs show 0 GET requests from non-bank IPs. Preliminary conclusion: no evidence of data exfiltration.</em></span>
+                <span class="chinese">云厂商访问日志显示非银行 IP 0 次 GET 请求。初步结论：无数据外泄证据</span>
+                <span class="note">"No evidence of exfiltration" is the precise phrase. "No exfiltration" alone is over-confident; "no evidence" is the right tone for an early finding.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Proactively notified</span> <em>HKMA supervisor proactively notified via the standard supervisory channel.</em></span>
+                <span class="chinese">HKMA supervisor 通过标准监管渠道主动通知</span>
+                <span class="note">"Proactively notified" is the phrase that signals the bank called first. The regulator remembers who called first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Three workstreams</span> <em>Three workstreams: forensic, preventive control, lessons learned.</em></span>
+                <span class="chinese">三个工作流：取证、预防控制、经验教训</span>
+                <span class="note">A confirmed incident always has three workstreams: forensic (what happened), preventive (stop it happening again), lessons (close the loop).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Tone, not facts</span> <em>The variant is the salutation and the closing, not the body.</em></span>
+                <span class="cn" style="display:none;"></span><span class="note">The master body is identical for all three audiences. Only the salutation and the closing change. The facts must never vary.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Confirmed incident</strong> n. 确认事件 An incident that has been triaged and confirmed as a real security event.</li>
+            <li><strong>Containment phase</strong> n. 遏制阶段 The first phase of incident response: stop the bleeding.</li>
+            <li><strong>Misconfigured bucket</strong> n. 配置错误存储桶 A cloud storage resource with public access enabled by mistake.</li>
+            <li><strong>Exposure window</strong> n. 暴露窗口 The time between misconfiguration and containment.</li>
+            <li><strong>No evidence of exfiltration</strong> n. 无外泄证据 The precise early finding before forensic completion.</li>
+            <li><strong>PDPO (Personal Data (Privacy) Ordinance)</strong> n. 个人资料（私隐）条例 Hong Kong's data protection law.</li>
+            <li><strong>Supervisory channel</strong> n. 监管渠道 The named communication path to a regulator.</li>
+            <li><strong>Proactively notified</strong> n. 主动通知 The bank called the regulator first, before being asked.</li>
+            <li><strong>Account-level monitoring</strong> n. 账户级监控 Enhanced monitoring on specific accounts for a period.</li>
+            <li><strong>Customer notification</strong> n. 客户通知 Direct communication to the affected data subjects.</li>
+            <li><strong>Lessons learned</strong> n. 经验教训 Post-incident review for the next Cyber Risk Forum.</li>
+            <li><strong>Variant</strong> n. 变体 The same body with different salutation / closing, never different facts.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>6 sections, fixed order.</strong> Facts, scope, containment, regulator exposure, customer impact, next steps. The CISO reads the structure, not the prose.</li>
+            <li><strong>Name what was NOT exposed.</strong> Customers and regulators want the limits of the damage. "No passwords" is more reassuring than "2,300 records".</li>
+            <li><strong>"No evidence of exfiltration" is the precise phrase.</strong> "No exfiltration" is over-confident; "no evidence" is the right tone for an early finding.</li>
+            <li><strong>"Proactively notified" is the magic phrase.</strong> The bank called the regulator first, before being asked. The regulator remembers who called first.</li>
+            <li><strong>Three workstreams, every confirmed incident.</strong> Forensic, preventive control, lessons learned. The CISO expects the trio; missing one signals an immature SOC.</li>
+            <li><strong>Tone varies, facts never.</strong> The master body is identical for all three audiences. Only the salutation and the closing change.</li>
+            <li><strong>Get Legal and Comms approval before sending.</strong> Facts are pre-approved; the variant is on top of the approved facts. Never send an incident email solo.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the incident notification</h3>
+        <p>Translate the master email into natural Chinese.</p>
+        <blockquote>
+            "Section 1 — Facts. On Saturday 03:00 HKT, a misconfigured API on the customer portal exposed 1,800 wealth-management customer records to authenticated users from other customer accounts. Detection at 11:00 HKT Saturday by the SOC monitoring rule. Containment at 11:15 HKT — API secured, IAM policy corrected. Total exposure window: 8 hours 15 minutes. Section 2 — Scope. 1,800 customer records. Data fields: customer name, account number, portfolio summary, last login date. No passwords, no transaction history, no payment card data, no identity document numbers were exposed. Affected region: Singapore wealth-management only. Section 3 — Containment. API secured at 11:15 HKT Saturday. IAM policy corrected at 11:30 HKT. Cross-account access revoked. Audit trail confirms no external access — only authenticated users from other customer accounts, who by design could see their own data, not others. Forensic review in progress; preliminary conclusion: no evidence of cross-account data exfiltration by an attacker. Section 4 — Regulator exposure. PDPA (Personal Data Protection Act) notification: the Singapore PDPC is notified under the data-breach notification. Initial notification this evening, full notification within 3 business days. MAS supervisor: proactively notified via the standard supervisory channel — call placed at 12:00 HKT, written follow-up by 14:00 HKT. Section 5 — Customer impact. No fraud detected to date. Account-level monitoring increased for the 1,800 customers for the next 90 days. Customer notification will be sent by 18:00 HKT Sunday, via secure email and the in-app message centre, with a dedicated hotline and FAQ. No password reset required — passwords were not exposed. Section 6 — Next steps. Three workstreams. Workstream 1: forensic and root-cause analysis, closure 5 October. Workstream 2: preventive control — automated API permission review, daily, closure 30 November. Workstream 3: lessons learned for the next Cyber Risk Forum, closure 15 October. Progress reported daily to the CISO; next regulator update Friday 3 October."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"第 1 节——事实。周六 03:00 HKT，客户门户上一个 API 配置错误导致 1,800 个财富管理客户记录对其他客户账户的认证用户暴露。周六 11:00 HKT 由 SOC 监控规则检测到。11:15 HKT 完成遏制——API 加固，IAM 策略修正。总暴露窗口：8 小时 15 分。第 2 节——范围。1,800 客户记录。数据字段：客户姓名、账号、组合摘要、上次登录日期。未暴露密码、交易历史、支付卡数据、身份证件号。受影响区域：仅新加坡财富管理。第 3 节——遏制。11:15 HKT 周六 API 加固。11:30 HKT IAM 策略修正。跨账户访问吊销。审计跟踪确认无外部访问——仅其他客户账户的认证用户，他们按设计只能看自己的数据，看不到别人。取证复核进行中；初步结论：无攻击者跨账户数据外泄证据。第 4 节——监管暴露。PDPA（个人数据保护法）通知：已通知新加坡 PDPC。初步通知今晚，3 个工作日内正式通知。MAS supervisor：通过标准监管渠道主动通知——12:00 HKT 已通话，14:00 HKT 书面跟进。第 5 节——客户影响。至今无欺诈检测。1,800 客户未来 90 天账户级监控加强。客户通知 18:00 HKT 周日发出，通过安全邮件和应用内消息中心，含专属热线和 FAQ。无需重置密码——密码未暴露。第 6 节——下一步。三个工作流。工作流 1：取证和根因分析，10 月 5 日关闭。工作流 2：预防控制——API 权限自动复核，每日，11 月 30 日关闭。工作流 3：下次 Cyber Risk Forum 经验教训，10 月 15 日关闭。进度每日报 CISO；下次监管更新 10 月 3 日周五。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the incident email mistake</h3>
+        <p>Which line would damage the incident notification the most? Why?</p>
+        <ol>
+            <li>"Facts: misconfigured bucket, 2,300 records, exposure 36 hours, containment 14:00 HKT. Scope: name, account, balance. NOT exposed: passwords, transaction history, card data, ID numbers."</li>
+            <li>"We had a security issue and we are really sorry and we are working on it."</li>
+            <li>"Regulator exposure: PDPO notification filed, HKMA supervisor proactively notified via standard channel at 15:30 HKT."</li>
+            <li>"Three workstreams: forensic 26 Sep, preventive control 31 Oct, lessons learned 15 Oct. Daily progress to CISO."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We had a security issue and we are really sorry" replaces the 6 sections with an apology. The regulator and the board want the facts, the scope, the containment, the regulator exposure, the customer impact, and the next steps — not feelings. ① leads with facts and what was NOT exposed. ③ covers regulator exposure with proactive notification. ④ names the three workstreams. ② is an immature incident response; the regulator will write a finding.</p>
+        </div>
+        <h3>Exercise 3 — Draft a 6-section incident email</h3>
+        <p>You are the Head of SOC. A confirmed phishing campaign compromised 12 employee mailboxes at a UK subsidiary, no customer data, contained at 11:00 GMT today. Build the 6 sections: (1) facts, (2) scope, (3) containment, (4) regulator exposure (ICO + FCA), (5) customer impact, (6) next steps with 3 workstreams.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Section 1 — Facts. On Tuesday 02:00 GMT, a targeted phishing campaign compromised 12 employee mailboxes at the UK retail-banking subsidiary. Detection at 10:30 GMT by the SOC monitoring rule. Containment at 11:00 GMT — credentials revoked, sessions invalidated, MFA factors reset, endpoints isolated. Total exposure window: 8 hours. Section 2 — Scope. 12 employee mailboxes. No customer accounts accessed. No customer data exposed. Affected region: UK retail-banking only. Section 3 — Containment. Credentials revoked at 11:00 GMT. Sessions invalidated. MFA factors reset. Endpoints isolated and reimaged. Audit trail confirms no lateral move, no data exfiltration, no fraudulent transactions. Forensic review in progress; preliminary conclusion: no evidence of data exfiltration. Section 4 — Regulator exposure. ICO (Information Commissioner's Office) — no personal data breach, no notification required. FCA (Financial Conduct Authority) — proactively notified via the standard supervisory channel; call placed at 11:30 GMT, written follow-up by 13:00 GMT. PRA — same notification path as FCA. Section 5 — Customer impact. No customer data exposed. No customer notification required. Account-level monitoring increased for any customer transactions originated by the 12 employees in the exposure window. Section 6 — Next steps. Three workstreams. Workstream 1: forensic and root-cause analysis, closure 25 September. Workstream 2: preventive control — phishing-resistant MFA (FIDO2) for the 12 employees and rolling to the rest of UK retail, closure 30 November. Workstream 3: lessons learned for the next Cyber Risk Forum, closure 15 October. Progress reported daily to the CISO; next regulator update Friday 26 September."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="10-iso27001-sox-evidence.html" class="btn btn-outline-secondary">← Previous: Article 10</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="12-risk-acceptance-memo.html" class="btn btn-primary">Next: Article 12 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

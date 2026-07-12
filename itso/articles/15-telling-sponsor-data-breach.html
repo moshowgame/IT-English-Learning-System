@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 15: Telling a Sponsor about a Data Breach | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">15 · Telling a Sponsor about a Data Breach</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Telling a Sponsor about a Data Breach — Facts, Decisions, No Spin</h1>
+        <p class="subtitle">Article 15 · Module 4: Difficult Security Conversations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Sponsor, MD, board — facts, scope, decisions, regulator, customer, no spin</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 17:30 HKT</strong>. You are the <em>Group CISO</em>. The containment phase of the retail-banking customer data exposure incident (Article 11) closed at 14:00 HKT. The regulator was notified at 15:30 HKT. You now have a 30-minute slot with the <strong>sponsor of the retail-banking business</strong>, <em>Margaret</em> (MD, Retail Banking HK), before the weekend. Margaret has seen the internal Slack chatter but has not had the formal briefing. She is calm, but the bank's reputation and her franchise are on the line. The conversation will decide whether Margaret backs the public statement, the customer notification, and the regulator follow-up — or pushes back.</p>
+        <p>周五 17:30 香港时间，你是<em>集团 CISO</em>。零售银行客户数据暴露事件（文章 11）的遏制阶段 14:00 HKT 关闭。监管 15:30 HKT 通知到位。你现在和<strong>零售银行业务 sponsor</strong><em>Margaret</em>（零售银行香港 MD）在周末前有 30 分钟档期。Margaret 看过内部 Slack 议论但未收到正式简报。她很冷静，但银行声誉和她的业务条线都在线上。这次对话将决定 Margaret 是否支持公开声明、客户通知和监管跟进——还是反对。</p>
+        <p>Telling a sponsor about a breach is the hardest 30 minutes in a CISO's calendar. The instinct is to soften the news. The professional pattern is: <em>facts first, scope, containment, regulator, customer, decisions needed, no spin</em>. Margaret will smell spin in 10 seconds. Lead with the truth, then give her the decisions only she can make.</p>
+        <p>告诉 sponsor 数据泄露是 CISO 日历上最难的 30 分钟。本能是软化新闻。专业模式是：<em>事实优先、范围、遏制、监管、客户、所需决策、不修饰</em>。Margaret 会在 10 秒内嗅到修饰。先讲真话，然后给她只有她能做的决策。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Briefing — 7 Sections, 30 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en">Margaret, <em>thanks for making time on a Friday evening.</em> <em>I have a confirmed data exposure incident to brief you on,</em> <em>and three decisions only you can make.</em> <em>I'll be straight with the facts.</em></span><span class="cn">Margaret，<em>感谢你周五晚抽时间</em>。<em>我有一个已确认的数据暴露事件需要向你简报，</em><em>还有三个只有你能做的决策</em>。<em>我会直说事实。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Facts.</em> <em>On Thursday 02:00 HKT, a misconfigured cloud storage bucket exposed 2,300 retail-banking customer records to the public internet.</em> <em>Detection at 14:00 HKT today by the SOC monitoring rule.</em> <em>Containment at 14:00 HKT — bucket secured, IAM policy corrected.</em> <em>Total exposure window: 36 hours.</em></span><span class="cn"><em>事实。</em><em>周四 02:00 HKT，一个云存储桶配置错误导致 2,300 个零售银行客户记录在公网暴露。</em><em>今天 14:00 HKT 由 SOC 监控规则检测到。</em><em>14:00 HKT 完成遏制——存储桶加固，IAM 策略修正。</em><em>总暴露窗口：36 小时。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Scope.</em> <em>2,300 customer records.</em> <em>Data fields: customer name, account number, available balance.</em> <em>No passwords, no transaction history, no payment card data, no identity document numbers were exposed.</em> <em>Affected region: Hong Kong retail-banking only.</em> <em>No other lines of business, no other geographies.</em></span><span class="cn"><em>范围。</em><em>2,300 客户记录。</em><em>数据字段：客户姓名、账号、可用余额。</em><em>未暴露密码、交易历史、支付卡数据、身份证件号。</em><em>受影响区域：仅香港零售银行。</em><em>无其他业务线，无其他地区。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret:</span>
+                <span class="text"><span class="en">Margaret: <em>How do we know there was no download?</em></span><span class="cn">Margaret：<em>我们怎么知道没有下载？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Cloud provider access logs show 0 GET requests from non-bank IPs during the 36-hour window.</em> <em>Forensic review is in progress;</em> <em>preliminary conclusion: no evidence of data exfiltration.</em> <em>That conclusion is preliminary —</em> <em>if the forensic review finds evidence, we will update you and the regulator within 24 hours.</em></span><span class="cn"><em>云厂商访问日志显示 36 小时窗口内非银行 IP 0 次 GET 请求。</em><em>取证复核进行中；</em><em>初步结论：无数据外泄证据。</em><em>该结论是初步的——</em><em>如果取证复核发现证据，我们会在 24 小时内更新你和监管。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Regulator.</em> <em>HKMA supervisor notified at 15:30 HKT via the standard supervisory channel — call placed, written follow-up by 17:00 HKT.</em> <em>PDPO notification to the Privacy Commissioner filed this evening,</em> <em>full notification within 5 business days per the PDPO timeline.</em></span><span class="cn"><em>监管。</em><em>HKMA supervisor 已于 15:30 HKT 通过标准监管渠道通知——已通话，17:00 HKT 书面跟进。</em><em>PDPO 通知已今晚提交私隐专员公署，</em><em>5 个工作日内按 PDPO 时间线正式通知。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Customer impact.</em> <em>No fraud detected to date.</em> <em>Account-level monitoring increased for the 2,300 customers for the next 90 days.</em> <em>Customer notification will be sent by 18:00 HKT Saturday,</em> <em>via secure email and the in-app message centre,</em> <em>with a dedicated hotline and FAQ.</em></span><span class="cn"><em>客户影响。</em><em>至今无欺诈检测。</em><em>2,300 客户未来 90 天账户级监控加强。</em><em>客户通知 18:00 HKT 周六发出，</em><em>通过安全邮件和应用内消息中心，</em><em>含专属热线和 FAQ。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret:</span>
+                <span class="text"><span class="en">Margaret: <em>What do you need from me?</em></span><span class="cn">Margaret：<em>你需要我做什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (CISO):</span>
+                <span class="text"><span class="en"><em>Three decisions.</em> <em>Decision 1: sign off the customer notification wording by 22:00 HKT tonight,</em> <em>so it can go out at 18:00 HKT Saturday as planned.</em> <em>Decision 2: back the public statement Group Comms has drafted —</em> <em>"we are aware of the exposure, containment complete, customers notified directly."</em> <em>Decision 3: be the named escalation owner if any of the 2,300 customers escalates over the weekend,</em> <em>so the response is one voice, not three.</em></span><span class="cn"><em>三个决策。</em><em>决策 1：今晚 22:00 HKT 前签批客户通知措辞，</em><em>以便按计划 18:00 HKT 周六发出。</em><em>决策 2：支持集团传播起草的公开声明——</em><em>"我们已知该暴露，遏制完成，客户已直接通知。"</em><em>决策 3：作为具名升级负责人，如果 2,300 客户中任何一位周末升级投诉，</em><em>确保回复是一个声音而不是三个。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Margaret:</span>
+                <span class="text"><span class="en">Margaret: <em>All three approved.</em> <em>Send me the wording in 30 minutes.</em> <em>And Wei —</em> <em>thank you for telling me straight.</em> <em>I'd have been angry if you'd softened it.</em></span><span class="cn">Margaret：<em>三个都批准。</em><em>30 分钟内把措辞发我。</em><em>Wei——</em><em>谢谢你直说。</em><em>如果你软化了我反而会生气。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">I'll be straight with the facts</span> <em>I'll be straight with the facts.</em></span>
+                <span class="chinese">我会直说事实</span>
+                <span class="note">The opening line that sets the tone. "I'll be straight" is the sponsor's permission slip to receive the bad news without filtering.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Preliminary conclusion</span> <em>Preliminary conclusion: no evidence of data exfiltration.</em></span>
+                <span class="chinese">初步结论：无数据外泄证据</span>
+                <span class="note">"Preliminary" is the honest word. The forensic review is in progress; if it finds evidence, the conclusion changes. Don't say "no exfiltration" — say "no evidence".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Three decisions</span> <em>Three decisions. Decision 1, Decision 2, Decision 3.</em></span>
+                <span class="chinese">三个决策。决策 1、决策 2、决策 3</span>
+                <span class="note">A sponsor can absorb three decisions. More than three, and the conversation drifts. Three is the cognitive budget.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">One voice, not three</span> <em>So the response is one voice, not three.</em></span>
+                <span class="chinese">确保回复是一个声音而不是三个</span>
+                <span class="note">"One voice" is the discipline that prevents the bank's three spokespersons (CISO, MD, Comms) from contradicting each other. The sponsor as escalation owner is the mechanism.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Send me the wording in 30 minutes</span> <em>Send me the wording in 30 minutes.</em></span>
+                <span class="chinese">30 分钟内把措辞发我</span>
+                <span class="note">The sponsor asks for a fast turnaround because the weekend starts in hours. Fast turnaround is the norm in incident response, not the exception.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Thank you for telling me straight</span> <em>Thank you for telling me straight. I'd have been angry if you'd softened it.</em></span>
+                <span class="chinese">谢谢你直说，如果你软化了我反而会生气</span>
+                <span class="note">The sponsor's gratitude for honesty is the CISO's reward. Soft news feels like a setup; straight news feels like partnership.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Sponsor</strong> n. Sponsor The senior executive who owns a business line and the budget.</li>
+            <li><strong>MD (Managing Director)</strong> n. 董事总经理 The senior-most business role in a foreign bank's matrix.</li>
+            <li><strong>CISO (Chief Information Security Officer)</strong> n. 首席信息安全官 The senior-most security role in a foreign bank.</li>
+            <li><strong>Facts first</strong> n. 事实优先 The briefing principle: lead with the facts, not the apology.</li>
+            <li><strong>Preliminary conclusion</strong> n. 初步结论 The honest word for an early finding, pending forensic review.</li>
+            <li><strong>One voice</strong> n. 一个声音 The discipline of having a single named spokesperson during a crisis.</li>
+            <li><strong>Three decisions</strong> n. 三个决策 The cognitive budget for a sponsor briefing — no more.</li>
+            <li><strong>Public statement</strong> n. 公开声明 The bank's external communication to media and customers.</li>
+            <li><strong>Holding statement</strong> n. 预批准声明 A pre-approved public statement for fast release.</li>
+            <li><strong>Escalation owner</strong> n. 升级负责人 The named executive who handles escalations during the crisis.</li>
+            <li><strong>No spin</strong> n. 不修饰 The discipline of stating facts without softening, exaggeration, or framing.</li>
+            <li><strong>Reputation on the line</strong> n. 声誉攸关 The phrase that frames the briefing as a partnership, not a confession.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>7 sections, fixed order.</strong> Opening, facts, scope, containment, regulator, customer, decisions. The sponsor reads the structure, not the prose.</li>
+            <li><strong>"I'll be straight with the facts" is the opening line.</strong> It signals honesty and gives the sponsor permission to receive the bad news. Soft openings are read as a setup.</li>
+            <li><strong>"Preliminary conclusion" is the honest word.</strong> "No exfiltration" is over-confident; "no evidence" is right for an early finding. The forensic review can change the conclusion — name that explicitly.</li>
+            <li><strong>Three decisions, no more.</strong> A sponsor can absorb three. More, and the conversation drifts. Each decision must require the sponsor's authority — not the CISO's.</li>
+            <li><strong>"One voice, not three" is the crisis discipline.</strong> Three spokespersons (CISO, MD, Comms) contradict each other unless one is named the escalation owner. The sponsor takes that role.</li>
+            <li><strong>No spin.</strong> Sponsors smell spin in 10 seconds. They remember who was straight and who wasn't. Straight news feels like partnership; soft news feels like a setup.</li>
+            <li><strong>End with the sponsor's authority being used.</strong> The sponsor's gratitude for honesty is the CISO's reward. The next incident briefing will be easier because of this one.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the opening lines</h3>
+        <p>Translate the opening lines into natural Chinese.</p>
+        <blockquote>
+            "Margaret, thanks for making time on a Friday evening. I have a confirmed data exposure incident to brief you on, and three decisions only you can make. I'll be straight with the facts. Facts. On Saturday 03:00 HKT, a misconfigured API on the customer portal exposed 1,800 wealth-management customer records to authenticated users from other customer accounts. Detection at 11:00 HKT by the SOC monitoring rule. Containment at 11:15 HKT. Total exposure window: 8 hours 15 minutes. Three decisions. Decision 1: sign off the customer notification wording by 22:00 HKT tonight. Decision 2: back the public statement. Decision 3: be the named escalation owner over the weekend."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Margaret，感谢你周五晚抽时间。我有一个已确认的数据暴露事件需要向你简报，还有三个只有你能做的决策。我会直说事实。事实。周六 03:00 HKT，客户门户上一个 API 配置错误导致 1,800 个财富管理客户记录对其他客户账户的认证用户暴露。11:00 HKT 由 SOC 监控规则检测到。11:15 HKT 完成遏制。总暴露窗口：8 小时 15 分。三个决策。决策 1：今晚 22:00 HKT 前签批客户通知措辞。决策 2：支持公开声明。决策 3：作为具名升级负责人处理周末投诉。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the briefing mistake</h3>
+        <p>Which line would damage the sponsor briefing the most? Why?</p>
+            <ol>
+                <li>"Facts. Misconfigured bucket, 2,300 records, exposure 36 hours, containment 14:00 HKT. Scope: name, account, balance. NOT exposed: passwords, transaction history, card data, ID numbers."</li>
+                <li>"There was a small issue and we are handling it and we are really sorry. Most customers won't even notice."</li>
+                <li>"Three decisions. Decision 1: sign off customer notification wording by 22:00 HKT. Decision 2: back the public statement. Decision 3: be the escalation owner over the weekend."</li>
+                <li>"Cloud provider access logs show 0 GET requests from non-bank IPs. Preliminary conclusion: no evidence of data exfiltration. Forensic review in progress."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "A small issue" replaces the facts with framing, and "we are really sorry" replaces the decisions with apology. The sponsor will read ② as spin and lose trust in the CISO for the rest of the incident. ① leads with facts and what was NOT exposed. ③ names the three decisions. ④ cites the logs and the preliminary conclusion. ② turns a 30-minute briefing into a 3-hour argument.</p>
+        </div>
+        <h3>Exercise 3 — Build a sponsor briefing</h3>
+        <p>You are the CISO. A confirmed phishing campaign compromised 12 employee mailboxes at a UK subsidiary, no customer data, contained at 11:00 GMT today. The sponsor is the MD of UK Retail. Build the 7 sections: (1) opening, (2) facts, (3) scope, (4) containment, (5) regulator, (6) customer impact, (7) three decisions.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Steven, thanks for making time today. I have a confirmed phishing incident to brief you on, and three decisions only you can make. I'll be straight with the facts. Facts. On Tuesday 02:00 GMT, a targeted phishing campaign compromised 12 employee mailboxes at the UK retail-banking subsidiary. Detection at 10:30 GMT by the SOC monitoring rule. Containment at 11:00 GMT — credentials revoked, sessions invalidated, MFA factors reset, endpoints isolated. Total exposure window: 8 hours. Scope. 12 employee mailboxes. No customer accounts accessed. No customer data exposed. Affected region: UK retail-banking only. Containment. Credentials revoked at 11:00 GMT. Sessions invalidated. MFA factors reset. Endpoints isolated and reimaged. Audit trail confirms no lateral move, no data exfiltration, no fraudulent transactions. Forensic review in progress; preliminary conclusion: no evidence of data exfiltration. Regulator. ICO — no personal data breach, no notification required. FCA — proactively notified via the standard supervisory channel; call placed at 11:30 GMT, written follow-up by 13:00 GMT. PRA — same notification path as FCA. Customer impact. No customer data exposed. No customer notification required. Account-level monitoring increased for any customer transactions originated by the 12 employees in the exposure window. Three decisions. Decision 1: sign off the internal communication to the 12 employees and their line managers by 17:00 GMT today, so the post-incident review can start tomorrow. Decision 2: back the upgrade of the 12 employees to phishing-resistant MFA (FIDO2) within 30 days, funded from the cyber budget, not the UK retail budget. Decision 3: be the named escalation owner if any of the 12 employees' line managers push back on the FIDO2 upgrade."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="14-vulnerability-disclosure.html" class="btn btn-outline-secondary">← Previous: Article 14</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="16-pushback-security-waiver.html" class="btn btn-primary">Next: Article 16 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

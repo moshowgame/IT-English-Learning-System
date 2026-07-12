@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: GDPR Data Subject Request | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">07 · GDPR Data Subject Request</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>GDPR Data Subject Request — DSAR, Lawful Basis, 30-Day Clock</h1>
+        <p class="subtitle">Article 07 · Module 2: Security Governance &amp; Compliance · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 DSAR intake, identity verification, lawful basis, 30-day clock, Article 15 / 17</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday 09:30 GMT</strong>. You are the <em>Privacy Operations Lead</em> at a global bank's European subsidiary. A <strong>Data Subject Access Request (DSAR)</strong> arrived on Friday at 16:45 GMT from a former retail-banking customer in Frankfurt. The customer is asking for <em>all personal data</em> the bank holds on him, under <strong>GDPR Article 15</strong>. The <em>statutory 30-day clock</em> started on Friday — 28 days remaining. Joining you: <strong>Helena</strong>, the DPO (Data Protection Officer), and <strong>Tom</strong>, the IT lead for the data discovery tool.</p>
+        <p>周一 9:30 格林威治时间，你是全球银行欧洲子公司的<em>隐私运营负责人</em>。一封<strong>数据主体访问请求（DSAR）</strong>周五 16:45 GMT 进来，来自法兰克福一位前零售银行客户。该客户依据 <strong>GDPR 第 15 条</strong>索要银行持有的<em>所有个人数据</em>。<em>法定的 30 天时钟</em>周五开始——还剩 28 天。参加：DPO（数据保护官）<strong>Helena</strong>、数据发现工具 IT 负责人 <strong>Tom</strong>。</p>
+        <p>A DSAR is the most time-pressured piece of privacy work. The 30-day clock is statutory, identity must be verified, the scope must be discovered across systems, and the response must be lawful. The professional pattern is: <em>intake → verify → scope → discover → redact → deliver</em>.</p>
+        <p>DSAR 是隐私工作中时间压力最大的一项。30 天时钟是法定的，身份必须验证，范围必须跨系统发现，回复必须合法。专业模式是：<em>受理 → 验证 → 定范围 → 发现 → 脱敏 → 交付</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Helena (DPO):</span>
+                <span class="text"><span class="en">"Let's walk the DSAR. <em>Intake summary first.</em>"</span><span class="cn">"我们过一下 DSAR。<em>先报受理摘要。</em>"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Privacy Ops):</span>
+                <span class="text"><span class="en"><em>DSAR intake:</em> <em>Mr. Stefan Bauer, former retail-banking customer, Frankfurt,</em> <em>relationship closed 14 March 2024.</em> <em>Request received Friday 16:45 GMT via the privacy mailbox.</em> <em>Type:</em> <em>Article 15 access request — all personal data.</em> <em>30-day clock:</em> <em>started Friday, deadline Friday 17 October, 28 days remaining.</em> <em>No extension requested, no urgency flagged.</em></span><span class="cn"><em>DSAR 受理：</em><em>Stefan Bauer 先生，前零售银行客户，法兰克福，</em><em>关系 2024 年 3 月 14 日关闭。</em><em>请求周五 16:45 GMT 通过隐私邮箱收到。</em><em>类型：</em><em>第 15 条访问请求——所有个人数据。</em><em>30 天时钟：</em><em>周五开始，截止 10 月 17 日周五，剩 28 天。</em><em>无延期请求，无紧急标记。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helena (DPO):</span>
+                <span class="text"><span class="en"><em>Identity verification?</em> <em>He could be anyone.</em></span><span class="cn"><em>身份验证呢？</em><em>他可能任何人。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Privacy Ops):</span>
+                <span class="text"><span class="en"><em>Standard 2-step verification,</em> <em>per Group Privacy SOP P-013.</em> <em>Step 1:</em> <em>passport scan received, name and DOB match the closed CIF record.</em> <em>Step 2:</em> <em>video ID check scheduled for Wednesday 14:00 GMT with our KYC team.</em> <em>Expected outcome:</em> <em>verified by Wednesday EOD.</em> <em>If we can't verify, we deny the request under Article 12.6 — inability to verify identity.</em></span><span class="cn"><em>标准 2 步验证，</em><em>按集团隐私 SOP P-013。</em><em>步骤 1：</em><em>护照扫描已收，姓名和生日匹配已关闭的 CIF 记录。</em><em>步骤 2：</em><em>视频身份核验已排周三 14:00 GMT，与 KYC 团队一起。</em><em>预期结果：</em><em>周三 EOD 前验证完成。</em><em>如无法验证，依据第 12.6 条——无法验证身份——拒绝请求。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (IT lead):</span>
+                <span class="text"><span class="en"><em>On data discovery —</em> <em>Mr. Bauer's CIF is MRET-DE-2034-8711.</em> <em>Discovery scope based on the closed-relationship data map.</em> <em>Eight systems in scope.</em> <em>CRM, core banking, payments, KYC, complaints, marketing consent, fraud, and the document archive.</em> <em>Discovery runs Wednesday evening after ID check passes,</em> <em>output in the standard DSAR pack format</em> <em>— JSON for structured data, PDF for documents, both to the secure privacy drop zone.</em></span><span class="cn"><em>数据发现——</em><em>Bauer 先生的 CIF 是 MRET-DE-2034-8711。</em><em>基于已关闭关系数据图的发现范围。</em><em>8 个系统在范围内。</em><em>CRM、核心银行、支付、KYC、投诉、营销同意、反欺诈、文档归档。</em><em>发现于周三晚 ID 检查通过后跑，</em><em>输出为标准 DSAR 包格式</em><em>——结构化数据 JSON，文档 PDF，都到安全隐私投递区。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helena (DPO):</span>
+                <span class="text"><span class="en"><em>Redaction?</em> <em>How do we handle third-party data in his mortgage documents?</em> <em>His ex-wife is on the joint mortgage.</em></span><span class="cn"><em>脱敏呢？</em><em>他房贷文件里的第三方数据怎么处理？</em><em>他前妻在联合房贷上。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Privacy Ops):</span>
+                <span class="text"><span class="en"><em>Third-party redaction per Article 15.4.</em> <em>The ex-wife's name, address, DOB, signature, and financial details are redacted</em> <em>— but the fact that there was a joint mortgage is not redacted,</em> <em>because it's material to the data subject's own information.</em> <em>Redaction log kept per the SOP — what was redacted, on what legal basis, by whom.</em></span><span class="cn"><em>按第 15.4 条做第三方脱敏。</em><em>前妻的姓名、地址、生日、签名、财务细节脱敏</em><em>——但"曾有联合房贷"这一事实不脱敏，</em><em>因为它对数据主体自身信息有实质影响。</em><em>按 SOP 留脱敏日志——脱敏什么、法律依据、何人操作。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helena (DPO):</span>
+                <span class="text"><span class="en"><em>And the legal review before delivery?</em></span><span class="cn"><em>交付前的法务复核呢？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Privacy Ops):</span>
+                <span class="text"><span class="en"><em>Standard.</em> <em>Privacy team reviews for redaction correctness and Article exemptions.</em> <em>Legal reviews for privilege, regulator-secrecy, and any third-party rights.</em> <em>Both sign in the privacy workflow tool before delivery to the secure drop zone.</em> <em>Target:</em> <em>both signoffs by Friday 10 October,</em> <em>delivery to Mr. Bauer by Friday 17 October,</em> <em>3 days ahead of the 30-day clock.</em></span><span class="cn"><em>标准流程。</em><em>隐私团队复核脱敏正确性和条款豁免。</em><em>法务复核特权、监管保密、任何第三方权利。</em><em>两边在隐私工作流工具签字后交付到安全投递区。</em><em>目标：</em><em>10 月 10 日周五两边都签字，</em><em>10 月 17 日周五交付给 Bauer 先生，</em><em>比 30 天时钟提前 3 天。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helena (DPO):</span>
+                <span class="text"><span class="en"><em>One more —</em> <em>if the ex-wife also files a DSAR next week asking for her own data,</em> <em>do we run them in parallel or sequence them?</em></span><span class="cn"><em>还有——</em><em>如果前妻下周也提交 DSAR 索要她自己的数据，</em><em>我们并行还是串行？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Privacy Ops):</span>
+                <span class="text"><span class="en"><em>Parallel — two separate DSARs, two separate 30-day clocks, two separate packs.</em> <em>No read-across between data subjects,</em> <em>even if they're on the same mortgage.</em> <em>Each request is independent under the GDPR.</em></span><span class="cn"><em>并行——两个独立 DSAR，两个独立 30 天时钟，两个独立包。</em><em>数据主体之间无 read-across，</em><em>即使在同一房贷上。</em><em>按 GDPR 每项请求独立。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Intake summary</span> <em>Intake summary first. DSAR intake: name, type, 30-day clock, deadline.</em></span>
+                <span class="chinese">先报受理摘要。DSAR 受理：姓名、类型、30 天时钟、截止日期</span>
+                <span class="note">Always lead with the intake: who, what type, when the clock started, when it ends. The DPO reads the clock first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">30-day clock</span> <em>30-day clock started Friday, deadline Friday 17 October, 28 days remaining.</em></span>
+                <span class="chinese">30 天时钟周五开始，截止 10 月 17 日周五，剩 28 天</span>
+                <span class="note">Always name the start date, the deadline, and the days remaining. The DPO reads the deadline, not the verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Identity verification</span> <em>Standard 2-step verification per Group SOP P-013. Step 1 passport, Step 2 video ID check.</em></span>
+                <span class="chinese">按集团 SOP P-013 标准 2 步验证。步骤 1 护照，步骤 2 视频身份核验</span>
+                <span class="note">Identity verification is the gate. Skip it and the entire pack is unlawful. Always name the SOP and the steps.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Discovery scope</span> <em>Discovery scope: 8 systems based on the closed-relationship data map.</em></span>
+                <span class="chinese">发现范围：基于已关闭关系数据图，8 个系统</span>
+                <span class="note">Discovery scope is always derived from a data map, not invented. Name the map and the system count.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Third-party redaction</span> <em>Third-party redaction per Article 15.4. The fact is not redacted, the personal data is.</em></span>
+                <span class="chinese">按第 15.4 条做第三方脱敏。事实不脱敏，个人数据脱敏</span>
+                <span class="note">Distinguish fact from personal data. The fact of a joint mortgage stays; the ex-wife's name, address, financial details are redacted.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No read-across</span> <em>Two separate DSARs, no read-across between data subjects.</em></span>
+                <span class="chinese">两个独立 DSAR，数据主体之间无 read-across</span>
+                <span class="note">Each DSAR is independent. The ex-wife's DSAR is not a re-use of the husband's pack. Always re-discover and re-redact.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>DSAR (Data Subject Access Request)</strong> n. 数据主体访问请求 A formal request by an individual for access to their personal data.</li>
+            <li><strong>GDPR (General Data Protection Regulation)</strong> n. 通用数据保护条例 EU regulation on data protection, including the 30-day clock.</li>
+            <li><strong>Article 15</strong> n. 第 15 条 The GDPR article granting the right of access by the data subject.</li>
+            <li><strong>Article 12.6</strong> n. 第 12.6 条 The GDPR article allowing refusal if identity cannot be verified.</li>
+            <li><strong>Article 15.4</strong> n. 第 15.4 条 The GDPR article on third-party redaction in an access response.</li>
+            <li><strong>30-day clock</strong> n. 30 天时钟 The statutory time limit to respond to a DSAR, extendable by 60 days for complex requests.</li>
+            <li><strong>DPO (Data Protection Officer)</strong> n. 数据保护官 The named executive accountable for privacy compliance.</li>
+            <li><strong>Identity verification</strong> n. 身份验证 Confirming the requester is who they say they are, before disclosure.</li>
+            <li><strong>Data map</strong> n. 数据图 The registry of systems and data flows that contain personal data.</li>
+            <li><strong>Discovery scope</strong> n. 发现范围 The list of systems searched for the data subject's information.</li>
+            <li><strong>Redaction</strong> n. 脱敏 Masking third-party personal data in the disclosure pack.</li>
+            <li><strong>Lawful basis</strong> n. 合法依据 The legal grounds under GDPR (consent, contract, legal obligation, etc.) for processing.</li>
+            <li><strong>Secure drop zone</strong> n. 安全投递区 The encrypted file transfer location for the disclosure pack.</li>
+            <li><strong>Read-across</strong> n. 跨请求复用 Reusing work from one DSAR for another — not allowed between data subjects.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "30-day clock: started X, deadline Y, N days remaining" — three facts, fixed order</h3>
+        <p>Always quote the 30-day clock as three facts. <em>Started Friday, deadline 17 October, 28 days remaining.</em> The DPO reads the deadline, not the request type.</p>
+        <p>30 天时钟总是报三个事实。<em>周五开始，截止 10 月 17 日，剩 28 天。</em>DPO 读的是截止日期，不是请求类型。</p>
+        <h3>② "Step 1, Step 2" — verification is a chain, in order</h3>
+        <p>Identity verification is a chain in order. <em>Step 1 passport, Step 2 video ID check.</em> Skip a step and the disclosure is unlawful. Always name the SOP and the steps.</p>
+        <p>身份验证是链，按顺序。<em>步骤 1 护照，步骤 2 视频身份核验。</em>跳过一步等于非法披露。总报 SOP 和步骤。</p>
+        <h3>③ "Fact vs personal data" — distinguish, then redact</h3>
+        <p>Distinguish fact from personal data. <em>The fact is not redacted, the personal data is.</em> The fact of a joint mortgage stays; the ex-wife's name, address, financial details are redacted. Article 15.4 permits this.</p>
+        <p>区分事实和个人数据。<em>事实不脱敏，个人数据脱敏。</em>"曾有联合房贷"是事实，保留；前妻的姓名、地址、财务细节是个人数据，脱敏。第 15.4 条允许这样做。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Lead with the intake: who, what, when the clock started, when it ends.</strong> The DPO reads the clock first.</li>
+            <li><strong>The 30-day clock is statutory.</strong> Always name start date, deadline, days remaining. The DPO scans the deadline before the rest.</li>
+            <li><strong>Identity verification is the gate.</strong> Skip it and the disclosure is unlawful. Use the Group SOP, name the steps.</li>
+            <li><strong>Discovery scope comes from the data map, not from memory.</strong> Name the map and the system count. The auditor reads the map.</li>
+            <li><strong>Distinguish fact from personal data in redaction.</strong> Fact stays, personal data redacted. Article 15.4 permits this.</li>
+            <li><strong>Two DSARs, two clocks, two packs.</strong> No read-across between data subjects, even on the same mortgage. Each request is independent.</li>
+            <li><strong>Deliver ahead of the clock.</strong> Aim for 3 days early. The buffer absorbs the unexpected.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the DSAR walk</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Intake summary. DSAR intake: Ms. Anna Müller, current wealth-management customer, Munich, account active. Request received Tuesday 10:15 CET via the privacy mailbox. Type: Article 15 access request + Article 17 erasure request — all personal data, plus erasure at end of relationship. 30-day clock: started Tuesday, deadline Tuesday 18 November, 30 days remaining. Identity verification: standard 2-step per SOP P-013. Step 1: passport scan received, name and DOB match the active CIF. Step 2: video ID check scheduled for Thursday 11:00 CET with KYC team. Discovery scope: 10 systems based on the active-relationship data map — CRM, core banking, payments, KYC, tax, complaints, marketing consent, fraud, document archive, and the wealth-platform. Discovery runs Thursday evening. Redaction: third-party per Article 15.4 — her financial advisor's name and notes are redacted; the fact that she has an advisor is not redacted. Erasure scope: Article 17, but with Article 17.3 exceptions — regulatory retention 7 years for KYC and tax, so those systems keep the records. The CRM, marketing consent, and complaint notes are erased. Two separate packs: access pack delivered 15 November, erasure confirmation delivered 18 November, both ahead of the clock."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"受理摘要。DSAR 受理：Anna Müller 女士，现有财富管理客户，慕尼黑，账户活跃。请求周二 10:15 CET 通过隐私邮箱收到。类型：第 15 条访问请求 + 第 17 条删除请求——所有个人数据，关系结束时删除。30 天时钟：周二开始，截止 11 月 18 日周二，剩 30 天。身份验证：按 SOP P-013 标准 2 步。步骤 1：护照扫描已收，姓名和生日匹配活跃 CIF。步骤 2：视频身份核验已排周四 11:00 CET，与 KYC 团队。发现范围：基于活跃关系数据图，10 个系统——CRM、核心银行、支付、KYC、税务、投诉、营销同意、反欺诈、文档归档、财富平台。发现周四晚跑。脱敏：按第 15.4 条做第三方——她的财务顾问姓名和笔记脱敏；她有顾问这一事实不脱敏。删除范围：第 17 条，但有第 17.3 条豁免——KYC 和税务监管保留 7 年，这些系统保留记录。CRM、营销同意、投诉笔记删除。两个独立包：15 日 11 月交付访问包，18 日 11 月交付删除确认，都提前于时钟。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the DSAR mistake</h3>
+        <p>Which line would damage the DSAR response the most? Why?</p>
+        <ol>
+            <li>"30-day clock: started Friday, deadline 17 October, 28 days remaining. Identity verification per SOP P-013, 2 steps."</li>
+            <li>"We'll get the data when we can and send it to him."</li>
+            <li>"Discovery scope: 8 systems based on the closed-relationship data map. Redaction per Article 15.4. Two separate packs, two clocks."</li>
+            <li>"Target: both signoffs by Friday 10 October, delivery 17 October, 3 days ahead of the clock."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the DSAR-damager. "We'll get the data when we can" replaces the 30-day clock, the identity verification, the discovery scope, the redaction, and the signoffs with a vague promise. The DPO will always bounce this back: when does the clock end, who verified the identity, what is the discovery scope. ① leads with the clock and the SOP. ③ names the scope and the Article. ④ commits to a target ahead of the clock. ② is unlawful; the regulator would fine the bank.</p>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute DSAR intake</h3>
+        <p>You are the Privacy Ops lead. A DSAR arrives: Article 15 access request from a former corporate-banking customer in London, relationship closed 6 months ago, request received Monday 11:00 GMT. Build a 30-minute script: (1) intake summary, (2) 30-day clock, (3) identity verification SOP, (4) discovery scope, (5) third-party redaction principle, (6) delivery target.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Intake summary. DSAR intake: Mr. James Chen, former corporate-banking customer, London, relationship closed 6 months ago. Request received Monday 11:00 GMT via the privacy mailbox. Type: Article 15 access request — all personal data. 30-day clock: started Monday, deadline Monday 1 December, 30 days remaining. Identity verification: standard 2-step per SOP P-013. Step 1: passport scan expected, name and DOB match the closed CIF. Step 2: video ID check scheduled for Wednesday. Discovery scope: 6 systems based on the closed-relationship data map — CRM, core banking, payments, KYC, complaints, document archive. Redaction: third-party per Article 15.4 — counterparty names and signatures in the corporate loan documents are redacted; the fact of the loan is not redacted. Target: discovery Thursday, signoff Friday week 2, delivery Friday 28 November, 3 days ahead of the clock."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="06-pci-dss-audit.html" class="btn btn-outline-secondary">← Previous: Article 06</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="08-mas-trm-cyber-hygiene.html" class="btn btn-primary">Next: Article 08 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

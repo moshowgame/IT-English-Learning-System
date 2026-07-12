@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 05: Threat Intel Briefing | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">05 · Threat Intel Briefing</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Threat Intel Briefing — APT, TTP, IOC, Sector Alert</h1>
+        <p class="subtitle">Article 05 · Module 1: Daily Security Operations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 APT groups, sector-specific TTPs, IOC sharing, sector alerts, hunt plan</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 14:00 HKT</strong>. You are the <em>Threat Intelligence Lead</em> at a global bank. The weekly <em>Threat Intel Briefing</em> is on the calendar with the CISO, Head of SOC, and Head of IAM. This week, FS-ISAC has raised the sector alert level for the Asia-Pacific banking sector from <em>Elevated</em> to <em>High</em>, citing <strong>two APT campaigns</strong> targeting treasury and trade-finance operations. You have 30 minutes to walk the intel, the relevance to the bank, and the hunt plan.</p>
+        <p>周三 14:00 香港时间，你是全球银行的<em>威胁情报负责人</em>。每周<em>威胁情报简报</em>已安排 CISO、SOC 负责人、IAM 负责人参加。本周 FS-ISAC 把亚太银行业的部门警报级别从<em>提升</em>调至<em>高</em>，理由是<strong>两个 APT 行动</strong>针对资金和贸易融资业务。30 分钟过完情报、对银行的相关性、猎捕计划。</p>
+        <p>Threat intel is the SOC's "looking outward" discipline. It is measured in <strong>actors, TTPs, IOCs, sector alerts, and hunt hypotheses</strong>. The professional pattern is: lead with the sector alert, name the actor, walk the TTP, push the IOC, propose a hunt.</p>
+        <p>威胁情报是 SOC "向外看"的纪律。用<strong>攻击者、TTP、IOC、部门警报、猎捕假设</strong>度量。专业模式是：先报部门警报、点名攻击者、过 TTP、推 IOC、提议猎捕。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Threat Intel Lead):</span>
+                <span class="text"><span class="en"><em>Threat intel update from me.</em> <em>Sector alert level raised from Elevated to High for APAC banking,</em> <em>driven by two APT campaigns</em> <em>— APT-41, a China-nexus actor, and APT-38, a North Korea-nexus actor.</em> <em>Both targeting treasury and trade finance.</em></span><span class="cn"><em>威胁情报层面同步。</em><em>APAC 银行业部门警报级别从提升调至高，</em><em>驱动因素是两个 APT 行动</em><em>——APT-41，中国相关，APT-38，朝鲜相关。</em><em>两家都针对资金和贸易融资。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Threat Intel Lead):</span>
+                <span class="text"><span class="en"><em>First campaign: APT-38.</em> <em>Target:</em> <em>SWIFT operator workstations in trade finance.</em> <em>TTP:</em> <em>spear-phishing on a treasury operator,</em> <em>lateral move to the SWIFT workstation,</em> <em>creation of a fraudulent MT-103 message,</em> <em>wipe of the local logs.</em> <em>IOCs:</em> <em>3 sender domains, 5 file hashes, 1 C2 IP,</em> <em>all pushed to the SIEM and EDR at 11:00.</em></span><span class="cn"><em>第一个行动：APT-38。</em><em>目标：</em><em>贸易融资的 SWIFT 操作员工作站。</em><em>TTP：</em><em>针对资金操作员的鱼叉钓鱼，</em><em>横向移动到 SWIFT 工作站，</em><em>伪造 MT-103 报文，</em><em>清除本地日志。</em><em>IOC：</em><em>3 个发件域、5 个文件 hash、1 个 C2 IP，</em><em>11:00 已全部推送到 SIEM 和 EDR。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Threat Intel Lead):</span>
+                <span class="text"><span class="en"><em>Second campaign: APT-41.</em> <em>Target:</em> <em>the customer portal and the API gateway.</em> <em>TTP:</em> <em>exploit of CVE-2025-31872 — the same one in our open Critical queue —</em> <em>web shell,</em> <em>credential theft via the LSASS dump,</em> <em>persistence via a scheduled task.</em> <em>IOCs:</em> <em>2 web shell paths, 4 scheduled task names, 2 C2 domains,</em> <em>pushed at 12:30.</em></span><span class="cn"><em>第二个行动：APT-41。</em><em>目标：</em><em>客户门户和 API 网关。</em><em>TTP：</em><em>利用 CVE-2025-31872——和我们开放严重队列里那个一样——</em><em>Web shell，</em><em>通过 LSASS 转储盗取凭据，</em><em>通过计划任务持久化。</em><em>IOC：</em><em>2 个 web shell 路径、4 个计划任务名、2 个 C2 域，</em><em>12:30 已推送。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CISO:</span>
+                <span class="text"><span class="en"><em>Hold on — APT-41 is exploiting CVE-2025-31872,</em> <em>which is the same one Brian is patching on Friday?</em> <em>That changes the priority.</em></span><span class="cn"><em>等一下——APT-41 正在利用 CVE-2025-31872，</em><em>就是 Brian 周五打补丁的那个？</em><em>这改变优先级。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Threat Intel Lead):</span>
+                <span class="text"><span class="en"><em><em>Yes.</em></em> <em>Three implications.</em> <em>One</em>: <em>Brian moves 31872 to tonight's change window, not Friday —</em> <em>the patch is ready, the change is small, the risk is active exploitation in the sector.</em> <em>Two</em>: <em>the WAF rule for the 31872 exploit pattern is already pushed — we confirmed active at 13:00.</em> <em>Three</em>: <em>we run a 48-hour hunt on the customer portal and API gateway,</em> <em>looking for the web shell paths and the scheduled task names from the APT-41 IOC list.</em></span><span class="cn"><em><em>是。</em></em><em>三个影响。</em><em>一</em>：<em>Brian 把 31872 移到今晚的变更窗口，不是周五——</em><em>补丁已就绪、变更小、风险是行业级活跃利用。</em><em>二</em>：<em>31872 利用模式的 WAF 规则已推——13:00 确认激活。</em><em>三</em>：<em>我们针对客户门户和 API 网关跑 48 小时猎捕，</em><em>查 APT-41 IOC 列表里的 web shell 路径和计划任务名。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Head of SOC:</span>
+                <span class="text"><span class="en"><em>Confirmed — 48-hour hunt on the customer portal and API gateway,</em> <em>two analysts dedicated, starting 16:00 today.</em> <em>I'll report any hits in the SOC standup.</em></span><span class="cn"><em>确认——客户门户和 API 网关 48 小时猎捕，</em><em>两名分析师专职，今天 16:00 启动。</em><em>任何命中在 SOC 站会汇报。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Head of IAM:</span>
+                <span class="text"><span class="en"><em>From the IAM side,</em> <em>two actions.</em> <em>One</em>: <em>force password reset on all treasury and trade-finance operators today.</em> <em>Two</em>: <em>review MFA enrolment for the same population — anyone without MFA,</em> <em>suspend until enrolled.</em> <em>That's 240 users, 8 hours to complete.</em></span><span class="cn"><em>IAM 这边，</em><em>两项动作。</em><em>一</em>：<em>今天强制重置所有资金和贸易融资操作员密码。</em><em>二</em>：<em>复核同人群的 MFA 注册——任何未注册 MFA 的，</em><em>停用直到注册。</em><em>共 240 用户，8 小时完成。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CISO:</span>
+                <span class="text"><span class="en"><em>Both approved.</em> <em>One last ask —</em> <em>share the APT-41 IOC list with FS-ISAC and the Hong Kong Monetary Authority under the standard protocol.</em> <em>And update the bank's standing threat profile for the next Cyber Risk Forum.</em></span><span class="cn"><em>两项都批。</em><em>最后一个请求——</em><em>按标准协议把 APT-41 IOC 列表分享给 FS-ISAC 和香港金管局。</em><em>并把银行的常设威胁画像更新到下次 Cyber Risk Forum。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Threat Intel Lead):</span>
+                <span class="text"><span class="en"><em>Confirmed.</em> <em>IOCs shared with FS-ISAC and HKMA by 16:00,</em> <em>threat profile updated for the next forum.</em></span><span class="cn"><em>确认。</em><em>16:00 前 IOC 分享给 FS-ISAC 和 HKMA，</em><em>威胁画像更新到下次论坛。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Sector alert</span> <em>Sector alert level raised from Elevated to High for APAC banking.</em></span>
+                <span class="chinese">APAC 银行业部门警报级别从提升调至高</span>
+                <span class="note">Always lead with the sector alert level and the change. The CISO reads the level, not the actor.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">TTP</span> <em>TTP: spear-phishing, lateral move, fraudulent MT-103, wipe of local logs.</em></span>
+                <span class="chinese">TTP：鱼叉钓鱼、横向移动、伪造 MT-103、清除本地日志</span>
+                <span class="note">TTP = Tactics, Techniques, Procedures. Quote the chain in order. The CISO reads the chain, not the verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">IOC push</span> <em>IOCs pushed to SIEM and EDR at 11:00.</em></span>
+                <span class="chinese">11:00 IOC 已推送到 SIEM 和 EDR</span>
+                <span class="note">Always name the time of the IOC push. The SOC needs the timestamp to confirm the IOC is live.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Active exploitation</span> <em>Risk is active exploitation in the sector — patch tonight, not Friday.</em></span>
+                <span class="chinese">风险是行业级活跃利用——今晚打补丁，不是周五</span>
+                <span class="note">"Active exploitation in the sector" is the phrase that overrides a planned schedule. Use it to accelerate a patch.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hunt</span> <em>Run a 48-hour hunt on the customer portal, looking for the web shell paths and scheduled task names.</em></span>
+                <span class="chinese">针对客户门户跑 48 小时猎捕，查 web shell 路径和计划任务名</span>
+                <span class="note">A hunt is time-bounded (48 hours), scoped (customer portal), and IOC-driven (web shell paths, task names). Always name all three.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Threat profile</span> <em>Update the bank's standing threat profile for the next Cyber Risk Forum.</em></span>
+                <span class="chinese">把银行的常设威胁画像更新到下次 Cyber Risk Forum</span>
+                <span class="note">The standing threat profile is the bank's long-term read of the threat landscape. Update after every sector alert change.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>APT (Advanced Persistent Threat)</strong> n. 高级持续性威胁 A state-sponsored or well-resourced attacker with long-term objectives.</li>
+            <li><strong>TTP (Tactics, Techniques, Procedures)</strong> n. 战术/技术/过程 How an attacker operates — phishing, lateral move, persistence, exfiltration.</li>
+            <li><strong>IOC (Indicator of Compromise)</strong> n. 失陷指标 Artefact (domain, IP, hash, file path) that signals a compromise.</li>
+            <li><strong>FS-ISAC</strong> n. 金融服务信息共享与分析中心 Financial Services Information Sharing and Analysis Center — sector intel sharing.</li>
+            <li><strong>Sector alert</strong> n. 部门警报 A formal warning from FS-ISAC about threats to the financial sector.</li>
+            <li><strong>Spear-phishing</strong> n. 鱼叉钓鱼 Targeted phishing at a specific individual or role.</li>
+            <li><strong>Lateral move</strong> n. 横向移动 Attacker moving from one compromised host to another in the network.</li>
+            <li><strong>Web shell</strong> n. Web 后门 A malicious script dropped on a web server for remote command execution.</li>
+            <li><strong>LSASS dump</strong> n. LSASS 转储 Dumping the Local Security Authority Subsystem Service process to extract credentials.</li>
+            <li><strong>Scheduled task persistence</strong> n. 计划任务持久化 Using a Windows scheduled task to re-establish access after reboot.</li>
+            <li><strong>C2 (Command and Control)</strong> n. 命令与控制 The attacker-controlled server the malware calls home to.</li>
+            <li><strong>Hunt</strong> n. 猎捕 A time-bounded, IOC-driven proactive search for attacker presence.</li>
+            <li><strong>Threat profile</strong> n. 威胁画像 The bank's long-term read of the threat landscape — actors, TTPs, sector risks.</li>
+            <li><strong>SWIFT / MT-103</strong> n. SWIFT / MT-103 国际资金报文系统 / 客户汇款报文 SWIFT network / standard customer credit transfer message.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Sector alert level raised from X to Y" — name the level and the change</h3>
+        <p>Always name the level and the change. <em>From Elevated to High.</em> The CISO reads the level, not the actor list. The level is the headline.</p>
+        <p>总报级别和变化。<em>从提升到高。</em>CISO 读的是级别，不是攻击者列表。级别才是头条。</p>
+        <h3>② "IOCs pushed at HH:MM" — name the time of the push</h3>
+        <p>Always name the time of the IOC push. <em>IOCs pushed to SIEM and EDR at 11:00.</em> The SOC needs the timestamp to confirm the IOC is live in the platform.</p>
+        <p>总报 IOC 推送时间。<em>11:00 IOC 已推送到 SIEM 和 EDR。</em>SOC 需要时间戳确认 IOC 在平台里是激活的。</p>
+        <h3>③ "Active exploitation in the sector" — the override phrase</h3>
+        <p>"Active exploitation in the sector" is the phrase that overrides a planned schedule. <em>Risk is active exploitation in the sector — patch tonight, not Friday.</em> The CISO approves the override because the sector signal is louder than the local schedule.</p>
+        <p>"行业级活跃利用"是覆盖计划进度的关键短语。<em>风险是行业级活跃利用——今晚打补丁，不是周五。</em>CISO 批准覆盖，因为部门信号比本地计划响。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Lead with the sector alert level.</strong> The CISO reads the level, not the actor list. The level is the headline.</li>
+            <li><strong>TTP is the chain, in order.</strong> Quote the chain: phishing → lateral move → objective → log wipe. The CISO reads the chain, not the verb.</li>
+            <li><strong>Always name the time of the IOC push.</strong> 11:00 / 12:30. The SOC needs the timestamp to confirm the IOC is live.</li>
+            <li><strong>"Active exploitation in the sector" overrides the schedule.</strong> Use the phrase to accelerate a planned patch. The CISO approves the override because the sector signal is louder.</li>
+            <li><strong>A hunt is time-bounded, scoped, IOC-driven.</strong> 48 hours / customer portal / web shell paths. Always name all three.</li>
+            <li><strong>Share the IOC with FS-ISAC and the local regulator.</strong> Sector intel is a two-way street. The bank both consumes and contributes.</li>
+            <li><strong>Update the standing threat profile after every sector alert change.</strong> The threat profile is the bank's long-term read. Without it, the next forum has no anchor.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the threat intel briefing</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Threat intel update. Sector alert level raised from Elevated to High for APAC banking, driven by two APT campaigns — APT-29, a Russia-nexus actor, and APT-33, an Iran-nexus actor. Both targeting wealth management and private banking. First campaign: APT-29. Target: relationship manager workstations in private banking. TTP: spear-phishing on a relationship manager, lateral move to the workstation, deploy of a custom RAT, exfiltration of client data over DNS tunneling. IOCs: 4 sender domains, 6 file hashes, 3 DNS tunneling patterns, pushed to SIEM and EDR at 13:00. Second campaign: APT-33. Target: the wealth platform and the client reporting API. TTP: exploit of CVE-2025-50112 — the same one in our open Critical queue — web shell, credential theft via the LSASS dump, persistence via a WMI subscription. IOCs: 3 web shell paths, 5 WMI subscription names, 2 C2 domains, pushed at 14:30. Three implications. One: 50112 moves to tonight's change window, not Friday — risk is active exploitation in the sector. Two: WAF rule for the 50112 exploit pattern pushed — confirmed active at 15:00. Three: 48-hour hunt on the wealth platform and the client reporting API, looking for the web shell paths and WMI subscriptions. From IAM: two actions. Force password reset on all wealth and private banking RMs today. Review MFA enrolment — anyone without MFA, suspend until enrolled. That's 180 users, 6 hours to complete. Share the APT-33 IOC list with FS-ISAC and HKMA under the standard protocol. Update the bank's standing threat profile for the next Cyber Risk Forum."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"威胁情报层面同步。APAC 银行业部门警报级别从提升调至高，驱动因素是两个 APT 行动——APT-29，俄罗斯相关，APT-33，伊朗相关。两家都针对财富管理和私人银行。第一个行动：APT-29。目标：私人银行的客户经理工作站。TTP：针对客户经理的鱼叉钓鱼，横向移动到工作站，部署定制 RAT，通过 DNS 隧道外泄客户数据。IOC：4 个发件域、6 个文件 hash、3 个 DNS 隧道模式，13:00 推送到 SIEM 和 EDR。第二个行动：APT-33。目标：财富平台和客户报告 API。TTP：利用 CVE-2025-50112——和我们开放严重队列里那个一样——web shell，通过 LSASS 转储盗取凭据，通过 WMI 订阅持久化。IOC：3 个 web shell 路径、5 个 WMI 订阅名、2 个 C2 域，14:30 已推送。三个影响。一：50112 移到今晚变更窗口，不是周五——风险是行业级活跃利用。二：50112 利用模式的 WAF 规则已推——15:00 确认激活。三：财富平台和客户报告 API 跑 48 小时猎捕，查 web shell 路径和 WMI 订阅。IAM 两项：今天强制重置所有财富和私人银行 RM 密码；复核 MFA 注册——未注册 MFA 的停用直到注册。共 180 用户，6 小时完成。按标准协议把 APT-33 IOC 分享给 FS-ISAC 和 HKMA。把银行的常设威胁画像更新到下次 Cyber Risk Forum。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the threat intel mistake</h3>
+        <p>Which line would damage the briefing the most? Why?</p>
+        <ol>
+            <li>"Sector alert level raised from Elevated to High for APAC banking."</li>
+            <li>"There are some hackers out there and they're attacking banks, we should be careful."</li>
+            <li>"IOCs: 3 sender domains, 5 file hashes, 1 C2 IP, pushed to SIEM and EDR at 11:00."</li>
+            <li>"48-hour hunt on the customer portal, looking for web shell paths and scheduled task names."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the briefing-damager. "There are some hackers out there" replaces the sector alert level, the actor, the TTP, the IOC, and the hunt with a vague statement. The CISO will always bounce this back: which sector, which actor, which TTP, which IOCs, which hunt. ① leads with the alert level. ③ quotes the IOC push with time. ④ names the hunt scope and IOC. ② signals an immature intel function.</p>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute threat intel briefing</h3>
+        <p>You are the intel lead. FS-ISAC raises APAC banking from Guarded to Elevated, citing one APT campaign: APT-40, China-nexus, targeting correspondent banking. TTP: spear-phishing on a correspondent ops manager, lateral move, deploy of a credential stealer, fraudulent cross-border payment. IOCs: 2 sender domains, 4 file hashes, 1 C2 IP. Build a 30-minute script: (1) sector alert, (2) actor + TTP + IOC, (3) implications, (4) IAM actions, (5) regulator share + threat profile.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Threat intel update. Sector alert level raised from Guarded to Elevated for APAC banking, driven by one APT campaign — APT-40, China-nexus, targeting correspondent banking. TTP: spear-phishing on a correspondent ops manager, lateral move, deploy of a credential stealer, fraudulent cross-border payment. IOCs: 2 sender domains, 4 file hashes, 1 C2 IP, pushed to SIEM and EDR at 15:00. Three implications. One: WAF rule for the known spear-phishing sender domains — pushed at 15:30, confirmed active. Two: 48-hour hunt on the correspondent banking workstations, looking for credential stealer IOCs. Three: force password reset on all correspondent ops today, MFA review, suspend anyone without MFA until enrolled — 90 users, 4 hours. Share the APT-40 IOC list with FS-ISAC and HKMA by 17:00 under the standard protocol. Update the bank's standing threat profile for the next Cyber Risk Forum."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="04-vulnerability-status.html" class="btn btn-outline-secondary">← Previous: Article 04</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="06-pci-dss-audit.html" class="btn btn-primary">Next: Article 06 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

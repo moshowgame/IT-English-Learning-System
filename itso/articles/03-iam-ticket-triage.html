@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 03: IAM Ticket Triage | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">03 · IAM Ticket Triage</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>IAM Ticket Triage — Joiner, Mover, Leaver, Exception</h1>
+        <p class="subtitle">Article 03 · Module 1: Daily Security Operations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 JML, RBAC exceptions, access reviews, SoD conflicts, leaver SLA</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday 11:00 HKT</strong>. You are the <em>IAM team lead</em>. The weekend ticket queue has 47 tickets waiting: 28 joiners, 6 movers, 4 leavers, 9 access requests. The <em>leaver SLA</em> is <strong>4 hours from termination</strong> — 1 of the 4 leavers is already at 3 hours 40 minutes. Joining you on the standup: <strong>Linda</strong>, the HR operations partner, and <strong>James</strong>, the IT service desk lead.</p>
+        <p>周一 11:00 香港时间，你是 <em>IAM 团队负责人</em>。周末工单队列有 47 张等待：28 张入职、6 张调岗、4 张离职、9 张访问申请。<em>离职 SLA</em>是<strong>终止后 4 小时</strong>——4 张离职单里 1 张已 3 小时 40 分。参加站会的：HR 运营伙伴 <strong>Linda</strong>、IT 服务台负责人 <strong>James</strong>。</p>
+        <p>IAM is the SOC's quiet twin. It is measured in <strong>tickets, SLAs, JML (Joiner-Mover-Leaver), and SoD (Segregation of Duties) conflicts</strong>. The cost of a missed leaver is a data breach; the cost of a missed joiner is a productivity loss; the cost of a missed SoD conflict is an audit finding.</p>
+        <p>IAM 是 SOC 的安静孪生兄弟。用<strong>工单、SLA、JML（入职-调岗-离职）、SoD（职责分离）冲突</strong>度量。漏掉离职单的代价是数据泄露；漏掉入职单的代价是生产力损失；漏掉 SoD 冲突的代价是审计发现。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>IAM update from me.</em> <em>Queue status:</em> <em>47 tickets in the weekend backlog.</em> <em>28 joiners, 6 movers, 4 leavers, 9 access requests.</em> <em>One leaver is at 3 hours 40 minutes against the 4-hour SLA — that's the priority.</em></span><span class="cn"><em>IAM 层面同步一下。</em><em>队列状态：</em><em>周末积压 47 张工单。</em><em>28 张入职、6 张调岗、4 张离职、9 张访问申请。</em><em>一张离职单已 3 小时 40 分，离 4 小时 SLA 还有 20 分钟——这是优先级。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>Leaver priority:</em> <em>Peter Wu, terminated Friday 16:00, sales ops role.</em> <em>Termination notice came through from HR at 07:20.</em> <em>Disable, revoke, recover — in this order.</em> <em>Disable:</em> <em>AD account disabled, mailbox blocked.</em> <em>Revoke:</em> <em>SaaS sessions invalidated, MFA factors removed, VPN profile deleted.</em> <em>Recover:</em> <em>laptop returned, encrypted, awaiting IT asset recovery.</em> <em>Time to close:</em> <em>20 minutes.</em></span><span class="cn"><em>离职优先级：</em><em>Peter Wu，周五 16:00 终止，销售运营岗。</em><em>HR 终止通知 07:20 进来。</em><em>禁用、吊销、回收——按顺序。</em><em>禁用：</em><em>AD 账号禁用，邮箱封禁。</em><em>吊销：</em><em>SaaS 会话作废，MFA 因子删除，VPN profile 清除。</em><em>回收：</em><em>笔记本已回收、加密，等 IT 资产回收。</em><em>关闭时间：</em><em>20 分钟。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (IT service desk):</span>
+                <span class="text"><span class="en"><em>I'll handle the laptop recovery now.</em> <em>Anything else on Peter?</em></span><span class="cn"><em>我现在处理笔记本回收。</em><em>Peter 还有别的吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>One thing —</em> <em>he had temporary elevated access to the CRM last month for the price-list upload.</em> <em>That access was time-bound to expire on 30 Sep,</em> <em>but I want to confirm it's been revoked.</em> <em>Pull the access review report for the last 30 days and confirm.</em></span><span class="cn"><em>一件事——</em><em>他上月为了价目表上传被临时授予 CRM 高级权限。</em><em>那权限本应在 9 月 30 日到期，</em><em>但我要确认已吊销。</em><em>拉过去 30 天的访问复核报告确认一下。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Linda (HR ops):</span>
+                <span class="text"><span class="en"><em>On the joiners —</em> <em>18 of the 28 are routine onboarding for the new graduate intake,</em> <em>access templates already approved by line managers.</em> <em>10 are lateral hires with bespoke access requests.</em> <em>The 10 are the workload.</em></span><span class="cn"><em>入职这边——</em><em>28 张里 18 张是应届生入职的常规开通，</em><em>权限模板已经直线经理批准。</em><em>10 张是有定制权限请求的社招。</em><em>10 张才是工作量。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>Understood.</em> <em>For the 10 lateral hires,</em> <em>run the SoD conflict check against their previous role and the new role.</em> <em>If there's a conflict — initiator and approver, or maker and checker —</em> <em>flag it to the hiring manager,</em> <em>do not grant access until the conflict is resolved.</em></span><span class="cn"><em>明白。</em><em>10 张社招，</em><em>针对他们的新旧角色跑 SoD 冲突检查。</em><em>如果有冲突——发起人与审批人，或 maker 与 checker——</em><em>标记给用人经理，</em><em>冲突解决前不开权限。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Linda (HR ops):</span>
+                <span class="text"><span class="en"><em>On the access requests —</em> <em>3 of the 9 are RBAC exception requests</em> <em>where the requester is asking for a role that conflicts with policy.</em> <em>What do we do with those?</em></span><span class="cn"><em>访问申请这边——</em><em>9 张里 3 张是 RBAC 例外申请，</em><em>申请人要的角色和策略冲突。</em><em>这几张怎么处理？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>Three options.</em> <em>Option A:</em> <em>approve the exception with a time-bound expiry — max 30 days — and a named approver.</em> <em>Option B:</em> <em>deny and propose a compensating role that meets 80% of the need without the conflict.</em> <em>Option C:</em> <em>escalate to Group IAM for a policy exception</em> <em>— that takes 5 days and an attestation from the requester's MD.</em> <em>Default is Option B.</em> <em>Use Option A only if there's a regulatory or audit deadline.</em></span><span class="cn"><em>三个方案。</em><em>方案 A：</em><em>批准例外但限时——最长 30 天——加指定审批人。</em><em>方案 B：</em><em>拒绝，提出一个补偿角色，满足 80% 需求但无冲突。</em><em>方案 C：</em><em>升级到集团 IAM 走策略例外</em><em>——需要 5 天和申请人 MD 的声明。</em><em>默认方案 B。</em><em>只在有监管或审计截止日期时用方案 A。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">James (IT service desk):</span>
+                <span class="text"><span class="en"><em>And the leaver SLA breach policy?</em> <em>What do we log if we miss the 4-hour mark?</em></span><span class="cn"><em>离职 SLA 违约策略呢？</em><em>超过 4 小时我们记什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IAM lead):</span>
+                <span class="text"><span class="en"><em>Every breach is logged in the IAM breach register with root cause and remediation.</em> <em>Group IAM reports breaches monthly.</em> <em>Above 2 breaches per quarter triggers a control finding in the next Group Audit.</em> <em>We don't want that.</em> <em>Target:</em> <em>zero breaches, 100% on-time.</em></span><span class="cn"><em>每次违约都记进 IAM 违约登记册，写明根因和修复。</em><em>集团 IAM 每月报一次违约。</em><em>单季度超过 2 次违约触发下次集团审计的控制发现。</em><em>我们不想要那个。</em><em>目标：</em><em>零违约，100% 准时。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">IAM update</span> <em>IAM update from me. Queue status: 47 tickets, 28 joiners, 6 movers, 4 leavers, 9 access requests.</em></span>
+                <span class="chinese">IAM 层面同步。队列状态：47 张工单，28 入职，6 调岗，4 离职，9 访问申请</span>
+                <span class="note">Lead with the queue and the JML split. The HR partner reads the JML split; the IT lead reads the counts.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Disable, revoke, recover</span> <em>Disable: AD account disabled. Revoke: SaaS sessions invalidated, MFA removed. Recover: laptop returned.</em></span>
+                <span class="chinese">禁用、吊销、回收——按顺序</span>
+                <span class="note">The leaver checklist is fixed: disable (cut off access), revoke (kill sessions and factors), recover (asset). Order matters.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Time-bound</span> <em>Approve the exception with a time-bound expiry — max 30 days.</em></span>
+                <span class="chinese">批准例外但限时——最长 30 天</span>
+                <span class="note">Time-bound is the magic phrase. An open-ended exception is an audit finding; a time-bound one is a controlled risk.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SoD conflict</span> <em>Run the SoD conflict check. If initiator and approver, flag it to the hiring manager.</em></span>
+                <span class="chinese">跑 SoD 冲突检查。如果发起人和审批人冲突，标记给用人经理</span>
+                <span class="note">SoD = Segregation of Duties. The two-role conflict (initiator/approver, maker/checker) is the classic SoD finding.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating role</span> <em>Propose a compensating role that meets 80% of the need without the conflict.</em></span>
+                <span class="chinese">提出补偿角色，满足 80% 需求但无冲突</span>
+                <span class="note">Compensating role = the professional answer to a policy conflict. 80% is realistic; 100% usually means a new exception.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Breach register</span> <em>Every breach is logged in the IAM breach register with root cause and remediation.</em></span>
+                <span class="chinese">每次违约都记进 IAM 违约登记册，写明根因和修复</span>
+                <span class="note">The breach register is the audit trail. Root cause + remediation is the structure. Auditors read the register, not the chat.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>JML (Joiner-Mover-Leaver)</strong> n. 入职-调岗-离职 The IAM lifecycle: new hire, role change, departure.</li>
+            <li><strong>RBAC (Role-Based Access Control)</strong> n. 基于角色的访问控制 Access granted by role, not by individual.</li>
+            <li><strong>ABAC (Attribute-Based Access Control)</strong> n. 基于属性的访问控制 Access granted by attributes (department, geography, time).</li>
+            <li><strong>SoD (Segregation of Duties)</strong> n. 职责分离 Two roles that conflict (initiator/approver, maker/checker) must not be held by the same person.</li>
+            <li><strong>Leaver SLA</strong> n. 离职 SLA The time window to revoke all access after termination (typically 4 hours).</li>
+            <li><strong>Time-bound exception</strong> n. 限时例外 An access exception that auto-expires on a date.</li>
+            <li><strong>Compensating role</strong> n. 补偿角色 A role that meets most of the need without the policy conflict.</li>
+            <li><strong>Access review</strong> n. 访问复核 Periodic certification that an access is still required.</li>
+            <li><strong>Access request</strong> n. 访问申请 A ticket asking for new or modified access.</li>
+            <li><strong>Lateral hire</strong> n. 社招 A new hire joining from another company, with bespoke access needs.</li>
+            <li><strong>Onboarding template</strong> n. 入职模板 Pre-approved access bundle for standard new hires.</li>
+            <li><strong>Session revocation</strong> n. 会话吊销 Force-logout and invalidate all active sessions.</li>
+            <li><strong>MFA factor removal</strong> n. MFA 因子删除 Removing a registered MFA device (e.g. phone) so it cannot be reused.</li>
+            <li><strong>Breach register</strong> n. 违约登记册 The log of every SLA breach with root cause and remediation.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Disable, revoke, recover" — three verbs, fixed order</h3>
+        <p>The leaver checklist is three verbs in fixed order. <em>Disable, revoke, recover.</em> Skip "recover" and you have an asset leak; skip "revoke" and you have a session leak; skip "disable" and you have an access leak. The order is the chain.</p>
+        <p>离职清单是三个动词、固定顺序。<em>禁用、吊销、回收。</em>跳过"回收"会资产泄露；跳过"吊销"会话泄露；跳过"禁用"访问泄露。顺序就是链。</p>
+        <h3>② "Time-bound" — the magic adjective</h3>
+        <p>Time-bound is the magic adjective in IAM. <em>Approve with a time-bound expiry — max 30 days.</em> An open-ended exception is an audit finding; a time-bound one is a controlled risk. Always use the word.</p>
+        <p>Time-bound 是 IAM 的魔法形容词。<em>批准但限时——最长 30 天。</em>开放式例外是审计发现；限时例外是受控风险。总是用这个词。</p>
+        <h3>③ "Compensating role meets 80%" — the realistic answer</h3>
+        <p>Always propose a compensating role that meets 80% of the need, not 100%. <em>Meets 80% of the need without the conflict.</em> 100% usually means a new exception. 80% is the professional answer to a policy conflict.</p>
+        <p>补偿角色满足 80% 需求，不是 100%。<em>满足 80% 需求但无冲突。</em>100% 通常意味着新例外。80% 是对策略冲突的专业答案。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Leavers first. Always.</strong> A leaver at 3h40m against a 4-hour SLA is the priority. The cost of a missed leaver is a data breach.</li>
+            <li><strong>Disable, revoke, recover — in that order.</strong> The order is the chain. Skip one and the audit fails.</li>
+            <li><strong>Time-bound is the magic word.</strong> Open-ended exceptions are audit findings. Time-bound exceptions are controlled risks.</li>
+            <li><strong>SoD conflict is a flag, not a deny.</strong> Flag it to the hiring manager, do not grant until resolved. The hiring manager owns the decision.</li>
+            <li><strong>Compensating role beats exception.</strong> A role that meets 80% without the conflict is the professional answer. Exceptions are the last resort.</li>
+            <li><strong>Breach register is the audit trail.</strong> Root cause + remediation. Auditors read the register, not the chat.</li>
+            <li><strong>Zero breaches is the target, not 95%.</strong> IAM is binary: access is granted or not, on time or late. 95% on-time still means a breach.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the IAM triage</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "IAM update from me. Queue status: 32 tickets in the weekend backlog. 18 joiners, 4 movers, 3 leavers, 7 access requests. One leaver is at 3h10m against the 4-hour SLA — priority. Leaver priority: Anna Park, terminated Friday 17:00, compliance role. Termination notice came through from HR at 14:00. Disable, revoke, recover — in this order. Disable: AD account disabled, mailbox blocked. Revoke: SaaS sessions invalidated, MFA factors removed, VPN profile deleted. Recover: laptop returned, encrypted, awaiting IT asset recovery. Time to close: 50 minutes. On the joiners — 12 of the 18 are routine onboarding for the new graduate intake, templates approved by line managers. 6 are lateral hires with bespoke access. For the 6, run the SoD conflict check against previous and new role. If there's a conflict — initiator and approver, or maker and checker — flag it to the hiring manager, do not grant until resolved. On the access requests — 3 of the 7 are RBAC exception requests. Three options. Option A: approve with time-bound expiry — max 30 days — and named approver. Option B: deny, propose compensating role meeting 80% need without conflict. Option C: escalate to Group IAM, 5 days, attestation from MD. Default Option B. Use Option A only for regulatory or audit deadline. Every breach is logged in the IAM breach register with root cause and remediation. Above 2 per quarter triggers a control finding. Target: zero breaches, 100% on-time."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"IAM 层面同步。队列状态：周末积压 32 张工单。18 张入职、4 张调岗、3 张离职、7 张访问申请。一张离职单已 3 小时 10 分，离 4 小时 SLA 还有 50 分钟——优先级。离职优先级：Anna Park，周五 17:00 终止，合规岗。HR 终止通知 14:00 进来。禁用、吊销、回收——按顺序。禁用：AD 账号禁用，邮箱封禁。吊销：SaaS 会话作废，MFA 因子删除，VPN profile 清除。回收：笔记本已回收、加密，等 IT 资产回收。关闭时间：50 分钟。入职这边——18 张里 12 张是应届生入职的常规开通，模板已经直线经理批准。6 张是有定制权限的社招。6 张针对新旧角色跑 SoD 冲突检查。如果有冲突——发起人与审批人，或 maker 与 checker——标记给用人经理，冲突解决前不开权限。访问申请这边——7 张里 3 张是 RBAC 例外申请。三个方案。方案 A：批准但限时——最长 30 天——加指定审批人。方案 B：拒绝，提出补偿角色满足 80% 需求但无冲突。方案 C：升级到集团 IAM，5 天，MD 声明。默认方案 B。只在有监管或审计截止日期时用方案 A。每次违约都记进 IAM 违约登记册，写明根因和修复。单季度超过 2 次触发控制发现。目标：零违约，100% 准时。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the IAM mistake</h3>
+        <p>Which line would damage the leaver SLA the most? Why?</p>
+        <ol>
+            <li>"Leaver priority: Anna Park, terminated Friday 17:00. Disable, revoke, recover — in this order."</li>
+            <li>"I'll do the disable tomorrow morning, then revoke in the afternoon."</li>
+            <li>"Time to close: 50 minutes, against the 4-hour SLA."</li>
+            <li>"Every breach is logged in the IAM breach register with root cause and remediation."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the SLA-damager. "Tomorrow morning" is well past the 4-hour SLA. The leaver's access must be cut off within 4 hours of termination, not the next business day. ① walks the disable-revoke-recover chain. ③ quotes the time. ④ logs the breach. ② breaches the SLA by 12+ hours; the audit will fail.</p>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute IAM triage</h3>
+        <p>You are the IAM lead. The queue has 38 tickets: 22 joiners, 5 movers, 2 leavers (one at 3h50m), 9 access requests (3 RBAC exceptions). Build a 30-minute script: (1) queue + JML split, (2) priority leaver with disable/revoke/recover, (3) joiner SoD check, (4) exception options, (5) breach policy.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"IAM update. Queue: 38 tickets, 22 joiners, 5 movers, 2 leavers, 9 access requests. Priority leaver: David Lee, terminated Friday 18:00, finance ops. At 3h50m, 10 minutes to the 4-hour SLA. Disable, revoke, recover — in this order. Disable: AD account, mailbox. Revoke: SaaS sessions, MFA factors, VPN. Recover: laptop. Time to close: 8 minutes. Joiners: 15 standard templates, 7 lateral hires. SoD check on the 7. Conflict → flag to hiring manager, hold access. Access requests: 3 RBAC exceptions. Three options. A: time-bound, max 30 days, named approver. B: compensating role, 80% need, no conflict. C: Group IAM, 5 days, MD attestation. Default B. Use A only for regulator or audit deadline. Breach register: root cause + remediation. Above 2 per quarter = control finding. Target: zero breaches."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="02-siem-alert-triage.html" class="btn btn-outline-secondary">← Previous: Article 02</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="04-vulnerability-status.html" class="btn btn-primary">Next: Article 04 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

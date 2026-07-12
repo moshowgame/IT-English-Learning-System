@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 10: ISO 27001 &amp; SOX Control Evidence | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">10 · ISO 27001 &amp; SOX Control Evidence</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>ISO 27001 &amp; SOX Control Evidence — Owner, Test, Deficiency</h1>
+        <p class="subtitle">Article 10 · Module 2: Security Governance &amp; Compliance · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 ISO 27001 Annex A, SOX ITGC, control owner, evidence pack, deficiency triage</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 11:00 HKT</strong>. You are the <em>IT Controls &amp; Compliance Lead</em> at a global bank. The annual <strong>ISO 27001 surveillance audit</strong> is in week 1, and the <strong>SOX 404 ITGC testing</strong> by the external auditor is in week 2. Today's walk is the joint session covering <strong>ISO 27001 Annex A.9 (Access Control)</strong> and <strong>SOX ITGC IT-A03 (User Access Management)</strong>. Joining: <strong>Mrs. Garcia</strong>, the ISO 27001 lead auditor from BSI, and <strong>Mr. Davis</strong>, the SOX ITGC partner from the Big-4 firm. You have 60 minutes to walk 8 controls, 14 evidence artefacts, and 1 known deficiency.</p>
+        <p>周三 11:00 香港时间，你是全球银行的<em>IT 控制与合规负责人</em>。年度<strong>ISO 27001 监督审核</strong>进入第 1 周，<strong>SOX 404 ITGC 测试</strong>由外审在第 2 周进行。今天的走查是联合会议，覆盖<strong>ISO 27001 附录 A.9（访问控制）</strong>和<strong>SOX ITGC IT-A03（用户访问管理）</strong>。参加：BSI 的 ISO 27001 主任审核员 <strong>Garcia 女士</strong>，四大 SOX ITGC 合伙人 <strong>Davis 先生</strong>。60 分钟过完 8 项控制、14 个证据、1 个已知缺陷。</p>
+        <p>ISO 27001 + SOX walks share the same skeleton: <em>control → owner → test → evidence → result</em>. The difference is the control catalogue (Annex A vs SOX ITGC) and the auditor (BSI vs Big-4). The professional pattern is to walk both in parallel, using the same evidence pack, and never re-define a control.</p>
+        <p>ISO 27001 + SOX 走查共享同一骨架：<em>控制 → owner → 测试 → 证据 → 结果</em>。差别在控制目录（附录 A vs SOX ITGC）和审核员（BSI vs 四大）。专业模式是并行走，使用同一证据包，永不重定义控制。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mrs. Garcia (ISO 27001 lead auditor):</span>
+                <span class="text"><span class="en">"Let's start with <em>ISO 27001 Annex A.9.2.1 — user registration and de-registration.</em> <em>Walk me through the control, the owner, the test, and the evidence.</em>"</span><span class="cn">"我们从<em>ISO 27001 附录 A.9.2.1——用户注册和注销</em>开始。<em>请过控制、owner、测试、证据。</em>"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IT Controls lead):</span>
+                <span class="text"><span class="en"><em>Control A.9.2.1 — formal user lifecycle for joiners, movers, and leavers.</em> <em>Owner:</em> <em>the IAM lead, Michelle.</em> <em>Test:</em> <em>I selected 30 joiners, 20 movers, and 25 leavers from the HR system,</em> <em>verified the IAM record for each,</em> <em>and confirmed the joiner was created within 1 business day,</em> <em>the mover access was updated within 3 business days,</em> <em>and the leaver was disabled within 4 hours.</em> <em>Result:</em> <em>30/30 joiners compliant, 19/20 movers compliant, 24/25 leavers compliant.</em> <em>One mover outside the 3-day SLA — the deficiency I'll walk in a moment.</em> <em>Evidence:</em> <em>the IAM lifecycle report 'IAM_JML_Q3_2025.xlsx',</em> <em>and a sample ticket for the 1 deficient mover.</em></span><span class="cn"><em>控制 A.9.2.1——入职、调岗、离职的正式用户生命周期。</em><em>Owner：</em><em>IAM 负责人 Michelle。</em><em>测试：</em><em>我从 HR 系统抽 30 个入职、20 个调岗、25 个离职，</em><em>核实每个的 IAM 记录，</em><em>确认入职 1 个工作日内创建，</em><em>调岗 3 个工作日内更新权限，</em><em>离职 4 小时内禁用。</em><em>结果：</em><em>30/30 入职合规，19/20 调岗合规，24/25 离职合规。</em><em>1 个调岗超 3 天 SLA——就是我马上要走的那个缺陷。</em><em>证据：</em><em>IAM 生命周期报告 'IAM_JML_Q3_2025.xlsx'，</em><em>以及 1 个有缺陷调岗的样本工单。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Davis (SOX ITGC partner):</span>
+                <span class="text"><span class="en"><em>Walk the same control under SOX.</em> <em>IT-A03 — user access management for the in-scope financial systems.</em>"</span><span class="cn"><em>在 SOX 下过同一控制。</em><em>IT-A03——范围内财务系统的用户访问管理。</em>"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IT Controls lead):</span>
+                <span class="text"><span class="en"><em>Same control, same evidence pack.</em> <em>SOX IT-A03 — formal user access provisioning and revocation for the 12 in-scope financial systems.</em> <em>Owner:</em> <em>the IAM lead, jointly with the 12 system owners.</em> <em>Test:</em> <em>I selected 25 leavers from the last 6 months,</em> <em>verified the leaver's access was revoked in the 12 systems within 4 hours,</em> <em>and confirmed the revocation was logged in the SIEM.</em> <em>Result:</em> <em>25/25 leavers compliant,</em> <em>no access remained in any of the 12 systems.</em> <em>Evidence:</em> <em>the same IAM lifecycle report,</em> <em>plus the SIEM leaver access-revocation log 'SIEM_Leaver_Access_2025Q3.csv'.</em></span><span class="cn"><em>同一控制，同一证据包。</em><em>SOX IT-A03——12 个范围内财务系统的正式用户访问开通和吊销。</em><em>Owner：</em><em>IAM 负责人，与 12 个系统 owner 共同。</em><em>测试：</em><em>我抽过去 6 个月 25 个离职，</em><em>核实离职者在 12 个系统的访问 4 小时内吊销，</em><em>确认吊销记录在 SIEM。</em><em>结果：</em><em>25/25 离职合规，</em><em>12 个系统均无残留访问。</em><em>证据：</em><em>同一 IAM 生命周期报告，</em><em>加 SIEM 离职访问吊销日志 'SIEM_Leaver_Access_2025Q3.csv'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Davis (SOX ITGC partner):</span>
+                <span class="text"><span class="en"><em>And the deficiency — the 1 mover outside the 3-day SLA.</em> <em>What's the root cause, the remediation, and the due date?</em></span><span class="cn"><em>缺陷呢——超 3 天 SLA 的 1 个调岗。</em><em>根因、修复、截止日期？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IT Controls lead):</span>
+                <span class="text"><span class="en"><em>Deficiency D-2025-IT-014.</em> <em>Root cause:</em> <em>the manager submitted the access-change ticket 4 business days after the role change,</em> <em>not the same day.</em> <em>Remediation:</em> <em>we're rolling out a ServiceNow workflow that auto-creates the access-change ticket from the HR role-change event,</em> <em>removing the manager manual step.</em> <em>Due date:</em> <em>30 November 2026,</em> <em>attested by the IAM lead and Internal Audit.</em> <em>Compensating control today:</em> <em>the daily IAM-vs-HR reconciliation report,</em> <em>run by the SOC,</em> <em>flags any role change without a corresponding access ticket within 24 hours.</em></span><span class="cn"><em>缺陷 D-2025-IT-014。</em><em>根因：</em><em>经理在调岗后 4 个工作日才提交访问变更工单，</em><em>不是同一天。</em><em>修复：</em><em>我们正在部署 ServiceNow 工作流，从 HR 调岗事件自动创建访问变更工单，</em><em>去掉经理的手动步骤。</em><em>截止日期：</em><em>2026 年 11 月 30 日，</em><em>由 IAM 负责人和内审声明。</em><em>今日补偿控制：</em><em>每日 IAM 对 HR 对账报告，</em><em>由 SOC 跑，</em><em>24 小时内标记任何无对应访问工单的调岗。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mrs. Garcia (ISO 27001 lead auditor):</span>
+                <span class="text"><span class="en"><em>On Annex A.9.4.1 — information access restriction.</em> <em>How do you enforce least privilege on the in-scope systems?</em></span><span class="cn"><em>附录 A.9.4.1——信息访问限制。</em><em>如何在范围内系统强制最小权限？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IT Controls lead):</span>
+                <span class="text"><span class="en"><em>Three components.</em> <em>One</em>: <em>role-based access control — RBAC — through the central IAM platform,</em> <em>12 in-scope systems integrated.</em> <em>Two</em>: <em>quarterly access review by the 12 system owners,</em> <em>covering 8,400 user-role assignments,</em> <em>last cycle 38 removals for role change and 12 for leaver.</em> <em>Three</em>: <em>privileged access management — PAM — for the 240 privileged users,</em> <em>with session recording and just-in-time elevation.</em> <em>Test:</em> <em>I selected 30 user-role assignments,</em> <em>verified each is supported by a job-function justification,</em> <em>and confirmed the role has the minimum entitlements required.</em> <em>Result:</em> <em>30/30 justified,</em> <em>no excessive entitlements detected.</em> <em>Evidence:</em> <em>the access matrix 'CDE_Access_Matrix_2025Q3.pdf',</em> <em>the review sheet 'Access_Review_2025Q3.xlsx',</em> <em>and the PAM configuration export 'PAM_Config_2025Q3.json'.</em></span><span class="cn"><em>三部分。</em><em>一</em>：<em>RBAC——基于角色的访问控制——通过中央 IAM 平台，</em><em>12 个范围内系统已集成。</em><em>二</em>：<em>12 个系统 owner 季度访问复核，</em><em>覆盖 8,400 个用户-角色分配，</em><em>上一周期因调岗移除 38 个、离职移除 12 个。</em><em>三</em>：<em>240 个特权用户的 PAM——特权访问管理，</em><em>含会话录制和即时提权。</em><em>测试：</em><em>我抽 30 个用户-角色分配，</em><em>核实每个有岗位依据，</em><em>确认角色仅有所需最小权限。</em><em>结果：</em><em>30/30 有依据，</em><em>未发现过度授权。</em><em>证据：</em><em>访问矩阵 'CDE_Access_Matrix_2025Q3.pdf'，</em><em>复核表 'Access_Review_2025Q3.xlsx'，</em><em>以及 PAM 配置导出 'PAM_Config_2025Q3.json'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mrs. Garcia (ISO 27001 lead auditor):</span>
+                <span class="text"><span class="en"><em>One last — A.9.4.2 — secure log-on.</em> <em>What's the technical control?</em></span><span class="cn"><em>最后一项——A.9.4.2——安全登录。</em><em>技术控制？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (IT Controls lead):</span>
+                <span class="text"><span class="en"><em>MFA on all access into the in-scope systems,</em> <em>with conditional access enforcing step-up auth on geo-anomaly and on privileged actions.</em> <em>Test:</em> <em>I selected 25 users from the in-scope access list,</em> <em>verified each has MFA enrolled,</em> <em>verified the conditional access policy 'CA-CDE-001' enforces MFA,</em> <em>and reviewed a sample of 10 geo-anomaly logins for step-up auth.</em> <em>Result:</em> <em>25/25 MFA enrolled,</em> <em>10/10 step-up auth triggered on geo-anomaly.</em> <em>Evidence:</em> <em>the MFA enrolment report 'MFA_Enrolment_2025Q3.pdf',</em> <em>the policy export 'CA-CDE-001.json',</em> <em>and the step-up auth log 'StepUp_Geo_2025Q3.csv'.</em></span><span class="cn"><em>范围内系统的所有访问要求 MFA，</em><em>条件访问对地理位置异常和特权操作强制 step-up 认证。</em><em>测试：</em><em>我从范围内访问列表抽 25 用户，</em><em>核实每个注册 MFA，</em><em>核实条件访问策略 'CA-CDE-001' 强制 MFA，</em><em>并复核 10 个地理位置异常登录的 step-up 认证样本。</em><em>结果：</em><em>25/25 注册 MFA，</em><em>10/10 地理位置异常触发 step-up。</em><em>证据：</em><em>MFA 注册报告 'MFA_Enrolment_2025Q3.pdf'，</em><em>策略导出 'CA-CDE-001.json'，</em><em>以及 step-up 日志 'StepUp_Geo_2025Q3.csv'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mrs. Garcia (ISO 27001 lead auditor):</span>
+                <span class="text"><span class="en"><em>Excellent.</em> <em>One non-conformity raised on the deficiency D-2025-IT-014,</em> <em>acceptable per the corrective action plan,</em> <em>due 30 November 2026.</em> <em>No other findings on this session.</em></span><span class="cn"><em>非常好。</em><em>对缺陷 D-2025-IT-014 开一项不符合，</em><em>按纠正措施计划可接受，</em><em>截止 2026 年 11 月 30 日。</em><em>本次会议无其他发现。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Davis (SOX ITGC partner):</span>
+                <span class="text"><span class="en"><em>SOX side — one deficiency, also acceptable,</em> <em>same corrective action plan,</em> <em>same due date.</em> <em>No other findings.</em></span><span class="cn"><em>SOX 这边——一项缺陷，同样可接受，</em><em>同一纠正措施计划，</em><em>同一截止日期。</em><em>无其他发现。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Control / Owner / Test / Evidence</span> <em>Walk me through the control, the owner, the test, and the evidence.</em></span>
+                <span class="chinese">请过控制、owner、测试、证据</span>
+                <span class="note">ISO 27001 + SOX walk structure is fixed: control, owner, test, evidence. Always answer in that order. Skipping a field signals a weak control.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Same control, same evidence</span> <em>Same control, same evidence pack. SOX IT-A03 — formal user access provisioning and revocation for the 12 in-scope financial systems.</em></span>
+                <span class="chinese">同一控制，同一证据包。SOX IT-A03——12 个范围内财务系统的正式用户访问开通和吊销</span>
+                <span class="note">When the same evidence serves two frameworks, name it explicitly. The auditors reuse the same pack.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Deficiency with 4 fields</span> <em>Deficiency D-2025-IT-014. Root cause, remediation, due date, compensating control.</em></span>
+                <span class="chinese">缺陷 D-2025-IT-014。根因、修复、截止日期、补偿控制</span>
+                <span class="note">A deficiency always has 4 fields: ID, root cause, remediation, due date. The auditor reads all 4.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating control</span> <em>Compensating control: daily IAM-vs-HR reconciliation, run by SOC.</em></span>
+                <span class="chinese">补偿控制：每日 IAM 对 HR 对账，由 SOC 跑</span>
+                <span class="note">Compensating control is the answer to a known deficiency. Always name at least one.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">One non-conformity, no other findings</span> <em>One non-conformity raised, acceptable per the corrective action plan. No other findings.</em></span>
+                <span class="chinese">开一项不符合，按纠正措施计划可接受。无其他发现</span>
+                <span class="note">This is the gold-standard close. Name the non-conformity, anchor to the corrective action plan, and stop.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>ISO 27001</strong> n. ISO 27001 The international standard for Information Security Management Systems (ISMS).</li>
+            <li><strong>Annex A</strong> n. 附录 A The control catalogue in ISO 27001 — A.5 to A.18 in the 2022 version.</li>
+            <li><strong>SOX (Sarbanes-Oxley)</strong> n. 萨班斯-奥克斯利法案 US law requiring financial controls and IT general controls.</li>
+            <li><strong>SOX 404</strong> n. SOX 404 Section 404 — management assessment of internal controls.</li>
+            <li><strong>ITGC (IT General Controls)</strong> n. IT 通用控制 Controls over IT systems that support financial reporting.</li>
+            <li><strong>Surveillance audit</strong> n. 监督审核 Annual ISO 27001 audit to confirm continued compliance.</li>
+            <li><strong>BSI</strong> n. 英国标准协会 One of the major ISO 27001 certification bodies.</li>
+            <li><strong>Control owner</strong> n. 控制 owner The named individual accountable for a control's operation.</li>
+            <li><strong>Deficiency</strong> n. 缺陷 A control instance that did not operate as designed.</li>
+            <li><strong>Non-conformity</strong> n. 不符合 ISO 27001 term for a control failure requiring corrective action.</li>
+            <li><strong>Corrective action plan (CAP)</strong> n. 纠正措施计划 The documented plan to remediate a deficiency.</li>
+            <li><strong>Compensating control</strong> n. 补偿控制 A control that mitigates risk while a deficiency is open.</li>
+            <li><strong>RBAC</strong> n. 基于角色的访问控制 Access granted by role, not by individual.</li>
+            <li><strong>PAM</strong> n. 特权访问管理 The platform that controls privileged access with session recording.</li>
+            <li><strong>Just-in-time elevation</strong> n. 即时提权 Privileged access granted for a bounded time window, then revoked.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Control, owner, test, evidence" — four nouns, fixed order</h3>
+        <p>ISO 27001 + SOX walk structure is fixed. <em>Control, owner, test, evidence.</em> Always answer in that order. Skipping a field signals a weak control.</p>
+        <p>ISO 27001 + SOX 走查结构是固定的。<em>控制、owner、测试、证据。</em>总按顺序回答。缺一项等于控制弱。</p>
+        <h3>② "Same control, same evidence" — reuse explicitly</h3>
+        <p>When the same evidence serves two frameworks, name it. <em>Same control, same evidence pack.</em> The auditors reuse the same pack; the bank saves time and the auditors see consistency.</p>
+        <p>同一证据服务两个框架时，明确说出来。<em>同一控制，同一证据包。</em>审核员复用同一包；银行省时间，审核员看到一致性。</p>
+        <h3>③ "Deficiency: ID, root cause, remediation, due date" — four fields, fixed order</h3>
+        <p>A deficiency always has 4 fields: ID, root cause, remediation, due date. The auditor reads all 4. Skip one and the deficiency is incomplete.</p>
+        <p>缺陷总是有 4 个字段：ID、根因、修复、截止日期。审核员读全部 4 项。缺一项等于缺陷不完整。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Control, owner, test, evidence — in that order.</strong> The walk structure is fixed. Skip one and the auditor asks for it.</li>
+            <li><strong>Reuse the evidence pack across frameworks.</strong> Same control, same evidence. The auditors love the consistency.</li>
+            <li><strong>Deficiency with 4 fields: ID, root cause, remediation, due date.</strong> The auditor reads all 4. Skip one and the deficiency is incomplete.</li>
+            <li><strong>Compensating control is the answer to a known deficiency.</strong> Name at least one. No control = unmanaged deficiency = material weakness.</li>
+            <li><strong>"One non-conformity, no other findings" is the gold-standard close.</strong> Name the non-conformity, anchor to the corrective action plan, stop.</li>
+            <li><strong>Bring the right owner.</strong> IAM lead for A.9, system owners for A.9.4. The auditor expects the named owner to answer, not the controls lead alone.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the ISO/SOX walk</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Let's start with ISO 27001 Annex A.9.2.4 — management of secret authentication information. Walk me through the control, the owner, the test, and the evidence."
+            "Control A.9.2.4 — secret authentication information (passwords, API keys, tokens) is managed through the central vault, never stored in plain text, rotated on a 90-day cycle. Owner: the IAM lead, Michelle. Test: I selected 30 privileged accounts, verified the secret is stored in the central vault, verified the rotation date is within 90 days, and confirmed no secrets in plain text in code, config, or tickets. Result: 30/30 compliant. Evidence: the vault report 'Vault_Secrets_2025Q3.xlsx', the rotation log 'Vault_Rotation_2025Q3.csv', and a scan output 'SecretScan_2025Q3.json' from the code-scanning tool."
+            "And under SOX — IT-A07, secret management for the in-scope financial systems. Walk it."
+            "Same control, same evidence. SOX IT-A07 — secret management for the 12 in-scope financial systems, with rotation on a 60-day cycle, stricter than the 90-day ISO baseline. Owner: the IAM lead, jointly with the 12 system owners. Test: I selected 20 service-account secrets from the 12 systems, verified the rotation date is within 60 days, and confirmed the secret is not in plain text in any config file. Result: 20/20 compliant. Evidence: the same vault report, plus a service-account rotation log 'SvcAccount_Rotation_2025Q3.csv'. No findings on the SOX side."
+            "One deficiency on the ISO side — secret management for 3 service accounts on the trade-finance platform, 78 days past the 60-day rotation. Walk it."
+            "Deficiency D-2025-IT-018. Root cause: the auto-rotation job failed for the 3 service accounts due to a missing IAM policy on the rotation identity. Remediation: the policy added on 15 October, rotation forced for the 3 accounts, monitoring added for future failures. Due date: closed 18 October 2025, ahead of the 30-day CAP window. Compensating control during the open window: daily rotation-monitoring alert to the SOC. Evidence: the incident ticket 'INC-2025-10-15-004', the policy change record 'IAM_Policy_2025-10-15.json', and the rotation confirmation 'Vault_Confirm_2025-10-16.json'."
+            "Excellent. One non-conformity raised, closed within the corrective action window. No other findings."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"我们从 ISO 27001 附录 A.9.2.4——秘密认证信息管理开始。请过控制、owner、测试、证据。"
+            "控制 A.9.2.4——秘密认证信息（密码、API key、token）通过中央 vault 管理，永不明文存储，90 天周期轮换。Owner：IAM 负责人 Michelle。测试：我抽 30 个特权账号，核实秘密存在中央 vault，核实轮换日期在 90 天内，确认代码、配置、工单中无明文秘密。结果：30/30 合规。证据：vault 报告 'Vault_Secrets_2025Q3.xlsx'，轮换日志 'Vault_Rotation_2025Q3.csv'，代码扫描工具的扫描输出 'SecretScan_2025Q3.json'。"
+            "SOX 下——IT-A07，范围内财务系统的秘密管理。请过。"
+            "同一控制，同一证据。SOX IT-A07——12 个范围内财务系统的秘密管理，60 天周期轮换，比 90 天 ISO 基线更严。Owner：IAM 负责人，与 12 个系统 owner 共同。测试：我抽 12 个系统的 20 个服务账号秘密，核实轮换日期在 60 天内，确认任何配置文件无明文秘密。结果：20/20 合规。证据：同一 vault 报告，加服务账号轮换日志 'SvcAccount_Rotation_2025Q3.csv'。SOX 这边无发现。"
+            "ISO 这边一项缺陷——贸易融资平台 3 个服务账号秘密管理，超 60 天轮换 78 天。请过。"
+            "缺陷 D-2025-IT-018。根因：3 个服务账号的自动轮换任务失败，因轮换身份缺少 IAM 策略。修复：10 月 15 日加策略，3 个账号强制轮换，添加未来失败监控。关闭日期：2025 年 10 月 18 日关闭，提前于 30 天 CAP 窗口。开放窗口期间补偿控制：每日轮换监控告警到 SOC。证据：事件工单 'INC-2025-10-15-004'，策略变更记录 'IAM_Policy_2025-10-15.json'，轮换确认 'Vault_Confirm_2025-10-16.json'。"
+            "非常好。已开一项不符合，在纠正措施窗口内关闭。无其他发现。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the ISO/SOX walk mistake</h3>
+        <p>Which line would damage the joint walk the most? Why?</p>
+        <ol>
+            <li>"Control A.9.2.1 — formal user lifecycle. Owner: IAM lead. Test: 30 joiners, 20 movers, 25 leavers. Result: 30/30, 19/20, 24/25. Evidence: 'IAM_JML_Q3_2025.xlsx'."</li>
+            <li>"We do identity management and it's working OK."</li>
+            <li>"Deficiency D-2025-IT-014, root cause manager late ticket, remediation ServiceNow workflow, due 30 Nov 2026, compensating control daily IAM-vs-HR reconciliation."</li>
+            <li>"SOX IT-A03 same control same evidence. Test: 25 leavers, 12 systems, 4-hour SLA. Result: 25/25. No remaining access."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the walk-damager. "We do identity management and it's working OK" replaces the control, the owner, the test, the result, and the evidence with a feeling. The auditor will always bounce this back: which control, which owner, which sample, which result, which evidence. ① walks the four fields. ③ covers the 4 deficiency fields. ④ reuses the evidence under SOX. ② is an immature controls function; the auditor will write a finding.</p>
+        </div>
+        <h3>Exercise 3 — Run a 60-minute joint ISO/SOX walk</h3>
+        <p>You are the IT Controls lead. ISO A.9.2.5 (review of user access rights) + SOX IT-A05 (periodic access review). Build a 60-minute script: control, owner, test (sample 30), evidence, 1 deficiency with 4 fields, compensating control, close with "one non-conformity, no other findings".</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Control A.9.2.5 — review of user access rights. Owner: the 12 system owners, with the IAM lead. Test: I selected 30 user-role assignments from the quarterly access review, verified each is supported by a job-function justification, confirmed the last review date is within 90 days, and confirmed the reviewer is the named system owner, not a delegate. Result: 29/30 reviewed within 90 days by the named system owner. 1 reviewed by a delegate without the formal delegation letter. Evidence: the access review sheet 'Access_Review_2025Q3.xlsx' and the delegation letter register 'Delegation_2025Q3.pdf'. SOX IT-A05 same control same evidence. Test: same 30, verified the same fields under SOX. Result: 29/30 SOX-compliant. Deficiency D-2025-IT-022. Root cause: the system owner was on PTO and the delegate reviewed without the formal delegation letter. Remediation: the delegation letter added retroactively 18 October, the access review re-attested by the named system owner 22 October, the delegation workflow now requires the letter before the review is accepted. Due date: closed 25 October 2025, within the 30-day CAP window. Compensating control: the IAM platform blocks any access review submitted by a delegate without a letter on file. Evidence: the delegation letter 'Delegate_2025-10-18.pdf', the re-attestation 'Re-attest_2025-10-22.xlsx', and the IAM platform rule 'IAM_Delegate_Block_2025-10-25.json'. One non-conformity raised, closed within the corrective action window. No other findings."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="09-hkma-cyber-resilience.html" class="btn btn-outline-secondary">← Previous: Article 09</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="11-incident-notification.html" class="btn btn-primary">Next: Article 11 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 12: Risk Acceptance Memo | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">12 · Risk Acceptance Memo</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Risk Acceptance Memo — Time-Bound, Named Owner, Compensating Control</h1>
+        <p class="subtitle">Article 12 · Module 3: Written Security Communication · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Residual risk, time-bound, named owner, sign-off chain, compensating control</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 11:00 HKT</strong>. You are the <em>Group Cyber Risk Lead</em>. The <strong>Customer Onboarding 2026</strong> programme has requested a <em>waiver from the Group MFA Standard</em> for the new <em>instant account-opening</em> mobile flow. The business case: market research shows that adding a second factor at sign-up will drop the conversion rate by 18% during the launch window. The waiver request is for <strong>9 months</strong>, ending when the FIDO2 biometric flow ships. The Group CISO has asked you to draft the <strong>Risk Acceptance Memo</strong> for the CISO + CRO joint sign-off. The Group MFA Standard cannot be waived without a memo.</p>
+        <p>周三 11:00 香港时间，你是<em>集团网络风险负责人</em>。<strong>2026 客户开户</strong>项目群请求<em>集团 MFA 标准的豁免</em>，用于新的<em>即时开户</em>移动流程。商业理由：市场研究表明注册时增加第二因素会使转化率在发布窗口期下降 18%。豁免请求期限为 <strong>9 个月</strong>，在 FIDO2 生物识别流程上线时结束。集团 CISO 要求你为 CISO + CRO 联合签批起草<strong>风险接受备忘录</strong>。没有备忘录，集团 MFA 标准不能豁免。</p>
+        <p>A risk acceptance is not a rubber stamp. It is a <em>time-bound, named-owner, compensating-control</em> agreement that puts the business owner on the hook for the residual risk. The memo must be defensible to the regulator, the auditor, and the board three years from now.</p>
+        <p>风险接受不是橡皮图章。它是<em>有时限、有具名负责人、有补偿控制</em>的协议，让业务负责人对剩余风险负责。备忘录必须在三年后对监管、审计、董事会都可辩护。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Memo — 8 Mandatory Sections</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><strong>To:</strong> Group CISO, Group CRO · <strong>From:</strong> Group Cyber Risk Lead · <strong>Date:</strong> Wednesday 11:00 HKT · <strong>Subject:</strong> [FOR SIGN-OFF] Customer Onboarding 2026 — Time-Bound Waiver of Group MFA Standard for Instant Account-Opening Flow (9 months, 31 Mar 2027 expiry)</span><span class="cn"><strong>收件人：</strong>集团 CISO、集团 CRO · <strong>发件人：</strong>集团网络风险负责人 · <strong>日期：</strong>周三 11:00 HKT · <strong>主题：</strong>[待签批] 2026 客户开户——即时开户流程集团 MFA 标准的有时限豁免（9 个月，2027 年 3 月 31 日到期）</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 1 — Standard being waived.</em> <em>Group MFA Standard, version 4.2, section 3.1:</em> <em>"All new customer-facing authentication flows must use multi-factor authentication at sign-up,</em> <em>with at least one phishing-resistant factor."</em> <em>The instant account-opening flow on the new mobile app</em> <em>uses single-factor (email + password) at sign-up,</em> <em>with MFA applied only at the first high-value transaction (>$10,000 HKD).</em></span><span class="cn"><em>第 1 节——被豁免的标准。</em><em>集团 MFA 标准 4.2 版第 3.1 节：</em><em>"所有新的客户面身份认证流程必须在注册时使用多因素认证，</em><em>至少包含一个抗钓鱼因素。"</em><em>新移动应用的即时开户流程</em><em>在注册时使用单因素（邮箱 + 密码），</em><em>MFA 仅在首次高价值交易（&gt; 1 万港币）时启用。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 2 — Business justification.</em> <em>Market research,</em> <em>3 pilot markets (HK, SG, UK),</em> <em>8,400 simulated sign-ups:</em> <em>adding a second factor at sign-up drops the conversion rate by 18%.</em> <em>Projected loss at 18% conversion drop:</em> <em>62,000 onboarded customers in the launch window (9 months),</em> <em>estimated revenue impact: $14.8M annualised.</em> <em>The instant flow is the bank's competitive response to three digital-only competitors.</em></span><span class="cn"><em>第 2 节——商业理由。</em><em>市场研究，</em><em>3 个试点市场（HK、SG、UK），</em><em>8,400 次模拟注册：</em><em>注册时增加第二因素使转化率下降 18%。</em><em>18% 转化率下降的预计损失：</em><em>发布窗口（9 个月）流失 6.2 万开户客户，</em><em>预计收入影响：年化 1,480 万美元。</em><em>即时流程是银行对三家纯数字竞争对手的竞争响应。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 3 — Residual risk.</em> <em>Inherent risk:</em> <em>account takeover (ATO) at sign-up,</em> <em>using credentials harvested from public breaches.</em> <em>Likelihood:</em> <em>medium</em> <em>(credentials available for ~1.2B accounts in public breach corpora).</em> <em>Impact:</em> <em>medium-low</em> <em>(no funds at sign-up; first transaction triggers MFA + identity verification).</em> <em>Net residual risk rating:</em> <em>Medium</em> <em>(was High before compensating controls).</em></span><span class="cn"><em>第 3 节——剩余风险。</em><em>固有风险：</em><em>注册时的账户接管（ATO），</em><em>使用公网泄露中获取的凭证。</em><em>可能性：</em><em>中</em><em>（公网泄露语料中约 12 亿账户凭证可用）。</em><em>影响：</em><em>中低</em><em>（注册时无资金；首次交易触发 MFA + 身份验证）。</em><em>净剩余风险评级：</em><em>中</em><em>（补偿控制前为高）。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 4 — Compensating controls.</em> <em>Control 1:</em> <em>device fingerprint + behavioural biometrics at sign-up</em> <em>(vendor: BioCatch, integrated, live since 1 August).</em> <em>Control 2:</em> <em>MFA enforced at first high-value transaction (>$10K HKD)</em> <em>and at first outbound transfer.</em> <em>Control 3:</em> <em>enhanced account-level monitoring for the first 30 days</em> <em>(SOC rules in production).</em> <em>Control 4:</em> <em>weekly credential-stuffing watch via the Group Threat Intel feed.</em></span><span class="cn"><em>第 4 节——补偿控制。</em><em>控制 1：</em><em>注册时设备指纹 + 行为生物识别</em><em>（厂商：BioCatch，已集成，8 月 1 日上线）。</em><em>控制 2：</em><em>首次高价值交易（&gt; 1 万港币）</em><em>和首次对外转账时强制 MFA。</em><em>控制 3：</em><em>前 30 天加强账户级监控</em><em>（SOC 规则已投产）。</em><em>控制 4：</em><em>通过集团威胁情报源每周观察撞库情况。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 5 — Time-bound.</em> <em>Waiver effective 1 September 2026 to 31 March 2027 (7 months).</em> <em>[Correction: original request was 9 months; reduced to 7 months after review.]</em> <em>Expiry trigger:</em> <em>the FIDO2 biometric sign-up flow lands in M5 (target 31 March 2027).</em> <em>If FIDO2 slips,</em> <em>a re-acceptance memo is required 30 days before expiry.</em> <em>No automatic renewal.</em></span><span class="cn"><em>第 5 节——时限。</em><em>豁免有效期 2026 年 9 月 1 日至 2027 年 3 月 31 日（7 个月）。</em><em>[修正：原始请求 9 个月，审核后减为 7 个月。]</em><em>到期触发：</em><em>FIDO2 生物识别注册流程在 M5 上线（目标 2027 年 3 月 31 日）。</em><em>若 FIDO2 推迟，</em><em>到期前 30 天需重新签批备忘录。</em><em>不自动续期。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 6 — Named owner.</em> <em>Risk owner:</em> <em>Sarah Chen, Head of Digital Onboarding,</em> <em>owns the residual risk and the compensating control operation.</em> <em>Control owner:</em> <em>David Liu, Head of Identity &amp; Access Management,</em> <em>owns the FIDO2 delivery.</em> <em>Both names on the memo; both must sign.</em></span><span class="cn"><em>第 6 节——具名负责人。</em><em>风险负责人：</em><em>Sarah Chen，数字开户负责人，</em><em>对剩余风险和补偿控制运营负责。</em><em>控制负责人：</em><em>David Liu，IAM 负责人，</em><em>对 FIDO2 交付负责。</em><em>两个名字在备忘录上；都必须签批。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 7 — Sign-off chain.</em> <em>Step 1:</em> <em>Risk owner (Sarah Chen) signs to acknowledge residual risk.</em> <em>Step 2:</em> <em>Control owner (David Liu) signs to commit to FIDO2 delivery date.</em> <em>Step 3:</em> <em>Group CISO signs to acknowledge the standard waiver.</em> <em>Step 4:</em> <em>Group CRO signs to acknowledge the residual risk rating.</em> <em>Step 5:</em> <em>Group Legal counter-signs for the Group Policy exception register.</em></span><span class="cn"><em>第 7 节——签批链。</em><em>步骤 1：</em><em>风险负责人（Sarah Chen）签字确认剩余风险。</em><em>步骤 2：</em><em>控制负责人（David Liu）签字承诺 FIDO2 交付日期。</em><em>步骤 3：</em><em>集团 CISO 签字确认标准豁免。</em><em>步骤 4：</em><em>集团 CRO 签字确认剩余风险评级。</em><em>步骤 5：</em><em>集团法务副签纳入集团政策例外登记簿。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 8 — Monitoring and revocation.</em> <em>Monthly review at the Cyber Risk Forum:</em> <em>ATO attempts, conversion rate, MFA bypass incidents, compensating control health.</em> <em>Revocation triggers:</em> <em>(a) any confirmed ATO incident originating from the sign-up flow,</em> <em>(b) any compensating control below SLA for 2 consecutive months,</em> <em>(c) FIDO2 delivery slips by more than 60 days.</em> <em>Revocation</em> <em>= instant MFA enforcement on the sign-up flow,</em> <em>effective within 24 hours of the trigger.</em></span><span class="cn"><em>第 8 节——监控和撤销。</em><em>Cyber Risk Forum 每月复核：</em><em>ATO 尝试、转化率、MFA 绕过事件、补偿控制健康度。</em><em>撤销触发：</em><em>（a）任何确认的源自注册流程的 ATO 事件，</em><em>（b）任何补偿控制连续 2 个月低于 SLA，</em><em>（c）FIDO2 交付推迟超过 60 天。</em><em>撤销</em><em>= 立即在注册流程启用 MFA，</em><em>触发后 24 小时内生效。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Standard being waived</span> <em>Group MFA Standard, version 4.2, section 3.1 — name the standard and the section.</em></span>
+                <span class="chinese">集团 MFA 标准 4.2 版第 3.1 节——指明标准和章节</span>
+                <span class="note">Always cite the standard version and section. "The MFA rule" is not a memo. "Group MFA Standard v4.2 §3.1" is a memo.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Residual risk rating</span> <em>Net residual risk rating: Medium (was High before compensating controls).</em></span>
+                <span class="chinese">净剩余风险评级：中（补偿控制前为高）</span>
+                <span class="note">Always name the rating before AND after compensating controls. The delta is the value of the controls.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Time-bound</span> <em>Waiver effective 1 September 2026 to 31 March 2027 (7 months). No automatic renewal.</em></span>
+                <span class="chinese">豁免有效期 2026 年 9 月 1 日至 2027 年 3 月 31 日（7 个月），不自动续期</span>
+                <span class="note">"Time-bound" is the operative word. A waiver without an expiry is not a waiver — it is a permanent standard change.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Named owner</span> <em>Risk owner: Sarah Chen. Control owner: David Liu. Both names on the memo.</em></span>
+                <span class="chinese">风险负责人：Sarah Chen。控制负责人：David Liu。两个名字在备忘录上</span>
+                <span class="note">"Named owner" is the legal hook. If something goes wrong, the regulator and the court ask: whose name was on the memo?</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating control</span> <em>Four compensating controls: device fingerprint, MFA at first high-value transaction, enhanced monitoring, credential-stuffing watch.</em></span>
+                <span class="chinese">四个补偿控制：设备指纹、首次高价值交易 MFA、加强监控、撞库观察</span>
+                <span class="note">Compensating controls are not "nice to have". They are the reason the residual drops from High to Medium. List them; measure them; report them.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Revocation trigger</span> <em>Revocation triggers: (a) any confirmed ATO incident, (b) any compensating control below SLA for 2 months, (c) FIDO2 slips by 60 days.</em></span>
+                <span class="chinese">撤销触发：（a）任何确认的 ATO 事件，（b）任何补偿控制连续 2 个月低于 SLA，（c）FIDO2 推迟 60 天</span>
+                <span class="note">Revocation triggers are the auto-kill switch. If the conditions are met, the waiver dies — no meeting required.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Re-acceptance memo</span> <em>If FIDO2 slips, a re-acceptance memo is required 30 days before expiry. No automatic renewal.</em></span>
+                <span class="chinese">若 FIDO2 推迟，到期前 30 天需重新签批备忘录。不自动续期</span>
+                <span class="note">"Re-acceptance" is the discipline. A waiver that auto-renews is a permanent exception. Force the memo cycle.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Risk Acceptance Memo</strong> n. 风险接受备忘录 The formal document for accepting a standard waiver.</li>
+            <li><strong>Standard waiver</strong> n. 标准豁免 A formal exception to a Group standard, time-bound and named.</li>
+            <li><strong>Residual risk</strong> n. 剩余风险 The risk that remains after compensating controls.</li>
+            <li><strong>Inherent risk</strong> n. 固有风险 The risk before any controls are applied.</li>
+            <li><strong>Compensating control</strong> n. 补偿控制 A control that reduces risk when the primary control is not in place.</li>
+            <li><strong>Time-bound</strong> n. 有时限 An exception with a clear expiry date and no auto-renewal.</li>
+            <li><strong>Named owner</strong> n. 具名负责人 A specific person, not a team, on the hook for the risk or the control.</li>
+            <li><strong>Sign-off chain</strong> n. 签批链 The sequence of approvers, named in order, with their roles.</li>
+            <li><strong>Revocation trigger</strong> n. 撤销触发 A pre-agreed condition that auto-kills the waiver.</li>
+            <li><strong>Re-acceptance memo</strong> n. 重新签批备忘录 A new memo required if the waiver needs to extend past expiry.</li>
+            <li><strong>Policy exception register</strong> n. 政策例外登记簿 Group Legal's log of all approved exceptions to Group standards.</li>
+            <li><strong>FIDO2</strong> n. FIDO2 标准 Phishing-resistant authentication standard (passkeys, hardware keys).</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>8 sections, fixed order.</strong> Standard, business justification, residual risk, compensating controls, time-bound, named owner, sign-off chain, monitoring/revocation. The CISO reads the structure, not the prose.</li>
+            <li><strong>Cite the standard with version and section.</strong> "Group MFA Standard v4.2 §3.1" is a memo. "The MFA rule" is a request.</li>
+            <li><strong>Residual risk rating — before AND after controls.</strong> The delta is the value of the compensating controls. Without the delta, the controls look decorative.</li>
+            <li><strong>Time-bound means expiry date AND no auto-renewal.</strong> A waiver that auto-renews is a permanent standard change in disguise.</li>
+            <li><strong>Named owner — risk AND control.</strong> Two names: the risk owner (the business) and the control owner (the engineer). Both sign. If you can only get one name, you don't have a memo.</li>
+            <li><strong>Revocation triggers must be auto, not discretionary.</strong> "If the CISO decides" is not a trigger. "If ATO count > 0" is a trigger.</li>
+            <li><strong>Group Legal counter-signs for the exception register.</strong> The memo goes into the Group Policy Exception Register. That register is what the regulator and the auditor read three years from now.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the memo header</h3>
+        <p>Translate the memo header into natural Chinese.</p>
+        <blockquote>
+            "To: Group CISO, Group CRO. From: Group Cyber Risk Lead. Date: Thursday 14:30 HKT. Subject: [FOR SIGN-OFF] Wholesale Banking 2026 — Time-Bound Waiver of Group DLP Standard for Trader Workstations (6 months, 30 April 2027 expiry). Standard being waived: Group DLP Standard, version 2.1, section 5.4 — USB removable media must be blocked on all bank-managed endpoints."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"收件人：集团 CISO、集团 CRO。发件人：集团网络风险负责人。日期：周四 14:30 HKT。主题：[待签批] 2026 批发银行——交易员工作站集团 DLP 标准的有时限豁免（6 个月，2027 年 4 月 30 日到期）。被豁免的标准：集团 DLP 标准 2.1 版第 5.4 节——所有银行管理端点必须屏蔽 USB 可移动介质。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the memo mistake</h3>
+        <p>Which line would damage the risk acceptance memo the most? Why?</p>
+        <ol>
+            <li>"Standard being waived: Group MFA Standard v4.2 §3.1. Residual risk: Medium. Compensating controls: 4. Time-bound: 7 months, expiry 31 Mar 2027. Named owner: Sarah Chen."</li>
+            <li>"We need to waive the MFA rule because the business wants it and the launch is in 2 weeks. The CISO can sign this for us."</li>
+            <li>"Revocation triggers: (a) any confirmed ATO, (b) any compensating control below SLA for 2 months. Revocation = instant MFA, 24-hour effect."</li>
+            <li>"Sign-off chain: risk owner, control owner, Group CISO, Group CRO, Group Legal."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We need to waive the MFA rule because the business wants it" replaces the 8 sections with a demand. The CISO and CRO will not sign a memo that names no standard, no residual rating, no compensating controls, no expiry, no named owner, and no revocation trigger. ① cites the standard, the residual rating, the controls, the time-bound, the named owner. ③ names the revocation triggers. ④ names the sign-off chain. ② is a request, not a memo.</p>
+        </div>
+        <h3>Exercise 3 — Build a risk acceptance memo</h3>
+        <p>The Cloud Migration programme wants to disable Group Encryption Standard §2.3 (FIPS 140-2 validated modules only) for 3 pilot services in HK for 6 months to use a non-FIPS cloud HSM. Build the 8 sections: (1) standard, (2) business justification, (3) residual risk, (4) compensating controls, (5) time-bound, (6) named owner, (7) sign-off chain, (8) monitoring/revocation.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Section 1 — Standard. Group Encryption Standard v3.1 §2.3: 'All cryptographic modules used in bank systems must be FIPS 140-2 validated (level 2 or above).' The 3 pilot services will use a cloud HSM that is FIPS 140-2 level 1 (validated) but level 2 (hardware tamper-resistance) is in roadmap for Q4 2027. Section 2 — Business justification. The non-FIPS-level-2 HSM is $1.8M cheaper over 3 years than the FIPS-level-2 equivalent; the 3 pilot services are non-customer-facing internal data pipelines; FIPS level 2 in roadmap by Q4 2027. Section 3 — Residual risk. Inherent risk: medium (key material exposure if HSM is tampered with). Likelihood: low (cloud HSM is physically secured by the provider; no customer data). Impact: medium. Net residual: Low-Medium. Section 4 — Compensating controls. Control 1: cloud HSM is in a physically secured, audited facility with no bank staff access. Control 2: encryption keys are rotated every 30 days, automated. Control 3: HSM access logs streamed to SIEM in real time, SOC monitoring rules in place. Control 4: vendor publishes a SOC 2 Type II report annually. Section 5 — Time-bound. 6 months, 1 January 2027 to 30 June 2027. Expiry trigger: FIPS level 2 HSM lands, target Q4 2027. If slips, re-acceptance memo required 30 days before expiry. No auto-renewal. Section 6 — Named owner. Risk owner: James Wong, Head of Cloud Platform, owns the residual risk. Control owner: Priya Patel, Head of Key Management, owns the key rotation and HSM access logs. Section 7 — Sign-off chain. Risk owner (James) → Control owner (Priya) → Group CISO → Group CRO → Group Legal. Section 8 — Monitoring and revocation. Monthly review at the Cyber Risk Forum: HSM access logs, key rotation health, vendor SOC 2 report status. Revocation triggers: (a) any unauthorised HSM access, (b) key rotation below SLA for 2 consecutive months, (c) FIPS level 2 slips by more than 90 days. Revocation = instant migration to FIPS level 2 HSM, 14-day transition window."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="11-incident-notification.html" class="btn btn-outline-secondary">← Previous: Article 11</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="13-audit-finding-response.html" class="btn btn-primary">Next: Article 13 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

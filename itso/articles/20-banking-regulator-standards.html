@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 20: Banking Regulator &amp; Standards Map | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">20 · Banking Regulator &amp; Standards Map</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Banking Regulator &amp; Standards Map — Who Expects What</h1>
+        <p class="subtitle">Article 20 · Module 5: Banking CyberSecurity &amp; IAM Context · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 HKMA, MAS, FCA, PRA, APRA, OSFI, RBI, CBIRC, PCI-DSS, GDPR, SOX, ISO 27001, NIST</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Friday 11:00 HKT</strong>. You are a senior in the bank's <em>Group Cyber Risk</em> team. The new CISO has asked for a one-page map of the <strong>banking regulators and standards</strong> the bank operates under, with the <em>3-5 cyber-relevant expectations</em> of each. The map will be the front page of the <em>Group Cyber Risk Framework</em>. You have 60 minutes to draft it. The bank's footprint is HK, SG, UK, US, India, mainland China, Canada, Australia — eight regulators, plus the global standards. This article is the map.</p>
+        <p>周五 11:00 香港时间，你是<em>集团网络风险</em>团队的高级成员。新 CISO 要求一张<strong>银行监管和标准</strong>的一页地图，列出每个的<em>3-5 个网络相关期望</em>。地图将是<em>集团网络风险框架</em>的首页。你有 60 分钟起草。银行足迹覆盖香港、新加坡、英国、美国、印度、中国大陆、加拿大、澳大利亚——八个监管，加上全球标准。本节是地图。</p>
+        <p>The regulator map is the front page of a CISO's mental model. Get it right, and every audit, every waiver, every incident maps to a named expectation. Get it wrong, and the bank is "compliant" with no definition of compliance. Speak the regulators' language — supervisory letter, attestation, evidence pack, iCAST, cyber resilience — and the controls follow.</p>
+        <p>监管地图是 CISO 心理模型的第一页。做对了，每次审计、每次豁免、每次事件都映射到具名期望。做错了，银行"合规"但没有合规的定义。说监管的话——监管函、合规声明、证据包、iCAST、网络韧性——控制自然跟上。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Map — 8 Regulators, 5 Global Standards</h2>
+
+        <h3>① Hong Kong Monetary Authority (HKMA)</h3>
+        <ul class="vocab-list">
+            <li><strong>Regulator</strong>: HKMA (Hong Kong Monetary Authority) — the banking regulator of Hong Kong.</li>
+            <li><strong>Key framework</strong>: <em>SPM (Supervisory Policy Manual)</em> — module <em>SA-2</em> on outsourcing, module <em>TM-G-1</em> on technology risk management, and the <em>Cyber Resilience Assessment Framework (C-RAF)</em>.</li>
+            <li><strong>iCAST</strong>: Intelligence-led Cyber Attack Simulation Testing — the regulator's red-team exercise. The bank participates annually.</li>
+            <li><strong>Cyber Resilience</strong>: the higher-level framework covering 7 domains: governance, identification, protection, detection, response, recovery, learning. Tier-1 findings are reserved for the most serious gaps.</li>
+            <li><strong>Expectations (3-5 cyber-relevant)</strong>:
+                <ol>
+                    <li><em>Phishing-resistant MFA for all privileged access</em> (Article 18).</li>
+                    <li><em>Independent assurance over critical systems</em> (annual external pen test, annual external vulnerability assessment).</li>
+                    <li><em>Cyber incident notification</em> within 1 hour of detection for P1, with a full report within 72 hours.</li>
+                    <li><em>Third-party risk management</em> for all material outsourcing, with annual review.</li>
+                    <li><em>Board-level cyber risk oversight</em>, with the Board Risk Committee receiving a cyber update at least quarterly.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>② Monetary Authority of Singapore (MAS)</h3>
+        <ul class="vocab-list">
+            <li><strong>Regulator</strong>: MAS (Monetary Authority of Singapore) — the banking regulator of Singapore.</li>
+            <li><strong>Key framework</strong>: <em>Technology Risk Management Guidelines (TRM)</em> — 14 cyber hygiene domains, with annual attestation by the bank's senior management.</li>
+            <li><strong>Notice on Cyber Hygiene</strong>: the 14 cyber hygiene domains include MFA, patch management, backup, network segmentation, and incident response.</li>
+            <li><strong>Expectations (3-5 cyber-relevant)</strong>:
+                <ol>
+                    <li><em>14 cyber hygiene domains attested annually</em> (Article 8).</li>
+                    <li><em>Phishing-resistant MFA for all customer and operator authentication</em>.</li>
+                    <li><em>Independent assurance over critical systems</em> (annual external audit, annual external pen test).</li>
+                    <li><em>Cyber incident notification</em> within 1 hour, with a full report within 14 days.</li>
+                    <li><em>Third-party risk management</em> for all material outsourcing, with the MAS notification for any new material outsourcing.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>③ UK Prudential Regulation Authority (PRA) and Financial Conduct Authority (FCA)</h3>
+        <ul class="vocab-list">
+            <li><strong>PRA</strong>: the prudential regulator of UK banks, focused on safety and soundness.</li>
+            <li><strong>FCA</strong>: the conduct regulator of UK banks, focused on market conduct and consumer protection.</li>
+            <li><strong>Key frameworks</strong>: <em>PRA SS2/21</em> on operational resilience, <em>FCA Handbook SYSC</em> on senior management accountability, <em>PRA SS1/18</em> on cyber resilience.</li>
+            <li><strong>Operational resilience</strong>: the framework that requires banks to identify important business services, set impact tolerances, and remain within them through disruption. Cyber is one of the sources of disruption.</li>
+            <li><strong>Expectations (3-5 cyber-relevant)</strong>:
+                <ol>
+                    <li><em>Operational resilience</em>: impact tolerances set for important business services, with self-attestation by the Board.</li>
+                    <li><em>Phishing-resistant MFA for all privileged access</em>.</li>
+                    <li><em>Independent assurance over critical systems</em> (annual external audit, annual external pen test).</li>
+                    <li><em>Cyber incident notification</em> to FCA and PRA within 72 hours, with a full report within 14 days.</li>
+                    <li><em>Third-party risk management</em> for all material outsourcing, with the FCA / PRA notification for any new material outsourcing.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>④ US Federal Regulators (OCC / Fed / FDIC) and NYDFS</h3>
+        <ul class="vocab-list">
+            <li><strong>Federal banking regulators</strong>: the Office of the Comptroller of the Currency (OCC), the Federal Reserve (Fed), the Federal Deposit Insurance Corporation (FDIC) — collectively, the <em>FFIEC</em> (Federal Financial Institutions Examination Council).</li>
+            <li><strong>FFIEC CAT</strong>: the Cybersecurity Assessment Tool, used in the annual examination.</li>
+            <li><strong>NYDFS</strong>: the New York State Department of Financial Services, with its <em>23 NYCRR 500</em> regulation — the most prescriptive US cyber regulation.</li>
+            <li><strong>Expectations (3-5 cyber-relevant)</strong>:
+                <ol>
+                    <li><em>23 NYCRR 500</em>: annual certification of compliance, with a CISO named, a cyber programme documented, MFA, training, incident response, and 72-hour notification to NYDFS.</li>
+                    <li><em>FFIEC CAT</em>: maturity assessment across 5 domains, with the bank's inherent risk profile and maturity level documented.</li>
+                    <li><em>Safeguarding customer PII</em> per GLBA, with incident notification to the federal regulator as required.</li>
+                    <li><em>Phishing-resistant MFA for all privileged access</em>.</li>
+                    <li><em>Independent assurance over critical systems</em> (annual external audit, annual external pen test).</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>⑤ Other Asia-Pacific Regulators (APRA, OSFI, RBI, CBIRC, HKMA-mainland)</h3>
+        <ul class="vocab-list">
+            <li><strong>APRA (Australia)</strong>: CPS 234 on information security, with annual attestation to APRA.</li>
+            <li><strong>OSFI (Canada)</strong>: B-13 on technology and cyber risk management.</li>
+            <li><strong>RBI (India)</strong>: master direction on outsourcing, IT services, and cyber resilience.</li>
+            <li><strong>CBIRC (mainland China)</strong>: regulations on commercial bank information technology risk management.</li>
+            <li><strong>Expectations (common pattern)</strong>:
+                <ol>
+                    <li><em>Phishing-resistant MFA for all privileged access</em>.</li>
+                    <li><em>Independent assurance over critical systems</em>.</li>
+                    <li><em>Cyber incident notification</em> within 24-72 hours, depending on the jurisdiction.</li>
+                    <li><em>Third-party risk management</em> for all material outsourcing, with prior approval for new material outsourcing.</li>
+                    <li><em>Board-level cyber risk oversight</em>, with quarterly Board updates.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>⑥ Global Standards — PCI-DSS, GDPR, SOX, ISO 27001, NIST</h3>
+        <ul class="vocab-list">
+            <li><strong>PCI-DSS v4.0</strong>: the Payment Card Industry Data Security Standard. Applies to all systems that store, process, or transmit cardholder data. <em>12 requirements</em>, with quarterly external scan by an ASV (Approved Scanning Vendor) and annual ROC (Report on Compliance) by a QSA (Qualified Security Assessor) for Level 1 merchants.</li>
+            <li><strong>GDPR (EU) / UK GDPR / PDPO (HK) / PDPA (SG)</strong>: data protection regulations. <em>72-hour breach notification</em>, <em>lawful basis</em> for processing, <em>Data Subject Access Request (DSAR)</em> within 30 days, <em>Data Protection Officer (DPO)</em> for high-risk processing.</li>
+            <li><strong>SOX (US)</strong>: the Sarbanes-Oxley Act, with <em>Section 404</em> on internal controls over financial reporting (ITGC). IT general controls — access security, change management, computer operations — are tested annually by the external auditor.</li>
+            <li><strong>ISO 27001:2022</strong>: the international information security management system standard. <em>Annex A controls</em> (93 controls in 4 themes: organisational, people, physical, technological), with annual surveillance audit and re-certification every 3 years.</li>
+            <li><strong>NIST CSF 2.0</strong>: the US National Institute of Standards and Technology Cybersecurity Framework. <em>6 functions</em> (Govern, Identify, Protect, Detect, Respond, Recover), used as the bank's internal control framework.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>3. The Front-Page Map</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>The bank's footprint is 8 jurisdictions: HK, SG, UK, US, India, mainland China, Canada, Australia.</em> <em>8 regulators, 5 global standards.</em> <em>The common pattern across all 8 regulators:</em> <em>(1) phishing-resistant MFA for all privileged access,</em> <em>(2) independent assurance over critical systems,</em> <em>(3) cyber incident notification within 24-72 hours,</em> <em>(4) third-party risk management for material outsourcing,</em> <em>(5) board-level cyber risk oversight.</em></span><span class="cn"><em>银行足迹 8 个司法管辖区：HK、SG、UK、US、印度、中国大陆、加拿大、澳大利亚。</em><em>8 个监管，5 个全球标准。</em><em>8 个监管的共同模式：</em><em>（1）所有特权访问的抗钓鱼 MFA，</em><em>（2）关键系统的独立保证，</em><em>（3）24-72 小时内网络事件通知，</em><em>（4）重要外包的第三方风险管理，</em><em>（5）董事会级别的网络风险监督。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>The 5 global standards provide the control framework:</em> <em>PCI-DSS for card data,</em> <em>GDPR / UK GDPR / PDPO / PDPA for personal data,</em> <em>SOX for financial reporting controls,</em> <em>ISO 27001 for the information security management system,</em> <em>NIST CSF as the bank's internal control framework.</em></span><span class="cn"><em>5 个全球标准提供控制框架：</em><em>PCI-DSS 用于卡数据，</em><em>GDPR / UK GDPR / PDPO / PDPA 用于个人数据，</em><em>SOX 用于财务报告控制，</em><em>ISO 27001 用于信息安全管理体系，</em><em>NIST CSF 作为银行内部控制框架。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>The common pattern is the 80% case.</em> <em>The 20% case is regulator-specific:</em> <em>HKMA C-RAF Tier-1,</em> <em>MAS 14 cyber hygiene attestation,</em> <em>PRA SS2/21 impact tolerance self-attestation,</em> <em>NYDFS 23 NYCRR 500 annual certification,</em> <em>APRA CPS 234 annual attestation.</em> <em>These are the 5 attestations the CISO signs every year.</em></span><span class="cn"><em>共同模式是 80% 情况。</em><em>20% 情况是监管特定的：</em><em>HKMA C-RAF Tier-1，</em><em>MAS 14 个网络卫生合规声明，</em><em>PRA SS2/21 影响容忍度自我声明，</em><em>NYDFS 23 NYCRR 500 年度认证，</em><em>APRA CPS 234 年度合规声明。</em><em>这 5 个是 CISO 每年签署的合规声明。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">CISO:</span>
+                <span class="text"><span class="en">CISO: <em>Good. The 80% is the foundation; the 20% is the regulator's voice.</em> <em>Add a one-page summary: 8 regulators on the left, 5 common expectations in the middle, 5 specific attestations on the right.</em> <em>That's the front page.</em></span><span class="cn">CISO：<em>好。80% 是基础；20% 是监管的声音。</em><em>加一页摘要：左边 8 个监管，中间 5 个共同期望，右边 5 个特定合规声明。</em><em>这就是第一页。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Common pattern is the 80% case</span> <em>The common pattern is the 80% case. The 20% case is regulator-specific.</em></span>
+                <span class="chinese">共同模式是 80% 情况，20% 情况是监管特定的</span>
+                <span class="note">The framing that prevents the bank from over-engineering for any one regulator. The 80% is the foundation; the 20% is the regulator's voice.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Attestation, signed by the CISO</span> <em>5 attestations the CISO signs every year.</em></span>
+                <span class="chinese">CISO 每年签署的 5 个合规声明</span>
+                <span class="note">An attestation is the CISO's signature on a document that says "we are compliant". A false attestation is a personal liability for the CISO. The 5 are the calendar.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Supervisory letter</span> <em>The regulator's voice comes through a supervisory letter.</em></span>
+                <span class="chinese">监管的声音通过监管函发出</span>
+                <span class="note">A supervisory letter is the regulator's written expectation, addressed to a specific bank or to all banks. The bank tracks every supervisory letter it has received.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence pack</span> <em>The evidence pack is what the auditor and the regulator read.</em></span>
+                <span class="chinese">证据包是审计和监管阅读的内容</span>
+                <span class="note">The evidence pack is the collection of documents (policies, procedures, configurations, logs, screenshots) that proves the controls work. Without the evidence pack, the controls are "trust me".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">72-hour notification</span> <em>72-hour notification to the regulator for any personal data breach.</em></span>
+                <span class="chinese">72 小时内通知监管任何个人数据泄露</span>
+                <span class="note">72 hours is the GDPR / NYDFS / PDPO standard. The bank's incident response playbook must achieve the 72-hour notification from detection, not from confirmation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Board-level oversight</span> <em>Board-level cyber risk oversight, with the Board Risk Committee receiving a cyber update at least quarterly.</em></span>
+                <span class="chinese">董事会级别网络风险监督，董事会风险委员会至少季度接受网络更新</span>
+                <span class="note">"Board-level oversight" is the regulator's way of saying the Board is on the hook, not the CISO alone. The quarterly update is the cadence that proves the Board is engaged.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <p>All 8 regulators and 5 global standards are defined in Section 2. The 30+ terms in this article include: HKMA, SPM, SA-2, TM-G-1, C-RAF, iCAST, MAS, TRM, 14 cyber hygiene domains, PRA, FCA, SS2/21, SS1/18, SYSC, OCC, Fed, FDIC, FFIEC, FFIEC CAT, NYDFS, 23 NYCRR 500, APRA, CPS 234, OSFI, B-13, RBI, CBIRC, PCI-DSS, ASV, ROC, QSA, GDPR, UK GDPR, PDPO, PDPA, DSAR, DPO, SOX, ITGC, ISO 27001, Annex A, NIST CSF, supervisory letter, attestation, evidence pack, Tier-1 finding, impact tolerance.</p>
+        <p>全部 8 个监管和 5 个全球标准在第 2 节中定义。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>The map is the front page of the CISO's mental model.</strong> 8 regulators, 5 global standards, 5 common expectations, 5 specific attestations. Memorise the structure; the rest is lookup.</li>
+            <li><strong>Common pattern is the 80% case.</strong> The 5 common expectations (MFA, independent assurance, incident notification, third-party risk, board oversight) are the foundation. The 20% is regulator-specific.</li>
+            <li><strong>Attestation is the CISO's signature.</strong> A false attestation is a personal liability. The 5 attestations are the calendar; the CISO signs them every year.</li>
+            <li><strong>Supervisory letter is the regulator's voice.</strong> The bank tracks every supervisory letter it has received. A supervisory letter is the regulator's written expectation; the bank's response is the file.</li>
+            <li><strong>Evidence pack is what the regulator reads.</strong> Without the evidence pack, the controls are "trust me". The pack is the proof; the regulator reads the pack, not the policy.</li>
+            <li><strong>72-hour notification is the global standard.</strong> GDPR, NYDFS, PDPO, PDPA all use 72 hours. The incident response playbook must achieve 72 hours from detection, not from confirmation.</li>
+            <li><strong>Board-level oversight is the regulator's backstop.</strong> The Board is on the hook, not the CISO alone. The quarterly update is the cadence that proves the Board is engaged.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the front-page summary</h3>
+        <p>Translate the front-page summary into natural Chinese.</p>
+        <blockquote>
+            "The bank's footprint is 8 jurisdictions: HK, SG, UK, US, India, mainland China, Canada, Australia. 8 regulators, 5 global standards. The common pattern across all 8 regulators: (1) phishing-resistant MFA for all privileged access, (2) independent assurance over critical systems, (3) cyber incident notification within 24-72 hours, (4) third-party risk management for material outsourcing, (5) board-level cyber risk oversight. The 5 global standards provide the control framework: PCI-DSS for card data, GDPR / UK GDPR / PDPO / PDPA for personal data, SOX for financial reporting controls, ISO 27001 for the information security management system, NIST CSF as the bank's internal control framework. The 5 attestations the CISO signs every year: HKMA C-RAF Tier-1, MAS 14 cyber hygiene attestation, PRA SS2/21 impact tolerance self-attestation, NYDFS 23 NYCRR 500 annual certification, APRA CPS 234 annual attestation."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"银行足迹 8 个司法管辖区：HK、SG、UK、US、印度、中国大陆、加拿大、澳大利亚。8 个监管，5 个全球标准。8 个监管的共同模式：（1）所有特权访问的抗钓鱼 MFA，（2）关键系统的独立保证，（3）24-72 小时内网络事件通知，（4）重要外包的第三方风险管理，（5）董事会级别网络风险监督。5 个全球标准提供控制框架：PCI-DSS 用于卡数据，GDPR / UK GDPR / PDPO / PDPA 用于个人数据，SOX 用于财务报告控制，ISO 27001 用于信息安全管理体系，NIST CSF 作为银行内部控制框架。CISO 每年签署的 5 个合规声明：HKMA C-RAF Tier-1，MAS 14 个网络卫生合规声明，PRA SS2/21 影响容忍度自我声明，NYDFS 23 NYCRR 500 年度认证，APRA CPS 234 年度合规声明。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the regulator-map mistake</h3>
+        <p>Which line would damage the regulator map the most? Why?</p>
+            <ol>
+                <li>"8 regulators: HKMA, MAS, PRA, FCA, OCC, RBI, APRA, CBIRC. 5 global standards: PCI-DSS, GDPR, SOX, ISO 27001, NIST CSF. 5 common expectations. 5 specific attestations. The CISO signs 5 attestations every year."</li>
+                <li>"We are compliant with everything because we have a cyber programme and a CISO and we do training. The regulators should be happy."</li>
+                <li>"5 attestations the CISO signs every year: HKMA C-RAF Tier-1, MAS 14 cyber hygiene attestation, PRA SS2/21 impact tolerance self-attestation, NYDFS 23 NYCRR 500 annual certification, APRA CPS 234 annual attestation."</li>
+                <li>"Evidence pack is what the regulator reads. Without the evidence pack, the controls are 'trust me'. 72-hour notification is the global standard. Board-level oversight is the regulator's backstop."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We are compliant with everything because we have a cyber programme and a CISO" replaces the 8 regulators, the 5 global standards, the 5 common expectations, and the 5 specific attestations with generalities. The auditor and the regulator will read ② as evidence that the bank does not know what compliance means. ① names the 8 regulators, the 5 standards, the 5 expectations, the 5 attestations, and the CISO's signature. ③ names the 5 attestations with the regulator and the framework. ④ names the evidence pack, the 72-hour notification, and the board oversight. ② turns a 60-minute draft into a regulatory finding.</p>
+        </div>
+        <h3>Exercise 3 — Build a regulator map for a smaller bank</h3>
+        <p>You are the CISO of a smaller bank with footprint in only 2 jurisdictions: HK and SG. The bank's cyber programme must be compliant with HKMA and MAS, plus PCI-DSS for card data and GDPR for any EU customer. Build the map: (1) regulators, (2) common pattern (3-5 expectations), (3) specific attestations (2), (4) global standards (2), (5) CISO's annual calendar.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Section 1 — Regulators. HKMA (Hong Kong Monetary Authority) and MAS (Monetary Authority of Singapore). 2 regulators, 2 global standards (PCI-DSS, GDPR). Section 2 — Common pattern. (1) Phishing-resistant MFA for all privileged access. (2) Independent assurance over critical systems (annual external pen test, annual external vulnerability assessment). (3) Cyber incident notification within 1 hour for P1, with a full report within 72 hours. (4) Third-party risk management for all material outsourcing, with annual review. (5) Board-level cyber risk oversight, with the Board Risk Committee receiving a cyber update at least quarterly. Section 3 — Specific attestations. (a) HKMA Cyber Resilience Assessment (C-RAF) Tier-1 attestation, signed annually. (b) MAS 14 cyber hygiene attestation, signed annually. Section 4 — Global standards. PCI-DSS v4.0 for card data (annual ROC by QSA, quarterly ASV scan). GDPR for any EU customer (72-hour breach notification, DSAR within 30 days, DPO named). Section 5 — CISO's annual calendar. Q1: HKMA C-RAF attestation, MAS 14 cyber hygiene attestation. Q2: PCI-DSS ROC, GDPR DSAR review. Q3: HKMA iCAST participation, MAS TRM review. Q4: Board cyber update, annual cyber training, incident response plan refresh. Every month: cyber dashboard to the Board Risk Committee. The 5 expectations are the foundation; the 2 attestations are the CISO's signature; the 2 standards are the control framework; the 12-month calendar is the discipline."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="19-iam-access-control-terminology.html" class="btn btn-outline-secondary">← Previous: Article 19</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="../../index.html" class="btn btn-primary">Back to System Home / 返回系统首页</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

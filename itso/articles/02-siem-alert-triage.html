@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 02: SIEM Alert Triage | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">02 · SIEM Alert Triage</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>SIEM Alert Triage — Walk a P1 End-to-End</h1>
+        <p class="subtitle">Article 02 · Module 1: Daily Security Operations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 True positive vs false positive, alert chain, escalation, evidence</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>10:30 HKT</strong>. You are a <em>SOC analyst</em>. A P1 alert has just fired on the SIEM: <em>"Multiple failed admin logins followed by successful login from a new geography"</em>. The asset is a <em>Treasury management server</em>. The user is <strong>Kevin</strong>, a treasury operator. You have 30 minutes to triage it — confirm true positive or false positive, and either escalate to incident or close as benign. Your team lead <strong>Sarah</strong> is on a call, so you walk it through with her afterwards.</p>
+        <p>上午 10:30 香港时间，你是 <em>SOC 分析师</em>。SIEM 刚触发一条 P1 告警：<em>"多次管理员登录失败后，从新地理位置成功登录"</em>。资产是<em>资金管理服务器</em>。用户是 <strong>Kevin</strong>，资金运营。30 分钟内分流——确认真阳/误阳，或升级为事件/关单。组长 <strong>Sarah</strong> 在通话中，之后你和她过一遍。</p>
+        <p>Alert triage is the SOC's daily craft. The difference between a junior and a senior analyst is the chain: <em>asset → user → behaviour → evidence → verdict → action</em>. Miss the chain and you either cry wolf (alert fatigue) or miss a breach (analyst failure).</p>
+        <p>告警分流是 SOC 的日常手艺。初级和高级分析师的差别是<em>链：资产 → 用户 → 行为 → 证据 → 判定 → 动作</em>。缺链，要么狼来了（告警疲劳），要么漏掉失陷（分析师失误）。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en">Sarah, <em>30 seconds on a P1 alert I just triaged.</em></span><span class="cn">Sarah，<em>我刚分流完一条 P1 告警，30 秒过一下。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>Asset:</em> <em>TREAS-MGR-01, treasury management server, Crown Jewel asset under PCI-DSS scope.</em></span><span class="cn"><em>资产：</em><em>TREAS-MGR-01，资金管理服务器，PCI-DSS 范围内的皇冠级资产。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>User:</em> <em>Kevin Liu, treasury operator, MFA enrolled, last login 09:15 HKT from Hong Kong office IP.</em></span><span class="cn"><em>用户：</em><em>Kevin Liu，资金运营，已注册 MFA，上次登录 09:15 HKT，香港办公室 IP。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>Behaviour:</em> <em>5 failed admin logins between 09:45 and 09:52 from a Singapore IP — 4 on the wrong password, 1 on a stale MFA token.</em> <em>At 09:55, a successful login from the same Singapore IP, MFA prompt approved.</em> <em>The new geography is Singapore; Kevin is in Hong Kong.</em></span><span class="cn"><em>行为：</em><em>09:45 到 09:52 之间 5 次管理员登录失败，来自新加坡 IP——4 次密码错，1 次 MFA token 过期。</em><em>09:55 同一新加坡 IP 成功登录，MFA 提示已批准。</em><em>新地理位置是新加坡；Kevin 在香港。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (team lead):</span>
+                <span class="text"><span class="en"><em>Hold on — why did the MFA prompt succeed from a new geography?</em> <em>Didn't our policy require step-up auth on geo-anomaly?</em></span><span class="cn"><em>等一下——为什么新地理位置 MFA 提示通过了？</em><em>我们的策略不是要求地理位置异常时 step-up 认证吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>Good catch.</em> <em>It should have.</em> <em>I pulled the conditional access policy: step-up auth is enabled for geo-anomaly, but the rule has an exclusion for the 'TREAS-ADMIN' group, which Kevin is a member of.</em> <em>That's the gap.</em></span><span class="cn"><em>抓得好。</em><em>应该要的。</em><em>我拉了条件访问策略：地理位置异常启用了 step-up 认证，但规则对 'TREAS-ADMIN' 组有豁免，Kevin 是该组成员。</em><em>这就是缺口。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (team lead):</span>
+                <span class="text"><span class="en"><em>Escalate to P1 incident.</em> <em>Open a Sev-1 ticket, page the on-call, loop in IAM, Treasury, and Group Cyber.</em> <em>Three containment actions, in this order.</em></span><span class="cn"><em>升级为 P1 事件。</em><em>开 Sev-1 工单，呼叫值班，拉 IAM、资金、集团 Cyber 群。</em><em>三项遏制动作，按顺序。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>One:</em> <em>revoke Kevin's session, rotate his password, force MFA re-enrolment.</em> <em>Two:</em> <em>block the Singapore IP at the edge firewall pending investigation.</em> <em>Three:</em> <em>remove the 'TREAS-ADMIN' exclusion from the conditional access policy,</em> <em>so step-up auth applies to all geo-anomalies —</em> <em>this is the root-cause fix, not just a workaround.</em></span><span class="cn"><em>一：</em><em>吊销 Kevin 会话、重置密码、强制 MFA 重新注册。</em><em>二：</em><em>在边缘防火墙拉黑新加坡 IP，待调查。</em><em>三：</em><em>从条件访问策略中删除 'TREAS-ADMIN' 豁免，</em><em>让 step-up 认证对所有地理位置异常生效——</em><em>这是根因修复，不是临时绕过。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (team lead):</span>
+                <span class="text"><span class="en"><em>Verdict on the alert itself:</em> <em>true positive, possible account compromise, possible policy gap exploit.</em> <em>Document the chain in the ticket:</em> <em>asset, user, behaviour, evidence, verdict, action.</em> <em>I'll need it for the daily SOC standup and the 1-page to the CISO.</em></span><span class="cn"><em>告警判定：</em><em>真阳，可能账号失陷，可能策略缺口被利用。</em><em>把链写进工单：</em><em>资产、用户、行为、证据、判定、动作。</em><em>我要做日 SOC 站会和给 CISO 的 1 页摘要。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (analyst):</span>
+                <span class="text"><span class="en"><em>Chain documented, ticket open, containment in progress.</em> <em>Verdict in the SOC standup by 11:00.</em></span><span class="cn"><em>链已写进工单，工单已开，遏制进行中。</em><em>11:00 SOC 站会给出判定。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">30 seconds on a P1</span> <em>30 seconds on a P1 alert I just triaged.</em></span>
+                <span class="chinese">30 秒过一下我刚分流完的 P1</span>
+                <span class="note">Set the time budget up front. Senior analysts respect concise updates.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Asset / User / Behaviour</span> <em>Asset: TREAS-MGR-01, Crown Jewel, PCI-DSS scope. User: Kevin, MFA enrolled, HK office IP. Behaviour: 5 fails, 1 success, new geo.</em></span>
+                <span class="chinese">资产、用户、行为按顺序报</span>
+                <span class="note">The chain is fixed. The team lead reads it top-down; missing a field is the alert that gets bounced back.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Good catch</span> <em>Good catch — why did the MFA prompt succeed from a new geography?</em></span>
+                <span class="chinese">抓得好——为什么新地理位置 MFA 提示通过了？</span>
+                <span class="note">Senior analysts always challenge one assumption. "Good catch" signals respect and opens the policy-gap question.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Root-cause fix</span> <em>Remove the TREAS-ADMIN exclusion — root-cause fix, not a workaround.</em></span>
+                <span class="chinese">删除豁免——根因修复，不是绕过</span>
+                <span class="note">Always distinguish the workaround (revoke the session) from the root-cause fix (remove the policy gap). The team lead wants both.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">True positive</span> <em>Verdict: true positive, possible account compromise, possible policy gap exploit.</em></span>
+                <span class="chinese">判定：真阳，可能账号失陷，可能策略缺口被利用</span>
+                <span class="note">Always name the verdict and the two possibilities. "True positive" alone is half a verdict.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Chain documented</span> <em>Chain documented, ticket open, containment in progress.</em></span>
+                <span class="chinese">链已写进工单，工单已开，遏制进行中</span>
+                <span class="note">Three short status clauses, one each: documentation, ticket, action. The CISO reads the trio in 5 seconds.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>True positive (TP)</strong> n. 真阳 Alert is real; the threat is genuine.</li>
+            <li><strong>False positive (FP)</strong> n. 误阳 Alert fires but the activity is benign.</li>
+            <li><strong>Crown Jewel asset</strong> n. 皇冠级资产 The most critical assets (treasury, payments, customer data).</li>
+            <li><strong>Geo-anomaly</strong> n. 地理位置异常 Login from an unusual location vs. the user's baseline.</li>
+            <li><strong>Step-up auth</strong> n. 增强认证 Higher-strength MFA required for sensitive actions (e.g. admin, geo-anomaly).</li>
+            <li><strong>Conditional access policy</strong> n. 条件访问策略 Rule that decides which auth method is required under which condition.</li>
+            <li><strong>Session revocation</strong> n. 会话吊销 Force-logout a user and invalidate their access tokens.</li>
+            <li><strong>MFA re-enrolment</strong> n. MFA 重新注册 Force the user to set up a new MFA factor (often after compromise).</li>
+            <li><strong>Policy gap</strong> n. 策略缺口 A rule with an exception that the attacker exploits.</li>
+            <li><strong>Root-cause fix</strong> n. 根因修复 The change that closes the gap, not just the immediate symptom.</li>
+            <li><strong>Workaround</strong> n. 临时绕过 The immediate action that stops the bleeding, not the fix.</li>
+            <li><strong>Sev-1 ticket</strong> n. 严重级 1 工单 The highest-severity incident ticket; pages on-call, loops in leads.</li>
+            <li><strong>On-call</strong> n. 值班 The named responder paged for incidents outside business hours.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Asset / User / Behaviour" — three nouns, fixed order</h3>
+        <p>The triage chain is three nouns in fixed order. <em>Asset, user, behaviour.</em> Missing one field signals an incomplete triage. The team lead will always ask for the missing one.</p>
+        <p>分流链是三个名词、固定顺序。<em>资产、用户、行为。</em>缺一项等于分流不完整。组长一定会问缺的那一项。</p>
+        <h3>② "Good catch" — challenge an assumption, not the analyst</h3>
+        <p>Senior analysts challenge an assumption, not the analyst. <em>Good catch — why did the MFA prompt succeed?</em> The "good catch" preserves respect; the "why" opens the policy question.</p>
+        <p>高级分析师挑战假设，不挑战分析师。<em>抓得好——为什么 MFA 提示通过了？</em>"抓得好"保留尊重，"为什么"打开策略问题。</p>
+        <h3>③ "Verdict: true positive, possible X, possible Y" — name the verdict and the two possibilities</h3>
+        <p>Always name the verdict and at least two possibilities. <em>True positive, possible account compromise, possible policy gap exploit.</em> One verdict + two possibilities = a complete analysis.</p>
+        <p>总给判定和至少两个可能性。<em>真阳，可能账号失陷，可能策略缺口被利用。</em>一个判定 + 两个可能 = 完整分析。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Always walk the chain: asset → user → behaviour → evidence → verdict → action.</strong> Missing a field is a triage that gets bounced back.</li>
+            <li><strong>"Good catch" is the senior analyst's superpower.</strong> Challenge one assumption, not the analyst. The "good catch" preserves respect.</li>
+            <li><strong>Distinguish workaround from root-cause fix.</strong> Revoke the session = workaround. Remove the policy gap = root-cause fix. The team lead wants both.</li>
+            <li><strong>True positive alone is half a verdict.</strong> Always name the two possibilities. TP, possible account compromise, possible policy exploit.</li>
+            <li><strong>Document the chain in the ticket.</strong> The chain is the audit trail. The CISO reads the ticket, not the chat.</li>
+            <li><strong>Policy gaps are the SOC's most underrated finding.</strong> An alert that exposes a policy gap is worth more than the alert itself. Fix the gap, not just the symptom.</li>
+            <li><strong>Page the on-call with the chain, not the feelings.</strong> "Possible account compromise, new geo, MFA bypass, root cause is policy gap" is the page. The on-call wakes up to the chain.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the alert triage</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "30 seconds on a P1 alert I just triaged. Asset: PAYMENTS-DB-02, payments database, Crown Jewel, PCI-DSS scope. User: Maria Chen, payments operator, MFA enrolled, last login 11:00 HKT from Shanghai office IP. Behaviour: 3 failed admin logins from a Frankfurt IP between 11:20 and 11:24 — 2 wrong password, 1 expired MFA token. At 11:25, a successful login from the same Frankfurt IP, MFA prompt approved. New geography is Frankfurt; Maria is in Shanghai. Why did the MFA prompt succeed from a new geography? Didn't our policy require step-up auth on geo-anomaly? It should have. I pulled the conditional access policy: step-up auth is enabled for geo-anomaly, but the rule has an exclusion for the 'PAYMENTS-ADMIN' group, which Maria is a member of. That's the gap. Escalate to P1 incident. Open a Sev-1 ticket, page the on-call, loop in IAM, Payments, and Group Cyber. Three containment actions. One: revoke Maria's session, rotate her password, force MFA re-enrolment. Two: block the Frankfurt IP at the edge firewall. Three: remove the 'PAYMENTS-ADMIN' exclusion — root-cause fix, not a workaround. Verdict: true positive, possible account compromise, possible policy gap exploit. Chain documented, ticket open, containment in progress."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"我刚分流完一条 P1 告警，30 秒过一下。资产：PAYMENTS-DB-02，支付数据库，皇冠级，PCI-DSS 范围。用户：Maria Chen，支付运营，已注册 MFA，上次登录 11:00 HKT，上海办公室 IP。行为：11:20 到 11:24 之间 3 次管理员登录失败，来自法兰克福 IP——2 次密码错，1 次 MFA token 过期。11:25 同一法兰克福 IP 成功登录，MFA 提示已批准。新地理位置是法兰克福；Maria 在上海。为什么新地理位置 MFA 提示通过了？我们的策略不是要求地理位置异常时 step-up 认证吗？应该要的。我拉了条件访问策略：地理位置异常启用了 step-up 认证，但规则对 'PAYMENTS-ADMIN' 组有豁免，Maria 是该组成员。这就是缺口。升级为 P1 事件。开 Sev-1 工单，呼叫值班，拉 IAM、支付、集团 Cyber。三项遏制。一：吊销 Maria 会话、重置密码、强制 MFA 重新注册。二：边缘防火墙拉黑法兰克福 IP。三：删除 'PAYMENTS-ADMIN' 豁免——根因修复，不是绕过。判定：真阳，可能账号失陷，可能策略缺口被利用。链已写进工单，工单已开，遏制进行中。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the triage mistake</h3>
+        <p>Which line would damage the triage the most? Why?</p>
+        <ol>
+            <li>"Asset: TREAS-MGR-01, Crown Jewel, PCI-DSS scope. User: Kevin, MFA enrolled, HK office. Behaviour: 5 fails, 1 success, new geo."</li>
+            <li>"The alert looks bad, I think it's a breach, we should panic."</li>
+            <li>"Conditional access policy has a 'TREAS-ADMIN' exclusion — that's the policy gap."</li>
+            <li>"Verdict: true positive, possible account compromise, possible policy gap exploit."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the triage-damager. "The alert looks bad, I think it's a breach, we should panic" replaces the chain with feelings. The team lead will always bounce this back: which asset, which user, which behaviour, which evidence. ① walks the chain. ③ names the policy gap. ④ gives the verdict + two possibilities. ② is the analyst's failure; it signals no chain.</p>
+        </div>
+        <h3>Exercise 3 — Run a 30-minute P1 triage</h3>
+        <p>You are a SOC analyst. A P1 fires: "Privileged account used from new geography, MFA approved". Asset: PRIV-ACCESS-GW, privileged access gateway, Crown Jewel. User: Daniel, sysadmin, MFA enrolled, last login 14:00 HKT from London office IP. Behaviour: 2 failed logins from a São Paulo IP at 14:25, then a successful login at 14:27, MFA approved. Build a 30-minute script: (1) walk the chain, (2) name the policy gap, (3) escalate, (4) 3 containment actions, (5) verdict.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Sarah, 30 seconds on a P1 alert I just triaged. Asset: PRIV-ACCESS-GW, privileged access gateway, Crown Jewel, PCI-DSS scope. User: Daniel, sysadmin, MFA enrolled, last login 14:00 HKT from London office IP. Behaviour: 2 failed logins from a São Paulo IP at 14:25, then a successful login at 14:27, MFA approved. New geography is São Paulo; Daniel is in London. Why did MFA pass on new geo? Step-up auth is enabled but the rule excludes the 'PRIV-ADMIN' group, which Daniel is in. That's the gap. Escalate to P1 incident. Three containment actions. One: revoke Daniel's session, rotate password, force MFA re-enrolment. Two: block the São Paulo IP. Three: remove the 'PRIV-ADMIN' exclusion — root-cause fix, not workaround. Verdict: true positive, possible account compromise, possible policy gap exploit. Chain documented, ticket open, containment in progress."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="01-itso-soc-standup.html" class="btn btn-outline-secondary">← Previous: Article 01</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="03-iam-ticket-triage.html" class="btn btn-primary">Next: Article 03 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

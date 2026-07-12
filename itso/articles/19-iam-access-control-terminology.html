@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 19: IAM &amp; Access Control Terminology | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">19 · IAM &amp; Access Control Terminology</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>IAM &amp; Access Control Terminology — Speak the Bank's Language</h1>
+        <p class="subtitle">Article 19 · Module 5: Banking CyberSecurity &amp; IAM Context · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 RBAC, ABAC, SSO, MFA, PAM, Zero Trust, least privilege, JML</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday 14:00 HKT</strong>. You are a new joiner in the bank's <em>Identity &amp; Access Management (IAM)</em> team. Your manager, <strong>David</strong>, has scheduled a 60-minute walkthrough of the IAM landscape: the bank's access control models, the authentication stack, the privileged access tooling, and the Zero Trust programme. You have a Confluence page with 200 acronyms; you have 60 minutes to ask the questions that will define your first 90 days. This article is the 30-term glossary a bank IAM professional must own on day one.</p>
+        <p>周三 14:00 香港时间，你是银行<em>身份与访问管理（IAM）</em>团队的新人。你的经理 <strong>David</strong> 安排了 60 分钟的 IAM 概览：银行的访问控制模型、认证栈、特权访问工具、Zero Trust 项目。你有一个 200 缩略词的 Confluence 页面；你有 60 分钟问将定义你前 90 天的问题。本节是银行 IAM 从业者第一天必须掌握的 30 个术语。</p>
+        <p>IAM terminology is the first thing a regulator and an auditor will test you on. Get the terms wrong, and the conversation about controls becomes a conversation about confusion. Speak the bank's language — RBAC, ABAC, SSO, MFA, PAM, Zero Trust, least privilege, JML, SoD — and the controls follow.</p>
+        <p>IAM 术语是监管和审计师测试你的第一件事。术语说错，关于控制的对话就变成关于困惑的对话。说银行的话——RBAC、ABAC、SSO、MFA、PAM、Zero Trust、least privilege、JML、SoD——控制自然跟上。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The 30 Terms — 6 Families</h2>
+
+        <h3>① Access Control Models (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>RBAC (Role-Based Access Control)</strong> n. 基于角色的访问控制 Access granted to a role (e.g., "Teller", "Approver"), and the user inherits the role's permissions. Most common model in banks.</li>
+            <li><strong>ABAC (Attribute-Based Access Control)</strong> n. 基于属性的访问控制 Access granted based on attributes (user, resource, environment, action). More flexible than RBAC; harder to govern.</li>
+            <li><strong>MAC (Mandatory Access Control)</strong> n. 强制访问控制 Access granted by a central authority based on classification labels. Used in classified environments, not typical banks.</li>
+            <li><strong>DAC (Discretionary Access Control)</strong> n. 自主访问控制 The data owner decides who has access. Common in file shares; not for regulated systems.</li>
+            <li><strong>Least privilege</strong> n. 最小权限 The principle that a user is granted the minimum permissions needed to do the job, no more.</li>
+        </ul>
+
+        <h3>② Authentication (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>SSO (Single Sign-On)</strong> n. 单点登录 One set of credentials grants access to multiple systems, typically via SAML or OIDC. The bank uses SSO for ~95% of internal applications.</li>
+            <li><strong>MFA (Multi-Factor Authentication)</strong> n. 多因素认证 Two or more of: something you know (password), something you have (token, phone), something you are (biometric). Required by Group MFA Standard for all customer-facing and privileged access.</li>
+            <li><strong>FIDO2</strong> n. FIDO2 标准 Phishing-resistant MFA using passkeys or hardware security keys. The bank is rolling out FIDO2 to all employees and privileged users (Article 18).</li>
+            <li><strong>Passwordless</strong> n. 无密码 Authentication that does not rely on a password — typically FIDO2 passkeys, smart cards, or biometric. The Group target is passwordless for all employees by 2028.</li>
+            <li><strong>Conditional access</strong> n. 条件访问 Access decisions based on real-time signals: device compliance, location, risk score. A user can be challenged for MFA only when signing in from a new device or location.</li>
+        </ul>
+
+        <h3>③ Authorisation (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>Entitlement</strong> n. 权限 A specific permission on a specific resource (e.g., "read account 123456789"). The bank tracks ~3.2M entitlements across 1,200 systems.</li>
+            <li><strong>Role</strong> n. 角色 A named bundle of entitlements. "Teller - HK Branch 042" is a role. The bank has ~28,000 roles; the goal is to consolidate to ~12,000.</li>
+            <li><strong>Role mining</strong> n. 角色挖掘 The analytical process of finding the right roles from existing entitlement data, before the entitlements sprawl becomes unmanageable.</li>
+            <li><strong>Access request</strong> n. 访问请求 The workflow by which a user asks for a new entitlement, justified by a business reason, approved by the role owner, and provisioned by IAM.</li>
+            <li><strong>Access review (attestation)</strong> n. 访问复核（认证） The periodic re-confirmation by the role owner that the user still needs the entitlements. Quarterly for privileged access; annual for standard access.</li>
+        </ul>
+
+        <h3>④ Privileged Access (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>PAM (Privileged Access Management)</strong> n. 特权访问管理 The system that controls, records, and audits privileged sessions. The bank's PAM vendor is CyberArk.</li>
+            <li><strong>Privileged account</strong> n. 特权账户 An account with elevated permissions (domain admin, root, service account with broad access). 1,200 privileged accounts in the bank, 100% in PAM by end of 2026.</li>
+            <li><strong>Just-in-time (JIT) access</strong> n. 即时访问 Privileged access granted for a time window (e.g., 4 hours), automatically revoked at the end. Reduces standing privilege.</li>
+            <li><strong>Break-glass account</strong> n. 紧急访问账户 A privileged account used only in emergencies (e.g., domain controller down). Heavily audited, named owner, dual control.</li>
+            <li><strong>Session recording</strong> n. 会话录制 The PAM feature that records the privileged session for audit. Kept for 12 months; reviewed on regulator request.</li>
+        </ul>
+
+        <h3>⑤ Identity Lifecycle (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>JML (Joiner / Mover / Leaver)</strong> n. 入职 / 调岗 / 离职 The three lifecycle events that drive IAM changes. Joiner: new entitlements. Mover: revise entitlements. Leaver: revoke all access within 24 hours.</li>
+            <li><strong>Joiner</strong> n. 入职 New employee starts. Trigger: HR system. SLA: access provisioned by 09:00 HKT on day 1.</li>
+            <li><strong>Mover</strong> n. 调岗 Employee changes team or role. Trigger: HR system. SLA: old access revoked within 24 hours; new access provisioned within 5 working days.</li>
+            <li><strong>Leaver</strong> n. 离职 Employee leaves the bank. Trigger: HR system. SLA: ALL access revoked within 24 hours; for privileged, within 4 hours.</li>
+            <li><strong>Service account</strong> n. 服务账户 A non-human account used by an application or system (e.g., a database connection, a batch job). 142 service accounts in the trading platform were the subject of the audit finding in Article 13.</li>
+        </ul>
+
+        <h3>⑥ Zero Trust &amp; Segregation (5 terms)</h3>
+        <ul class="vocab-list">
+            <li><strong>Zero Trust</strong> n. 零信任 The security model that assumes no implicit trust based on network location; every access is authenticated, authorised, and logged. The bank's target is Zero Trust for all customer-facing applications by 2027.</li>
+            <li><strong>Microsegmentation</strong> n. 微隔离 The network design that breaks the data centre into small zones, each with explicit access controls. Limits the blast radius of a breach.</li>
+            <li><strong>SoD (Segregation of Duties)</strong> n. 职责分离 The principle that no single user can both initiate and approve a transaction. Enforced in the trading platform and payment systems; tested quarterly.</li>
+            <li><strong>Toxic combination</strong> n. 毒性组合 A pair of entitlements that, held by the same user, create a fraud or error risk (e.g., "create vendor" + "approve vendor payment"). The IAM system blocks these combinations.</li>
+            <li><strong>Identity governance</strong> n. 身份治理 The framework that ties together JML, access review, role management, and SoD. The bank's tool is SailPoint.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>3. The Walkthrough — 5 Sample Q&amp;A</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">David, <em>how does the bank decide between RBAC and ABAC for a new system?</em></span><span class="cn">David，<em>银行如何决定新系统用 RBAC 还是 ABAC？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David:</span>
+                <span class="text"><span class="en">David: <em>Default to RBAC.</em> <em>RBAC is easier to govern, easier to review, easier to audit.</em> <em>Use ABAC only when the access decision depends on attributes that RBAC cannot express —</em> <em>for example, "tellers can approve transactions up to $10K, but only during branch hours."</em> <em>That is a conditional rule, not a role.</em> <em>ABAC is harder to test and harder to explain to the auditor.</em></span><span class="cn">David：<em>默认 RBAC。</em><em>RBAC 更易治理、复核、审计。</em><em>仅当访问决策依赖 RBAC 无法表达的属性时用 ABAC——</em><em>例如，"柜员可批准 1 万美元以下交易，但仅在营业时间。"</em><em>这是条件规则，不是角色。</em><em>ABAC 更难测试，更难向审计师解释。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>What's the difference between a role and an entitlement?</em></span><span class="cn"><em>角色和权限的区别？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David:</span>
+                <span class="text"><span class="en">David: <em>An entitlement is a single permission on a single resource.</em> <em>A role is a bundle of entitlements with a name.</em> <em>If you grant the user 1 entitlement at a time, you have 3.2M decisions.</em> <em>If you grant the user 1 role, you have 1 decision.</em> <em>The role is the lever.</em> <em>The entitlement is the screw.</em></span><span class="cn">David：<em>权限是单个资源上的单个许可。</em><em>角色是带名字的权限包。</em><em>如果一次给用户 1 个权限，你有 320 万个决策。</em><em>如果一次给用户 1 个角色，你有 1 个决策。</em><em>角色是杠杆，权限是螺丝。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>What happens when a leaver is delayed in HR?</em></span><span class="cn"><em>如果离职在 HR 延迟怎么办？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David:</span>
+                <span class="text"><span class="en">David: <em>The leaver process is triggered by HR, not by the manager.</em> <em>The SLA is 24 hours from the HR event, not from the manager's awareness.</em> <em>The bank's IAM tool has a direct feed from Workday —</em> <em>no manager action required.</em> <em>If the leaver is delayed in HR,</em> <em>the access is not revoked, and we have a control gap.</em> <em>That's why the leaver SLA is on the IAM dashboard, not the manager dashboard.</em></span><span class="cn">David：<em>离职流程由 HR 触发，不由经理触发。</em><em>SLA 是自 HR 事件起 24 小时，不是自经理知情起。</em><em>银行 IAM 工具直接对接 Workday——</em><em>无需经理操作。</em><em>如果离职在 HR 延迟，</em><em>访问未吊销，我们有控制缺口。</em><em>所以离职 SLA 在 IAM 仪表盘上，不在经理仪表盘上。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>What is a "toxic combination" and how does the bank enforce it?</em></span><span class="cn"><em>什么是"毒性组合"，银行如何强制？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David:</span>
+                <span class="text"><span class="en">David: <em>A toxic combination is two entitlements that, in the same hands, create a fraud or error risk.</em> <em>Examples: "create vendor" and "approve vendor payment";</em> <em>"initiate wire transfer" and "approve wire transfer".</em> <em>The bank's IAM tool (SailPoint) has a toxic-combination engine</em> <em>that detects these in real time and blocks the second entitlement from being added.</em> <em>The trading platform has 47 toxic combinations;</em> <em>the payment system has 23.</em> <em>They are tested quarterly by Group Internal Audit.</em></span><span class="cn">David：<em>毒性组合是同一手中产生欺诈或错误风险的两个权限。</em><em>例子："创建供应商"和"批准供应商付款"；</em><em>"发起电汇"和"批准电汇"。</em><em>银行 IAM 工具（SailPoint）有毒性组合引擎，</em><em>实时检测并阻止添加第二个权限。</em><em>交易平台有 47 个毒性组合；</em><em>支付系统有 23 个。</em><em>由集团内审季度测试。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>What's the difference between "Zero Trust" and "least privilege"?</em></span><span class="cn"><em>"Zero Trust"和"最小权限"的区别？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">David:</span>
+                <span class="text"><span class="en">David: <em>Least privilege is a principle: minimum access for the job.</em> <em>Zero Trust is an architecture: no implicit trust, every access is verified.</em> <em>Least privilege is one of the mechanisms inside Zero Trust —</em> <em>along with MFA, microsegmentation, conditional access, session recording.</em> <em>The two work together.</em> <em>You can have least privilege without Zero Trust;</em> <em>you cannot have Zero Trust without least privilege.</em></span><span class="cn">David：<em>最小权限是原则：工作的最小访问。</em><em>Zero Trust 是架构：无隐式信任，每次访问都被验证。</em><em>最小权限是 Zero Trust 内的机制之一——</em><em>与 MFA、微隔离、条件访问、会话录制并列。</em><em>两者协同工作。</em><em>可以没有 Zero Trust 有最小权限；</em><em>没有最小权限不能有 Zero Trust。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Default to RBAC</span> <em>Default to RBAC. RBAC is easier to govern, easier to review, easier to audit.</em></span>
+                <span class="chinese">默认 RBAC，更易治理、复核、审计</span>
+                <span class="note">"Default to RBAC" is the bank's house style. ABAC is the exception, used only when the access decision depends on attributes RBAC cannot express.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Role is the lever, entitlement is the screw</span> <em>The role is the lever. The entitlement is the screw.</em></span>
+                <span class="chinese">角色是杠杆，权限是螺丝</span>
+                <span class="note">The metaphor that captures the relationship. Grant the role; manage the entitlements underneath.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trigger is HR, not the manager</span> <em>The leaver process is triggered by HR, not by the manager.</em></span>
+                <span class="chinese">离职由 HR 触发，不由经理触发</span>
+                <span class="note">The discipline that makes the SLA real. The IAM tool has a direct feed from Workday; no manager action is in the critical path.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Toxic combination</span> <em>The IAM tool has a toxic-combination engine that detects these in real time and blocks the second entitlement.</em></span>
+                <span class="chinese">IAM 工具有毒性组合引擎，实时检测并阻止添加第二个权限</span>
+                <span class="note">"Toxic combination" is the precise term for SoD violations. The engine blocks the second entitlement; it does not warn and let the user proceed.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Least privilege is one of the mechanisms inside Zero Trust</span> <em>Least privilege is one of the mechanisms inside Zero Trust.</em></span>
+                <span class="chinese">最小权限是 Zero Trust 内的机制之一</span>
+                <span class="note">The relationship between the principle (least privilege) and the architecture (Zero Trust). One is inside the other; they work together.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SLA on the IAM dashboard</span> <em>The leaver SLA is on the IAM dashboard, not the manager dashboard.</em></span>
+                <span class="chinese">离职 SLA 在 IAM 仪表盘上，不在经理仪表盘上</span>
+                <span class="note">Where the SLA lives determines who owns it. The IAM team owns the leaver SLA; the manager does not.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <p>All 30 terms are defined in Section 2, organised into 6 families: access control models, authentication, authorisation, privileged access, identity lifecycle, and Zero Trust &amp; segregation.</p>
+        <p>全部 30 个术语在第 2 节中定义，分为 6 个族：访问控制模型、认证、授权、特权访问、身份生命周期、Zero Trust 与职责分离。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>6 families, 30 terms.</strong> Access control models, authentication, authorisation, privileged access, identity lifecycle, Zero Trust &amp; segregation. The auditor asks the family; you answer the term.</li>
+            <li><strong>Default to RBAC.</strong> The bank's house style. ABAC is the exception, used only when the access decision depends on attributes RBAC cannot express.</li>
+            <li><strong>Role is the lever; entitlement is the screw.</strong> The metaphor that captures the relationship. Grant the role; manage the entitlements underneath.</li>
+            <li><strong>JML trigger is HR, not the manager.</strong> The discipline that makes the SLA real. The IAM tool has a direct feed from Workday; no manager action is in the critical path.</li>
+            <li><strong>Toxic combination, blocked in real time.</strong> The IAM tool blocks the second entitlement; it does not warn and let the user proceed. Tested quarterly by Group Internal Audit.</li>
+            <li><strong>Least privilege is one of the mechanisms inside Zero Trust.</strong> The principle is inside the architecture. One is a lever; the other is a frame.</li>
+            <li><strong>Speak the bank's language.</strong> Get the terms wrong, and the conversation about controls becomes a conversation about confusion. The terms are the foundation; the controls follow.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the role-vs-entitlement metaphor</h3>
+        <p>Translate the metaphor into natural Chinese.</p>
+        <blockquote>
+            "An entitlement is a single permission on a single resource. A role is a bundle of entitlements with a name. If you grant the user 1 entitlement at a time, you have 3.2M decisions. If you grant the user 1 role, you have 1 decision. The role is the lever. The entitlement is the screw. RBAC is the default; ABAC is the exception, used only when the access decision depends on attributes that RBAC cannot express. Least privilege is one of the mechanisms inside Zero Trust. The bank's target is Zero Trust for all customer-facing applications by 2027."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"权限是单个资源上的单个许可。角色是带名字的权限包。如果一次给用户 1 个权限，你有 320 万个决策。如果一次给用户 1 个角色，你有 1 个决策。角色是杠杆，权限是螺丝。RBAC 是默认；ABAC 是例外，仅当访问决策依赖 RBAC 无法表达的属性时使用。最小权限是 Zero Trust 内的机制之一。银行目标 2027 年前所有客户面应用实现 Zero Trust。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the IAM terminology mistake</h3>
+        <p>Which line would damage an IAM walkthrough the most? Why?</p>
+            <ol>
+                <li>"The leaver process is triggered by HR, not by the manager. The SLA is 24 hours from the HR event. The IAM tool has a direct feed from Workday. The leaver SLA is on the IAM dashboard."</li>
+                <li>"We have many users and many passwords and we give access to people who need it. The audit was a bit picky about it."</li>
+                <li>"Toxic combinations are tested quarterly. 47 in the trading platform, 23 in the payment system. The IAM tool blocks the second entitlement in real time."</li>
+                <li>"Default to RBAC. ABAC is the exception, used only when RBAC cannot express the access decision. The bank has 28,000 roles, target 12,000."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We have many users and many passwords and we give access to people who need it" replaces the IAM terminology (JML, RBAC, toxic combination, SoD, PAM) with generalities. The auditor will read ② as evidence that the IAM team does not know the bank's language. ① names the trigger (HR), the SLA (24 hours), the feed (Workday), and the dashboard. ③ names the toxic-combination testing, the count, and the real-time block. ④ names the default (RBAC), the exception (ABAC), the role count, and the target. ② turns a 60-minute walkthrough into a finding.</p>
+        </div>
+        <h3>Exercise 3 — Build an IAM walkthrough</h3>
+        <p>You are onboarding a new joiner. Pick 5 of the 30 terms and explain them in plain English with a banking example each. (5 terms, 5 examples.)</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"1. RBAC — Role-Based Access Control. Banking example: a Teller role has the entitlements to open accounts, accept deposits, and cash cheques up to $10K. The role is assigned to 480 tellers across HK; revoking the role removes all 480 tellers' access in one action. 2. MFA — Multi-Factor Authentication. Banking example: a customer signing in to the mobile app enters a password (something they know) and approves a push notification (something they have, on a registered device). Both factors are required; a stolen password alone is not enough. 3. PAM — Privileged Access Management. Banking example: a database administrator needs root access to the customer-onboarding-db. The access is granted via CyberArk for a 4-hour window, with session recording and dual approval. The DBA never knows the root password; CyberArk rotates it after every session. 4. JML — Joiner / Mover / Leaver. Banking example: a leaver is processed by the HR system at 17:00 HKT on Friday. The IAM tool receives the Workday event and revokes all access by 17:00 HKT on Saturday (24-hour SLA). For privileged accounts, the SLA is 4 hours; the DBA's CyberArk access is revoked by 21:00 HKT on Friday. 5. Zero Trust. Banking example: an employee signs in to the trading platform from a personal device. The platform does not trust the device by default; it checks the device posture (managed, encrypted, up-to-date), the location (HK, not on the blocklist), and the risk score (no recent impossible travel). Only after all three checks pass is access granted, and the access is logged for review. None of the checks are implicit; all are explicit; the architecture assumes breach."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="18-convincing-md-mfa-pam.html" class="btn btn-outline-secondary">← Previous: Article 18</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="20-banking-regulator-standards.html" class="btn btn-primary">Next: Article 20 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

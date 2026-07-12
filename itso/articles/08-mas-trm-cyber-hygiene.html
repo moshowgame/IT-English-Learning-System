@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 08: MAS TRM Cyber Hygiene | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">08 · MAS TRM Cyber Hygiene</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>MAS TRM Cyber Hygiene — 14 Domains, Baseline, Attestation</h1>
+        <p class="subtitle">Article 08 · Module 2: Security Governance &amp; Compliance · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 MAS TRM, 14 cyber hygiene domains, baseline, attestation, gap closure</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 14:00 SGT</strong>. You are the <em>Cyber Hygiene Programme Manager</em> at a global bank's Singapore subsidiary. The <strong>MAS TRM (Technology Risk Management) Cyber Hygiene Notice</strong> requires the bank to attest against <strong>14 cyber hygiene domains</strong> annually, with a <em>baseline of December 2024</em> and <em>Year-2 closure of all gaps by December 2026</em>. You are 18 months in. The <em>Group CISO</em> is on a call with <strong>Mr. Lim</strong>, the MAS supervisor, and <strong>Susan</strong>, the bank's Head of Compliance. You have 45 minutes to walk the 14 domains, the gap status, the closure plan, and the Year-2 attestation.</p>
+        <p>周二 14:00 新加坡时间，你是全球银行新加坡子公司的<em>网络卫生项目经理</em>。<strong>MAS TRM（技术风险管理）网络卫生通知</strong>要求银行每年对<strong>14 个网络卫生领域</strong>进行声明，<em>基线 2024 年 12 月</em>，<em>第 2 年所有差距 2026 年 12 月前关闭</em>。你已经进行 18 个月。<em>集团 CISO</em> 与 <strong>Lim 先生</strong>（MAS supervisor）和 <strong>Susan</strong>（银行合规负责人）通话。45 分钟过完 14 个领域、差距状态、关闭计划、第 2 年声明。</p>
+        <p>MAS TRM Cyber Hygiene is Singapore's most prescriptive cyber regulation. The 14 domains are a closed list; gaps are tracked, attested, and closed on a 2-year cycle. The professional pattern is: <em>14 domains, baseline, gap count, closure plan, Year-2 attestation</em>.</p>
+        <p>MAS TRM 网络卫生是新加坡最具体的网络监管。14 个领域是封闭清单；差距跟踪、声明、按 2 年周期关闭。专业模式是：<em>14 领域、基线、差距数、关闭计划、第 2 年声明</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Lim (MAS supervisor):</span>
+                <span class="text"><span class="en">"<em>Walk me through the 14 cyber hygiene domains.</em> <em>What's the baseline, the gap status today, and the Year-2 closure plan?</em>"</span><span class="cn">"<em>请过 14 个网络卫生领域。</em><em>基线、当前差距状态、第 2 年关闭计划？</em>"</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Baseline December 2024.</em> <em>14 domains assessed by an external assessor.</em> <em>11 domains met baseline at the time of assessment.</em> <em>3 domains had gaps — Domain 5 (patch management), Domain 8 (multi-factor authentication), Domain 11 (third-party risk).</em> <em>Today, all three are in active closure.</em></span><span class="cn"><em>基线 2024 年 12 月。</em><em>14 领域由外部评估师评估。</em><em>11 领域评估时已达标。</em><em>3 领域有差距——领域 5（补丁管理）、领域 8（多因素认证）、领域 11（第三方风险）。</em><em>今天 3 个都在积极关闭中。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Domain 5 — patch management.</em> <em>Baseline gap:</em> <em>38% of internet-facing assets were outside the 14-day patch SLA.</em> <em>Today:</em> <em>92% within SLA,</em> <em>up from 38%,</em> <em>with 8 internet-facing assets still in catch-up.</em> <em>Closure date:</em> <em>31 December 2026,</em> <em>as committed in the Year-2 plan.</em></span><span class="cn"><em>领域 5——补丁管理。</em><em>基线差距：</em><em>38% 面向互联网资产在 14 天补丁 SLA 外。</em><em>今天：</em><em>92% 在 SLA 内，</em><em>从 38% 上升，</em><em>8 个面向互联网资产仍在追赶。</em><em>关闭日期：</em><em>2026 年 12 月 31 日，</em><em>按第 2 年计划承诺。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Domain 8 — multi-factor authentication.</em> <em>Baseline gap:</em> <em>MFA was not enforced on 4 internal admin systems,</em> <em>covering 320 privileged users.</em> <em>Today:</em> <em>MFA enforced on 3 of the 4,</em> <em>covering 240 users.</em> <em>Remaining 1 system is mid-rollout — target 30 September 2026.</em></span><span class="cn"><em>领域 8——多因素认证。</em><em>基线差距：</em><em>4 个内部管理员系统未强制 MFA，</em><em>覆盖 320 个特权用户。</em><em>今天：</em><em>4 个里 3 个已强制 MFA，</em><em>覆盖 240 用户。</em><em>剩余 1 个系统部署中——目标 2026 年 9 月 30 日。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Domain 11 — third-party risk.</em> <em>Baseline gap:</em> <em>12 critical third-party vendors had no formal cyber risk assessment on file.</em> <em>Today:</em> <em>9 of the 12 assessed,</em> <em>3 in progress with on-site reviews scheduled in Q4 2026.</em> <em>Closure date:</em> <em>31 December 2026.</em></span><span class="cn"><em>领域 11——第三方风险。</em><em>基线差距：</em><em>12 个关键第三方厂商无正式网络风险评估。</em><em>今天：</em><em>12 个里 9 个已评估，</em><em>3 个进行中，2026 年 Q4 现场评估。</em><em>关闭日期：</em><em>2026 年 12 月 31 日。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Lim (MAS supervisor):</span>
+                <span class="text"><span class="en"><em>Domain 8 — the 80 privileged users on the 1 remaining system.</em> <em>How are you managing the risk while the rollout completes?</em></span><span class="cn"><em>领域 8——剩余 1 个系统上的 80 个特权用户。</em><em>部署完成前如何管理风险？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Two compensating controls.</em> <em>One</em>: <em>the 80 users are bound to a privileged access workstation — PAW — since 1 June 2025.</em> <em>Two</em>: <em>session recording and weekly review by the SOC since 1 July 2025.</em> <em>Both are documented in the risk register,</em> <em>with the 30 September 2026 closure as the formal gap-closure date.</em></span><span class="cn"><em>两个补偿控制。</em><em>一</em>：<em>80 用户自 2025 年 6 月 1 日起绑定 PAW——特权访问工作站。</em><em>二</em>：<em>自 2025 年 7 月 1 日起 SOC 录制会话并每周复核。</em><em>两项都记在风险登记册，</em><em>2026 年 9 月 30 日为正式差距关闭日期。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mr. Lim (MAS supervisor):</span>
+                <span class="text"><span class="en"><em>Year-2 attestation — who signs, and when?</em></span><span class="cn"><em>第 2 年声明——谁签，何时？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Year-2 attestation by 31 January 2027,</em> <em>signed by the Singapore Country CEO and the Group CISO.</em> <em>Internal Audit provides independent assurance on the 14 domains</em> <em>before the attestation is signed.</em> <em>Evidence pack archived for 7 years per the MAS record-keeping requirement.</em></span><span class="cn"><em>第 2 年声明 2027 年 1 月 31 日，</em><em>由新加坡国家 CEO 和集团 CISO 签署。</em><em>内审对 14 领域提供独立保证</em><em>在签署声明前完成。</em><em>证据包按 MAS 记录保存要求归档 7 年。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Susan (Head of Compliance):</span>
+                <span class="text"><span class="en"><em>One process question —</em> <em>if Domain 8 slips past 30 September 2026,</em> <em>what's the escalation path to MAS?</em></span><span class="cn"><em>一个流程问题——</em><em>如果领域 8 超过 2026 年 9 月 30 日，</em><em>到 MAS 的升级路径？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Hygiene PM):</span>
+                <span class="text"><span class="en"><em>Per the Group Cyber Hygiene SOP,</em> <em>if a domain slips past its committed closure date by more than 30 days,</em> <em>we file an early notification to the MAS supervisor — Mr. Lim's office — within 7 days,</em> <em>with a revised closure date and a compensating control update.</em> <em>The Group CISO signs the notification.</em> <em>That's the protocol.</em></span><span class="cn"><em>按集团网络卫生 SOP，</em><em>如果某领域超过承诺关闭日期 30 天以上，</em><em>7 天内向 MAS supervisor——Lim 先生办公室——提交早期通知，</em><em>附修订关闭日期和补偿控制更新。</em><em>集团 CISO 签通知。</em><em>这就是协议。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">14 domains, baseline, gap</span> <em>14 domains assessed. 11 met baseline. 3 had gaps — Domain 5, 8, 11.</em></span>
+                <span class="chinese">14 领域已评估。11 达标。3 领域有差距——5、8、11</span>
+                <span class="note">Always lead with the count: 14 domains, baseline met, gap count. The MAS supervisor reads the count.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Today vs baseline</span> <em>Domain 5 today: 92% within SLA, up from 38% at baseline.</em></span>
+                <span class="chinese">领域 5 今天：92% 在 SLA 内，从基线 38% 上升</span>
+                <span class="note">Always quote today vs. baseline. The MAS supervisor reads the trajectory, not the snapshot.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Closure date</span> <em>Closure date: 31 December 2026, as committed in the Year-2 plan.</em></span>
+                <span class="chinese">关闭日期：2026 年 12 月 31 日，按第 2 年计划承诺</span>
+                <span class="note">Always name the closure date, anchored to the Year-2 plan. The MAS supervisor reads the date, not the verb.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating control</span> <em>Two compensating controls: PAW binding and SOC session recording.</em></span>
+                <span class="chinese">两个补偿控制：PAW 绑定和 SOC 会话录制</span>
+                <span class="note">Compensating controls are the answer to a still-open gap. Always name at least one. No control = unmanaged gap.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Attestation chain</span> <em>Year-2 attestation by 31 January 2027, signed by Country CEO and Group CISO.</em></span>
+                <span class="chinese">第 2 年声明 2027 年 1 月 31 日，由国家 CEO 和集团 CISO 签署</span>
+                <span class="note">Always name the date and the two signatories. MAS expects executive accountability, not a programme manager alone.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Early notification</span> <em>If a domain slips past committed closure by 30+ days, file an early notification to MAS within 7 days.</em></span>
+                <span class="chinese">如果某领域超过承诺关闭 30 天以上，7 天内向 MAS 提交早期通知</span>
+                <span class="note">MAS expects early notification, not a surprise at the next supervisory meeting. The protocol is the protection.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>MAS (Monetary Authority of Singapore)</strong> n. 新加坡金管局 Singapore's central bank and integrated regulator.</li>
+            <li><strong>TRM (Technology Risk Management)</strong> n. 技术风险管理 MAS's framework for technology and cyber risk.</li>
+            <li><strong>Cyber Hygiene Notice</strong> n. 网络卫生通知 MAS's 2021 notice requiring attestation against 14 cyber hygiene domains.</li>
+            <li><strong>14 cyber hygiene domains</strong> n. 14 网络卫生领域 The closed list: asset inventory, secure config, patch, vulnerability, MFA, access, etc.</li>
+            <li><strong>Baseline</strong> n. 基线 The state at a fixed point (Dec 2024) against which Year-2 is measured.</li>
+            <li><strong>Year-2 closure</strong> n. 第 2 年关闭 The 2-year deadline (Dec 2026) to close all baseline gaps.</li>
+            <li><strong>Attestation</strong> n. 声明 A formal, signed statement that a domain meets the baseline.</li>
+            <li><strong>External assessor</strong> n. 外部评估师 The independent firm that assessed the 14 domains at baseline.</li>
+            <li><strong>Compensating control</strong> n. 补偿控制 A control that mitigates risk while a formal gap is still open.</li>
+            <li><strong>Independent assurance</strong> n. 独立保证 Internal Audit's verification before the executive attestation.</li>
+            <li><strong>Country CEO</strong> n. 国家 CEO The named executive accountable for the country subsidiary.</li>
+            <li><strong>Early notification</strong> n. 早期通知 A formal notice to MAS before the deadline if a gap will slip.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "X met baseline, Y had gaps" — count, then name</h3>
+        <p>Always lead with the count: 11 met, 3 had gaps. Then name the gap domains. The MAS supervisor reads the count first.</p>
+        <p>总先报数量：11 达标，3 差距。然后点名差距领域。MAS supervisor 先看数量。</p>
+        <h3>② "Today vs baseline" — quote the trajectory</h3>
+        <p>Always quote today vs. baseline. <em>92% today, up from 38%.</em> The MAS supervisor reads the trajectory — a 38→92% jump is a strong story; a 38→42% drift is a weak one.</p>
+        <p>总报今天 vs 基线。<em>今天 92%，从 38% 上升。</em>MAS supervisor 看的是轨迹——38→92% 是好故事，38→42% 是弱故事。</p>
+        <h3>③ "Closure date as committed" — anchor to the plan</h3>
+        <p>Always name the closure date and anchor it to the Year-2 plan. <em>Closure date: 31 Dec 2026, as committed in the Year-2 plan.</em> The MAS supervisor reads the date and the anchor, not the verb.</p>
+        <p>总报关闭日期并锚定到第 2 年计划。<em>关闭日期：2026 年 12 月 31 日，按第 2 年计划承诺。</em>MAS supervisor 看日期和锚点，不是动词。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>14 domains is a closed list.</strong> Don't invent; quote the MAS list. Domain 5, 8, 11 — the supervisor knows the numbers.</li>
+            <li><strong>Baseline + today + closure date, in that order.</strong> Three facts, fixed order. The MAS supervisor reads the trio.</li>
+            <li><strong>Quote the trajectory, not the snapshot.</strong> 38→92% is a strong story. 92% alone is a snapshot.</li>
+            <li><strong>Compensating control is the answer to a still-open gap.</strong> Name at least one. No control = unmanaged gap = audit finding.</li>
+            <li><strong>Attestation needs two signatories.</strong> Country CEO + Group CISO. MAS expects executive accountability, not a programme manager alone.</li>
+            <li><strong>Internal Audit before the attestation.</strong> Independent assurance is a precondition. The CISO doesn't attest without IA's sign-off.</li>
+            <li><strong>Early notification is the protocol.</strong> 30-day slip → 7-day notification. Don't surprise the supervisor at the next meeting.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the MAS TRM walk</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Walk me through the 14 cyber hygiene domains. Baseline, gap status today, Year-2 closure plan."
+            "Baseline December 2024. 14 domains assessed by an external assessor. 12 met baseline. 2 had gaps — Domain 6 (vulnerability management) and Domain 9 (privileged access management). Today, both are in active closure. Domain 6: baseline gap was 24 unpatched internet-facing assets outside the 14-day SLA. Today: 6 remaining, all in catch-up windows, target 30 November 2026. Domain 9: baseline gap was 4 critical admin accounts without PAW binding. Today: 2 remaining, with 2-week rotation policy in place as compensating control. Closure date: 31 December 2026 for both domains, as committed in the Year-2 plan. Year-2 attestation by 31 January 2027, signed by the Country CEO and the Group CISO. Internal Audit provides independent assurance on the 14 domains before the attestation. If a domain slips past committed closure by more than 30 days, file an early notification to MAS within 7 days, with a revised closure date and compensating control update. The Group CISO signs the notification. That's the protocol."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"请过 14 个网络卫生领域。基线、当前差距状态、第 2 年关闭计划。"
+            "基线 2024 年 12 月。14 领域由外部评估师评估。12 达标。2 领域有差距——领域 6（漏洞管理）、领域 9（特权访问管理）。今天 2 个都在积极关闭。领域 6：基线差距是 24 个未打补丁的面向互联网资产在 14 天 SLA 外。今天：剩 6 个，全在追赶窗口内，目标 2026 年 11 月 30 日。领域 9：基线差距是 4 个关键管理员账号未绑定 PAW。今天：剩 2 个，2 周轮岗策略作为补偿控制。两者关闭日期：2026 年 12 月 31 日，按第 2 年计划承诺。第 2 年声明 2027 年 1 月 31 日，由国家 CEO 和集团 CISO 签署。内审对 14 领域提供独立保证在签署声明前。如果某领域超过承诺关闭 30 天以上，7 天内向 MAS 提交早期通知，附修订关闭日期和补偿控制更新。集团 CISO 签通知。这就是协议。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the MAS TRM mistake</h3>
+        <p>Which line would damage the supervisor's confidence the most? Why?</p>
+        <ol>
+            <li>"Baseline December 2024. 14 domains assessed. 11 met baseline. 3 had gaps — Domain 5, 8, 11. Today 92% within SLA, up from 38%."</li>
+            <li>"We're working on the gaps and we think we'll close them soon."</li>
+            <li>"Closure date: 31 December 2026, as committed in the Year-2 plan. Attestation by 31 January 2027, signed by Country CEO and Group CISO."</li>
+            <li>"Compensating control: PAW binding and SOC session recording, documented in the risk register."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We're working on the gaps and we think we'll close them" replaces the count, the trajectory, the closure date, and the compensating control with a feeling. The MAS supervisor will always bounce this back: how many gaps, which domains, what is the trajectory, what is the closure date, what is the compensating control. ① leads with count + trajectory. ③ names the date and signatories. ④ names the compensating control. ② is an immature cyber hygiene programme; the supervisor will write a finding.</p>
+        </div>
+        <h3>Exercise 3 — Run a 45-minute MAS TRM walk</h3>
+        <p>You are the Cyber Hygiene PM. 14 domains, baseline Dec 2024, 10 met, 4 had gaps (Domain 2 secure config, Domain 7 access control, Domain 12 incident response, Domain 14 audit logging). Today: 3 of 4 in active closure, Domain 7 just slipped 30 days. Build a 45-minute script: (1) baseline + gap count, (2) 4 gap domains today, (3) Domain 7 early notification, (4) compensating controls, (5) Year-2 attestation.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Baseline December 2024. 14 domains assessed. 10 met baseline. 4 had gaps — Domain 2, 7, 12, 14. Today, 3 of 4 in active closure. Domain 2 secure config: baseline gap was 18 servers with default config, today 4 remaining, target 30 November 2026. Domain 7 access control: baseline gap was 12 service accounts with no rotation, today 5 remaining — slipped 30 days past committed closure. Early notification filed to MAS on 15 October, revised closure 28 February 2027, Group CISO signed. Compensating control: session recording and weekly SOC review for the 5 accounts. Domain 12 incident response: baseline gap was no formal playbook for ransomware, today playbook published, tabletop exercise scheduled Q1 2027. Domain 14 audit logging: baseline gap was 2 SIEM gaps in the trade finance platform, today 1 remaining, target 31 December 2026. Closure date 31 December 2026 for 3 domains, 28 February 2027 for Domain 7. Year-2 attestation by 31 January 2027 for the 3, supplementary attestation 31 March 2027 for Domain 7. Both signed by Country CEO and Group CISO. Independent assurance from Internal Audit before each attestation."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="07-gdpr-dsar.html" class="btn btn-outline-secondary">← Previous: Article 07</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="09-hkma-cyber-resilience.html" class="btn btn-primary">Next: Article 09 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

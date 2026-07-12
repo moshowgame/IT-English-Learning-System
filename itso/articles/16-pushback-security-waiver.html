@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 16: Pushing Back on a Security Waiver | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">16 · Pushing Back on a Security Waiver</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Pushing Back on a Security Waiver — Yes, But, with Compensating Control</h1>
+        <p class="subtitle">Article 16 · Module 4: Difficult Security Conversations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Yes-but, compensating control, time-bound, named residual risk, no permanent waiver</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 14:00 HKT</strong>. You are the <em>Group Cyber Risk Lead</em>. The <strong>Wholesale Banking Modernisation</strong> programme has submitted a waiver request to <em>disable</em> the <strong>Group Database Activity Monitoring (DAM) Standard</strong> for the new <em>real-time trade-settlement</em> database. The business case: DAM adds 4 milliseconds of latency per transaction, and the real-time flow is contractually committed at 20 ms. The waiver is requested <em>indefinitely</em> — "for the lifetime of the platform". The Group CISO has asked you to <strong>push back</strong> at the waiver review meeting. The Programme Director, <strong>Tom</strong>, expects the waiver to be approved in 30 minutes.</p>
+        <p>周二 14:00 香港时间，你是<em>集团网络风险负责人</em>。<strong>批发银行现代化</strong>项目群提交了豁免请求，<em>禁用</em>新<em>实时交易结算</em>数据库的<strong>集团数据库活动监控（DAM）标准</strong>。商业理由：DAM 每笔交易增加 4 毫秒延迟，而实时流合同承诺 20 毫秒。豁免请求<em>无固定期限</em>——"平台生命周期内"。集团 CISO 要求你在豁免评审会上<strong>反对</strong>。项目群总监 <strong>Tom</strong> 期望豁免 30 分钟内批准。</p>
+        <p>Pushing back on a waiver is a "yes, but" conversation. The instinct is to say no and lose the relationship. The professional pattern is: <em>acknowledge the latency, propose a compensating control, insist on time-bound, name the residual risk, never accept "indefinite"</em>. The programme gets a path; the bank keeps the standard.</p>
+        <p>反对豁免是"yes, but"对话。本能是说 no 失去关系。专业模式是：<em>承认延迟、提出补偿控制、坚持时限、具名剩余风险、绝不接受"无固定期限"</em>。项目群得到路径；银行保留标准。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Waiver Review — 6 Sections, 30 Minutes</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en">Tom, <em>thanks for the waiver request.</em> <em>I hear the latency constraint</em> — <em>20 ms contractual, DAM adds 4 ms,</em> <em>that is a real engineering problem.</em> <em>But the request as written — "indefinite waiver" —</em> <em>I can't recommend that.</em> <em>Let me walk the trade.</em></span><span class="cn">Tom，<em>感谢你的豁免请求</em>。<em>我听到了延迟约束</em>——<em>合同 20 毫秒，DAM 增加 4 毫秒，</em><em>这是真实的工程问题。</em><em>但按现在写的——"无固定期限豁免"——</em><em>我不能推荐。</em><em>让我过一下 trade。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Tom: <em>The 4 ms isn't negotiable. The vendor SLA is 20 ms,</em> <em>and we're already at 16 ms under load.</em> <em>If we add DAM, we miss the SLA and breach the contract.</em></span><span class="cn">Tom：<em>4 毫秒不可谈。厂商 SLA 是 20 毫秒，</em><em>我们负载下已经在 16 毫秒。</em><em>如果加 DAM，我们就超出 SLA 违约。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>Understood.</em> <em>Three options.</em> <em>Option A: in-line DAM with sampling —</em> <em>monitor 10% of transactions, statistical sampling,</em> <em>adds under 1 ms of latency.</em> <em>Catches 95% of anomalies by statistical design.</em> <em>Option B: out-of-band DAM via database audit log streaming —</em> <em>logs streamed to the SIEM, monitored asynchronously,</em> <em>zero latency on the transaction path.</em> <em>Catches 100% of audit-log events but with 30-second delay.</em> <em>Option C: in-line DAM for non-peak hours only —</em> <em>22:00 HKT to 07:00 HKT,</em> <em>full DAM on; peak hours, sampling only.</em></span><span class="cn"><em>明白。</em><em>三个方案。</em><em>方案 A：内联 DAM 采样——</em><em>监控 10% 交易，统计采样，</em><em>增加不到 1 毫秒延迟。</em><em>统计设计上捕获 95% 异常。</em><em>方案 B：通过数据库审计日志流的外带 DAM——</em><em>日志流到 SIEM，异步监控，</em><em>交易路径零延迟。</em><em>捕获 100% 审计日志事件但有 30 秒延迟。</em><em>方案 C：仅非高峰时段内联 DAM——</em><em>22:00 HKT 至 07:00 HKT，</em><em>全量 DAM；高峰时段仅采样。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Tom: <em>Option B works for the latency.</em> <em>30-second delay is fine for our use case.</em> <em>But the original request was "indefinite".</em></span><span class="cn">Tom：<em>方案 B 在延迟上可行。</em><em>30 秒延迟对我们的用例可以。</em><em>但原始请求是"无固定期限"。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>On the "indefinite" — I can't recommend that.</em> <em>Group standards are not waived indefinitely.</em> <em>The risk is the standard drifts over time:</em> <em>Option B is a compensating control, not a replacement.</em> <em>If we accept "indefinite" today,</em> <em>we never come back to the question.</em> <em>Counter-proposal: time-bound waiver, 18 months,</em> <em>expiring 31 March 2028.</em> <em>At expiry, two outcomes are possible —</em> <em>(a) the platform is re-platformed and in-line DAM is feasible,</em> <em>(b) a re-acceptance memo is required, with new evidence.</em> <em>Either way, the question comes back.</em></span><span class="cn"><em>关于"无固定期限"——我不能推荐。</em><em>集团标准不会无固定期限豁免。</em><em>风险是标准随时间漂移：</em><em>方案 B 是补偿控制，不是替代品。</em><em>如果我们今天接受"无固定期限"，</em><em>我们永远不会回到这个问题。</em><em>反建议：有时限豁免，18 个月，</em><em>2028 年 3 月 31 日到期。</em><em>到期时，两种可能的结果——</em><em>（a）平台重新搭建，内联 DAM 可行，</em><em>（b）需要重新签批备忘录，含新证据。</em><em>无论哪种，问题会回来。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Tom: <em>18 months works. What else?</em></span><span class="cn">Tom：<em>18 个月可以。还有呢？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>Three more things.</em> <em>Named owner:</em> <em>risk owner is you, Tom —</em> <em>you own the residual risk of Option B.</em> <em>Control owner is David Liu, Head of IAM —</em> <em>he owns the SIEM rule and the audit log integrity.</em> <em>Residual risk rating: Medium,</em> <em>with 30-second detection delay on any anomalous DB activity.</em> <em>Revocation triggers: (a) any anomalous DB activity that requires more than 30 seconds to detect,</em> <em>(b) the SIEM rule below SLA for 2 consecutive months,</em> <em>(c) the 18-month expiry.</em> <em>Revocation = switch to Option A or C within 14 days.</em></span><span class="cn"><em>三件事。</em><em>具名负责人：</em><em>风险负责人是你，Tom——</em><em>你对方案 B 的剩余风险负责。</em><em>控制负责人是 David Liu，IAM 负责人——</em><em>他对 SIEM 规则和审计日志完整性负责。</em><em>剩余风险评级：中，</em><em>对任何异常 DB 活动有 30 秒检测延迟。</em><em>撤销触发：（a）任何异常 DB 活动需要超过 30 秒检测，</em><em>（b）SIEM 规则连续 2 个月低于 SLA，</em><em>（c）18 个月到期。</em><em>撤销 = 14 天内切换到方案 A 或 C。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom:</span>
+                <span class="text"><span class="en">Tom: <em>Agreed to all three.</em> <em>When do we sign?</em></span><span class="cn">Tom：<em>三件都同意。</em><em>什么时候签？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Cyber Risk):</span>
+                <span class="text"><span class="en"><em>I'll draft the Risk Acceptance Memo today — 8 sections, as per the standard template.</em> <em>Sign-off chain: you, David, Group CISO, Group CRO, Group Legal.</em> <em>Target: signed by Friday 17:00 HKT.</em></span><span class="cn"><em>我今天起草风险接受备忘录——8 个章节，按标准模板。</em><em>签批链：你、David、集团 CISO、集团 CRO、集团法务。</em><em>目标：周五 17:00 HKT 前签批。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">I hear the latency constraint</span> <em>I hear the latency constraint — 20 ms contractual, DAM adds 4 ms.</em></span>
+                <span class="chinese">我听到了延迟约束——合同 20 毫秒，DAM 增加 4 毫秒</span>
+                <span class="note">Always open by acknowledging the engineering constraint. "I hear it" is the line that prevents the meeting from becoming a fight.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compensating control, not replacement</span> <em>Option B is a compensating control, not a replacement.</em></span>
+                <span class="chinese">方案 B 是补偿控制，不是替代品</span>
+                <span class="note">This is the precise language. A compensating control is a substitute for the standard; a replacement would be a new standard. Banks only do compensating controls by exception.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">I can't recommend "indefinite"</span> <em>On the "indefinite" — I can't recommend that.</em></span>
+                <span class="chinese">关于"无固定期限"——我不能推荐</span>
+                <span class="note">"I can't recommend" is the polite refusal. The CISO is the approver; the Cyber Risk Lead is the recommender. The recommender's refusal forces the conversation to a different shape.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Counter-proposal</span> <em>Counter-proposal: time-bound waiver, 18 months, expiring 31 March 2028.</em></span>
+                <span class="chinese">反建议：有时限豁免，18 个月，2028 年 3 月 31 日到期</span>
+                <span class="note">A counter-proposal replaces "indefinite" with a concrete date. The date is what the conversation now negotiates.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Either way, the question comes back</span> <em>Either way, the question comes back.</em></span>
+                <span class="chinese">无论哪种，问题会回来</span>
+                <span class="note">"The question comes back" is the line that prevents permanent drift. A time-bound waiver is a question that the bank keeps asking.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Residual risk rating</span> <em>Residual risk rating: Medium, with 30-second detection delay on any anomalous DB activity.</em></span>
+                <span class="chinese">剩余风险评级：中，对任何异常 DB 活动有 30 秒检测延迟</span>
+                <span class="note">Always name the rating AND the delay. The rating is the headline; the delay is the trade. The CISO reads both.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Revocation triggers</span> <em>Revocation triggers: (a) any anomaly requiring more than 30 seconds to detect, (b) SIEM rule below SLA for 2 months, (c) 18-month expiry.</em></span>
+                <span class="chinese">撤销触发：（a）任何异常需要超过 30 秒检测，（b）SIEM 规则连续 2 个月低于 SLA，（c）18 个月到期</span>
+                <span class="note">Three triggers, all auto. The waiver dies when any one fires — no meeting required. That's the discipline.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Waiver</strong> n. 豁免 A formal exception to a Group standard, time-bound and signed.</li>
+            <li><strong>Indefinite waiver</strong> n. 无固定期限豁免 A waiver with no expiry — the bank never comes back to the question.</li>
+            <li><strong>Compensating control</strong> n. 补偿控制 A control that substitutes for the waived control, accepted by exception.</li>
+            <li><strong>Time-bound waiver</strong> n. 有时限豁免 A waiver with a clear expiry date and no auto-renewal.</li>
+            <li><strong>Risk Acceptance Memo</strong> n. 风险接受备忘录 The formal document that records the waiver, owners, and triggers.</li>
+            <li><strong>Residual risk rating</strong> n. 剩余风险评级 The risk that remains after the compensating control is in place.</li>
+            <li><strong>Revocation trigger</strong> n. 撤销触发 A pre-agreed condition that auto-kills the waiver.</li>
+            <li><strong>Counter-proposal</span> n. 反建议 A specific alternative offered in place of the original request.</li>
+            <li><strong>DAM (Database Activity Monitoring)</strong> n. 数据库活动监控 The control that records and alerts on DB queries.</li>
+            <li><strong>In-line DAM</strong> n. 内联 DAM DAM that sits on the transaction path, adding latency.</li>
+            <li><strong>Out-of-band DAM</strong> n. 外带 DAM DAM that monitors asynchronously via audit log streaming.</li>
+            <li><strong>Audit log streaming</strong> n. 审计日志流 Database audit events sent to a SIEM in real time.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Yes-but is the professional pattern.</strong> Acknowledge the constraint, propose a compensating control, insist on time-bound, name the residual risk. The business gets a path; the bank keeps the standard.</li>
+            <li><strong>"I can't recommend 'indefinite'" is the polite refusal.</strong> The recommender's refusal forces the conversation to a different shape. Saying "no" directly damages the relationship; saying "I can't recommend" preserves it.</li>
+            <li><strong>Compensating control, not replacement.</strong> Banks do compensating controls by exception. A replacement would require a new standard — a much longer process.</li>
+            <li><strong>Time-bound is non-negotiable.</strong> An indefinite waiver is a permanent standard change in disguise. Always insist on a date.</li>
+            <li><strong>Named owner — risk AND control.</strong> Two names: the programme director (risk) and the IAM head (control). Both sign. Without names, the waiver is not a waiver.</li>
+            <li><strong>Revocation triggers must be auto, not discretionary.</strong> Three pre-agreed conditions, any one of which auto-kills the waiver. "If the CISO decides" is not a trigger.</li>
+            <li><strong>Either way, the question comes back.</strong> This is the line that prevents permanent drift. A time-bound waiver is a question the bank keeps asking.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the opening lines</h3>
+        <p>Translate the opening lines into natural Chinese.</p>
+        <blockquote>
+            "Tom, thanks for the waiver request. I hear the latency constraint — 20 ms contractual, DAM adds 4 ms, that is a real engineering problem. But the request as written — 'indefinite waiver' — I can't recommend that. Let me walk the trade. Three options. Option A: in-line DAM with sampling, 10% of transactions, under 1 ms latency. Option B: out-of-band DAM via audit log streaming, zero transaction latency, 30-second detection delay. Option C: in-line DAM for non-peak hours only, 22:00 to 07:00 HKT, sampling on peak hours. Counter-proposal: time-bound waiver, 18 months, expiring 31 March 2028. Either way, the question comes back."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Tom，感谢你的豁免请求。我听到了延迟约束——合同 20 毫秒，DAM 增加 4 毫秒，这是真实的工程问题。但按现在写的——'无固定期限豁免'——我不能推荐。让我过一下 trade。三个方案。方案 A：内联 DAM 采样，10% 交易，不到 1 毫秒延迟。方案 B：通过审计日志流的外带 DAM，交易路径零延迟，30 秒检测延迟。方案 C：仅非高峰时段内联 DAM，22:00 至 07:00 HKT，高峰时段仅采样。反建议：有时限豁免，18 个月，2028 年 3 月 31 日到期。无论哪种，问题会回来。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the waiver pushback mistake</h3>
+        <p>Which line would damage the waiver pushback the most? Why?</p>
+            <ol>
+                <li>"I hear the latency constraint. Option B works for the latency. Compensating control, not a replacement. Time-bound 18 months, expiring 31 March 2028. Named owner: Tom (risk), David (control)."</li>
+                <li>"No, we cannot waive the DAM standard. The CISO will never approve it. Find another way."</li>
+                <li>"Revocation triggers: (a) any anomaly requiring more than 30 seconds to detect, (b) SIEM rule below SLA for 2 months, (c) 18-month expiry. Revocation = switch to Option A or C within 14 days."</li>
+                <li>"Residual risk rating: Medium, with 30-second detection delay. Sign-off chain: Tom, David, Group CISO, Group CRO, Group Legal."</li>
+            </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "No, we cannot waive. Find another way" is a flat refusal with no options, no compensating control, no time-bound, no named owner, and no residual rating. Tom walks out of the meeting with no path; the CISO will hear about the relationship damage. ① acknowledges the constraint, names the option, the time-bound, and the owners. ③ names the triggers and the revocation. ④ names the residual rating and the sign-off chain. ② turns a 30-minute waiver review into an escalation to the CISO.</p>
+        </div>
+        <h3>Exercise 3 — Build a waiver pushback</h3>
+        <p>The Trading Platform team wants to disable Group DLP Standard §3.2 (USB removable media blocking) for 30 trading desks, indefinitely, because the desks need to move large files to air-gapped analysis machines. Build the 6 sections: (1) opening, (2) options, (3) counter-proposal, (4) named owners, (5) residual risk, (6) revocation triggers.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Sarah, thanks for the waiver request. I hear the file-transfer constraint — large files to air-gapped analysis machines, the corporate file-share is too slow. But 'indefinite' — I can't recommend that. Three options. Option A: encrypted USB drives — bank-issued, hardware-encrypted, with audit logging on insert/eject, no latency impact. Option B: one-way file-transfer diode — hardware device that only allows writes to the air-gapped network, no reads back, zero malware risk. Option C: scheduled batch transfer to a managed file-transfer gateway — runs overnight, 8-hour cycle, audit log on every file. Counter-proposal: time-bound waiver, 12 months, expiring 31 July 2027, with re-acceptance memo required 30 days before expiry. Named owners. Risk owner: Sarah Chen, Head of Trading Platform. Control owner: David Liu, Head of IAM. Both names on the memo. Residual risk: Medium, with hardware-encrypted USB as the primary control. Revocation triggers: (a) any USB drive lost or stolen, (b) any audit log below SLA for 2 months, (c) 12-month expiry. Revocation = instant re-enable of DLP on the 30 trading desks, 24-hour effect."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="15-telling-sponsor-data-breach.html" class="btn btn-outline-secondary">← Previous: Article 15</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="17-stop-risky-deploy.html" class="btn btn-primary">Next: Article 17 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

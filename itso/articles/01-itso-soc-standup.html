@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 01: SOC Daily Standup | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">01 · SOC Daily Standup</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>SOC Daily Standup — Speak Alerts, Not Feelings</h1>
+        <p class="subtitle">Article 01 · Module 1: Daily Security Operations · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 Alert counts, P1/P2, on-call, IOC sweep, escalations, asks</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>09:00 HKT</strong>. You are the <em>ITSO SOC Lead</em> for the bank's 24/7 Security Operations Center, supporting 6 analysts across Hong Kong, Shanghai, and Manila. The SOC standup runs on Microsoft Teams at the top of every shift change. Joining: <strong>Ravi</strong>, the Manila shift lead handing over, <strong>Emily</strong>, the Hong Kong day-shift lead, and <strong>Mark</strong>, the Group CISO observer.</p>
+        <p>上午 9 点香港时间，你是银行 24/7 安全运营中心（<em>SOC</em>）的 <em>ITSO 团队负责人</em>，带领 6 名分布在香港、上海、马尼拉的分析师。SOC 站在每次轮班交接时通过 Teams 召开。参会有：马尼拉交班负责人 <strong>Ravi</strong>、香港日班负责人 <strong>Emily</strong>，以及集团 CISO 观察员 <strong>Mark</strong>。</p>
+        <p>Unlike a developer's standup, the SOC standup is measured in <strong>alerts, incidents, IOC sweeps, and on-call status</strong>. You don't say "I worked on JIRA-1234" — you say "3 P1s open, 1 confirmed breach under containment, IOC sweep clean, on-call is Sarah".</p>
+        <p>和开发人员不同，SOC 站会用<strong>告警、事件、IOC 扫描、值班状态</strong>说话。你不说"我做了 JIRA-1234"——你说"3 个 P1 待处理，1 个确认泄露在遏制，IOC 扫描干净，值班是 Sarah"。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Manila shift lead):</span>
+                <span class="text"><span class="en">Morning, team. <em>Handing over.</em> <em>SOC update from me.</em></span><span class="cn">大家早上好，<em>交班</em>。<em>SOC 层面同步一下。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Manila shift lead):</span>
+                <span class="text"><span class="en"><em>Alert volume overnight:</em> <em>1,420 SIEM events, 38 opened as tickets, 4 escalated to P1, 1 confirmed incident — <em>a phishing campaign targeting treasury staff</em>.</span><span class="cn"><em>夜间告警量：</em><em>1420 条 SIEM 事件，38 个开为工单，4 个升级为 P1，1 个确认事件</em>——<em>针对财务部门的钓鱼攻击</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Manila shift lead):</span>
+                <span class="text"><span class="en"><em>Phishing campaign status:</em> <em>1 mailbox compromised, 1 wire transfer attempt blocked at MFA, credentials revoked, session invalidated, endpoint isolated.</em> <em>Containment complete at 04:12 HKT.</em> <em>Investigation continues on day shift.</em></span><span class="cn"><em>钓鱼状态：</em><em>1 个邮箱失陷，1 次电汇尝试在 MFA 处被拦截，凭据吊销，会话作废，端点隔离。</em><em>04:12 HKT 完成遏制。</em><em>调查交日班继续。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (SOC Lead):</span>
+                <span class="text"><span class="en">Thanks, Ravi. <em>Three follow-ups.</em> <em>One</em>: <em>is the phishing IOC sweep clean across the rest of the estate?</em> <em>Two</em>: <em>was the wire transfer attempt reported to the Fraud team within the 1-hour SLA?</em> <em>Three</em>: <em>does this trigger regulator notification under PDPO?</em></span><span class="cn">谢谢 Ravi。<em>三个跟进。</em><em>一</em>：<em>全网钓鱼 IOC 扫描干净吗？</em><em>二</em>：<em>电汇尝试在 1 小时 SLA 内上报给反欺诈团队了吗？</em><em>三</em>：<em>这是否触发 PDPO 监管通报？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Ravi (Manila shift lead):</span>
+                <span class="text"><span class="en"><em>One:</em> <em>IOC sweep at 04:30 and 06:00 — both clean.</em> <em>Two:</em> <em>Fraud team acknowledged at 04:35, 23 minutes from detection.</em> <em>Three:</em> <em>Privacy team is reviewing — our view is no personal data was exfiltrated, so PDPO notification is not triggered.</em> <em>Privacy team will confirm by 11:00.</em></span><span class="cn"><em>一</em>：<em>04:30 和 06:00 IOC 扫描——都干净。</em><em>二</em>：<em>反欺诈团队 04:35 确认，从检测起 23 分钟。</em><em>三</em>：<em>隐私团队在审——我们判断没有个人数据外泄，不触发 PDPO 通报。</em><em>隐私团队 11:00 前确认。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (SOC Lead):</span>
+                <span class="text"><span class="en">Good. <em>Day-shift plan.</em> <em>Emily's team takes the phishing investigation.</em> <em>Three workstreams.</em> <em>Workstream 1:</em> <em>forensic analysis of the compromised mailbox, root cause, lateral movement check.</em> <em>Workstream 2:</em> <em>block the sender domain, push the IOC to the mail gateway, refresh the user-awareness training for treasury.</em> <em>Workstream 3:</em> <em>draft the lessons-learned for the next Cyber Risk Forum.</em></span><span class="cn">好。<em>日班计划。</em><em>Emily 团队接手钓鱼调查。</em><em>三个工作流。</em><em>工作流 1：</em><em>失陷邮箱取证分析、根因、横向移动检查。</em><em>工作流 2：</em><em>拉黑发件域、把 IOC 推到邮件网关、给财务部刷新安全意识培训。</em><em>工作流 3：</em><em>为下次 Cyber Risk Forum 起草经验教训。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mark (CISO observer):</span>
+                <span class="text"><span class="en"><em>One ask from me.</em> <em>By 17:00, please give me a 1-page summary:</em> <em>what happened, scope, containment, residual risk, and regulator exposure.</em> <em>I want it in the Group Cyber inbox by close of business.</em></span><span class="cn"><em>一个请求。</em><em>17:00 前请给我 1 页摘要：</em><em>发生了什么、范围、遏制、残留风险、监管暴露。</em><em>下班前放进集团 Cyber 邮箱。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (SOC Lead):</span>
+                <span class="text"><span class="en"><em>Confirmed.</em> <em>1-page summary, in the inbox by 17:00.</em></span><span class="cn"><em>确认。</em><em>1 页摘要，17:00 前入邮箱。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">SOC update</span> <em>SOC update from me.</em></span>
+                <span class="chinese">SOC 层面同步一下</span>
+                <span class="note">Mark yourself as the SOC lead. You speak for the SOC, not for yourself.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Alert volume</span> <em>Alert volume overnight: 1,420 SIEM events, 38 tickets, 4 P1s, 1 confirmed incident.</em></span>
+                <span class="chinese">夜间告警量：1420 条 SIEM 事件，38 个工单，4 个 P1，1 个确认事件</span>
+                <span class="note">Always quote the chain: events → tickets → P1s → incidents. The CISO remembers the incident count.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Containment complete</span> <em>Containment complete at 04:12 HKT.</em></span>
+                <span class="chinese">04:12 HKT 完成遏制</span>
+                <span class="note">Name the time of containment. The CISO will ask. Always have the timestamp ready.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">IOC sweep</span> <em>IOC sweep at 04:30 and 06:00 — both clean.</em></span>
+                <span class="chinese">04:30 和 06:00 IOC 扫描——都干净</span>
+                <span class="note">Quote the time of the sweep. "Clean" alone is weak. "Clean at 04:30 and 06:00" is professional.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">SLA</span> <em>Fraud team acknowledged at 04:35, 23 minutes from detection, inside the 1-hour SLA.</em></span>
+                <span class="chinese">反欺诈 04:35 确认，从检测起 23 分钟，1 小时 SLA 内</span>
+                <span class="note">Always quote the actual minutes against the SLA. "Inside SLA" or "outside SLA" is the binary the CISO wants.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Regulator exposure</span> <em>Does this trigger regulator notification under PDPO?</em></span>
+                <span class="chinese">这是否触发 PDPO 监管通报？</span>
+                <span class="note">Always ask the regulator-exposure question early. Privacy team confirms, but the SOC flags first.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Workstream</span> <em>Three workstreams: forensic, mitigation, lessons learned.</em></span>
+                <span class="chinese">三个工作流：取证、缓解、复盘</span>
+                <span class="note">A confirmed incident always has three workstreams: forensic (what happened), mitigation (stop the bleeding), lessons (close the loop).</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">1-page summary</span> <em>By 17:00, a 1-page summary: what happened, scope, containment, residual risk, regulator exposure.</em></span>
+                <span class="chinese">17:00 前 1 页摘要：发生了什么、范围、遏制、残留风险、监管暴露</span>
+                <span class="note">CISO always asks for 1 page, 5 sections. The structure is fixed; the content varies.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>SOC (Security Operations Center)</strong> n. 安全运营中心 24/7 team that triages alerts and coordinates incident response.</li>
+            <li><strong>SIEM (Security Information and Event Management)</strong> n. 安全信息与事件管理 Platform that aggregates logs and generates alerts.</li>
+            <li><strong>Alert</strong> n. 告警 A SIEM-generated event that needs analyst review.</li>
+            <li><strong>P1 / P2 / P3</strong> n. 优先级 P1 = critical, business impact now; P2 = high; P3 = medium.</li>
+            <li><strong>IOC (Indicator of Compromise)</strong> n. 失陷指标 An artefact (IP, domain, hash) that signals a compromise.</li>
+            <li><strong>IOC sweep</strong> v. IOC 扫描 Query the SIEM/EDR for known IOCs across the estate.</li>
+            <li><strong>TTP (Tactics, Techniques, Procedures)</strong> n. 战术/技术/过程 How an attacker operates; used in threat intel.</li>
+            <li><strong>Containment</strong> n. 遏制 Stopping an incident from spreading — isolate endpoint, revoke credentials, block domain.</li>
+            <li><strong>Eradication</strong> n. 根除 Removing the attacker's foothold — reimage, reset, harden.</li>
+            <li><strong>Recovery</strong> n. 恢复 Restoring normal service with monitoring.</li>
+            <li><strong>Lessons learned</strong> n. 经验教训 Post-incident review — what worked, what didn't, what we change.</li>
+            <li><strong>PDPO (Personal Data (Privacy) Ordinance)</strong> n. 个人资料（私隐）条例 Hong Kong's data protection law.</li>
+            <li><strong>MFA (Multi-Factor Authentication)</strong> n. 多因素认证 Login requiring 2+ factors — password + token / biometric.</li>
+            <li><strong>On-call</strong> n. 值班 The named analyst who takes the phone outside business hours.</li>
+            <li><strong>CISO (Chief Information Security Officer)</strong> n. 首席信息安全官 The senior executive accountable for security.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "X events, Y tickets, Z P1s" — quote the chain, in that order</h3>
+        <p>The SOC standup has a fixed chain: <em>events → tickets → P1s → confirmed incidents</em>. Always quote in that order. The CISO reads the chain top-down; the analyst reads it bottom-up.</p>
+        <p>SOC 站会有固定链：<em>事件 → 工单 → P1 → 确认事件</em>。总是按顺序报。CISO 自上而下读，分析师自下而上读。</p>
+        <h3>② "Containment complete at HH:MM" — name the time, always</h3>
+        <p>Containment without a time is half a report. <em>Containment complete at 04:12 HKT.</em> The time anchors the incident timeline. The auditor will read the time, not the verb.</p>
+        <p>遏制没有时间等于半份报告。<em>04:12 HKT 完成遏制。</em>时间锚定事件时间线。审计员读的是时间，不是动词。</p>
+        <h3>③ "Inside the 1-hour SLA" — quote the actual minutes</h3>
+        <p>"We responded quickly" is not enough. <em>Fraud team acknowledged at 04:35, 23 minutes from detection, inside the 1-hour SLA.</em> The minutes are the proof. The SLA is the binary.</p>
+        <p>"我们响应很快"不够。<em>反欺诈 04:35 确认，从检测起 23 分钟，1 小时 SLA 内。</em>分钟数是证据，SLA 是判定。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>SOC standup is measured in alerts, not feelings.</strong> "I had a busy night" is weak. "1,420 events, 38 tickets, 4 P1s, 1 confirmed incident" is professional.</li>
+            <li><strong>Always name the containment time.</strong> The CISO will ask. The auditor will read. Time is the anchor of every incident.</li>
+            <li><strong>Quote the SLA, in minutes.</strong> "Inside SLA" or "outside SLA" is the binary. The minutes are the proof.</li>
+            <li><strong>Flag the regulator-exposure question early.</strong> Privacy team confirms, but the SOC flags first. Ask "PDPO / GDPR / MAS" early — not at the end.</li>
+            <li><strong>Three workstreams for every confirmed incident:</strong> forensic, mitigation, lessons learned. The CISO expects this trio; missing one signals an immature SOC.</li>
+            <li><strong>1-page summary is the CISO's standard ask.</strong> Five sections, fixed: what happened, scope, containment, residual risk, regulator exposure. Memorise the structure.</li>
+            <li><strong>Handovers are the SOC's most political moment.</strong> Manila → HK → Shanghai. Each shift writes the same chain: events, tickets, P1s, incidents, on-call. Consistency is credibility.</li>
+            <li><strong>Never leave a P1 without a named owner and a containment time.</strong> The CISO's first two questions are always: who owns it, and when was it contained.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the SOC standup</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Handing over. SOC update from me. Alert volume overnight: 980 SIEM events, 22 opened as tickets, 2 escalated to P1, 1 confirmed incident — a credential stuffing attack against the corporate VPN. Containment status: rate-limiting applied at 02:15 HKT, attacker IPs blocked at 02:40, no accounts compromised, MFA held on all attempts. IOC sweep at 03:00 and 05:00 — both clean. Fraud team acknowledged at 02:50, 35 minutes from detection, inside the 30-minute SLA. Privacy team's view: no personal data exfiltrated, no PDPO notification triggered. Day-shift plan: three workstreams. Workstream 1: forensic analysis of the attack pattern, root cause, lateral movement check. Workstream 2: update the VPN rate-limit policy, push the attacker IP list to the edge firewall, refresh the user-awareness training for IT admins. Workstream 3: lessons learned for the next Cyber Risk Forum. By 17:00, a 1-page summary: what happened, scope, containment, residual risk, regulator exposure."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"交班。SOC 层面同步。夜间告警量：980 条 SIEM 事件，22 个开为工单，2 个升级 P1，1 个确认事件——针对公司 VPN 的撞库攻击。遏制状态：02:15 HKT 启用限速，02:40 拉黑攻击者 IP，无账号失陷，所有尝试都被 MFA 拦下。03:00 和 05:00 IOC 扫描——都干净。反欺诈 02:50 确认，从检测起 35 分钟，30 分钟 SLA 内。隐私团队意见：无个人数据外泄，不触发 PDPO 通报。日班计划：三个工作流。工作流 1：攻击模式取证分析、根因、横向移动检查。工作流 2：更新 VPN 限速策略、把攻击者 IP 推到边缘防火墙、给 IT 管理员刷新安全意识培训。工作流 3：为下次 Cyber Risk Forum 起草经验教训。17:00 前 1 页摘要：发生了什么、范围、遏制、残留风险、监管暴露。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the SOC standup mistake</h3>
+        <p>Which line would damage credibility with the CISO the most? Why?</p>
+        <ol>
+            <li>"Alert volume overnight: 1,420 events, 38 tickets, 4 P1s, 1 confirmed incident."</li>
+            <li>"Containment complete at 04:12 HKT."</li>
+            <li>"We had a really busy night and worked really hard on the phishing case."</li>
+            <li>"By 17:00, a 1-page summary: what happened, scope, containment, residual risk, regulator exposure."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>③ is the credibility-damager. "We had a really busy night and worked really hard" is a feelings update, not a SOC update. The CISO wants the chain (events, tickets, P1s, incidents), not feelings. ① quotes the chain. ② names the containment time. ④ confirms the 1-page summary. ③ replaces numbers with adjectives; it signals an immature SOC.</p>
+        </div>
+        <h3>Exercise 3 — Run a 15-minute SOC standup</h3>
+        <p>You are the SOC lead. Overnight, there were 2,100 SIEM events, 45 tickets, 6 P1s, 2 confirmed incidents (one ransomware attempt blocked at EDR, one BEC fraud attempt blocked at MFA). Containment: 04:30 for ransomware, 05:15 for BEC. IOC sweep: 05:00 and 06:30, both clean. Build a 15-minute script: (1) hand over, (2) alert chain, (3) two incidents with containment times, (4) IOC sweep, (5) regulator exposure, (6) day-shift plan with 3 workstreams, (7) CISO 1-page summary by 17:00.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Handing over. SOC update from me. Alert volume overnight: 2,100 SIEM events, 45 tickets, 6 P1s, 2 confirmed incidents. Incident 1: ransomware attempt blocked at EDR, containment complete at 04:30 HKT, no encryption, no lateral movement, endpoint isolated and reimaged. Incident 2: BEC fraud attempt blocked at MFA, containment complete at 05:15 HKT, no wire transfer, credentials rotated, session invalidated. IOC sweep at 05:00 and 06:30 — both clean. Fraud team acknowledged both at 04:55 and 05:35, inside the 30-minute SLA. Privacy team's view: no personal data exfiltrated on either, no PDPO notification triggered. Day-shift plan, three workstreams per incident. Workstream 1: forensic analysis, root cause, lateral movement check. Workstream 2: update EDR rule, push IOC to the gateway, refresh user-awareness training for finance. Workstream 3: lessons learned for the next Cyber Risk Forum. By 17:00, a 1-page summary: what happened, scope, containment, residual risk, regulator exposure, in the Group Cyber inbox."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="02-siem-alert-triage.html" class="btn btn-primary">Next: Article 02 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

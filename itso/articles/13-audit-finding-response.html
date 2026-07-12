@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 13: Audit Finding Response | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">13 · Audit Finding Response</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Audit Finding Response — Root Cause, Remediation, Owner, Due Date, Evidence</h1>
+        <p class="subtitle">Article 13 · Module 3: Written Security Communication · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 8 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 Internal audit, external audit, regulator — root cause, remediation plan, owner, evidence</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 10:00 HKT</strong>. You are the <em>IT Control Owner</em> for the bank's Identity &amp; Access Management process. The Group Internal Audit has issued an <strong>audit finding</strong>: <em>"Privileged access reviews for 142 service accounts in the wholesale-banking trading platform were not completed in Q2 2026, contrary to Group IAM Standard §4.2, which requires quarterly review."</em> The finding is rated <strong>Medium</strong> (financial reporting impact: access not aligned to least privilege; remediation timeline: 90 days). The auditor, <strong>Karen</strong>, has asked for a formal <strong>management response</strong> by <strong>Friday 17:00 HKT</strong>. Your response will be quoted in the final audit report and read by the Audit Committee.</p>
+        <p>周二 10:00 香港时间，你是银行 IAM 流程的<em>IT 控制负责人</em>。集团内审已发出<strong>审计发现</strong>：<em>"批发银行交易平台的 142 个服务账户在 2026 年 Q2 未完成特权访问复核，违反集团 IAM 标准第 4.2 节（要求季度复核）。"</em>发现评级为<strong>中</strong>（财务报告影响：访问未对齐最小权限；整改时间线：90 天）。审计师 <strong>Karen</strong> 要求在<strong>周五 17:00 HKT</strong>前提交正式<strong>管理层回复</strong>。你的回复将出现在最终审计报告里，并被审计委员会阅读。</p>
+        <p>An audit finding response is a <em>defensible statement</em>. The auditor wants to see four things: (1) you <strong>agree or disagree</strong> with the finding, (2) you have a <strong>root cause</strong>, (3) you have a <strong>remediation plan with a named owner and a due date</strong>, and (4) you have <strong>evidence</strong> of the remediation in flight. Anything else is decoration.</p>
+        <p>审计发现回复是<em>可辩护的声明</em>。审计师想看四件事：（1）你<strong>同意或不同意</strong>该发现，（2）你有<strong>根因</strong>， （3）你有<strong>带具名负责人和到期日的整改计划</strong>，（4）你有<strong>整改进行中的证据</strong>。其他都是装饰。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. The Response — 5 Mandatory Sections</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><strong>To:</strong> Karen Liu, Group Internal Audit, IAM Engagement Lead · <strong>From:</strong> [IT Control Owner, IAM], Group IT · <strong>Date:</strong> Tuesday 10:00 HKT · <strong>Subject:</strong> [MANAGEMENT RESPONSE] Audit Finding 2026-IAM-014 — Privileged Access Review Q2 2026, 142 service accounts</span><span class="cn"><strong>收件人：</strong>Karen Liu，集团内审，IAM 审计工作组负责人 · <strong>发件人：</strong>[IAM IT 控制负责人]，集团 IT · <strong>日期：</strong>周二 10:00 HKT · <strong>主题：</strong>[管理层回复] 审计发现 2026-IAM-014——2026 Q2 特权访问复核，142 个服务账户</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 1 — Management position.</em> <em>Management agrees with the finding.</em> <em>The 142 service accounts in the wholesale-banking trading platform</em> <em>were not subject to the quarterly privileged access review in Q2 2026,</em> <em>as required by Group IAM Standard v5.1 §4.2.</em> <em>Management accepts the rating of Medium.</em></span><span class="cn"><em>第 1 节——管理层立场。</em><em>管理层同意该发现。</em><em>批发银行交易平台的 142 个服务账户</em><em>在 2026 年 Q2 未按集团 IAM 标准 v5.1 第 4.2 节要求</em><em>执行季度特权访问复核。</em><em>管理层接受"中"的评级。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 2 — Root cause.</em> <em>The quarterly review campaign is owned by the IAM operations team,</em> <em>which runs the campaign in the last 2 weeks of each quarter</em> <em>using a manual ticket-driven workflow.</em> <em>In Q2 2026,</em> <em>the IAM operations team was redirected to a P1 incident (wholesale-banking SSO outage on 14 May)</em> <em>for 9 working days,</em> <em>which fell inside the campaign window.</em> <em>The campaign was rescheduled to early Q3,</em> <em>but the rescheduled date slipped by 3 weeks</em> <em>and the Q2 review was not completed.</em> <em>Compounding factor:</em> <em>the service-account inventory was not flagged in the campaign tracker,</em> <em>so the redirect impact was not visible to the campaign owner.</em></span><span class="cn"><em>第 2 节——根因。</em><em>季度复核活动由 IAM 运营团队负责，</em><em>在每季度最后 2 周使用工单驱动的流程执行。</em><em>2026 年 Q2，</em><em>IAM 运营团队被抽调处理一个 P1 事件（5 月 14 日批发银行 SSO 中断），</em><em>占用 9 个工作日，</em><em>正好落在活动窗口内。</em><em>活动被重新安排到 Q3 初期，</em><em>但重新安排的日期推迟了 3 周，</em><em>Q2 复核未完成。</em><em>复合因素：</em><em>服务账户清单未在活动跟踪表中标记，</em><em>所以抽调影响对活动负责人不可见。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 3 — Remediation plan.</em> <em>Three actions.</em> <em>Action 1 (immediate):</em> <em>complete the Q2 review for the 142 service accounts by 18 July 2026</em> <em>(target: 5 working days from now).</em> <em>Action 2 (process):</em> <em>move the quarterly campaign to an automated tool (Saviynt)</em> <em>by 30 September 2026,</em> <em>removing the manual ticket dependency.</em> <em>Action 3 (visibility):</em> <em>add service-account inventory to the campaign tracker</em> <em>with a hard blocker if not flagged by day 1 of the campaign window.</em></span><span class="cn"><em>第 3 节——整改计划。</em><em>三个行动。</em><em>行动 1（即时）：</em><em>2026 年 7 月 18 日前完成 142 个服务账户的 Q2 复核</em><em>（目标：距今 5 个工作日）。</em><em>行动 2（流程）：</em><em>2026 年 9 月 30 日前将季度活动迁移到自动化工具（Saviynt），</em><em>消除手工工单依赖。</em><em>行动 3（可见性）：</em><em>将服务账户清单加入活动跟踪表，</em><em>在活动窗口第 1 天未标记时设置硬阻塞。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 4 — Owners and due dates.</em> <em>Action 1 owner:</em> <em>Maria Tan, IAM Operations Lead.</em> <em>Action 1 due date:</em> <em>18 July 2026.</em> <em>Action 2 owner:</em> <em>David Liu, Head of IAM.</em> <em>Action 2 due date:</em> <em>30 September 2026.</em> <em>Action 3 owner:</em> <em>Maria Tan, IAM Operations Lead.</em> <em>Action 3 due date:</em> <em>31 August 2026.</em> <em>Escalation owner (if any action slips):</em> <em>Group CISO.</em></span><span class="cn"><em>第 4 节——负责人和到期日。</em><em>行动 1 负责人：</em><em>Maria Tan，IAM 运营负责人。</em><em>行动 1 到期日：</em><em>2026 年 7 月 18 日。</em><em>行动 2 负责人：</em><em>David Liu，IAM 负责人。</em><em>行动 2 到期日：</em><em>2026 年 9 月 30 日。</em><em>行动 3 负责人：</em><em>Maria Tan，IAM 运营负责人。</em><em>行动 3 到期日：</em><em>2026 年 8 月 31 日。</em><em>升级负责人（如任何行动推迟）：</em><em>集团 CISO。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="text"><span class="en"><em>Section 5 — Evidence of progress.</em> <em>As of today, the Q2 review for the 142 accounts is 35% complete</em> <em>(50 of 142 accounts reviewed, 8 access removals identified, 4 in progress).</em> <em>Evidence pack:</em> <em>(a) campaign tracker extract dated 8 July 2026,</em> <em>(b) 8 access-removal tickets, all in the IAM queue,</em> <em>(c) Saviynt migration project plan,</em> <em>milestone 2 of 5 complete.</em> <em>Evidence will be refreshed weekly and shared with Group Internal Audit</em> <em>until all three actions are closed.</em></span><span class="cn"><em>第 5 节——进展证据。</em><em>截至今日，142 个账户的 Q2 复核已完成 35%</em><em>（142 个中 50 个已复核，发现 8 项访问移除，其中 4 项进行中）。</em><em>证据包：</em><em>（a）2026 年 7 月 8 日活动跟踪表摘录，</em><em>（b）8 个访问移除工单，全部在 IAM 队列中，</em><em>（c）Saviynt 迁移项目计划，</em><em>5 个里程碑中第 2 个完成。</em><em>证据将每周更新并与集团内审共享，</em><em>直到三个行动全部关闭。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Management agrees with the finding</span> <em>Management agrees with the finding. Management accepts the rating of Medium.</em></span>
+                <span class="chinese">管理层同意该发现，管理层接受"中"的评级</span>
+                <span class="note">Open with agreement and acceptance of the rating. Disagreement is a later paragraph; leading with disagreement signals a fight, not a fix.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Root cause, not symptom</span> <em>The IAM team was redirected to a P1 incident for 9 working days, which fell inside the campaign window.</em></span>
+                <span class="chinese">IAM 团队被抽调处理 P1 事件 9 个工作日，正好落在活动窗口内</span>
+                <span class="note">Root cause answers "why did this happen?" — not "what happened?". The 9-day redirect is the cause; the 142 unreviewed accounts are the symptom.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Compounding factor</span> <em>Compounding factor: the service-account inventory was not flagged in the campaign tracker.</em></span>
+                <span class="chinese">复合因素：服务账户清单未在活动跟踪表中标记</span>
+                <span class="note">"Compounding factor" is the auditor's word for the secondary cause. Naming it shows the team understands the system, not just the slip.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Owner + due date, paired</span> <em>Action 1 owner: Maria Tan. Action 1 due date: 18 July 2026.</em></span>
+                <span class="chinese">行动 1 负责人：Maria Tan。行动 1 到期日：2026 年 7 月 18 日</span>
+                <span class="note">Owner and due date are always paired. An owner without a date is a wish; a date without an owner is a deadline with no one behind it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Escalation owner</span> <em>Escalation owner (if any action slips): Group CISO.</em></span>
+                <span class="chinese">升级负责人（如任何行动推迟）：集团 CISO</span>
+                <span class="note">Name the escalation owner. The auditor wants to know: if this slips, who gets the 02:00 call?</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence of progress</span> <em>Evidence will be refreshed weekly and shared with Group Internal Audit until all three actions are closed.</em></span>
+                <span class="chinese">证据将每周更新并与集团内审共享，直到三个行动全部关闭</span>
+                <span class="note">"Evidence of progress" is the auditor's deliverable. Promising weekly evidence turns the finding into a tracked issue, not a paper exercise.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Hard blocker</span> <em>Add a hard blocker if not flagged by day 1 of the campaign window.</em></span>
+                <span class="chinese">在活动窗口第 1 天未标记时设置硬阻塞</span>
+                <span class="note">"Hard blocker" is the engineering word for a control that cannot be bypassed. The auditor recognises it; a soft reminder does not move the needle.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Audit finding</strong> n. 审计发现 A formal statement of a control gap, rated and traceable.</li>
+            <li><strong>Management response</strong> n. 管理层回复 The formal reply to an audit finding, signed by the control owner.</li>
+            <li><strong>Management position</strong> n. 管理层立场 The opening line: agree, partially agree, or disagree — with the rating accepted or contested.</li>
+            <li><strong>Root cause</strong> n. 根因 The underlying reason a control failed, not the symptom.</li>
+            <li><strong>Compounding factor</strong> n. 复合因素 A secondary cause that made the primary cause worse.</li>
+            <li><strong>Remediation plan</strong> n. 整改计划 The list of actions, owners, and due dates that close the finding.</li>
+            <li><strong>Escalation owner</strong> n. 升级负责人 The named executive who gets the call if the plan slips.</li>
+            <li><strong>Evidence of progress</strong> n. 进展证据 Documentation that the actions are real, not on paper only.</li>
+            <li><strong>Hard blocker</strong> n. 硬阻塞 A control that cannot be bypassed without an override.</li>
+            <li><strong>Service account</strong> n. 服务账户 A non-human account used by an application or system.</li>
+            <li><strong>Privileged access review (PAR)</strong> n. 特权访问复核 Periodic re-attestation of who has privileged access to what.</li>
+            <li><strong>Quarterly campaign</strong> n. 季度活动 The 3-month cycle of running the PAR across the bank.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>5 sections, fixed order.</strong> Management position, root cause, remediation plan, owners and due dates, evidence of progress. The auditor reads the structure, not the prose.</li>
+            <li><strong>Open with agreement.</strong> "Management agrees with the finding" is the line that sets the tone. Disagreement is allowed later, but leading with it signals a fight.</li>
+            <li><strong>Root cause, not symptom.</strong> "The 142 accounts were not reviewed" is a symptom. "The IAM team was redirected for 9 days inside the campaign window" is a cause.</li>
+            <li><strong>Owner and due date, always paired.</strong> An action without a named owner and a due date is not a remediation plan. It is a wish list.</li>
+            <li><strong>Name the escalation owner.</strong> The auditor wants to know: if this slips, who gets the 02:00 call? If the answer is "we'll figure it out", the finding stays open longer.</li>
+            <li><strong>Evidence is weekly, not at closure.</strong> "We'll share evidence when we're done" loses the auditor. "Evidence refreshed weekly" wins the audit.</li>
+            <li><strong>The finding goes to the Audit Committee.</strong> Write the response as if the Committee will read it aloud. They will.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the response header</h3>
+        <p>Translate the response header into natural Chinese.</p>
+        <blockquote>
+            "To: James Wong, Group Internal Audit, Cyber Engagement Lead. From: IT Control Owner, Cyber Operations. Date: Monday 09:30 HKT. Subject: [MANAGEMENT RESPONSE] Audit Finding 2026-CYB-007 — SIEM logging gap on 3 wholesale-banking systems, 14-day window. Management agrees with the finding. Management accepts the rating of Medium. Root cause: a configuration drift during the Q1 SIEM onboarding left 3 wholesale-banking systems logging to a non-production SIEM endpoint, missed by the weekly drift detection rule."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"收件人：James Wong，集团内审，Cyber 审计工作组负责人。发件人：IT 控制负责人，Cyber 运营。日期：周一 09:30 HKT。主题：[管理层回复] 审计发现 2026-CYB-007——3 个批发银行系统的 SIEM 日志缺失，14 天窗口。管理层同意该发现。管理层接受"中"的评级。根因：Q1 SIEM 上线期间配置漂移，导致 3 个批发银行系统日志被发送至非生产 SIEM 端点，被周度漂移检测规则遗漏。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the response mistake</h3>
+        <p>Which line would damage the audit response the most? Why?</p>
+        <ol>
+            <li>"Management agrees with the finding. Management accepts the rating of Medium. Root cause: 9-day IAM team redirect inside the campaign window. Compounding factor: service-account inventory not flagged."</li>
+            <li>"We disagree with the finding. The 142 accounts are reviewed every quarter. The auditor is wrong. Please re-test."</li>
+            <li>"Action 1 owner: Maria Tan. Action 1 due date: 18 July 2026. Action 2 owner: David Liu. Action 2 due date: 30 September 2026. Escalation owner: Group CISO."</li>
+            <li>"Evidence refreshed weekly. Campaign tracker extract dated 8 July 2026. 8 access-removal tickets in the IAM queue. Saviynt migration milestone 2 of 5."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the credibility-damager. "We disagree. The auditor is wrong. Please re-test." signals that management is in denial, not in control. The auditor will respond by escalating to a higher rating and re-testing with broader scope. ① opens with agreement, names the cause, and names the compounding factor. ③ pairs owner and due date for every action and names the escalation owner. ④ commits to weekly evidence. ② turns a 90-day finding into a 6-month finding.</p>
+        </div>
+        <h3>Exercise 3 — Build an audit response</h3>
+        <p>The Group Internal Audit has issued: "Encryption-at-rest for 8 retail-banking databases is using AES-128, contrary to Group Encryption Standard v3.1 §2.1, which requires AES-256 for production customer data. Finding rated High." Build the 5 sections: (1) management position, (2) root cause, (3) remediation plan, (4) owners and due dates, (5) evidence of progress.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Section 1 — Management position. Management agrees with the finding. The 8 retail-banking databases are using AES-128 for encryption-at-rest, contrary to Group Encryption Standard v3.1 §2.1, which requires AES-256 for production customer data. Management accepts the rating of High. Section 2 — Root cause. The 8 databases were onboarded to the standard encryption platform in 2023, when the Group Encryption Standard allowed AES-128 as a transitional algorithm. The standard was updated to AES-256 in 2024 (v3.0), with a 24-month transition window ending 31 December 2025. The transition programme missed the 2025 deadline by 6 months because the database engineering team was redirected to a P1 customer-impacting incident (wholesale-banking settlement failure, 8 September 2025) for 14 working days, which fell inside the final transition window. Compounding factor: the transition tracker did not have a hard blocker for missed milestones, so the slip was not visible to the programme steering. Section 3 — Remediation plan. Action 1 (immediate): re-prioritise the 8 databases into the next quarterly maintenance window, completing AES-256 migration by 30 September 2026. Action 2 (process): add a hard blocker to the transition tracker for any database that misses a milestone by more than 30 days. Action 3 (visibility): monthly progress report to the Group Cyber Risk Forum, with a red/amber/green status for every in-flight transition. Section 4 — Owners and due dates. Action 1 owner: Robert Chen, Database Engineering Lead. Action 1 due date: 30 September 2026. Action 2 owner: David Liu, Head of IAM. Action 2 due date: 31 August 2026. Action 3 owner: Group CISO Office. Action 3 due date: 31 July 2026. Escalation owner: Group CISO. Section 5 — Evidence of progress. As of today, AES-256 migration is in progress for 5 of 8 databases (62.5%); 3 are scheduled in the September maintenance window. Evidence pack: (a) transition tracker extract dated 8 July 2026, (b) maintenance window approval for the September cutovers, (c) Group Cyber Risk Forum report template. Evidence refreshed weekly until all three actions are closed."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="12-risk-acceptance-memo.html" class="btn btn-outline-secondary">← Previous: Article 12</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="14-vulnerability-disclosure.html" class="btn btn-primary">Next: Article 14 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>

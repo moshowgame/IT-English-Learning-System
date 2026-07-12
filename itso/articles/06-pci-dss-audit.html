@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 06: PCI-DSS Audit Walkthrough | ITSO English</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">CyberSecurity&amp;IAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">CyberSecurity &amp; IAM</a></li>
+                <li class="breadcrumb-item active">06 · PCI-DSS Audit Walkthrough</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>PCI-DSS Audit Walkthrough — QSA, ROC, Control Mapping</h1>
+        <p class="subtitle">Article 06 · Module 2: Security Governance &amp; Compliance · ITSO English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Advanced</span>
+            <span>🎯 QSA, ROC, AoC, control mapping, evidence pack, in-scope systems</span>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday 09:00 HKT</strong>. You are the <em>PCI-DSS Compliance Lead</em> at a global bank. The annual <em>PCI-DSS v4.0 audit</em> is in week 2 of 4. The QSA (Qualified Security Assessor) from the external auditor is on site: <strong>Mr. Henderson</strong>. Today's walkthrough is on <strong>Requirement 8 (Identify Users and Authenticate Access to System Components)</strong> and <strong>Requirement 10 (Log and Monitor All Access)</strong>. You have 90 minutes to walk 12 controls, 8 pieces of evidence, and 3 in-scope systems. Joining: <strong>Michelle</strong>, the IAM lead, and <strong>Steve</strong>, the SOC lead.</p>
+        <p>周二 9:00 香港时间，你是全球银行的<em>PCI-DSS 合规负责人</em>。年度<em>PCI-DSS v4.0 审计</em>进入第 2 周（共 4 周）。外审的 QSA（Qualified Security Assessor，合格安全评估师）<strong>Henderson 先生</strong>在现场。今天的走查是<strong>要求 8（识别用户并认证对系统组件的访问）</strong>和<strong>要求 10（日志记录并监控所有访问）</strong>。90 分钟过 12 项控制、8 个证据、3 个范围内系统。参加：IAM 负责人 <strong>Michelle</strong>、SOC 负责人 <strong>Steve</strong>。</p>
+        <p>A QSA walkthrough is the most formal English-speaking test a security professional faces. The QSA's questions are short, the answers must be short, and every claim must be backed by evidence. The professional pattern is: <em>control → test → evidence → result</em>.</p>
+        <p>QSA 走查是安全专业人士面临的最正式英语测试。QSA 的问题短，回答必须短，每个主张必须有证据支持。专业模式是：<em>控制 → 测试 → 证据 → 结果</em>。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en">"Let's start with <em>Requirement 8.3 — strong authentication for all access into the CDE.</em>" <em>Walk me through the control, the test, and the evidence.</em></span><span class="cn">"我们从<em>要求 8.3——CDE 所有访问的强认证</em>开始。"<em>请过一下控制、测试、证据。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PCI lead):</span>
+                <span class="text"><span class="en"><em>Control 8.3.1 — all access into the CDE requires MFA.</em> <em>Test:</em> <em>I selected 25 users from the CDE access list,</em> <em>verified each has MFA enrolled,</em> <em>and confirmed the conditional access policy enforces MFA at sign-in.</em> <em>Result: 25 of 25 compliant.</em> <em>Evidence:</em> <em>the IAM report 'CDE_MFA_Enrolment_2025Q3.pdf',</em> <em>and the conditional access policy 'CA-CDE-001' exported from the IAM platform.</em></span><span class="cn"><em>控制 8.3.1——CDE 所有访问要求 MFA。</em><em>测试：</em><em>我从 CDE 访问列表抽 25 个用户，</em><em>核实每个都已注册 MFA，</em><em>确认条件访问策略在登录时强制 MFA。</em><em>结果：25/25 合规。</em><em>证据：</em><em>IAM 报告 'CDE_MFA_Enrolment_2025Q3.pdf'，</em><em>以及从 IAM 平台导出的条件访问策略 'CA-CDE-001'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en"><em>Good.</em> <em>What about non-console administrative access?</em> <em>Does 8.3.6 also apply?</em></span><span class="cn"><em>好。</em><em>非控制台管理员访问呢？</em><em>8.3.6 也适用吗？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (PCI lead):</span>
+                <span class="text"><span class="en"><em>Yes.</em> <em>Control 8.3.6 — non-console admin access into the CDE requires MFA plus a privileged access workstation.</em> <em>Test:</em> <em>I pulled the 12 CDE admins from the privileged access gateway,</em> <em>verified each is bound to a PAW,</em> <em>and confirmed the gateway session recording is active.</em> <em>Result: 12 of 12 compliant.</em> <em>Evidence:</em> <em>the PAM report 'CDE_Admin_PAW_Binding_2025Q3.xlsx',</em> <em>and a sample session recording 'SR-2025-09-12-004' for one of the admins.</em></span><span class="cn"><em>是。</em><em>控制 8.3.6——CDE 非控制台管理员访问要求 MFA 加特权访问工作站。</em><em>测试：</em><em>我从特权访问网关拉 12 个 CDE 管理员，</em><em>核实每个都绑定 PAW，</em><em>确认网关会话录制激活。</em><em>结果：12/12 合规。</em><em>证据：</em><em>PAM 报告 'CDE_Admin_PAW_Binding_2025Q3.xlsx'，</em><em>以及一名管理员的样本会话录制 'SR-2025-09-12-004'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en"><em>And Requirement 10.2 — audit log events.</em> <em>What events are you logging, and where?</em></span><span class="cn"><em>要求 10.2——审计日志事件。</em><em>你们记录哪些事件，存哪里？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (SOC lead):</span>
+                <span class="text"><span class="en"><em>We log all 10.2.1 events</em> <em>— user access, root/admin actions, access to audit logs, invalid logical access attempts, changes to identification / authentication mechanisms,</em> <em>and modifications to audit logs —</em> <em>to the SIEM,</em> <em>with a 13-month hot retention and 7-year cold retention.</em> <em>Test:</em> <em>I selected 30 sample events across the 10.2.1 categories</em> <em>— 5 per category —</em> <em>and confirmed each is in the SIEM and immutable.</em> <em>Result: 30 of 30 found, all immutable.</em> <em>Evidence:</em> <em>the SIEM export 'SIEM_CDE_Events_2025Q3.csv',</em> <em>and the immutability policy 'LOG-IMMUT-001'.</em></span><span class="cn"><em>我们记录所有 10.2.1 事件</em><em>——用户访问、root/管理员动作、审计日志访问、无效逻辑访问尝试、识别/认证机制变更、审计日志修改——</em><em>写入 SIEM，</em><em>热保留 13 个月，冷保留 7 年。</em><em>测试：</em><em>我抽 30 条样本事件覆盖 10.2.1 各类</em><em>——每类 5 条——</em><em>确认每条都在 SIEM 中且不可变。</em><em>结果：30/30 找到，全部不可变。</em><em>证据：</em><em>SIEM 导出 'SIEM_CDE_Events_2025Q3.csv'，</em><em>以及不可变策略 'LOG-IMMUT-001'。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en"><em>10.4.1 — log review.</em> <em>How often, and by whom?</em></span><span class="cn"><em>10.4.1——日志复核。</em><em>频率？谁做？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steve (SOC lead):</span>
+                <span class="text"><span class="en"><em>Daily,</em> <em>by the SOC analyst on shift,</em> <em>documented in the daily SOC log review report.</em> <em>Test:</em> <em>I pulled 30 daily log review reports for Q3 — 1 per business day —</em> <em>and confirmed each is signed by the SOC analyst on shift.</em> <em>Result: 30 of 30 found, all signed.</em> <em>Evidence:</em> <em>the daily review folder 'SOC_Daily_Log_Review_2025Q3/'</em> <em>with 30 PDFs.</em></span><span class="cn"><em>每日，</em><em>由 SOC 值班分析师，</em><em>记录在每日 SOC 日志复核报告。</em><em>测试：</em><em>我抽 Q3 共 30 份每日复核报告——每个工作日 1 份——</em><em>确认每份由 SOC 值班分析师签字。</em><em>结果：30/30 找到，全部签字。</em><em>证据：</em><em>每日复核文件夹 'SOC_Daily_Log_Review_2025Q3/'</em><em>含 30 份 PDF。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en"><em>One last control — 8.2.1,</em> <em>accounts are assigned based on job function and least privilege.</em> <em>How do you prove that?</em></span><span class="cn"><em>最后一项控制——8.2.1，</em><em>账号按岗位职责和最小权限分配。</em><em>如何证明？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michelle (IAM lead):</span>
+                <span class="text"><span class="en"><em>Two pieces of evidence.</em> <em>One</em>: <em>the CDE access matrix,</em> <em>mapped from job functions to roles,</em> <em>signed by the CDE system owners last quarter.</em> <em>Two</em>: <em>the quarterly access review report,</em> <em>where 18 CDE system owners recertified 2,400 CDE user-role assignments,</em> <em>with 38 removals for role change and 12 for leaver.</em> <em>Result: 100% reviewed,</em> <em>0 unauthorized access detected.</em></span><span class="cn"><em>两个证据。</em><em>一</em>：<em>CDE 访问矩阵，</em><em>从岗位职责映射到角色，</em><em>上季度由 CDE 系统 owner 签字。</em><em>二</em>：<em>季度访问复核报告，</em><em>18 个 CDE 系统 owner 重新认证了 2,400 个 CDE 用户-角色分配，</em><em>因调岗移除 38 个、离职移除 12 个。</em><em>结果：100% 复核，</em><em>0 个未授权访问。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">QSA (Mr. Henderson):</span>
+                <span class="text"><span class="en"><em>Excellent.</em> <em>No findings on this session.</em> <em>Next session — Requirement 6,</em> <em>Thursday 09:00.</em></span><span class="cn"><em>非常好。</em><em>本次会议无发现。</em><em>下次——要求 6，</em><em>周四 9:00。</em></span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Control / Test / Evidence</span> <em>Walk me through the control, the test, and the evidence.</em></span>
+                <span class="chinese">请过一下控制、测试、证据</span>
+                <span class="note">The QSA's structure is fixed: control, test, evidence. Always answer in that order. Skipping a field signals a weak control.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Selected N users</span> <em>I selected 25 users from the CDE access list, verified each has MFA enrolled.</em></span>
+                <span class="chinese">我从 CDE 访问列表抽 25 个用户，核实每个都已注册 MFA</span>
+                <span class="note">Always name the sample size and the population. "Selected 25" + "from the CDE access list" = auditable sampling.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Result</span> <em>Result: 25 of 25 compliant.</em></span>
+                <span class="chinese">结果：25/25 合规</span>
+                <span class="note">Always quote the result as a fraction: 25/25, 12/12, 30/30. The QSA reads the fraction, not the words "all compliant".</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Evidence file</span> <em>Evidence: the IAM report 'CDE_MFA_Enrolment_2025Q3.pdf'.</em></span>
+                <span class="chinese">证据：IAM 报告 'CDE_MFA_Enrolment_2025Q3.pdf'</span>
+                <span class="note">Always name the evidence file with its versioned name. The QSA needs the file, not the description.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">No findings</span> <em>No findings on this session.</em></span>
+                <span class="chinese">本次会议无发现</span>
+                <span class="note">"No findings" is the QSA's gold-standard close. The PCI lead should hear it and not push for more.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>PCI-DSS (Payment Card Industry Data Security Standard)</strong> n. 支付卡行业数据安全标准 The standard for protecting cardholder data.</li>
+            <li><strong>QSA (Qualified Security Assessor)</strong> n. 合格安全评估师 The external auditor certified to assess PCI-DSS compliance.</li>
+            <li><strong>CDE (Cardholder Data Environment)</strong> n. 卡数据环境 The systems that store, process, or transmit cardholder data.</li>
+            <li><strong>ROC (Report on Compliance)</strong> n. 合规报告 The QSA's formal report on the bank's PCI-DSS compliance.</li>
+            <li><strong>AoC (Attestation of Compliance)</strong> n. 合规声明 The bank's formal attestation, signed by an executive.</li>
+            <li><strong>In-scope system</strong> n. 范围内系统 A system that is part of the CDE and must meet PCI-DSS controls.</li>
+            <li><strong>Compensating control</strong> n. 补偿控制 An alternative control that meets the intent of a PCI-DSS requirement when the primary cannot.</li>
+            <li><strong>PAW (Privileged Access Workstation)</strong> n. 特权访问工作站 A hardened workstation used by admins to access the CDE.</li>
+            <li><strong>SIEM immutability</strong> n. SIEM 不可变性 The property that audit logs cannot be modified or deleted.</li>
+            <li><strong>Access matrix</strong> n. 访问矩阵 The mapping from job functions to roles and entitlements.</li>
+            <li><strong>Quarterly access review</strong> n. 季度访问复核 Recertification by system owners of every user-role assignment.</li>
+            <li><strong>Sample size</strong> n. 样本量 The number of records tested for a control — auditor chooses; lead must defend it.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+        <h3>① "Control / Test / Evidence" — three nouns, fixed order</h3>
+        <p>The QSA's structure is fixed. <em>Control, test, evidence.</em> Always answer in that order. Skipping a field signals a weak control, and the QSA will ask for it.</p>
+        <p>QSA 的结构是固定的。<em>控制、测试、证据。</em>总是按顺序回答。缺一项等于控制弱，QSA 会追问。</p>
+        <h3>② "Selected N of M" — sample size + population</h3>
+        <p>Always name the sample size and the population. <em>Selected 25 users from the CDE access list.</em> The QSA needs both: 25 is the test, CDE access list is the population. Without the population, the sample is unauditable.</p>
+        <p>总报样本量和总体。<em>从 CDE 访问列表抽 25 个用户。</em>QSA 需要两个：25 是测试，CDE 访问列表是总体。没有总体，样本不可审。</p>
+        <h3>③ "X of X compliant" — the result is a fraction</h3>
+        <p>Always quote the result as a fraction. <em>25 of 25 compliant.</em> The QSA reads the fraction, not the words. "All compliant" is a sentence; "25 of 25" is the proof.</p>
+        <p>结果总是报分数。<em>25/25 合规。</em>QSA 读的是分数，不是句子。"全部合规"是句子，"25/25"是证据。</p>
+    </section>
+
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Control, test, evidence — in that order.</strong> The QSA's structure is fixed. Skip one and the QSA asks for it.</li>
+            <li><strong>Sample size + population, always.</strong> "Selected 25 from the CDE access list" is auditable. "Tested MFA" is not.</li>
+            <li><strong>Result is a fraction, not a sentence.</strong> "25 of 25 compliant" is the proof. "All compliant" is the sentence.</li>
+            <li><strong>Name the evidence file with its versioned name.</strong> 'CDE_MFA_Enrolment_2025Q3.pdf' is auditable. "The IAM report" is not.</li>
+            <li><strong>Bring the right people.</strong> IAM lead for 8.x, SOC lead for 10.x. The QSA expects the named owner to answer, not the PCI lead alone.</li>
+            <li><strong>Answer short. The QSA's questions are short.</strong> One sentence per field. Three fields. Three sentences. Then wait.</li>
+            <li><strong>"No findings" is the gold standard close.</strong> Hear it, thank the QSA, and confirm the next session. Don't push for more.</li>
+        </ul>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <h3>Exercise 1 — Translate the QSA walkthrough</h3>
+        <p>Translate the discussion excerpt into natural Chinese.</p>
+        <blockquote>
+            "Let's start with Requirement 3.5 — render PAN unreadable anywhere it is stored. Walk me through the control, the test, and the evidence."
+            "Control 3.5.1 — PAN is rendered unreadable using strong cryptography. Test: I selected 30 CDE database tables that store PAN, verified each uses AES-256 encryption at the column level, and pulled a sample of stored PANs to confirm they are not in clear text. Result: 30 of 30 compliant. Evidence: the data-at-rest encryption report 'CDE_PAN_Encryption_2025Q3.pdf', and a sample SQL export of one table showing ciphertext only."
+            "And Requirement 6.4.3 — public-facing web applications are protected by either a web application firewall or code review. How do you meet this?"
+            "Both. Control 6.4.3 — all public-facing CDE applications sit behind a WAF with a managed rule set updated monthly, and code review by a senior engineer on every release. Test: I pulled the last 6 months of release tickets for the 4 in-scope applications, and confirmed each has a WAF log review and a code-review sign-off. Result: 24 of 24 releases covered. Evidence: the WAF monthly tuning report 'WAF_Tuning_2025Q3.pdf', and the code-review sign-off sheet 'CDE_CodeReview_2025Q3.xlsx'."
+            "One last control — 11.4.1, methodology and frequency for penetration testing. Walk me through."
+            "Control 11.4.1 — external pentest annually, internal pentest quarterly, segmentation pentest annually. Test: I pulled the pentest reports for the last 12 months — 1 external (Aug 2025), 4 internal (quarterly), 1 segmentation (Jul 2025). All by an independent CREST-accredited vendor. Result: 6 of 6 reports found, all with critical and high findings remediated within SLA. Evidence: the pentest binder 'CDE_Pentest_2024-2025/' with 6 reports."
+            "Excellent. No findings on this session. Next session — Requirement 7, Thursday 14:00."
+        </blockquote>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"我们从要求 3.5 开始——所有存储的 PAN 都不可读。请过一下控制、测试、证据。"
+            "控制 3.5.1——PAN 用强加密算法变为不可读。测试：我抽 30 个存储 PAN 的 CDE 数据库表，核实每个用列级 AES-256 加密，并抽样本存储 PAN 确认非明文。结果：30/30 合规。证据：静态加密报告 'CDE_PAN_Encryption_2025Q3.pdf'，以及一个表的样本 SQL 导出，只显示密文。"
+            "要求 6.4.3 呢——面向公众的 Web 应用由 WAF 或代码审查保护。你们怎么满足？"
+            "两个都有。控制 6.4.3——所有面向公众的 CDE 应用在 WAF 后面，托管规则集每月更新，每次发布由高级工程师做代码审查。测试：我拉了 4 个范围内应用过去 6 个月的发布工单，确认每个都有 WAF 日志复核和代码审查签字。结果：24/24 发布覆盖。证据：WAF 月度调优报告 'WAF_Tuning_2025Q3.pdf'，以及代码审查签字表 'CDE_CodeReview_2025Q3.xlsx'。"
+            "最后一项——11.4.1，渗透测试的方法和频率。请过一下。"
+            "控制 11.4.1——外部渗透测试年度、内部季度、分段年度。测试：我拉过去 12 个月的渗透测试报告——1 份外部（2025 年 8 月）、4 份内部（季度）、1 份分段（2025 年 7 月）。全部由独立 CREST 认证厂商出具。结果：6/6 报告找到，全部严重和高危在 SLA 内修复。证据：渗透测试合集 'CDE_Pentest_2024-2025/' 含 6 份报告。"
+            "非常好。本次会议无发现。下次——要求 7，周四 14:00。"</p>
+        </div>
+        <h3>Exercise 2 — Spot the QSA-walkthrough mistake</h3>
+        <p>Which line would damage the QSA session the most? Why?</p>
+        <ol>
+            <li>"Control 8.3.1, MFA required. Test: selected 25 from the CDE access list, verified MFA. Result: 25 of 25 compliant. Evidence: 'CDE_MFA_Enrolment_2025Q3.pdf'."</li>
+            <li>"We have MFA on the CDE. It's important and we take it seriously."</li>
+            <li>"Control 10.2.1, audit log events. Test: 30 sample events, confirmed in SIEM, immutable. Result: 30 of 30. Evidence: 'SIEM_CDE_Events_2025Q3.csv'."</li>
+            <li>"Control 8.2.1, least privilege. Evidence: CDE access matrix, quarterly access review, 100% reviewed, 0 unauthorized."</li>
+        </ol>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>② is the session-damager. "We have MFA and we take it seriously" replaces the control, the test, the result, and the evidence with a feeling. The QSA will always bounce this back: which control, which test, which sample, which evidence. ① walks the four fields with file. ③ does the same. ④ names the matrix and the review. ② signals an immature compliance function; the QSA will write a finding.</p>
+        </div>
+        <h3>Exercise 3 — Run a 90-minute QSA walkthrough</h3>
+        <p>You are the PCI lead. The QSA asks you to walk Requirements 7 (restrict access by business need-to-know), 9 (restrict physical access), and 12 (information security policy). Build a 90-minute script: for each requirement, walk control, test, evidence, result. Use sample sizes, file names, and result fractions.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Sample Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>"Requirement 7 — restrict access by business need-to-know. Control 7.2.1 — access is restricted to the least privilege required for job function. Test: I selected 30 CDE user-role assignments from the quarterly access review, verified each is supported by a job-function justification, confirmed no role has more entitlements than required. Result: 30 of 30 justified. Evidence: the access matrix 'CDE_Access_Matrix_2025Q3.pdf' and the review sheet 'CDE_Review_2025Q3.xlsx'. Requirement 9 — restrict physical access. Control 9.4.1 — all media with cardholder data is physically secured. Test: I walked the 3 CDE datacentres, verified badge access, CCTV coverage, and media inventory log. Result: 3 of 3 compliant, all media inventoried. Evidence: the walkthrough photos 'CDE_DC_Walkthrough_2025Q3/' and the media inventory 'CDE_Media_Inventory_2025Q3.xlsx'. Requirement 12 — information security policy. Control 12.1.1 — the information security policy is established, published, and reviewed annually. Test: I pulled the InfoSec policy v3.4 published 2024-12, the annual review minutes signed by the CISO 2025-01, and the staff acknowledgement report (98% of CDE staff). Result: policy current, reviewed, acknowledged. Evidence: the policy 'InfoSec_Policy_v3.4.pdf', the minutes 'InfoSec_Annual_Review_2025-01.pdf', the acknowledgement report 'InfoSec_Ack_2025Q3.xlsx'. No findings on this session. Next session — Requirement 1, Thursday 09:00."</p>
+        </div>
+    </section>
+
+    <section class="article-section text-center">
+        <p>
+            <a href="05-threat-intel-briefing.html" class="btn btn-outline-secondary">← Previous: Article 05</a>
+            <a href="../index.html" class="btn btn-outline-secondary">Back to ITSO Home / 返回首页</a>
+            <a href="07-gdpr-dsar.html" class="btn btn-primary">Next: Article 07 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/ai-config.js"></script>
+<script src="../../assets/js/ai-reader.js"></script>
+</body>
+</html>
