@@ -53,6 +53,7 @@
         <p class="subtitle">Article 11 · Module 3: Written Security Communication · ITSO English</p>
         <div class="meta">
             <span>⏱ 8 min read</span>
+            <span>🟡 Intermediate</span>
             <span>🟠 Advanced</span>
             <span>🎯 Regulator, board, customer — facts, scope, containment, next steps</span>
         </div>
@@ -157,8 +158,42 @@
         </ul>
     </section>
 
+        <!-- Grammar Notes -->
     <section class="article-section">
-        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① The passive voice keeps incident facts neutral</h3>
+        <p>
+            Incident notifications state damage and scope in the <strong>passive voice</strong>:
+            <em>"No passwords, no transaction history, no payment card data, no identity document
+            numbers were exposed."</em> The passive removes the agent ("who did it") so the reader
+            focuses on <strong>what happened</strong>, not on blame. Use it for exposure statements,
+            containment steps, and next actions: <em>systems were isolated</em>, <em>credentials
+            were rotated</em>, <em>the supervisor was notified</em>.
+        </p>
+        <p>
+            事件通报里描述影响范围要用被动语态："…were exposed"。被动语态隐去动作执行者，让读者聚焦
+            <strong>事实本身</strong>而不是追责。隔离系统、轮换凭证、通报监管等动作都适合被动表达。
+        </p>
+
+        <h3>② Present simple for evidence, "preliminary" for conclusions</h3>
+        <p>
+            Evidence statements use the <strong>present simple</strong>: <em>"Cloud provider access
+            logs show 0 GET requests from non-bank IPs."</em> The logs still exist and still show it,
+            so present simple is correct — not past simple. Conclusions are labelled, not asserted:
+            <em>"Preliminary conclusion: no evidence of data exfiltration."</em> The adjective
+            <strong>preliminary</strong> protects you — "no evidence of X" is a factual statement,
+            while "X did not happen" is a guarantee you cannot give on day one.
+        </p>
+        <p>
+            证据描述用一般现在时（logs <em>show</em>…），因为证据现在仍然成立。结论必须加限定词：
+            "Preliminary conclusion: no evidence of…"（初步结论：没有……的证据）——它不等于"没有发生"，
+            第一天不要把话说死。
+        </p>
+    </section>
+
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
         <ul>
             <li><strong>6 sections, fixed order.</strong> Facts, scope, containment, regulator exposure, customer impact, next steps. The CISO reads the structure, not the prose.</li>
             <li><strong>Name what was NOT exposed.</strong> Customers and regulators want the limits of the damage. "No passwords" is more reassuring than "2,300 records".</li>
@@ -171,7 +206,7 @@
     </section>
 
     <section class="article-section">
-        <h2>7. Practice 练习题</h2>
+        <h2>8. Practice 练习题</h2>
         <h3>Exercise 1 — Translate the incident notification</h3>
         <p>Translate the master email into natural Chinese.</p>
         <blockquote>
