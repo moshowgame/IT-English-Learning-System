@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moshowgame.github.io/IT-English-Learning-System/sitemap.xml

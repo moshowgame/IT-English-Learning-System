@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 07: System Design Talk-Through | Job Interview English</title>
+    <meta name="description" content="System Design Talk-Through (系统设计题讲解) — bilingual dialogue, key phrases, vocabulary and practice for Job Interview English. HSBC workplace English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/scenarios/job-interview/articles/07-design-talk-through.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 07: System Design Talk-Through | Job Interview English">
+    <meta property="og:description" content="System Design Talk-Through (系统设计题讲解) — bilingual dialogue, key phrases, vocabulary and practice for Job Interview English. HSBC workplace English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/scenarios/job-interview/articles/07-design-talk-through.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../../scenarios/index.html">Scenarios</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Job Interview English</a></li>
+                <li class="breadcrumb-item active">07 · System Design Talk-Through</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>System Design Talk-Through</h1>
+        <p class="subtitle">Article 07 · Job Interview English · 系统设计题讲解</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 Think aloud, drive with questions, trade off honestly — design interviews are dialogue</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            Final round for a <em>Senior Developer</em> role: the design exercise. <strong>Mei</strong>, an architect, slides a one-line prompt across the table: <em>"Design a notification service for a retail bank — email, push, SMS, 20 million customers."</em> Then she says the sentence that defines the next 40 minutes: <strong>"I care less about the destination and more about the journey — think aloud."</strong>
+        </p>
+        <p>
+            <em>Senior Developer</em> 岗位的最终轮：设计题。<strong>Mei</strong>（架构师）把一行题目推到桌面：<em>"为一个零售银行设计通知服务——邮件、推送、短信，2000 万客户。"</em>然后她说了一句定义接下来 40 分钟的话：<strong>"我更在乎过程而不是终点——把思考说出来。"</strong>
+        </p>
+        <p>
+            A design interview is <strong>not a whiteboard exam, it is a dialogue</strong>. The candidates who fail are not the ones with wrong answers — they are the ones who go silent, or who never ask what the problem actually is. Your tools: clarifying questions, visible trade-offs, and a steady stream of thinking-aloud.
+        </p>
+        <p>
+            设计面试<strong>不是白板考试，而是对话</strong>。失败的候选人不是答案错的——而是陷入沉默、或从不追问问题本质的人。你的工具：澄清问题、外显的取舍、以及源源不断的思考外化。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">Design a notification service for a retail bank — email, push, SMS, 20 million customers. <em>Think aloud; I care about the journey.</em></span><span class="cn">为零售银行设计通知服务——邮件、推送、短信，2000 万客户。<em>把思考说出来；我看重过程。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker you">You (Candidate):</span>
+                <span class="text"><span class="en">Before drawing anything — <strong>two clarifying questions</strong>. First: are notifications <em>marketing or operational</em>? A fraud alert and a credit-card ad have very different reliability contracts. Second: what does <strong>"late" mean here</strong> — is a balance alert 5 minutes late a bug or fine?</span><span class="cn">画图之前——<strong>两个澄清问题</strong>。第一：通知是<em>营销还是业务运营</em>？反欺诈提醒和信用卡广告的可靠性契约完全不同。第二：这里<strong>"迟到"意味着什么</strong>——余额提醒晚 5 分钟是故障还是可接受？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">Operational only — fraud, balance, service alerts. And late is a bug over one minute for fraud, ten for the rest.</span><span class="cn">只做业务运营——反欺诈、余额、服务提醒。反欺诈迟到 1 分钟算故障，其他 10 分钟。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker you">You (Candidate):</span>
+                <span class="text"><span class="en">That shapes everything. <strong>Fraud alerts are the critical path</strong>, so they get priority lanes and tighter SLAs; the rest can batch. Let me sketch the shape: producers publish events, a router maps event types to channels, a per-channel sender fleet, and — because this is a bank — <strong>a full audit trail and idempotent sends</strong>.</span><span class="cn">这决定了整个设计。<strong>反欺诈提醒是关键路径</strong>，享有优先通道和更严的 SLA；其余可以批量。画一下整体：生产方发布事件，路由器把事件类型映射到渠道，每个渠道一个发送集群，而且——这是银行——<strong>完整审计链路 + 幂等发送</strong>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">Why idempotent? <em>Convince me.</em></span><span class="cn">为什么要幂等？<em>说服我。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker you">You (Candidate):</span>
+                <span class="text"><span class="en">Because retries are not failures in this system — they are Tuesday. <strong>Every sender will time out and retry</strong>, and a fraud alert sent twice is not redundancy, it is a trust problem with the customer. So every notification carries an idempotency key; the senders treat duplicates as no-ops. <em>Better to dedupe inside the service than to apologise outside it.</em></span><span class="cn">因为在这个系统里重试不是故障——是家常便饭。<strong>每个发送方都会超时重试</strong>，反欺诈提醒发两次不是冗余，是客户信任问题。所以每条通知带幂等键，发送方把重复当作无操作。<em>宁可服务内去重，不要服务外道歉。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">20 million customers, fraud alert at midnight. <em>Where does this break first?</em></span><span class="cn">2000 万客户，午夜反欺诈提醒。<em>哪里先坏？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker you">You (Candidate):</span>
+                <span class="text"><span class="en">Honest answer: <strong>the SMS gateway is a third party and I do not own it</strong> — my first bottleneck is probably their throughput, which is why the design needs a queue with backpressure rather than a direct call. Second break: <strong>the fan-out</strong> — 20 million rows is fine to store, but building 20 million personalised messages at midnight needs pre-computed templates, not string-building at send time.</span><span class="cn">诚实回答：<strong>短信网关是第三方，不归我管</strong>——第一个瓶颈很可能是他们的吞吐量，所以设计上要排队 + 背压，而不是直接调用。第二个坏点：<strong>扇出</strong>——2000 万行存储没问题，但午夜生成 2000 万条个性化消息需要预计算模板，而不是发送时拼字符串。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">Good. <em>What did you choose NOT to build, and why?</em></span><span class="cn">好。<em>你选择不做什么？为什么？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker you">You (Candidate):</span>
+                <span class="text"><span class="en">Three deliberate noes. <strong>No user-facing preferences UI</strong> — out of scope today, but the schema reserves the flags. <strong>No custom SMS infrastructure</strong> — a commodity third party is cheaper than being special. <strong>No real-time analytics</strong> — valuable, but not before the reliability contract is proven. <em>Every one of those is a one-way door I would rather leave open than walk through early.</em></span><span class="cn">三个刻意的"不"。<strong>不做用户偏好界面</strong>——今天超纲，但表结构预留字段。<strong>不自建短信基础设施</strong>——标准化第三方比自建便宜。<strong>不做实时分析</strong>——有价值，但排在可靠性契约被验证之后。<em>每一项都是我宁可留着不走的单向门。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Architect):</span>
+                <span class="text"><span class="en">That is the answer I was listening for. Well done.</span><span class="cn">这正是我在等的答案。表现出色。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">Clarify</span> <em>Before drawing anything — two clarifying questions.</em></span>
+                <span class="chinese">画图之前——先问两个澄清问题。</span>
+                <span class="note">The strongest opening move in a design interview. Requirements are the first test.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Think aloud</span> <em>That shapes everything.</em></span>
+                <span class="chinese">这一下决定了整个设计。</span>
+                <span class="note">Says out loud that new information changed the design — the exact skill being scored.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Prioritise</span> <em>Fraud alerts are the critical path.</em></span>
+                <span class="chinese">反欺诈提醒是关键路径。</span>
+                <span class="note">Name the critical path explicitly; it licenses every later prioritisation.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Convince</span> <em>Retries are not failures in this system — they are Tuesday.</em></span>
+                <span class="chinese">在这个系统里重试不是故障——是家常便饭。</span>
+                <span class="note">Humor plus reframing: normalising the failure mode is the first step of designing for it.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Trade-off</span> <em>Better to dedupe inside the service than to apologise outside it.</em></span>
+                <span class="chinese">宁可服务内去重，不要服务外道歉。</span>
+                <span class="note">A portable trade-off aphorism — candidates who coin these get remembered.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Honesty</span> <em>Honest answer: the SMS gateway is a third party and I do not own it.</em></span>
+                <span class="chinese">诚实回答：短信网关是第三方，不归我管。</span>
+                <span class="note">Naming what you do not control is senior behaviour — it shows system thinking beyond your box.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">Scope</span> <em>Every one of those is a one-way door I would rather leave open.</em></span>
+                <span class="chinese">每一项都是我宁可留着不走的单向门。</span>
+                <span class="note">The "what did you NOT build" answer — reversible decisions early, irreversible late.</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>Think aloud</strong> phr. 思维外化 Narrating your reasoning as you work — the core skill design interviews score.</li>
+            <li><strong>Operational notification</strong> n. 业务运营通知 Fraud alerts, balance alerts, service messages — not marketing.</li>
+            <li><strong>SLA</strong> abbr. 服务等级协议 The promised reliability/latency contract; fraud gets tighter ones.</li>
+            <li><strong>Critical path</strong> n. 关键路径 The part of the system where failure hurts most and first.</li>
+            <li><strong>Idempotency key</strong> n. 幂等键 A unique marker ensuring one notification is sent exactly once.</li>
+            <li><strong>Backpressure</strong> n. 背压 Queues refusing upstream load when downstream is saturated.</li>
+            <li><strong>Fan-out</strong> n. 扇出 One event multiplied to many recipients — the scaling pain of notifications.</li>
+            <li><strong>Throughput</strong> n. 吞吐量 How much a component can process per unit time.</li>
+            <li><strong>One-way door</strong> n. 单向门 A hard-to-reverse decision — take these late and deliberately.</li>
+            <li><strong>Out of scope</strong> phr. 超出范围 Explicitly excluded from today's design — but say what you reserved for it.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① Conditionals frame the break points</h3>
+        <p>
+            <em>"If 20 million fraud alerts queue at midnight, the SMS gateway saturates first."</em> Design interviews run on first conditionals — [if scenario], [consequence]. The structure keeps your speculation disciplined: every hypothetical has a named consequence, which is what separates analysis from guessing. Keep the if-clause concrete: numbers, times, components.
+        </p>
+        <p>设计面试靠第一类条件句运转：[if 场景]，[后果]。"If 20 million fraud alerts queue at midnight, the SMS gateway saturates first." 这个结构让推测保持纪律：每个假设都有明确的后果——这是分析与瞎猜的分界。if 从句要具体：数字、时间、组件。</p>
+
+        <h3>② Gerunds name the patterns</h3>
+        <p>
+            <em>"Building 20 million personalised messages at midnight needs pre-computed templates."</em> — <strong>building</strong> as subject turns an activity into a designable thing. The same grammar carries your noes: <em>"No custom SMS infrastructure — being special is expensive."</em> Gerunds let you talk about kinds of work (fan-out, dedupe, string-building) as objects you can trade off.
+        </p>
+        <p><strong>building</strong> 作主语把活动变成可设计的对象："Building 20 million personalised messages at midnight needs pre-computed templates." 同样的语法支撑你的"不"："No custom SMS infrastructure — being special is expensive." 动名词让你把一类工作（扇出、去重、拼字符串）当作可权衡的对象来谈。</p>
+
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+        <ul>
+            <li><strong>Clarify before you draw.</strong> Two questions in the first two minutes signal seniority louder than any architecture.</li>
+            <li><strong>Say what changed your mind.</strong> "That shapes everything" is thinking aloud in its purest form — interviewers cannot read your head; narrate it.</li>
+            <li><strong>Name what you do not own.</strong> Third-party gateways, upstream teams, customer behaviour — saying "I do not control that" is system thinking, not weakness.</li>
+            <li><strong>Have a "what I did not build" list.</strong> Scope discipline is the most senior signal in design interviews — every no needs a one-line why.</li>
+            <li><strong>Silence is the only real failure.</strong> A mediocre architecture discussed honestly outscores a brilliant one delivered mute.</li>
+        </ul>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+
+        <h3>Exercise 1 — Clarify first</h3>
+        <p>For "design a payment refund service", write the four clarifying questions you would ask before drawing anything.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>Strong set: internal-only or customer-facing refunds? What volume and peak (sales events)? What is the SLA — when does "late" become a bug? What exists already — ledger, payment service, or greenfield? Requirements first; architecture second.</p>
+        </div>
+
+        <h3>Exercise 2 — Trade-off aphorisms</h3>
+        <p>Turn these into one-line trade-off statements: (a) dedupe vs duplicate sends, (b) queue vs direct call to a weak dependency, (c) build vs buy for SMS.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>(a) "Better to dedupe inside than apologise outside." (b) "A queue absorbs what a direct call would broadcast." (c) "Be special where you differentiate; be commodity where you don\'t." Each names both sides in one breath.</p>
+        </div>
+
+        <h3>Exercise 3 — The noes drill</h3>
+        <p>For the notification service, write the "what I would build differently" answer Mei asked for — two items, each with a mechanism.</p>
+        <button class="btn btn-outline-primary btn-sm" data-toggle="answer">Show Answer</button>
+        <div class="answer-box" style="display:none;">
+            <p>Model: "I would start with the audit log, not bolt it on — replay is the feature ops loves. And I would question the easy pass earlier: easy to build is not a reason." Specific change + portable mechanism, every time.</p>
+        </div>
+
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-section text-center">
+        <p>
+            <a href="../index.html" class="btn btn-outline-secondary">← Back to Job Interview English Home / 返回系列首页</a>
+            <a href="06-explaining-a-technical-project.html" class="btn btn-outline-primary">← Previous: Article 06</a>
+            <a href="08-when-you-dont-know.html" class="btn btn-primary">Next: Article 08 →</a>
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../../assets/js/common.js" defer></script>
+<script src="../../../assets/js/ai-config.js" defer></script>
+<script src="../../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

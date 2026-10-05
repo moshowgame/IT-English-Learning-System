@@ -6,10 +6,10 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 use File::Basename qw(dirname);
 use Cwd 'abs_path';
-use lib abs_path(dirname(abs_path($0)) . '/lib');
+use lib abs_path(dirname(abs_path($0)) . '/../lib');
 use site qw(article_page series_index_page scenarios_index_page);
 
-my $ROOT = abs_path(dirname(abs_path($0)) . '/..');
+my $ROOT = abs_path(dirname(abs_path($0)) . '/../..');
 
 my %SERIES = (
     'job-interview' => {
@@ -96,14 +96,14 @@ for my $key (@ORDER) {
 
     my $irel = "scenarios/$key/index.html";
     open(my $out, '>:encoding(UTF-8)', "$ROOT/$irel") or die "$irel: $!";
-    print {$out} series_index_page($s, \\@arts, '../../', $irel);
+    print {$out} series_index_page($s, \@arts, '../../', $irel);
     close($out);
     print "OK: $key (20 articles + index)\n";
 }
 
 my $rel = 'scenarios/index.html';
 open(my $out, '>:encoding(UTF-8)', "$ROOT/$rel") or die "$rel: $!";
-print {$out} scenarios_index_page([ map { $SERIES{$_} } @ORDER ], '../', $rel);
+print {$out} scenarios_index_page([ map { my %h = %{ $SERIES{$_} }; $h{key} = $_; \%h } @ORDER ], '../', $rel);
 close($out);
 print "OK: scenarios/index.html\n";
 print "All scenarios built.\n";

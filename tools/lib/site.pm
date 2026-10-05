@@ -278,7 +278,8 @@ sub _article_list_items {
     my $out = '';
     for my $a (@$arts) {
         my $n2 = sprintf('%02d', $a->{num});
-        $out .= "            <li><a href=\"articles/$a->{slug}.html\">\n"
+        my $file = $n2 . '-' . $a->{slug} . '.html';
+        $out .= "            <li><a href=\"articles/$file\">\n"
               . "                <span class=\"article-num\">$n2</span>\n"
               . "                <span class=\"article-info\">\n"
               . "                    <span class=\"title\">$a->{title} $a->{cn}</span>\n"
@@ -306,7 +307,7 @@ sub series_index_page {
                    . "            </div>\n"
                    . "        </div>\n"
                    . "        <ul class=\"article-list\">\n"
-                   . _article_list_items(\\@mod_arts)
+                   . _article_list_items(\@mod_arts)
                    . "        </ul>\n"
                    . "    </section>\n\n";
     }
