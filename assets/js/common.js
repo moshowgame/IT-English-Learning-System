@@ -17,7 +17,7 @@
         var LABELS = { ba: 'BA', developer: 'Developer', 'tech-lead': 'Tech Lead',
                        architect: 'Architect', pm: 'PM', itso: 'CyberSecurity',
                        'senior-manager': 'Senior Manager', business: 'Business' };
-        var dirPattern = new RegExp('\\/(' + ROLE_DIRS.join('|') + ')(\\/|$)');
+        var dirPattern = new RegExp('\\/(' + ROLE_DIRS.join('|') + '|scenarios)(\\/|$)');
 
         var items = Array.prototype.slice.call(nav.querySelectorAll(':scope > li.nav-item'));
         var roleItems = items.filter(function (li) {
@@ -51,20 +51,36 @@
             menu.appendChild(sub);
         });
 
+        /* Scenarios treated as a basic role — appended at the end of the dropdown */
+        if (scenarioLi) {
+            var scA = scenarioLi.querySelector('a.nav-link');
+            var divider = document.createElement('li');
+            divider.innerHTML = '<hr class="dropdown-divider">';
+            menu.appendChild(divider);
+            var scSub = document.createElement('li');
+            var scLink = document.createElement('a');
+            scLink.className = 'dropdown-item' + (currentDir === 'scenarios' ? ' active' : '');
+            scLink.href = scA.getAttribute('href');
+            scLink.textContent = 'Basic Role 通用场景';
+            scSub.appendChild(scLink);
+            menu.appendChild(scSub);
+        }
+
         var toggle = document.createElement('a');
         toggle.className = 'nav-link dropdown-toggle' + (currentDir ? ' active' : '');
         toggle.href = '#';
         toggle.setAttribute('role', 'button');
         toggle.setAttribute('data-bs-toggle', 'dropdown');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = currentDir ? LABELS[currentDir] : 'Roles 角色';
+        toggle.textContent = currentDir ? (LABELS[currentDir] || (currentDir === 'scenarios' ? 'Basic Role' : currentDir)) : 'Roles 角色';
 
         var wrap = document.createElement('li');
         wrap.className = 'nav-item dropdown nav-roles';
         wrap.appendChild(toggle);
         wrap.appendChild(menu);
 
-        if (scenarioLi) nav.insertBefore(wrap, scenarioLi); else nav.appendChild(wrap);
+        if (scenarioLi) scenarioLi.remove();
+        nav.appendChild(wrap);
         roleItems.forEach(function (li) { li.remove(); });
     }
 
