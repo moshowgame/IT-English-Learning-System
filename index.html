@@ -15,7 +15,6 @@
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <meta name="description" content="Professional English training system for HSBC IT roles: Business Analyst, Developer, Technical Lead, Architect, PM, ITSO, Senior Manager, Business Sponsor. Bilingual dialogues, vocabulary, and cultural tips.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/common.css">
 </head>
@@ -110,29 +109,6 @@
             <li><strong>HSBC Banking Context 银行专有场景</strong> — 合规术语 / 业务线 / HSBC系统与流程</li>
         </ul>
     </section>
-
-    <!-- AI Config Card -->
-    <div class="ai-config-card" id="aiConfigCard">
-        <h3>🤖 AI 阅读助手 / AI Reading Assistant
-            <span class="ai-status-badge" id="aiStatusBadge">⚪ 未配置 / Not Configured</span>
-        </h3>
-        <p>配置你自己的 AI（支持 DeepSeek、OpenAI、Moonshot、Qwen 等 OpenAI 兼容服务），即可在每篇文章中调用 AI 进行详细翻译、文化注释、角色扮演练习和出题。<br>
-        Configure your own AI (supports DeepSeek, OpenAI, Moonshot, Qwen — any OpenAI-compatible service) to enable AI translation, cultural notes, role-play practice and quizzes on every article.</p>
-        <div class="ai-providers">
-            <span class="ai-provider-tag">🌊 DeepSeek</span>
-            <span class="ai-provider-tag">🤖 OpenAI</span>
-            <span class="ai-provider-tag">🌙 Moonshot Kimi</span>
-            <span class="ai-provider-tag">🐪 Qwen</span>
-            <span class="ai-provider-tag">🧠 GLM (智谱)</span>
-            <span class="ai-provider-tag">+ 自定义 Custom</span>
-        </div>
-        <button type="button" class="btn-ai-open" id="aiOpenSettings">
-            ⚙️ 打开 AI 配置 / Open AI Settings
-        </button>
-    </div>
-
-    <!-- Status bar (floating toast) -->
-    <div class="ai-status-bar" id="aiStatusBar"></div>
 
     <!-- Role Cards -->
     <section class="article-section">
@@ -279,6 +255,29 @@
             </div>
         </div>
     </section>
+
+    <!-- AI Config Card -->
+    <div class="ai-config-card" id="aiConfigCard">
+        <h3>🤖 AI 阅读助手 / AI Reading Assistant
+            <span class="ai-status-badge" id="aiStatusBadge">⚪ 未配置 / Not Configured</span>
+        </h3>
+        <p>配置你自己的 AI（支持 DeepSeek、OpenAI、Moonshot、Qwen 等 OpenAI 兼容服务），即可在每篇文章中调用 AI 进行详细翻译、文化注释、角色扮演练习和出题。<br>
+        Configure your own AI (supports DeepSeek, OpenAI, Moonshot, Qwen — any OpenAI-compatible service) to enable AI translation, cultural notes, role-play practice and quizzes on every article.</p>
+        <div class="ai-providers">
+            <span class="ai-provider-tag">🌊 DeepSeek</span>
+            <span class="ai-provider-tag">🤖 OpenAI</span>
+            <span class="ai-provider-tag">🌙 Moonshot Kimi</span>
+            <span class="ai-provider-tag">🐪 Qwen</span>
+            <span class="ai-provider-tag">🧠 GLM (智谱)</span>
+            <span class="ai-provider-tag">+ 自定义 Custom</span>
+        </div>
+        <button type="button" class="btn-ai-open" id="aiOpenSettings">
+            ⚙️ 打开 AI 配置 / Open AI Settings
+        </button>
+    </div>
+
+    <!-- Status bar (floating toast) -->
+    <div class="ai-status-bar" id="aiStatusBar"></div>
 
 </main>
 

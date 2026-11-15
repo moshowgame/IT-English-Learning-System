@@ -194,6 +194,208 @@
         }
     }
 
+    /* ---------- TTS: read aloud (Web Speech API) ----------
+       Injected on every page: per-dialogue-line buttons, per-dialogue
+       "play whole conversation" with live highlighting, and per-item
+       buttons on phrase / vocabulary lists. English text only. */
+    var tts = (function () {
+        var synth = window.speechSynthesis || null;
+        var voice = null;
+        var rate = parseFloat(localStorage.getItem('ttsRate')) || 1;
+        var token = 0;
+
+        function pickVoice() {
+            if (!synth) return;
+            var all = synth.getVoices() || [];
+            var en = all.filter(function (v) { return /^en[-_]/i.test(v.lang); });
+            if (!en.length) { voice = null; return; }
+            /* HSBC context — prefer a British voice, fall back to US */
+            var nice = /(Google UK English Female|Google UK English Male|Serena|Daniel|Kate|Sonia|Libby|Aria|Ryan)/i;
+            voice =
+                en.find(function (v) { return /en[-_]GB/i.test(v.lang) && nice.test(v.name); }) ||
+                en.find(function (v) { return /en[-_]GB/i.test(v.lang); }) ||
+                en.find(function (v) { return /en[-_]US/i.test(v.lang) && nice.test(v.name); }) ||
+                en.find(function (v) { return /en[-_]US/i.test(v.lang); }) ||
+                en[0];
+        }
+
+        if (synth) {
+            pickVoice();
+            if (typeof synth.addEventListener === 'function') {
+                synth.addEventListener('voiceschanged', pickVoice);
+            } else if (typeof synth.onvoiceschanged !== 'undefined') {
+                synth.onvoiceschanged = pickVoice;
+            }
+        }
+
+        function cancel() {
+            if (synth) { try { synth.cancel(); } catch (e) { /* ignore */ } }
+            token++;
+        }
+
+        function speakOne(text, onend) {
+            if (!synth || !text) { if (onend) setTimeout(onend, 0); return; }
+            var my = token;
+            var u = new SpeechSynthesisUtterance(text);
+            if (voice) { u.voice = voice; u.lang = voice.lang; } else { u.lang = 'en-GB'; }
+            u.rate = rate;
+            u.pitch = 1;
+            var done = false;
+            function finish() {
+                if (done) return;
+                done = true;
+                if (my === token && onend) onend();
+            }
+            u.onend = finish;
+            u.onerror = finish; /* cancel() also fires onerror in Chrome */
+            synth.speak(u);
+        }
+
+        function playSequence(items, onItem, onDone) {
+            cancel();
+            if (!items.length) return;
+            var my = token;
+            var i = 0;
+            (function next() {
+                if (my !== token) return;
+                if (i >= items.length) { if (onDone) onDone(); return; }
+                var idx = i++;
+                if (onItem) onItem(items[idx], idx);
+                speakOne(items[idx].text, next);
+            })();
+        }
+
+        return {
+            supported: !!synth,
+            cancel: cancel,
+            say: function (text, onend) { cancel(); speakOne(text, onend); },
+            playSequence: playSequence,
+            getRate: function () { return rate; },
+            setRate: function (r) { rate = r; localStorage.setItem('ttsRate', String(r)); }
+        };
+    })();
+
+    function injectTts() {
+        var hasDialogue = document.querySelectorAll('.dialogue-block').length > 0;
+
+        if (!tts.supported) {
+            if (hasDialogue) {
+                var note = document.createElement('div');
+                note.className = 'tts-unsupported';
+                note.textContent = '当前浏览器不支持语音朗读（Web Speech API），建议使用 Chrome / Edge 浏览器。';
+                var firstBlock = document.querySelector('.dialogue-block');
+                firstBlock.parentNode.insertBefore(note, firstBlock);
+            }
+            return;
+        }
+
+        /* ---- Dialogue blocks: toolbar + per-line buttons ---- */
+        document.querySelectorAll('.dialogue-block').forEach(function (block) {
+            if (block.querySelector('.tts-bar')) return;
+            var lines = block.querySelectorAll('.dialogue-line');
+            if (!lines.length) return;
+
+            var bar = document.createElement('div');
+            bar.className = 'tts-bar';
+            bar.innerHTML =
+                '<span class="tts-bar-label">🔊 朗读 / Listen</span>' +
+                '<button type="button" class="tts-btn tts-play">▶ 播放整段对话</button>' +
+                '<button type="button" class="tts-btn tts-stop" hidden>⏹ 停止</button>' +
+                '<span>语速 <select class="tts-select tts-rate">' +
+                  '<option value="0.75">0.75x</option>' +
+                  '<option value="0.9">0.9x</option>' +
+                  '<option value="1">1x</option>' +
+                  '<option value="1.25">1.25x</option>' +
+                '</select></span>';
+            block.insertBefore(bar, block.firstChild);
+
+            var playBtn = bar.querySelector('.tts-play');
+            var stopBtn = bar.querySelector('.tts-stop');
+            var rateSel = bar.querySelector('.tts-rate');
+            rateSel.value = String(tts.getRate());
+            rateSel.addEventListener('change', function () {
+                tts.setRate(parseFloat(rateSel.value));
+            });
+
+            function clearAll() {
+                block.querySelectorAll('.dialogue-line.speaking').forEach(function (l) {
+                    l.classList.remove('speaking');
+                });
+                playBtn.hidden = false;
+                stopBtn.hidden = true;
+            }
+
+            stopBtn.addEventListener('click', function () {
+                tts.cancel();
+                clearAll();
+            });
+
+            playBtn.addEventListener('click', function () {
+                var items = Array.prototype.map.call(lines, function (line) {
+                    var en = line.querySelector('.en');
+                    return { el: line, text: en ? en.textContent.replace(/\s+/g, ' ').trim() : '' };
+                }).filter(function (it) { return it.text; });
+
+                playBtn.hidden = true;
+                stopBtn.hidden = false;
+                tts.playSequence(items, function (item) {
+                    block.querySelectorAll('.dialogue-line.speaking').forEach(function (l) {
+                        l.classList.remove('speaking');
+                    });
+                    item.el.classList.add('speaking');
+                }, clearAll);
+            });
+
+            lines.forEach(function (line) {
+                if (line.querySelector('.tts-line-btn')) return;
+                var en = line.querySelector('.en');
+                if (!en || !en.textContent.trim()) return;
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'tts-line-btn';
+                btn.title = '朗读这句 / Read this line';
+                btn.textContent = '🔊';
+                btn.setAttribute('aria-label', 'Read this line aloud');
+                line.appendChild(btn);
+                btn.addEventListener('click', function () {
+                    tts.cancel();
+                    block.querySelectorAll('.dialogue-line.speaking').forEach(function (l) {
+                        l.classList.remove('speaking');
+                    });
+                    line.classList.add('speaking');
+                    tts.say(en.textContent.replace(/\s+/g, ' ').trim(), function () {
+                        line.classList.remove('speaking');
+                    });
+                });
+            });
+        });
+
+        /* ---- Phrase / vocabulary lists: per-item button ---- */
+        document.querySelectorAll('.phrase-list li, .vocab-list li').forEach(function (li) {
+            if (li.querySelector('.tts-line-btn')) return;
+            var enEl = li.querySelector('.english') || li.querySelector('strong');
+            if (!enEl) return;
+            var em = li.querySelector('em');
+            var tag = li.querySelector('.tag');
+            var text = em ? em.textContent : enEl.textContent;
+            if (tag && !em) text = text.replace(tag.textContent, ' ');
+            text = text.replace(/\s+/g, ' ').trim();
+            if (!text) return;
+
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'tts-line-btn tts-inline-btn';
+            btn.title = '朗读 / Read aloud';
+            btn.textContent = '🔊';
+            btn.setAttribute('aria-label', 'Read aloud');
+            enEl.appendChild(btn);
+            btn.addEventListener('click', function () {
+                tts.cancel();
+                tts.say(text);
+            });
+        });
+    }
+
     /* ---------- AI status badge (home page) ---------- */
     function updateAiStatusBadge() {
         var badge = document.getElementById('aiStatusBadge');
@@ -212,8 +414,14 @@
     function init() {
         highlightActiveNav();
         injectAuthorAndDonate();
+        injectTts();
         updateAiStatusBadge();
         document.addEventListener('ai-config-updated', updateAiStatusBadge);
+
+        /* stop any ongoing speech when leaving the page */
+        window.addEventListener('beforeunload', function () {
+            if (window.speechSynthesis) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+        });
 
         var openBtn = document.getElementById('aiOpenSettings');
         if (openBtn && window.AISettings) {
