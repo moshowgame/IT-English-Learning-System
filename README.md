@@ -4,7 +4,8 @@
 > 面向外企银行 IT 从业者的系统化英语沟通训练 · Bilingual · Role-Based · Practice-Driven
 > A role-based English training system for foreign bank IT professionals — practical speaking, real workplace scenarios, bilingual support.
 
-![Tech](https://img.shields.io/badge/Tech-HTML%20%2B%20Vanilla%20JS%20%2B%20Bootstrap%205-blue)
+![Tech](https://img.shields.io/badge/Tech-HTML5%20%2B%20CSS3%20%2B%20Vanilla%20JS-blue)
+![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20%E2%80%94%20no%20CDN-success)
 ![No Build](https://img.shields.io/badge/Build-None-success)
 ![Articles](https://img.shields.io/badge/Articles-236-orange)
 ![Roles](https://img.shields.io/badge/Roles-8%20%2B%203%20Scenario%20Series-purple)
@@ -44,11 +45,11 @@ This learning system is designed for **IT professionals working in foreign banks
 | 📶 **四级难度分级** | 🟢 Beginner-friendly / 🟡 Intermediate / 🔴 Advanced / 🔴 Expert（全部 160 篇角色文章已标注） |
 | 🤖 **AI 阅读助手** | 自带 API Key 即可在每篇文章调用 AI 翻译、角色扮演、出题（DeepSeek / OpenAI / Kimi / Qwen / GLM） |
 | 🔍 **SEO 就绪** | 每页 meta description / Open Graph / canonical / sitemap.xml / robots.txt / favicon / 404 页 |
-| 🚀 **现代性能** | 全站无 jQuery，脚本 defer 加载，CDN preconnect |
+| 🚀 **现代性能** | 全站无 jQuery、无 Bootstrap，脚本 defer 加载，仅 3 个自研静态资源 |
 | 🌍 **跨地区协作** | UK / HK / CN / IN 跨时区沟通话术与跨文化解读 |
-| 📱 **响应式设计** | Bootstrap 5，PC / Pad / 手机自适应 |
+| 📱 **响应式设计** | 原生 CSS Grid / Flexbox 响应式（自研实现），PC / Pad / 手机自适应 |
 | 🖨️ **打印友好** | 文章打印自动隐藏导航 / footer / donate / 弹窗 |
-| 🔌 **零依赖部署** | 纯静态 HTML + CDN，无需构建 |
+| 🔌 **零依赖部署** | 纯静态 HTML5 + CSS3 + 原生 JS，**零 CDN、零第三方库、无需构建** — 断网/内网/离线双击 index.html 均完整可用 |
 
 ## 🔊 语音朗读 / Text-to-Speech（浏览器 TTS）
 
@@ -134,7 +135,7 @@ it-english/
 | 类别 | 选型 |
 |---|---|
 | 标记语言 | HTML5 |
-| 样式 | 自研现代化 CSS（设计令牌 / 毛玻璃导航 / 卡片体系） + Bootstrap 5（CDN） |
+| 样式 | 自研现代化 CSS（设计令牌 / 毛玻璃导航 / 卡片体系 / 响应式栅格），零第三方库 |
 | 脚本 | **原生 JavaScript（无 jQuery）**，全部 `defer` 加载 |
 | 图标 | 内联 SVG（GitHub / CSDN / 关闭按钮）+ SVG favicon |
 | 构建 | **无构建** — 直接打开 `index.html` 即可 |

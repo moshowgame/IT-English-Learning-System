@@ -488,8 +488,62 @@
         }
     }
 
+    /* ---------- Native behaviors (replace bootstrap.bundle.min.js) ---------- */
+    function initNativeBehaviors() {
+        /* Navbar collapse (mobile hamburger) */
+        document.addEventListener('click', function (e) {
+            var toggler = e.target.closest('.navbar-toggler[data-bs-target]');
+            if (!toggler) return;
+            var target = document.querySelector(toggler.getAttribute('data-bs-target'));
+            if (!target) return;
+            var open = !target.classList.contains('show');
+            target.classList.toggle('show', open);
+            toggler.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        /* Dropdown menus (roles dropdown) */
+        document.addEventListener('click', function (e) {
+            var toggle = e.target.closest('[data-bs-toggle="dropdown"]');
+            if (toggle) {
+                e.preventDefault();
+                var menu = toggle.parentElement.querySelector('.dropdown-menu');
+                if (!menu) return;
+                var willShow = !menu.classList.contains('show');
+                closeAllDropdowns();
+                if (willShow) {
+                    menu.classList.add('show');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+                return;
+            }
+            if (!e.target.closest('.dropdown-menu')) closeAllDropdowns();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeAllDropdowns();
+        });
+        /* close mobile nav + dropdowns after navigating via a nav link
+           (exclude .dropdown-toggle — it opens the menu instead of navigating) */
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('.navbar-collapse .nav-link:not(.dropdown-toggle), .dropdown-menu .dropdown-item');
+            if (link) {
+                closeAllDropdowns();
+                var collapse = document.querySelector('.navbar-collapse.show');
+                if (collapse && window.innerWidth < 992) collapse.classList.remove('show');
+            }
+        });
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.dropdown-menu.show').forEach(function (m) {
+                m.classList.remove('show');
+                var t = m.parentElement.querySelector('[data-bs-toggle="dropdown"]');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        }
+    }
+
     function init() {
         buildRoleDropdown();
+        initNativeBehaviors();
         highlightActiveNav();
         injectAuthorAndDonate();
         injectTts();

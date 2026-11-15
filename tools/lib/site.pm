@@ -71,8 +71,6 @@ sub head_scripts {
     <meta property="og:site_name" content="IT English Learning System">
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/svg+xml" href="${prefix}assets/images/favicon.svg">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap\@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${prefix}assets/css/common.css">
 HTML
 }
@@ -80,7 +78,6 @@ HTML
 sub script_tags {
     my ($prefix) = @_;
     return <<HTML;
-<script src="https://cdn.jsdelivr.net/npm/bootstrap\@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="${prefix}assets/js/common.js" defer></script>
 <script src="${prefix}assets/js/ai-config.js" defer></script>
 <script src="${prefix}assets/js/ai-reader.js" defer></script>

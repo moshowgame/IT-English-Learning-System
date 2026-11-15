@@ -94,10 +94,12 @@ for my $f (@files) {
     # ---- 2. CDN hygiene ----
     # broken hosts / filenames
     if ($html =~ s{https://cdn\.jsdu\.net}{https://cdn.jsdelivr.net}g) { $cdn_fixed++; }
-    if ($html =~ s{dist/js/javascript\.bundle\.min\.js}{dist/js/bootstrap.bundle.min.js}g) { $cdn_fixed++; }
-    # normalise bootstrap to canonical jsdelivr 5.3.2
-    $html =~ s{https://[^"'\s]+/npm/bootstrap\@[\d.]+/dist/css/bootstrap\.min\.css}{https://cdn.jsdelivr.net/npm/bootstrap\@5.3.2/dist/css/bootstrap.min.css}g;
-    $html =~ s{https://[^"'\s]+/npm/bootstrap\@[\d.]+/dist/js/bootstrap\.bundle\.min\.js}{https://cdn.jsdelivr.net/npm/bootstrap\@5.3.2/dist/js/bootstrap.bundle.min.js}g;
+    # strip Bootstrap CDN tags entirely — the site is now Bootstrap-free
+    # (common.css implements the needed class subset natively)
+    $html =~ s{^\s*<link rel="preconnect" href="https://cdn\.jsdelivr\.net"[^>]*>\s*\n}{}gm;
+    $html =~ s{<link[^>]*npm/bootstrap\@[\d.]+/dist/css/bootstrap\.min\.css[^>]*>\s*\n?}{}g;
+    $html =~ s{<script[^>]*npm/bootstrap\@[\d.]+/dist/js/bootstrap\.bundle\.min\.js[^>]*>\s*</script>\s*\n?}{}g;
+    $cdn_fixed++ if $html ne $orig;
     # normalise jquery CDN (before removal, to catch strays) — then remove jQuery entirely
     $html =~ s{<script src="https://(?:code\.jquery\.com|cdn\.jsdelivr\.net)/[^"]*jquery[^"]*"></script>\s*\n?}{}g;
     $jq_removed++ if $html ne $orig;
