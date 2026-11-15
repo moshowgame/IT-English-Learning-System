@@ -7,6 +7,67 @@
     var KNOWN_TOP_DIRS = ['ba', 'developer', 'tech-lead', 'architect', 'pm',
                           'itso', 'senior-manager', 'business', 'scenarios', 'assets'];
 
+    /* ---------- Header: collapse role links into one dropdown ---------- */
+    function buildRoleDropdown() {
+        var nav = document.querySelector('.site-header .navbar-nav');
+        if (!nav || nav.querySelector('.nav-roles')) return;
+
+        var ROLE_DIRS = ['ba', 'developer', 'tech-lead', 'architect', 'pm',
+                         'itso', 'senior-manager', 'business'];
+        var LABELS = { ba: 'BA', developer: 'Developer', 'tech-lead': 'Tech Lead',
+                       architect: 'Architect', pm: 'PM', itso: 'CyberSecurity',
+                       'senior-manager': 'Senior Manager', business: 'Business' };
+        var dirPattern = new RegExp('\\/(' + ROLE_DIRS.join('|') + ')(\\/|$)');
+
+        var items = Array.prototype.slice.call(nav.querySelectorAll(':scope > li.nav-item'));
+        var roleItems = items.filter(function (li) {
+            var a = li.querySelector('a.nav-link');
+            if (!a) return false;
+            var href = a.getAttribute('href') || '';
+            return ROLE_DIRS.some(function (d) { return href.indexOf(d + '/') !== -1; });
+        });
+        if (roleItems.length < 3) return;
+
+        var scenarioLi = items.find(function (li) {
+            var a = li.querySelector('a.nav-link');
+            return a && (a.getAttribute('href') || '').indexOf('scenarios/') !== -1;
+        });
+
+        var m = window.location.pathname.match(dirPattern);
+        var currentDir = m ? m[1] : null;
+
+        var menu = document.createElement('ul');
+        menu.className = 'dropdown-menu dropdown-menu-end';
+        roleItems.forEach(function (li) {
+            var a = li.querySelector('a.nav-link');
+            var href = a.getAttribute('href');
+            var dir = ROLE_DIRS.find(function (d) { return href.indexOf(d + '/') !== -1; });
+            var sub = document.createElement('li');
+            var subA = document.createElement('a');
+            subA.className = 'dropdown-item' + (currentDir === dir ? ' active' : '');
+            subA.href = href;
+            subA.textContent = LABELS[dir] || a.textContent.trim();
+            sub.appendChild(subA);
+            menu.appendChild(sub);
+        });
+
+        var toggle = document.createElement('a');
+        toggle.className = 'nav-link dropdown-toggle' + (currentDir ? ' active' : '');
+        toggle.href = '#';
+        toggle.setAttribute('role', 'button');
+        toggle.setAttribute('data-bs-toggle', 'dropdown');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = currentDir ? LABELS[currentDir] : 'Roles 角色';
+
+        var wrap = document.createElement('li');
+        wrap.className = 'nav-item dropdown nav-roles';
+        wrap.appendChild(toggle);
+        wrap.appendChild(menu);
+
+        if (scenarioLi) nav.insertBefore(wrap, scenarioLi); else nav.appendChild(wrap);
+        roleItems.forEach(function (li) { li.remove(); });
+    }
+
     /* ---------- Active nav highlighting ---------- */
     function highlightActiveNav() {
         var links = document.querySelectorAll('.site-header .nav-link');
@@ -412,6 +473,7 @@
     }
 
     function init() {
+        buildRoleDropdown();
         highlightActiveNav();
         injectAuthorAndDonate();
         injectTts();

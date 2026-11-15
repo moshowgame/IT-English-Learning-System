@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 22: QlikSense ETL Pain Points QlikSense 做 ETL 的痛点 | Architect English</title>
+    <meta name="description" content="QlikSense ETL Pain Points — 🎯 Transformation logic trapped in QVD load scripts, no version control, reload windows overrunning, invisible failures, licensing cost — and a strangler-pattern migration to a proper data platform. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/22-qliksense-etl-pain-points.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 22: QlikSense ETL Pain Points QlikSense 做 ETL 的痛点 | Architect English">
+    <meta property="og:description" content="QlikSense ETL Pain Points — 🎯 Transformation logic trapped in QVD load scripts, no version control, reload windows overrunning, invisible failures, licensing cost — and a strangler-pattern migration to a proper data platform. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/22-qliksense-etl-pain-points.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">22 · QlikSense ETL Pain Points</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>QlikSense ETL Pain Points</h1>
+        <p class="subtitle">Article 22 · Module 6: Solution Proposals & Stakeholder Alignment · Architect English</p>
+        <div class="meta">
+            <span>⏱ 11 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Why ETL inside QlikSense hurts — and a strangler-pattern migration that keeps QlikSense as the presentation layer</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Thursday, 10:30 AM HKT</strong>. You are a Solution Architect in the
+            <em>RBWM Data</em> tribe. The reporting estate you have inherited is
+            <strong>62 QlikSense apps</strong>, fed by roughly <strong>180 QVD load scripts</strong>,
+            with transformation logic — joins, aggregations, business rules — written inside the
+            Qlik load script language. The BI team calls it "the QVD layer". It has no repository,
+            no code review, and no owner outside the BI team.
+        </p>
+        <p>
+            周四上午 10:30 香港时间，你是 <em>RBWM 数据</em> tribe 的 Solution 架构师。你接手的报表
+            体系是 <strong>62 个 QlikSense 应用</strong>，由约 <strong>180 个 QVD 加载脚本</strong>供数，
+            转换逻辑——join、聚合、业务规则——全部写在 Qlik 的 load script 语言里。BI 团队管它叫
+            "QVD 层"。它没有代码仓库、没有 code review、BI 团队之外没有 owner。
+        </p>
+        <p>
+            Today's session has two very different stakeholders. <strong>Sarah</strong> is the
+            <strong>BI Lead</strong> — her team built the QVD layer over six years and she will
+            hear any criticism of it as criticism of them. <strong>Daniel</strong> is the
+            <strong>Business Sponsor</strong>, Head of Wealth Reporting — he does not care about
+            QVDs; he cares that "the numbers disagree between apps" and that month-end dashboards
+            open late. Your job: name the pain points honestly, without turning the BI team into
+            the villain, and land a phased migration they will co-own.
+        </p>
+        <p>
+            今天这场会有两类完全不同的干系人。<strong>Sarah</strong> 是 <strong>BI Lead</strong>——
+            QVD 层是她团队六年建起来的，任何对它的批评都会被听成对团队的批评。
+            <strong>Daniel</strong> 是<strong>业务赞助人</strong>、财富报表负责人——他不关心 QVD，
+            他关心的是"两个应用的数字对不上"和"月末报表开得晚"。你的任务：诚实地点出痛点，
+            但不把 BI 团队塑造成反派，并落地一个他们愿意共同拥有的分阶段迁移。
+        </p>
+        <p>
+            The evidence pack on the table: an <em>inventory of the 180 load scripts</em>, each
+            classified by reload time, incident count, and definition conflicts; a QMC export
+            showing every schedule; and one chart — reload window, hour by hour, average day
+            versus month-end. Numbers, not opinions: the meeting is won or lost on that chart.
+        </p>
+        <p>
+            桌上的证据包：一份 <em>180 个加载脚本的盘点清单</em>，按 reload 时长、事件数、定义冲突
+            分类；一份 QMC 导出的全部调度；还有一张图——reload 窗口逐小时曲线，平常日对比月末。
+            用数字说话，不用观点：这场会就赢或输在那张图上。
+        </p>
+        <p>
+            One framing rule before you walk in: <strong>the problem is a layer problem, not a
+            people problem</strong>. QlikSense is excellent at what it was built for —
+            <em>presentation</em>. The pain comes from forcing it to be a data platform, a job it
+            was never designed to do. Say that sentence early, in exactly those words.
+        </p>
+        <p>
+            走进会议室前记住一个定调：<strong>这是层级问题，不是人的问题</strong>。QlikSense 在
+            它擅长的事上非常出色——<em>呈现层</em>。痛点来自强迫它当数据平台，干一件它天生
+            不该干的活。开场就把这句话说出来，一字不差。
+        </p>
+    </section>
+
+    <!-- Pain Point Map -->
+    <section class="article-section">
+        <h2>2. The Pain Point Map 痛点全景</h2>
+        <p>
+            The six-row map behind every claim you will make in the room — symptom, root cause,
+            and the fix that has already worked elsewhere.
+        </p>
+        <p>
+            你在会上每个论断背后的 6 行全景——症状、根因，以及在别处已被验证的修法。
+        </p>
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Symptom 症状</th>
+                    <th>Root cause 根因</th>
+                    <th>Fix 修法</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>"The numbers disagree between apps"</td>
+                    <td>Net revenue computed in 9 apps with 9 definitions</td>
+                    <td>Certified gold-layer mart — one definition, one source</td>
+                </tr>
+                <tr>
+                    <td>Reload windows grew 1 h → 5 h</td>
+                    <td>QVDs grown 4x; transformation inside the reload engine</td>
+                    <td>Transformations on the data platform; QVD as cache</td>
+                </tr>
+                <tr>
+                    <td>Failures found by business users at 9 AM</td>
+                    <td>QMC email alerting nobody reads</td>
+                    <td>Platform monitoring with real alerting and ownership</td>
+                </tr>
+                <tr>
+                    <td>Changes are risky and slow</td>
+                    <td>Scripts live in app XML — no Git, no review</td>
+                    <td>Version-controlled code with peer review on the platform</td>
+                </tr>
+                <tr>
+                    <td>Logic invisible outside the BI team</td>
+                    <td>Qlik script language unreadable to the wider platform</td>
+                    <td>SQL/Spark transformations the whole platform can read</td>
+                </tr>
+                <tr>
+                    <td>Licence cost keeps rising</td>
+                    <td>Premium named-user licences doing platform work</td>
+                    <td>Move ETL off the BI tool; licences serve consumers again</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Let me start with what I see. <em>The dashboards are slow, and the numbers disagree</em> — revenue in the monthly pack doesn't match revenue in the regional app, and at month-end I'm looking at yesterday's numbers. What is actually going on?</span>
+                    <span class="cn">先说我看到的现象。<em>报表慢，而且数字对不上</em>——月度 pack 里的收入和区域应用里的收入不一致，月末打开报表看到的还是前一天的数。到底发生了什么？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Three structural problems, and none of them are about effort. <em>One — the transformation logic is trapped inside the load scripts.</em> The joins, the business rules, the revenue definitions: they live in 180 QVD load scripts that only the BI team can read. <em>Two — no version control.</em> Those scripts live inside app XML in QMC — no Git, no review, and when a script is reused it's copy-pasted, not referenced. <em>Three — performance.</em> The QVDs have grown fourfold in two years and the reload windows have gone from one hour to five, overrunning at month-end.</span>
+                    <span class="cn">三个结构性问题，没有一个和团队的努力程度有关。<em>第一——转换逻辑被困在加载脚本里。</em>join、业务规则、收入定义：全都写在 180 个只有 BI 团队看得懂的 QVD 加载脚本里。<em>第二——没有版本控制。</em>脚本存在 QMC 的应用 XML 里——没有 Git、没有评审，脚本复用靠复制粘贴而不是引用。<em>第三——性能。</em>QVD 两年涨了四倍，reload 窗口从 1 小时涨到 5 小时，月末已经超窗。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (BI Lead):</span>
+                <span class="text">
+                    <span class="en">I won't argue with any of that — let me add the two that hurt my team most. <em>First, error visibility.</em> When a reload fails at 4 AM, the failure is a QMC email nobody reads. <strong>The first people to know are the business users</strong>, when they open a stale dashboard at 9. My analysts find out about outages from angry chats, not from monitoring. <em>Second, the licensing angle</em> — and Daniel will care about this one: <strong>we're paying premium named-user licence costs to do work a data platform should be doing.</strong> Every heavy transformation we move off QlikSense is compute off our reload engine and pressure off our licence model. I'd rather my team build certified gold-layer models than babysit QVD chains.</span>
+                    <span class="cn">这些我都不反驳——我补两个对我们团队最痛的。<em>第一，错误可见性。</em>凌晨 4 点 reload 失败，失败信息只是一封没人看的 QMC 邮件。<strong>最先知道的是业务用户</strong>——他们 9 点打开过期的报表才知道。我们分析师是从愤怒的聊天里、而不是从监控里得知故障的。<em>第二，许可账</em>——这点 Daniel 会关心：<strong>我们在用高级命名用户许可的成本，干数据平台该干的活。</strong>每把一段重转换搬出 QlikSense，就等于给 reload 引擎减负、给许可模型减压。我宁愿让团队去做认证过的 gold 层模型，也不想再当 QVD 链的保姆。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">And that's the governance consequence. <em>"The numbers disagree" is not a data-quality problem — it's a single-source-of-truth problem.</em> Net revenue is calculated in nine different apps with nine slightly different definitions — one treats FX at trade date, one at settlement date. The data isn't dirty; <strong>the logic is duplicated, so it drifts.</strong></span>
+                    <span class="cn">这就是治理层面的后果。<em>"数字对不上"不是数据质量问题——是单一事实源问题。</em>净收入在 9 个不同的应用里被算了 9 遍，定义各有微差——有的按交易日取汇率，有的按结算日。数据本身不脏；<strong>是逻辑被复制了九份，各自漂移。</strong></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">So the vendor conversation I keep getting — <em>"replace QlikSense"</em> — is wrong?</span>
+                    <span class="cn">所以供应商一直跟我说的那套——<em>"把 QlikSense 换掉"</em>——是错的？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Wrong, and expensive. <strong>Keep QlikSense as the presentation layer — nothing else.</strong> It's good at that, the users like it, and replacing a front end nobody complains about is how projects burn money. The proposal is to move the <em>transformations</em> onto the data platform from Article 21: raw lands in bronze, cleansed and conformed in silver, business marts in gold. QlikSense reads only from gold. <strong>The QVD becomes a cache, not the source of logic</strong> — a thin extract of gold tables, regenerable, throwaway.</span>
+                    <span class="cn">错，而且贵。<strong>让 QlikSense 只做呈现层——只做这个。</strong>它擅长这个、用户也喜欢，而"替换一个没人抱怨的前端"正是项目烧钱的标准姿势。提案是把<em>转换</em>搬到第 21 篇说的那个数据平台上：原始数据进 bronze，清洗和规整在 silver，业务集市在 gold。QlikSense 只读 gold。<strong>QVD 变成缓存，不再是逻辑的来源</strong>——只是 gold 表的一层薄抽取，可随时重建、可丢弃。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Sixty-two apps and a hundred and eighty scripts. <em>How long, and how much risk?</em> Because I remember the last "reporting migration" — two years, and the numbers still disagreed.</span>
+                    <span class="cn">62 个应用、180 个脚本。<em>要多久，风险多大？</em>我还记得上一次"报表迁移"——两年，数字照样对不上。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Not a big-bang, and that's a promise, not a preference. <strong>Strangler pattern — one domain at a time.</strong> Phase zero is an inventory: every load script classified by pain — reload time, incident count, definition conflicts. <em>We prioritise by pain, not by age.</em> Then one domain migrates per phase. For each migration we <strong>parallel-run for a full month</strong> — the old QVD path and the new gold path feed the same dashboards while we reconcile row counts and balances daily — and only then do we <strong>cut over and decommission</strong> the QVD chain. If a parallel run shows a break, the cutover moves, not the promise.</span>
+                    <span class="cn">不做大爆炸，这是承诺，不是偏好。<strong>绞杀者模式——一次迁一个域。</strong>第零阶段是盘点：把每个加载脚本按痛点分类——reload 时长、事件数、定义冲突。<em>按痛点排序，不按脚本年龄排序。</em>然后每个阶段迁一个域。每次迁移我们都<strong>并行跑满一个月</strong>——旧 QVD 路径和新 gold 路径同时供同一批报表，我们每天对行数和余额——确认无误才<strong>切换并退役</strong>那条 QVD 链。并行期间发现对不上，推迟的是切换日期，不是对账承诺。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (BI Lead):</span>
+                <span class="text">
+                    <span class="en">Then phase one should be <strong>revenue</strong> — it's where the numbers disagree, it's where the phone rings, and it's the domain my senior people already understand best. If we can't prove the pattern there, nowhere else will convince anyone.</span>
+                    <span class="cn">那第一阶段就该是<strong>收入域</strong>——数字对不上的是它，电话被打爆的是它，也是我资深同事最熟的域。如果在这里都证明不了这套模式，别处做了也说服不了任何人。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Agreed, and I'll take that as the plan. Phase one: the revenue domain, two sprints to build, then the one-month parallel run. Exit criteria: silver revenue tables certified against source, all revenue apps reading gold only, reload under ninety minutes, <strong>zero reconciliation breaks over the parallel-run month</strong>. Sarah's team owns the gold-layer modelling — that's the interesting work, and it's theirs. Daniel, you get a <strong>checkpoint demo at the end of every sprint</strong> — working dashboards, not status slides.</span>
+                    <span class="cn">同意，就按这个定。第一阶段：收入域，两个 Sprint 建设，然后并行跑一个月。退出标准：silver 收入表通过源端认证、所有收入类应用只读 gold、reload 90 分钟以内、<strong>并行月零对账差异</strong>。gold 层建模由 Sarah 的团队负责——那才是有意思的活，归他们。Daniel，每个 Sprint 结束给你一次<strong>检查点演示</strong>——看跑起来的报表，不看进度幻灯片。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Good. And one condition from me — <em>when the parallel-run month finishes clean, the old scripts get deleted, not "kept just in case."</em> If it runs twice forever, we've built two estates. Can you commit to that?</span>
+                    <span class="cn">好。再加一个我的条件——<em>并行月干净收尾之后，旧脚本要删掉，不是"留着以防万一"。</em>永远跑两套，就等于建了两个体系。这点你能承诺吗？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">In the plan as a named step, with your condition attached: <strong>sunset the QVD chain within two weeks of cutover</strong> — scripts archived to the repo for history, schedules removed, and the QMC folder goes. <em>A migration that never ends is a migration that never happened.</em></span>
+                    <span class="cn">这条已经作为命名步骤写进计划，并附上你的条件：<strong>切换后两周内让 QVD 链退役</strong>——脚本归档进代码仓库留史，移除调度，QMC 目录清掉。<em>永不结束的迁移，等于从未发生。</em></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The transformation logic is trapped inside the load scripts.</em></span>
+                <span class="chinese">转换逻辑被困在加载脚本里</span>
+                <span class="note">"Trapped inside" frames the problem as structural, not careless — nobody is blamed for the walls the logic lives behind. "Trapped inside" 把问题定性为结构性而非疏忽——逻辑被困住，不怪任何人。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The numbers disagree because the logic is duplicated, not because the data is dirty.</em></span>
+                <span class="chinese">数字对不上是因为逻辑被复制了多份，不是因为数据脏</span>
+                <span class="note">The diagnosis sentence. It redirects "data quality" conversations to "logic governance", which is where the fix lives. 定性金句：把"数据质量"话题引向"逻辑治理"，那才是修复所在。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Keep QlikSense as the presentation layer — nothing else.</em></span>
+                <span class="chinese">让 QlikSense 只做呈现层——仅此而已</span>
+                <span class="note">"Nothing else" closes the scope as firmly as an ADR. Use it whenever a tool is being asked to do a second job. "Nothing else" 像 ADR 一样把范围钉死；每当一个工具被要求兼职第二份工作时都可以用它。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>The QVD becomes a cache, not the source of logic.</em></span>
+                <span class="chinese">QVD 变成缓存，不再是逻辑的来源</span>
+                <span class="note">"Cache, not source" is the exact mental model sponsors and engineers can both repeat. It also makes the QVD disposable, which lowers migration fear. "Cache, not source" 是赞助人和工程师都能复述的心智模型，也让 QVD 变得可丢弃，降低迁移恐惧。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Strangler pattern — one domain at a time.</em></span>
+                <span class="chinese">绞杀者模式——一次迁一个域</span>
+                <span class="note">The strangler pattern grows the new system around the old one until the old one is safe to remove. Always pair the term with the cadence ("one domain at a time"). 绞杀者模式让新系统围绕旧系统逐域生长，直到旧系统可以安全移除。说术语时永远带上节奏："一次一个域"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>We prioritise by pain, not by age.</em></span>
+                <span class="chinese">按痛点排序，不按脚本年龄排序</span>
+                <span class="note">Pre-empts "but that app is the oldest". Pain = reload time, incident count, definition conflicts — all measurable. 预防"那个应用最老先迁它"的争论。痛点 = reload 时长、事件数、定义冲突，全部可量化。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Parallel-run for a full month before we cut over.</em></span>
+                <span class="chinese">正式切换前并行跑满一个月</span>
+                <span class="note">Parallel run is the trust-building move with sponsors: both paths, same dashboards, daily reconciliation. A month covers one full month-end cycle. 并行跑是赢得赞助人信任的关键动作：两条路径供同一批报表、每日对账。一个月正好覆盖一个完整月末周期。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Zero reconciliation breaks over the parallel-run month.</em></span>
+                <span class="chinese">并行月零对账差异</span>
+                <span class="note">"Zero breaks" is a falsifiable exit criterion — either the log shows a break or it doesn't. Never soften it to "minimal breaks". "Zero breaks" 是可证伪的退出标准：日志里要么有差异要么没有。绝不能软化为"尽量少差异"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Sunset the QVD chain within two weeks of cutover.</em></span>
+                <span class="chinese">切换后两周内让 QVD 链退役</span>
+                <span class="note">"Sunset" is the polite verb for decommissioning. Naming the deadline stops the "keep it just in case" pattern that doubles the estate. "Sunset" 是"退役"的礼貌说法。给期限能阻止"留着以防万一"导致双体系并存。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>A checkpoint demo at the end of every sprint — working dashboards, not status slides.</em></span>
+                <span class="chinese">每个 Sprint 结束做一次检查点演示——看跑起来的报表，不看进度幻灯片</span>
+                <span class="note">"Working software, not status slides" borrows Agile's "working software over comprehensive documentation" and repoints it at stakeholder trust. 化用敏捷宣言"可工作的软件高于详尽的文档"，把信任的锚点从汇报移到演示。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>QVD (QlikView Data file)</strong> n. Qlik 数据文件 Qlik's compressed, columnar storage file. Loaded by load scripts, read by apps — in this estate, simultaneously the storage engine, the transform engine, and the interface.</li>
+            <li><strong>load script</strong> n. 加载脚本 The Qlik scripting code inside each app that connects to sources, applies transformations, and writes QVDs. Written in Qlik's own script language, invisible to the wider platform.</li>
+            <li><strong>QMC (Qlik Management Console)</strong> n. Qlik 管理控制台 The admin console where reload tasks, schedules, and app metadata live — and, in this estate, the closest thing to a deployment system.</li>
+            <li><strong>reload window</strong> n. 刷新窗口 The scheduled time slot in which a set of QlikSense apps reload their data. Sequential app reloads cascade; when the window overruns, dashboards open stale.</li>
+            <li><strong>presentation layer</strong> n. 呈现层 The tier that visualises prepared data for end users — charts, dashboards, self-service. What QlikSense is genuinely good at.</li>
+            <li><strong>medallion architecture</strong> n. 奖牌架构（bronze/silver/gold） The bronze-silver-gold layering on a data platform: raw as landed (bronze), cleansed and conformed (silver), business-ready marts (gold).</li>
+            <li><strong>single source of truth</strong> n. 单一事实源 One certified definition of each business measure, computed in one place and referenced everywhere. The cure for nine revenue definitions in nine apps.</li>
+            <li><strong>strangler pattern</strong> n. 绞杀者模式 A migration strategy where the new system incrementally takes over domains of the old one until the old one can be removed — no big-bang cutover.</li>
+            <li><strong>parallel run</strong> n. 并行运行 Running the old and new paths side by side for a fixed period, reconciling outputs daily, before switching consumers over.</li>
+            <li><strong>cutover</strong> n. 正式切换 The moment consumers stop reading the old path and start reading the new one. Should be a small step at the end of a proven parallel run.</li>
+            <li><strong>decommission</strong> v. 退役 / 下线 Formally removing an old system, its schedules, and its storage after cutover — with an owner and a date, not "just in case".</li>
+            <li><strong>named-user licence</strong> n. 命名用户许可 QlikSense licensing model priced per assigned user. Heavy ETL inside the tool burns premium licence value on work a data platform should do.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① "X, not Y" — the corrective contrast</h3>
+        <p>
+            This article runs on the <strong>"X, not Y"</strong> pattern: <em>a cache, not the
+            source of logic</em>; <em>by pain, not by age</em>; <em>a layer problem, not a people
+            problem</em>; <em>from angry chats, not from monitoring</em>. The construction deletes
+            the wrong idea and installs the right one in a single breath. In stakeholder
+            meetings, say the wrong idea first only to kill it — the sentence ends on the right
+            idea, which is what people remember.
+        </p>
+        <p>本篇反复使用"X，不是 Y"结构：是缓存不是逻辑源头、按痛点不按年龄、是层级问题不是人的问题。"X, not Y" 一口气完成"否定错误认知 + 安装正确认知"。干系人会议上，错误想法只为被否定而出现——句子落在正确想法上，那才是被记住的部分。</p>
+
+        <h3>② "The first people to know are…" — dramatising the failure</h3>
+        <p>
+            Sarah's line uses <strong>superlative + to-infinitive</strong>: <em>the first people
+            to know are the business users</em>. The pattern "the first / only / last person to +
+            verb" turns a dry outage description into a story with victims and timing. Use it to
+            make an operational pain land: <em>the last team to know about a reload failure is
+            the team that owns the reload</em>.
+        </p>
+        <p>Sarah 的台词用了"最高级 + to 不定式"：最先知道的是业务用户。"the first / only / last person to + 动词"把干巴巴的故障描述变成有时间线和受害者的故事。想让运营痛点落地就这么说：最后一个知道刷新失败的是负责刷新的团队。</p>
+
+        <h3>③ "If it runs twice forever, we've built two estates" — the conditional warning</h3>
+        <p>
+            Note the tense pairing in <em>if it <strong>runs</strong> twice forever, we
+            <strong>'ve built</strong> two estates</em> — first conditional (real possibility)
+            with a <strong>present perfect</strong> result. The pattern states the consequence
+            as already accomplished the moment the condition holds. It is the cleanest way to
+            warn a sponsor without hedging: <em>if we keep both paths alive, we've doubled the
+            estate we have to reconcile</em>.
+        </p>
+        <p>注意"if it runs twice forever, we've built two estates"的时态搭配——真实条件句 + 现在完成时结果。条件一旦成立，后果即视为已发生。这是向赞助人发出不绕弯警告的最干净句式：如果我们让两条路径永远并存，就等于把需要对账的体系翻了一倍。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🤝 Protecting the BI Team While Criticising the Estate</div>
+            <ul>
+                <li><strong>Attack the layer, never the people.</strong> The sentence to say out loud: "This is a layer problem, not a people problem." The BI team used the tool the bank gave them for a job the bank asked them to do. Any hint that they built it wrong will cost you their cooperation for a year.</li>
+                <li><strong>Give the BI team the best job in the new world.</strong> Sarah's team moves from babysitting QVD chains to owning certified gold-layer models — the interesting, visible, career-building work. A migration where the existing team wins is a migration that happens.</li>
+                <li><strong>Let the BI Lead name phase one.</strong> Sarah chose revenue because she knows it best and it hurts most. A plan the experts co-author in the room is defended by the experts afterwards.</li>
+                <li><strong>Bring the estate's numbers, not the estate's reputation.</strong> The reload-window chart and the classified inventory let the data make the case — Sarah can agree with a chart she would never concede to in an argument.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ The Two Migration Killers</div>
+            <ul>
+                <li><strong>Big-bang migrations fail loudly.</strong> "Everything in one release" means frozen scope for months and all risk realised at once. The strangler pattern keeps every phase small enough to cancel — which is exactly why sponsors approve it.</li>
+                <li><strong>"Keep the old path just in case" quietly doubles the estate.</strong> Daniel named it: if it runs twice forever, you've built two systems to reconcile, fund, and explain. Decommission needs an owner and a date in the plan, not a good intention.</li>
+                <li><strong>Never open with tool criticism in front of the vendor conversation.</strong> If a vendor is mid-pitch to "replace QlikSense", correct the framing first — otherwise the sponsor buys a front-end replacement that fixes none of the pain points in this article.</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ Parallel Run Is the Sponsor's Trust Machine</div>
+            <ul>
+                <li><strong>Both paths, same dashboards, daily reconciliation.</strong> The sponsor doesn't have to believe your migration is safe — they can watch it being safe, number by number, for a full month-end cycle.</li>
+                <li><strong>"Zero reconciliation breaks" is a promise you can keep.</strong> Because the cutover date moves if a break appears — the promise is about the condition, not the calendar. Sponsors forgive moved dates; they don't forgive moved definitions of success.</li>
+                <li><strong>Checkpoint demos every sprint close the credibility gap.</strong> After one bad migration, Daniel trusts evidence, not plans. Two sprints of working dashboards rebuild it faster than any status report.</li>
+                <li><strong>Accept sponsor conditions by writing them into the plan.</strong> Daniel's "delete the old scripts" became a named step with his condition attached. A condition captured in the plan is a partner; a condition argued away in the room is an enemy at the steering meeting.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Full Translation -->
+    <section class="article-section">
+        <h2>8. Dialogue Translation 对话全文翻译</h2>
+        <div class="translation-block">
+            <div class="label">💬 Full Dialogue Translation 完整对话中文翻译</div>
+            <p><strong>Daniel（业务赞助人）：</strong>先说我看到的现象。报表慢，而且数字对不上——月度 pack 里的收入和区域应用里的收入不一致，月末打开报表看到的还是前一天的数。到底发生了什么？</p>
+            <p><strong>你（架构师）：</strong>三个结构性问题，没有一个和团队的努力程度有关。第一——转换逻辑被困在加载脚本里。join、业务规则、收入定义：全都写在 180 个只有 BI 团队看得懂的 QVD 加载脚本里。第二——没有版本控制。脚本存在 QMC 的应用 XML 里——没有 Git、没有评审，脚本复用靠复制粘贴而不是引用。第三——性能。QVD 两年涨了四倍，reload 窗口从 1 小时涨到 5 小时，月末已经超窗。</p>
+            <p><strong>Sarah（BI Lead）：</strong>这些我都不反驳——我补两个对我们团队最痛的。第一，错误可见性。凌晨 4 点 reload 失败，失败信息只是一封没人看的 QMC 邮件。最先知道的是业务用户——他们 9 点打开过期的报表才知道。我们分析师是从愤怒的聊天里、而不是从监控里得知故障的。第二，许可账——这点 Daniel 会关心：我们在用高级命名用户许可的成本，干数据平台该干的活。每把一段重转换搬出 QlikSense，就等于给 reload 引擎减负、给许可模型减压。我宁愿让团队去做认证过的 gold 层模型，也不想再当 QVD 链的保姆。</p>
+            <p><strong>你（架构师）：</strong>这就是治理层面的后果。"数字对不上"不是数据质量问题——是单一事实源问题。净收入在 9 个不同的应用里被算了 9 遍，定义各有微差——有的按交易日取汇率，有的按结算日。数据本身不脏；是逻辑被复制了九份，各自漂移。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>所以供应商一直跟我说的那套——"把 QlikSense 换掉"——是错的？</p>
+            <p><strong>你（架构师）：</strong>错，而且贵。让 QlikSense 只做呈现层——只做这个。它擅长这个、用户也喜欢，而"替换一个没人抱怨的前端"正是项目烧钱的标准姿势。提案是把转换搬到第 21 篇说的那个数据平台上：原始数据进 bronze，清洗和规整在 silver，业务集市在 gold。QlikSense 只读 gold。QVD 变成缓存，不再是逻辑的来源——只是 gold 表的一层薄抽取，可随时重建、可丢弃。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>62 个应用、180 个脚本。要多久，风险多大？我还记得上一次"报表迁移"——两年，数字照样对不上。</p>
+            <p><strong>你（架构师）：</strong>不做大爆炸，这是承诺，不是偏好。绞杀者模式——一次迁一个域。第零阶段是盘点：把每个加载脚本按痛点分类——reload 时长、事件数、定义冲突。按痛点排序，不按脚本年龄排序。然后每个阶段迁一个域。每次迁移我们都并行跑满一个月——旧 QVD 路径和新 gold 路径同时供同一批报表，我们每天对行数和余额——确认无误才切换并退役那条 QVD 链。并行期间发现对不上，推迟的是切换日期，不是对账承诺。</p>
+            <p><strong>Sarah（BI Lead）：</strong>那第一阶段就该是收入域——数字对不上的是它，电话被打爆的是它，也是我资深同事最熟的域。如果在这里都证明不了这套模式，别处做了也说服不了任何人。</p>
+            <p><strong>你（架构师）：</strong>同意，就按这个定。第一阶段：收入域，两个 Sprint 建设，然后并行跑一个月。退出标准：silver 收入表通过源端认证、所有收入类应用只读 gold、reload 90 分钟以内、并行月零对账差异。gold 层建模由 Sarah 的团队负责——那才是有意思的活，归他们。Daniel，每个 Sprint 结束给你一次检查点演示——看跑起来的报表，不看进度幻灯片。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>好。再加一个我的条件——并行月干净收尾之后，旧脚本要删掉，不是"留着以防万一"。永远跑两套，就等于建了两个体系。这点你能承诺吗？</p>
+            <p><strong>你（架构师）：</strong>这条已经作为命名步骤写进计划，并附上你的条件：切换后两周内让 QVD 链退役——脚本归档进代码仓库留史，移除调度，QMC 目录清掉。永不结束的迁移，等于从未发生。</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>9. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the migration pitch into natural Chinese:</div>
+                <p>"The pain isn't QlikSense itself — it's doing ETL inside it. The transformation
+                logic is trapped inside 180 load scripts with no version control, the reload
+                windows have gone from one hour to five, and the numbers disagree because the
+                logic is duplicated, not because the data is dirty. The proposal: keep QlikSense
+                as the presentation layer, move the transformations to the data platform in
+                bronze-silver-gold, and treat the QVD as a cache, not the source of logic. We
+                migrate one domain at a time with the strangler pattern, parallel-run for a full
+                month with zero reconciliation breaks as the exit criterion, then cut over and
+                decommission on a named date."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "痛的不是 QlikSense 本身——而是在它里面做 ETL。转换逻辑被困在 180 个没有版本控制的加载脚本里，
+                    reload 窗口从 1 小时涨到 5 小时，数字对不上是因为逻辑被复制了多份，不是因为数据脏。
+                    提案是：让 QlikSense 只做呈现层，把转换搬到 bronze-silver-gold 的数据平台上，
+                    把 QVD 当作缓存而不是逻辑的来源。
+                    我们用绞杀者模式一次迁一个域，并行跑满一个月、以零对账差异为退出标准，
+                    然后正式切换，并在指定日期退役旧链路。"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Spot the architect mistake — which line in this migration plan is wrong?</div>
+                <ol>
+                    <li>"Phase one migrates the revenue domain because it has the highest incident count and the conflicting definitions."</li>
+                    <li>"To reduce risk, we will migrate all 62 apps in a single big-bang release after the platform build completes."</li>
+                    <li>"During parallel run, both the old QVD path and the new gold path feed the same dashboards with daily reconciliation."</li>
+                    <li>"After cutover, the QVD load chain is decommissioned with an owner and a named date."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ② is the mistake — a big-bang release contradicts the strangler pattern, freezes scope for months,
+                    and realises all risk at once with no rollback anyone can afford. ① is right — prioritise by pain,
+                    and revenue is where the numbers disagree. ③ is right — parallel run with daily reconciliation is
+                    how you prove safety before cutover. ④ is right — decommission needs an owner and a date, or the
+                    old path runs forever and you've built two estates.
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — handle the vendor pitch:</div>
+                <p>The Business Sponsor says: "A vendor offered to replace QlikSense entirely in six
+                months. Shouldn't we just do that?" Write your 60-second response in English. You
+                must: (1) correct the framing, (2) name the real pain points, (3) propose the
+                strangler-pattern alternative, and use at least 3 patterns from the Key Phrases
+                section.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Honest answer — replacing the front end fixes none of the pain. This is a layer problem, not a
+                    people problem: QlikSense is good at presentation. The pain is that the transformation logic is
+                    trapped inside 180 load scripts with no version control, the reload windows have overrun at
+                    month-end, and the numbers disagree because the logic is duplicated, not because the data is dirty.
+                    A new front end duplicates all of that. My recommendation: keep QlikSense as the presentation layer
+                    — nothing else — and move the transformations to the data platform, bronze to silver to gold, with
+                    the QVD as a cache, not the source of logic. Strangler pattern, one domain at a time, starting with
+                    revenue: parallel-run for a full month, zero reconciliation breaks as the exit criterion, then
+                    cut over and decommission on a named date. Same six months buys us the first two domains proven,
+                    with evidence — not a new estate to defend."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="21-etl-spark-solution.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">21 · ETL Spark Solution Architecture</span>
+        </a>
+        <a class="next" href="23-cross-system-performance.html">
+            <span class="label">Next Article →</span>
+            <span class="title">23 · Cross-System Performance Assessment</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

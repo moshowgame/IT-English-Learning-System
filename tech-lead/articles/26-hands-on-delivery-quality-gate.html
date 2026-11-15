@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 26: Hands-on Delivery &amp; Quality Gate 动手交付与质量把关（E2E 测试） | Tech Lead English</title>
+    <meta name="description" content="Hands-on Delivery &amp; Quality Gate — 🎯 Pre-release E2E pass, release checklist, code freeze, defect triage, fixes vs deferrals, go/no-go with risks. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/26-hands-on-delivery-quality-gate.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 26: Hands-on Delivery &amp; Quality Gate 动手交付与质量把关（E2E 测试） | Tech Lead English">
+    <meta property="og:description" content="Hands-on Delivery &amp; Quality Gate — 🎯 Pre-release E2E pass, release checklist, code freeze, defect triage, fixes vs deferrals, go/no-go with risks. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/26-hands-on-delivery-quality-gate.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">26 · Hands-on Delivery &amp; Quality Gate</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Hands-on Delivery &amp; Quality Gate</h1>
+        <p class="subtitle">Article 26 · Module 6: Reliability &amp; Delivery · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Pre-release E2E pass, release checklist, code freeze, defect triage, go/no-go with risks</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday — release day</strong> for <em>Payments Dashboard 2.1</em>, the sprint release your squad ships to UAT and then production. <strong>Code freeze</strong> was Tuesday at 18:00. You are <strong>Wei</strong>, the Tech Lead — and today you wear the second hat: <em>quality gatekeeper</em>. You run the <strong>E2E test pass</strong> yourself, walking each end-to-end business scenario with <strong>Mei</strong>, the QA Lead, and <strong>Raj</strong>, the senior developer who is pairing on triage.</p>
+        <p>今天是<strong>周四——发版日</strong>，sprint 版本 <em>Payments Dashboard 2.1</em> 要发 UAT 再上生产。<strong>Code freeze</strong> 在周二 18:00。你是 Tech Lead <strong>Wei</strong>——今天戴上第二顶帽子：<em>质量把关人</em>。你亲自跑 <strong>E2E 测试轮</strong>，和 QA 负责人 <strong>Mei</strong>、负责结对分诊的高级开发 <strong>Raj</strong> 一起逐条走查端到端业务场景。</p>
+        <p>Your release checklist is already half-ticked: code freeze done; <em>config diff</em> reviewed — two feature flags, both off by default; <em>DB migration scripts</em> rehearsed against a UAT snapshot with rollback tested; InfoSec and Product Owner <em>sign-offs</em> collected. At <strong>16:00</strong>, Senior Manager <strong>Michael</strong> joins for the <strong>go/no-go</strong>. Between now and then, one defect changes the day.</p>
+        <p>发版清单已经过了一半：code freeze 完成；<em>配置 diff</em> 已评审——两个 feature flag，默认关闭；<em>DB 迁移脚本</em>在 UAT 快照上演练过、回滚测试过；InfoSec 和产品负责人的<em>签批</em>已收齐。下午 <strong>4 点</strong>，高级经理 <strong>Michael</strong> 参与 <strong>go/no-go</strong>。在那之前，一个缺陷改变了这一天的节奏。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA Lead):</span>
+                <span class="text"><span class="en">Wei, <em>E2E scenario 4 failed</em> — corporate customer submits a bulk payment with five hundred beneficiaries. The payment is created correctly, but the confirmation screen shows <em>"0 beneficiaries"</em>.</span><span class="cn">Wei，<em>E2E 场景 4 失败了</em>——企业客户提交一笔 500 个收款人的批量付款。付款创建是对的，但确认页显示 <em>"0 个收款人"</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Raj, pair with me on triage. If the payment row is correct in the DB, this is a <em>display defect</em>, not a data defect — that distinction decides everything downstream.</span><span class="cn">Raj，跟我结对分诊。如果 DB 里付款记录是对的，这就是<em>展示缺陷</em>而不是数据缺陷——这个区别决定后面所有事。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">Confirmed — the ledger row has all five hundred beneficiaries. The summary endpoint only returns the <em>first page</em>; the front-end counts one page and renders zero when the payer is on page two. Client-side bug.</span><span class="cn">确认——账本行里 500 个收款人都在。汇总接口只返回<em>第一页</em>；前端只统计了一页，付款人翻到第二页时渲染成 0。前端 bug。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">So: <em>severity medium</em> — misleading display, no money at risk; <em>priority high</em> — it's customer-visible on the flagship screen. Severity is about impact; priority is about urgency. Keep the two words separate.</span><span class="cn">结论：<em>严重度中</em>——展示有误导，但不涉资金风险；<em>优先级高</em>——旗舰页面上客户可见。Severity 看影响，priority 看紧急程度，两个词要分开用。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">The fix itself is small — aggregate the count across pages before rendering. Two hours, plus re-running <em>scenario 4 and 5</em> of the regression pack.</span><span class="cn">修复本身不大——渲染前跨页聚合数量。2 小时，外加重跑回归包的<em>场景 4 和 5</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">But code freeze was Tuesday. Options: <em>(a)</em> take the fix with a <em>freeze exception</em> and re-run the pack — release slips a day; <em>(b)</em> defer with a documented workaround and hotfix next week. Let's hear the trade, not the preference.</span><span class="cn">但 code freeze 是周二。选项：<em>(a)</em> 走 <em>freeze exception</em> 收修复并重跑回归——发版推迟一天；<em>(b)</em> 带着成文的 workaround 推迟，下周 hotfix。我们摆 trade，不摆偏好。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA Lead):</span>
+                <span class="text"><span class="en">Workaround exists: the payment detail screen shows the correct count — the call-centre script can point customers there. Full regression pack is three hours; a complete E2E re-run lands by <em>tomorrow noon</em>.</span><span class="cn">有 workaround：付款详情页显示的数量是对的——客服话术可以把客户引到那里。完整回归包要 3 小时；完整 E2E 重跑<em>明天中午</em>能跑完。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Triage decision: <em>defer, don't block</em>. Rationale: data integrity is unaffected, the workaround is documented, and the fix touches <em>shared front-end components</em> — regression risk to two other squads two days before their release outweighs a cosmetic count on one screen. Log it as <em>DEF-2187</em>, scheduled next sprint.</span><span class="cn">分诊决定：<em>推迟，不阻塞</em>。理由：数据完整性不受影响，workaround 成文，而且修复会动<em>共享前端组件</em>——对两天后发版的另外两个 squad 是回归风险，比一个页面上的显示数字更重。记为 <em>DEF-2187</em>，排进下个 sprint。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA Lead):</span>
+                <span class="text"><span class="en">DEF-2187 logged, triaged, workaround attached. I'll add it to the release note as a known issue.</span><span class="cn">DEF-2187 已记录、已分诊、workaround 已附上。我会作为已知问题写进 release note。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Sixteen hundred — go/no-go time. Wei, <em>your recommendation?</em></span><span class="cn">四点了——go/no-go 时间。Wei，<em>你的建议？</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">My recommendation is <strong>GO with one accepted risk</strong>. Checklist: code freeze done Tuesday; config diff reviewed — two feature flags, <em>off by default</em>; DB migration scripts rehearsed against a UAT snapshot with rollback tested; InfoSec and PO sign-offs in; E2E pack green except scenario 4 — deferred, workaround documented, DEF-2187 scheduled.</span><span class="cn">我的建议是 <strong>GO，接受一个风险</strong>。清单：周二 code freeze 完成；配置 diff 已评审——两个 feature flag <em>默认关闭</em>；DB 迁移脚本在 UAT 快照上演练过、回滚测过；InfoSec 和 PO 签批已收；E2E 除场景 4 外全绿——已推迟、workaround 成文、DEF-2187 已排期。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Any <em>known unknowns</em>? And what's the exit if it goes wrong tonight?</span><span class="cn">有没有<em>已知的不确定项</em>？今晚真出问题，退路是什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Monitoring for the new bulk-payment path goes live with the release; I'll watch the first twenty-four hours myself. <em>Rollback trigger:</em> error rate above one percent, or p95 latency above eight hundred milliseconds for fifteen minutes — either one, we roll back, no debate at 2 AM.</span><span class="cn">新批量付款路径的监控随发版上线；前 24 小时我亲自盯。<em>回滚触发条件：</em>错误率超 1%，或 p95 延迟超 800 毫秒持续 15 分钟——任一命中就回滚，凌晨 2 点不用开会辩论。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Approved — <em>GO</em>. Note the deferred defect in the release minute, and the Product Owner informs the business. Wei, one thing: I never had to ask whether the checklist was real — you walked it item by item.</span><span class="cn">批准——<em>GO</em>。把推迟的缺陷写进发版纪要，产品负责人通知业务。Wei，说一句：我全程不用追问清单是不是真的——你逐项走给我看。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">That's the point of a gate — <em>visible, evidence-based, signed</em>. Mei found the defect, Raj diagnosed it in twenty minutes; the recommendation is theirs as much as mine. I'll post the checklist, the defect log, and the go/no-go minute to the squad channel after the release.</span><span class="cn">把关的意义就在这——<em>可见、有证据、有签字</em>。缺陷是 Mei 发现的，20 分钟定位靠 Raj；这个建议同样属于他们。发版后我会把清单、缺陷日志和 go/no-go 纪要发到 squad 频道。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Dialogue Translation -->
+    <section class="article-section">
+        <h2>3. Full Dialogue Translation 全对话中文翻译</h2>
+        <div class="translation-block">
+            <div class="label">📖 全对话中文翻译 · Full Chinese Translation</div>
+            <p><strong>Mei（QA 负责人）：</strong>Wei，E2E 场景 4 失败了——企业客户提交一笔 500 个收款人的批量付款。付款创建是对的，但确认页显示"0 个收款人"。</p>
+            <p><strong>你（TL）：</strong>Raj，跟我结对分诊。如果 DB 里付款记录是对的，这就是展示缺陷而不是数据缺陷——这个区别决定后面所有事。</p>
+            <p><strong>Raj（高级开发）：</strong>确认——账本行里 500 个收款人都在。汇总接口只返回第一页；前端只统计了一页，付款人翻到第二页时渲染成 0。前端 bug。</p>
+            <p><strong>你（TL）：</strong>结论：严重度中——展示有误导，但不涉资金风险；优先级高——旗舰页面上客户可见。Severity 看影响，priority 看紧急程度，两个词要分开用。</p>
+            <p><strong>Raj（高级开发）：</strong>修复本身不大——渲染前跨页聚合数量。2 小时，外加重跑回归包的场景 4 和 5。</p>
+            <p><strong>你（TL）：</strong>但 code freeze 是周二。选项：(a) 走 freeze exception 收修复并重跑回归——发版推迟一天；(b) 带着成文的 workaround 推迟，下周 hotfix。我们摆 trade，不摆偏好。</p>
+            <p><strong>Mei（QA 负责人）：</strong>有 workaround：付款详情页显示的数量是对的——客服话术可以把客户引到那里。完整回归包要 3 小时；完整 E2E 重跑明天中午能跑完。</p>
+            <p><strong>你（TL）：</strong>分诊决定：推迟，不阻塞。理由：数据完整性不受影响，workaround 成文，而且修复会动共享前端组件——对两天后发版的另外两个 squad 是回归风险，比一个页面上的显示数字更重。记为 DEF-2187，排进下个 sprint。</p>
+            <p><strong>Mei（QA 负责人）：</strong>DEF-2187 已记录、已分诊、workaround 已附上。我会作为已知问题写进 release note。</p>
+            <p><strong>Michael（高级经理）：</strong>四点了——go/no-go 时间。Wei，你的建议？</p>
+            <p><strong>你（TL）：</strong>我的建议是 GO，接受一个风险。清单：周二 code freeze 完成；配置 diff 已评审——两个 feature flag 默认关闭；DB 迁移脚本在 UAT 快照上演练过、回滚测过；InfoSec 和 PO 签批已收；E2E 除场景 4 外全绿——已推迟、workaround 成文、DEF-2187 已排期。</p>
+            <p><strong>Michael（高级经理）：</strong>有没有已知的不确定项？今晚真出问题，退路是什么？</p>
+            <p><strong>你（TL）：</strong>新批量付款路径的监控随发版上线；前 24 小时我亲自盯。回滚触发条件：错误率超 1%，或 p95 延迟超 800 毫秒持续 15 分钟——任一命中就回滚，凌晨 2 点不用开会辩论。</p>
+            <p><strong>Michael（高级经理）：</strong>批准——GO。把推迟的缺陷写进发版纪要，产品负责人通知业务。Wei，说一句：我全程不用追问清单是不是真的——你逐项走给我看。</p>
+            <p><strong>你（TL）：</strong>把关的意义就在这——可见、有证据、有签字。缺陷是 Mei 发现的，20 分钟定位靠 Raj；这个建议同样属于他们。发版后我会把清单、缺陷日志和 go/no-go 纪要发到 squad 频道。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Code freeze was Tuesday at six — anything after that needs a freeze exception.</em></span>
+                <span class="chinese">周二 6 点 code freeze——之后的东西要走冻结豁免</span>
+                <span class="note">State the freeze time as a fact before discussing any late change. 讨论任何临期改动前，先把冻结时间作为事实说出口。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Severity is about impact; priority is about urgency.</em></span>
+                <span class="chinese">Severity 看影响，priority 看紧急程度</span>
+                <span class="note">The sentence that stops most triage arguments. Then classify: medium severity, high priority. 这句话能终结大多数分诊争论；然后给出分类：中严重度、高优先级。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Let's hear the trade, not the preference.</em></span>
+                <span class="chinese">我们摆 trade，不摆偏好</span>
+                <span class="note">Forces options with consequences on the table — the TL's discipline in release decisions. 逼出带后果的选项——发版决策中 TL 的纪律。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Triage decision: defer, don't block — with a documented workaround.</em></span>
+                <span class="chinese">分诊决定：推迟、不阻塞——workaround 要成文</span>
+                <span class="note"><em>Documented</em> is the load-bearing word: an undocumented workaround is a future incident. <em>Documented</em> 是关键词：没写下来的 workaround 就是未来事故。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>My recommendation is GO with one accepted risk.</em></span>
+                <span class="chinese">我的建议是 GO，接受一个风险</span>
+                <span class="note">Decision + qualifier pattern. You recommend; management decides. Never say "it's fine" — quantify what you accept. 决定+限定语句式。你给建议，管理层做决定。永远别说"没问题"——要量化你接受了什么。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The DB migration scripts were rehearsed against a UAT snapshot, rollback tested.</em></span>
+                <span class="chinese">DB 迁移脚本在 UAT 快照上演练过、回滚测试过</span>
+                <span class="note">Passive voice for process facts — it says "this happened", with no need to name who did it. 流程事实用被动语态——表示"已发生"，无需点名谁做的。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Rollback trigger: error rate above one percent, or p95 latency above eight hundred milliseconds for fifteen minutes.</em></span>
+                <span class="chinese">回滚触发条件：错误率超 1%，或 p95 延迟超 800 毫秒持续 15 分钟</span>
+                <span class="note">Pre-agreed numeric triggers remove the 2 AM debate. 决定"回不回滚"的数字阈值要提前定好，凌晨 2 点才不用开会。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Let me walk the release checklist with you — six items, two minutes.</em></span>
+                <span class="chinese">我带你过一遍发版清单——6 项，2 分钟</span>
+                <span class="note"><em>Walk through</em> beats <em>present</em> — it invites scrutiny instead of broadcasting slides. 用 <em>walk through</em> 而不是 <em>present</em>——是邀请审视，不是播放幻灯。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>The go/no-go decision and the accepted risks go into the release minute.</em></span>
+                <span class="chinese">go/no-go 决定和已接受的风险写入发版纪要</span>
+                <span class="note">Write the gate down — an unwritten accepted risk is a personal liability, not a team decision. 把把关结果写下来——没落纸的"接受风险"是个人背锅，不是团队决策。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>A gate only works when it is visible, evidence-based, and signed.</em></span>
+                <span class="chinese">把关只有可见、有证据、有签字才有意义</span>
+                <span class="note">The TL's definition of a quality gate — say it once and your gates gain a reputation. TL 对质量把关的定义——说一次，你的把关就有了信誉。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>E2E testing (end-to-end)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">端到端测试</span>
+                <span class="note">Testing a complete business scenario across all systems — login to confirmation screen — not a single component. 跨所有系统验证完整业务场景（从登录到确认页），而不是单个组件。</span>
+            </li>
+            <li>
+                <span class="english"><strong>regression pack</strong> <span class="tag">n.</span></span>
+                <span class="chinese">回归测试包</span>
+                <span class="note">The fixed set of tests re-run before every release to prove existing behaviour still works. 每次发版前固定重跑的测试集合，证明既有行为未被破坏。</span>
+            </li>
+            <li>
+                <span class="english"><strong>code freeze</strong> <span class="tag">n.</span></span>
+                <span class="chinese">代码冻结</span>
+                <span class="note">A cut-off time after which no new changes enter the release without a formal exception. 之后不再收新改动，除非走正式豁免流程。</span>
+            </li>
+            <li>
+                <span class="english"><strong>freeze exception</strong> <span class="tag">n.</span></span>
+                <span class="chinese">冻结豁免</span>
+                <span class="note">The approved process for slipping one change past the freeze — with re-testing and an owner. 让个别改动越过冻结的正式流程——要重新测试、要有 owner。</span>
+            </li>
+            <li>
+                <span class="english"><strong>release checklist</strong> <span class="tag">n.</span></span>
+                <span class="chinese">发版清单</span>
+                <span class="note">The enumerated pre-release evidence: freeze, config diff, DB scripts, sign-offs, E2E results, rollback plan. 发版前证据的枚举：冻结、配置 diff、DB 脚本、签批、E2E 结果、回滚方案。</span>
+            </li>
+            <li>
+                <span class="english"><strong>config diff / feature flag</strong> <span class="tag">n.</span></span>
+                <span class="chinese">配置差异 / 功能开关</span>
+                <span class="note">Feature flags let you deploy dark — code ships but stays <em>off by default</em> until you flip it. 功能开关支持暗发布——代码上线但默认关闭，需要时再打开。</span>
+            </li>
+            <li>
+                <span class="english"><strong>DB migration script</strong> <span class="tag">n.</span></span>
+                <span class="chinese">数据库迁移脚本</span>
+                <span class="note">Schema/data changes shipped with the release. Rehearse on a snapshot and always pair with a tested rollback. 随版本发布的库表变更；要在快照上演练，并必须配经过测试的回滚。</span>
+            </li>
+            <li>
+                <span class="english"><strong>sign-off</strong> <span class="tag">n.</span></span>
+                <span class="chinese">签批 / 签字确认</span>
+                <span class="note">Formal approval from a required party (InfoSec, Product Owner) before the gate closes. 把关关闭前必须取得的正式批准（InfoSec、产品负责人等）。</span>
+            </li>
+            <li>
+                <span class="english"><strong>defect triage</strong> <span class="tag">n.</span></span>
+                <span class="chinese">缺陷分诊</span>
+                <span class="note">The session that classifies each defect (severity, priority) and decides fix-now, defer, or won't-fix. 对每个缺陷定级（严重度、优先级）并决定立即修、推迟还是不修的会议。</span>
+            </li>
+            <li>
+                <span class="english"><strong>severity vs priority</strong> <span class="tag">n.</span></span>
+                <span class="chinese">严重度 vs 优先级</span>
+                <span class="note">Severity = technical/business impact of the defect; priority = how soon it must be fixed. A cosmetic screen bug can be medium severity, high priority. 严重度=缺陷的影响；优先级=多快要修。界面显示 bug 可以是中严重度、高优先级。</span>
+            </li>
+            <li>
+                <span class="english"><strong>workaround</strong> <span class="tag">n.</span></span>
+                <span class="chinese">变通方案</span>
+                <span class="note">An documented alternative path for users while the defect is open — must be written into the release note. 缺陷存续期间用户可用的替代路径——必须写进 release note。</span>
+            </li>
+            <li>
+                <span class="english"><strong>go/no-go</strong> <span class="tag">n.</span></span>
+                <span class="chinese">发版决断（放行/不放行）</span>
+                <span class="note">The formal decision meeting where the TL recommends and management approves release with accepted risks. TL 给建议、管理层批准带风险放行的正式决策会。</span>
+            </li>
+            <li>
+                <span class="english"><strong>rollback plan</strong> <span class="tag">n.</span></span>
+                <span class="chinese">回滚方案</span>
+                <span class="note">The pre-agreed way to return to the previous version, with numeric triggers — tested, not improvised. 预先约定、带数字触发条件、经过测试的回退路径——不能临场发挥。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① "GO with one accepted risk" — decision + qualifier</h3>
+        <p>TLs give decisions with a built-in qualifier: <em>GO with one accepted risk</em>, <em>NO-GO for tonight, GO tomorrow noon</em>, <em>GO, feature flags off by default</em>. The bare word alone sounds reckless; the qualifier shows you know exactly what you are accepting. One risk named precisely beats three risks implied.</p>
+        <p>TL 给结论都带内置限定语：<em>GO with one accepted risk</em>、<em>NO-GO for tonight, GO tomorrow noon</em>。光说一个词显得鲁莽；限定语说明你清楚自己接受了什么。精确点名的 1 个风险，胜过含糊暗示的 3 个。</p>
+        <h3>② "X is about A; Y is about B" — the contrast frame</h3>
+        <p>Use the A/B contrast frame to separate concepts people constantly confuse: <em>Severity is about impact; priority is about urgency.</em> <em>Code freeze is about stability; a freeze exception is about control.</em> The parallel structure makes the distinction memorable in one breath.</p>
+        <p>用 A/B 对比句式区分总被混淆的概念：<em>Severity is about impact; priority is about urgency.</em> 平行结构让区别一口气就能记住。</p>
+        <h3>③ Passive voice for process facts — "was rehearsed", "is logged"</h3>
+        <p>In release talk, process facts go passive: <em>the scripts were rehearsed, the defect is logged, sign-offs were collected</em>. Passive removes the "who did it" argument and centres the evidence. Switch to active only when giving credit: <em>Mei found the defect; Raj diagnosed it</em>.</p>
+        <p>发版语境中，流程事实用被动：<em>was rehearsed、is logged、were collected</em>。被动消解"谁做的"争论，突出证据本身。只有表功时才切主动：<em>Mei found the defect; Raj diagnosed it</em>。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">💡 Negotiating Fixes vs Deferrals with Management</div>
+            <ul>
+                <li><strong>Recommend, don't verdict.</strong> "My recommendation is GO with one accepted risk" gives management the decision while showing your evidence. "It's fine, ship it" is an opinion; a recommendation with a checklist is a professional act. 给建议，不下判决。"My recommendation is GO with one accepted risk"把决定权留给管理层，同时展示证据。"没问题，发吧"只是观点；带清单的建议才是专业行为。</li>
+                <li><strong>Quantify the deferral.</strong> "Deferred, workaround documented, DEF-2187 scheduled next sprint" is a managed risk. "We'll fix it later" is a loose end that becomes your incident. 推迟要量化。"已推迟、workaround 成文、DEF-2187 已排期"是受管的风险；"以后再修"迟早变成你的事故。</li>
+                <li><strong>Pre-agree numeric rollback triggers.</strong> Deciding thresholds at 16:00 is engineering; deciding them at 02:00 is panic. 阈值要在下午 4 点谈好；凌晨 2 点才谈的那叫恐慌。</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Never Trade a Gate Silently</div>
+            <ul>
+                <li>If you accept a defect deferral, <strong>write it into the release note and the go/no-go minute</strong>. An undocumented accepted risk is your personal liability when it fires later. 接受缺陷推迟，就<strong>写进 release note 和发版纪要</strong>。没落纸的"接受风险"日后爆雷就是你个人背锅。</li>
+                <li>Don't gate-keep silently either — a checklist nobody can see protects nobody. Post it to the squad channel before the release, not after. 把关也别悄悄做——看不见的清单保护不了任何人。发版前就贴到 squad 频道，别等发版后。</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ Credit-Sharing at the Gate</div>
+            <ul>
+                <li><strong>Name the finders and fixers in the go/no-go.</strong> "Mei found it, Raj diagnosed it in twenty minutes." The gate is a squad achievement — a TL hero story builds nothing for next release. 在 go/no-go 上点名发现者和定位者。"Mei 发现、Raj 20 分钟定位。"把关是 squad 的成果——TL 个人英雄故事对下次发版毫无帮助。</li>
+                <li><strong>Thank the QA lead by name in the minute.</strong> Gates run on trust between TL and QA; credit in writing is how trust compounds. 在纪要里点名感谢 QA 负责人。把关靠 TL 与 QA 之间的信任；书面的功劳才会让信任复利。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (go/no-go summary style):</div>
+                <p>"我的建议是 GO，接受一个风险。Code freeze 周二完成；配置 diff 已评审，两个 feature flag 默认关闭；DB 迁移脚本在 UAT 快照上演练过、回滚测试过；InfoSec 和 PO 签批已收齐；E2E 除场景 4 外全绿——已推迟、workaround 成文、缺陷已排期。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "My recommendation is GO with one accepted risk. Code freeze was completed on Tuesday; the config diff has been reviewed, two feature flags off by default; the DB migration scripts were rehearsed against a UAT snapshot with rollback tested; InfoSec and PO sign-offs are in; the E2E pack is green except scenario 4 — deferred, workaround documented, defect scheduled."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Severity or priority? Classify each statement:</div>
+                <ol>
+                    <li>"The error corrupts customer standing orders — money moves incorrectly."</li>
+                    <li>"The misspelled bank name appears on a rarely-used admin screen; the fix touches a shared component two days before two other squads release."</li>
+                    <li>"A cosmetic label bug on the flagship landing screen, seen by every customer."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ① Critical severity — data/money impact; also top priority, likely a NO-GO. ② Low severity, low priority — defer after the other squads' releases, since the shared-component fix carries regression risk. ③ Low severity but high priority — customer-visible on the flagship screen; defer only with a documented workaround. ① 严重度 Critical——涉及资金/数据；优先级也最高，大概率 NO-GO。② 严重度低、优先级低——等另外两个 squad 发完版再修，共享组件修复有回归风险。③ 严重度低但优先级高——旗舰页面客户可见；只在有成文 workaround 时才可推迟。
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — build your release gate:</div>
+                <p>Your release is tomorrow. Write in English: (1) a five-item release checklist (code freeze, config, DB scripts, sign-offs, E2E), (2) one accepted-risk sentence naming the defect, the workaround, and the schedule, and (3) one rollback trigger with numbers. Use at least three phrases from this article.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "(1) Checklist: code freeze was Monday 18:00, no exceptions open; config diff reviewed — three feature flags off by default; DB migration scripts rehearsed against a UAT snapshot, rollback tested; InfoSec and Product Owner sign-offs collected; E2E regression pack green. (2) My recommendation is GO with one accepted risk: DEF-2201, a display-only defect on the export screen, deferred with a documented workaround — the CSV export via the admin console — and scheduled for next sprint. (3) Rollback trigger: error rate above one percent or p95 latency above one second for fifteen minutes — either one, we roll back."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="25-etl-scenarios-discussion.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">25 · ETL Scenarios Discussion</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 26 · Hands-on Delivery &amp; Quality Gate · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

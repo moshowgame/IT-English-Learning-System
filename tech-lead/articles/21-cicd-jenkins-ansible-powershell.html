@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 21: CI/CD Pipeline — Jenkins + Ansible + PowerShell 自动化发布流水线 | Tech Lead English</title>
+    <meta name="description" content="CI/CD Pipeline — 🎯 Jenkins artifact builds, Ansible playbooks, PowerShell deployment and smoke checks, promotion gates, rollback. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/21-cicd-jenkins-ansible-powershell.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 21: CI/CD Pipeline — Jenkins + Ansible + PowerShell 自动化发布流水线 | Tech Lead English">
+    <meta property="og:description" content="CI/CD Pipeline — 🎯 Jenkins artifact builds, Ansible playbooks, PowerShell deployment and smoke checks, promotion gates, rollback. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/21-cicd-jenkins-ansible-powershell.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">21 · CI/CD Pipeline — Jenkins + Ansible + PowerShell</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>CI/CD Pipeline — Jenkins + Ansible + PowerShell</h1>
+        <p class="subtitle">Article 21 · Module 6: Engineering Automation · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Intermediate</span>
+            <span>🎯 Jenkins builds, Ansible playbooks, PowerShell deployment, promotion gates, rollback</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Monday, 9:30 AM HKT</strong>, and your squad is running the <em>post-release review</em> on Microsoft Teams. Friday's deployment of the <em>Payment Gateway service</em> to <strong>SIT</strong> failed — the Windows service never came up, and the release slipped to this week. You are the <em>Tech Lead</em>; joining are <strong>Raj</strong>, your senior developer (Bangalore), <strong>Lin</strong>, a backend developer who owns the build tooling (Hong Kong), and <strong>Sarah</strong>, your Scrum Master (London).</p>
+
+        <p>周一上午 9:30 香港时间，squad 在 Teams 上开<em>发布复盘会</em>。周五 <em>Payment Gateway 服务</em>部署到 <strong>SIT</strong> 失败——Windows 服务一直起不来，发布顺延到本周。你是 <em>Tech Lead</em>；参会的是高级开发 Raj（班加罗尔）、负责构建工具的后端开发 Lin（香港），以及 Scrum Master Sarah（伦敦）。</p>
+
+        <p>Your current pipeline: <strong>Jenkins</strong> builds and versions the <em>artifact</em>; an <strong>Ansible playbook</strong> manages environment config; but the <strong>Windows service deployment</strong> and <strong>smoke checks</strong> are still manual <strong>PowerShell</strong> steps. Your goal today: review the failure, and agree to automate the remaining manual steps — <em>build once, promote the same artifact through DEV → SIT → UAT → PROD</em>, with approval gates and a one-job rollback.</p>
+
+        <p>当前流水线：<strong>Jenkins</strong> 负责构建并给 <em>artifact</em> 打版本号；<strong>Ansible playbook</strong> 管理环境配置；但 <strong>Windows 服务部署</strong>和<strong>冒烟检查</strong>还是手工 <strong>PowerShell</strong> 步骤。今天的目标：复盘故障，并敲定把剩余手工步骤自动化——<em>构建一次，同一 artifact 沿 DEV → SIT → UAT → PROD 一路晋升</em>，带审批门禁和一键回滚。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Morning all. <strong>Quick post-mortem on Friday's SIT release</strong> — build 2.4.7. The artifact deployed, but the Windows service never came up: the <em>health endpoint</em> returned 503 and the service was stuck in "Starting". <em>Smoke check failed, release slipped.</em></span>
+                    <span class="cn">大家早上好。<strong>快速复盘一下周五的 SIT 发布</strong>——build 2.4.7。Artifact 部署上去了，但 Windows 服务一直起不来：<em>健康检查端点</em>返回 503，服务卡在"启动中"。<em>冒烟检查失败，发布顺延。</em></span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text">
+                    <span class="en">I dug into it over the weekend. <strong>Root cause: the config file on the SIT server was stale.</strong> Someone patched it <em>manually</em> two weeks ago during a hotfix, and it still points at the old message queue. The artifact was fine — <em>the environment config wasn't</em>.</span>
+                    <span class="cn">我周末查了。<strong>根因：SIT 服务器上的配置文件过期了。</strong>两周前有人做 hotfix 时<em>手工</em>改过它，它还指向旧的消息队列。Artifact 本身没问题——<em>问题出在环境配置</em>。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">So this is <em>classic config drift</em>. DEV config is managed by the <em>Ansible playbook</em> — versioned, reviewed, repeatable. SIT is still configured <em>by hand</em>. <strong>Manual steps are where releases fail</strong> — not in the code, in the gaps between jobs.</span>
+                    <span class="cn">这就是典型的<em>配置漂移</em>。DEV 的配置由 <em>Ansible playbook</em> 管理——有版本、有评审、可重复。SIT 还是<em>手工</em>配的。<strong>发布失败都败在手工步骤上</strong>——不是败在代码，是败在任务之间的缝隙里。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Dev):</span>
+                <span class="text">
+                    <span class="en">To be fair, the <strong>Jenkins side is solid</strong>. The pipeline compiles, runs the unit tests, versions the artifact <em>2.4.7-build-118</em>, and pushes it to the artifact repository. The gap is <em>everything after the artifact</em> — deployment and verification are still a human with a PowerShell window.</span>
+                    <span class="cn">客观说，<strong>Jenkins 这边是稳的</strong>。流水线编译、跑单测、给 artifact 打版本 <em>2.4.7-build-118</em>，推到 artifact 仓库。缺口在 <em>artifact 之后的所有环节</em>——部署和验证还是一个拿着 PowerShell 窗口的人。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Agreed. <strong>My proposal:</strong> we wrap the manual <em>PowerShell deployment script</em> into the <em>Ansible playbook</em>, and trigger it from Jenkins as a proper deployment job. <em>Build once</em>, then <em>promote the same artifact through DEV, SIT, UAT, PROD</em> — no rebuilds between environments, no re-compilation surprises.</span>
+                    <span class="cn">同意。<strong>我的提案：</strong>把手工的 <em>PowerShell 部署脚本</em>收编进 <em>Ansible playbook</em>，由 Jenkins 以正式部署任务触发。<em>构建一次</em>，然后<em>同一个 artifact 沿 DEV、SIT、UAT、PROD 一路晋升</em>——环境之间不重新构建，没有重新编译带来的意外。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text">
+                    <span class="en">The PowerShell script does three things today: <em>stops the old service</em>, <em>installs the new artifact as a Windows service</em>, and <em>starts it</em>. I'd add smoke checks to the same run: <em>Get-Service</em> for the status, an <em>Invoke-WebRequest</em> against the <em>/health</em> endpoint, and a <em>tail of the startup log</em> for errors. Exit non-zero and the pipeline goes red.</span>
+                    <span class="cn">PowerShell 脚本现在做三件事：<em>停旧服务</em>、<em>把新 artifact 装成 Windows 服务</em>、<em>启动</em>。我建议在同一次运行里加冒烟检查：<em>Get-Service</em> 看状态，<em>Invoke-WebRequest</em> 打 <em>/health</em> 端点，再 <em>tail 启动日志</em>找错误。退出码非零，流水线就标红。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">And it has to be <em>idempotent</em>. Run the playbook twice — <strong>same input, same state</strong>. No half-installed service, no duplicate config entries. Ansible gives us that for free on the config side; the PowerShell steps need explicit <em>check-then-act</em> logic.</span>
+                    <span class="cn">而且必须<em>幂等</em>。Playbook 跑两遍——<strong>同样输入，同样状态</strong>。不能装一半，不能出现重复配置。Ansible 在配置侧天然幂等；PowerShell 步骤需要显式的<em>先检查再执行</em>逻辑。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text">
+                    <span class="en">Quick question from the process side — <em>do we auto-deploy all the way to production?</em> Product will ask me today.</span>
+                    <span class="cn">流程上快速问一句——<em>我们要一路自动部署到生产吗？</em>Product 今天就会问我。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">No. <strong>SIT promotes automatically</strong> when the pipeline is green. <strong>UAT promotion needs QA sign-off</strong> — that's an <em>approval gate</em> in the Jenkins pipeline, a pause for a human decision. <strong>PROD needs the CAB-approved change ticket</strong> plus my approval as TL. <em>The gates stay; the manual toil goes.</em> And if a release goes wrong — <em>rollback is redeploying the last-known-good artifact</em> with the same playbook. Config is versioned in the repo, artifacts are pinned by version. Rollback becomes a pipeline job, <em>not a firefighter with a laptop at 11pm</em>.</span>
+                    <span class="cn">不。<strong>SIT 在流水线绿了之后自动晋升</strong>。<strong>UAT 晋升需要 QA 签批</strong>——这是 Jenkins 流水线里的一个<em>审批门禁</em>，停下来等人做决定。<strong>PROD 需要 CAB 批准的变更单</strong>加上我作为 TL 的审批。<em>门禁保留，手工苦力消失。</em>如果发布出问题——<em>回滚就是用同一个 playbook 重新部署上一个已知良好版本</em>。配置在仓库里有版本，artifact 按版本固定。回滚变成一个流水线任务，<em>而不是深夜 11 点抱着笔记本救火</em>。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text">
+                    <span class="en">One more thing before we commit — <em>credentials</em>. Right now the <em>service account password</em> is in a text file on the team share. That has to move to the <em>Jenkins credentials store</em> and <em>Ansible Vault</em> this sprint, or InfoSec will flag it in the next audit.</span>
+                    <span class="cn">开工前还有一件事——<em>凭据</em>。现在<em>服务账号密码</em>躺在团队共享盘的一个文本文件里。这个 Sprint 必须挪进 <em>Jenkins credentials store</em> 和 <em>Ansible Vault</em>，否则 InfoSec 下次审计一定会标出来。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Agreed — and that one is non-negotiable. <strong>Actions:</strong> Lin wraps the PowerShell steps into the playbook with idempotent checks; Raj builds the smoke-check job; credentials move into the vault; Sarah, we'll <em>demo the fully automated SIT deployment</em> to the squad on Friday. Next release should be <em>a button push, not a ritual</em>.</span>
+                    <span class="cn">同意——这条没得商量。<strong>行动项：</strong>Lin 把 PowerShell 步骤收编进 playbook 并加幂等检查；Raj 搭冒烟检查任务；凭据迁入 vault；Sarah，周五我们向 squad <em>演示全自动的 SIT 部署</em>。下次发布应该是<em>按一个按钮，而不是举行一场仪式</em>。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Sarah (SM):</span>
+                <span class="text">
+                    <span class="en">Perfect. I'll tell the PM the release is becoming <em>boring</em> — <strong>that's a compliment in my vocabulary.</strong></span>
+                    <span class="cn">太好了。我会告诉 PM，发布正在变得<em>无聊</em>——<strong>在我的词典里这是夸奖。</strong></span>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="translation-block">
+            <div class="label">🇨🇳 对话全文中文翻译 Full Chinese Translation</div>
+            <p><strong>You (TL)：</strong>大家早上好。快速复盘一下周五的 SIT 发布——build 2.4.7。Artifact 部署上去了，但 Windows 服务一直起不来：健康检查端点返回 503，服务卡在"启动中"。冒烟检查失败，发布顺延。</p>
+
+            <p><strong>Raj (Senior Dev)：</strong>我周末查了。根因：SIT 服务器上的配置文件过期了。两周前有人做 hotfix 时手工改过它，它还指向旧的消息队列。Artifact 本身没问题——问题出在环境配置。</p>
+
+            <p><strong>You (TL)：</strong>这就是典型的配置漂移。DEV 的配置由 Ansible playbook 管理——有版本、有评审、可重复。SIT 还是手工配的。发布失败都败在手工步骤上——不是败在代码，是败在任务之间的缝隙里。</p>
+
+            <p><strong>Lin (Dev)：</strong>客观说，Jenkins 这边是稳的。流水线编译、跑单测、给 artifact 打版本 2.4.7-build-118，推到 artifact 仓库。缺口在 artifact 之后的所有环节——部署和验证还是一个拿着 PowerShell 窗口的人。</p>
+
+            <p><strong>You (TL)：</strong>同意。我的提案：把手工的 PowerShell 部署脚本收编进 Ansible playbook，由 Jenkins 以正式部署任务触发。构建一次，然后同一个 artifact 沿 DEV、SIT、UAT、PROD 一路晋升——环境之间不重新构建，没有重新编译带来的意外。</p>
+
+            <p><strong>Raj (Senior Dev)：</strong>PowerShell 脚本现在做三件事：停旧服务、把新 artifact 装成 Windows 服务、启动。我建议在同一次运行里加冒烟检查：Get-Service 看状态，Invoke-WebRequest 打 /health 端点，再 tail 启动日志找错误。退出码非零，流水线就标红。</p>
+
+            <p><strong>You (TL)：</strong>而且必须幂等。Playbook 跑两遍——同样输入，同样状态。不能装一半，不能出现重复配置。Ansible 在配置侧天然幂等；PowerShell 步骤需要显式的先检查再执行逻辑。</p>
+
+            <p><strong>Sarah (SM)：</strong>流程上快速问一句——我们要一路自动部署到生产吗？Product 今天就会问我。</p>
+
+            <p><strong>You (TL)：</strong>不。SIT 在流水线绿了之后自动晋升。UAT 晋升需要 QA 签批——这是 Jenkins 流水线里的一个审批门禁，停下来等人做决定。PROD 需要 CAB 批准的变更单加上我作为 TL 的审批。门禁保留，手工苦力消失。如果发布出问题——回滚就是用同一个 playbook 重新部署上一个已知良好版本。配置在仓库里有版本，artifact 按版本固定。回滚变成一个流水线任务，而不是深夜 11 点抱着笔记本救火。</p>
+
+            <p><strong>Raj (Senior Dev)：</strong>开工前还有一件事——凭据。现在服务账号密码躺在团队共享盘的一个文本文件里。这个 Sprint 必须挪进 Jenkins credentials store 和 Ansible Vault，否则 InfoSec 下次审计一定会标出来。</p>
+
+            <p><strong>You (TL)：</strong>同意——这条没得商量。行动项：Lin 把 PowerShell 步骤收编进 playbook 并加幂等检查；Raj 搭冒烟检查任务；凭据迁入 vault；Sarah，周五我们向 squad 演示全自动的 SIT 部署。下次发布应该是按一个按钮，而不是举行一场仪式。</p>
+
+            <p><strong>Sarah (SM)：</strong>太好了。我会告诉 PM，发布正在变得无聊——在我的词典里这是夸奖。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Smoke check failed, release slipped.</em></span>
+                <span class="chinese">冒烟检查失败，发布顺延。</span>
+                <span class="note">Smoke check = 上线后的快速健康验证。Pair the failure with the consequence — TLs report cause and impact in one breath. 冒烟检查失败要连带后果一起说。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>This is classic config drift.</em></span>
+                <span class="chinese">这是典型的配置漂移。</span>
+                <span class="note">"Classic X" names the pattern, not the person. It turns an incident into a known category — and a known category has a standard fix. 用"经典 X"给问题归类，指问题不指人。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Manual steps are where releases fail.</em></span>
+                <span class="chinese">发布失败都败在手工步骤上。</span>
+                <span class="note">The TL's thesis sentence for automation. Short, general, memorable. Follow it with evidence, not opinion. 自动化议题的核心论点句，短而有力，后接证据。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Build once, promote the same artifact through DEV, SIT, UAT, PROD.</em></span>
+                <span class="chinese">构建一次，同一 artifact 沿 DEV、SIT、UAT、PROD 晋升。</span>
+                <span class="note">"Promote" is the standard verb for moving a build across environments. Build-once is the golden rule — rebuilds introduce drift. Promote 是跨环境晋升的标准动词。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>UAT promotion needs QA sign-off — that's an approval gate in the pipeline.</em></span>
+                <span class="chinese">UAT 晋升需要 QA 签批——这是流水线里的审批门禁。</span>
+                <span class="note">Approval gate = 停下来等人工审批的门禁。Frame gates as deliberate pauses, not delays: "a pause for a human decision". 门禁是刻意停顿，不是拖延。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>It has to be idempotent — same input, same state.</em></span>
+                <span class="chinese">必须幂等——同样输入，同样状态。</span>
+                <span class="note">Idempotent = 跑多少遍结果都一样。The pocket definition "same input, same state" works even with non-technical stakeholders. "同样输入同样状态"是对非技术方也好用的口袋解释。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Rollback is redeploying the last-known-good artifact with the same playbook.</em></span>
+                <span class="chinese">回滚就是用同一个 playbook 重新部署上一个已知良好版本。</span>
+                <span class="note">Last-known-good = 最近一次验证成功的版本。Define rollback as a routine job, not an emergency ritual — that's how you sell automation. 把回滚定义为日常任务而非紧急仪式。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The gates stay; the manual toil goes.</em></span>
+                <span class="chinese">门禁保留，手工苦力消失。</span>
+                <span class="note">Balanced "X stays, Y goes" construction. Perfect for reassuring auditors while selling automation — you automate the work, never the control. 自动化工作而非自动化管控，审计最买账。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Next release should be a button push, not a ritual.</em></span>
+                <span class="chinese">下次发布应该是按一个按钮，而不是举行一场仪式。</span>
+                <span class="note">Contrast metaphor — great for closing an automation pitch. "Ritual" hints at superstition; "button push" hints at boring reliability. 收尾金句："仪式"暗指玄学，"按按钮"暗指可靠。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>We demo the fully automated SIT deployment on Friday.</em></span>
+                <span class="chinese">周五我们演示全自动的 SIT 部署。</span>
+                <span class="note">Commit to a demo date when pitching automation — a deadline converts intention into a sprint plan. 承诺演示日期，把意向变成 Sprint 计划。</span>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+
+            <li><strong>Pipeline</strong> n. 流水线
+                The automated chain from code commit to deployment — build, test, deploy, verify. In Jenkins, defined as code in a <em>Jenkinsfile</em>.</li>
+
+            <li><strong>Artifact</strong> n. 构件 / 产物
+                The versioned output of a build (e.g., 2.4.7-build-118) stored in an artifact repository and promoted across environments unchanged.</li>
+
+            <li><strong>Jenkins job</strong> n. Jenkins 任务
+                A unit of automation in Jenkins — build job, deployment job, smoke-check job — triggered manually, by webhook, or downstream.</li>
+
+            <li><strong>Playbook</strong> n. (Ansible) 剧本
+                An Ansible automation file describing desired state across servers — config files, packages, services — run against an inventory of hosts.</li>
+
+            <li><strong>Idempotent</strong> adj. 幂等的
+                Running the same automation twice produces the same state — no duplicates, no partial installs. The core property of good Ansible/PowerShell automation.</li>
+
+            <li><strong>Config drift</strong> n. 配置漂移
+                When an environment's actual config diverges from the version-controlled config, usually through manual changes. A top cause of "it worked in DEV".</li>
+
+            <li><strong>Smoke test / smoke check</strong> n. 冒烟测试
+                A fast post-deployment verification — service status, health endpoint, log probe — to confirm the system is up before deeper testing.</li>
+
+            <li><strong>Promotion</strong> n. 晋升 / 环境晋级
+                Moving the same verified artifact from one environment to the next (DEV → SIT → UAT → PROD) without rebuilding it.</li>
+
+            <li><strong>Approval gate</strong> n. 审批门禁
+                A pipeline pause requiring a human decision (QA sign-off, CAB ticket, TL approval) before promotion continues.</li>
+
+            <li><strong>Rollback</strong> n. 回滚
+                Returning an environment to the last-known-good version after a failed release — ideally by redeploying, not by manual repair.</li>
+
+            <li><strong>Last-known-good</strong> adj. 上一个已知良好的
+                The most recent artifact plus config combination that passed all checks. The target version for any rollback.</li>
+
+            <li><strong>Credential vault</strong> n. 凭据保管库
+                Centralized secret storage — Jenkins credentials store, Ansible Vault — replacing passwords in scripts, text files, and chat messages.</li>
+
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Failed at / stuck in / slipped" — narrating a failed release</h3>
+
+        <p>Post-mortems use precise stage verbs: <em>the build passed, the deploy failed, the service was stuck in "Starting", the release slipped</em>. Match the verb to the stage — never just say "it broke".</p>
+
+        <p>复盘要用精确的阶段动词：<em>build 过了、deploy 失败、服务卡在 Starting、发布顺延</em>。动词要匹配阶段，别只说"挂了"。</p>
+
+        <ul>
+            <li>✅ <em>"The build passed; the deploy failed at the config step; the service was stuck in Starting."</em></li>
+            <li>❌ <em>"It broke somewhere on Friday."</em></li>
+        </ul>
+
+        <h3>② "Has to be + past participle" — automation mandates</h3>
+
+        <p>Non-negotiable requirements use <em>has to be</em> + adjective/participle. Compare with softer <em>should</em> — save it for suggestions.</p>
+
+        <p>硬性要求用 <em>has to be</em>；建议性的才用 should。</p>
+
+        <ul>
+            <li>✅ <em>"It <strong>has to be</strong> idempotent."</em> / <em>"Credentials <strong>have to be</strong> vaulted."</em> / <em>"The artifact <strong>has to be</strong> pinned by version."</em></li>
+            <li>❌ <em>"It should probably be idempotent, ideally."</em></li>
+        </ul>
+
+        <h3>③ "X stays; Y goes" — the balanced trade</h3>
+
+        <p>Selling automation means removing work, not removing control. The semicolon construction is symmetric and quotable — ideal for summaries and slide headers.</p>
+
+        <p>推销自动化要表明"去工作、不去管控"。分号对仗结构适合总结和幻灯片标题。</p>
+
+        <ul>
+            <li>✅ <em>"The gates stay; the manual toil goes."</em></li>
+            <li>✅ <em>"The approvals stay; the runbooks go."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+
+        <div class="tip-box">
+            <div class="tip-title">💡 Demoing automation wins to stakeholders</div>
+            <ol>
+
+                <li><strong>Demo the pipeline, not the slide deck.</strong>
+                    A live "trigger SIT deployment → watch smoke checks go green in 6 minutes" beats ten slides. <em>Show the button push.</em></li>
+
+                <li><strong>Quantify before and after.</strong>
+                    "Deployment: 90 manual minutes → 6 automated minutes; config drift incidents this quarter: 4 → 0." Numbers are the stakeholder language.</li>
+
+                <li><strong>Frame boring as success.</strong>
+                    "Our releases are becoming boring" is a compliment — no heroics, no 11pm firefighting. Heroes are a symptom of manual pipelines.</li>
+
+                <li><strong>Give credit to the team.</strong>
+                    "Lin wrapped the PowerShell into the playbook; Raj built the smoke checks." Automation wins are squad wins — TLs who hoard credit lose engineers.</li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <div class="title">⚠️ Credential handling — say it early, say it loudly</div>
+            <ul>
+
+                <li>❌ <em>"The password is in the readme on the share — just look it up."</em>
+                    This is an audit finding and, in a bank, potentially a disciplinary matter.</li>
+
+                <li>✅ <em>"Secrets live in Ansible Vault / the Jenkins credentials store — scripts reference them, humans never see them."</em></li>
+
+                <li>❌ Pasting credentials in chat, tickets, or emails "just for the release".
+                    Chat history is forever.</li>
+
+                <li>✅ Raise credential hygiene <em>yourself</em> before InfoSec finds it —
+                    a self-reported fix builds trust; an audit finding costs credibility.</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <div class="title">✅ Pushing back when asked to skip quality gates</div>
+            <p>When a PM says <em>"Can we skip the UAT gate this time? The business needs it today"</em> — don't argue emotionally. Answer with the trade:</p>
+            <p><em>"We can go today, and the rollback path is one job — but if we skip the gate and it breaks in PROD, we explain the incident to the regulator. I recommend we hold the gate and go tomorrow morning."</em></p>
+            <p>You offered speed, you named the risk, you kept the decision documented. <strong>Gates are the cheapest insurance the bank buys.</strong></p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the automation pitch into English:</div>
+                <p>"复盘一下：周五的 SIT 发布失败，冒烟检查没过。根因是配置漂移——SIT 的配置还是手工改的。提案：把 PowerShell 部署步骤收编进 Ansible playbook，构建一次，同一 artifact 沿 DEV、SIT、UAT、PROD 晋升。UAT 加 QA 签批门禁，PROD 需要 CAB 变更单。回滚就是用同一个 playbook 重部上一个已知良好版本。凭据全部迁入 vault。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <p>"Quick post-mortem: Friday's SIT release failed — the smoke check didn't pass. Root cause was <em>config drift</em> — the SIT config was still changed manually.</p>
+                    <p>Proposal: we wrap the PowerShell deployment steps into the <em>Ansible playbook</em>, <em>build once, and promote the same artifact through DEV, SIT, UAT and PROD</em>. UAT gets a <em>QA sign-off approval gate</em>; PROD needs the <em>CAB-approved change ticket</em>.</p>
+                    <p><em>Rollback is redeploying the last-known-good artifact with the same playbook</em>. And all credentials move into the <em>vault</em>."</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the pipeline terms:</div>
+                <p>"(1) Jenkins compiles and versions the ____ (artifact). (2) The Ansible ____ manages environment config. (3) The deployment must be ____ — same input, same state. (4) DEV config is fine; SIT suffered ____ drift. (5) After deploy we run a ____ check: Get-Service status plus a call to /health. (6) UAT promotion requires QA sign-off — an approval ____ in the pipeline. (7) If PROD breaks, we redeploy the last-known-____ artifact. (8) Passwords live in the Jenkins credentials ____ / Ansible Vault."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <p>(1) artifact / (2) playbook / (3) idempotent / (4) config / (5) smoke / (6) gate / (7) good / (8) store</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play: explain the promotion path to an auditor</div>
+                <p>An auditor asks: "How does code get to production, and who can skip a gate?" Explain in spoken English: (a) the promotion path and artifact strategy, (b) each gate and its approver, (c) the rollback mechanism, (d) how secrets are handled.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p>"Happy to walk you through it. <em>We build once in Jenkins</em> — the artifact is versioned and pushed to the artifact repository, and <em>the same artifact is promoted through DEV, SIT, UAT and PROD</em> — nothing is rebuilt between environments.</p>
+                    <p><em>Promotion to SIT is automatic</em> when the pipeline is green, including the smoke checks — service status, health endpoint, startup log. <em>UAT promotion pauses at an approval gate for QA sign-off</em>. <em>PROD requires the CAB-approved change ticket plus TL approval</em> — <em>no gate can be skipped</em>; even emergency changes go through eCAB and are reviewed afterwards.</p>
+                    <p><em>Rollback is redeploying the last-known-good artifact with the same Ansible playbook</em> — config is versioned, so a rollback is a routine job, not a manual repair.</p>
+                    <p>And <em>credentials live in the Jenkins credentials store and Ansible Vault</em> — scripts reference them; nobody holds passwords in files or chat. Everything is traceable in the Jenkins build history and the change tickets."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrap-up -->
+    <section class="article-section">
+        <h2>8. Key Takeaways 本篇要点</h2>
+        <div class="success-box">
+            <div class="title">🎓 What you can now say as TL</div>
+            <ol>
+
+                <li><strong>Diagnose a failed release in pipeline vocabulary</strong> — artifact, smoke check, config drift, last-known-good.</li>
+
+                <li><strong>Sell the automation trade</strong> — "build once, promote the same artifact"; "the gates stay; the manual toil goes".</li>
+
+                <li><strong>Define the gates precisely</strong> — SIT automatic, UAT needs QA sign-off, PROD needs CAB plus TL approval.</li>
+
+                <li><strong>Make rollback boring</strong> — same playbook, pinned versions, one job.</li>
+
+                <li><strong>Protect credentials</strong> — vault first, audit-proof always.</li>
+            </ol>
+            <p><em>Practice tip:</em> In your next release review, use one pipeline term naturally — e.g., <em>"That's config drift; the playbook will absorb it."</em> Real usage is the fastest path to fluency.</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="20-banking-systems-integration.html">
+            <span class="label">← Previous</span>
+            <span class="title">20 · Banking Systems &amp; Integration</span>
+        </a>
+        <a class="next" href="22-cucumber-test-automation.html">
+            <span class="label">Next Article →</span>
+            <span class="title">22 · Cucumber Test Automation</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 21 · CI/CD Pipeline — Jenkins + Ansible + PowerShell · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 24: Managing Business Expectations 管理业务对新方案的期望 | Architect English</title>
+    <meta name="description" content="Managing Business Expectations — 🎯 Reframing 'everything in three months' into an MVP pilot with measurable success criteria: trade-offs made explicit, phased delivery with checkpoint demos, dependencies stated early, and scope creep handled diplomatically. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/24-manage-business-expectations.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 24: Managing Business Expectations 管理业务对新方案的期望 | Architect English">
+    <meta property="og:description" content="Managing Business Expectations — 🎯 Reframing 'everything in three months' into an MVP pilot with measurable success criteria: trade-offs made explicit, phased delivery with checkpoint demos, dependencies stated early, and scope creep handled diplomatically. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/24-manage-business-expectations.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">24 · Managing Business Expectations</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Managing Business Expectations</h1>
+        <p class="subtitle">Article 24 · Module 6: Solution Proposals & Stakeholder Alignment · Architect English</p>
+        <div class="meta">
+            <span>⏱ 12 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Reframing "everything in three months" into an MVP pilot with measurable success criteria, phased delivery, and dependencies stated early</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Monday, 11:00 AM HKT</strong>. You are a Solution Architect in the
+            <em>RBWM Data</em> tribe. Over the past three articles you have built the evidence:
+            <strong>Article 21</strong> agreed a Spark PoC with three exit criteria,
+            <strong>Article 22</strong> settled the QlikSense pain points and the strangler-pattern
+            migration, and <strong>Article 23</strong> produced the five-hop performance
+            assessment. Today those artefacts get stress-tested — by <strong>Daniel</strong>, the
+            Business Sponsor, who has just returned from a vendor conference where someone
+            demoed a <strong>"three-month, everything-migrated" platform transformation</strong>.
+        </p>
+        <p>
+            周一上午 11 点香港时间，你是 <em>RBWM 数据</em> tribe 的 Solution 架构师。过去三篇里你已经
+            积累了证据：<strong>第 21 篇</strong>谈定了带三条退出标准的 Spark PoC，<strong>第 22 篇</strong>
+            定性了 QlikSense 痛点和绞杀者式迁移，<strong>第 23 篇</strong>产出了 5 段链路的性能评估。
+            今天这些成果要接受压力测试——测试者是业务赞助人 <strong>Daniel</strong>，他刚参加完一个
+            厂商大会，会上有人演示了<strong>"三个月、全量迁移"</strong>的平台改造。
+        </p>
+        <p>
+            <strong>Marcus</strong>, the Senior Manager, joins as the translation layer between
+            Daniel's ambition and the delivery plan. Your job is not to say no — it is to
+            <strong>reframe</strong>: replace one grand promise with an MVP pilot, measurable
+            success criteria, a phased roadmap with checkpoint demos, and dependencies stated
+            now, while they are still cheap to say out loud.
+        </p>
+        <p>
+            <strong>Marcus</strong>（高级经理）作为"翻译层"出席——把 Daniel 的雄心翻译成可交付的计划。
+            你的任务不是说不——而是<strong>重构</strong>：用一个 MVP 试点、可度量的成功标准、带检查点
+            演示的分阶段路线图、以及趁还"说得出口"就 early 声明的依赖，去替换那一个宏大的承诺。
+        </p>
+        <p>
+            Notice what you are NOT doing today: you are not presenting new architecture, and you
+            are not re-litigating the PoC results. Every number you will quote — the 62 apps, the
+            extract's 40 percent, the four-week InfoSec review — was already measured and already
+            agreed in the previous three articles. <strong>Expectation management is mostly
+            logistics: the right evidence, already in the room, repeated at the right
+            moment.</strong>
+        </p>
+        <p>
+            注意你今天不做什么：不提新架构，也不重新论证 PoC 的结果。你要引用的每个数字——62 个应用、
+            抽取改造的 40%、InfoSec 评审的四周——都在前三篇里测量过、谈定过。<strong>期望管理
+            本质上是后勤工作：对的证据、提前放在桌上、在对的时刻重复。</strong>
+        </p>
+        <p>
+            The principle for the hour: <strong>expectations are managed with numbers and demos,
+            not with adjectives</strong>. Every "faster", "cheaper", "better" that leaves your
+            mouth unmeasured becomes a commitment someone will remember in three months.
+        </p>
+        <p>
+            这一小时的原则：<strong>期望靠数字和演示来管理，不靠形容词</strong>。你嘴里说出的每一个
+            没有度量支撑的"更快""更便宜""更好"，都会在三个月后变成某个人记得的承诺。
+        </p>
+    </section>
+
+    <!-- Phase Roadmap -->
+    <section class="article-section">
+        <h2>2. The Phased Roadmap 分阶段路线图</h2>
+        <p>
+            The four-phase plan you will put on the table — the shape that turns "everything in
+            three months" into something that can actually be promised.
+        </p>
+        <p>
+            你要摆上桌的四阶段计划——它把"三个月全迁完"变成一个真正能兑现的形状。
+        </p>
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Phase 阶段</th>
+                    <th>Scope 范围</th>
+                    <th>Duration 周期</th>
+                    <th>Exit criteria 退出标准</th>
+                    <th>Checkpoint 检查点</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1 · MVP pilot 试点</strong></td>
+                    <td>Revenue domain — the pain leader</td>
+                    <td>3 months (2 sprints + 1-month parallel run)</td>
+                    <td>Silver certified, gold-only reads, reload &lt; 90 min, zero reconciliation breaks</td>
+                    <td>Live demo, sponsor's team clicking</td>
+                </tr>
+                <tr>
+                    <td><strong>2 · Top three 前三应用</strong></td>
+                    <td>Next 3 apps by pain</td>
+                    <td>1 quarter</td>
+                    <td>Same criteria per app; HUB extract fix landed</td>
+                    <td>Checkpoint demo + capacity table refresh</td>
+                </tr>
+                <tr>
+                    <td><strong>3 · Long tail 长尾</strong></td>
+                    <td>Remaining apps in pain order</td>
+                    <td>2 quarters</td>
+                    <td>Standard runbook; per-domain parallel runs</td>
+                    <td>Rolling checkpoint demos</td>
+                </tr>
+                <tr>
+                    <td><strong>4 · Decommission 退役</strong></td>
+                    <td>Remaining QVD chains removed</td>
+                    <td>2 weeks per chain, after its cutover</td>
+                    <td>Scripts archived, schedules removed, QMC folders gone</td>
+                    <td>Sunset report to the sponsor</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Let's be ambitious. I saw a platform migration demoed in three months — everything moved, dashboards twice as fast. <em>Can we commit to that?</em></span>
+                    <span class="cn">我们把目标定高一点。我看到一个平台迁移的演示——三个月全迁完、报表快一倍。<em>我们能承诺这个吗？</em></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en"><em>Honest answer —</em> three months buys us a <strong>pilot</strong>, not the estate. And I'd rather <strong>commit to a pilot we can prove than a promise we can't.</strong> Our own assessment says: 62 apps, 180 load scripts, a five-hop dependency chain, and an upstream extract fix that — even in the best case — buys 40 percent. That's three months of scope for one domain, and the evidence is the pack in front of you. As for the vendor: <em>vendors demo a demo-sized estate</em> — clean data, one domain, no month-end peak, no parallel run. <strong>Faster, cheaper, better — pick two.</strong> If the constraint is time, then scope or cost has to give; push all three at once and the thing that gives is trust, at the first missed month-end.</span>
+                    <span class="cn"><em>说实话——</em>三个月买到的是一个<strong>试点</strong>，不是整个体系。<strong>我宁愿承诺一个能证明的试点，也不承诺一个证明不了的空话。</strong>我们自己的评估是：62 个应用、180 个加载脚本、一条 5 段的依赖链，上游抽取的修复——即使最好情况——也只买到 40%。这是一个域三个月的量，证据就是你面前这份材料。至于供应商：<em>厂商演示的是"演示规格"的体系</em>——数据干净、只有一个域、没有月末峰值、没有并行期。<strong>更快、更便宜、更好——三选二。</strong>如果约束是时间，那要么砍范围、要么加成本；三样全压，最终被牺牲的是信任——在第一次月末跳票的那天。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Senior Manager):</span>
+                <span class="text">
+                    <span class="en">So let's hear the reframe. <em>What are you actually proposing?</em></span>
+                    <span class="cn">那就听听你怎么重构。<em>你实际提议的是什么？</em></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">An <strong>MVP pilot with measurable success criteria</strong> — the revenue domain, two sprints to build, one month parallel run. Success means: silver revenue tables certified against source, all revenue apps reading gold only, reload under ninety minutes, <strong>zero reconciliation breaks</strong> over the parallel-run month. Same criteria we agreed in Article 22 — nothing new, nothing invented overnight to win this meeting.</span>
+                    <span class="cn">一个<strong>带可度量成功标准的 MVP 试点</strong>——收入域，两个 Sprint 建设，并行跑一个月。成功的定义是：silver 收入表通过源端认证、所有收入类应用只读 gold、reload 90 分钟以内、并行月<strong>零对账差异</strong>。就是第 22 篇谈定的那套标准——不加新的，也不为了赢下这场会现编一套。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">And if the pilot hits its criteria, the shape afterwards is <strong>phased delivery</strong> — phase two, the top three apps by pain, one quarter; phase three, the long tail, two quarters; phase four, decommission the remaining QVD chains with owners and dates. Whole estate: <strong>four quarters, not three months</strong> — and you see working software every six weeks, not a status slide every steering meeting.</span>
+                    <span class="cn">如果试点达标，后续形状就是<strong>分阶段交付</strong>——第二阶段：按痛点排前三的应用，一个季度；第三阶段：长尾应用，两个季度；第四阶段：带 owner、带日期地退役剩余 QVD 链。整体：<strong>四个季度，不是三个月</strong>——而且你每六周看到跑起来的东西，而不是每次指导委员会看一页进度幻灯片。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Fine. Then tell me the bad news now — <em>what can't you do?</em></span>
+                    <span class="cn">行。那就现在把坏消息说了——<em>你们做不到什么？</em></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Three limits, stated now, not discovered in March. <em>One —</em> the long tail can't move in phase two without doubling the risk; it migrates when its turn comes. <em>Two —</em> <strong>we depend on the HUB extract change landing by March</strong> — that's a dependency, not a surprise; if it slips, phases two and three shift, not the promises we made. <em>Three —</em> the InfoSec review of the new platform takes four weeks; it's booked, it's a gate, and it can't be sprinted out of. Stating these today is cheap; stating them in March is a re-plan.</span>
+                    <span class="cn">三条限制，现在说清，不留到三月才被发现。<em>第一——</em>长尾应用不在第二阶段迁，否则风险翻倍；轮到它时再迁。<em>第二——</em><strong>我们依赖 HUB 抽取改造在三月前落地</strong>——这是依赖，不是意外；它延期，二三阶段顺延，但我们做过的承诺不变。<em>第三——</em>新平台的 InfoSec 评审要四周；已经排上、是闸门，不可能靠加塞 Sprint 跳过去。今天说这些成本是零；三月再说就是一次重新规划。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">And if the business asks for an extra dashboard in the middle of phase two? It will happen — it always happens.</span>
+                    <span class="cn">如果业务在第二阶段中途要加一张报表呢？这一定会发生——从来都会发生。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Then it's <strong>"a great phase-three candidate"</strong> — I'll park it in the backlog with an estimate and a sponsor-visible line item, not silently absorb it. <strong>Every absorbed 'small favour' is borrowed from the success criteria</strong> — that's how phase two dies: not with a catastrophe, but with forty small favours.</span>
+                    <span class="cn">那它就是<strong>"一个很好的第三阶段候选"</strong>——我会把它记进 backlog、带估算、让赞助人可见，而不是默默吸收。<strong>每一个被默默吸收的"小帮忙"都是从成功标准里借的债</strong>——第二阶段就是这么死的：不是死于一场大事故，而是死于四十次小帮忙。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Senior Manager):</span>
+                <span class="text">
+                    <span class="en">I need one sentence to take upstairs. What do I tell my boss?</span>
+                    <span class="cn">我需要一句能向上汇报的话。我怎么跟我老板说？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">This sentence: <strong>"Pilot in three months, estate in four quarters, success measured by numbers, not narratives — and a checkpoint demo every six weeks."</strong> And the honest half Daniel gets separately: if the pilot misses its exit criteria, we stop and reassess — that's the deal that makes the plan credible. Daniel, one more commitment while we're being honest: the pilot demo will be <em>live in the room, not in a deck</em> — a demo we can't do live is a demo we shouldn't have promised.</span>
+                    <span class="cn">这句话：<strong>"试点三个月，全量四个季度，成功用数字度量、不用故事度量——每六周一次检查点演示。"</strong>另有半句诚实的话单独说给 Daniel：如果试点没达退出标准，我们就停下来重新评估——正是这个约定让整个计划可信。Daniel，趁我们把话摊开，再补一个承诺：试点演示<em>当场做、当着面做，不放幻灯片</em>——做不了现场演示的演示，本就不该被承诺。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Daniel (Business Sponsor):</span>
+                <span class="text">
+                    <span class="en">Deal. Then in three months I'll click on it myself — <em>and if the numbers aren't the numbers, I expect to hear it from you first, with the evidence.</em></span>
+                    <span class="cn">成交。那三个月后我要亲手点一遍——<em>而且如果数字不对，我要最先从你们这里、带着证据听到。</em></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Honest answer — that buys us a pilot, not the estate.</em></span>
+                <span class="chinese">说实话——那买到的是一个试点，不是整个体系</span>
+                <span class="note">"Honest answer —" is the softener before a contrarian point (Article 20's signature). "Buys us X, not Y" prices the promise instead of rejecting it. "Honest answer —" 是反方观点前的软化词（第 20 篇的招牌句）。"买到的是 X，不是 Y"给承诺标价，而不是直接拒绝。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Faster, cheaper, better — pick two.</em></span>
+                <span class="chinese">更快、更便宜、更好——三选二</span>
+                <span class="note">The trade-off triangle in six words. It moves the conversation from "can you promise all three?" to "which two matter most to you?" 六个字说完取舍三角。把对话从"三样都能承诺吗？"变成"哪两样对你最重要？"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>An MVP pilot with measurable success criteria.</em></span>
+                <span class="chinese">带可度量成功标准的 MVP 试点</span>
+                <span class="note">"Measurable" is the load-bearing word — criteria that a script can verify (zero reconciliation breaks, under ninety minutes), not criteria a meeting can debate. "Measurable" 是承重词——标准要能被脚本验证（零对账差异、90 分钟以内），而不是能在会上被辩论的形容词。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Every phase ends with a checkpoint demo — working software, not a status slide.</em></span>
+                <span class="chinese">每个阶段以检查点演示收尾——看跑起来的东西，不看进度幻灯片</span>
+                <span class="note">"Checkpoint demo" converts stakeholder anxiety into a scheduled event with evidence. Cadence matters: every six weeks, never "when we're ready". "Checkpoint demo" 把干系人的焦虑变成一个有排期、有证据的固定事件。节奏很重要：每六周一次，绝不说"准备好再演示"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>I'd rather commit to a pilot we can prove than a promise we can't.</em></span>
+                <span class="chinese">我宁愿承诺一个能证明的试点，也不承诺一个证明不了的空话</span>
+                <span class="note">"Rather X than Y" states a preference with a reason built in. The sentence refuses the grand promise while sounding more ambitious, not less. "Rather X than Y" 表达自带理由的偏好。这句话拒绝了宏大承诺，但听起来反而更有雄心。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>That's a great phase-three candidate — I'll park it in the backlog with an estimate.</em></span>
+                <span class="chinese">这是很好的第三阶段候选——我会记进 backlog、附上估算</span>
+                <span class="note">The diplomatic no. "Yes, later, visibly" — the request is honoured with a backlog entry and an estimate, not silently absorbed. 外交式拒绝。等于"同意，但要等、而且看得见"——请求被 backlog 条目和估算善待，而不是被默默吸收。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>We depend on the extract change landing by March — that's a dependency, not a surprise.</em></span>
+                <span class="chinese">我们依赖抽取改造三月前落地——这是依赖，不是意外</span>
+                <span class="note">"A dependency, not a surprise" is the sentence that separates architects from wishful planners. State dependencies when they're cheap to state. "是依赖，不是意外"这句话把架构师和一厢情愿的规划者区分开。依赖要在说出口还很便宜的时候说。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Every absorbed 'small favour' is borrowed from the success criteria.</em></span>
+                <span class="chinese">每一个被默默吸收的"小帮忙"都是从成功标准里借的债</span>
+                <span class="note">"Borrowed from" frames scope creep as debt with interest. The follow-up image — "phase two dies from forty small favours, not one catastrophe" — is what sponsors repeat internally. "Borrowed from" 把范围蔓延定性为带利息的债。后半句"第二阶段死于四十次小帮忙而非一场大事故"会在赞助人组织内部被反复引用。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Success measured by numbers, not narratives.</em></span>
+                <span class="chinese">成功用数字度量、不用故事度量</span>
+                <span class="note">"Narratives" = status told as story ("good momentum", "challenging but on track"). Pair it with the RAG rule: red is information, not confession. "Narratives" 指讲成故事的状态汇报（"势头良好""有挑战但整体可控"）。配套的 RAG 纪律：红灯是信息，不是忏悔。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>If the pilot misses its exit criteria, we stop and reassess — that's the deal that makes the plan credible.</em></span>
+                <span class="chinese">如果试点没达退出标准，我们就停下来重新评估——正是这个约定让整个计划可信</span>
+                <span class="note">The reverse-persuasion close: pre-committing to stop is what makes sponsors believe you'll continue when it works. Only credible with criteria already in writing. 反向说服式收尾：预先承诺"不行就停"，才让赞助人相信"行就继续"。前提是退出标准已落纸面，否则不可信。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>MVP (minimum viable product)</strong> n. 最小可行产品 The smallest build that proves the concept with real users and real data — here, one domain with certified tables and a live demo. Not "half a system".</li>
+            <li><strong>pilot</strong> n. 试点 A time-boxed, scope-limited first delivery whose purpose is evidence, not coverage. Scales or stops on the exit criteria, not on enthusiasm.</li>
+            <li><strong>success criteria / exit criteria</strong> n. 成功标准 / 退出标准 The pre-agreed, measurable conditions under which a pilot or phase is declared done — written before the work starts, never invented at the review.</li>
+            <li><strong>phased delivery</strong> n. 分阶段交付 Breaking the roadmap into independently valuable phases (pilot → top-3 → long tail → decommission), each with its own scope, date, and demo.</li>
+            <li><strong>checkpoint demo</strong> n. 检查点演示 A scheduled, live demonstration of working software at the end of each phase — the trust mechanism that replaces status slides.</li>
+            <li><strong>scope creep</strong> n. 范围蔓延 The silent growth of scope through small, unplanned additions. Rarely fatal in one blow; fatal in forty absorbed favours.</li>
+            <li><strong>trade-off triangle</strong> n. 取舍三角 Scope, time, cost (with risk as the shadow fourth) — push any one and another moves. "Pick two" is its conversational form.</li>
+            <li><strong>dependency</strong> n. 依赖 A deliverable owned by another team that your dates depend on (the HUB extract change, the InfoSec review). Stated early, it's a plan; stated late, it's an excuse.</li>
+            <li><strong>backlog</strong> n. 需求池 The ordered list of future work. Where diplomatically-refused requests go — visible, estimated, and scheduled, not ignored.</li>
+            <li><strong>RAG status</strong> n. 红黄绿状态 Red / Amber / Green reporting. The HSBC convention that matters: red is information the forum needs, never a confession to be avoided.</li>
+            <li><strong>milestone</strong> n. 里程碑 A dated, externally visible marker of progress (pilot exit, phase-two cutover). Few, measurable, and never moved silently.</li>
+            <li><strong>strangler pattern</strong> n. 绞杀者模式 Incrementally replacing a system domain by domain until the old one is safe to remove — the delivery shape behind every phase in this article.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① "I'd rather commit to X than Y" — the preference that refuses politely</h3>
+        <p>
+            <em>I'd <strong>rather</strong> commit to a pilot we can prove <strong>than</strong> a
+            promise we can't</em> — "would rather + verb + than + verb" states a choice between
+            two futures instead of a refusal of one. Notice both halves are relative clauses
+            ("a pilot <strong>we can prove</strong>", "a promise <strong>we can't</strong>"), and
+            the second clause ellipses the repeated verb. The grammar does the diplomacy: nothing
+            was denied; a better option was preferred.
+        </p>
+        <p>"would rather + 动词 + than + 动词"陈述两个未来之间的选择，而不是对某个未来的拒绝。注意两半都是定语从句（"能证明的试点""证明不了的承诺"），后半句省略重复动词。语法本身完成了外交辞令：什么都没被否定，只是选了更好的那个。</p>
+
+        <h3>② "That's a dependency, not a surprise" — the noun-frame pattern</h3>
+        <p>
+            This article builds identity statements with <strong>"That's a X, not a Y"</strong>:
+            <em>that's a dependency, not a surprise</em>; <em>red is information, not confession</em>;
+            <em>it's a gate, and it can't be sprinted out of</em>. The pattern assigns the thing a
+            category before anyone else assigns it a worse one. Use it the moment a fact could be
+            misread: state the frame before the story forms.
+        </p>
+        <p>本篇用"That's a X, not a Y"构建定性句：这是依赖不是意外、红灯是信息不是忏悔、这是闸门加塞 Sprint 也过不去。这个句式在别人给出更糟的定性之前，先给它一个正确的类别。某个事实可能被误读的那一刻就使用它——在故事成形之前先定框架。</p>
+
+        <h3>③ "Phase two dies from forty small favours, not one catastrophe" — the plural cause</h3>
+        <p>
+            <em>Not with a catastrophe, but with forty small favours</em> — the pattern
+            <strong>"not from X, but from Y"</strong> with a <strong>plural, mundane cause</strong>
+            is more persuasive than any single dramatic failure, because the audience recognises
+            the pattern from their own projects. The number ("forty") makes the mechanism
+            concrete. Keep it in your scope-creep vocabulary.
+        </p>
+        <p>"不是死于一场大事故，而是死于四十次小帮忙"——"not from X, but from Y"搭配一个复数的、平庸的原因，比任何单次戏剧性失败都有说服力，因为听众在自己的项目里见过这个模式。数字（"四十"）让机制具体化。把它收进你的范围蔓延词汇表。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🤝 Managing Sponsor Relationships at HSBC</div>
+            <ul>
+                <li><strong>Sponsors fund confidence, and demos manufacture it.</strong> After one bad migration, Daniel trusts evidence, not plans. A checkpoint demo every six weeks — live, his team clicking — rebuilds trust on a schedule instead of on promises.</li>
+                <li><strong>Bring the assessment, not the opinion.</strong> "Three months buys a pilot" lands because it stands on Articles 21–23: PoC exit criteria, the QVD inventory, the five-hop capacity maths. An architect's "no" without evidence is just an obstacle; with evidence, it's a finding.</li>
+                <li><strong>Give the sponsor a sentence to take upstairs.</strong> Marcus asked for exactly one line: "Pilot in three months, estate in four quarters, measured by numbers." Senior managers relay your plan through other people's meetings — arm them with a sentence that survives relay.</li>
+                <li><strong>Answer the bad-news question with gratitude.</strong> When a sponsor asks "what can't you do?", they are inviting honesty — the best sponsor question in the room. Answer with numbered limits and the room gets safer for the next red RAG light too.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ How Architects Say No — and How Not To</div>
+            <ul>
+                <li><strong>Never "no" — always "yes, later, visibly."</strong> "That's a great phase-three candidate — parked in the backlog with an estimate" respects the requester and protects the phase. The silent "yes" that absorbs the request is the one that kills phase two.</li>
+                <li><strong>Never promise all three of faster / cheaper / better.</strong> The vendor who did is not your benchmark — vendors demo a demo-sized estate. Your defence is the trade-off triangle, stated before the promise is requested.</li>
+                <li><strong>Bad news early is cheap; late is expensive.</strong> "Three limits, stated now, not discovered in March." Every week a dependency ages silently, the cost of stating it doubles — and the credibility of stating it halves.</li>
+                <li><strong>Don't argue with a vendor demo — contextualise it.</strong> "Vendors demo a demo-sized estate" neither insults the vendor nor accepts the benchmark. Compare estates by volume, domains, and month-end peaks, and the three-month promise re-prices itself.</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ The Honest Deal — Expectations Aligned with Technical Reality</div>
+            <ul>
+                <li><strong>Pre-commit to stopping.</strong> "If the pilot misses its exit criteria, we stop and reassess." Paradoxically, the promise to stop is what makes sponsors believe you'll continue — and it converts the pilot from a sales event into an experiment.</li>
+                <li><strong>Numbers beat narratives in every steering forum.</strong> "Zero reconciliation breaks, reload under ninety minutes, four quarters not three months" — each verifiable by a script or a log. RAG red reported early is a professional act at HSBC, not a failure.</li>
+                <li><strong>Accept the demo condition with delight.</strong> "In the room, not in a deck" costs a confident team nothing and signals exactly the confidence the sponsor is shopping for. A demo you can't do live is a demo you shouldn't have promised.</li>
+                <li><strong>Reuse criteria, never invent them twice.</strong> The pilot's exit criteria were agreed weeks earlier in Article 22's session. Saying "nothing invented overnight to win this meeting" is what separates expectation management from negotiation theatre.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Full Translation -->
+    <section class="article-section">
+        <h2>8. Dialogue Translation 对话全文翻译</h2>
+        <div class="translation-block">
+            <div class="label">💬 Full Dialogue Translation 完整对话中文翻译</div>
+            <p><strong>Daniel（业务赞助人）：</strong>我们把目标定高一点。我看到一个平台迁移的演示——三个月全迁完、报表快一倍。我们能承诺这个吗？</p>
+            <p><strong>你（架构师）：</strong>说实话——三个月买到的是一个试点，不是整个体系。我宁愿承诺一个能证明的试点，也不承诺一个证明不了的空话。我们自己的评估是：62 个应用、180 个加载脚本、一条 5 段的依赖链，上游抽取的修复——即使最好情况——也只买到 40%。这是一个域三个月的量，证据就是你面前这份材料。至于供应商：厂商演示的是"演示规格"的体系——数据干净、只有一个域、没有月末峰值、没有并行期。更快、更便宜、更好——三选二。如果约束是时间，那要么砍范围、要么加成本；三样全压，最终被牺牲的是信任——在第一次月末跳票的那天。</p>
+            <p><strong>Marcus（高级经理）：</strong>那就听听你怎么重构。你实际提议的是什么？</p>
+            <p><strong>你（架构师）：</strong>一个带可度量成功标准的 MVP 试点——收入域，两个 Sprint 建设，并行跑一个月。成功的定义是：silver 收入表通过源端认证、所有收入类应用只读 gold、reload 90 分钟以内、并行月零对账差异。就是第 22 篇谈定的那套标准——不加新的，也不为了赢下这场会现编一套。</p>
+            <p><strong>你（架构师）：</strong>如果试点达标，后续形状就是分阶段交付——第二阶段：按痛点排前三的应用，一个季度；第三阶段：长尾应用，两个季度；第四阶段：带 owner、带日期地退役剩余 QVD 链。整体：四个季度，不是三个月——而且你每六周看到跑起来的东西，而不是每次指导委员会看一页进度幻灯片。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>行。那就现在把坏消息说了——你们做不到什么？</p>
+            <p><strong>你（架构师）：</strong>三条限制，现在说清，不留到三月才被发现。第一——长尾应用不在第二阶段迁，否则风险翻倍；轮到它时再迁。第二——我们依赖 HUB 抽取改造在三月前落地——这是依赖，不是意外；它延期，二三阶段顺延，但我们做过的承诺不变。第三——新平台的 InfoSec 评审要四周；已经排上、是闸门，不可能靠加塞 Sprint 跳过去。今天说这些成本是零；三月再说就是一次重新规划。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>如果业务在第二阶段中途要加一张报表呢？这一定会发生——从来都会发生。</p>
+            <p><strong>你（架构师）：</strong>那它就是"一个很好的第三阶段候选"——我会把它记进 backlog、带估算、让赞助人可见，而不是默默吸收。每一个被默默吸收的"小帮忙"都是从成功标准里借的债——第二阶段就是这么死的：不是死于一场大事故，而是死于四十次小帮忙。</p>
+            <p><strong>Marcus（高级经理）：</strong>我需要一句能向上汇报的话。我怎么跟我老板说？</p>
+            <p><strong>你（架构师）：</strong>这句话："试点三个月，全量四个季度，成功用数字度量、不用故事度量——每六周一次检查点演示。"另有半句诚实的话单独说给 Daniel：如果试点没达退出标准，我们就停下来重新评估——正是这个约定让整个计划可信。Daniel，趁我们把话摊开，再补一个承诺：试点演示当场做、当着面做，不放幻灯片——做不了现场演示的演示，本就不该被承诺。</p>
+            <p><strong>Daniel（业务赞助人）：</strong>成交。那三个月后我要亲手点一遍——而且如果数字不对，我要最先从你们这里、带着证据听到。</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>9. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the reframe into natural Chinese:</div>
+                <p>"Honest answer — three months buys us a pilot, not the estate. Faster, cheaper,
+                better — pick two: if the constraint is time, scope or cost has to give. So the
+                proposal is an MVP pilot with measurable success criteria — the revenue domain,
+                zero reconciliation breaks over a one-month parallel run — followed by phased
+                delivery: top three apps next quarter, the long tail the quarter after,
+                decommission with owners and dates. Every phase ends with a checkpoint demo —
+                working software, not a status slide. We depend on the extract change landing by
+                March; that's a dependency, not a surprise. And any extra dashboard mid-phase is
+                a great phase-three candidate — parked in the backlog with an estimate, because
+                every absorbed 'small favour' is borrowed from the success criteria."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "说实话——三个月买到的是一个试点，不是整个体系。更快、更便宜、更好——三选二：
+                    如果约束是时间，那要么砍范围、要么加成本。所以提案是一个带可度量成功标准的 MVP 试点——
+                    收入域、并行月零对账差异——然后分阶段交付：下季度迁前三的应用，再下季度迁长尾，
+                    最后带 owner、带日期地退役。每个阶段以检查点演示收尾——看跑起来的东西，不看进度幻灯片。
+                    我们依赖抽取改造三月前落地——这是依赖，不是意外。
+                    阶段中途要加的任何报表，都是很好的第三阶段候选——记进 backlog、附估算，
+                    因为每一个被默默吸收的'小帮忙'都是从成功标准里借的债。"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Spot the expectation-management mistake — which response is wrong?</div>
+                <ol>
+                    <li>"Three months? Honest answer — that buys us a pilot, not the estate. Here's the assessment that says why."</li>
+                    <li>"We can probably do most of it in three months if the team stretches — let's commit and work out the details later."</li>
+                    <li>"The InfoSec review takes four weeks and is booked — that's a dependency, not a surprise, and it can't be sprinted out of."</li>
+                    <li>"That extra dashboard? Great phase-three candidate — I'll park it in the backlog with an estimate."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ② is the mistake — "probably, if the team stretches, details later" is a promise with no success
+                    criteria, no trade-off stated, and no evidence. It borrows from future credibility: the first
+                    missed month-end converts it into a broken commitment. ① is right — reframe with evidence, price
+                    the promise. ③ is right — dependencies stated early are plans, stated late are excuses. ④ is
+                    right — the diplomatic no: honoured visibly, absorbed never.
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — run the reframe yourself:</div>
+                <p>A Business Sponsor has seen a vendor demo and wants: "the whole payments data
+                migration finished in two months, and reconciliation errors to zero." Your evidence:
+                three domains, each needing a one-month parallel run; an upstream API change you
+                depend on in month two; success criteria agreed with the Tech Lead (zero breaks,
+                reload under 60 minutes). Write your 90-second reframe in English: refuse the grand
+                promise politely, propose the MVP pilot and phases, state the dependencies, and
+                close with the sentence Marcus-style sponsors can take upstairs. Use at least 4
+                patterns from the Key Phrases section.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Honest answer — two months buys us a pilot, not the estate, and I'd rather commit to a pilot we
+                    can prove than a promise we can't. Faster, cheaper, better — pick two: if the constraint is time,
+                    scope has to give. The proposal: an MVP pilot on the first payments domain with measurable success
+                    criteria — zero reconciliation breaks over a full parallel-run month, reload under sixty minutes
+                    — criteria already agreed with the Tech Lead, not invented for this meeting. Then phased delivery
+                    with a checkpoint demo at the end of every phase: domain two in the next quarter, domain three
+                    after, decommission with owners and dates. Two dependencies, stated now not in month two: the
+                    upstream API change has to land on schedule — that's a dependency, not a surprise — and the
+                    InfoSec review is a four-week gate. Mid-phase requests? A great phase-three candidate, parked in
+                    the backlog with an estimate — every absorbed 'small favour' is borrowed from the success
+                    criteria. The sentence for upstairs: 'Pilot in two months, estate across the year, success
+                    measured by numbers, not narratives — and a live checkpoint demo every six weeks.' If the pilot
+                    misses its exit criteria, we stop and reassess — that's the deal that makes the plan credible."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 6 Wrap-up -->
+    <section class="article-section">
+        <h2>10. Module 6 Wrap-up — Solution Proposals & Stakeholder Alignment</h2>
+        <p>
+            You have completed <strong>Module 6: Solution Proposals & Stakeholder Alignment</strong>
+            across four articles. Together they form one arc — from evidence, to proposal, to
+            assessment, to expectation — which is the full life of any architectural change that
+            needs someone else's money and someone else's trust.
+        </p>
+
+        <h3>What you should now be able to do</h3>
+        <ul>
+            <li><strong>Article 21 — ETL Spark Solution Architecture.</strong> Present a platform proposal as options plus a recommendation: driver/executors and scale-out, batch → micro-batch → streaming as rungs, incremental loads by business-date partition and watermark, Databricks vs EMR priced by cost per run, Control-M kept as scheduler of record — all packaged as a two-week PoC with three script-verifiable exit criteria.</li>
+            <li><strong>Article 22 — QlikSense ETL Pain Points.</strong> Diagnose a BI estate without insulting its builders: logic trapped in load scripts, no version control, overrunning reload windows, invisible failures, nine duplicated revenue definitions. Keep the tool as the presentation layer, treat the QVD as a cache not a source, and migrate by strangler pattern — inventory, prioritise by pain, parallel-run a full month, decommission on a date.</li>
+            <li><strong>Article 23 — Cross-System Performance Assessment.</strong> Answer a one-number question with a chain: five hops, each with its own timestamp and target; throughput as rows ÷ seconds per hop; the month-end multiple as the real risk; the bottleneck found upstream and downstream — with evidence, an owner ask per bottleneck, and an SLA committed with 20 percent headroom only after a load test.</li>
+            <li><strong>Article 24 — Managing Business Expectations.</strong> Reframe "everything in three months" into an MVP pilot with measurable success criteria, phased delivery with checkpoint demos every six weeks, dependencies stated while they are cheap, scope creep parked visibly in the backlog, and the honest deal: if the pilot misses its exit criteria, we stop and reassess.</li>
+        </ul>
+
+        <h3>The three signature phrases to keep using</h3>
+        <ul>
+            <li><em>"Faster, cheaper, better — pick two."</em> — the trade-off triangle as a conversation starter. Use it before the promise is requested, not after.</li>
+            <li><em>"That's a dependency, not a surprise."</em> — the sentence that separates architects from hopeful planners. Say it while it is still cheap to say.</li>
+            <li><em>"Success measured by numbers, not narratives."</em> — the standard you hold yourself to in every steering forum. Pair it with a script-verifiable exit criterion and a live checkpoint demo.</li>
+        </ul>
+
+        <h3>Where to go next</h3>
+        <p>
+            The next module moves from proposing change to <em>sustaining</em> it: architecture
+            governance at HSBC — how to survive a CAB, how to write the one-page decision memo
+            that gets read, and how to run a design authority that scales beyond one tribe.
+            Everything in this module — the PoC evidence, the five-hop table, the exit criteria —
+            becomes input to it.
+        </p>
+        <p>
+            <em>Same discipline tomorrow: one number, one measurement, one owner. The rest is
+            conversation.</em>
+        </p>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="23-cross-system-performance.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">23 · Cross-System Performance Assessment</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

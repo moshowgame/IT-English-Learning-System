@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 22: Debugging a Production Issue 生产问题排查实战 | Developer English</title>
+    <meta name="description" content="Debugging a Production Issue 生产问题排查实战 — 🔍 Correlation IDs, Splunk log queries, reproducing with production-like data, safe data fixes & backfills, and writing the RCA. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Developer English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/developer/articles/22-debugging-production-issue.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 22: Debugging a Production Issue 生产问题排查实战 | Developer English">
+    <meta property="og:description" content="Debugging a Production Issue 生产问题排查实战 — 🔍 Correlation IDs, Splunk log queries, reproducing with production-like data, safe data fixes & backfills, and writing the RCA. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Developer English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/developer/articles/22-debugging-production-issue.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">22 · Debugging a Production Issue</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Debugging a Production Issue</h1>
+        <p class="subtitle">Article 22 · Module 6: Production Support &amp; Debugging · Developer English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Intermediate — hands-on walkthrough</span>
+            <span>🎯 Correlation IDs · Splunk · Data fix &amp; backfill · RCA</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>the next morning, 10:00 AM HKT</strong>. Yesterday's Sev2 incident <em>INC3345</em>
+            (payment file upload failures) was stabilised with a workaround, and the service is limping along.
+            Now the real work begins: <strong>finding the root cause</strong> and fixing it properly.
+        </p>
+        <p>
+            第二天上午10点（香港时间）。昨天的 Sev2 事件 INC3345（付款文件上传失败）已用临时方案稳住，服务勉强可用。
+            现在要做真正的工作：<strong>找到根因</strong>并彻底修复。
+        </p>
+        <p>
+            You (Wei) have spent the morning pulling logs from <strong>Splunk</strong> using
+            <strong>correlation IDs</strong>, comparing file timestamps, and reproducing the failure in dev with
+            production-like data. You now walk <strong>Priya (Tech Lead, UK)</strong> through your findings, discuss
+            fix options (<em>hotfix vs next release</em>), and agree on preventive actions and the RCA document.
+        </p>
+        <p>
+            Good debugging English is <strong>short, factual and verifiable</strong>: what you searched, what you found,
+            what it means, and what you propose next.
+        </p>
+        <p>
+            排查场景的英语表达要<strong>简短、基于事实、可验证</strong>：查了什么、发现了什么、说明什么、下一步建议什么。
+        </p>
+        <p>
+            你（Wei）花了一上午用<strong>关联 ID</strong> 在 <strong>Splunk</strong> 中检索日志、对比文件时间戳，
+            并在开发环境用类生产数据复现了故障。现在你向<strong>技术负责人 Priya（英国）</strong>讲解发现，
+            讨论修复方案（<em>紧急热修复 vs 纳入下一次发布</em>），并就预防措施和 RCA 文档达成一致。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Morning, Priya. Quick update on INC3345 — <strong>I've found the root cause</strong>. Do you have ten minutes for a walkthrough?</span><span class="cn">Priya 早上好，INC3345 有进展——我已经找到根因了。你有十分钟听我过一遍吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Sure. <strong>Walk me through what you found.</strong></span><span class="cn">当然可以，把你的发现从头讲一遍吧。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><strong>I pulled the logs from Splunk using the correlation ID</strong> from one failed upload — one search per transaction. All the errors cluster between <em>09:40 and 09:52</em>, right after the inbound file landed at 09:38.</span><span class="cn">我用一次失败上传的关联 ID 从 Splunk 拉取日志——每笔交易查一次。所有错误集中在 09:40 到 09:52 之间，正好在 09:38 入站文件落地之后。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">The parser rejects every record with <em>"invalid delimiter"</em>. I compared yesterday's file with today's: <strong>the upstream switched from pipe-delimited to comma-delimited</strong> — and today's file also contains duplicate transaction references.</span><span class="cn">解析器拒绝所有记录，报“分隔符无效”。我对比了昨天和今天的文件：上游把竖线分隔改成了逗号分隔——而且今天的文件里还有重复的交易参考号。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">So <strong>it's a data issue, not a code defect</strong>. Did you reproduce it, or is this still a hypothesis?</span><span class="cn">所以这是数据问题，不是代码缺陷。你复现了吗，还是目前只是推测？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yes — <strong>I reproduced it with production-like data</strong> in the dev environment: same file format, same duplicates, same error. I also confirmed the contributing factor: our loader <em>has no input validation on the delimiter</em>, so it failed silently at scale.</span><span class="cn">复现了——我在开发环境用类生产数据复现：同样的文件格式、同样的重复记录、同样的报错。我还确认了促因：我们的加载程序对分隔符没有输入校验，所以才会大面积静默失败。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Two fix options, then. <strong>We can hotfix tonight, or fold the change into next week's scheduled release.</strong> What's your recommendation?</span><span class="cn">那有两个修复选项：今晚紧急热修复，或者把改动纳入下周的例行发布。你建议哪个？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">I'd do <strong>both in sequence</strong>: apply a data fix and <em>backfill</em> the 118 failed records in tonight's change window so users are unblocked tomorrow morning, and fold the parser fix into next week's release — that avoids the risk of an emergency deployment.</span><span class="cn">我建议两者按顺序都做：今晚的变更窗口里执行数据修复并回补 118 条失败记录，让用户明早就能正常使用；解析器修复纳入下周发布——避免紧急部署带来的风险。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Agreed. <strong>The data fix needs change approval</strong> — has the change record been raised?</span><span class="cn">同意。数据修复需要变更审批——变更单提了吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yes, <strong>CHG88210 is with the change approver</strong> now, with the backfill script and a rollback plan attached. I'll only run it <em>inside the change window</em>, and I'll take a backup of the target tables first.</span><span class="cn">提了，CHG88210 正在变更审批人那里，附件包括回补脚本和回滚方案。我只会在变更窗口内执行，而且会先备份目标表。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Perfect. For the post-incident review, let's agree the preventive actions: <strong>input validation on delimiters and duplicates, plus an alerting rule</strong> if the error count spikes. Can you draft the RCA — timeline, root cause, contributing factors, preventive actions — and share it before Thursday's review?</span><span class="cn">很好。复盘会上我们定一下预防措施：对分隔符和重复记录做输入校验，再加一条错误数飙升的告警规则。你能把 RCA 起草出来吗——时间线、根因、促因、预防措施——周四复盘会前发出来？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Will do. I'll share the RCA draft and the Splunk query links on the incident channel by Wednesday noon, and I'll <strong>present the timeline at the post-incident review</strong> — keeping it factual and no-blame.</span><span class="cn">没问题。我会在周三中午前把 RCA 草稿和 Splunk 查询链接发到事件频道，并在复盘会上讲解时间线——保持客观、不追责。</span></span>
+            </div>
+        </div>
+
+        <div class="translation-block">
+            <div class="label">🇨🇳 Full Chinese Translation 对话全文翻译</div>
+            <p><strong>你：</strong>Priya 早上好，INC3345 有进展——我已经找到根因了。你有十分钟听我过一遍吗？</p>
+            <p><strong>Priya（技术负责人）：</strong>当然可以，把你的发现从头讲一遍吧。</p>
+            <p><strong>你：</strong>我用一次失败上传的关联 ID 从 Splunk 拉取日志——每笔交易查一次。所有错误集中在 09:40 到 09:52 之间，正好在 09:38 入站文件落地之后。</p>
+            <p><strong>你：</strong>解析器拒绝所有记录，报“分隔符无效”。我对比了昨天和今天的文件：上游把竖线分隔改成了逗号分隔——而且今天的文件里还有重复的交易参考号。</p>
+            <p><strong>Priya（技术负责人）：</strong>所以这是数据问题，不是代码缺陷。你复现了吗，还是目前只是推测？</p>
+            <p><strong>你：</strong>复现了——我在开发环境用类生产数据复现：同样的文件格式、同样的重复记录、同样的报错。我还确认了促因：我们的加载程序对分隔符没有输入校验，所以才会大面积静默失败。</p>
+            <p><strong>Priya（技术负责人）：</strong>那有两个修复选项：今晚紧急热修复，或者把改动纳入下周的例行发布。你建议哪个？</p>
+            <p><strong>你：</strong>我建议两者按顺序都做：今晚的变更窗口里执行数据修复并回补 118 条失败记录，让用户明早就能正常使用；解析器修复纳入下周发布——避免紧急部署带来的风险。</p>
+            <p><strong>Priya（技术负责人）：</strong>同意。数据修复需要变更审批——变更单提了吗？</p>
+            <p><strong>你：</strong>提了，CHG88210 正在变更审批人那里，附件包括回补脚本和回滚方案。我只会在变更窗口内执行，而且会先备份目标表。</p>
+            <p><strong>Priya（技术负责人）：</strong>很好。复盘会上我们定一下预防措施：对分隔符和重复记录做输入校验，再加一条错误数飙升的告警规则。你能把 RCA 起草出来吗——时间线、根因、促因、预防措施——周四复盘会前发出来？</p>
+            <p><strong>你：</strong>没问题。我会在周三中午前把 RCA 草稿和 Splunk 查询链接发到事件频道，并在复盘会上讲解时间线——保持客观、不追责。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>I've found the root cause — do you have ten minutes for a walkthrough?</em></span>
+                <span class="chinese">我找到根因了——你有十分钟听我过一遍吗？</span>
+                <span class="note"><em>Walkthrough</em> = 逐步讲解. Always offer a time-boxed walkthrough, not a wall of text. 提出一个有时限的讲解请求，比甩一大段文字更专业。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>I pulled the logs using the correlation ID, one search per transaction.</em></span>
+                <span class="chinese">我用关联 ID 拉取日志，每笔交易查一次。</span>
+                <span class="note"><em>Pull the logs</em> = 拉取日志. Mentioning your method (correlation ID) shows the finding is evidence-based. 说明方法（关联ID）让结论显得有据可查。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>All the errors cluster between 09:40 and 09:52.</em></span>
+                <span class="chinese">所有错误集中在 09:40 到 09:52 之间。</span>
+                <span class="note"><em>Cluster</em> = 聚集在. A time window is the fastest way to link errors to an event. 给出时间窗是把错误和事件关联的最快方式。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>It turns out to be a data issue, not a code defect.</em></span>
+                <span class="chinese">结果证明是数据问题，不是代码缺陷。</span>
+                <span class="note"><em>It turns out to be…</em> = 结果是…… 用于从假设到结论的时刻。Also: <em>"the evidence points to a data issue"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>I reproduced it with production-like data, so it's confirmed rather than a hypothesis.</em></span>
+                <span class="chinese">我用类生产数据复现了，所以这是已验证的结论，不是推测。</span>
+                <span class="note"><em>Production-like data</em> = 类生产数据（脱敏后的真实数据）. Tech leads always ask: reproduced or hypothesis? 技术负责人必问：复现了还是猜测？</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>We can hotfix tonight, or fold the change into next week's scheduled release.</em></span>
+                <span class="chinese">我们可以今晚热修复，或者把改动纳入下周的例行发布。</span>
+                <span class="note"><em>Fold into a release</em> = 并入发布列车. Presenting two options + a recommendation is how devs escalate decisions. 给选项加推荐，是开发汇报决策的标准方式。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>I'll apply a data fix and backfill the failed records in tonight's change window.</em></span>
+                <span class="chinese">我会在今晚的变更窗口内执行数据修复并回补失败记录。</span>
+                <span class="note">Always pair a data fix with <em>when</em> (change window) and <em>approval</em>. 数据修复必须带上时间和审批信息。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">FORMAL</span> <em>CHG88210 is with the change approver, with a rollback plan attached.</em></span>
+                <span class="chinese">变更单 CHG88210 正在审批人那里，已附回滚方案。</span>
+                <span class="note">No rollback plan = no approval in HSBC process. Attach it upfront. 在汇丰流程里，没有回滚方案就拿不到审批，要提前附上。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Preventive action: add input validation plus an alerting rule if the error count spikes.</em></span>
+                <span class="chinese">预防措施：增加输入校验，并加一条错误数飙升的告警规则。</span>
+                <span class="note">Every RCA ends with preventive actions — make them concrete and assignable. RCA 必须落到具体、可指派的预防措施。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>I'll share the RCA draft before Thursday's review — keeping it factual and no-blame.</em></span>
+                <span class="chinese">我会在周四复盘会前发出 RCA 草稿——保持客观、不追责。</span>
+                <span class="note"><em>Keeping it factual</em> = 只讲事实. Signalling tone upfront sets expectations for the meeting. 提前表明基调，给会议定好预期。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>correlation ID</strong> <span class="tag">n.</span></span>
+                <span class="chinese">关联 ID / 追踪 ID</span>
+                <span class="note">把一笔交易在各系统、各服务的日志串起来的唯一编号。<em>"search by correlation ID"</em> 是排查的第一把钥匙。</span>
+            </li>
+            <li>
+                <span class="english"><strong>Splunk</strong> <span class="tag gold">HSBC</span></span>
+                <span class="chinese">日志聚合检索平台</span>
+                <span class="note">银行最常用的日志工具，按 index、sourcetype、时间范围检索。<em>"run a Splunk query"</em> = 跑一条日志查询。</span>
+            </li>
+            <li>
+                <span class="english"><strong>Kibana</strong> <span class="tag">n.</span></span>
+                <span class="chinese">日志检索可视化工具（Elasticsearch）</span>
+                <span class="note">功能定位与 Splunk 类似，基于 ELK 栈。面试常问 "Splunk vs Kibana"，回答要点：检索语法和生态不同，排查思路一致。</span>
+            </li>
+            <li>
+                <span class="english"><strong>reproduce</strong> /ˌriːprəˈdjuːs/ <span class="tag">v.</span></span>
+                <span class="chinese">复现（故障）</span>
+                <span class="note">用相同数据和步骤让问题再次发生。<em>"reproduced with production-like data"</em> = 用类生产数据复现。复现是把假设变成结论的一步。</span>
+            </li>
+            <li>
+                <span class="english"><strong>data fix</strong> <span class="tag red">n.</span></span>
+                <span class="chinese">数据修复</span>
+                <span class="note">不改代码，直接修正错误数据（UPDATE/DELETE/INSERT）。必须走变更流程：<em>"the data fix is approved under CHG88210"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>backfill</strong> /ˈbækfɪl/ <span class="tag">v. &amp; n.</span></span>
+                <span class="chinese">回补 / 补数</span>
+                <span class="note">把之前处理失败的记录重新处理，保证数据完整。<em>"backfill the 118 failed records"</em> = 回补118条失败记录。</span>
+            </li>
+            <li>
+                <span class="english"><strong>hotfix</strong> /ˈhɒtfɪks/ <span class="tag red">n.</span></span>
+                <span class="chinese">紧急修复（热修复）</span>
+                <span class="note">绕过正常发布节奏的快速代码修复，风险高、审批严。<em>"a hotfix bypasses the release train"</em>.</span>
+            </li>
+            <li>
+                <span class="english"><strong>rollback</strong> /ˈrəʊlbæk/ <span class="tag red">n. &amp; v.</span></span>
+                <span class="chinese">回滚</span>
+                <span class="note">修复失败时退回原状态（代码回退或数据还原）。<em>"rollback plan"</em> 回滚方案是变更单的必备附件。</span>
+            </li>
+            <li>
+                <span class="english"><strong>change window</strong> <span class="tag gold">HSBC</span></span>
+                <span class="chinese">变更窗口</span>
+                <span class="note">获批的生产变更执行时段，通常在业务低峰期（如周末深夜）。<em>"run it inside the change window"</em> = 只在窗口内执行。</span>
+            </li>
+            <li>
+                <span class="english"><strong>RCA (root cause analysis)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">根因分析（报告）</span>
+                <span class="note">事件结案文档，四个固定板块：timeline 时间线、root cause 根因、contributing factors 促因、preventive actions 预防措施。</span>
+            </li>
+            <li>
+                <span class="english"><strong>post-mortem / no-blame review</strong> <span class="tag">n.</span></span>
+                <span class="chinese">复盘会（无指责复盘）</span>
+                <span class="note">事件后的团队复盘会议。<em>No-blame</em> 原则：对事不对人，聚焦流程与系统改进，不追究个人责任。</span>
+            </li>
+            <li>
+                <span class="english"><strong>preventive action</strong> <span class="tag">n.</span></span>
+                <span class="chinese">预防措施</span>
+                <span class="note">防止问题复发的改进项：输入校验、告警规则、监控看板、流程检查清单等。RCA 的落脚点。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- RCA & Debug Workflow -->
+    <section class="article-section">
+        <h2>5. RCA Document &amp; Safe Data Fixes RCA 文档与安全数据修复</h2>
+
+        <h3>① Debug workflow checklist 排查五步法</h3>
+        <ul>
+            <li><strong>1. Scope it.</strong> Pick one failed transaction and grab its <em>correlation ID</em> — one example beats a thousand errors.</li>
+            <li><strong>2. Pull the logs.</strong> Splunk/Kibana query filtered on the service + correlation ID + time window; note the exact error text (<em>"invalid delimiter"</em>).</li>
+            <li><strong>3. Compare before/after.</strong> What changed? Last deployment? Last inbound file? Last upstream release? Timestamps tell the story.</li>
+            <li><strong>4. Reproduce.</strong> Re-run the failure with production-like data in a lower environment; classify: data issue vs code defect vs environment.</li>
+            <li><strong>5. Propose the fix.</strong> Present options (hotfix vs next release, data fix vs code change) with risks and a recommendation.</li>
+        </ul>
+        <p>
+            第 2 步的示例 Splunk 查询（按服务、错误级别、时间窗过滤，再用关联 ID 定位单笔交易）：
+        </p>
+        <p>
+            <em>index=pay_app sourcetype=payment-upload "ERROR" earliest=11/15/2026:09:30:00 latest=11/15/2026:10:00:00
+            | search correlationId=PAY-20261115-004412</em>
+        </p>
+        <p>Kibana 上的等价做法是用 KQL 过滤 <em>correlationId</em> 字段并锁定时间范围——工具不同，思路一致。</p>
+        <p>常见误区 common pitfalls：</p>
+        <ul>
+            <li>❌ Searching errors without a time window — you drown in unrelated noise from other services.</li>
+            <li>❌ Reading logs backwards from the latest error — start from the <strong>first</strong> failure and the event right before it.</li>
+            <li>❌ Debugging only in your head — reproduce it first, then you can <strong>prove</strong> it.</li>
+        </ul>
+
+        <h3>② RCA document structure RCA 文档四板块（以 INC3345 为例）</h3>
+        <ul>
+            <li><strong>Timeline:</strong> 09:38 inbound file lands → 09:40 first validation failure → 09:45 Sev2 opened, bridge called → 10:05 workaround communicated → 22:35 data fix &amp; backfill completed → 22:40 resolved.</li>
+            <li><strong>Root cause:</strong> the upstream file feed switched from pipe-delimited to comma-delimited format without notification.</li>
+            <li><strong>Contributing factors:</strong> no input validation on delimiters or duplicate transaction references; no alerting on validation error spikes; upstream release not communicated to downstream teams.</li>
+            <li><strong>Preventive actions:</strong> (1) loader rejects unknown delimiters with a clear error and an alert; (2) monitoring rule on validation-error count; (3) upstream release-notification checklist agreed with the upstream team.</li>
+        </ul>
+
+        <h3>③ Safe backfill rules 安全补数守则</h3>
+        <ul>
+            <li><strong>Never touch production data ad hoc.</strong> Every data fix needs a change record (<em>CHG-xxxxx</em>), an approver, and an approved <em>change window</em>.</li>
+            <li><strong>Backup before you fix.</strong> Export the affected rows first — your rollback plan is only as good as your backup.</li>
+            <li><strong>Count before, count after.</strong> "118 failed records selected / 118 rows updated / 0 rows remaining" — verify with SQL counts, not eyeballing.</li>
+            <li><strong>Script it, don't hand-edit.</strong> A reviewed, version-controlled script is auditable; a console update is not.</li>
+        </ul>
+
+        <h3>④ Post-fix verification 修复后验证</h3>
+        <ul>
+            <li><strong>Row counts match:</strong> selected = updated = expected (<em>118 selected / 118 updated / 0 remaining</em>).</li>
+            <li><strong>End-to-end re-run:</strong> let the next inbound file process and confirm success with the service desk and Ops.</li>
+            <li><strong>Attach evidence to the change record</strong> (screenshots, query outputs) before closing CHG88210 — auditors will ask.</li>
+        </ul>
+
+        <h3>⑤ Hotfix or next release? 修复路径决策参考</h3>
+        <ul>
+            <li><strong>Choose a hotfix when:</strong> users stay blocked until the next scheduled release (a week or more), and the change is small, well-tested and low-risk.</li>
+            <li><strong>Choose the next release when:</strong> a data fix or workaround already unblocks users, or the code change is large and needs full regression testing.</li>
+            <li><strong>The combo used here:</strong> data fix + backfill tonight to unblock users; the code fix rides next week's scheduled release.</li>
+            <li>The deciding question: <em>"What's the customer impact of waiting?"</em> —— 由业务影响决定路径，而不是个人偏好。</li>
+        </ul>
+
+        <h3>⑥ RCA writing: say this, not that RCA 措辞对照</h3>
+        <ul>
+            <li>❌ <em>"Sam forgot to add validation."</em> → ✅ <em>"The loader had no input validation on delimiters."</em> — review the system, not the person.</li>
+            <li>❌ <em>"The upstream team broke it again."</em> → ✅ <em>"The upstream file format changed without downstream notification."</em> — process gap, not blame.</li>
+            <li>❌ <em>"Nobody monitors this."</em> → ✅ <em>"No alerting rule existed on validation error counts."</em> — an observable gap, not an accusation.</li>
+        </ul>
+        <p>
+            The golden rule of RCA writing: <strong>a reader who was never on the bridge should be able to retell
+            the whole story</strong> — complete timeline, every claim backed by a log line or a screenshot.
+        </p>
+        <p>
+            RCA 写作的黄金法则：<strong>让没参与故障的人读完也能复述整个事件</strong>——时间线完整，每个结论都有日志或截图支撑。
+        </p>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① Present perfect vs past simple 汇报发现时的时态切换</h3>
+        <p>
+            Announcing news <strong>now</strong> → present perfect; giving the finished-time detail → past simple.
+            The dialogue uses both in sequence:
+        </p>
+        <ul>
+            <li>✅ <em>"I'<strong>ve found</strong> the root cause."</em> (news, no time given) → <em>"I <strong>found</strong> it at 09:52 this morning."</em> (finished time)</li>
+            <li>Time-stamped facts stay in past simple: <em>"The errors <strong>clustered</strong> between 09:40 and 09:52."</em></li>
+            <li>❌ <em>"I have found it yesterday."</em> — never mix a finished time with present perfect.</li>
+        </ul>
+
+        <h3>② "so" — linking evidence to conclusion 用 so 把证据推向结论</h3>
+        <ul>
+            <li>✅ <em>"The upstream switched the delimiter, <strong>so</strong> it's a data issue rather than a code defect."</em></li>
+            <li>Alternatives: <em>"which means…"</em>, <em>"that suggests…"</em>, <em>"the evidence points to…"</em>.</li>
+            <li>Hedge only when you truly cannot conclude yet: <em>"the initial signals suggest a data issue — verifying now."</em></li>
+        </ul>
+
+        <h3>③ Sequencing a fix plan 修复计划的时间连接词</h3>
+        <ul>
+            <li><strong>First / then / after that / finally:</strong> <em>"First I'll take a backup, then run the backfill script, after that we verify the counts."</em></li>
+            <li><strong>once / as soon as</strong> + present simple (NOT will): <em>"Once the change <strong>is</strong> approved, I'll run it inside the window."</em> — ❌ <em>"once the change will be approved"</em>.</li>
+            <li><strong>by + time:</strong> <em>"I'll share the RCA draft <strong>by</strong> Wednesday noon"</em> = 不晚于周三中午。</li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🔍 Present Findings With Evidence 用证据讲发现</div>
+            <ul>
+                <li><strong>Narrate the method, then the finding:</strong> "I searched Splunk by correlation ID… the errors cluster after 09:38…" — method first makes conclusions credible.</li>
+                <li><strong>Share the actual log line / query link</strong> in the channel, not just your summary — reviewers love verifiable evidence.</li>
+                <li><strong>Distinguish fact from hypothesis:</strong> say <em>"confirmed"</em> only after reproduction; before that, say <em>"working hypothesis"</em>.</li>
+                <li><strong>Time-box the walkthrough.</strong> "Ten minutes, top three findings" respects everyone's calendar — the details live in the RCA doc.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Data Fixes Without Approval = Career Risk 绕过审批改生产数据是职业红线</div>
+            <ul>
+                <li>❌ Fixing data directly on a Friday night "because users are blocked" — even with good intentions, this is an audit finding.</li>
+                <li>✅ Raise the change record, get approval, run it in the window, keep evidence. If truly urgent, ask Ops to <strong>expedite the approval</strong>, never skip it.</li>
+                <li>同场景中文常说“先改了再说”；在银行环境里，正确说法是 <em>"Let me raise an emergency change"</em>（走紧急变更），而不是直接动手。</li>
+                <li>紧急路径也存在：<em>emergency change</em>（紧急变更）仍需审批与记录——走 <strong>fast track</strong>，不是 <strong>no track</strong>。</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">🤝 No-Blame Culture in Post-Incident Reviews 无指责复盘文化</div>
+            <ul>
+                <li>Say <strong>"the loader had no input validation"</strong>, never <strong>"Sam forgot to add validation"</strong> — review the system, not the person.</li>
+                <li><em>"Contributing factors"</em> deliberately replaces "who was at fault" — multiple small gaps combine into one incident.</li>
+                <li>Thank the responders on the record: <em>"Good catch by the on-call — the bridge was stood up within 10 minutes."</em> Appreciation in writing builds the team.</li>
+                <li>中文的“追责/背锅”文化在跨国银行复盘会上是大忌——用 <em>lessons learned</em>（经验教训）替代 blame（指责）。</li>
+                <li><strong>End reviews with actions, not feelings.</strong> Every preventive action gets an owner and a date — that's what "lessons learned" means in practice.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (排查汇报):</div>
+                <p>"我用关联ID从Splunk拉取了日志，所有错误都集中在9点40分到9点52分之间——正好在入站文件落地之后。我已用类生产数据复现了该问题。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "I pulled the logs from Splunk using the correlation ID, and all the errors cluster between 09:40 and 09:52 —
+                    right after the inbound file landed. I have reproduced the issue with production-like data."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the blanks:</div>
+                <p>"<em>We can _____ (紧急热修复) tonight, or fold the change into next week's release. The data fix will run in tonight's _____ (变更窗口), with a _____ (回滚方案) attached and the target tables backed up first.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>hotfix</em> / <em>change window</em> / <em>rollback plan</em>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Draft the RCA skeleton (以 INC3345 为素材):</div>
+                <p>Write the four standard RCA headings (Timeline / Root cause / Contributing factors / Preventive actions) with one sentence under each, in English.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    Timeline: "09:38 file lands; 09:40 first failure; 22:35 data fix and backfill completed; 22:40 resolved."
+                    Root cause: "Upstream switched from pipe-delimited to comma-delimited file format without notification."
+                    Contributing factors: "No input validation on delimiters or duplicates; no alerting on error spikes."
+                    Preventive actions: "Add delimiter/duplicate validation, an error-count alert, and an upstream release-notification checklist."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="21-production-support-basics.html">
+            <span class="label">← Previous</span>
+            <span class="title">21 · Production Support Basics</span>
+        </a>
+        <a class="next" href="../index.html">
+            <span class="label">Back to Developer Home →</span>
+            <span class="title">All 22 Articles</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 22 · Debugging a Production Issue · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

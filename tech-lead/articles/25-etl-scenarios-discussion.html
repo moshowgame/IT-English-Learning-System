@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 25: ETL Scenarios Discussion 常见 ETL 场景讨论 | Tech Lead English</title>
+    <meta name="description" content="ETL Scenarios Discussion — 🎯 Full vs incremental load, late-arriving data, dedup, SFTP feeds, checksums, reconciliation breaks, retry queues, backfill. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/25-etl-scenarios-discussion.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 25: ETL Scenarios Discussion 常见 ETL 场景讨论 | Tech Lead English">
+    <meta property="og:description" content="ETL Scenarios Discussion — 🎯 Full vs incremental load, late-arriving data, dedup, SFTP feeds, checksums, reconciliation breaks, retry queues, backfill. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/25-etl-scenarios-discussion.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">25 · ETL Scenarios Discussion</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>ETL Scenarios Discussion</h1>
+        <p class="subtitle">Article 25 · Module 6: Reliability &amp; Delivery · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Full vs incremental load, late-arriving data, dedup, SFTP feeds, checksums, reconciliation, backfill</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 10:30 AM HKT</strong>, the weekly design huddle. You are <strong>Wei</strong>, Tech Lead of the <em>Data Platform</em> squad. With you are <strong>Raj</strong>, senior developer, and <strong>Lin</strong>, backend developer. The squad owns the nightly ETL that loads <em>card transactions</em> from the global acquirer feed into the <em>risk analytics mart</em> used by the Financial Crime team.</p>
+        <p>周二上午 10:30，每周设计讨论会。你是 <strong>Wei</strong>，<em>数据平台</em>squad 的 Tech Lead，同行的有高级开发 <strong>Raj</strong> 和后端开发 <strong>Lin</strong>。squad 负责夜间 ETL，把<em>卡交易</em>从全球收单方数据源加载进金融犯罪团队使用的<em>风险分析集市</em>。</p>
+        <p>Two live issues from last night: a <strong>failed reconciliation</strong> (row counts don't match between source and target) and a recurring <strong>late-arriving data</strong> problem. Beyond the fix, the BA has asked you to explain the behaviour <em>in business language</em> to the risk stakeholders — so the design discussion must end with a plain-English summary.</p>
+        <p>昨晚留下两个问题：一次<strong>对账失败</strong>（源和目标行数对不上），以及反复出现的<strong>晚到数据</strong>问题。除了修复，BA 还要求你用<em>业务语言</em>向风险干系人解释——所以设计讨论最后要落到一段大白话总结上。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Dev):</span>
+                <span class="text"><span class="en">Last night's reconciliation failed — source <em>1,204,558</em> rows, target <em>1,204,531</em>. Twenty-seven rows short. The risk team flagged it at 6 AM.</span><span class="cn">昨晚对账失败了——源 <em>1,204,558</em> 行，目标 <em>1,204,531</em> 行，差 27 行。风险团队早上 6 点就找过来了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Before we panic — <em>missing or collapsed?</em> Our dedup key is card number, transaction timestamp, and amount. If duplicates were collapsed by the dedup merge, a count break is expected and benign.</span><span class="cn">先别慌——是<em>真丢了还是被去重合并了？</em>我们的 dedup key 是卡号、交易时间戳、金额。如果是去重合并把重复行折叠了，行数差是预期内的、无害的。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">I traced it. Nine of the twenty-seven were <em>duplicates collapsed by design</em>. The other eighteen are genuinely absent — their timestamps show they <em>arrived after our cutoff</em>.</span><span class="cn">我追过了。27 行里有 9 行是<em>按设计去重折叠的</em>。另外 18 行是真的没有——时间戳显示它们<em>在我们的截数点之后才到</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Dev):</span>
+                <span class="text"><span class="en">That's the late-arriving pattern again. Some acquirer feeds promise T+1 but land at <em>T+2</em>. Our incremental job uses a <em>high-water mark</em> — once it advances past those rows, the next run skips them forever.</span><span class="cn">又是晚到数据的套路。有些收单 feed 承诺 T+1，实际 <em>T+2</em> 才到。我们的增量作业用<em>高水位</em>——水位一推进去过这些行，后面的作业就永远跳过它们。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Right. <em>Full load versus incremental load:</em> a full reload is simplest but ninety minutes and it hammers the source. We keep incremental — but add a <em>three-day lookback window</em>: each run re-scans the last three days instead of just since-watermark.</span><span class="cn">对。<em>全量 vs 增量：</em>全量重载最简单，但要 90 分钟还压垮源端。增量保留——但加一个 <em>3 天回看窗口</em>：每次作业重扫最近 3 天，而不是只扫水位之后。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">And the <em>out-of-order</em> rows? If day 3 arrives with a transaction dated day 1, a naive insert would duplicate or conflict.</span><span class="cn">那<em>乱序</em>数据呢？如果第 3 天的数据里带了一条第 1 天的交易，直接 insert 会重复或者冲突。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Merge, don't insert. Stage the rows, then <em>upsert</em> into the mart keyed on the dedup key — late or out-of-order rows simply overwrite with the same content. And make every re-run <em>idempotent</em>: same input, same result, no double-loading.</span><span class="cn">用合并，不要插入。先落 staging，再按 dedup key <em>upsert</em> 进集市——晚到或乱序行用相同内容覆盖即可。每次重跑都要<em>幂等</em>：同样输入、同样结果，绝不重复加载。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Dev):</span>
+                <span class="text"><span class="en">For rows that <em>fail transformation</em> — bad currency codes, malformed amounts — do we drop them silently?</span><span class="cn">那些<em>转换失败</em>的行——坏币种、格式错的金额——是悄悄丢掉吗？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Never silently. They go to a <em>dead-letter queue</em> — an error table with the original payload and the failure reason — we alert, fix, and <em>replay</em>. Silent drops are how banks lose transactions and auditors find out last.</span><span class="cn">绝不悄悄丢。进 <em>死信队列</em>——带原始报文和失败原因的错误表——告警、修复、<em>重放</em>。悄悄丢数据就是银行丢交易、审计最后才发现的方式。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">File side, we also had a <em>partial file</em> last night — the SFTP pickup grabbed a feed truncated mid-transfer.</span><span class="cn">文件侧昨晚还遇到一个<em>半截文件</em>——SFTP 抓取抓到了传输中途被截断的 feed。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Guard rail: validate the <em>checksum</em> from the feed spec — MD5 sidecar plus the trailer record count — <em>before</em> processing. Reject partial files, alert the upstream, re-poll for thirty minutes, then escalate. <em>Never load a partial file</em> — a reconciliation break is cheaper than corrupt data in the mart.</span><span class="cn">护栏：处理<em>之前</em>按 feed 规范校验<em>校验和</em>——MD5 伴随文件加尾部记录数。<em>绝不加载半截文件</em>——对账报错比把脏数据灌进集市便宜得多。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Lin (Dev):</span>
+                <span class="text"><span class="en">And if we ever need to reload a whole week — a schema fix, say?</span><span class="cn">如果要重灌整整一周呢——比如改了 schema？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">That's <em>backfill</em> — a documented runbook: truncate-and-reload <em>per partition</em> in staging, upsert to the mart, re-run reconciliation, and freeze risk reports until counts match. One owner, one channel, one checklist.</span><span class="cn">那就是 <em>backfill</em>——要有成文的 runbook：staging 里<em>按分区</em>清空重载，upsert 进集市，重跑对账，行数对上之前冻结风险报表。一个 owner、一个频道、一份清单。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text"><span class="en">The BA's real question though — how do we explain last night to the risk team without jargon?</span><span class="cn">不过 BA 真正的问题是——怎么不用行话跟风险团队解释昨晚的事？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><em>In business terms:</em> "Of 1.2 million transactions, twenty-seven landed late from the acquirer and will appear in tomorrow's report; nine were duplicates removed by design; zero data lost." Then agree the <em>reconciliation tolerance</em> and a single owner with the business, so a count break is a process, not a panic.</span><span class="cn"><em>用业务语言：</em>"120 万笔交易里，27 笔晚到，明天报表会补上；9 笔是按设计剔除的重复；零数据丢失。"然后跟业务方一起敲定<em>对账容差</em>和唯一 owner，让行数差走流程，而不是靠慌乱。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Dialogue Translation -->
+    <section class="article-section">
+        <h2>3. Full Dialogue Translation 全对话中文翻译</h2>
+        <div class="translation-block">
+            <div class="label">📖 全对话中文翻译 · Full Chinese Translation</div>
+            <p><strong>Lin（开发）：</strong>昨晚对账失败了——源 1,204,558 行，目标 1,204,531 行，差 27 行。风险团队早上 6 点就找过来了。</p>
+            <p><strong>你（TL）：</strong>先别慌——是真丢了还是被去重合并了？我们的 dedup key 是卡号、交易时间戳、金额。如果是去重合并把重复行折叠了，行数差是预期内的、无害的。</p>
+            <p><strong>Raj（高级开发）：</strong>我追过了。27 行里有 9 行是按设计去重折叠的。另外 18 行是真的没有——时间戳显示它们在我们的截数点之后才到。</p>
+            <p><strong>Lin（开发）：</strong>又是晚到数据的套路。有些收单 feed 承诺 T+1，实际 T+2 才到。我们的增量作业用高水位——水位一推进去过这些行，后面的作业就永远跳过它们。</p>
+            <p><strong>你（TL）：</strong>对。全量 vs 增量：全量重载最简单，但要 90 分钟还压垮源端。增量保留——但加一个 3 天回看窗口：每次作业重扫最近 3 天，而不是只扫水位之后。</p>
+            <p><strong>Raj（高级开发）：</strong>那乱序数据呢？如果第 3 天的数据里带了一条第 1 天的交易，直接 insert 会重复或者冲突。</p>
+            <p><strong>你（TL）：</strong>用合并，不要插入。先落 staging，再按 dedup key upsert 进集市——晚到或乱序行用相同内容覆盖即可。每次重跑都要幂等：同样输入、同样结果，绝不重复加载。</p>
+            <p><strong>Lin（开发）：</strong>那些转换失败的行——坏币种、格式错的金额——是悄悄丢掉吗？</p>
+            <p><strong>你（TL）：</strong>绝不悄悄丢。进死信队列——带原始报文和失败原因的错误表——告警、修复、重放。悄悄丢数据就是银行丢交易、审计最后才发现的方式。</p>
+            <p><strong>Raj（高级开发）：</strong>文件侧昨晚还遇到一个半截文件——SFTP 抓取抓到了传输中途被截断的 feed。</p>
+            <p><strong>你（TL）：</strong>护栏：处理之前按 feed 规范校验校验和——MD5 伴随文件加尾部记录数。拒绝半截文件、告警上游、轮询重试 30 分钟、再升级。绝不加载半截文件——对账报错比把脏数据灌进集市便宜得多。</p>
+            <p><strong>Lin（开发）：</strong>如果要重灌整整一周呢——比如改了 schema？</p>
+            <p><strong>你（TL）：</strong>那就是 backfill——要有成文的 runbook：staging 里按分区清空重载，upsert 进集市，重跑对账，行数对上之前冻结风险报表。一个 owner、一个频道、一份清单。</p>
+            <p><strong>Raj（高级开发）：</strong>不过 BA 真正的问题是——怎么不用行话跟风险团队解释昨晚的事？</p>
+            <p><strong>你（TL）：</strong>用业务语言："120 万笔交易里，27 笔晚到，明天报表会补上；9 笔是按设计剔除的重复；零数据丢失。"然后跟业务方一起敲定对账容差和唯一 owner，让行数差走流程，而不是靠慌乱。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Full load versus incremental load: full is simplest, incremental is cheapest.</em></span>
+                <span class="chinese">全量 vs 增量加载：全量最简单，增量最省资源</span>
+                <span class="note">The first trade-off to name in any feed design. Say which side you chose and why. 这是 feed 设计第一个要摆出来的取舍；说出你选了哪边、为什么。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The high-water mark advanced past those rows, so the next run skipped them forever.</em></span>
+                <span class="chinese">高水位推进过了那些行，下次作业就永远跳过</span>
+                <span class="note"><em>High-water mark</em> is the standard term for the "last processed position" in incremental loads. <em>High-water mark</em> 是增量加载"上次处理位置"的标准术语。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Add a three-day lookback window so late-arriving rows are still picked up.</em></span>
+                <span class="chinese">加一个 3 天回看窗口，让晚到的行也能被扫到</span>
+                <span class="note">The standard fix for T+2 feeds. Quantify the window against the worst upstream delay. 这是 T+2 feed 的标准修法；窗口大小按上游最大延迟来定。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Our dedup key is card number, timestamp, and amount — duplicates collapse on merge.</em></span>
+                <span class="chinese">去重键是卡号、时间戳、金额——合并时重复行被折叠</span>
+                <span class="note">Always name the dedup key explicitly — "duplicates" means nothing without it. 去重键要明确说出来——没有键，"重复"一词毫无意义。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Validate the checksum before processing — never load a partial file.</em></span>
+                <span class="chinese">处理前先校验校验和——绝不加载半截文件</span>
+                <span class="note"><em>Never…</em> statements are guard rails. Pair each with the cheaper failure: a count break beats corrupt data. "绝不…"句式是护栏；每条都配上更便宜的失败方式：对账报错好过脏数据。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Failed rows go to a dead-letter queue with the payload, and we replay after the fix.</em></span>
+                <span class="chinese">失败行带原始报文进死信队列，修复后重放</span>
+                <span class="note"><em>Replay</em> (not "re-run everything") shows you can recover surgically. 用 <em>replay</em>（重放）而不是"全部重跑"，说明你能外科手术式地恢复。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Re-runs must be idempotent — same input, same result, no double-loading.</em></span>
+                <span class="chinese">重跑必须幂等——同样输入、同样结果、不重复加载</span>
+                <span class="note"><em>Idempotent</em> is the word reviewers listen for in any re-run design. 任何重跑设计评审中，评审者都在等 <em>idempotent</em> 这个词。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Let's agree the reconciliation tolerance and a single owner with the business.</em></span>
+                <span class="chinese">和业务方一起敲定对账容差和唯一 owner</span>
+                <span class="note">Turns recurring count breaks from escalations into an agreed process. 把反复出现的行数差从"升级"变成"约定的流程"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>In business terms: nothing is lost — it just landed late and will show up tomorrow.</em></span>
+                <span class="chinese">用业务语言说：数据没丢——只是晚到了，明天会补上</span>
+                <span class="note"><em>In business terms</em> is the magic prefix that switches your register for stakeholders. <em>In business terms</em> 是切换到干系人频道的关键前缀。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Backfill is a runbook, not an improv: per partition, re-run reconciliation, freeze reports until counts match.</em></span>
+                <span class="chinese">Backfill 靠 runbook，不靠临场发挥：按分区、重跑对账、行数对上前冻结报表</span>
+                <span class="note"><em>Not an improv</em> signals discipline to juniors and confidence to auditors. <em>Not an improv</em> 向新人传递纪律，向审计传递可控。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>ETL (Extract, Transform, Load)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">抽取-转换-加载</span>
+                <span class="note">The pipeline pattern that moves data from source systems into a warehouse or mart. <em>ELT</em> loads first and transforms inside the target. 把数据从源系统搬进数仓/集市的管道模式；<em>ELT</em> 是先加载再在目标端转换。</span>
+            </li>
+            <li>
+                <span class="english"><strong>full load</strong> <span class="tag">n.</span></span>
+                <span class="chinese">全量加载</span>
+                <span class="note">Reload everything, every run. Simple and self-healing, but slow and heavy on the source. 每次全部重载。简单、能自愈，但慢且压源端。</span>
+            </li>
+            <li>
+                <span class="english"><strong>incremental load</strong> <span class="tag">n.</span></span>
+                <span class="chinese">增量加载</span>
+                <span class="note">Load only rows newer than the last processed position (the high-water mark). Fast, but misses late-arriving data unless widened. 只加载比上次处理位置（高水位）新的行。快，但不加宽窗口就会漏晚到数据。</span>
+            </li>
+            <li>
+                <span class="english"><strong>high-water mark</strong> <span class="tag">n.</span></span>
+                <span class="chinese">高水位（增量断点）</span>
+                <span class="note">The timestamp or sequence number of the last row processed. Stored by the job and compared on each run. 上次处理到的最新时间戳或序号；作业保存并在每次运行时比对。</span>
+            </li>
+            <li>
+                <span class="english"><strong>late-arriving data</strong> <span class="tag">n.</span></span>
+                <span class="chinese">晚到数据</span>
+                <span class="note">Rows that reach the pipeline after the cutoff that should have contained them — the classic cause of reconciliation breaks. 在本应包含它们的截数点之后才到达的数据——对账失败的典型原因。</span>
+            </li>
+            <li>
+                <span class="english"><strong>dedup / deduplication</strong> <span class="tag">n.</span></span>
+                <span class="chinese">去重</span>
+                <span class="note">Collapsing duplicate rows using a dedup key (natural key). Requires the key to be defined and agreed, not guessed. 用去重键（自然键）折叠重复行；键必须明确定义并达成一致，不能靠猜。</span>
+            </li>
+            <li>
+                <span class="english"><strong>upsert</strong> <span class="tag">v.</span></span>
+                <span class="chinese">有则更新、无则插入</span>
+                <span class="note">Update if the key exists, insert if it doesn't. The merge primitive that makes re-runs and late data safe. 键存在则更新，不存在则插入；是让重跑和晚到数据变安全的合并原语。</span>
+            </li>
+            <li>
+                <span class="english"><strong>staging table</strong> <span class="tag">n.</span></span>
+                <span class="chinese">暂存表</span>
+                <span class="note">An intermediate landing area between raw files and the target mart — validate, dedup, and transform there before publishing. 原始文件和目标集市之间的中转区——发布前先在这里校验、去重、转换。</span>
+            </li>
+            <li>
+                <span class="english"><strong>checksum</strong> <span class="tag">n.</span></span>
+                <span class="chinese">校验和</span>
+                <span class="note">A digest (MD5/SHA-256) delivered with a file to prove it arrived intact; in banking feeds often paired with a trailer record count. 随文件一起交付的摘要（MD5/SHA-256），用来证明文件完整送达；银行 feed 常配尾部记录数。</span>
+            </li>
+            <li>
+                <span class="english"><strong>reconciliation</strong> <span class="tag">n.</span></span>
+                <span class="chinese">对账</span>
+                <span class="note">Comparing counts and control totals (e.g., sum of amounts) between source and target to prove nothing was lost or duplicated. 比对源和目标的行数与控制总额（如金额合计），证明没有丢失或重复。</span>
+            </li>
+            <li>
+                <span class="english"><strong>dead-letter queue (DLQ)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">死信队列（错误表）</span>
+                <span class="note">Where rows that fail processing are parked with their payload and failure reason, awaiting fix and replay. 处理失败的行连同原始报文和失败原因一起停放的地方，等修复后重放。</span>
+            </li>
+            <li>
+                <span class="english"><strong>backfill</strong> <span class="tag">n./v.</span></span>
+                <span class="chinese">回填 / 重灌历史数据</span>
+                <span class="note">Re-processing a historical range after a fix. Must be idempotent, partitioned, and followed by reconciliation. 修复后重处理一段历史区间；必须幂等、按分区，并重新对账。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① "X versus Y: X is simplest, Y is cheapest" — the design trade-off frame</h3>
+        <p>Design discussions run on <em>X versus Y</em> frames: <em>full load versus incremental load</em>, <em>insert versus upsert</em>, <em>drop versus dead-letter</em>. Give both sides a one-adjective verdict (<em>simplest / cheapest / safest</em>), then state your choice. Never present only your preference — the comparison is what earns trust.</p>
+        <p>设计讨论靠 <em>X versus Y</em> 框架推进：<em>全量 vs 增量</em>、<em>insert vs upsert</em>、<em>丢弃 vs 死信</em>。给两边各一个形容词结论（<em>simplest / cheapest / safest</em>），再说出你的选择。只给偏好不给对比，赢不了信任。</p>
+        <h3>② Zero conditional for pipeline rules — "If X fails, we Y"</h3>
+        <p>Pipeline behaviour is stated with the zero conditional (if + present, present): <em>"If the checksum fails, we reject and re-poll."</em> <em>"If duplicates collapse, the count breaks by design."</em> This tense signals a permanent rule, not a one-off decision — exactly what a runbook needs.</p>
+        <p>管道规则用零条件句（if + 现在时, 现在时）表达：<em>"If the checksum fails, we reject and re-poll."</em> 这个时态表示永久规则而非临时决定——正是 runbook 需要的语气。</p>
+        <h3>③ "In business terms, ..." — the register-switch prefix</h3>
+        <p>When a stakeholder's eyes glaze over, reset with <em>"In business terms: ..."</em> followed by three facts — a number, a cause, a resolution time. "Twenty-seven transactions landed late; they will appear in tomorrow's report; zero data lost." Three beats, no jargon, done.</p>
+        <p>当干系人开始眼神涣散，用 <em>"In business terms: ..."</em> 重置话题，后面跟三个事实——一个数字、一个原因、一个解决时间。"27 笔晚到；明天报表补上；零数据丢失。"三拍收尾，零行话。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">💡 Explaining Data Gaps to Non-Technical Stakeholders</div>
+            <ul>
+                <li><strong>Lead with the outcome, not the pipeline.</strong> "Zero data lost, tomorrow's report is complete" lands before any talk of watermarks. 先讲结果，不讲管道。"零数据丢失、明天报表完整"永远放在高水位之前说。</li>
+                <li><strong>Pre-agree the tolerance.</strong> A count break within an agreed tolerance is a log entry; without one, it's a 6 AM escalation. 容差要提前约定。约定内的行数差只是一条日志；没约定就是早上 6 点的升级电话。</li>
+                <li><strong>Numbers, then cause, then ETA.</strong> "27 rows, late from the acquirer, in tomorrow's report." Stakeholders repeat that sentence to their bosses — write it for them. 数字→原因→时间点。"27 行、收单方晚到、明天补上。"干系人会把这句话转述给老板——替他们把话写好。</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Don't Blame the Upstream in Public Channels</div>
+            <ul>
+                <li>Say <em>"the feed arrived after our cutoff"</em> — a fact. Avoid <em>"the acquirer team messed up again"</em> — a relationship tax you pay at the next SLA negotiation. 说"feed 在截数点后才到"——是事实；别说"收单团队又搞砸了"——这是在下次 SLA 谈判前预付的关系税。</li>
+                <li>Raise feed SLA gaps through the agreed channel with data attached (timestamps, counts), not in a group chat pile-on. feed SLA 问题要走约定渠道并附数据（时间戳、行数），不要在群聊里围攻。</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ Credit-Sharing in Data Work</div>
+            <ul>
+                <li><strong>Name the tracer.</strong> "Raj traced eighteen rows to the cutoff; Lin ruled out dedup first." Precise credit makes juniors volunteer for the next investigation. 点名追查者："Raj 把 18 行追到了截数点；Lin 先排除了去重。"精确的功劳归属会让新人主动认领下一次排查。</li>
+                <li><strong>Share the fix, not just the finding.</strong> A TL who publishes the lookback-window design — with Raj as author — turns a one-off fix into squad knowledge. 公布修复方案并署名 Raj，把一次性修复变成 squad 知识。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (stakeholder summary style):</div>
+                <p>"120 万笔交易中，27 笔由收单方晚到，会出现在明天的报表里；9 笔是按设计剔除的重复；零数据丢失。我们已加了一个 3 天回看窗口，并和业务方约定了对账容差。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Of 1.2 million transactions, twenty-seven landed late from the acquirer and will appear in tomorrow's report; nine were duplicates removed by design; zero data lost. We have added a three-day lookback window and agreed a reconciliation tolerance with the business."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Pick the correct handling — your SFTP pickup grabs a file whose checksum does not match. What do you do?</div>
+                <ol>
+                    <li>Load it anyway — most rows look fine, and reconciliation will catch issues.</li>
+                    <li>Reject the file, alert the upstream, re-poll for thirty minutes, escalate if it never arrives, and never load a partial file.</li>
+                    <li>Wait silently and load tomorrow's file instead — no alert needed.</li>
+                    <li>Manually edit the file to fix the truncated rows, then load it.</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ② is correct. ① corrupts the mart — a reconciliation break after loading is far more expensive than before. ③ hides the incident and breaks the SLA trail. ④ is a data-integrity and audit violation — never hand-edit feeds. ② 正确。① 会污染集市——加载后再对账的代价远高于加载前。③ 隐瞒事故、破坏 SLA 留痕。④ 违反数据完整性和审计要求——绝不手工改 feed 文件。
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — design the fix, then explain it:</div>
+                <p>Your nightly incremental ETL skips late-arriving rows because the high-water mark has advanced. Write: (1) two English sentences describing the root cause technically, and (2) two English sentences explaining the impact and fix in business terms. Use <em>high-water mark</em>, <em>lookback window</em>, and <em>upsert</em>.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    (1) "Our incremental job advances the high-water mark each run, so rows that arrive after the cutoff are skipped permanently. Because the acquirer feeds land at T+2 against a T+1 promise, late transactions never enter the mart." (2) "In business terms: some transactions miss the daily risk report and appear a day late — nothing is lost. We are adding a three-day lookback window and merging late rows with an upsert, so tomorrow's report is complete without a full reload."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="24-dr-resilience-improvement.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">24 · DR Design &amp; Resilience Improvements</span>
+        </a>
+        <a class="next" href="26-hands-on-delivery-quality-gate.html">
+            <span class="label">Next Article →</span>
+            <span class="title">26 · Hands-on Delivery &amp; Quality Gate</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 25 · ETL Scenarios Discussion · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

@@ -6,17 +6,30 @@
 
 ![Tech](https://img.shields.io/badge/Tech-HTML%20%2B%20Vanilla%20JS%20%2B%20Bootstrap%205-blue)
 ![No Build](https://img.shields.io/badge/Build-None-success)
-![Articles](https://img.shields.io/badge/Articles-220-orange)
+![Articles](https://img.shields.io/badge/Articles-236-orange)
 ![Roles](https://img.shields.io/badge/Roles-8%20%2B%203%20Scenario%20Series-purple)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
+## 🌐 在线直接访问 / Read Online — 无需部署！
+
+<p align="center">
+  <a href="https://moshowgame.github.io/IT-English-Learning-System/">
+    <strong>🚀 点此直接打开 → https://moshowgame.github.io/IT-English-Learning-System/</strong>
+  </a>
+</p>
+
+> ✅ **已部署在 GitHub Pages，无需 clone / 无需 deploy / 无需任何配置** — 点击上方链接即可开始学习，支持手机直接访问。
+> ✅ **Already live on GitHub Pages — no deploy, no setup needed.** Click the link above and start learning, works on mobile too.
+
+---
+
 ## ✨ 项目简介 / About
 
-本系统专为 **外企银行 IT 从业者** 设计，覆盖 **八大 IT 角色** 与 **三大通用场景系列** 共 220 篇文章，聚焦 **实用口语** 表达。每篇文章都包含真实业务场景、英文对话、关键句型、词汇、语法点与练习题。
+本系统专为 **外企银行 IT 从业者** 设计，覆盖 **八大 IT 角色** 与 **三大通用场景系列** 共 236 篇文章，聚焦 **实用口语** 表达。每篇文章都包含真实业务场景、英文对话、关键句型、词汇、语法点与练习题。
 
-This learning system is designed for **IT professionals working in foreign banks**. It covers daily English communication across **eight core IT roles** plus **three cross-role scenario series** — 220 articles in total, with a strong focus on **practical speaking** in real workplace contexts.
+This learning system is designed for **IT professionals working in foreign banks**. It covers daily English communication across **eight core IT roles** plus **three cross-role scenario series** — 236 articles in total, with a strong focus on **practical speaking** in real workplace contexts.
 
 ## 🎯 核心特色 / Features
 
@@ -24,6 +37,7 @@ This learning system is designed for **IT professionals working in foreign banks
 |---|---|
 | 🏦 **真实业务场景** | SWIFT、KYC、AML、PCI-DSS 等外企银行专有术语 |
 | 🗣️ **实用口语优先** | 每篇文章均配 1 段英文对话 + 紧跟小字体中文解读 |
+| 🔊 **语音朗读 TTS** | 每段对话可整段连播 / 逐句朗读，支持语速调节与当前句高亮（详见下方专节） |
 | 👥 **八大角色全覆盖** | BA / Developer / Tech Lead / Architect / PM / CyberSecurity&IAM / Senior Manager / Business Sponsor |
 | 🧭 **通用场景系列** | 求职面试 · 入职30天生存英语 · 职场社交 Small Talk（跨角色） |
 | 📚 **五大训练模块** | Daily Standup · Meeting · Written · Difficult Conversations · Banking Context |
@@ -36,6 +50,21 @@ This learning system is designed for **IT professionals working in foreign banks
 | 🖨️ **打印友好** | 文章打印自动隐藏导航 / footer / donate / 弹窗 |
 | 🔌 **零依赖部署** | 纯静态 HTML + CDN，无需构建 |
 
+## 🔊 语音朗读 / Text-to-Speech（浏览器 TTS）
+
+无需任何插件或 API Key，**打开文章即可听** — 基于 Web Speech API（浏览器内置语音合成）：
+
+| 功能 | 说明 |
+|---|---|
+| ▶ **整段对话连播** | 对话区顶部 "🔊 朗读 / Listen" → "▶ 播放整段对话"，逐句朗读并**自动红色高亮当前句** |
+| 🔉 **逐句朗读** | 每句对话右侧 🔊 小按钮，点击即读该句英文 |
+| ⚡ **语速调节** | 0.75x / 0.9x / 1x / 1.25x，选择自动保存（localStorage），下次访问保持 |
+| 🇬🇧 **英式发音优先** | 自动优先选择 en-GB 英式语音（贴合 HSBC 场景），无英式时回退 en-US 美式 |
+| 📝 **句型 / 词汇也能听** | Key Phrases 与 Vocabulary 每个条目均带 🔊 按钮 |
+| 🔌 **离线兜底** | 纯浏览器端合成，不联网也能朗读；Chrome / Edge 体验最佳 |
+
+> 💡 使用建议：先 0.75x 慢速跟读，熟悉后切回 1x 正常语速做影子跟读（shadowing）练习。
+
 ## 📂 项目结构 / Project Structure
 
 ```
@@ -45,14 +74,14 @@ it-english/
 ├── sitemap.xml / robots.txt      # SEO
 ├── assets/
 │   ├── css/common.css            # 现代化公共样式（设计令牌、毛玻璃导航、卡片体系）
-│   ├── js/common.js              # 公共脚本（原生JS：答案开关、返回顶部、QR lightbox、footer注入）
+│   ├── js/common.js              # 公共脚本（原生JS：角色下拉导航、语音朗读TTS、答案开关、返回顶部、QR lightbox、footer注入）
 │   ├── js/ai-config.js           # AI 服务配置（BYO Key，localStorage）
 │   ├── js/ai-reader.js           # AI 翻译 / 角色扮演 / 出题
 │   └── images/favicon.svg        # 站点图标
-├── ba/                           # 📊 业务分析师（20 篇）
-├── developer/                    # 💻 开发者（20 篇）
-├── tech-lead/                    # 🛠️ 技术负责人（20 篇，已统一编号）
-├── architect/                    # 🏗️ 架构师（20 篇）
+├── ba/                           # 📊 业务分析师（21 篇）
+├── developer/                    # 💻 开发者（22 篇）
+├── tech-lead/                    # 🛠️ 技术负责人（26 篇，已统一编号）
+├── architect/                    # 🏗️ 架构师（24 篇）
 ├── pm/                           # 📅 项目经理（20 篇）
 ├── itso/                         # 🔐 网络安全与身份管理（20 篇）
 ├── senior-manager/               # 👔 董事总经理 / 总监（20 篇）
@@ -66,8 +95,8 @@ it-english/
 ```
 
 每个板块目录都包含：
-- `index.html` — 板块入口 + 20 篇文章导航（按五大模块分组）
-- `articles/01-*.html` ~ `articles/20-*.html` — 20 篇文章
+- `index.html` — 板块入口 + 文章导航（按模块分组，含各角色 Module 6 进阶场景）
+- `articles/01-*.html` 起 — 各角色 20~26 篇文章
 
 ## 🎓 八大角色 / Eight Roles
 
@@ -117,9 +146,14 @@ it-english/
 - ✅ 双击 `index.html` 即可浏览
 - ✅ 适合作为学习材料长期保存
 - ✅ 部署到 GitHub Pages / Gitee Pages 零成本
-- ✅ `tools/` 内的 Perl 批量脚本负责跨 233 个页面的幂等批量修改，兼得"无构建"与"可维护"
+- ✅ `tools/` 内的 Perl 批量脚本负责跨 250 个页面的幂等批量修改，兼得"无构建"与"可维护"
 
 ## 🚀 快速开始 / Getting Started
+
+### 方式 0：在线访问（最简单，无需任何安装）
+
+> 🌐 **站点已部署在 GitHub Pages，直接打开即用：**
+> ### <https://moshowgame.github.io/IT-English-Learning-System/>
 
 ### 方式 1：直接打开（推荐本地浏览）
 ```bash
@@ -148,7 +182,9 @@ php -S localhost:8000
 
 然后访问 <http://localhost:8000>。
 
-### 方式 3：部署到 GitHub Pages
+### 方式 3：部署到自己的 GitHub Pages
+
+> 本仓库已在线上运行（[moshowgame.github.io/IT-English-Learning-System](https://moshowgame.github.io/IT-English-Learning-System/)）；如需部署你自己的副本：
 
 1. 把仓库 push 到 GitHub
 2. Settings → Pages → Source 选 `main` 分支根目录
@@ -194,7 +230,7 @@ php -S localhost:8000
 - [ ] 员工视角晋升/调薪谈判系列
 - [ ] 新角色板块：QA/测试、DevOps/SRE、数据、Product Owner
 - [ ] 词汇闪卡与学习进度追踪（localStorage）
-- [ ] TTS 朗读（Web Speech API，免费离线）
+- [ ] 神经语音预生成音频（Edge TTS，多角色音色，作为浏览器 TTS 的升级）
 
 ## ⚠️ 安全提示 / Security Note
 

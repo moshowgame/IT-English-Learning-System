@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 22: Cucumber Test Automation Cucumber BDD 测试自动化 | Tech Lead English</title>
+    <meta name="description" content="Cucumber Test Automation — 🎯 Gherkin feature files, three-amigo sessions, step definitions, living documentation, tagging, CI reporting, flaky steps. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/22-cucumber-test-automation.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 22: Cucumber Test Automation Cucumber BDD 测试自动化 | Tech Lead English">
+    <meta property="og:description" content="Cucumber Test Automation — 🎯 Gherkin feature files, three-amigo sessions, step definitions, living documentation, tagging, CI reporting, flaky steps. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/22-cucumber-test-automation.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">22 · Cucumber Test Automation</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cucumber Test Automation</h1>
+        <p class="subtitle">Article 22 · Module 6: Engineering Automation · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟢 Beginner-friendly</span>
+            <span>🎯 Gherkin, three amigos, step definitions, living documentation, CI reporting</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Tuesday, 2:00 PM HKT</strong>, in a sprint where the Payment Gateway squad is building the <em>daily payment limit</em> feature (story <strong>PAY-330</strong>). You have booked a 45-minute <em>three-amigo session</em> — the BA, the QA, and you as <em>Tech Lead</em>. The goal: turn the story's <em>acceptance criteria</em> into <strong>Cucumber feature files</strong> that everyone — business included — can read.</p>
+
+        <p>周二下午 2 点香港时间。Payment Gateway squad 正在开发<em>日累计支付限额</em>功能（故事 <strong>PAY-330</strong>）。你订了一个 45 分钟的 <em>three-amigo 会议</em>——BA、QA 加上你这位 <em>Tech Lead</em>。目标：把故事的<em>验收标准</em>变成人人都读得懂——包括业务方——的 <strong>Cucumber feature 文件</strong>。</p>
+
+        <p>Joining you are <strong>Priya</strong>, the BA (Mumbai), and <strong>Mei</strong>, the QA (Hong Kong). The ground rule you set: <em>the Gherkin stays business-readable; the implementation detail lives elsewhere</em>. By the end, the feature file will be <strong>living documentation</strong> — it describes what the system does, and it is executed by CI on every merge.</p>
+
+        <p>参会的是 BA <strong>Priya</strong>（孟买）和 QA <strong>Mei</strong>（香港）。你定的基本规则：<em>Gherkin 保持业务可读；实现细节住在别处</em>。会议结束时，feature 文件将成为<strong>活文档</strong>——它描述系统行为，并且 CI 在每次合并时都执行它。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Thanks for making time. This is a <em>three-amigo session</em> — BA, QA, dev perspective. Story PAY-330, the <em>daily payment limit</em>. Priya, walk us through the acceptance criteria, and we'll turn them into <em>Gherkin</em> as we go.</span>
+                    <span class="cn">谢谢两位抽时间。这是 <em>three-amigo 会议</em>——BA、QA、开发三方视角。故事 PAY-330，<em>日累计支付限额</em>。Priya，先过一遍验收标准，我们边听边转成 <em>Gherkin</em>。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text">
+                    <span class="en">First rule from the business: <em>Given a customer with a daily limit of 50,000 HKD, When they submit a payment of 60,000 HKD, Then the payment is rejected</em> — with a clear "limit exceeded" message, <em>and no money leaves the account</em>.</span>
+                    <span class="cn">业务第一条规则：<em>Given 一个日限额 5 万港币的客户，When 提交一笔 6 万港币的支付，Then 支付被拒绝</em>——提示"超出限额"，<em>且资金不离开账户</em>。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">That's a <em>textbook Given / When / Then</em> — precondition, action, observable outcome. And notice the last clause: <em>"no money leaves the account"</em>. That's the business risk stated as a checkable outcome. Keep that precision and the feature file becomes <em>living documentation</em> — it describes the system and proves it, on every CI run.</span>
+                    <span class="cn">这是<em>教科书级的 Given / When / Then</em>——前置条件、动作、可观察的结果。注意最后一句：<em>"资金不离开账户"</em>。这是把业务风险写成了可验证的结果。保持这种精确度，feature 文件就成了<em>活文档</em>——既描述系统，又在每次 CI 运行时证明它。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">I'll draft the feature file. One scenario per business rule, plus the edge cases the ticket is missing: <em>the boundary</em> — exactly 50,000 should go through; and <em>cumulative limits</em> — two payments of 30,000 and 25,000 mean the second one is rejected even though each is under the limit.</span>
+                    <span class="cn">我来起草 feature 文件。每条业务规则一个 scenario，再加上工单里漏掉的边界情况：<em>边界值</em>——正好 5 万应该放行；<em>累计限额</em>——3 万加 2.5 万两笔，第二笔要被拒，虽然单笔都没超限。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text">
+                    <span class="en">The cumulative rule is the one the business actually cares about — good catch. And use a <em>Background</em> section for the shared precondition: "Given a verified customer with a daily limit of 50,000 HKD" — so we don't repeat it in every scenario.</span>
+                    <span class="cn">累计规则才是业务真正在意的——抓得好。另外把公共前置条件放到 <em>Background</em> 段："Given 一个日限额 5 万港币的已验证客户"——免得每个 scenario 都重复一遍。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">Agreed. And I'll keep the steps <em>business-readable</em>: "When the customer submits a payment of 60,000 HKD" — <em>no button names, no CSS selectors, no URLs</em>. If the UI redesigns next month, the feature file shouldn't change.</span>
+                    <span class="cn">同意。我会让步骤保持<em>业务可读</em>："When 客户提交一笔 6 万港币的支付"——<em>不写按钮名、不写 CSS 选择器、不写 URL</em>。就算下个月 UI 改版，feature 文件也不该跟着改。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Exactly — <strong>Gherkin is the contract, implementation is the plumbing</strong>. Mei, the <em>step definitions</em> glue the two together: a C# method annotated <em>[When(@"the customer submits a payment of {int} HKD")]</em> — the <em>{int}</em> captures the amount from the sentence and passes it to the code.</span>
+                    <span class="cn">完全正确——<strong>Gherkin 是契约，实现是管道</strong>。Mei，<em>step definition</em> 把两者粘起来：一个标注了 <em>[When(@"the customer submits a payment of {int} HKD")]</em> 的 C# 方法——<em>{int}</em> 从句子里捕获金额传给代码。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">And for the BA side of the house: Jenkins will publish the <em>Cucumber report</em> on every run — scenario names in plain English, green or red, with step-level detail. We'll <em>tag</em> the scenarios — <em>@payments @smoke @regression</em> — so the pipeline runs <em>@smoke on every merge</em> and the full tagged suite nightly. Priya, you can filter the report by tag and read it like a status page.</span>
+                    <span class="cn">再说说 BA 关心的部分：Jenkins 每次运行都会发布 <em>Cucumber 报告</em>——scenario 名字是纯英文，绿或红，带步骤级细节。我们还会给 scenario 打 <em>tag</em>——<em>@payments @smoke @regression</em>——流水线<em>每次合并跑 @smoke</em>，每夜跑全量打标套件。Priya，你可以按 tag 过滤报告，像看状态页一样读它。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">One risk I want on the table early: <em>flaky step implementations</em>. The cumulative-limit check waits on the <em>async ledger update</em> — sometimes the step races the backend and goes red randomly. I don't want to paper over it with infinite retries.</span>
+                    <span class="cn">我想早点把一个风险摆到桌面上：<em>flaky 的 step 实现</em>。累计限额检查要等<em>异步账务更新</em>——有时步骤和后端抢跑，随机变红。我不想用无限重试把它糊弄过去。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Agreed — <em>fix the wait, don't mask it</em>. The step should wait on the ledger event or poll with a timeout, not sleep and hope. A <em>retry policy</em> is a monitoring tool, not a repair: if a scenario is red, <strong>red must mean broken</strong>. The day "green means nothing" is the day the business stops reading the report.</span>
+                    <span class="cn">同意——<em>修等待逻辑，别掩盖它</em>。步骤应该等账务事件或带超时轮询，而不是睡一觉赌运气。<em>重试策略是监控手段，不是修复手段</em>：scenario 变红，<strong>红就必须等于真的坏了</strong>。哪天"绿了也不代表什么"，业务方就不会再看这份报告了。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Priya (BA):</span>
+                <span class="text">
+                    <span class="en">Then let's make it official: the feature file, the step definitions, and the code land in <em>the same pull request</em> — and my sign-off is reading the scenarios, not clicking through test cases. <strong>The scenarios are the acceptance criteria, executable.</strong></span>
+                    <span class="cn">那咱们把它定成规矩：feature 文件、step definition 和代码进<em>同一个 pull request</em>——我的签批就是读 scenario，而不是逐个点测试用例。<strong>scenario 就是可执行的验收标准。</strong></span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Deal. Actions: Mei drafts the feature file today and I review it for <em>readability</em> before any code; step definitions go in the same PR as the implementation; the pipeline runs the tagged suite and publishes the report. If this sticks, <em>our acceptance criteria stop rotting in Jira and start running in Jenkins</em>.</span>
+                    <span class="cn">成交。行动项：Mei 今天起草 feature 文件，写代码前我先做<em>可读性</em>评审；step definition 和实现进同一个 PR；流水线跑打标套件并发布报告。如果坚持下来，<em>我们的验收标准就不再在 Jira 里烂掉，而是在 Jenkins 里跑起来</em>。</span>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="translation-block">
+            <div class="label">🇨🇳 对话全文中文翻译 Full Chinese Translation</div>
+            <p><strong>You (TL)：</strong>谢谢两位抽时间。这是 three-amigo 会议——BA、QA、开发三方视角。故事 PAY-330，日累计支付限额。Priya，先过一遍验收标准，我们边听边转成 Gherkin。</p>
+
+            <p><strong>Priya (BA)：</strong>业务第一条规则：Given 一个日限额 5 万港币的客户，When 提交一笔 6 万港币的支付，Then 支付被拒绝——提示"超出限额"，且资金不离开账户。</p>
+
+            <p><strong>You (TL)：</strong>这是教科书级的 Given / When / Then——前置条件、动作、可观察的结果。注意最后一句："资金不离开账户"。这是把业务风险写成了可验证的结果。保持这种精确度，feature 文件就成了活文档——既描述系统，又在每次 CI 运行时证明它。</p>
+
+            <p><strong>Mei (QA)：</strong>我来起草 feature 文件。每条业务规则一个 scenario，再加上工单里漏掉的边界情况：边界值——正好 5 万应该放行；累计限额——3 万加 2.5 万两笔，第二笔要被拒，虽然单笔都没超限。</p>
+
+            <p><strong>Priya (BA)：</strong>累计规则才是业务真正在意的——抓得好。另外把公共前置条件放到 Background 段："Given 一个日限额 5 万港币的已验证客户"——免得每个 scenario 都重复一遍。</p>
+
+            <p><strong>Mei (QA)：</strong>同意。我会让步骤保持业务可读："When 客户提交一笔 6 万港币的支付"——不写按钮名、不写 CSS 选择器、不写 URL。就算下个月 UI 改版，feature 文件也不该跟着改。</p>
+
+            <p><strong>You (TL)：</strong>完全正确——Gherkin 是契约，实现是管道。Mei，step definition 把两者粘起来：一个标注了 [When(@"the customer submits a payment of {int} HKD")] 的 C# 方法——{int} 从句子里捕获金额传给代码。</p>
+
+            <p><strong>You (TL)：</strong>再说说 BA 关心的部分：Jenkins 每次运行都会发布 Cucumber 报告——scenario 名字是纯英文，绿或红，带步骤级细节。我们还会给 scenario 打 tag——@payments @smoke @regression——流水线每次合并跑 @smoke，每夜跑全量打标套件。Priya，你可以按 tag 过滤报告，像看状态页一样读它。</p>
+
+            <p><strong>Mei (QA)：</strong>我想早点把一个风险摆到桌面上：flaky 的 step 实现。累计限额检查要等异步账务更新——有时步骤和后端抢跑，随机变红。我不想用无限重试把它糊弄过去。</p>
+
+            <p><strong>You (TL)：</strong>同意——修等待逻辑，别掩盖它。步骤应该等账务事件或带超时轮询，而不是睡一觉赌运气。重试策略是监控手段，不是修复手段：scenario 变红，红就必须等于真的坏了。哪天"绿了也不代表什么"，业务方就不会再看这份报告了。</p>
+
+            <p><strong>Priya (BA)：</strong>那咱们把它定成规矩：feature 文件、step definition 和代码进同一个 pull request——我的签批就是读 scenario，而不是逐个点测试用例。scenario 就是可执行的验收标准。</p>
+
+            <p><strong>You (TL)：</strong>成交。行动项：Mei 今天起草 feature 文件，写代码前我先做可读性评审；step definition 和实现进同一个 PR；流水线跑打标套件并发布报告。如果坚持下来，我们的验收标准就不再在 Jira 里烂掉，而是在 Jenkins 里跑起来。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>This is a three-amigo session — BA, QA, dev perspective.</em></span>
+                <span class="chinese">这是 three-amigo 会议——BA、QA、开发三方视角。</span>
+                <span class="note">Name the format and the roles upfront; it sets expectations that everyone contributes, not just listens. 开场先说明会议形式与角色，确立"人人贡献"的预期。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Given a customer with a daily limit of 50,000 HKD, When they submit a payment of 60,000 HKD, Then the payment is rejected.</em></span>
+                <span class="chinese">Given 一个日限额 5 万的客户，When 提交 6 万的支付，Then 支付被拒绝。</span>
+                <span class="note">The Given / When / Then skeleton: precondition / action / observable outcome. If "Then" isn't observable, it isn't a test yet. Given/When/Then 三段式：前置/动作/可观察结果。Then 不可观察就还不是测试。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The feature file becomes living documentation.</em></span>
+                <span class="chinese">feature 文件成为活文档。</span>
+                <span class="note">"Living" = it can't go stale, because CI executes it. Contrast with Word documents that describe last year's system. "Living" 指因 CI 持续执行而永不过时，对比会过时的 Word 文档。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Keep the steps business-readable — no button names, no CSS selectors.</em></span>
+                <span class="chinese">步骤保持业务可读——不写按钮名、不写 CSS 选择器。</span>
+                <span class="note">The one rule that keeps BA engagement. Implementation detail in Gherkin couples your documentation to your UI. 这条规则保住 BA 的参与度；Gherkin 里混实现细节会让文档绑死 UI。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Gherkin is the contract, implementation is the plumbing.</em></span>
+                <span class="chinese">Gherkin 是契约，实现是管道。</span>
+                <span class="note">A quotable separation-of-concerns line. The contract changes when business rules change — never when code refactors. 契约只在业务规则变化时改，重构时永远不改。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The step definitions glue the two together — {int} captures the amount from the sentence.</em></span>
+                <span class="chinese">step definition 把两者粘起来——{int} 从句子里捕获金额。</span>
+                <span class="note">Step definitions = 从 Gherkin 步骤到代码的粘合层。Parameter capture ({int}, {string}) is what keeps one step reusable for many scenarios. 参数捕获让一个步骤服务多个 scenario。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>We tag the scenarios — @smoke on every merge, the full tagged suite nightly.</em></span>
+                <span class="chinese">给 scenario 打 tag——每次合并跑 @smoke，每夜跑全量打标套件。</span>
+                <span class="note">Tags are how CI selects subsets. Fast feedback first (@smoke), depth later (@regression) — the same shape as your pipeline gates. Tag 是 CI 的选择器；先快反馈后全深度，与流水线门禁同构。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Flaky step implementations — I don't want to paper over it with infinite retries.</em></span>
+                <span class="chinese">flaky 的 step 实现——我不想用无限重试糊弄过去。</span>
+                <span class="note">"Paper over" = 掩盖而非修复. QA engineers who raise flakiness early are protecting the report's credibility — back them. QA 主动暴露 flaky 是在保护报告公信力，TL 要力挺。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>If a scenario is red, red must mean broken.</em></span>
+                <span class="chinese">scenario 变红，红就必须等于真的坏了。</span>
+                <span class="note">The TL's trust principle in one sentence. Retries may be a monitoring tool, never a repair strategy. 一句话讲透测试公信力；重试可以是监控手段，但不能是修复策略。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Deal — the scenarios are the acceptance criteria, executable.</em></span>
+                <span class="chinese">成交——scenario 就是可执行的验收标准。</span>
+                <span class="note">"Deal" closes a negotiation in one word; pairing it with the shared artifact makes the agreement concrete. 一个词敲定共识，配上共同工件让约定落地。</span>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+
+            <li><strong>BDD (Behaviour-Driven Development)</strong> n. 行为驱动开发
+                A practice where business behaviour is specified in shared, readable examples that are then automated as tests.</li>
+
+            <li><strong>Cucumber</strong> n. Cucumber 测试框架
+                The BDD tool that executes Gherkin feature files against step definitions in Java, C#, JavaScript and more.</li>
+
+            <li><strong>Gherkin</strong> n. Gherkin 语法
+                The structured, business-readable language of feature files — keywords: Feature, Scenario, Given, When, Then, And, Background.</li>
+
+            <li><strong>Feature file</strong> n. 特性文件
+                A text file (e.g., daily-payment-limit.feature) holding scenarios for one business capability — the unit of living documentation.</li>
+
+            <li><strong>Scenario</strong> n. 场景
+                One concrete example of behaviour: a Given/When/Then sequence that CI can execute and report green or red.</li>
+
+            <li><strong>Step definition</strong> n. 步骤定义
+                The code behind a Gherkin step — an annotated method (Java annotation / C# attribute) that parses parameters like {int} and drives the system.</li>
+
+            <li><strong>Given / When / Then</strong> phr. 前置/动作/结果
+                The Gherkin trio: Given sets preconditions, When performs the action, Then asserts the observable outcome.</li>
+
+            <li><strong>Background</strong> n. 公共前置
+                A feature-file section holding steps shared by every scenario, so preconditions aren't repeated.</li>
+
+            <li><strong>Tag</strong> n. 标签
+                A label (@smoke, @regression, @payments) used to select which scenarios a CI job runs and to filter reports.</li>
+
+            <li><strong>Living documentation</strong> n. 活文档
+                Documentation that cannot go stale because it is executed by CI on every change — the feature files and their reports.</li>
+
+            <li><strong>Three amigos</strong> n. 三剑客会议
+                BA + QA + dev reviewing a story together before build — turning acceptance criteria into shared examples.</li>
+
+            <li><strong>Flaky test</strong> n. 不稳定测试
+                A test that passes and fails randomly without a product change — usually a race, a wait problem, or environment noise.</li>
+
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "Turn X into Y" — the workshop verb</h3>
+
+        <p>Three-amigo sessions are transformations: <em>turn the acceptance criteria into Gherkin; turn user stories into scenarios; turn the feature file into living documentation</em>. This verb frames the meeting as producing an artifact, not just talk.</p>
+
+        <p>three-amigo 会议是"转化"：<em>把验收标准转成 Gherkin；把故事转成 scenario；把 feature 文件变成活文档</em>。这个动词把会议定义为产出工件，而不是闲聊。</p>
+
+        <ul>
+            <li>✅ <em>"We'll turn these three acceptance criteria into two scenarios and one Background."</em></li>
+        </ul>
+
+        <h3>② "X must mean Y" — defining semantic contracts</h3>
+
+        <p>Use this pattern when defining what test results mean. Stronger than "should" — it's a definition, not a preference.</p>
+
+        <p>定义测试结果的语义时用这个句式。比 should 强——这是定义，不是偏好。</p>
+
+        <ul>
+            <li>✅ <em>"Red must mean broken; green must mean releasable."</em></li>
+            <li>✅ <em>"A scenario must mean a business rule, not a button."</em></li>
+        </ul>
+
+        <h3>③ "Paper over" / "race the backend" — test-failure idioms</h3>
+
+        <p>Two idioms QA engineers use constantly. Use them and QA will know you've been in their shoes.</p>
+
+        <p>QA 高频习语。用上它们，QA 立刻知道你懂行。</p>
+
+        <ul>
+            <li><em>Paper over</em> = 掩盖 — hide the symptom instead of fixing it: <em>"Don't paper over the race with retries."</em></li>
+            <li><em>Race the backend</em> = 和后端抢跑 — a timing race causing flakiness: <em>"The step races the ledger update."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+
+        <div class="tip-box">
+            <div class="tip-title">💡 Making the BA a first-class citizen of your test suite</div>
+            <ol>
+
+                <li><strong>Invite the BA to read the Cucumber report, not the code.</strong>
+                    "Priya, filter by @payments — every green line is a business rule we just proved." Shared ownership of quality starts with shared artifacts.</li>
+
+                <li><strong>Review feature files for readability before code exists.</strong>
+                    If the BA can't predict what a scenario does, the scenario is wrong — fix it before step definitions fossilize it.</li>
+
+                <li><strong>Sign-off by reading, not clicking.</strong>
+                    "My sign-off is reading the scenarios" — this reframes UAT from manual clicking to reviewing executable evidence.</li>
+
+                <li><strong>Keep acronyms out of scenario titles.</strong>
+                    "Cumulative payments exceeding daily limit are rejected" beats "CLX-04 negative path v2". The title is documentation too.</li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <div class="title">⚠️ The two ways BDD efforts die</div>
+            <ul>
+
+                <li>❌ <strong>Gherkin that leaks implementation.</strong>
+                    "When I click the #submitPayBtn div" — one UI refactor and your living documentation dies as dead documentation.</li>
+
+                <li>❌ <strong>Chasing green with retries.</strong>
+                    A step that retries 5 times "until it passes" hides real races. Flakiness compounds; trust in the report evaporates.</li>
+
+                <li>❌ <strong>Feature files written after the code.</strong>
+                    If tests are reverse-engineered from the implementation, they prove the code, not the business rule — BDD without the B.</li>
+
+                <li>✅ <em>"Scenarios are written in the three-amigo session, before the code, in the same PR."</em>
+                    That ordering is the whole discipline.</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <div class="title">✅ Reporting BDD wins upward</div>
+            <p>When the PM asks "is PAY-330 tested?", the old answer is "QA is 70% through the test cases".</p>
+            <p>The new answer: <em>"11 scenarios green on the last CI run — here's the report, readable in English, including the cumulative-limit rule the business flagged."</em></p>
+            <p>Executives can't read unit test coverage, but they <strong>can read a scenario</strong>. That is the day quality stops being a black box.</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the three-amigo kickoff into English:</div>
+                <p>"这是 three-amigo 会议。目标：把 PAY-330 的验收标准转成 Gherkin。规则：步骤保持业务可读——不写按钮名、不写选择器；Gherkin 是契约，实现是管道；公共前置条件放 Background；scenario 打 @smoke 和 @regression 标签，每次合并跑 smoke，每夜跑全量。feature 文件、step definition 和代码进同一个 PR。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <p>"This is a <em>three-amigo session</em>. Goal: <em>turn the PAY-330 acceptance criteria into Gherkin</em>.</p>
+                    <p>Ground rules: <em>keep the steps business-readable — no button names, no selectors</em>; <em>Gherkin is the contract, implementation is the plumbing</em>; shared preconditions go in a <em>Background</em> section; scenarios get <em>@smoke and @regression tags</em> — <em>@smoke on every merge, the full tagged suite nightly</em>.</p>
+                    <p>The feature file, the step definitions and the code land in <em>the same PR</em>."</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Write the Gherkin — cumulative limit edge case:</div>
+                <p>Business rule: a customer with a 50,000 HKD daily limit pays 30,000, then 25,000. The second payment must be rejected even though each payment alone is under the limit. Write the scenario in Given / When / Then English, using a Background precondition.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p><em>Background:</em><br>
+                    Given a verified customer with a daily limit of 50,000 HKD</p>
+                    <p><em>Scenario: Cumulative payments exceeding the daily limit are rejected</em><br>
+                    Given the customer has already paid 30,000 HKD today<br>
+                    When the customer submits a payment of 25,000 HKD<br>
+                    Then the payment is rejected with a "daily limit exceeded" message<br>
+                    And the total paid today remains 30,000 HKD</p>
+                    <p>(Note the final And-step: <em>"the total paid today remains 30,000 HKD"</em> — an observable outcome about money, exactly the precision a BA looks for.)</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play: QA reports a flaky step — respond as TL</div>
+                <p>Mei tells you: "The cumulative-limit step went red twice this week, green after re-running. It waits on the async ledger update." Respond: (a) your diagnosis, (b) your policy on retries, (c) the fix you expect, (d) how you'd track flakiness going forward.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p>"Thanks for flagging it early — <em>flaky tests rot trust in the report</em>, so let's fix the wait, not mask it.</p>
+                    <p><em>Diagnosis:</em> the step is racing the backend — the ledger update is async, and the assertion fires before the event lands.</p>
+                    <p><em>Policy:</em> a retry policy is a monitoring tool, not a repair — <em>if a scenario is red, red must mean broken</em>; we don't paper over it with infinite retries.</p>
+                    <p><em>Fix:</em> the step definition should wait on the ledger event, or poll the account balance with a timeout and a clear failure message — no sleep-and-hope.</p>
+                    <p><em>Tracking:</em> we tag the scenario @flaky-candidate, watch the Cucumber report trend, and review flakiness weekly — if it stays red for reasons we can't explain, it gets fixed before we merge anything else. Green means something, or the whole suite means nothing."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrap-up -->
+    <section class="article-section">
+        <h2>8. Key Takeaways 本篇要点</h2>
+        <div class="success-box">
+            <div class="title">🎓 What you can now run as TL</div>
+            <ol>
+
+                <li><strong>Run a three-amigo session</strong> — BA reads the ACs, QA drafts scenarios, dev checks feasibility, all before code.</li>
+
+                <li><strong>Keep Gherkin at the business layer</strong> — contract vs plumbing; Background for shared preconditions.</li>
+
+                <li><strong>Make the pipeline read the tags</strong> — @smoke on merge, @regression nightly, reports the BA can actually read.</li>
+
+                <li><strong>Defend report credibility</strong> — fix waits, don't mask them; red must mean broken.</li>
+
+                <li><strong>Ship it as one PR</strong> — feature file, step definitions, implementation, together.</li>
+            </ol>
+            <p><em>Practice tip:</em> In your next story kickoff, open with <em>"Let's turn these acceptance criteria into scenarios — business-readable ones."</em> One sentence, and the BA knows this sprint will be different.</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="21-cicd-jenkins-ansible-powershell.html">
+            <span class="label">← Previous</span>
+            <span class="title">21 · CI/CD Pipeline — Jenkins + Ansible + PowerShell</span>
+        </a>
+        <a class="next" href="23-playwright-ui-testing.html">
+            <span class="label">Next Article →</span>
+            <span class="title">23 · Playwright UI Testing</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 22 · Cucumber Test Automation · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

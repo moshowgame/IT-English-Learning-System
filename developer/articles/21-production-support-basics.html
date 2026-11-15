@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 21: Production Support Basics 生产支持入门 | Developer English</title>
+    <meta name="description" content="Production Support Basics 生产支持入门 — 🚨 Sev1/Sev2/Sev3 levels, joining the incident bridge, triage and status-update templates. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Developer English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/developer/articles/21-production-support-basics.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 21: Production Support Basics 生产支持入门 | Developer English">
+    <meta property="og:description" content="Production Support Basics 生产支持入门 — 🚨 Sev1/Sev2/Sev3 levels, joining the incident bridge, triage and status-update templates. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Developer English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/developer/articles/21-production-support-basics.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Developer</a></li>
+                <li class="breadcrumb-item active">21 · Production Support Basics</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Production Support Basics</h1>
+        <p class="subtitle">Article 21 · Module 6: Production Support &amp; Debugging · Developer English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🟠 Intermediate — real incident scenario</span>
+            <span>🎯 Sev levels · Incident bridge · Triage · Status updates</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>09:35 AM HKT on a Tuesday morning</strong>. You are a backend developer on the HSBC Payments team,
+            and <strong>this week you are the on-call developer</strong> for your service — the
+            <em>corporate payment file upload service</em> on HSBCnet.
+        </p>
+        <p>
+            周二上午9点35分（香港时间）。你是汇丰支付团队的后端开发工程师，本周轮到你担任
+            <em>企业付款文件上传服务</em>的值班开发（on-call）。
+        </p>
+        <p>
+            Your pager suddenly fires: the <strong>Ops team (Marcus, from the NOC in Kuala Lumpur)</strong> has opened a
+            Sev2 incident — corporate users in Hong Kong and Singapore cannot upload payment files.
+            <strong>Priya (your Tech Lead, UK)</strong>, <strong>Amanda (Service Desk, Hong Kong)</strong> and
+            <strong>Helen (BA, Hong Kong)</strong> are joining the incident bridge.
+        </p>
+        <p>
+            告警突然响起：运维团队（吉隆坡NOC的Marcus）开出了一个 Sev2 事件——香港和新加坡的企业用户无法上传付款文件。
+            技术负责人 Priya（英国）、服务台 Amanda（香港）和业务分析师 Helen（香港）即将加入故障应急会议。
+        </p>
+        <p>
+            Your job in the first 15 minutes: <strong>acknowledge the page, join the bridge, assess the impact,
+            triage the category</strong> (code bug? data issue? environment problem? upstream system?), offer a
+            workaround, and post the first status update to users.
+        </p>
+        <p>
+            你在前15分钟要做的事：<strong>确认告警、加入应急会议、评估影响面、给问题归类</strong>
+            （代码缺陷？数据问题？环境问题？上游系统问题？），提供临时解决方案，并向用户发布第一次状态更新。
+        </p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Ops):</span>
+                <span class="text"><span class="en">Sev2 incident <strong>INC3345</strong> opened: Payments File Upload failing for HK corporate users since 09:15 HKT. <em>Wei, you're on-call</em> — please acknowledge the page.</span><span class="cn">Sev2 事件 INC3345 已创建：香港企业用户从 09:15 起付款文件上传失败。Wei，本周你值班——请确认告警。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Acknowledged, Marcus. <em>I'm acknowledging the page in PagerDuty</em> and joining the bridge now. <strong>Give me two minutes</strong> to get my logs open.</span><span class="cn">收到，Marcus。我现在在 PagerDuty 里确认告警，马上加入应急会议。给我两分钟把日志打开。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Ops):</span>
+                <span class="text"><span class="en">The bridge is open — Teams channel <strong>INC-3345-Bridge</strong>. Priya is joining as tech lead, and the service desk is on as well.</span><span class="cn">应急会议已开启——Teams 频道 INC-3345-Bridge。Priya 作为技术负责人加入，服务台也在线。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Amanda (Service Desk):</span>
+                <span class="text"><span class="en">Hi Wei — we've logged <strong>14 tickets</strong> so far. Users see <em>"File validation failed — contact support"</em> when uploading payment files on HSBCnet.</span><span class="cn">Wei 你好，目前我们已登记 14 张工单。用户在 HSBCnet 上传付款文件时会看到“文件校验失败——请联系支持”。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Thanks, Amanda. <strong>First question: who's impacted, and since when?</strong> And is anything else affected — for example, payment status enquiry?</span><span class="cn">谢谢 Amanda。第一个问题：影响面有多大，从什么时候开始的？其他功能有没有受影响——比如付款状态查询？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Amanda (Service Desk):</span>
+                <span class="text"><span class="en">Around <strong>40 users</strong> in Hong Kong and Singapore, started at 09:15. Status enquiry works fine — it's only the upload function.</span><span class="cn">香港和新加坡大约 40 位用户，从 09:15 开始。状态查询正常——只有上传功能出问题。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">OK, <strong>let's triage quickly: is it code, data, environment, or upstream?</strong> Wei — when did we last deploy to production?</span><span class="cn">好，我们快速分类排查一下：是代码、数据、环境还是上游系统的问题？Wei——我们最后一次部署到生产是什么时候？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><em>Last deployment was ten days ago</em>, so I'm ruling out a recent code change. I'm pulling Splunk logs now, filtered on the upload service with this morning's timestamps.</span><span class="cn">最后一次部署是十天前，所以可以先排除近期代码变更。我现在拉取 Splunk 日志，按上传服务过滤，时间范围是今天上午。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en"><strong>Early finding:</strong> every failure correlates with records from this morning's inbound file from the corporate channel — <em>looks like a data issue rather than a code bug</em>. Possibly an upstream file format change.</span><span class="cn">初步发现：所有失败都和今早企业渠道传入的文件记录相关——看起来是数据问题而不是代码缺陷。可能是上游文件格式变更了。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Helen (BA):</span>
+                <span class="text"><span class="en">That matches what I'm hearing — the upstream team ran a release over the weekend. <strong>I can confirm with them</strong> while you verify the logs.</span><span class="cn">和我这边听到的一致——上游团队周末上线了一个版本。你去核实日志，我去跟他们确认。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Priya (TL):</span>
+                <span class="text"><span class="en">Good. <strong>Can we give users a workaround</strong> while we confirm the root cause?</span><span class="cn">很好。在确认根因之前，能不能先给用户提供一个临时解决方案？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You:</span>
+                <span class="text"><span class="en">Yes — files converted back to the previous format upload successfully, so the service desk can offer that as an <strong>interim workaround</strong>. I'll post the first status update now: <em>"Impact: payment file upload failing for HK and SG corporate users since 09:15 HKT. Cause under investigation: suspected upstream file format change. Workaround available via the service desk. Next update in 30 minutes."</em> If the 11:00 file also fails, <strong>I'll escalate to the upstream team formally</strong>.</span><span class="cn">可以——把文件转换回旧格式后上传是成功的，服务台可以先把这作为临时方案。我现在就发第一条状态更新：“影响：香港和新加坡企业用户自 09:15（香港时间）起付款文件上传失败。原因调查中：疑似上游文件格式变更。临时方案：请联系服务台。30 分钟后提供下一次更新。”如果 11:00 的文件也失败，我会正式向团队升级上报。</span></span>
+            </div>
+        </div>
+
+        <div class="translation-block">
+            <div class="label">🇨🇳 Full Chinese Translation 对话全文翻译</div>
+            <p><strong>Marcus（运维）：</strong>Sev2 事件 INC3345 已创建：香港企业用户从 09:15（香港时间）起付款文件上传失败。Wei，本周你值班——请确认告警。</p>
+            <p><strong>你：</strong>收到，Marcus。我现在在 PagerDuty 里确认告警，马上加入应急会议。给我两分钟把日志打开。</p>
+            <p><strong>Marcus（运维）：</strong>应急会议已开启——Teams 频道 INC-3345-Bridge。Priya 作为技术负责人加入，服务台也在线。</p>
+            <p><strong>Amanda（服务台）：</strong>Wei 你好，目前我们已登记 14 张工单。用户在 HSBCnet 上传付款文件时会看到“文件校验失败——请联系支持”。</p>
+            <p><strong>你：</strong>谢谢 Amanda。第一个问题：影响面有多大，从什么时候开始的？其他功能有没有受影响——比如付款状态查询？</p>
+            <p><strong>Amanda（服务台）：</strong>香港和新加坡大约 40 位用户，从 09:15 开始。状态查询正常——只有上传功能出问题。</p>
+            <p><strong>Priya（技术负责人）：</strong>好，我们快速分类排查一下：是代码、数据、环境还是上游系统的问题？Wei——我们最后一次部署到生产是什么时候？</p>
+            <p><strong>你：</strong>最后一次部署是十天前，所以可以先排除近期代码变更。我现在拉取 Splunk 日志，按上传服务过滤，时间范围是今天上午。</p>
+            <p><strong>你：</strong>初步发现：所有失败都和今早企业渠道传入的文件记录相关——看起来是数据问题而不是代码缺陷。可能是上游文件格式变更了。</p>
+            <p><strong>Helen（业务分析师）：</strong>和我这边听到的一致——上游团队周末上线了一个版本。你去核实日志，我去跟他们确认。</p>
+            <p><strong>Priya（技术负责人）：</strong>很好。在确认根因之前，能不能先给用户提供一个临时解决方案？</p>
+            <p><strong>你：</strong>可以——把文件转换回旧格式后上传是成功的，服务台可以先把这作为临时方案。我现在就发第一条状态更新：“影响：香港和新加坡企业用户自 09:15（香港时间）起付款文件上传失败。原因调查中：疑似上游文件格式变更。临时方案：请联系服务台。30 分钟后提供下一次更新。”如果 11:00 的文件也失败，我会正式向上游团队升级上报。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Acknowledged — I'm acknowledging the page and joining the bridge now.</em></span>
+                <span class="chinese">收到——我正在确认告警，马上加入应急会议。</span>
+                <span class="note">First words on any incident. Acknowledge fast, even if you have nothing to say yet. 故障响应的第一句话：先确认，再行动。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>First question: who's impacted, and since when?</em></span>
+                <span class="chinese">第一个问题：影响面有多大，从什么时候开始的？</span>
+                <span class="note">Impact + timeframe is the first thing every incident commander asks. 影响范围和时间点是事件响应的第一要素。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">CORE</span> <em>Impact: … Cause under investigation: … Next update in 30 minutes.</em></span>
+                <span class="chinese">影响：…… 原因调查中：…… 30分钟后提供下一次更新。</span>
+                <span class="note">The standard 3-part status update template. Memorize it — you'll use it under pressure. 标准三段式状态更新模板，建议背下来。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Let's triage: is it code, data, environment, or upstream?</em></span>
+                <span class="chinese">我们来分类排查：代码、数据、环境，还是上游系统？</span>
+                <span class="note">The 4-way triage question. Asking it out loud keeps the bridge focused. 四向分类法，让应急会议聚焦不发散。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Last deployment was ten days ago, so I'm ruling out a recent code change.</em></span>
+                <span class="chinese">最后一次部署是十天前，所以可以先排除近期代码变更。</span>
+                <span class="note"><em>Rule out</em> = eliminate a possibility with evidence. Always justify it. 用证据排除可能性，要说明理由。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>It looks like a data issue rather than a code bug.</em></span>
+                <span class="chinese">看起来是数据问题，而不是代码缺陷。</span>
+                <span class="note"><em>Rather than</em> makes the contrast polite and evidence-based. 用 rather than 让对比显得客观、有依据。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Can we offer users a workaround while we confirm the root cause?</em></span>
+                <span class="chinese">在确认根因之前，能不能先给用户提供临时方案？</span>
+                <span class="note">Workaround first, root cause second — restoring service beats finding the bug. 先恢复业务，再找根因。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag red">FORMAL</span> <em>If the next file also fails, I'll escalate to the upstream team formally.</em></span>
+                <span class="chinese">如果下一个文件也失败，我会正式向上游团队升级上报。</span>
+                <span class="note"><em>Formally</em> signals an official escalation path with tickets — not just a chat message. 表示走正式上报流程，不是私下打招呼。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Please raise tickets through the service desk so we can track the full impact.</em></span>
+                <span class="chinese">请统一通过服务台提交工单，方便我们统计完整影响面。</span>
+                <span class="note">Directing users to the service desk keeps impact counts accurate for the incident record. 引导用户走服务台，保证影响统计准确。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>I'll hand over to the APAC on-call at 6 PM with a written summary.</em></span>
+                <span class="chinese">下午6点我会带书面总结交接给亚太区值班同事。</span>
+                <span class="note"><em>Hand over</em> = pass the incident to the next shift. Always do it in writing. 交接班要书面化，避免信息丢失。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>on-call</strong> /ɒn kɔːl/ <span class="tag red">adj.</span></span>
+                <span class="chinese">值班的 / 待命的</span>
+                <span class="note">轮到你响应生产故障。<em>"I'm on-call this week"</em> = 我这周值班。On-call 通常按周轮换（rotation），有补偿或调休。</span>
+            </li>
+            <li>
+                <span class="english"><strong>page / paging</strong> /peɪdʒ/ <span class="tag red">v. &amp; n.</span></span>
+                <span class="chinese">呼叫值班人员 / 告警通知</span>
+                <span class="note">通过 PagerDuty、OpsGenie 等工具向值班人推送紧急告警。<em>"I got paged at 2 AM."</em> = 我凌晨两点被告警叫醒。名词形式 <em>a page</em>。</span>
+            </li>
+            <li>
+                <span class="english"><strong>incident bridge</strong> <span class="tag">n.</span></span>
+                <span class="chinese">故障应急会议（桥）</span>
+                <span class="note">重大故障时专设的电话/Teams 会议，各角色实时在线。<em>"Join the bridge"</em> = 加入应急会。桥上保持安静纪律：只说结论和事实。</span>
+            </li>
+            <li>
+                <span class="english"><strong>Sev1 / Sev2 / Sev3</strong> <span class="tag gold">HSBC</span></span>
+                <span class="chinese">严重级别 1 / 2 / 3（Severity）</span>
+                <span class="note">Sev1 = 核心服务中断、重大客户影响、无临时方案；Sev2 = 主要功能降级但有临时方案；Sev3 = 小范围、影响有限，工作时间处理即可。</span>
+            </li>
+            <li>
+                <span class="english"><strong>triage</strong> /ˈtriɑːʒ/ <span class="tag">v. &amp; n.</span></span>
+                <span class="chinese">分类排查 / 判定问题类别</span>
+                <span class="note">源自医疗分诊。开发语境下指快速判定问题属于 code / data / environment / upstream 哪一类，并确定优先级。</span>
+            </li>
+            <li>
+                <span class="english"><strong>impact</strong> /ˈɪmpækt/ <span class="tag">n.</span></span>
+                <span class="chinese">影响（面）</span>
+                <span class="note">多少用户、多少交易、哪些地区受影响。<em>"What's the customer impact?"</em> 状态更新必须先讲 impact。</span>
+            </li>
+            <li>
+                <span class="english"><strong>workaround</strong> /ˈwɜːkəraʊnd/ <span class="tag">n.</span></span>
+                <span class="chinese">临时解决方案 / 绕行方案</span>
+                <span class="note">让用户先能干活的办法，不等于修复（fix）。<em>"interim workaround"</em> = 临时过渡方案。</span>
+            </li>
+            <li>
+                <span class="english"><strong>escalate / escalation</strong> /ˈeskəleɪt/ <span class="tag red">v. / n.</span></span>
+                <span class="chinese">升级上报 / 上报流程</span>
+                <span class="note">自己搞不定或需要更高权限/其他团队介入时走正式流程。<em>"follow the escalation path"</em> = 按升级路径上报，不是越级吵架。</span>
+            </li>
+            <li>
+                <span class="english"><strong>service desk</strong> <span class="tag gold">HSBC</span></span>
+                <span class="chinese">服务台 / IT服务台</span>
+                <span class="note">用户报障第一入口，在 ServiceNow 里登记工单（ticket）。They triage user reports and track impact counts.</span>
+            </li>
+            <li>
+                <span class="english"><strong>incident commander (IC)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">故障指挥官</span>
+                <span class="note">重大故障中负责指挥协调、控制沟通节奏和决策的角色，不一定是最资深的人。<em>"Who's the IC?"</em></span>
+            </li>
+            <li>
+                <span class="english"><strong>handover</strong> /ˈhændəʊvər/ <span class="tag">n.</span></span>
+                <span class="chinese">（值班）交接</span>
+                <span class="note">跨时区团队必做：交班前写书面总结（现状、下一步、联系人），<em>"handover notes"</em> 交接纪要。</span>
+            </li>
+            <li>
+                <span class="english"><strong>on-call rota / rotation</strong> <span class="tag">n.</span></span>
+                <span class="chinese">值班轮换表</span>
+                <span class="note">团队轮流承担 on-call 的排班表。<em>"It's your turn on the rota next week."</em> 交班时用 handover notes 把在办事件逐条说清楚。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Severity & Templates -->
+    <section class="article-section">
+        <h2>5. Triage Guide &amp; Severity Levels 分级排查与严重级别</h2>
+
+        <h3>① Triage decision guide 四向分类排查法</h3>
+        <ul>
+            <li><strong>Code bug 代码缺陷:</strong> started right after a deployment; reproducible in dev; stack traces point to your own code. Key question: <em>"When did we last deploy to production?"</em></li>
+            <li><strong>Data issue 数据问题:</strong> only specific records or files fail; the service itself is healthy; errors follow the data, not the release. Key question: <em>"Is it every record, or specific ones?"</em></li>
+            <li><strong>Environment / infra issue 环境/基础设施问题:</strong> timeouts, connection refused, disk full, memory pressure; no recent code change; several services affected at once. Key question: <em>"Are other services on the same host affected?"</em></li>
+            <li><strong>Upstream / downstream issue 上下游系统问题:</strong> your code is unchanged but the input changed; failures correlate with another team's release or file. Key question: <em>"Did the upstream team run a release this weekend?"</em></li>
+        </ul>
+        <p>技巧：先用一个问题排除两类，再集中验证剩下两类——这正是对话里 Priya 那句
+        <em>"is it code, data, environment, or upstream?"</em> 的用法。</p>
+        <p>
+            One more habit worth building: <strong>write the triage conclusion down</strong> on the incident ticket —
+            <em>"Ruled out code change (last deploy 10 days ago); data issue suspected"</em> — so late joiners
+            don't repeat the same questions.
+        </p>
+        <p>
+            养成一个好习惯：把排查结论<strong>写进事件工单</strong>（如“已排除近期代码变更；疑似数据问题”），
+            让后加入应急会的人不必重复提问。
+        </p>
+
+        <h3>② Severity definitions 严重级别定义（典型银行实践）</h3>
+        <ul>
+            <li><strong>Sev1 (Critical)</strong> — Core service down or at risk, major client impact, no workaround. All-hands on the bridge, incident commander assigned, <em>status updates every 30 minutes</em>, management notified.</li>
+            <li><strong>Sev2 (High)</strong> — Major function degraded but a workaround exists, or impact is limited to one region/product. <em>Status updates every hour</em>, bridge opened if diagnosis needs multiple teams.</li>
+            <li><strong>Sev3 (Medium/Low)</strong> — Minor issue, few users affected, workaround available. Handled in business hours, <em>daily update</em> on the ticket is enough.</li>
+        </ul>
+        <p>注：级别由 impact（影响面）和 urgency（紧急度）共同决定；宁可先定高一级，之后可以降级（downgrade），很难升级追认。</p>
+
+        <h3>③ Template A — First update (within 15–30 minutes) 首次状态更新模板</h3>
+        <p><em>"Impact: payment file upload is failing for corporate users in HK and SG since 09:15 HKT (~40 users, ~120 transactions queued). Cause under investigation: we are checking this morning's inbound file feed. Workaround: available via the service desk. Next update in 30 minutes."</em></p>
+
+        <h3>④ Template B — Follow-up update 后续更新模板</h3>
+        <p><em>"Update 10:20 HKT: Root cause identified — the upstream file format changed over the weekend. Fix in progress; ETA for data fix is 22:00 HKT tonight. Workaround remains available. Next update in 45 minutes."</em></p>
+
+        <h3>⑤ Template C — Resolution update 恢复通报模板</h3>
+        <p><em>"Resolved 22:40 HKT: the data fix and backfill completed at 22:35; upload service verified healthy with the 23:00 file. All queued transactions have been processed. Post-incident review scheduled for Thursday. Incident INC3345 will be closed after user confirmation."</em></p>
+        <p>记住三要素：<strong>事实（fact）、时间（time stamp）、下一步（next step + next update time）</strong>。没有新进展也要按节奏发 "no change" 更新，让用户安心。</p>
+
+        <h3>⑥ Status update: say this, not that 状态更新措辞对照</h3>
+        <ul>
+            <li>❌ <em>"It's broken again, we're looking into it."</em> → ✅ <em>"File upload is failing for HK users since 09:15 HKT; we are checking the inbound file feed."</em> — specifics beat vagueness.</li>
+            <li>❌ <em>"We have no idea what's happening."</em> → ✅ <em>"Cause is under investigation; we are reviewing logs for the 09:38 file."</em> — same meaning, professional tone.</li>
+            <li>❌ <em>"The upstream team broke it."</em> → ✅ <em>"Suspected upstream file format change — confirming with the upstream team."</em></li>
+            <li>❌ <em>"It should be fixed soon."</em> → ✅ <em>"ETA for the data fix is 22:00 HKT tonight."</em> — commit to a timestamp, not a feeling.</li>
+        </ul>
+
+        <h3>⑦ On-call first-15-minutes checklist 值班前15分钟行动清单</h3>
+        <ul>
+            <li><strong>0–2 min:</strong> Acknowledge the page; open/join the incident bridge and the incident channel.</li>
+            <li><strong>2–5 min:</strong> Ask impact + timeframe; check whether the service is fully down or partially degraded.</li>
+            <li><strong>5–10 min:</strong> Rule out the obvious (recent deploy, infra alerts); pull logs filtered on the failing function.</li>
+            <li><strong>10–15 min:</strong> Post the first status update (Template A); agree the update cadence with the incident commander.</li>
+        </ul>
+
+        <h3>⑧ Escalate or not? 上报的判断标准</h3>
+        <ul>
+            <li><strong>Escalate when:</strong> impact is growing, you need another team's action, or the fix needs approval above your level.</li>
+            <li><strong>How to escalate well:</strong> facts + what you need + by when — <em>"We need the upstream team to confirm today's file format change by 12:00, or we cannot unblock users."</em></li>
+            <li><strong>It's not a failure.</strong> Escalating early is professionalism, not weakness——汇丰文化里宁可早升级，不要硬扛到 Sev 级别上升。</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① Present continuous for live incident status 用现在进行时播报现场进展</h3>
+        <p>
+            On a bridge, actions happening right now use the <strong>present continuous</strong> — it signals
+            "this is in progress as I speak":
+        </p>
+        <ul>
+            <li>✅ <em>"I'm <strong>pulling</strong> the logs now."</em> / <em>"We're <strong>checking</strong> the inbound file feed."</em></li>
+            <li>❌ <em>"I pull the logs now."</em> — sounds like a habit, not an action in progress.</li>
+            <li>States and facts stay in the simple present: <em>"Status enquiry <strong>works</strong> fine."</em></li>
+        </ul>
+
+        <h3>② "Rule out" — evidence-based exclusion 用证据排除可能性</h3>
+        <p>
+            <strong>Rule out</strong> + noun phrase = 排除某种可能性。Always attach the reason, so your exclusion
+            sounds credible instead of dismissive:
+        </p>
+        <ul>
+            <li>✅ <em>"Last deployment was ten days ago, so I'm <strong>ruling out</strong> a recent code change."</em></li>
+            <li>✅ <em>"We can <strong>rule out</strong> network issues — other services on the same host are healthy."</em></li>
+            <li>❌ <em>"It's probably not the code."</em> — vague guessing without evidence.</li>
+        </ul>
+
+        <h3>③ "I'll…" for decisions made on the spot 用 will 表达现场决策</h3>
+        <p>
+            When a decision is made during the conversation itself, English prefers <strong>will</strong> over
+            <em>going to</em>:
+        </p>
+        <ul>
+            <li>✅ <em>"If the 11:00 file also fails, <strong>I'll escalate</strong> to the upstream team."</em> — decided now, live on the bridge.</li>
+            <li>✅ <em>"<strong>I'll post</strong> the first status update now."</em></li>
+            <li>Use <em>going to</em> only for plans already fixed before the call: <em>"We're going to run the backfill tonight anyway."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化/职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🚨 Status-Update Cadence During Incidents 故障中的汇报节奏</div>
+            <ul>
+                <li><strong>Set the cadence and keep it.</strong> Say "next update in 30 minutes" and actually deliver — even if the message is "no change, still investigating".</li>
+                <li><strong>Timestamp everything</strong> with the timezone (<em>09:15 HKT / 01:15 UTC</em>) — HK, London and KL will all read the same thread.</li>
+                <li><strong>Keep the same channel.</strong> Updates go on the bridge / incident channel, not scattered across private chats.</li>
+                <li><strong>Write updates for people who just joined.</strong> Someone opens the bridge late — repeat impact and current status, don't just say "as I mentioned".</li>
+                <li><strong>Short &gt; beautiful.</strong> Bullet points beat paragraphs when everyone is stressed.</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ "I don't know yet" is acceptable 说“还不知道”是可以的</div>
+            <ul>
+                <li>Saying <em>"I don't know yet, but here's what I'm checking next"</em> sounds <strong>professional</strong>, not weak — guessing on a bridge is what actually damages trust.</li>
+                <li>Use the 3-part honest answer: <em>"What we know: X. What we don't know: Y. What we're doing: Z."</em></li>
+                <li>If you truly can't assess yet, say <em>"I need 10 more minutes"</em> with a concrete time — a vague delay is the only real mistake.</li>
+                <li>中文语境里“我确认一下再回复”很常见；英文直接说 <em>"Let me verify and come back to you in 10 minutes"</em> 同样加分。</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Avoid Blaming Upstream Teams in Writing 书面沟通避免指责上游团队</div>
+            <ul>
+                <li>❌ <em>"The upstream team broke it again."</em> — incident records are permanent and often quoted in reviews and audits.</li>
+                <li>✅ <em>"Suspected upstream file format change — confirming with the upstream team."</em> — neutral, factual, verifiable.</li>
+                <li>Describe the <strong>system and the change</strong>, never the <strong>people</strong>. Blame in writing travels far and is impossible to take back.</li>
+                <li>同样的规则适用于中文沟通——口头吐槽可以，落到书面（工单、邮件、频道）永远只写事实。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (状态更新模板):</div>
+                <p>"影响：香港企业用户自上午9点15分起无法上传付款文件，约40位用户受影响。原因调查中：正在核查今早的入站文件。30分钟后提供下一次更新。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Impact: corporate users in Hong Kong cannot upload payment files since 09:15 HKT (~40 users affected).
+                    Cause under investigation: we are checking this morning's inbound file.
+                    Next update in 30 minutes."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the blanks:</div>
+                <p>"<em>I'm _____ (acknowledge) the page and joining the _____ (应急会议) now. It looks like a _____ (数据问题) rather than a code bug. If the next file also fails, I'll _____ (升级上报) to the upstream team.</em>"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <em>acknowledging</em> (present continuous) / <em>bridge</em> / <em>data issue</em> / <em>escalate</em> (will + base form)
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play (周日早上8点你被告警叫醒):</div>
+                <p>A Sev2 page fires at 08:00 on Sunday: the payment status enquiry service is returning errors for HK users. Write (1) your acknowledgment message to Ops, and (2) your first status update to users. Use the 3-part template.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    (1) "Acknowledged — I'm joining the bridge in two minutes, getting my logs open now."
+                    (2) "Impact: payment status enquiry returning errors for HK corporate users since 08:00 HKT; file upload is unaffected. Cause under investigation: checking application logs and last night's batch jobs. No workaround yet — we'll update in 30 minutes."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="20-hsbc-systems-and-process.html">
+            <span class="label">← Previous</span>
+            <span class="title">20 · HSBC Systems &amp; Process</span>
+        </a>
+        <a class="next" href="22-debugging-production-issue.html">
+            <span class="label">Next Article →</span>
+            <span class="title">22 · Debugging a Production Issue</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 21 · Production Support Basics · Developer English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

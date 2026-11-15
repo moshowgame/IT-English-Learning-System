@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 21: ETL Spark Solution Architecture Spark ETL 方案架构 | Architect English</title>
+    <meta name="description" content="ETL Spark Solution Architecture — 🎯 Proposing a Spark-based ETL platform: driver/executor model, batch vs micro-batch vs streaming, incremental loads by business date, Databricks vs EMR, and a PoC with exit criteria. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/21-etl-spark-solution.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 21: ETL Spark Solution Architecture Spark ETL 方案架构 | Architect English">
+    <meta property="og:description" content="ETL Spark Solution Architecture — 🎯 Proposing a Spark-based ETL platform: driver/executor model, batch vs micro-batch vs streaming, incremental loads by business date, Databricks vs EMR, and a PoC with exit criteria. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/21-etl-spark-solution.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">21 · ETL Spark Solution Architecture</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>ETL Spark Solution Architecture</h1>
+        <p class="subtitle">Article 21 · Module 6: Solution Proposals & Stakeholder Alignment · Architect English</p>
+        <div class="meta">
+            <span>⏱ 11 min read</span>
+            <span>🟡 Intermediate</span>
+            <span>🎯 Proposing a Spark ETL platform: cluster model, batch vs micro-batch, incremental loads, and a PoC with exit criteria</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Tuesday, 2:00 PM HKT</strong>. You are a Solution Architect in the
+            <em>RBWM Data</em> tribe. The nightly ETL that feeds the wealth-platform reporting
+            mart runs on <strong>40+ SQL stored procedures wrapped in shell scripts</strong>,
+            orchestrated by <strong>Control-M</strong>, all on a single vertically-scaled database
+            box. On an average night the batch takes <strong>four hours</strong> against a
+            six-hour window. At month-end it takes <strong>nine</strong> — and last quarter it
+            overran twice, which means the dashboards opened to yesterday's numbers.
+        </p>
+        <p>
+            周二下午 2 点香港时间，你是 <em>RBWM 数据</em> tribe 的 Solution 架构师。给财富平台
+            报表集市供数的夜间 ETL，跑的是 <strong>40 多个 SQL 存储过程 + shell 脚本</strong>，
+            由 <strong>Control-M</strong> 编排，全部压在一台纵向扩容的数据库服务器上。平常一晚
+            要跑 <strong>4 小时</strong>，窗口是 6 小时；到了月末要跑 <strong>9 小时</strong>——
+            上个季度已经超窗两次，意味着第二天早上打开报表，看到的还是前一天的数。
+        </p>
+        <p>
+            You have booked a <strong>solution-outline session</strong>. The audience is exactly
+            right for a proposal of this size: <strong>Mei</strong>, the Tech Lead who owns the
+            ETL code and will ask the hard technical questions, and <strong>Marcus</strong>, the
+            Senior Manager who owns delivery and will ask the hard money questions. Your goal is
+            not to get approval to build — your goal is to get approval to <strong>prove</strong>:
+            a two-week proof of concept on one pipeline, with exit criteria agreed in the room.
+        </p>
+        <p>
+            你约了一场 <strong>方案概要会</strong>。听众配置正好符合这种体量的提案：
+            <strong>Mei</strong>——负责 ETL 代码的 Tech Lead，会问最硬的技术问题；
+            <strong>Marcus</strong>——管交付的 Senior Manager，会问最硬的钱的问题。
+            你今天的目标不是拿到"批准建设"，而是拿到"批准<strong>验证</strong>"：
+            在一条管道上做两周的 PoC，并且当场把退出标准谈定。
+        </p>
+        <p>
+            On the screen behind you: one page — <em>current state on the left, proposed state on
+            the right, seven rows, numbers in every row</em>. No architecture diagram yet; diagrams
+            come after the direction is agreed. And one discipline for the hour: <strong>every
+            claim gets a number, every option gets a trade-off, and the ask fits in one
+            sentence</strong> — a two-week PoC, one pipeline, three exit criteria.
+        </p>
+        <p>
+            你身后的屏幕上只有一页——<em>左边现状、右边方案，7 行对比，每行都有数字</em>。
+            先不放架构图；方向谈定之后再画图。这一小时的纪律是：<strong>每个论断带数字、
+            每个选项带取舍，而请求压缩成一句话</strong>——两周 PoC、一条管道、三条退出标准。
+        </p>
+        <p>
+            Remember the rule for solution proposals: <strong>never present one option</strong>.
+            Present two or three, with a clear recommendation and the trade-off that drove it.
+            An architect who arrives with a single option is a salesperson; an architect who
+            arrives with options and a recommendation is an advisor.
+        </p>
+        <p>
+            记住方案提案的规则：<strong>永远不要只带一个选项</strong>。给出两三个选项，配上明确的
+            推荐和驱动这个推荐的取舍。只带一个选项来的架构师是销售；带着选项和推荐来的架构师才是顾问。
+        </p>
+    </section>
+
+    <!-- Current vs Proposed -->
+    <section class="article-section">
+        <h2>2. Current State vs Proposed State 现状与方案对照</h2>
+        <p>
+            The one-page comparison the session is built around — seven rows, each with the
+            number that makes it arguable.
+        </p>
+        <p>
+            整场会议围绕的一页对照——7 行，每一行都带着能引发讨论的数字。
+        </p>
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Dimension 维度</th>
+                    <th>Current state 现状</th>
+                    <th>Proposed state 方案</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Execution model 执行模型</strong></td>
+                    <td>40+ SQL procedures + shell wrappers, sequential on one box</td>
+                    <td>Spark jobs — driver coordinates, executors work in parallel</td>
+                </tr>
+                <tr>
+                    <td><strong>Scaling 扩展方式</strong></td>
+                    <td>Vertical only — buy a bigger box</td>
+                    <td>Scale out — add executors for month-end peaks</td>
+                </tr>
+                <tr>
+                    <td><strong>Increment 增量策略</strong></td>
+                    <td>Full-history rerun every night</td>
+                    <td>Business-date partitions, watermark-based, idempotent overwrite</td>
+                </tr>
+                <tr>
+                    <td><strong>Run time 运行时长</strong></td>
+                    <td>4 h average / 9 h month-end (window: 6 h)</td>
+                    <td>PoC target: under 60 min on the worst pipeline</td>
+                </tr>
+                <tr>
+                    <td><strong>Scheduling 调度</strong></td>
+                    <td>Control-M calls the shell scripts</td>
+                    <td>Control-M stays the scheduler of record; it submits Spark jobs</td>
+                </tr>
+                <tr>
+                    <td><strong>Data quality 质量校验</strong></td>
+                    <td>Manual reconciliation SQL at 7 AM</td>
+                    <td>Automated checks gate every publish; failure blocks the partition</td>
+                </tr>
+                <tr>
+                    <td><strong>Cost visibility 成本可见性</strong></td>
+                    <td>Opaque — amortised hardware</td>
+                    <td>Cost per run, per pipeline, on elastic compute</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Senior Manager):</span>
+                <span class="text">
+                    <span class="en">Thanks for the slot, Wei. Before we get to the slides — <em>give me the problem in plain English.</em> What breaks, and when?</span>
+                    <span class="cn">Wei，谢你约时间。先别看幻灯片——<em>用大白话把问题讲一遍。</em>什么东西会坏，什么时候坏？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Plain English: <strong>the current pipeline is buckling under month-end volumes.</strong> Today it's 40-plus SQL procedures wrapped in shell scripts, all running sequentially on one vertically-scaled box. Average night, four hours against a six-hour window. Month-end, nine hours. Growth is 20 percent year on year, so the math says we miss the window every month within 18 months.</span>
+                    <span class="cn">大白话是：<strong>现有管道在月末数据量下已经扛不住了。</strong>现在是 40 多个 SQL 存储过程套 shell 脚本，在一台纵向扩容的服务器上串行跑。平常一晚 4 小时，窗口 6 小时；月末 9 小时。数据量年增 20%，按这个数学推算，18 个月内我们每个月都会超窗。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead):</span>
+                <span class="text">
+                    <span class="en"><em>Before we buy a new platform</em> — why not just tune the SQL? Some of those procedures were written in 2016. I can name three obvious full-table scans.</span>
+                    <span class="cn"><em>先别急着买新平台</em>——为什么不直接优化 SQL？那批存储过程有些是 2016 年写的，我能报出三个明显的全表扫描。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">We did. Last year's index-and-partition work <strong>bought us eighteen months, not a new ceiling</strong> — the bottleneck is the execution model, not the code. So the proposal: <strong>move the transformation layer to Spark.</strong> The model is driver-plus-executors — the <em>driver</em> coordinates the job, the <em>executors</em> do the work in parallel across a cluster, in memory where possible. <strong>Scale out, not up</strong>: month-end peaks are absorbed by adding executors, not by procuring hardware for eleven months.</span>
+                    <span class="cn">优化过了。去年的索引和分区改造<strong>给我们买到的是 18 个月，不是新的天花板</strong>——瓶颈在执行模型，不在代码。所以提案是：<strong>把转换层迁到 Spark。</strong>它的模型是 driver + executor——<em>driver</em> 负责调度作业，<em>executor</em> 在集群上并行干活，能走内存就走内存。<strong>横向扩容而不是纵向扩容</strong>：月末峰值靠加 executor 吸收，而不是为了一年只用一个月的峰值去采购硬件。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">OK, the model makes sense. <em>The real question is the processing pattern</em> — do we go batch, micro-batch, or full streaming? Because I'm not retraining the team on streaming for a nightly mart.</span>
+                    <span class="cn">模型我认。<em>真正的问题是处理模式</em>——走批量、微批，还是全流式？为了一个夜间集市让团队转流式，我不干。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Three rungs, and I recommend we start on the lowest one. <em>Rung one — daily batch</em> on Spark: same windows, same consumers, same schedule, just faster and horizontally scalable. <em>Rung two — micro-batch</em> via Structured Streaming, only if the business later wants hourly freshness. <em>Rung three — true streaming</em>, only where there's a genuine real-time use case. <strong>Don't buy streaming for its own sake.</strong> And the increment logic comes with it: <strong>partitioned by business date, loaded incrementally from the last watermark</strong>, each output partition written idempotently — overwrite by partition, never append. That means we rerun one bad date without touching history, and a failed run leaves no half-written data behind.</span>
+                    <span class="cn">三档，我建议从最低一档起步。<em>第一档——Spark 日批</em>：窗口、消费者、调度都不变，只是更快、可横向扩展。<em>第二档——微批</em>，用 Structured Streaming，只有业务以后要小时级新鲜度才上。<em>第三档——真流式</em>，只用于真有实时需求的场景。<strong>不要为流式而流式。</strong>增量逻辑也一并定下：<strong>按业务日期分区，基于上一次成功的水位线做增量加载</strong>，输出分区按幂等方式写——按分区覆盖，绝不追加。这意味着重跑某一天不用碰历史数据，失败的作业也不会留下写了一半的数据。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Senior Manager):</span>
+                <span class="text">
+                    <span class="en">Two questions from the money side. One — <em>platform</em>: I keep hearing Databricks and EMR in the same sentence; are they the same thing? Two — <em>scheduling</em>: does this mean ripping out Control-M?</span>
+                    <span class="cn">钱这边两个问题。一——<em>平台</em>：Databricks 和 EMR 总被放在一起说，它们是一回事吗？二——<em>调度</em>：这是要把 Control-M 拆掉吗？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Not the same thing. <em>Databricks</em> is the managed platform — notebooks, cluster lifecycle, job orchestration, a higher platform premium. <em>EMR</em> is raw managed compute — cheaper per hour, more platform engineering on us. For the PoC I'm recommending Databricks for time-to-evidence; we revisit the trade-off at scale. And <strong>Control-M stays the scheduler of record</strong> — it submits the Spark jobs, it owns the alerting, and nobody re-learns scheduling in a migration. Airflow is a possible later step, not part of this proposal.</span>
+                    <span class="cn">不是一回事。<em>Databricks</em> 是托管平台——notebook、集群生命周期、作业编排，平台溢价更高。<em>EMR</em> 是裸的托管算力——每小时更便宜，平台工程要我们自己扛。PoC 阶段我推荐 Databricks，优先拿到证据；规模化时再重新权衡这个取舍。至于调度，<strong>Control-M 仍然是唯一的调度权威</strong>——由它提交 Spark 作业、负责告警，迁移期间没人需要重新学一套调度。Airflow 是以后可能的演进，不在本提案里。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">One more from me — <em>data quality</em>. Today the reconciliation check is a SQL script someone runs manually at 7 AM. If Spark writes the mart, who certifies the numbers?</span>
+                    <span class="cn">我再补一个——<em>数据质量</em>。现在对账校验是有人早上 7 点手工跑的 SQL。如果集市改由 Spark 写，谁来给数字背书？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">The platform does, as a gate, not a hope. Every run ends with <strong>data quality checks before publish</strong>: row counts reconciled to source, null and duplicate checks on keys, and balance reconciliation against the previous day. Fail any check, the partition doesn't publish, Control-M raises the alert. <strong>Cost per run is the anchor metric</strong> for Marcus — elastic clusters bill only while jobs run, so I can put a pound figure on every pipeline. Which brings me to the ask: <em>a two-week PoC on the single worst pipeline</em>, with three exit criteria — <strong>same row counts to source, run time under sixty minutes, cost per run within budget.</strong> Hit all three, we scale the model; miss any one, we come back with evidence, not excuses.</span>
+                    <span class="cn">由平台来做，而且是"闸门"，不是"祈祷"。每次作业结束、发布之前跑<strong>数据质量校验</strong>：行数与源端对账、主键空值与重复检查、余额与前一日对账。任何一项不过，该分区不发布，Control-M 告警。给 Marcus 的锚定指标是<strong>单次运行成本</strong>——弹性集群只在作业运行时计费，我可以给每条管道标出英镑数字。这就引出我的请求：<em>在最痛的一条管道上做两周 PoC</em>，三条退出标准——<strong>行数与源端一致、单次运行 60 分钟以内、单次成本在预算内。</strong>三条全中，我们就按这个模型铺开；任何一条不中，我们带证据回来，不带借口。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Marcus (Senior Manager):</span>
+                <span class="text">
+                    <span class="en">Good pitch. <em>Bring me the PoC exit criteria in writing</em> — one page, numbers not adjectives — and I'll sponsor it at Thursday's governance forum. Mei, from your side, what does two weeks cost the squad?</span>
+                    <span class="cn">讲得不错。<em>把 PoC 的退出标准写成文字给我</em>——一页纸，用数字别用形容词——周四的治理评审会我去立项。Mei，从你那边看，两周要占用 squad 多少成本？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Mei (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">One engineer half-time plus Wei's review hours. <em>Acceptable — as long as the exit criteria are the ones we just agreed, not ones that appear later.</em></span>
+                    <span class="cn">一名工程师半人力，加上 Wei 的评审时间。<em>可以接受——前提是退出标准就用刚才谈定的这三条，不能事后又冒出新的。</em></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The current pipeline is buckling under month-end volumes.</em></span>
+                <span class="chinese">现有管道在月末数据量下已经扛不住了</span>
+                <span class="note">"Buckle under" = bend under weight. Opens a proposal with a picture, not a platform name. 注意 buckling 是"被压弯"的画面感，比 "has performance issues" 有力得多。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Tuning bought us eighteen months, not a new ceiling.</em></span>
+                <span class="chinese">优化买到的是 18 个月，不是新的天花板</span>
+                <span class="note">Pre-empts the "why not optimise first?" question by crediting the past work while naming the structural limit. 先肯定过去的优化，再点明结构性上限，防止"为什么不继续优化"的质疑。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Driver coordinates, executors do the work — scale out, not up.</em></span>
+                <span class="chinese">driver 负责调度、executor 并行干活——横向扩展而非纵向扩展</span>
+                <span class="note">The whole Spark pitch in one breath. "Scale out" = add machines; "scale up" = buy a bigger machine. 一口气讲完 Spark 卖点：scale out 加机器，scale up 换大机器。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Partitioned by business date, loaded incrementally from the last watermark.</em></span>
+                <span class="chinese">按业务日期分区，基于上次水位线做增量加载</span>
+                <span class="note">The standard incremental-ETL sentence. Watermark = the last successfully processed point. 增量 ETL 的标准句式：watermark 指上次成功处理到的位点。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Don't buy streaming for its own sake.</em></span>
+                <span class="chinese">不要为了流式而流式</span>
+                <span class="note">"For its own sake" = without a real reason. The anti-hype sentence that makes engineers trust you. "For its own sake" 指没有真实理由地追时髦，这句话能让工程师信任你。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Control-M stays the scheduler of record.</em></span>
+                <span class="chinese">Control-M 仍然是唯一的调度权威</span>
+                <span class="note">"System of record / scheduler of record" = the single authoritative system. Removes the "do we migrate scheduling too?" scope creep in one sentence. "Scheduler of record" 表示唯一权威系统，一句话挡掉"调度也要迁移吗"的范围蔓延。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Cost per run is the anchor metric.</em></span>
+                <span class="chinese">单次运行成本是锚定指标</span>
+                <span class="note">"Anchor metric" = the one number the decision hangs on. Managers decide on money; give them one number, not architecture diagrams. "Anchor metric" 指决策所依赖的核心数字。管理者看钱说话：给一个数字，别给架构图。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Data quality checks act as a gate before publish — not a hope.</em></span>
+                <span class="chinese">数据质量校验是发布前的闸门，而不是祈祷</span>
+                <span class="note">"Gate, not a hope" contrasts enforced controls with wishful thinking. Strong vocabulary for any control discussion. "Gate, not a hope" 对比"强制控制"与"一厢情愿"，任何控制项讨论里都好用。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>A two-week PoC on the single worst pipeline, with three exit criteria.</em></span>
+                <span class="chinese">在最痛的一条管道上做两周 PoC，配三条退出标准</span>
+                <span class="note">"Exit criteria" = pre-agreed conditions to declare the PoC a success or failure. Ask small, measure hard, scale on evidence. "Exit criteria" 指事先约定的成败判定条件。请求要小、度量要严、用证据决定推广。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Hit all three, we scale the model; miss any one, we come back with evidence, not excuses.</em></span>
+                <span class="chinese">三条全中就铺开，任何一条不中就带证据回来、不带借口</span>
+                <span class="note">The symmetrical close. It shows confidence and pre-commits you to honesty — sponsors remember this line. 对仗式收尾，既显自信，又预先承诺了诚实——赞助人会记住这句话。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>driver</strong> n. 驱动节点 The Spark process that coordinates a job — builds the execution plan, schedules tasks, collects results. Never runs the heavy data work itself.</li>
+            <li><strong>executor</strong> n. 执行节点 The worker process in a Spark cluster that runs tasks on its slice of the data and caches blocks in memory. Adding executors is how a Spark job scales out.</li>
+            <li><strong>partition</strong> n. 分区 The unit of data and of parallelism — one logical slice of a dataset (commonly one business date) that a job reads, transforms, or overwrites independently.</li>
+            <li><strong>micro-batch</strong> n. 微批 A processing pattern that treats a stream as a sequence of small batches (e.g., every 10 minutes). Spark Structured Streaming's default model — between classic batch and true streaming.</li>
+            <li><strong>incremental load</strong> n. 增量加载 Loading only the data that arrived or changed since the last successful run, instead of reprocessing full history every night.</li>
+            <li><strong>watermark</strong> n. 水位线 The last successfully processed point (e.g., a business date or offset) that marks where the next incremental run resumes.</li>
+            <li><strong>idempotent</strong> adj. 幂等的 Running the same job twice produces the same result — e.g., overwriting a partition rather than appending to it. The property that makes reruns safe.</li>
+            <li><strong>Databricks</strong> n. Databricks 数据平台 A managed Spark platform (notebooks, cluster lifecycle, job orchestration). Higher platform premium, lower operational burden.</li>
+            <li><strong>EMR (Elastic MapReduce)</strong> n. AWS EMR 托管集群 AWS's managed Hadoop/Spark compute service. Cheaper raw compute, more platform engineering owned by you.</li>
+            <li><strong>scheduler of record</strong> n. 唯一调度权威 The single system that owns what runs, when, and the alerting when it fails — here, Control-M. One migration should move one layer at a time.</li>
+            <li><strong>proof of concept (PoC)</strong> n. 概念验证 A small, time-boxed trial on real data with pre-agreed exit criteria, run to produce evidence before committing to a full build.</li>
+            <li><strong>data quality check</strong> n. 数据质量校验 Automated validations that gate publication: row counts vs source, null/duplicate key checks, balance reconciliation vs the previous day.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① "X bought us eighteen months" — credit the past, name the limit</h3>
+        <p>
+            When proposing a new platform, you will be asked "why not optimise what we have?".
+            The architect's answer pattern is <strong>credit + limit</strong>: <em>tuning bought us
+            eighteen months, not a new ceiling</em>. "Bought us + duration" acknowledges the past
+            investment as real value; "not a + noun" states what it could never deliver. One
+            sentence, no blame, no defensiveness. The same pattern works for any past fix:
+            <em>caching bought us a quarter, not a growth plan</em>.
+        </p>
+        <p>提案必然会被问"为什么不继续优化"。架构师的句式是<strong>先肯定 + 再点限</strong>：优化买到了 18 个月，但没有买到新天花板。"bought us + 时长"承认历史投入的价值，"not a + 名词"点明它永远给不了什么。一句话，不指责、不防御。这个句式适用于任何历史改造：缓存买到了一个季度，但买不到增长方案。</p>
+
+        <h3>② "Rung one / two / three" — staged options</h3>
+        <p>
+            Present processing-pattern choices as <strong>rungs of a ladder</strong>: <em>rung one —
+            daily batch; rung two — micro-batch; rung three — true streaming</em>. A ladder
+            implies a migration path: you climb only when the business need appears. It also
+            justifies starting small — nobody climbs to rung three first. Compare with
+            <em>layer one / two / three</em> from Article 20: layers stack spatially, rungs
+            progress temporally.
+        </p>
+        <p>用"梯子的横档"呈现处理模式选项：日批、微批、流式。梯子暗示演进路径：业务需要出现时才往上爬，也没人会先爬第三档。对比第 20 篇的 layer（空间上叠加），rung 是时间上递进。</p>
+
+        <h3>③ Exit criteria with "under / within / same"</h3>
+        <p>
+            PoC exit criteria are stated as <strong>three short measurable clauses</strong>:
+            <em>same row counts to source, run time under sixty minutes, cost per run within
+            budget</em>. Notice the pattern: <strong>same</strong> + noun (equality), <strong>under</strong>
+            + number (ceiling), <strong>within</strong> + budget (envelope). Three clauses, each
+            verifiable by a script — never "significantly faster" or "much cheaper". Add the
+            symmetrical close and the criteria become a contract:
+            <em>hit all three, we scale; miss any one, we stop</em>.
+        </p>
+        <p>PoC 退出标准写成三个短小可测的条款：行数与源端一致（same）、运行时长低于 60 分钟（under）、成本在预算内（within）。每条都能用脚本验证——绝不说"明显更快""便宜很多"。再加上对仗式收尾，标准就成了契约：三条全中就铺开，任何一条不中就停。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🎯 Presenting Options at HSBC — the 2+1 Rule</div>
+            <ul>
+                <li><strong>Never present one option.</strong> Bring two or three (batch / micro-batch / streaming; Databricks / EMR), each with a one-line trade-off, plus your recommendation. A single option reads as a sales pitch; options plus a recommendation read as engineering judgement.</li>
+                <li><strong>Separate the two audiences.</strong> Mei (Tech Lead) audits the model — driver/executors, partitioning, idempotency. Marcus (Senior Manager) audits the money — cost per run, platform premium, what Control-M keeps doing. Answer each in their language, in that order.</li>
+                <li><strong>Anchor on one number.</strong> "Cost per run" beats ten slides. Elastic compute lets you price a single pipeline — put a pound figure on it and the conversation becomes concrete.</li>
+                <li><strong>Show the current state before the future state.</strong> The seven-row comparison table does the persuading for you: every row pairs a pain with a mechanism. People approve migrations they can see row by row.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ The Oversell Trap — "Spark Fixes Everything"</div>
+            <ul>
+                <li>❌ <em>"Spark will make everything faster and cheaper."</em> — an unfalsifiable promise that owns you at the first overrun.</li>
+                <li>✅ <em>"A two-week PoC on the worst pipeline, three exit criteria, evidence decides."</em> — falsifiable, cheap, and it protects your credibility.</li>
+                <li><strong>Never propose a platform migration without a PoC gate.</strong> If the PoC fails on the <em>best-understood</em> pipeline, the migration is dead — better to learn that in two weeks than in two quarters.</li>
+                <li><strong>Watch the skew trap.</strong> If asked "will Spark fix our month-end?", the honest answer is "it moves the ceiling; skew and the upstream extract still need separate work". Architects who claim a platform solves upstream problems lose the room at the first load test.</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ Get the Exit Criteria Agreed in the Room</div>
+            <ul>
+                <li><strong>Exit criteria agreed verbally are exit criteria negotiable later.</strong> Mei said it best: "as long as the exit criteria are the ones we just agreed, not ones that appear later." Write them down before the meeting ends — one page, numbers not adjectives.</li>
+                <li><strong>The symmetrical close wins sponsorship.</strong> "Hit all three, we scale; miss any one, we come back with evidence, not excuses." It pre-commits you to honesty and makes it easy for a Senior Manager to say yes.</li>
+                <li><strong>Keep the scheduler of record unchanged in phase one.</strong> Migrations fail on blast radius, not on technology. "Control-M stays" tells Marcus the change is contained to one layer.</li>
+                <li><strong>Let the Tech Lead price the team cost.</strong> Marcus asked Mei, not you, what two weeks costs the squad. The architect proposes; the Tech Lead owns the delivery cost. Respecting that boundary makes both yeses easier.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Full Translation -->
+    <section class="article-section">
+        <h2>8. Dialogue Translation 对话全文翻译</h2>
+        <div class="translation-block">
+            <div class="label">💬 Full Dialogue Translation 完整对话中文翻译</div>
+            <p><strong>Marcus（高级经理）：</strong>谢你约时间，Wei。先别看幻灯片——用大白话把问题讲一遍。什么东西会坏，什么时候坏？</p>
+            <p><strong>你（架构师）：</strong>大白话是：现有管道在月末数据量下已经扛不住了。现在是 40 多个 SQL 存储过程套 shell 脚本，在一台纵向扩容的服务器上串行跑。平常一晚 4 小时，窗口 6 小时；月末 9 小时。数据量年增 20%，按这个数学推算，18 个月内我们每个月都会超窗。</p>
+            <p><strong>Mei（技术负责人）：</strong>先别急着买新平台——为什么不直接优化 SQL？那批存储过程有些是 2016 年写的，我能报出三个明显的全表扫描。</p>
+            <p><strong>你（架构师）：</strong>优化过了。去年的索引和分区改造给我们买到的是 18 个月，不是新的天花板——瓶颈在执行模型，不在代码。所以提案是：把转换层迁到 Spark。它的模型是 driver + executor——driver 负责调度作业，executor 在集群上并行干活，能走内存就走内存。横向扩容而不是纵向扩容：月末峰值靠加 executor 吸收，而不是为了一年只用一个月的峰值去采购硬件。</p>
+            <p><strong>Mei（技术负责人）：</strong>模型我认。真正的问题是处理模式——走批量、微批，还是全流式？为了一个夜间集市让团队转流式，我不干。</p>
+            <p><strong>你（架构师）：</strong>三档，我建议从最低一档起步。第一档——Spark 日批：窗口、消费者、调度都不变，只是更快、可横向扩展。第二档——微批，用 Structured Streaming，只有业务以后要小时级新鲜度才上。第三档——真流式，只用于真有实时需求的场景。不要为流式而流式。增量逻辑也一并定下：按业务日期分区，基于上一次成功的水位线做增量加载，输出分区按幂等方式写——按分区覆盖，绝不追加。这意味着重跑某一天不用碰历史数据，失败的作业也不会留下写了一半的数据。</p>
+            <p><strong>Marcus（高级经理）：</strong>钱这边两个问题。一——平台：Databricks 和 EMR 总被放在一起说，它们是一回事吗？二——调度：这是要把 Control-M 拆掉吗？</p>
+            <p><strong>你（架构师）：</strong>不是一回事。Databricks 是托管平台——notebook、集群生命周期、作业编排，平台溢价更高。EMR 是裸的托管算力——每小时更便宜，平台工程要我们自己扛。PoC 阶段我推荐 Databricks，优先拿到证据；规模化时再重新权衡这个取舍。至于调度，Control-M 仍然是唯一的调度权威——由它提交 Spark 作业、负责告警，迁移期间没人需要重新学一套调度。Airflow 是以后可能的演进，不在本提案里。</p>
+            <p><strong>Mei（技术负责人）：</strong>我再补一个——数据质量。现在对账校验是有人早上 7 点手工跑的 SQL。如果集市改由 Spark 写，谁来给数字背书？</p>
+            <p><strong>你（架构师）：</strong>由平台来做，而且是"闸门"，不是"祈祷"。每次作业结束、发布之前跑数据质量校验：行数与源端对账、主键空值与重复检查、余额与前一日对账。任何一项不过，该分区不发布，Control-M 告警。给 Marcus 的锚定指标是单次运行成本——弹性集群只在作业运行时计费，我可以给每条管道标出英镑数字。这就引出我的请求：在最痛的一条管道上做两周 PoC，三条退出标准——行数与源端一致、单次运行 60 分钟以内、单次成本在预算内。三条全中，我们就按这个模型铺开；任何一条不中，我们带证据回来，不带借口。</p>
+            <p><strong>Marcus（高级经理）：</strong>讲得不错。把 PoC 的退出标准写成文字给我——一页纸，用数字别用形容词——周四的治理评审会我去立项。Mei，从你那边看，两周要占用 squad 多少成本？</p>
+            <p><strong>Mei（技术负责人）：</strong>一名工程师半人力，加上 Wei 的评审时间。可以接受——前提是退出标准就用刚才谈定的这三条，不能事后又冒出新的。</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>9. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the proposal summary into natural Chinese:</div>
+                <p>"The current pipeline is buckling under month-end volumes — nine hours against a
+                six-hour window, growing 20 percent year on year. I'm recommending Spark for the
+                transformation layer: driver coordinates, executors do the work, scale out not up.
+                Partitioned by business date, loaded incrementally from the last watermark, written
+                idempotently per partition. Control-M stays the scheduler of record, and data
+                quality checks act as a gate before publish. The ask: a two-week PoC on the single
+                worst pipeline — same row counts to source, run time under sixty minutes, cost per
+                run within budget."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "现有管道在月末数据量下已经扛不住了——窗口 6 小时，现在要跑 9 小时，数据量还在年增 20%。
+                    我推荐用 Spark 做转换层：driver 负责调度，executor 并行干活，横向扩展而非纵向扩展。
+                    按业务日期分区，基于上次水位线做增量加载，每个分区按幂等方式覆盖写入。
+                    Control-M 继续作为唯一调度权威，数据质量校验作为发布前的闸门。
+                    我的请求是：在最痛的一条管道上做两周 PoC——行数与源端一致、单次运行 60 分钟以内、单次成本在预算内。"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Spot the architect mistake — which line in this PoC plan is wrong?</div>
+                <ol>
+                    <li>"The PoC pipeline will be the month-end wealth positions pipeline — our worst performer."</li>
+                    <li>"Each output partition will be written idempotently — overwrite by business date, never append."</li>
+                    <li>"For maximum future-proofing, the PoC will use Spark Structured Streaming with a 10-minute trigger."</li>
+                    <li>"Control-M will remain the scheduler of record and submit the Spark jobs."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ③ is the mistake. A nightly reporting mart has no real-time use case — introducing Structured Streaming
+                    in a two-week PoC adds retraining cost, new failure modes, and no business value. This is "buying
+                    streaming for its own sake". The correct pattern is rung one: daily batch Spark with the same windows
+                    and consumers. ① is right — test on the worst pipeline so the evidence is strongest. ② is right —
+                    idempotent partition overwrite makes reruns safe. ④ is right — keep the scheduler of record unchanged
+                    to contain the blast radius.
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — pitch the PoC:</div>
+                <p>You are presenting a Spark PoC proposal to your Senior Manager. The pipeline:
+                a payments reconciliation batch, currently 5.5 hours average, 7 hours at month-end,
+                window is 6 hours. Your PoC claims: 45-minute run on the same volumes, cost per run
+                about £4 on elastic compute, and full reconciliation to source. Write your 60-second
+                closing pitch in English, using at least 3 patterns from the Key Phrases section.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Plain English: the payments reconciliation batch is buckling under month-end volumes — 5.5 hours
+                    on an average night, 7 against a 6-hour window at month-end. The proposal: Spark for the transformation
+                    layer — driver coordinates, executors do the work, scale out not up. Partitioned by business date,
+                    loaded incrementally from the last watermark, written idempotently. Control-M stays the scheduler of
+                    record, and data quality checks gate every publish. The ask: a two-week PoC on this single pipeline,
+                    with three exit criteria — same row counts to source, run time under sixty minutes, cost per run
+                    within the £5 budget. Hit all three, we scale the model; miss any one, we come back with evidence,
+                    not excuses."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="20-hsbc-systems-integration.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">20 · HSBC Systems Architecture & Integration</span>
+        </a>
+        <a class="next" href="22-qliksense-etl-pain-points.html">
+            <span class="label">Next Article →</span>
+            <span class="title">22 · QlikSense ETL Pain Points</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

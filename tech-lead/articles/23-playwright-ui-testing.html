@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 23: Playwright UI Testing Playwright UI 自动化测试 | Tech Lead English</title>
+    <meta name="description" content="Playwright UI Testing — 🎯 locators, auto-waiting, page object model, fixtures, tracing, headless CI runs, parallel workers, flaky tests. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/23-playwright-ui-testing.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 23: Playwright UI Testing Playwright UI 自动化测试 | Tech Lead English">
+    <meta property="og:description" content="Playwright UI Testing — 🎯 locators, auto-waiting, page object model, fixtures, tracing, headless CI runs, parallel workers, flaky tests. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/23-playwright-ui-testing.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">23 · Playwright UI Testing</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Playwright UI Testing</h1>
+        <p class="subtitle">Article 23 · Module 6: Engineering Automation · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 9 min read</span>
+            <span>🟠 Intermediate</span>
+            <span>🎯 Locators, auto-waiting, page objects, fixtures, tracing, headless CI, flaky tests</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Thursday, 3:00 PM HKT</strong>. Every release, your squad spends <em>two developer-days on manual regression</em> — clicking through the Payment Gateway web UI across browsers. You are the <em>Tech Lead</em>, and you have called a working session with <strong>Mei</strong>, the QA lead (Hong Kong), and <strong>Raj</strong>, senior developer (Bangalore), to propose replacing manual regression with a <strong>Playwright</strong> UI test pack.</p>
+
+        <p>周四下午 3 点香港时间。每次发布，squad 都要花<em>两个人天做手工回归</em>——在多个浏览器里逐页点击 Payment Gateway 的 Web UI。你是 <em>Tech Lead</em>，约了 QA 负责人 <strong>Mei</strong>（香港）和高级开发 <strong>Raj</strong>（班加罗尔）开工作会，提议用 <strong>Playwright</strong> UI 测试包替代手工回归。</p>
+
+        <p>You know the failure mode of every UI automation effort: <em>suites that are written fast and abandoned faster</em>. So the conversation is not "should we automate" — it's <strong>what scope we automate first, and who owns the maintenance</strong>. Your opening position: <em>smoke pack first, regression pack later, paired dev-QA ownership</em>.</p>
+
+        <p>你见过所有 UI 自动化项目的失败方式：<em>写得快、废弃得更快</em>。所以今天的议题不是"要不要自动化"，而是<strong>先自动化的范围是什么、维护由谁负责</strong>。你的开场立场：<em>先做冒烟包，再做回归包，开发与 QA 结对负责</em>。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Let's start with the cost, then the proposal. <em>Manual regression is two developer-days per release</em> — Raj and Mei clicking through the same 60 screens, every sprint, and finding the same class of bugs. <strong>I propose we build a Playwright pack for the UI</strong> — starting small, not boiling the ocean.</span>
+                    <span class="cn">先看成本，再谈提案。<em>手工回归每次发布要两个人天</em>——Raj 和 Mei 每个 Sprint 把同样 60 个页面点一遍，发现的还是同一类 bug。<strong>我提议给 UI 建一套 Playwright 测试包</strong>——从小做起，不搞大而全。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">I support the goal, but let me name my concern upfront: <em>maintenance</em>. The tribe next door built a Selenium suite two years ago — <em>half of it is abandoned</em>, it fails for reasons nobody remembers, and now nobody trusts it. <strong>UI tests break on every redesign</strong>, and the person who wrote them has always moved on by then.</span>
+                    <span class="cn">目标我支持，但先亮出我的担忧：<em>维护</em>。隔壁 tribe 两年前建了一套 Selenium——<em>一半已经废弃</em>，失败原因没人记得，现在没人信它。<strong>UI 测试每次改版都会碎</strong>，而写它的人那时早就调走了。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Valid — and it's the Selenium tax we're avoiding. Three reasons Playwright hurts less: <strong>one, auto-waiting</strong> — it waits for elements to be actionable, so no <em>sleep(5000)</em> scattered through the suite; <strong>two, resilient locators</strong> — <em>getByRole, getByLabel, data-testid</em> instead of brittle XPath; <strong>three, evidence</strong> — <em>trace, screenshot and video captured on failure</em>, so debugging doesn't start from a red name in a list.</span>
+                    <span class="cn">这个担忧成立——我们躲的就是 Selenium 税。Playwright 少疼三个理由：<strong>一，自动等待</strong>——等元素可交互，不用在套件里撒 <em>sleep(5000)</em>；<strong>二，抗性的定位器</strong>——用 <em>getByRole、getByLabel、data-testid</em>，不用脆弱的 XPath；<strong>三，证据</strong>——<em>失败时自动留 trace、截图和视频</em>，调试不用从一串红色名字开始猜。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text">
+                    <span class="en">Adding the technical angle: <em>one API, three browser engines</em> — Chromium, Firefox, WebKit. Our desktop estate is Chromium and Firefox, so we get real cross-browser coverage from the same test. And you can run <em>headed when you're debugging locally</em>, <em>headless in CI</em> — same test, two modes.</span>
+                    <span class="cn">补一个技术视角：<em>一套 API，三个浏览器引擎</em>——Chromium、Firefox、WebKit。我们的桌面端是 Chromium 和 Firefox，同一份测试就有真正的跨浏览器覆盖。本地调试可以<em>带界面跑</em>，CI 里<em>无头跑</em>——同一份测试，两种模式。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">And the runtime? Our SIT environment is <em>notoriously unstable</em> — it resets nightly, the test data gets wiped. My real fear is <strong>flaky tests</strong>: green, red, green, red, and after a month nobody believes the pack.</span>
+                    <span class="cn">那运行环境呢？我们的 SIT <em>出了名的不稳定</em>——每夜重置，测试数据被清掉。我真正怕的是 <strong>flaky 测试</strong>：绿、红、绿、红，一个月后就没人信这套包了。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Which is exactly why I'm proposing <strong>scope discipline</strong>, not a big bang. <strong>Phase one: a smoke pack</strong> — login, submit a payment end-to-end, check the balance — call it <em>fifteen scenarios</em>. It runs <em>headless with parallel workers</em> in the Jenkins pipeline as a gate on SIT promotion. <em>Phase two</em> — the regression pack — only starts once the smoke pack has been stable for two sprints. <strong>Stable first, broad later.</strong></span>
+                    <span class="cn">所以我提的是<strong>范围纪律</strong>，不是一步到位。<strong>第一阶段：冒烟包</strong>——登录、端到端提交一笔支付、查余额——大概 <em>15 个 scenario</em>。在 Jenkins 流水线里<em>无头并行 worker 跑</em>，作为 SIT 晋升的门禁。<em>第二阶段</em>——回归包——等冒烟包稳定两个 Sprint 之后再启动。<strong>先稳，再广。</strong></span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">Then structure is everything. I want the <strong>page object model</strong> from day one — every page gets a class, every locator lives in exactly one place, so a redesign is a change to one file, not forty tests. Plus <strong>fixtures</strong> for the repeated setup.</span>
+                    <span class="cn">那结构就是一切。我要从第一天就用 <strong>page object model</strong>——每个页面一个类，每个定位器只活在一个地方，这样改版只改一个文件，而不是改四十个测试。再加 <strong>fixture</strong> 处理重复的前置准备。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Raj (Senior Dev):</span>
+                <span class="text">
+                    <span class="en">And we can go further than fixtures — <em>storageState</em>. Authenticate once in a setup step, save the session, and every test starts logged in. Fifteen tests shouldn't log in fifteen times.</span>
+                    <span class="cn">还可以比 fixture 更进一步——<em>storageState</em>。在 setup 步骤里登录一次，保存会话，之后每个测试都以已登录状态开始。15 个测试没必要登录 15 次。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">One more thing — when a test fails, what do the developers actually get? <em>"Test PAY-003 failed"</em> with no evidence is how the Selenium suite next door died.</span>
+                    <span class="cn">还有一点——测试挂了，开发到底拿到什么？<em>"测试 PAY-003 失败"</em>但没有任何证据，就是隔壁 Selenium 套件死掉的原因。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">On failure the pack keeps the <em>trace</em> — a step-by-step recording you can scrub through, DOM snapshots included — plus screenshot and video, all attached to the Jenkins report. A failing test shows <em>which locator, which page, what the DOM looked like at that moment</em>. The evidence ships with the failure, not after someone reproduces it.</span>
+                    <span class="cn">失败时测试包会保留 <em>trace</em>——可以逐帧回放的步骤录像，带 DOM 快照——加上截图和视频，全部挂在 Jenkins 报告里。失败的测试会显示<em>哪个定位器、哪个页面、当时 DOM 长什么样</em>。证据随失败一起送达，而不是等谁去复现。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">Mei (QA):</span>
+                <span class="text">
+                    <span class="en">Then I'm in — on conditions. <strong>Paired ownership:</strong> when a dev's UI change breaks a locator, <em>that dev fixes the test in the same PR</em>, not "QA will get to it". And a <em>weekly flaky review</em> — if the flaky rate goes above five percent, we stop adding tests and fix the ones we have.</span>
+                    <span class="cn">那我入伙——但有条件。<strong>结对负责：</strong>开发的 UI 改动弄坏了定位器，<em>该开发就在同一个 PR 里修测试</em>，而不是"QA 之后处理"。再加<em>每周 flaky 评审</em>——flaky 率超过 5%，我们就停止新增测试，先修好手上的。</span>
+                </span>
+            </div>
+
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text">
+                    <span class="en">Agreed on all three — <strong>paired ownership, weekly flaky review, five percent is a stop line</strong>. Actions: Raj scaffolds the Playwright project with the page object structure; Mei drafts the fifteen smoke scenarios and owns the locator conventions; I wire the Jenkins job — headless, parallel, trace-on-failure, gate on SIT. In two sprints, <em>manual regression becomes a review activity, not a clicking activity</em>.</span>
+                    <span class="cn">三条都同意——<strong>结对负责、每周 flaky 评审、5% 是停止线</strong>。行动项：Raj 搭 Playwright 项目骨架和 page object 结构；Mei 起草 15 个冒烟 scenario 并定定位器规范；我接 Jenkins 任务——无头、并行、失败留 trace、作为 SIT 门禁。两个 Sprint 后，<em>手工回归就从"点击活动"变成"评审活动"了</em>。</span>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="translation-block">
+            <div class="label">🇨🇳 对话全文中文翻译 Full Chinese Translation</div>
+            <p><strong>You (TL)：</strong>先看成本，再谈提案。手工回归每次发布要两个人天——Raj 和 Mei 每个 Sprint 把同样 60 个页面点一遍，发现的还是同一类 bug。我提议给 UI 建一套 Playwright 测试包——从小做起，不搞大而全。</p>
+
+            <p><strong>Mei (QA)：</strong>目标我支持，但先亮出我的担忧：维护。隔壁 tribe 两年前建了一套 Selenium——一半已经废弃，失败原因没人记得，现在没人信它。UI 测试每次改版都会碎，而写它的人那时早就调走了。</p>
+
+            <p><strong>You (TL)：</strong>这个担忧成立——我们躲的就是 Selenium 税。Playwright 少疼三个理由：一，自动等待——等元素可交互，不用在套件里撒 sleep(5000)；二，抗性的定位器——用 getByRole、getByLabel、data-testid，不用脆弱的 XPath；三，证据——失败时自动留 trace、截图和视频，调试不用从一串红色名字开始猜。</p>
+
+            <p><strong>Raj (Senior Dev)：</strong>补一个技术视角：一套 API，三个浏览器引擎——Chromium、Firefox、WebKit。我们的桌面端是 Chromium 和 Firefox，同一份测试就有真正的跨浏览器覆盖。本地调试可以带界面跑，CI 里无头跑——同一份测试，两种模式。</p>
+
+            <p><strong>Mei (QA)：</strong>那运行环境呢？我们的 SIT 出了名的不稳定——每夜重置，测试数据被清掉。我真正怕的是 flaky 测试：绿、红、绿、红，一个月后就没人信这套包了。</p>
+
+            <p><strong>You (TL)：</strong>所以我提的是范围纪律，不是一步到位。第一阶段：冒烟包——登录、端到端提交一笔支付、查余额——大概 15 个 scenario。在 Jenkins 流水线里无头并行 worker 跑，作为 SIT 晋升的门禁。第二阶段——回归包——等冒烟包稳定两个 Sprint 之后再启动。先稳，再广。</p>
+
+            <p><strong>Mei (QA)：</strong>那结构就是一切。我要从第一天就用 page object model——每个页面一个类，每个定位器只活在一个地方，这样改版只改一个文件，而不是改四十个测试。再加 fixture 处理重复的前置准备。</p>
+
+            <p><strong>Raj (Senior Dev)：</strong>还可以比 fixture 更进一步——storageState。在 setup 步骤里登录一次，保存会话，之后每个测试都以已登录状态开始。15 个测试没必要登录 15 次。</p>
+
+            <p><strong>Mei (QA)：</strong>还有一点——测试挂了，开发到底拿到什么？"测试 PAY-003 失败"但没有任何证据，就是隔壁 Selenium 套件死掉的原因。</p>
+
+            <p><strong>You (TL)：</strong>失败时测试包会保留 trace——可以逐帧回放的步骤录像，带 DOM 快照——加上截图和视频，全部挂在 Jenkins 报告里。失败的测试会显示哪个定位器、哪个页面、当时 DOM 长什么样。证据随失败一起送达，而不是等谁去复现。</p>
+
+            <p><strong>Mei (QA)：</strong>那我入伙——但有条件。结对负责：开发的 UI 改动弄坏了定位器，该开发就在同一个 PR 里修测试，而不是"QA 之后处理"。再加每周 flaky 评审——flaky 率超过 5%，我们就停止新增测试，先修好手上的。</p>
+
+            <p><strong>You (TL)：</strong>三条都同意——结对负责、每周 flaky 评审、5% 是停止线。行动项：Raj 搭 Playwright 项目骨架和 page object 结构；Mei 起草 15 个冒烟 scenario 并定定位器规范；我接 Jenkins 任务——无头、并行、失败留 trace、作为 SIT 门禁。两个 Sprint 后，手工回归就从"点击活动"变成"评审活动"了。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>3. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Manual regression is two developer-days per release.</em></span>
+                <span class="chinese">手工回归每次发布要两个人天。</span>
+                <span class="note">Open automation pitches with cost, not technology. "Two dev-days every sprint" is the number your PM will remember. 自动化提案先报成本再谈技术，PM 只会记住"每 Sprint 两个人天"。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>Let me name my concern upfront: maintenance.</em></span>
+                <span class="chinese">先亮出我的担忧：维护。</span>
+                <span class="note">"Name your concern" invites honest pushback without hostility. QA saying this is doing the TL a favour — it surfaces the risk before it becomes the failure. "说出担忧"让反对意见变得坦率而不敌对。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>It's the Selenium tax we're avoiding.</em></span>
+                <span class="chinese">我们躲的就是 Selenium 税。</span>
+                <span class="note">Calling maintenance burden a "tax" is the metaphor that makes the cost visible. Every abandoned suite in the bank is a paid example. 把维护负担叫"税"，成本立刻可视化；行里每个废弃套件都是活案例。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Auto-waiting — it waits for elements to be actionable, so no sleep(5000) scattered through the suite.</em></span>
+                <span class="chinese">自动等待——等元素可交互，不用满套件撒 sleep(5000)。</span>
+                <span class="note">Auto-waiting = 框架自动等待元素出现且可交互。"Scattered" is the word that evokes why fixed sleeps are unfixable at scale. "Scattered" 一词点出固定 sleep 在规模化时为何不可救药。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Resilient locators — getByRole, getByLabel, data-testid instead of brittle XPath.</em></span>
+                <span class="chinese">抗性的定位器——getByRole、getByLabel、data-testid，不用脆弱的 XPath。</span>
+                <span class="note">Locator = 定位元素的策略。"Brittle vs resilient" is the standard pairing — role-based and test-id locators survive UI refactors. "Brittle/resilient" 是标准对比词组。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Run headed when you're debugging locally, headless in CI.</em></span>
+                <span class="chinese">本地调试带界面跑，CI 里无头跑。</span>
+                <span class="note">Headed = 有浏览器窗口；headless = 无窗口、更快、适合 CI。Same tests, two modes — say it as a pair, stakeholders remember pairs. 同一测试两种模式，成对说出更好记。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Phase one: a smoke pack. Stable first, broad later.</em></span>
+                <span class="chinese">第一阶段：冒烟包。先稳，再广。</span>
+                <span class="note">Phased scoping is how you get a "yes" from a skeptical QA. A smoke pack is a small promise you can keep; a regression pack is a big promise you'll break. 阶段化承诺是赢得 QA 同意的关键：小承诺能兑现，大承诺会崩。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Every locator lives in exactly one place — a redesign is a change to one file, not forty tests.</em></span>
+                <span class="chinese">每个定位器只活在一个地方——改版只改一个文件，而不是四十个测试。</span>
+                <span class="note">The page object model pitch in one sentence. The "one vs forty" contrast is what sells the structure to engineers. Page object 模型的一句话卖点，"一个 vs 四十个"对比最能打动工程师。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>If the flaky rate goes above five percent, we stop adding tests and fix the ones we have.</em></span>
+                <span class="chinese">flaky 率超过 5%，就停止新增测试，先修手上的。</span>
+                <span class="note">A stop line converts "flaky is bad" from a slogan into a policy. Numbers in agreements prevent later arguments. 停止线把口号变成制度，数字化的约定避免日后扯皮。</span>
+            </li>
+
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The evidence ships with the failure, not after someone reproduces it.</em></span>
+                <span class="chinese">证据随失败一起送达，而不是等谁去复现。</span>
+                <span class="note">Evidence-on-failure is the Playwright pitch in one line — debugging starts from data, not from reproduction. 一句话讲清失败即留证：调试从数据开始，而非从复现开始。</span>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>4. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+
+            <li><strong>Playwright</strong> n. Playwright 测试框架
+                Microsoft's end-to-end UI testing framework — one API across Chromium, Firefox and WebKit, with auto-waiting, tracing and parallel execution built in.</li>
+
+            <li><strong>Locator</strong> n. 定位器
+                The strategy for finding an element on a page — getByRole, getByLabel, getByTestId. Resilient locators target meaning, not markup.</li>
+
+            <li><strong>Auto-waiting</strong> n. 自动等待
+                Playwright's built-in behaviour of waiting for an element to exist, be visible and be actionable before interacting — replacing fixed sleep() calls.</li>
+
+            <li><strong>Page object model</strong> n. 页面对象模型
+                A structure where each page or component is one class owning its locators and actions — so UI changes are fixed in one place.</li>
+
+            <li><strong>Fixture</strong> n. 测试夹具
+                Reusable test setup — browser context, logged-in user, test data — injected into tests so setup isn't copy-pasted.</li>
+
+            <li><strong>Headless</strong> adj. 无头的
+                Running the browser without a visible window — faster, CI-friendly, the default mode for pipelines.</li>
+
+            <li><strong>Headed</strong> adj. 带界面的
+                Running with a visible browser window — used when debugging tests locally, watching what the test sees.</li>
+
+            <li><strong>Parallel workers</strong> n. 并行执行器
+                Multiple test processes running simultaneously — cuts a 30-minute suite to minutes, but requires tests that don't share state.</li>
+
+            <li><strong>Trace</strong> n. 操作轨迹
+                Playwright's failure recording — a step-by-step, scrubbable timeline with DOM snapshots, network calls and console logs.</li>
+
+            <li><strong>Storage state</strong> n. 会话状态
+                Saved authentication (cookies + local storage) reused across tests, so the suite logs in once instead of per test.</li>
+
+            <li><strong>Cross-browser coverage</strong> n. 跨浏览器覆盖
+                Running the same tests across browser engines — the reason one Playwright suite can replace several Selenium grids.</li>
+
+            <li><strong>Flaky test</strong> n. 不稳定测试
+                A test that passes and fails without a product change — the number-one killer of UI automation trust.</li>
+
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>5. Grammar Notes 语法点</h2>
+
+        <h3>① "I propose X for Y" — and answering concern with structure</h3>
+
+        <p>Proposals in working sessions follow a rhythm: <em>cost → proposal → concern → condition</em>. Use <em>"I propose we build X"</em> for the offer, and when QA says "my concern is maintenance", don't defend the tool — <em>answer with structure</em>: page objects, fixtures, ownership rules.</p>
+
+        <p>工作会提案的节奏：<em>成本 → 提案 → 担忧 → 条件</em>。提方案用 "I propose we build X"；QA 说"我担心维护"时，别辩护工具——<em>用结构回答</em>：page object、fixture、责任规则。</p>
+
+        <ul>
+            <li>✅ <em>"I propose we build a Playwright pack for the UI — starting small."</em></li>
+            <li>✅ <em>"My concern is maintenance." → "Valid — here's the structure that contains it."</em></li>
+        </ul>
+
+        <h3>② "On condition(s) that..." — negotiating scope</h3>
+
+        <p>QA agreement usually comes with conditions. Learn the pattern <em>on conditions / as long as / provided that</em> — it turns resistance into a contract you can write down.</p>
+
+        <p>QA 的同意通常带条件。掌握 <em>on conditions / as long as / provided that</em>，把抵触变成可落字的契约。</p>
+
+        <ul>
+            <li>✅ <em>"I'm in — on conditions. Paired ownership, and a weekly flaky review."</em></li>
+            <li>✅ <em>"As long as the smoke pack gates SIT, I'll sign off the approach."</em></li>
+        </ul>
+
+        <h3>③ "X becomes Y, not Z" — the closing vision</h3>
+
+        <p>Close automation conversations with a before/after identity shift. The "becomes X, not Y" frame paints the future without overpromising numbers.</p>
+
+        <p>收尾用前后身份转变。"becomes X, not Y" 句式描绘愿景而不夸大数字。</p>
+
+        <ul>
+            <li>✅ <em>"Manual regression becomes a review activity, not a clicking activity."</em></li>
+            <li>✅ <em>"Release sign-off becomes reading evidence, not chasing screenshots."</em></li>
+        </ul>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>6. Cultural Tips 文化 / 职场 Tips</h2>
+
+        <div class="tip-box">
+            <div class="tip-title">🤝 Negotiating test scope with QA</div>
+            <ol>
+
+                <li><strong>Start smaller than QA expects.</strong>
+                    A 15-test smoke pack that is green every day earns more trust than a 200-test suite that is green sometimes. <em>Trust compounds; broken suites don't.</em></li>
+
+                <li><strong>Let QA set the quality bar.</strong>
+                    When Mei proposes the 5% flaky stop line, accept it visibly. A TL who accepts QA's conditions gets QA's ownership in return.</li>
+
+                <li><strong>Make maintenance a shared cost, not a QA tax.</strong>
+                    "The dev who breaks the locator fixes the test in the same PR" — say it in the meeting, write it in the team working agreement.</li>
+
+                <li><strong>Prototype with one end-to-end journey.</strong>
+                    Login → pay → check balance is the demo everyone understands — including the PM who has never read a test file.</li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <div class="title">⚠️ Overpromising automation — the fastest way to lose the room</div>
+            <ul>
+
+                <li>❌ <em>"Playwright will replace all manual testing."</em>
+                    It won't — exploratory testing, usability and UAT sign-off stay human. Overpromising sets up QA to fail you later.</li>
+
+                <li>❌ <em>"We'll automate the whole regression pack this sprint."</em>
+                    Sprint one is scaffolding and five green tests. Say that, and deliver it.</li>
+
+                <li>❌ <em>"Flaky tests? We'll just retry until green."</em>
+                    Retries hide races; a suite that needs three attempts is a suite nobody trusts by sprint three.</li>
+
+                <li>✅ <em>"Smoke pack first, two sprints to stable, then we earn the regression pack."</em>
+                    — a promise sized to be kept.</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <div class="title">✅ Demoing a failing test to stakeholders — evidence culture</div>
+            <p>The most persuasive automation demo is not a green run — it's a <strong>controlled red</strong>. Break a locator on purpose, show the failure with its trace: scrub the timeline, show the DOM snapshot, show which line failed.</p>
+            <p>Then say: <em>"This is what a developer receives at 3am — the failure plus the evidence, attached to the pipeline."</em></p>
+            <p>Stakeholders don't evaluate frameworks; they evaluate <strong>what happens when things break</strong>. A good failure story sells better than any pass rate.</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>7. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the proposal into English:</div>
+                <p>"先说成本：手工回归每次发布两个人天。提案：建 Playwright 冒烟包——登录、提交支付、查余额，约 15 个场景，CI 里无头并行跑，作为 SIT 晋升门禁。用 page object model，定位器只放一个地方；登录用 storageState，只登一次；失败自动留 trace、截图和视频。回归包等冒烟包稳定两个 Sprint 再启动。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <p>"Cost first: manual regression is <em>two developer-days per release</em>. Proposal: we build a <em>Playwright smoke pack</em> — login, submit a payment, check the balance, about <em>fifteen scenarios</em> — running <em>headless with parallel workers in CI</em> as a gate on SIT promotion.</p>
+                    <p>We use the <em>page object model</em>, with <em>every locator in exactly one place</em>; authentication via <em>storageState</em> — log in once, not per test; and on failure we keep the <em>trace, screenshot and video</em> automatically.</p>
+                    <p>The <em>regression pack</em> starts only after the smoke pack has been <em>stable for two sprints</em>."</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Fill in the Playwright terms:</div>
+                <p>"(1) Playwright waits for elements to be actionable — that's called ____-waiting. (2) Find elements by meaning with ____ like getByRole and getByLabel, not brittle XPath. (3) Each page gets one class owning its locators — the ____ object model. (4) Reusable setup like a logged-in browser context is a ____. (5) Save the authenticated session with ____ state so tests log in once. (6) CI runs the suite ____ (no window); locally you run ____ for debugging. (7) The failure recording you can scrub through is the ____. (8) Multiple simultaneous test processes are parallel ____."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    <p>(1) auto / (2) locators / (3) page / (4) fixture / (5) storage / (6) headless, headed / (7) trace / (8) workers</p>
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Role-play: QA pushes back on maintenance — respond as TL</div>
+                <p>Mei says: "Every UI automation effort I've seen died of maintenance. Why will this one be different?" Respond in spoken English covering: (a) acknowledging the pattern, (b) the three technical reasons Playwright hurts less, (c) the structural safeguards (page objects, ownership, flaky stop line), (d) the phased scope promise.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    <p>"You're right about the pattern — <em>suites written fast and abandoned faster</em>, and the tribe next door is paying the Selenium tax right now. So let me answer with structure, not enthusiasm.</p>
+                    <p><em>Technically</em>, three reasons this hurts less: auto-waiting, so no sleep(5000) scattered through the suite; resilient locators — getByRole and data-testid instead of brittle XPath; and evidence on failure — trace, screenshot, video attached to the pipeline, so a red test comes with its own diagnosis.</p>
+                    <p><em>Structurally</em>, page object model from day one — every locator in exactly one place, so a redesign is one file, not forty tests; paired ownership, meaning the dev who breaks a locator fixes the test in the same PR; and a stop line — if the flaky rate passes five percent, we stop adding tests and fix what we have.</p>
+                    <p><em>And on scope</em>: I'm not promising the whole regression pack. Phase one is a fifteen-scenario smoke pack — login, payment, balance — gating SIT promotion in CI. The regression pack is phase two, and only once smoke has been stable for two sprints. If we can't keep the smoke pack green, we stop and fix it — the suite earns trust one sprint at a time, or we don't extend it."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrap-up -->
+    <section class="article-section">
+        <h2>8. Key Takeaways 本篇要点</h2>
+        <div class="success-box">
+            <div class="title">🎓 What you can now pitch as TL</div>
+            <ol>
+
+                <li><strong>Open with cost, close with identity</strong> — "two dev-days per release" in, "regression becomes a review activity" out.</li>
+
+                <li><strong>Answer maintenance fear with structure</strong> — auto-waiting, resilient locators, evidence on failure.</li>
+
+                <li><strong>Phase the scope</strong> — smoke pack gates SIT; regression pack is earned by two stable sprints.</li>
+
+                <li><strong>Share the maintenance</strong> — paired ownership, locator conventions, flaky stop line at five percent.</li>
+
+                <li><strong>Demo a controlled failure</strong> — trace, screenshot, video; evidence culture beats pass-rate culture.</li>
+            </ol>
+            <p><em>Practice tip:</em> In your next planning meeting, quantify the manual work out loud — <em>"Regression is two developer-days per release; the smoke pack turns that into twenty minutes of CI."</em> Numbers open doors that adjectives can't.</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="22-cucumber-test-automation.html">
+            <span class="label">← Previous</span>
+            <span class="title">22 · Cucumber Test Automation</span>
+        </a>
+        <a class="next" href="24-dr-resilience-improvement.html">
+            <span class="label">Next Article →</span>
+            <span class="title">24 · DR &amp; Resilience Improvement</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 23 · Playwright UI Testing · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

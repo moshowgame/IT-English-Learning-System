@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 23: Cross-System Performance Assessment 上下游系统性能评估 | Architect English</title>
+    <meta name="description" content="Cross-System Performance Assessment — 🎯 Mapping the end-to-end data flow across upstream and downstream systems: five hops, throughput and latency targets per hop, month-end capacity maths, finding the bottleneck, and committing to an SLA with headroom. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/23-cross-system-performance.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 23: Cross-System Performance Assessment 上下游系统性能评估 | Architect English">
+    <meta property="og:description" content="Cross-System Performance Assessment — 🎯 Mapping the end-to-end data flow across upstream and downstream systems: five hops, throughput and latency targets per hop, month-end capacity maths, finding the bottleneck, and committing to an SLA with headroom. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Architect English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/architect/articles/23-cross-system-performance.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Architect</a></li>
+                <li class="breadcrumb-item active">23 · Cross-System Performance Assessment</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>Cross-System Performance Assessment</h1>
+        <p class="subtitle">Article 23 · Module 6: Solution Proposals & Stakeholder Alignment · Architect English</p>
+        <div class="meta">
+            <span>⏱ 12 min read</span>
+            <span>🔴 Advanced</span>
+            <span>🎯 Five hops, throughput per hop, month-end capacity maths, finding the bottleneck, and an SLA with headroom</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>
+            It is <strong>Wednesday, 4:00 PM HKT</strong>. You are a Solution Architect in the
+            <em>RBWM Data</em> tribe. Tomorrow you present the wealth reporting pipeline to the
+            sponsor, and the sponsor has asked for one number: <em>"when is the mart ready?"</em>.
+            Before you answer a single-number question, you need an <strong>end-to-end
+            performance assessment</strong> across every system the data touches — because
+            <strong>"mart ready" is the sum of five hops, not one</strong>.
+        </p>
+        <p>
+            周三下午 4 点香港时间，你是 <em>RBWM 数据</em> tribe 的 Solution 架构师。明天你要向赞助人
+            汇报财富报表管道，对方只想要一个数字：<em>"集市几点就绪？"</em>。在回答这个"一个数字"
+            的问题之前，你需要先做一份覆盖数据所经每个系统的<strong>端到端性能评估</strong>——因为
+            <strong>"集市就绪"是 5 段链路之和，不是一段。</strong>
+        </p>
+        <p>
+            The flow, top to bottom: <strong>upstream</strong> — the nightly extract from
+            <strong>HUB</strong> (core banking) plus the <strong>GLCM</strong> payments feed;
+            <strong>middle</strong> — your ETL into the reporting mart;
+            <strong>downstream</strong> — three consumers: the QlikSense dashboards (Article 22's
+            estate), a regulatory report, and a downstream finance system refresh. The session
+            today is a working walkthrough with <strong>Tom</strong>, the Tech Lead who owns the
+            pipeline code, to pin down where the time actually goes and what we can honestly
+            commit to.
+        </p>
+        <p>
+            数据流从上到下：<strong>上游</strong>——<strong>HUB</strong>（核心银行）的夜间抽取，
+            加上 <strong>GLCM</strong> 支付数据源；<strong>中游</strong>——你们的 ETL 写入报表集市；
+            <strong>下游</strong>——三个消费者：QlikSense 报表（第 22 篇的那套体系）、监管报送报表，
+            以及下游财务系统的刷新。今天这场会是和负责管道代码的 <strong>Tom</strong>（Tech Lead）
+            做一次工作级走查：搞清时间到底花在哪、我们能诚实承诺什么。
+        </p>
+        <p>
+            Two of the five hops belong to other teams, which is exactly why this assessment is
+            called <em>cross-system</em>: your run time is hostage to the upstream extract rate
+            and to the downstream index rebuild, and neither is yours to fix alone. The
+            assessment has to be written so that those teams can see themselves in it — same
+            table, same timestamps, their name against their hop — or the fixes will never be
+            scheduled.
+        </p>
+        <p>
+            5 段链路里有两段属于别的团队——这正是它叫<em>跨系统</em>评估的原因：你的运行时长被上游
+            抽取速率和下游索引重建"扣为人质"，而这两样都不归你单独修。所以评估报告必须写成
+            那些团队能在其中"看见自己"的样子——同一张表、同一批时间戳、他们的名字对着他们那一段——
+            否则修复永远不会被排上日程。
+        </p>
+        <p>
+            The discipline for the next hour: <strong>every claim gets a number, every number
+            gets a measurement, and every bottleneck gets an owner</strong>. No "the extract is
+            slow" — instead "the extract is 40 minutes on average days, 2 hours 10 at month-end,
+            and the constraint is archive-log contention in the source database, which is the
+            HUB team's to fix".
+        </p>
+        <p>
+            接下来一小时的纪律：<strong>每个论断带数字，每个数字带测量方式，每个瓶颈带 owner</strong>。
+            不说"抽取很慢"——要说"抽取平常 40 分钟，月末 2 小时 10 分，约束是源库的归档日志竞争，
+            归 HUB 团队修"。
+        </p>
+    </section>
+
+    <!-- Five-Hop Table -->
+    <section class="article-section">
+        <h2>2. The Five-Hop Table 五段链路时间表</h2>
+        <p>
+            The single table tomorrow's meeting is built on: current measurements per hop,
+            average day versus month-end, and the target each hop will be held to.
+        </p>
+        <p>
+            明天会议所依据的那张表：逐段链路的实测时长，平常日对比月末，以及每段要达成的目标。
+        </p>
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Hop 链路段</th>
+                    <th>Owner 负责方</th>
+                    <th>Average day 平常日</th>
+                    <th>Month-end 月末</th>
+                    <th>Target 目标</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 · Extract (HUB + GLCM)</td>
+                    <td>HUB team</td>
+                    <td>40 min</td>
+                    <td>2 h 10</td>
+                    <td>≤ 60 min via partitioned extract</td>
+                </tr>
+                <tr>
+                    <td>2 · Transfer & landing</td>
+                    <td>Data platform</td>
+                    <td>10 min</td>
+                    <td>20 min</td>
+                    <td>≤ 15 min; APM-traced</td>
+                </tr>
+                <tr>
+                    <td>3 · Transform (ETL)</td>
+                    <td>Data platform</td>
+                    <td>95 min</td>
+                    <td>4 h+</td>
+                    <td>Scales out; not the constraint</td>
+                </tr>
+                <tr>
+                    <td>4 · Load to mart</td>
+                    <td>Data platform</td>
+                    <td>25 min</td>
+                    <td>35 min</td>
+                    <td>≤ 30 min</td>
+                </tr>
+                <tr>
+                    <td>5 · Downstream refresh</td>
+                    <td>BI / Finance / Regulatory</td>
+                    <td>60 min</td>
+                    <td>90 min</td>
+                    <td>Rebuild after finance feed (−25 min)</td>
+                </tr>
+                <tr>
+                    <td><strong>End to end 端到端</strong></td>
+                    <td>—</td>
+                    <td><strong>3 h 50 (window 4 h 30)</strong></td>
+                    <td><strong>~8 h (window unchanged)</strong></td>
+                    <td><strong>04:30 / 06:30 with 20% headroom</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>3. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">Before we open the dashboards — <em>what exactly are we assessing?</em> The sponsor asked one question: "when is the mart ready?" Are we answering that, or the whole chain?</span>
+                    <span class="cn">先别打开报表——<em>我们到底在评估什么？</em>赞助人只问了一句："集市几点就绪？"我们是回答那一句，还是评估整条链？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">The whole chain, because <strong>"mart ready" is the sum of five hops, not one.</strong> Hop one, the <em>HUB extract</em>; hop two, <em>file landing and transfer</em> to our platform; hop three, our <em>transform</em>; hop four, the <em>load</em> into the mart; hop five, the <em>downstream refresh</em> — QlikSense, the regulatory report, and the finance feed. Each hop gets its own timestamp and its own target. If we only measure the end, we can never say <em>why</em> a run was late — and "why" is the only question worth answering.</span>
+                    <span class="cn">整条链。因为<strong>"集市就绪"是 5 段链路之和，不是一段。</strong>第一段，<em>HUB 抽取</em>；第二段，<em>文件落地与传输</em>到我们平台；第三段，我们的<em>转换</em>；第四段，<em>加载</em>进集市；第五段，<em>下游刷新</em>——QlikSense、监管报送、财务供数。每段链路都要有自己的时间戳和自己的目标。只测终点，就永远说不清"为什么晚了"——而"为什么"是唯一值得回答的问题。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">Fine. <em>So where does the time actually go?</em> Give me the current numbers, average day first.</span>
+                    <span class="cn">行。<em>时间实际花在哪？</em>先给平常日的数字。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Average day: extract 40 minutes, transfer 10, transform 95, load 25, downstream refresh 60 — <strong>just under four hours against a four-and-a-half-hour window.</strong> Tight but legal. Month-end is the problem: extract blows out to 2 hours 10, transform to over 4 hours, downstream to 90 minutes — <strong>pushing eight hours</strong>, and the window doesn't move. The window isn't the problem; <strong>the month-end multiple is.</strong></span>
+                    <span class="cn">平常日：抽取 40 分钟、传输 10、转换 95、加载 25、下游刷新 60——<strong>不到 4 小时，窗口是 4 小时半。</strong>紧但合法。月末才是问题：抽取涨到 2 小时 10 分，转换超 4 小时，下游 90 分钟——<strong>逼近 8 小时</strong>，而窗口纹丝不动。窗口不是问题；<strong>月末的倍数才是。</strong></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en"><em>So which hop is the bottleneck?</em> My instinct says our transform — it's the one we own.</span>
+                    <span class="cn"><em>哪一段是瓶颈？</em>我直觉是我们的转换——那是我们自己负责的一段。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">The evidence says two bottlenecks, and neither is our transform. <em>Upstream:</em> the HUB extract tops out around 800 thousand rows an hour — the constraint is <strong>archive-log contention in the source database</strong>, so the extract is the HUB team's code on the HUB team's infrastructure. <em>Downstream:</em> the mart's <strong>index rebuild takes 40 minutes regardless of volume</strong> — it's serial, single-threaded, and it delays every downstream consumer that waits on it. The middle hops — our transform and load — scale fine. <strong>The bottleneck is upstream and downstream; here's the evidence.</strong></span>
+                    <span class="cn">证据指向两个瓶颈，都不在我们的转换。<em>上游：</em>HUB 抽取顶到每小时约 80 万行——约束是<strong>源库的归档日志竞争</strong>，这段代码和基础设施都归 HUB 团队。<em>下游：</em>集市的<strong>索引重建无论数据量多大都要 40 分钟</strong>——串行、单线程，还挡住所有等它的下游消费者。中间两段——我们的转换和加载——扩得动。<strong>瓶颈在上游和下游，证据在这里。</strong></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">OK, but the sponsor will want the <em>capacity maths</em> — "we fixed it last year" is not an answer this year. What are the numbers?</span>
+                    <span class="cn">但赞助人要看<em>容量数学</em>——"去年修过"在今年不是答案。数字是多少？</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en"><strong>Throughput is rows divided by seconds, per hop.</strong> Volume: 45 million records on an average day, 220 million at month-end — a five-times peak. Growth is 20 percent year on year, so in 18 months the month-end peak is around 320 million, and at the current extract rate the extract alone misses the window. <strong>One table, five hops, average versus peak, now versus eighteen months.</strong> That's the slide — and it converts "it feels slow" into a forecast with a date on it.</span>
+                    <span class="cn"><strong>吞吐量 = 每段链路的行数除以秒数。</strong>数据量：平常日 4500 万条，月末 2.2 亿——5 倍峰值。年增 20%，18 个月后月末峰值约 3.2 亿，按当前抽取速率，光是抽取就会超窗。<strong>一张表、5 段链路、均值对比峰值、现在对比 18 个月后。</strong>这就是那一页幻灯片——它把"感觉变慢了"变成一个带日期的预测。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">And how do we <em>prove</em> the numbers before we put them in front of Marcus? Because the HUB team will dispute the contention claim.</span>
+                    <span class="cn">那在拿给 Marcus 之前，我们怎么<em>证明</em>这些数字？HUB 团队肯定会质疑"归档日志竞争"这个说法。</span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Three instruments, in order of authority. <strong>Timestamp instrumentation</strong> at every hop boundary — we're 70 percent there; finish the other two hops this week. <strong>APM</strong> on the transfer service for the hop-two traces. And a <strong>load test replaying last month-end at one-times and one-and-a-half-times volume</strong> — that's the one that settles arguments. <strong>No SLA is signed without a load test behind it.</strong></span>
+                <span class="cn">三件测量工具，按权威度排序。每段链路边界打<strong>时间戳插桩</strong>——已经完成 70%，本周补齐剩下两段。传输服务上上 <strong>APM</strong>，拿第二段的调用链。再用<strong>负载测试回放上个月末的数据，按 1 倍和 1.5 倍量</strong>——这才是终结争论的那个。<strong>没有负载测试背书的 SLA 一律不签。</strong></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Tom (Tech Lead):</span>
+                <span class="text">
+                    <span class="en">Then the commitment question. Marcus originally asked for <em>"mart ready by 03:00"</em> — <strong>what do we actually commit to, and can I defend it in the room?</strong></span>
+                    <span class="cn">那就是承诺问题。Marcus 最初要的是<em>"集市 3 点就绪"</em>——<strong>我们到底承诺什么，而且这个数我能在会议室里守住吗？</strong></span>
+                </span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (Architect):</span>
+                <span class="text">
+                    <span class="en">Not 03:00 — that number has <strong>zero headroom</strong> against the window, and headroom is what absorbs the upstream extract running long. We commit to <strong>04:30 on average days and 06:30 at month-end, with 20 percent headroom</strong> — and we say why in the same breath: the number they asked for was never measured, the number we offer is. Then we bring <strong>an owner ask per bottleneck</strong>: the HUB team to parallelise the extract partitions — worth about 40 percent off the extract — and us to move the index rebuild to after the finance feed — worth 25 minutes. We commit to the number only after the load test passes, and if the fixes land, the number improves next quarter. <strong>That's an SLA we can hold for a year, not a press release.</strong></span>
+                    <span class="cn">不承诺 3 点——那个数字对窗口<strong>零余量</strong>，而余量才是吸收上游抽取超时的东西。我们承诺<strong>平常日 4:30、月末 6:30，留 20% 余量</strong>——并且同一句话里说清为什么：他们要的数字从没被测量过，我们给的数字是被测过的。然后每个瓶颈带一个 <strong>owner 请求</strong>：请 HUB 团队把抽取分区并行化——抽取大约省 40%；我们把索引重建挪到财务供数之后——省 25 分钟。承诺数字只在负载测试通过之后给出，修复落地后下季度数字还会变好。<strong>这是一个能守一年的 SLA，不是一页新闻稿。</strong></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>"Mart ready" is the sum of five hops, not one.</em></span>
+                <span class="chinese">"集市就绪"是 5 段链路之和，不是一段</span>
+                <span class="note">The sentence that reframes a one-number question into a chain assessment. Say it before showing any data. 把"一个数字的问题"重构为"链路评估"的那句话——放在展示任何数据之前说。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Each hop gets its own timestamp and its own target.</em></span>
+                <span class="chinese">每段链路有自己的时间戳和自己的目标</span>
+                <span class="note">"Per-hop targets" is what turns monitoring into diagnosis — you can name the hop that moved, not just the night that failed. "逐段目标"让监控变成诊断：能指出哪一段变了，而不只是哪一晚失败了。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The window isn't the problem — the month-end multiple is.</em></span>
+                <span class="chinese">窗口不是问题——月末的倍数才是</span>
+                <span class="note">"Multiple" = the peak-to-average ratio. Naming the multiple (5x) turns a vague "it's slow sometimes" into a capacity planning input. "Multiple" 指峰值与均值之比。点名倍数（5 倍）把"有时会慢"变成容量规划的输入。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Throughput is rows divided by seconds, per hop.</em></span>
+                <span class="chinese">吞吐量 = 每段链路的行数除以秒数</span>
+                <span class="note">The performance-maths definition. Keep it this blunt in stakeholder decks — everyone can repeat it, so everyone can check it. 性能数学的定义句。在干系人材料里保持如此直白——人人能复述，所以人人能检验。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>The bottleneck is upstream and downstream — and here's the evidence.</em></span>
+                <span class="chinese">瓶颈在上游和下游——证据在这里</span>
+                <span class="note">Always pair an inconvenient finding with "here's the evidence" in the same sentence. It converts defensiveness into shared problem-solving. 不受欢迎的结论要和"证据在这里"出现在同一句里——把防御性对话变成共同解题。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>No SLA is signed without a load test behind it.</em></span>
+                <span class="chinese">没有负载测试背书的 SLA 一律不签</span>
+                <span class="note">"Behind it" = as backing, as proof. The gate sentence for any commitment conversation — it applies to latency promises as much as to throughput ones. "Behind it" 指作为背书、证据。任何承诺谈判的闸门句——对延迟承诺和吞吐承诺同样适用。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Commit to the number with 20 percent headroom, not the number they asked for.</em></span>
+                <span class="chinese">承诺带 20% 余量的数字，而不是对方要的数字</span>
+                <span class="note">"Headroom" = the margin that absorbs variance. A committed number without headroom is a scheduled breach, not an SLA. "Headroom" 指吸收波动的余量。没有余量的承诺数字是排期好的违约，不是 SLA。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>One table, five hops, average versus peak, now versus eighteen months.</em></span>
+                <span class="chinese">一张表、5 段链路、均值对比峰值、现在对比 18 个月后</span>
+                <span class="note">The four-contrast slide in one sentence. Stakeholders remember the rhythm even when they forget the rows. 一句话说完四组对比的幻灯片。干系人即使忘了行数据，也会记住这个节奏。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Every bottleneck gets an owner ask.</em></span>
+                <span class="chinese">每个瓶颈配一个明确的 owner 请求</span>
+                <span class="note">"Owner ask" = the specific request to the team who can fix it ("the HUB team to parallelise the extract partitions"). Turns an assessment into an action plan. "Owner ask" 指向能修它的团队提出的具体请求（如"请 HUB 团队并行化抽取分区"）。把评估变成行动计划。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>That's an SLA we can hold for a year, not a press release.</em></span>
+                <span class="chinese">这是一个能守一年的 SLA，不是一页新闻稿</span>
+                <span class="note">"Press release" = an announcement written for applause instead of for operations. Use it to close a commitment conversation with self-aware humour. "Press release" 指为掌声而写、不为运维而写的公告。用这句话带着自知之明的幽默收尾承诺谈判。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li><strong>throughput</strong> n. 吞吐量 Work completed per unit of time — rows per second per hop. The first number in any batch performance conversation.</li>
+            <li><strong>latency</strong> n. 延迟 The time a single item (or a hop) takes end to end. In batch pipelines, latency per hop; in APIs, response time percentiles.</li>
+            <li><strong>bottleneck</strong> n. 瓶颈 The hop that constrains the whole chain — throughput of the pipeline can never exceed throughput of the bottleneck. Often the upstream extract, not your code.</li>
+            <li><strong>SLA (service level agreement)</strong> n. 服务等级协议 The measured commitment — a completion time, an availability, a freshness — with a measurement method and an owner. Unmeasured SLAs are wishes.</li>
+            <li><strong>headroom</strong> n. 余量 The margin between the committed number and the observed worst case — what absorbs the upstream extract running long. 20 percent is a defensible default.</li>
+            <li><strong>capacity planning</strong> n. 容量规划 Forecasting when volume growth breaks the current design — average vs peak, now vs 18 months — so the fix is scheduled before the breach, not after it.</li>
+            <li><strong>month-end peak</strong> n. 月末峰值 The recurring maximum load (here 5x average). Batch designs are sized for the peak, not the average — the average is what runs on the quiet nights.</li>
+            <li><strong>instrumentation</strong> n. 插桩 / 埋点 Timestamps written at every hop boundary so a run can be reconstructed after the fact. The cheapest, most decisive performance tool.</li>
+            <li><strong>APM (application performance monitoring)</strong> n. 应用性能监控 Tooling that traces requests across services (e.g., Dynatrace, AppDynamics) — the evidence source for hop-two style claims.</li>
+            <li><strong>load test</strong> n. 负载测试 Replaying realistic peak volumes (here, last month-end at 1x and 1.5x) against the pipeline to prove the numbers before anyone signs them.</li>
+            <li><strong>critical path</strong> n. 关键路径 The sequence of hops that determines total run time. Speeding up a hop that isn't on it changes nothing — the classic wasted-optimisation trap.</li>
+            <li><strong>index rebuild</strong> n. 索引重建 The serial maintenance step after loading a mart. Frequently the hidden downstream bottleneck — volume-independent and single-threaded.</li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+
+        <h3>① "X versus Y" — the four-contrast rhythm</h3>
+        <p>
+            The stakeholder slide is one sentence with four contrasts: <em>one table, five hops,
+            <strong>average versus peak</strong>, <strong>now versus eighteen months</strong></em>.
+            "Versus" (often abbreviated <strong>vs</strong> or <strong>v</strong>) is stronger than
+            "and" because it frames a comparison the audience must resolve. Build your performance
+            decks on pairs: average vs peak, current vs forecast, measured vs assumed.
+        </p>
+        <p>干系人幻灯片浓缩为一句话四个对比："均值对比峰值""现在对比 18 个月后"。"Versus"（简写 vs/v）比 "and" 有力，因为它框定了一个听众必须回答的比较。性能材料全部用成对对比搭建：均值 vs 峰值、现状 vs 预测、测过 vs 拍脑袋。</p>
+
+        <h3>② "Regardless of volume" — the volume-independent claim</h3>
+        <p>
+            <em>The index rebuild takes 40 minutes <strong>regardless of volume</strong></em> uses
+            "regardless of + noun" to state that a variable you would normally expect to matter
+            does not. The pattern is diagnostic gold: it separates fixed costs from variable costs
+            in one phrase. Compare <em>irrespective of volume</em> (more formal) and
+            <em>no matter how big the volume is</em> (more spoken).
+        </p>
+        <p>"索引重建无论数据量多大都要 40 分钟"用"regardless of + 名词"表明一个通常应当起作用的变量并不起作用。这是诊断利器：一个短语就区分了固定成本和可变成本。更正式可用 irrespective of volume，更口语可用 no matter how big the volume is。</p>
+
+        <h3>③ "The number they asked for was never measured, the number we offer is."</h3>
+        <p>
+            This is a <strong>parallel clause pair with ellipsis</strong> — the second clause drops
+            the repeated verb phrase ("was measured"). The rhythm gives the sentence its punch, and
+            the ellipsis gives it its speed. Use the pattern when contrasting an assumed number
+            with a measured one: <em>the estimate came from a vendor demo; the estimate we bring
+            comes from a load test</em>.
+        </p>
+        <p>这是"平行分句 + 省略"结构——后半句省略了重复的动词短语（was measured）。节奏赋予句子冲击力，省略赋予它速度。对比"拍脑袋数字"与"测量数字"时可用此句式：对方报的数来自厂商演示，我们报的数来自负载测试。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">🔢 Numbers Anchor Expectations — the HSBC Way</div>
+            <ul>
+                <li><strong>Never say "it should be fine by 3 AM."</strong> Say the table: five hops, measured times, average vs peak. British banking culture trusts a measured number with a method over a confident adjective — "measured beats assured".</li>
+                <li><strong>Convert volume into dates.</strong> "Growth is 20 percent year on year, so month-end misses the window in about 18 months" is a forecast with a deadline — it gets funded; "the system feels slower lately" does not.</li>
+                <li><strong>Keep the maths on one slide.</strong> Throughput, volume, multiple, growth, forecast. If the capacity argument needs three slides, it isn't understood well enough to defend.</li>
+                <li><strong>Write the table so other teams see themselves in it.</strong> Owner column included: the HUB team finds their hop, their number, their fix. People fund fixes for rows that carry their name.</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Two Ways to Lose the SLA Conversation</div>
+            <ul>
+                <li><strong>Committing the asked-for number without a load test.</strong> 03:00 with zero headroom is a scheduled breach: the first month-end blowout burns the team's credibility, and the sponsor stops believing the next number too.</li>
+                <li><strong>Blaming the upstream team without evidence.</strong> "The extract is slow" invites a turf war; "the extract tops out at 800k rows an hour, and here's the APM trace" invites the HUB team into the fix. Evidence first, finger never.</li>
+                <li><strong>Optimising off the critical path.</strong> If the bottleneck is the upstream extract and the downstream index rebuild, tuning your transform further is visible effort with zero effect — and sponsors notice when the number doesn't move.</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ From Status Report to Action Plan</div>
+            <ul>
+                <li><strong>Every bottleneck gets an owner ask.</strong> "The HUB team to parallelise the extract partitions (worth 40 percent)"; "us to move the index rebuild after the finance feed (worth 25 minutes)". An assessment with owner asks is an action plan; without them, it's a complaint.</li>
+                <li><strong>Commit with headroom, explain in the same breath.</strong> "04:30 average, 06:30 month-end, 20 percent headroom — because the number you asked for was never measured, and this one is." The explanation and the number travel together, or neither lands.</li>
+                <li><strong>Let the number improve on evidence.</strong> "If the fixes land, the commitment improves next quarter" — an SLA that can get better is easier to sign than one that can only get worse.</li>
+                <li><strong>Measurement order of authority: instrumentation, then APM, then load test.</strong> Start with the cheap tools, end with the one that settles arguments — and never let a disputed claim reach a steering forum without the strongest instrument behind it.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Full Translation -->
+    <section class="article-section">
+        <h2>8. Dialogue Translation 对话全文翻译</h2>
+        <div class="translation-block">
+            <div class="label">💬 Full Dialogue Translation 完整对话中文翻译</div>
+            <p><strong>Tom（技术负责人）：</strong>先别打开报表——我们到底在评估什么？赞助人只问了一句："集市几点就绪？"我们是回答那一句，还是评估整条链？</p>
+            <p><strong>你（架构师）：</strong>整条链。因为"集市就绪"是 5 段链路之和，不是一段。第一段，HUB 抽取；第二段，文件落地与传输到我们平台；第三段，我们的转换；第四段，加载进集市；第五段，下游刷新——QlikSense、监管报送、财务供数。每段链路都要有自己的时间戳和自己的目标。只测终点，就永远说不清"为什么晚了"——而"为什么"是唯一值得回答的问题。</p>
+            <p><strong>Tom（技术负责人）：</strong>行。时间实际花在哪？先给平常日的数字。</p>
+            <p><strong>你（架构师）：</strong>平常日：抽取 40 分钟、传输 10、转换 95、加载 25、下游刷新 60——不到 4 小时，窗口是 4 小时半。紧但合法。月末才是问题：抽取涨到 2 小时 10 分，转换超 4 小时，下游 90 分钟——逼近 8 小时，而窗口纹丝不动。窗口不是问题；月末的倍数才是。</p>
+            <p><strong>Tom（技术负责人）：</strong>哪一段是瓶颈？我直觉是我们的转换——那是我们自己负责的一段。</p>
+            <p><strong>你（架构师）：</strong>证据指向两个瓶颈，都不在我们的转换。上游：HUB 抽取顶到每小时约 80 万行——约束是源库的归档日志竞争，这段代码和基础设施都归 HUB 团队。下游：集市的索引重建无论数据量多大都要 40 分钟——串行、单线程，还挡住所有等它的下游消费者。中间两段——我们的转换和加载——扩得动。瓶颈在上游和下游，证据在这里。</p>
+            <p><strong>Tom（技术负责人）：</strong>但赞助人要看容量数学——"去年修过"在今年不是答案。数字是多少？</p>
+            <p><strong>你（架构师）：</strong>吞吐量 = 每段链路的行数除以秒数。数据量：平常日 4500 万条，月末 2.2 亿——5 倍峰值。年增 20%，18 个月后月末峰值约 3.2 亿，按当前抽取速率，光是抽取就会超窗。一张表、5 段链路、均值对比峰值、现在对比 18 个月后。这就是那一页幻灯片——它把"感觉变慢了"变成一个带日期的预测。</p>
+            <p><strong>Tom（技术负责人）：</strong>那在拿给 Marcus 之前，我们怎么证明这些数字？HUB 团队肯定会质疑"归档日志竞争"这个说法。</p>
+            <p><strong>你（架构师）：</strong>三件测量工具，按权威度排序。每段链路边界打时间戳插桩——已经完成 70%，本周补齐剩下两段。传输服务上上 APM，拿第二段的调用链。再用负载测试回放上个月末的数据，按 1 倍和 1.5 倍量——这才是终结争论的那个。没有负载测试背书的 SLA 一律不签。</p>
+            <p><strong>Tom（技术负责人）：</strong>那就是承诺问题。Marcus 最初要的是"集市 3 点就绪"——我们到底承诺什么，而且这个数我能在会议室里守住吗？</p>
+            <p><strong>你（架构师）：</strong>不承诺 3 点——那个数字对窗口零余量，而余量才是吸收上游抽取超时的东西。我们承诺平常日 4:30、月末 6:30，留 20% 余量——并且同一句话里说清为什么：他们要的数字从没被测量过，我们给的数字是被测过的。然后每个瓶颈带一个 owner 请求：请 HUB 团队把抽取分区并行化——抽取大约省 40%；我们把索引重建挪到财务供数之后——省 25 分钟。承诺数字只在负载测试通过之后给出，修复落地后下季度数字还会变好。这是一个能守一年的 SLA，不是一页新闻稿。</p>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>9. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate the assessment summary into natural Chinese:</div>
+                <p>"The end-to-end run is the sum of five hops — extract, transfer, transform, load,
+                downstream refresh — each with its own timestamp and target. On an average day we
+                finish in just under four hours against a four-and-a-half-hour window; at month-end
+                the five-times peak pushes us to eight. Throughput is rows divided by seconds, per
+                hop: the evidence points to two bottlenecks, neither of them our transform — the
+                upstream extract caps at 800 thousand rows an hour on archive-log contention, and
+                the mart's index rebuild takes forty minutes regardless of volume. One table, five
+                hops, average versus peak, now versus eighteen months. We commit to 04:30 average
+                and 06:30 month-end with 20 percent headroom, and no SLA is signed without a load
+                test behind it."</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "端到端运行是 5 段链路之和——抽取、传输、转换、加载、下游刷新——每段都有自己的时间戳和目标。
+                    平常日我们在 4 小时半的窗口内、不到 4 小时跑完；月末 5 倍峰值会把总时长推到 8 小时。
+                    吞吐量 = 每段链路的行数除以秒数：证据指向两个瓶颈，都不是我们的转换——
+                    上游抽取因归档日志竞争顶在每小时 80 万行，集市的索引重建无论数据量多大都要 40 分钟。
+                    一张表、5 段链路、均值对比峰值、现在对比 18 个月后。
+                    我们承诺平常日 4:30、月末 6:30、留 20% 余量，没有负载测试背书的 SLA 一律不签。"
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Spot the performance mistake — which line in this optimisation plan is wrong?</div>
+                <ol>
+                    <li>"Instrument all five hop boundaries with timestamps so any late run can be reconstructed."</li>
+                    <li>"The evidence shows the upstream extract and the index rebuild are the bottlenecks, so we will spend the next sprint tuning our transform code by another 15 minutes."</li>
+                    <li>"We will replay last month-end's data at 1x and 1.5x volume before committing any SLA number."</li>
+                    <li>"We will commit to 04:30 average with 20 percent headroom instead of the 03:00 originally requested."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ② is the mistake — the transform is not on the critical path, so tuning it another 15 minutes changes
+                    the total run time by zero. That is the classic wasted-optimisation trap: effort went where the team
+                    owned code, not where the evidence pointed. ① is right — per-hop instrumentation is what turns a
+                    late run into a diagnosis. ③ is right — no SLA without a load test behind it. ④ is right — commit
+                    with headroom, because the asked-for number has zero margin against the window.
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — present the number:</div>
+                <p>Your pipeline: extract 30 min average / 1h50 month-end, transfer 10 min, transform
+                80 min / 3h20 month-end, load 20 min, downstream refresh 55 min. Window: 5 hours,
+                no month-end extension. Volume grows 25 percent year on year. Write your 90-second
+                summary for the sponsor in English: map the hops, give the current numbers, name
+                the bottleneck hypothesis, and commit to an SLA with headroom. Use at least 3
+                patterns from the Key Phrases section.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "One question — 'when is the mart ready?' — deserves the whole chain, because mart-ready is the sum
+                    of five hops, not one: extract, transfer, transform, load, downstream refresh, each with its own
+                    timestamp and its own target. Today: 3 hours 15 on an average day against a 5-hour window; at
+                    month-end the five-times peak pushes us to 6 hours 55 — over the window. Throughput is rows divided
+                    by seconds, per hop, and the evidence points upstream: the extract caps at around 700 thousand rows
+                    an hour — we believe archive-log contention — and we'll prove it with APM traces and a load test
+                    replaying last month-end at 1x and 1.5x. One table, five hops, average versus peak, now versus
+                    eighteen months: at 25 percent growth the extract alone breaches the window within a year, so the
+                    fix needs to be scheduled now. Our commitment, pending the load test: 04:45 average and 07:00
+                    month-end, with 20 percent headroom — not the number that was asked for, but a number that is
+                    measured, holds for a year, and improves next quarter if the extract is parallelised."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="article-nav">
+        <a href="22-qliksense-etl-pain-points.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">22 · QlikSense ETL Pain Points</span>
+        </a>
+        <a class="next" href="24-manage-business-expectations.html">
+            <span class="label">Next Article →</span>
+            <span class="title">24 · Managing Business Expectations</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2026 IT English Learning System · Built for HSBC IT Professionals</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 24: DR Design &amp; Resilience Improvements 灾备设计与韧性改进 | Tech Lead English</title>
+    <meta name="description" content="DR Design &amp; Resilience Improvements — 🎯 Warm standby review, RTO/RPO gaps, automated failover, runbook rehearsal, resilience backlog. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <link rel="canonical" href="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/24-dr-resilience-improvement.html">
+    <meta name="theme-color" content="#002855">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Article 24: DR Design &amp; Resilience Improvements 灾备设计与韧性改进 | Tech Lead English">
+    <meta property="og:description" content="DR Design &amp; Resilience Improvements — 🎯 Warm standby review, RTO/RPO gaps, automated failover, runbook rehearsal, resilience backlog. Bilingual dialogue, key phrases, vocabulary and practice for HSBC Tech Lead English.">
+    <meta property="og:url" content="https://moshowgame.github.io/IT-English-Learning-System/tech-lead/articles/24-dr-resilience-improvement.html">
+    <meta property="og:site_name" content="IT English Learning System">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <span class="brand-mark">IT</span>
+                <span>English Learning System</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../ba/index.html">BA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../developer/index.html">Developer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../tech-lead/index.html">Tech Lead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../architect/index.html">Architect</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../pm/index.html">PM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../itso/index.html">CyberSecurity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../senior-manager/index.html">Senior Manager</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../business/index.html">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../scenarios/index.html">Scenarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="breadcrumb-bar">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Tech Lead</a></li>
+                <li class="breadcrumb-item active">24 · DR Design &amp; Resilience Improvements</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<main class="page-container">
+
+    <section class="page-header">
+        <h1>DR Design &amp; Resilience Improvements</h1>
+        <p class="subtitle">Article 24 · Module 6: Reliability &amp; Delivery · Tech Lead English</p>
+        <div class="meta">
+            <span>⏱ 10 min read</span>
+            <span>🔴 Senior</span>
+            <span>🎯 Warm standby review, RTO/RPO gaps, automated failover, runbook rehearsal, resilience backlog</span>
+        </div>
+    </section>
+
+    <!-- Scenario -->
+    <section class="article-section">
+        <h2>1. Scenario 场景背景</h2>
+        <p>It is <strong>Wednesday, 2:00 PM HKT</strong>, three weeks after the annual <em>DR drill</em>. You are <strong>Wei</strong>, the Tech Lead for the <em>Payments Platform</em> squad. In the room (and on Teams) are <strong>Michael</strong>, your Senior Manager, and <strong>Steven</strong>, the Group Architect who owns the resilience standard.</p>
+        <p>周三下午 2 点，年度<em>灾备演练</em>结束三周后。你是 <strong>Wei</strong>，<em>支付平台</em>squad 的 Tech Lead。会议室里（Teams 上）有高级经理 <strong>Michael</strong> 和负责韧性标准的集团架构师 <strong>Steven</strong>。</p>
+        <p>The current DR setup for the payments service is a <strong>warm standby</strong> environment in a second region: the application stack runs at reduced capacity, the ledger database uses <strong>asynchronous replication</strong>, and switching traffic means a <strong>manual DNS change</strong> executed from the runbook. The mandate today: review the design honestly after the drill, quantify the gaps, and agree a prioritised resilience backlog.</p>
+        <p>支付服务目前的灾备架构是第二地区的<strong>温备</strong>环境：应用以降配方式常驻，账本数据库使用<strong>异步复制</strong>，切流量靠 runbook 里的<strong>手动 DNS 变更</strong>。今天的任务：演练后诚实评审设计、量化差距、敲定一份按优先级排序的韧性待办。</p>
+        <p>As the TL, you own the assessment. Your job is not to defend the old design — it is to <strong>name the gaps, propose the fixes, and give management a decision-ready plan</strong>.</p>
+        <p>作为 TL，评审由你负责。你的工作不是为旧设计辩护，而是<strong>指出差距、提出改进方案、给管理层一份可直接决策的计划</strong>。</p>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="article-section">
+        <h2>2. Dialogue 英文对话</h2>
+        <div class="dialogue-block">
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Wei, the board asked about resilience after the industry outage last month. <em>Give me the honest version of the drill</em> — not the slide-deck version.</span><span class="cn">Wei，上个月行业性故障之后，董事会问起了韧性。给我<em>演练的真实版本</em>，别给我 PPT 版本。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Happy to. <strong>Current state first:</strong> warm standby in the second region, <em>asynchronous DB replication</em> for the ledger, and a <em>manual DNS switch</em> driven by the runbook. Three gaps came out of the drill.</span><span class="cn">没问题。<strong>先说现状：</strong>第二地区温备，账本库<em>异步复制</em>，切流靠 runbook 里的<em>手动 DNS 切换</em>。演练暴露了三个差距。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><strong>Gap one — RTO.</strong> Our target is <em>two hours</em>; the drill took <em>four hours and ten minutes</em>. The runbook is <em>stale</em> — it references a jump host we decommissioned last year — and there are <em>fourteen manual, swivel-chair steps</em> between detection and traffic switch.</span><span class="cn"><strong>差距一——RTO。</strong>目标是 <em>2 小时</em>，演练花了 <em>4 小时 10 分</em>。runbook <em>过期了</em>——里面还引用去年就下线的堡垒机——从发现故障到切流之间有 <em>14 步手动"转椅操作"</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steven (Architect):</span>
+                <span class="text"><span class="en"><strong>Gap two is mine to confirm — RPO.</strong> Async replication lag peaked at <em>fifteen minutes</em> during the drill. If the primary had died at the peak, we would have lost fifteen minutes of ledger writes against a <em>five-minute RPO target</em>.</span><span class="cn"><strong>差距二我来确认——RPO。</strong>演练中异步复制延迟峰值达到 <em>15 分钟</em>。如果主库恰好在峰值挂掉，按 <em>5 分钟 RPO 目标</em>，我们会丢 15 分钟的账本写入。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Agreed. My proposal: move the ledger to <em>semi-synchronous replication</em> — the commit waits for at least one standby ack — plus <em>replication-lag alerting</em> at five minutes. Cost is roughly <em>5 to 8 percent extra write latency</em>, which our budget absorbs.</span><span class="cn">同意。我的方案：账本库改<em>半同步复制</em>——提交至少要等一个备库确认——再加 <em>复制延迟 5 分钟告警</em>。代价是写延迟增加约 <em>5%–8%</em>，预算内可以吸收。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><strong>Gap three — the failover itself is manual.</strong> I want <em>automated failover</em>: <em>health checks</em> on the primary, three consecutive failures triggers promotion of the standby, and the orchestrator holds a <em>quorum</em> so we never end up with <em>split-brain</em> — two primaries both accepting writes.</span><span class="cn"><strong>差距三——切换本身靠人工。</strong>我要<em>自动故障切换</em>：对主库做<em>健康检查</em>，连续 3 次失败就触发备库提升，编排器持有<em>仲裁多数</em>，避免<em>脑裂</em>——两个主库同时收写。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steven (Architect):</span>
+                <span class="text"><span class="en">Good — but automation without fencing is how you cause the outage you were preventing. <em>Fence the old primary</em> before promotion, and keep the manual switch as a <em>break-glass fallback</em> the on-call can execute.</span><span class="cn">好——但没有隔离机制的自动化，反而会制造你要防的故障。提升前先<em>隔离旧主库</em>，手动切换保留为值班同学可执行的<em>紧急兜底</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Exactly. Application side, we also need <em>retry with exponential backoff</em> and a <em>circuit breaker</em> — when the primary is half-dead, we fail fast instead of hammering it with ten thousand timeouts per minute.</span><span class="cn">正是。应用侧还要加<em>指数退避重试</em>和<em>熔断器</em>——主库半死不活时，快速失败，而不是每分钟上万次超时去捶它。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">And the cultural fix: <em>runbook as code</em> — version-controlled, reviewed at every release, plus <em>quarterly game days</em> where we break things on purpose in staging and rehearse the switch. <em>Resilience is a habit, not a project.</em></span><span class="cn">还有文化层面的修复：<em>runbook 即代码</em>——进版本库、每次发版评审，外加<em>季度 game day</em>——在预发环境故意制造故障、演练切换。<em>韧性是习惯，不是一次性项目。</em></span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">What does this mean in <em>business minutes</em>? If we do nothing, and we have a real event?</span><span class="cn">换算成<em>业务分钟数</em>是什么概念？如果我们什么都不做，真出一次事故呢？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en">Doing nothing: up to <em>four hours of payment outage</em> and <em>fifteen minutes of lost ledger writes</em> to reconstruct by hand. With the backlog: <em>RTO back inside two hours by Q3</em>, RPO within target, and every drill generates evidence for the regulator instead of surprises.</span><span class="cn">不做：最多 <em>4 小时支付中断</em>，外加 <em>15 分钟账本写入</em>要靠人工重建。做了这套待办：<em>Q3 前 RTO 回到 2 小时以内</em>，RPO 达标，每次演练都能给监管交证据，而不是交惊吓。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Prioritise it for me. What lands this quarter?</span><span class="cn">排个优先级。这个季度落地什么？</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">You (TL):</span>
+                <span class="text"><span class="en"><strong>Prioritised resilience backlog:</strong> <em>P0</em> — runbook refresh plus a supervised dry run this month. <em>P1</em> — health checks and automated failover with fencing. <em>P2</em> — semi-sync replication. <em>P3</em> — quarterly game days. Nothing here needs a new team; it needs <em>protected capacity</em> in this squad.</span><span class="cn"><strong>按优先级排的韧性待办：</strong><em>P0</em>——本月完成 runbook 重写加一次有人监督的干跑。<em>P1</em>——健康检查、带隔离的自动切换。<em>P2</em>——半同步复制。<em>P3</em>——季度 game day。不需要新增团队，只需要本 squad <em>被保住的容量</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Michael (Senior Manager):</span>
+                <span class="text"><span class="en">Agreed. Bring the cost estimate Thursday, and Steven — <em>sign off the failover design</em> before Wei starts P1.</span><span class="cn">同意。周四给我成本估算。Steven——在 Wei 启动 P1 之前<em>把切换设计签了</em>。</span></span>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Steven (Architect):</span>
+                <span class="text"><span class="en">Will do. Wei, good assessment — you quantified the gaps instead of dramatising them. That's exactly how resilience should be sold.</span><span class="cn">没问题。Wei，评审很到位——你把差距量化了，而不是渲染它。韧性就该这么卖。</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Dialogue Translation -->
+    <section class="article-section">
+        <h2>3. Full Dialogue Translation 全对话中文翻译</h2>
+        <div class="translation-block">
+            <div class="label">📖 全对话中文翻译 · Full Chinese Translation</div>
+            <p><strong>Michael（高级经理）：</strong>Wei，上个月行业性故障之后，董事会问起了韧性。给我演练的真实版本，别给我 PPT 版本。</p>
+            <p><strong>你（TL）：</strong>没问题。先说现状：第二地区温备，账本库异步复制，切流靠 runbook 里的手动 DNS 切换。演练暴露了三个差距。</p>
+            <p><strong>你（TL）：</strong>差距一——RTO。目标是 2 小时，演练花了 4 小时 10 分。runbook 过期了——里面还引用去年就下线的堡垒机——从发现故障到切流之间有 14 步手动"转椅操作"。</p>
+            <p><strong>Steven（架构师）：</strong>差距二我来确认——RPO。演练中异步复制延迟峰值达到 15 分钟。如果主库恰好在峰值挂掉，按 5 分钟 RPO 目标，我们会丢 15 分钟的账本写入。</p>
+            <p><strong>你（TL）：</strong>同意。我的方案：账本库改半同步复制——提交至少要等一个备库确认——再加复制延迟 5 分钟告警。代价是写延迟增加约 5%–8%，预算内可以吸收。</p>
+            <p><strong>你（TL）：</strong>差距三——切换本身靠人工。我要自动故障切换：对主库做健康检查，连续 3 次失败就触发备库提升，编排器持有仲裁多数，避免脑裂——两个主库同时收写。</p>
+            <p><strong>Steven（架构师）：</strong>好——但没有隔离机制的自动化，反而会制造你要防的故障。提升前先隔离旧主库，手动切换保留为值班同学可执行的紧急兜底。</p>
+            <p><strong>你（TL）：</strong>正是。应用侧还要加指数退避重试和熔断器——主库半死不活时，快速失败，而不是每分钟上万次超时去捶它。</p>
+            <p><strong>你（TL）：</strong>还有文化层面的修复：runbook 即代码——进版本库、每次发版评审，外加季度 game day——在预发环境故意制造故障、演练切换。韧性是习惯，不是一次性项目。</p>
+            <p><strong>Michael（高级经理）：</strong>换算成业务分钟数是什么概念？如果我们什么都不做，真出一次事故呢？</p>
+            <p><strong>你（TL）：</strong>不做：最多 4 小时支付中断，外加 15 分钟账本写入要靠人工重建。做了这套待办：Q3 前 RTO 回到 2 小时以内，RPO 达标，每次演练都能给监管交证据，而不是交惊吓。</p>
+            <p><strong>Michael（高级经理）：</strong>排个优先级。这个季度落地什么？</p>
+            <p><strong>你（TL）：</strong>按优先级排的韧性待办：P0——本月完成 runbook 重写加一次有人监督的干跑。P1——健康检查、带隔离的自动切换。P2——半同步复制。P3——季度 game day。不需要新增团队，只需要本 squad 被保住的容量。</p>
+            <p><strong>Michael（高级经理）：</strong>同意。周四给我成本估算。Steven——在 Wei 启动 P1 之前把切换设计签了。</p>
+            <p><strong>Steven（架构师）：</strong>没问题。Wei，评审很到位——你把差距量化了，而不是渲染它。韧性就该这么卖。</p>
+        </div>
+    </section>
+
+    <!-- Key Phrases -->
+    <section class="article-section">
+        <h2>4. Key Phrases 关键句型</h2>
+        <ul class="phrase-list">
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Current state: warm standby, asynchronous DB replication, manual DNS switch.</em></span>
+                <span class="chinese">现状：温备、数据库异步复制、手动 DNS 切换</span>
+                <span class="note">Open a DR review with the current state in one sentence — three nouns, no adjectives. 用一句话、三个名词开场说清现状，不要形容词。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Our RTO target is two hours; the drill took four hours and ten minutes.</em></span>
+                <span class="chinese">RTO 目标 2 小时，演练花了 4 小时 10 分</span>
+                <span class="note">State target and actual in the same sentence — the gap becomes undeniable. 目标和实测放在同一句里，差距无法被否认。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>The runbook is stale — it references a jump host we decommissioned last year.</em></span>
+                <span class="chinese">runbook 过期了——还引用着去年下线的堡垒机</span>
+                <span class="note"><em>Stale</em> is the professional word for outdated docs. Concretize it with one wrong detail. <em>Stale</em> 是"文档过期"的专业说法，用一个具体错误细节坐实它。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Fourteen manual, swivel-chair steps between detection and traffic switch.</em></span>
+                <span class="chinese">从发现故障到切流之间有 14 步手动"转椅操作"</span>
+                <span class="note"><em>Swivel-chair steps</em> = manual copy-paste style work between systems. Automate these first. <em>Swivel-chair steps</em> 指在系统间人工搬数式的操作，是自动化的首选目标。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>I recommend semi-synchronous replication for the ledger database.</em></span>
+                <span class="chinese">我建议账本库改用半同步复制</span>
+                <span class="note"><em>I recommend + noun</em> is the cleanest way to propose a design change to an architect. 对架构师提设计变更，用 <em>I recommend + 名词</em> 最干净。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Three consecutive failed health checks trigger promotion of the standby.</em></span>
+                <span class="chinese">连续 3 次健康检查失败触发备库提升</span>
+                <span class="note">Quantify the trigger — "three consecutive failures" prevents flapping on one blip. 触发条件要量化，"连续 3 次"避免一次抖动就乱切换。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Retry with exponential backoff, plus a circuit breaker so we fail fast.</em></span>
+                <span class="chinese">指数退避重试，加熔断器快速失败</span>
+                <span class="note"><em>Fail fast</em> is the justification — retries without a breaker amplify the outage. <em>Fail fast</em> 是理由：只有重试没有熔断会放大故障。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CASUAL</span> <em>We run quarterly game days — break things on purpose, in staging.</em></span>
+                <span class="chinese">我们做季度 game day——在预发环境故意搞坏东西</span>
+                <span class="note"><em>Break things on purpose</em> sounds casual but lands well with engineers; say "fault-injection exercise" with auditors. 对工程师说 <em>break things on purpose</em> 很自然；对审计要说"故障注入演练"。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">FORMAL</span> <em>Here is the prioritised resilience backlog: P0 runbook, P1 automated failover, P2 semi-sync, P3 game days.</em></span>
+                <span class="chinese">这是排好优先级的韧性待办：P0 runbook、P1 自动切换、P2 半同步、P3 演练</span>
+                <span class="note">P0–P3 numbering turns a wish list into a decision-ready plan. P0–P3 编号让愿望清单变成可决策的计划。</span>
+            </li>
+            <li>
+                <span class="english"><span class="tag">CORE</span> <em>Resilience is a habit, not a project.</em></span>
+                <span class="chinese">韧性是习惯，不是一次性项目</span>
+                <span class="note">A memorable closing line — it justifies recurring drills instead of a one-off fix. 收尾金句：为常态化演练争取理由，而不是一次性修复。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="article-section">
+        <h2>5. Vocabulary 词汇表</h2>
+        <ul class="vocab-list">
+            <li>
+                <span class="english"><strong>failover</strong> <span class="tag">n.</span></span>
+                <span class="chinese">故障切换（自动切到备用系统）</span>
+                <span class="note">Automatic transfer of traffic/workload to the standby when the primary fails. Opposite action planned between data centres is a <em>switchover</em>. 主库故障时自动把流量切到备库；计划内双向切换叫 <em>switchover</em>。</span>
+            </li>
+            <li>
+                <span class="english"><strong>warm standby</strong> <span class="tag">n.</span></span>
+                <span class="chinese">温备环境</span>
+                <span class="note">Standby runs at reduced capacity with data replicated; scale-up is needed on failover. Hot = fully scaled and live; cold = powered off until needed. 备端降配常驻、数据已复制，切换时需扩容；hot 是全量在线，cold 是平时不开机。</span>
+            </li>
+            <li>
+                <span class="english"><strong>RTO (Recovery Time Objective)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">恢复时间目标</span>
+                <span class="note">Maximum acceptable time to restore service after a disruption. Measured from detection to service restored. 中断后恢复服务的最长可接受时间，从发现故障算到服务恢复。</span>
+            </li>
+            <li>
+                <span class="english"><strong>RPO (Recovery Point Objective)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">恢复点目标（可容忍的数据丢失窗口）</span>
+                <span class="note">Maximum acceptable data loss, expressed in time. With async replication, your RPO equals your replication lag. 用时间表达的可接受数据丢失量；异步复制下 RPO 等于复制延迟。</span>
+            </li>
+            <li>
+                <span class="english"><strong>replication lag</strong> <span class="tag">n.</span></span>
+                <span class="chinese">复制延迟</span>
+                <span class="note">The delay between a write on the primary and the same write landing on the standby. Monitor and alert on it — it is your live RPO. 主库写入到备库落库的延迟；要监控告警，它就是实时的 RPO。</span>
+            </li>
+            <li>
+                <span class="english"><strong>runbook</strong> <span class="tag">n.</span></span>
+                <span class="chinese">运维手册 / 操作手册</span>
+                <span class="note">Step-by-step operational document for procedures like failover. Best practice: runbook as code — version-controlled and reviewed each release. 像 failover 这类操作的逐步手册；最佳实践是 runbook 即代码，进版本库、随发版评审。</span>
+            </li>
+            <li>
+                <span class="english"><strong>health check</strong> <span class="tag">n.</span></span>
+                <span class="chinese">健康检查</span>
+                <span class="note">A periodic probe that decides whether a component is alive and ready. Automations usually require N consecutive failures before acting. 定期探测组件是否存活可用；自动化通常要求连续 N 次失败才动作。</span>
+            </li>
+            <li>
+                <span class="english"><strong>circuit breaker</strong> <span class="tag">n.</span></span>
+                <span class="chinese">熔断器</span>
+                <span class="note">Pattern that stops calling a failing dependency after a threshold (closed → open → half-open), letting it recover. 连续失败达到阈值后停止调用故障依赖（闭合→断开→半开），给对方恢复时间。</span>
+            </li>
+            <li>
+                <span class="english"><strong>exponential backoff</strong> <span class="tag">n.</span></span>
+                <span class="chinese">指数退避（重试间隔指数增长）</span>
+                <span class="note">Retry pattern where each wait doubles (1s, 2s, 4s…), ideally with jitter, to avoid a retry storm. 重试间隔翻倍（1s、2s、4s…），最好加随机抖动，避免重试风暴。</span>
+            </li>
+            <li>
+                <span class="english"><strong>split-brain</strong> <span class="tag">n.</span></span>
+                <span class="chinese">脑裂（双主同时写入）</span>
+                <span class="note">Failure mode where two nodes both believe they are primary and accept writes. Prevented by quorum and fencing. 两个节点都认为自己是主库并接收写入；用仲裁（quorum）和隔离（fencing）预防。</span>
+            </li>
+            <li>
+                <span class="english"><strong>game day</strong> <span class="tag">n.</span></span>
+                <span class="chinese">故障演练日</span>
+                <span class="note">A scheduled exercise where the team injects failures and rehearses responses — the friendly name for chaos engineering in production-like environments. 团队按计划注入故障并演练响应；在类生产环境做混沌工程的友好叫法。</span>
+            </li>
+            <li>
+                <span class="english"><strong>single point of failure (SPOF)</strong> <span class="tag">n.</span></span>
+                <span class="chinese">单点故障</span>
+                <span class="note">Any component whose failure takes down the whole service. In DR reviews, hunt SPOFs before buying tools. 任何一个挂掉就拖垮整个服务的组件；做灾备评审时先找 SPOF，再谈买工具。</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Grammar Notes -->
+    <section class="article-section">
+        <h2>6. Grammar Notes 语法点</h2>
+        <h3>① "Target is X; the drill took Y" — quantifying the gap in one sentence</h3>
+        <p>The strongest DR sentence pattern is <em>target vs actual</em>: "Our RTO target is two hours; the drill took four hours and ten minutes." Two numbers, one semicolon, no adjectives like "quite bad". The audience does the math themselves — which is far more convincing than your evaluation.</p>
+        <p>灾备汇报最强的句式是<em>目标 vs 实测</em>："Our RTO target is two hours; the drill took four hours and ten minutes." 两个数字、一个分号，不用"挺糟糕"这类形容词。让听众自己做减法，比你自己下结论更有说服力。</p>
+        <h3>② "X triggers Y" — causative verbs for automation design</h3>
+        <p>Automation is described with causative verbs: <em>three consecutive failures <strong>trigger</strong> promotion</em>, <em>the orchestrator <strong>fences</strong> the old primary</em>, <em>the alert <strong>pages</strong> the on-call</em>. Notice the present simple tense — automation rules are permanent truths, not one-off events.</p>
+        <p>描述自动化用使役动词：<em>trigger（触发）、fence（隔离）、page（呼人）</em>。注意用一般现在时——自动化规则是永久事实，不是一次性事件。</p>
+        <h3>③ "P0… P3" — numbered priorities to negotiate scope</h3>
+        <p>When management asks "what lands this quarter?", answer with a numbered list, not a paragraph: <em>P0 runbook, P1 automated failover, P2 semi-sync, P3 game days</em>. Numbers let the manager cut from the bottom ("drop P3") without touching your critical path. Vague lists get cut arbitrarily.</p>
+        <p>当管理层问"这个季度落地什么"，用编号清单回答，不要用一段话：<em>P0…P3</em>。编号让经理从尾部裁剪（"砍掉 P3"），而不会动你的关键路径。模糊清单会被任意裁。</p>
+    </section>
+
+    <!-- Cultural Tips -->
+    <section class="article-section">
+        <h2>7. Cultural Tips 文化 / 职场 Tips</h2>
+        <div class="tip-box">
+            <div class="tip-title">💡 Presenting Resilience Risks Without Alarming Management</div>
+            <ul>
+                <li><strong>Gap → Plan → Date.</strong> Never present a gap alone. "RTO is 4h" is alarming; "RTO is 4h, P0–P1 land this quarter, back inside 2h by Q3" is reassuring. 灾备汇报三段式：差距→方案→日期。只说"RTO 4 小时"是惊吓，补上季度恢复计划才是安心。</li>
+                <li><strong>Translate RTO/RPO into business minutes.</strong> Managers remember "four hours of payment outage" and "fifteen minutes of lost transactions" — not the acronyms. 把 RTO/RPO 翻译成业务分钟数：经理记得住"4 小时支付中断""丢了 15 分钟交易"，记不住缩写。</li>
+                <li><strong>Ask for capacity, not headcount, first.</strong> "This needs protected capacity in this squad" is easier to approve than a new team request. 先要"保住的容量"，比开口要新 headcount 容易获批。</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <div class="title">⚠️ Don't Blame the Last Drill Team</div>
+            <ul>
+                <li>Say <em>"the runbook went stale"</em> — a system and process problem. Never say <em>"the team who wrote it didn't maintain it"</em> — that's a people attack and it makes future authors defensive. 说"runbook 过期了"——这是系统和流程问题；别说"写的人没维护"——那是攻击个人，会让以后没人敢写文档。</li>
+                <li>Stale runbooks are a <em>design flaw</em>, not a discipline failure: fix it with "runbook as code" reviewed at every release, not with a reminder email. runbook 过期是<em>设计缺陷</em>而不是纪律问题：用"随发版评审的 runbook 即代码"来修，而不是发一封提醒邮件。</li>
+            </ul>
+        </div>
+        <div class="success-box">
+            <div class="title">✅ Credit-Sharing in Assessments</div>
+            <ul>
+                <li><strong>Name who found what.</strong> "Lin spotted the decommissioned jump host during the drill; Raj traced the replication-lag spike." An assessment that credits investigators builds a culture where people volunteer bad news early. 评审里点名发现者："Lin 在演练中发现堡垒机已下线，Raj 追到了复制延迟峰值。"肯分享功劳的评审，会让大家愿意早报坏消息。</li>
+                <li><strong>Thank the architect's pushback publicly.</strong> Steven's fencing warning made your automation safer — agreeing openly with a correction costs you nothing and buys an ally. 公开感谢架构师的反驳：Steven 的隔离提醒让你的自动化更安全。公开认错零成本，换来盟友。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="article-section">
+        <h2>8. Practice 练习题</h2>
+        <div class="practice-block">
+            <div class="practice-title">✍️ Practice Drills</div>
+
+            <div class="practice-item">
+                <div class="question">Q1. Translate to English (DR review style):</div>
+                <p>"我们目前的灾备是温备加数据库异步复制，DNS 切换是手动的。RTO 目标是 2 小时，上次演练花了 4 小时——runbook 过期了，里面还有 14 步手动操作。我的建议是自动化故障切换，连续 3 次健康检查失败触发备库提升。"</p>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    "Our current DR is a warm standby with asynchronous DB replication, and the DNS switch is manual. Our RTO target is two hours; the last drill took four — the runbook is stale and still contains fourteen manual steps. My recommendation is automated failover: three consecutive failed health checks trigger promotion of the standby."
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q2. Spot the wrong statement — which line confuses RTO and RPO?</div>
+                <ol>
+                    <li>"RPO is how much data we can afford to lose, measured in time."</li>
+                    <li>"RTO is how long it takes us to restore service after a disruption."</li>
+                    <li>"With async replication, our RPO equals our replication lag."</li>
+                    <li>"Our RTO is fifteen minutes, because replication lag peaked at fifteen minutes."</li>
+                </ol>
+                <button class="answer-toggle">Show Answer</button>
+                <div class="answer">
+                    ④ is wrong — replication lag is an RPO factor (data loss window), not an RTO factor (restore time). ①②③ are correct. Remember: <strong>RTO = time to recover the service</strong>; <strong>RPO = time window of data loss</strong>. ④ 错——复制延迟影响的是 RPO（丢数据窗口），不是 RTO（恢复时长）。①②③ 正确。记忆法：RTO = 恢复服务要多久；RPO = 会丢多久的数据。
+                </div>
+            </div>
+
+            <div class="practice-item">
+                <div class="question">Q3. Your turn — write your 60-second DR gap summary:</div>
+                <p>Scenario: your service has an active-active setup, target RTO 15 minutes, target RPO 0. Last game day: automated failover worked, but the DNS TTL (600 seconds) delayed user recovery by 10 minutes, and two services retried without a circuit breaker, nearly causing a retry storm. Write 5 English sentences: current state, two gaps, two fixes, one closing line. Use at least 3 phrases from this article.</p>
+                <button class="answer-toggle">Sample Answer</button>
+                <div class="answer">
+                    "Current state: active-active across two regions, automated failover, target RTO fifteen minutes and RPO zero. Gap one: the DNS TTL is six hundred seconds, so users took ten extra minutes to reach the surviving region. Gap two: two services retried without a circuit breaker and nearly caused a retry storm. Fix one: cut the TTL to sixty seconds before the next drill. Fix two: enforce the circuit-breaker library in our shared middleware, with retries on exponential backoff. Resilience is a habit, not a project — we rehearse again next quarter."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <section class="article-nav">
+        <a href="23-playwright-ui-testing.html">
+            <span class="label">← Previous Article</span>
+            <span class="title">23 · Playwright UI Testing</span>
+        </a>
+        <a class="next" href="25-etl-scenarios-discussion.html">
+            <span class="label">Next Article →</span>
+            <span class="title">25 · ETL Scenarios Discussion</span>
+        </a>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-brand">IT English Learning System</div>
+        <p>Article 24 · DR Design &amp; Resilience Improvements · Tech Lead English</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/common.js" defer></script>
+<script src="../../assets/js/ai-config.js" defer></script>
+<script src="../../assets/js/ai-reader.js" defer></script>
+</body>
+</html>
