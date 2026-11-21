@@ -112,3 +112,133 @@ articles with dialogue=230, workers=4, voice=en-GB-SoniaNeural, mode=full-articl
 [113/230] pm/articles/19-banking-pm-terminology — 1022KB
 [114/230] itso/articles/04-vulnerability-status — 1055KB
 [115/230] itso/articles/05-threat-intel-briefing — 996KB
+[116/230] itso/articles/06-pci-dss-audit — 1275KB
+[117/230] itso/articles/07-gdpr-dsar — 1066KB
+[118/230] itso/articles/08-mas-trm-cyber-hygiene — 1071KB
+[119/230] itso/articles/12-risk-acceptance-memo — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[120/230] itso/articles/09-hkma-cyber-resilience — 1346KB
+[121/230] itso/articles/11-incident-notification — 1054KB
+[122/230] itso/articles/13-audit-finding-response — 1126KB
+[123/230] itso/articles/14-vulnerability-disclosure — 1232KB
+[124/230] itso/articles/10-iso27001-sox-evidence — 1854KB
+[125/230] itso/articles/16-pushback-security-waiver — 1040KB
+[126/230] itso/articles/15-telling-sponsor-data-breach — 988KB
+[127/230] itso/articles/19-iam-access-control-terminology — 908KB
+[128/230] itso/articles/17-stop-risky-deploy — 1264KB
+[129/230] itso/articles/18-convincing-md-mfa-pam — 1369KB
+[130/230] itso/articles/20-banking-regulator-standards — 578KB
+[131/230] senior-manager/articles/02-board-update-paper — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[132/230] senior-manager/articles/01-steerco-monthly-deck — 878KB
+[133/230] senior-manager/articles/05-vendor-rfp-decision — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[134/230] senior-manager/articles/06-ma-due-diligence — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[135/230] senior-manager/articles/03-qbr-business-md — 1002KB
+[136/230] senior-manager/articles/04-annual-it-strategy — 1292KB
+[137/230] senior-manager/articles/07-cloud-strategy-direction — 1061KB
+[138/230] senior-manager/articles/08-org-design-restructure — 1217KB
+[139/230] senior-manager/articles/09-pip-conversation — 1027KB
+[140/230] senior-manager/articles/10-regretful-attrition — 809KB
+[141/230] senior-manager/articles/11-promotion-denial — 938KB
+[142/230] senior-manager/articles/14-cro-cyber-conversation — 925KB
+[143/230] senior-manager/articles/13-cfo-capex-conversation — 773KB
+[144/230] senior-manager/articles/12-senior-hire-interview — 1204KB
+[145/230] senior-manager/articles/17-hsbc-group-governance — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[146/230] senior-manager/articles/16-business-md-priorities — 1136KB
+[147/230] senior-manager/articles/15-coo-operations-conversation — 1077KB
+[148/230] senior-manager/articles/18-regulator-relationship — 1119KB
+[149/230] business/articles/01-standup-with-it-pm — 570KB
+[150/230] senior-manager/articles/19-subsidiary-delegated-authority — 1084KB
+[151/230] senior-manager/articles/20-succession-planning — 1140KB
+[152/230] business/articles/02-status-ask — 510KB
+[153/230] business/articles/03-ad-hoc-request — 778KB
+[154/230] business/articles/04-uat-business-review — 827KB
+[155/230] business/articles/06-moscow-workshop — 943KB
+[156/230] business/articles/05-brd-signoff — 907KB
+[157/230] business/articles/07-mvp-cut-conversation — 827KB
+[158/230] business/articles/08-uat-go-live-trade — 1025KB
+[159/230] business/articles/10-status-update-team — 906KB
+[160/230] business/articles/11-business-case — 1320KB
+[161/230] business/articles/09-email-to-it-pm — 967KB
+[162/230] business/articles/14-scope-cut-pushback — 829KB
+[163/230] business/articles/12-steerco-deck-business — 942KB
+[164/230] business/articles/17-pl-walkthrough — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[165/230] business/articles/13-saying-no-to-it-timeline — 1131KB
+[166/230] business/articles/15-escalation-it-business-disagree — 920KB
+[167/230] business/articles/16-post-incident-business-review — 1166KB
+[168/230] business/articles/19-customer-impact — 980KB
+[169/230] business/articles/20-kpi-dashboard — FAILED (Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.)
+[170/230] business/articles/18-regulatory-drivers — 1259KB
+[171/230] scenarios/job-interview/articles/01-cv-screening-call — 580KB
+[172/230] scenarios/job-interview/articles/02-tell-me-about-yourself — 591KB
+[173/230] scenarios/job-interview/articles/03-researching-the-bank — 555KB
+[174/230] scenarios/job-interview/articles/04-star-story-bank — 544KB
+[175/230] scenarios/job-interview/articles/05-behavioural-questions-live — 724KB
+[176/230] scenarios/job-interview/articles/06-explaining-a-technical-project — 853KB
+[177/230] scenarios/job-interview/articles/08-when-you-dont-know — 631KB
+[178/230] scenarios/job-interview/articles/09-your-questions-back — 550KB
+[179/230] scenarios/job-interview/articles/07-design-talk-through — 832KB
+[180/230] scenarios/job-interview/articles/12-video-interview-etiquette — 607KB
+[181/230] scenarios/job-interview/articles/11-panel-interviews — 747KB
+[182/230] scenarios/job-interview/articles/13-thank-you-email — 525KB
+[183/230] scenarios/job-interview/articles/10-salary-expectations — 610KB
+[184/230] scenarios/job-interview/articles/14-following-up-status — 472KB
+[185/230] scenarios/job-interview/articles/15-handling-rejection — 534KB
+[186/230] scenarios/job-interview/articles/17-career-change-story — 728KB
+[187/230] scenarios/job-interview/articles/16-offer-call-negotiation — 655KB
+[188/230] scenarios/job-interview/articles/19-cross-region-panel — 824KB
+[189/230] scenarios/job-interview/articles/18-employment-gap — 623KB
+[190/230] scenarios/first-30-days/articles/01-first-day-introductions — 700KB
+[191/230] scenarios/first-30-days/articles/02-it-setup-access — 627KB
+[192/230] scenarios/first-30-days/articles/03-team-lingo-decoder — 622KB
+[193/230] scenarios/job-interview/articles/20-contract-vs-permanent — 750KB
+[194/230] scenarios/first-30-days/articles/04-first-coffee-manager — 694KB
+[195/230] scenarios/first-30-days/articles/06-asking-good-questions — 811KB
+[196/230] scenarios/first-30-days/articles/07-whos-who-mapping — 725KB
+[197/230] scenarios/first-30-days/articles/08-team-lunch — 658KB
+[198/230] scenarios/first-30-days/articles/09-asking-for-help — 744KB
+[199/230] scenarios/first-30-days/articles/05-first-standup-newjoiner — 553KB
+[200/230] scenarios/first-30-days/articles/10-notes-and-followups — 637KB
+[201/230] scenarios/first-30-days/articles/12-first-one-on-one — 693KB
+[202/230] scenarios/first-30-days/articles/11-understanding-accents — 628KB
+[203/230] scenarios/first-30-days/articles/15-compliance-training — 711KB
+[204/230] scenarios/first-30-days/articles/14-shadowing-pairing — 660KB
+[205/230] scenarios/first-30-days/articles/13-first-status-update — 745KB
+[206/230] scenarios/first-30-days/articles/18-actionable-feedback — 572KB
+[207/230] scenarios/first-30-days/articles/16-first-small-contribution — 696KB
+[208/230] scenarios/first-30-days/articles/19-internal-network — 642KB
+[209/230] scenarios/first-30-days/articles/17-thirty-day-review — 745KB
+[210/230] scenarios/first-30-days/articles/20-first-retro — 656KB
+[211/230] scenarios/small-talk/articles/02-lift-encounters — 260KB
+[212/230] scenarios/small-talk/articles/03-monday-morning-recap — 468KB
+[213/230] scenarios/small-talk/articles/01-tea-point-talk — 378KB
+[214/230] scenarios/small-talk/articles/05-video-call-banter — 336KB
+[215/230] scenarios/small-talk/articles/04-safe-topics-radar — 553KB
+[216/230] scenarios/small-talk/articles/06-remote-coffee-chat — 592KB
+[217/230] scenarios/small-talk/articles/07-team-chat-channels — 674KB
+[218/230] scenarios/small-talk/articles/08-emoji-and-tone — 552KB
+[219/230] scenarios/small-talk/articles/11-team-building-day — 524KB
+[220/230] scenarios/small-talk/articles/10-friday-drinks — 487KB
+[221/230] scenarios/small-talk/articles/09-hosting-team-lunch — 656KB
+[222/230] scenarios/small-talk/articles/12-welcome-farewell — 545KB
+[223/230] scenarios/small-talk/articles/16-pre-meeting-warmup — 398KB
+[224/230] scenarios/small-talk/articles/14-cross-cultural-cues — 612KB
+[225/230] scenarios/small-talk/articles/15-senior-leader-chat — 548KB
+[226/230] scenarios/small-talk/articles/17-topics-to-avoid — 461KB
+[227/230] scenarios/small-talk/articles/18-conversation-rescue — 375KB
+[228/230] scenarios/small-talk/articles/19-names-and-details — 473KB
+[229/230] scenarios/small-talk/articles/13-common-interests — 560KB
+[230/230] scenarios/small-talk/articles/20-smalltalk-to-relationships — 538KB
+
+DONE articles=230/230 mp3s=215 bytes=180.7MB fails=13
+ba/articles/04-requirements-clarification: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+ba/articles/11-requirements-signoff-email: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+developer/articles/02-cross-timezone-standup: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+developer/articles/20-hsbc-systems-and-process: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+tech-lead/articles/05-cross-timezone-squad-sync: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+pm/articles/20-regulatory-project: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+itso/articles/12-risk-acceptance-memo: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+senior-manager/articles/02-board-update-paper: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+senior-manager/articles/05-vendor-rfp-decision: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+senior-manager/articles/06-ma-due-diligence: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+senior-manager/articles/17-hsbc-group-governance: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+business/articles/17-pl-walkthrough: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
+business/articles/20-kpi-dashboard: Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.
