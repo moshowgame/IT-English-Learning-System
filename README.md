@@ -7,7 +7,7 @@
 ![Tech](https://img.shields.io/badge/Tech-HTML5%20%2B%20CSS3%20%2B%20Vanilla%20JS-blue)
 ![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20%E2%80%94%20no%20CDN-success)
 ![No Build](https://img.shields.io/badge/Build-None-success)
-![Articles](https://img.shields.io/badge/Articles-236-orange)
+![Articles](https://img.shields.io/badge/Articles-233-orange)
 ![Roles](https://img.shields.io/badge/Roles-8%20%2B%203%20Scenario%20Series-purple)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -28,9 +28,9 @@
 
 ## ✨ 项目简介 / About
 
-本系统专为 **外企银行 IT 从业者** 设计，覆盖 **八大 IT 角色** 与 **三大通用场景系列** 共 236 篇文章，聚焦 **实用口语** 表达。每篇文章都包含真实业务场景、英文对话、关键句型、词汇、语法点与练习题。
+本系统专为 **外企银行 IT 从业者** 设计，覆盖 **八大 IT 角色** 与 **三大通用场景系列** 共 233 篇文章，聚焦 **实用口语** 表达。每篇文章都包含真实业务场景、英文对话、关键句型、词汇、语法点与练习题。
 
-This learning system is designed for **IT professionals working in foreign banks**. It covers daily English communication across **eight core IT roles** plus **three cross-role scenario series** — 236 articles in total, with a strong focus on **practical speaking** in real workplace contexts.
+This learning system is designed for **IT professionals working in foreign banks**. It covers daily English communication across **eight core IT roles** plus **three cross-role scenario series** — 233 articles in total, with a strong focus on **practical speaking** in real workplace contexts.
 
 ## 🎯 核心特色 / Features
 
@@ -38,31 +38,33 @@ This learning system is designed for **IT professionals working in foreign banks
 |---|---|
 | 🏦 **真实业务场景** | SWIFT、KYC、AML、PCI-DSS 等外企银行专有术语 |
 | 🗣️ **实用口语优先** | 每篇文章均配 1 段英文对话 + 紧跟小字体中文解读 |
-| 🔊 **语音朗读 TTS** | 每段对话可整段连播 / 逐句朗读，支持语速调节与当前句高亮（详见下方专节） |
+| 🔊 **语音朗读 TTS** | 整篇对话由 **AI 神经语音 MP3** 朗读，逐句/句型/词汇由浏览器 TTS 朗读，自动兜底（详见下方专节） |
 | 👥 **八大角色全覆盖** | BA / Developer / Tech Lead / Architect / PM / CyberSecurity&IAM / Senior Manager / Business Sponsor |
 | 🧭 **通用场景系列** | 求职面试 · 入职30天生存英语 · 职场社交 Small Talk（跨角色） |
 | 📚 **五大训练模块** | Daily Standup · Meeting · Written · Difficult Conversations · Banking Context |
-| 📶 **四级难度分级** | 🟢 Beginner-friendly / 🟡 Intermediate / 🔴 Advanced / 🔴 Expert（全部 160 篇角色文章已标注） |
+| 📶 **四级难度分级** | 🟢 Beginner-friendly / 🟡 Intermediate / 🔴 Advanced / 🔴 Expert（全部 173 篇角色文章已标注） |
 | 🤖 **AI 阅读助手** | 自带 API Key 即可在每篇文章调用 AI 翻译、角色扮演、出题（DeepSeek / OpenAI / Kimi / Qwen / GLM） |
 | 🔍 **SEO 就绪** | 每页 meta description / Open Graph / canonical / sitemap.xml / robots.txt / favicon / 404 页 |
-| 🚀 **现代性能** | 全站无 jQuery、无 Bootstrap，脚本 defer 加载，仅 3 个自研静态资源 |
+| 🚀 **现代性能** | 全站无 jQuery、无 Bootstrap，脚本 defer 加载，自研静态资源仅 4 个（1 CSS + 3 JS） |
 | 🌍 **跨地区协作** | UK / HK / CN / IN 跨时区沟通话术与跨文化解读 |
 | 📱 **响应式设计** | 原生 CSS Grid / Flexbox 响应式（自研实现），PC / Pad / 手机自适应 |
 | 🖨️ **打印友好** | 文章打印自动隐藏导航 / footer / donate / 弹窗 |
 | 🔌 **零依赖部署** | 纯静态 HTML5 + CSS3 + 原生 JS，**零 CDN、零第三方库、无需构建** — 断网/内网/离线双击 index.html 均完整可用 |
 
-## 🔊 语音朗读 / Text-to-Speech（浏览器 TTS）
+## 🔊 语音朗读 / Text-to-Speech（AI 语音 + 浏览器兜底）
 
-无需任何插件或 API Key，**打开文章即可听** — 基于 Web Speech API（浏览器内置语音合成）：
+文章语音采用**分工架构**："▶ 播放整段对话" 优先播放 **AI 预生成的整篇 MP3**（微软 Edge TTS 神经语音，英式女声 `en-GB-SoniaNeural`，每篇一个 `full.mp3`）；无 AI 音频的文章自动回退为浏览器 TTS 逐句连播（含当前句高亮）。逐句 🔊、句型 🔊、词汇 🔊 的小段朗读一律走 **Web Speech API**（浏览器内置合成），两类语音 UI 完全一致、无缝切换：
 
 | 功能 | 说明 |
 |---|---|
-| ▶ **整段对话连播** | 对话区顶部 "🔊 朗读 / Listen" → "▶ 播放整段对话"，逐句朗读并**自动红色高亮当前句** |
-| 🔉 **逐句朗读** | 每句对话右侧 🔊 小按钮，点击即读该句英文 |
-| ⚡ **语速调节** | 0.75x / 0.9x / 1x / 1.25x，选择自动保存（localStorage），下次访问保持 |
-| 🇬🇧 **英式发音优先** | 自动优先选择 en-GB 英式语音（贴合 HSBC 场景），无英式时回退 en-US 美式 |
+| 🤖 **AI 神经语音（整篇）** | `tools/tts/generate.js` 为每篇有对话的文章预生成一个 `full.mp3`（assets/audio/，含 manifest.json），自然度远超浏览器合成 |
+| ▶ **整段对话连播** | 优先播 AI 整篇 MP3；无音频时自动改为浏览器 TTS 逐句连播并**红色高亮当前句** |
+| 🔉 **逐句朗读** | 每句对话右侧 🔊 小按钮，点击即读该句英文（浏览器 TTS） |
+| ⚡ **语速调节** | 0.75x / 0.9x / 1x / 1.25x，选择自动保存（localStorage）；AI MP3 通过 playbackRate 变速 |
+| 🇬🇧 **英式发音** | AI 音频固定 en-GB 英式发音（贴合 HSBC 场景）；浏览器兜底同样 en-GB 优先 |
 | 📝 **句型 / 词汇也能听** | Key Phrases 与 Vocabulary 每个条目均带 🔊 按钮 |
-| 🔌 **离线兜底** | 纯浏览器端合成，不联网也能朗读；Chrome / Edge 体验最佳 |
+| 🔌 **离线兜底** | 无音频的页面纯浏览器端合成，不联网也能朗读；Chrome / Edge 体验最佳 |
+| 🛠️ **按需再生成** | `node tools/tts/generate.js`（支持 `--role=ba --limit=2` 小范围测试；断点续跑，已有 MP3 自动跳过） |
 
 > 💡 使用建议：先 0.75x 慢速跟读，熟悉后切回 1x 正常语速做影子跟读（shadowing）练习。
 
@@ -79,6 +81,7 @@ it-english/
 │   ├── js/ai-config.js           # AI 服务配置（BYO Key，localStorage）
 │   ├── js/ai-reader.js           # AI 翻译 / 角色扮演 / 出题
 │   └── images/favicon.svg        # 站点图标
+│   └── audio/                    # 🎙️ AI 预生成语音（每篇文章一个 full.mp3 + manifest.json）
 ├── ba/                           # 📊 业务分析师（21 篇）
 ├── developer/                    # 💻 开发者（22 篇）
 ├── tech-lead/                    # 🛠️ 技术负责人（26 篇，已统一编号）
@@ -126,7 +129,7 @@ it-english/
 2. **Dialogue 英文对话** — 双行对照（英文 + 小字体中文）
 3. **Key Phrases 关键句型** — 6-10 个高频表达 + 用法说明
 4. **Vocabulary 词汇表** — 专业术语 + 中文释义
-5. **Grammar Notes 语法点** — 真实场景中的语法现象（160 篇角色文章已全部配齐）
+5. **Grammar Notes 语法点** — 真实场景中的语法现象（173 篇角色文章已全部配齐）
 6. **Cultural Tips 文化 Tips** — 中外职场文化差异、避坑指南
 7. **Practice 练习题** — 翻译、找错、角色扮演（Show Answer 可展开）
 
@@ -147,7 +150,7 @@ it-english/
 - ✅ 双击 `index.html` 即可浏览
 - ✅ 适合作为学习材料长期保存
 - ✅ 部署到 GitHub Pages / Gitee Pages 零成本
-- ✅ `tools/` 内的 Perl 批量脚本负责跨 250 个页面的幂等批量修改，兼得"无构建"与"可维护"
+- ✅ `tools/` 内的 Perl 批量脚本负责跨 247 个页面的幂等批量修改，兼得"无构建"与"可维护"
 
 ## 🚀 快速开始 / Getting Started
 
@@ -231,7 +234,7 @@ php -S localhost:8000
 - [ ] 员工视角晋升/调薪谈判系列
 - [ ] 新角色板块：QA/测试、DevOps/SRE、数据、Product Owner
 - [ ] 词汇闪卡与学习进度追踪（localStorage）
-- [ ] 神经语音预生成音频（Edge TTS，多角色音色，作为浏览器 TTS 的升级）
+- [ ] 多角色音色（对话按说话人分配男/女声，如 Sonia + Ryan 双播）
 
 ## ⚠️ 安全提示 / Security Note
 

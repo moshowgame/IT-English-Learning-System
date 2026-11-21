@@ -280,6 +280,9 @@
         var voice = null;
         var rate = parseFloat(localStorage.getItem('ttsRate')) || 1;
         var token = 0;
+        var audioMap = null;
+        var audioMapPromise = null;
+        var currentAudio = null;
 
         function pickVoice() {
             if (!synth) return;
@@ -306,26 +309,88 @@
         }
 
         function cancel() {
+            if (currentAudio) { try { currentAudio.pause(); } catch (e) { /* ignore */ } currentAudio = null; }
             if (synth) { try { synth.cancel(); } catch (e) { /* ignore */ } }
             token++;
         }
 
-        function speakOne(text, onend) {
-            if (!synth || !text) { if (onend) setTimeout(onend, 0); return; }
-            var my = token;
+        /* ---- AI 预生成音频（Edge TTS MP3）：有则优先，无则回退浏览器 TTS ---- */
+        function computePageAudioBase() {
+            var prefix = computeAssetPrefix();
+            var segs = window.location.pathname.split('/').filter(Boolean);
+            var depth = (prefix.match(/\.\.\//g) || []).length;
+            if (segs.length < depth + 1) return null;
+            var rel = segs.slice(segs.length - depth - 1).join('/').replace(/\.html$/, '');
+            return { prefix: prefix, rel: rel };
+        }
+
+        function loadAudioMap() {
+            if (audioMapPromise) return audioMapPromise;
+            audioMapPromise = new Promise(function (resolve) {
+                var base = computePageAudioBase();
+                if (!base || typeof fetch !== 'function') { resolve(null); return; }
+                fetch(base.prefix + 'assets/audio/' + base.rel + '/manifest.json')
+                    .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('no manifest')); })
+                    .then(function (m) {
+                        audioMap = {};
+                        (m && m.keys || []).forEach(function (k) {
+                            audioMap[k] = base.prefix + 'assets/audio/' + base.rel + '/' + k + '.mp3';
+                        });
+                        resolve(audioMap);
+                    })
+                    .catch(function () { audioMap = null; resolve(null); });
+            });
+            return audioMapPromise;
+        }
+
+        function speakFallback(text, finish) {
+            if (!synth) { if (finish) setTimeout(finish, 0); return; }
             var u = new SpeechSynthesisUtterance(text);
             if (voice) { u.voice = voice; u.lang = voice.lang; } else { u.lang = 'en-GB'; }
             u.rate = rate;
             u.pitch = 1;
+            u.onend = finish;
+            u.onerror = finish; /* cancel() also fires onerror in Chrome */
+            synth.speak(u);
+        }
+
+        function speakOne(text, onend, src) {
+            if (!text) { if (onend) setTimeout(onend, 0); return; }
+            var my = token;
             var done = false;
             function finish() {
                 if (done) return;
                 done = true;
                 if (my === token && onend) onend();
             }
-            u.onend = finish;
-            u.onerror = finish; /* cancel() also fires onerror in Chrome */
-            synth.speak(u);
+            var mp3 = src && audioMap && audioMap[src];
+            if (mp3) {
+                var a = new Audio(mp3);
+                a.playbackRate = rate;
+                a.onended = function () { if (currentAudio === a) currentAudio = null; finish(); };
+                a.onerror = function () { if (currentAudio === a) currentAudio = null; speakFallback(text, finish); };
+                currentAudio = a;
+                var p = a.play();
+                if (p && p.catch) p.catch(function () { currentAudio = null; speakFallback(text, finish); });
+                return;
+            }
+            speakFallback(text, finish);
+        }
+
+        /* 整篇 AI 音频（full.mp3）：有则播放，无则返回 false 走逐句兜底 */
+        function playFull(onend) {
+            var mp3 = audioMap && audioMap.full;
+            if (!mp3) return false;
+            cancel();
+            var my = token;
+            var a = new Audio(mp3);
+            a.playbackRate = rate;
+            a.onended = function () { if (currentAudio === a) currentAudio = null; if (my === token && onend) onend(); };
+            a.onerror = function () { if (currentAudio === a) currentAudio = null; if (my === token && onend) onend(); };
+            currentAudio = a;
+            var p = a.play();
+            if (p && p.catch) p.catch(function () { currentAudio = null; if (my === token && onend) onend(); });
+            return true;
         }
 
         function playSequence(items, onItem, onDone) {
@@ -338,31 +403,39 @@
                 if (i >= items.length) { if (onDone) onDone(); return; }
                 var idx = i++;
                 if (onItem) onItem(items[idx], idx);
-                speakOne(items[idx].text, next);
+                speakOne(items[idx].text, next, items[idx].src);
             })();
         }
 
         return {
             supported: !!synth,
             cancel: cancel,
-            say: function (text, onend) { cancel(); speakOne(text, onend); },
+            say: function (text, onend, src) { cancel(); speakOne(text, onend, src); },
             playSequence: playSequence,
+            playFull: playFull,
+            loadAudioMap: loadAudioMap,
+            hasAudio: function () { return !!(audioMap && Object.keys(audioMap).length); },
             getRate: function () { return rate; },
             setRate: function (r) { rate = r; localStorage.setItem('ttsRate', String(r)); }
         };
     })();
 
     function injectTts() {
-        var hasDialogue = document.querySelectorAll('.dialogue-block').length > 0;
+        var hasContent = document.querySelector('.dialogue-block, .phrase-list, .vocab-list');
+        if (!hasContent) return;
+
+        /* article pages: try to load the AI-generated audio manifest (async, non-blocking) */
+        tts.loadAudioMap();
 
         if (!tts.supported) {
-            if (hasDialogue) {
+            /* no browser TTS — still fine if AI audio exists for this article */
+            tts.loadAudioMap().then(function (map) {
+                if (map && Object.keys(map).length) return;
                 var note = document.createElement('div');
                 note.className = 'tts-unsupported';
-                note.textContent = '当前浏览器不支持语音朗读（Web Speech API），建议使用 Chrome / Edge 浏览器。';
-                var firstBlock = document.querySelector('.dialogue-block');
-                firstBlock.parentNode.insertBefore(note, firstBlock);
-            }
+                note.textContent = '当前页面暂无 AI 语音，且浏览器不支持语音朗读（Web Speech API），建议使用 Chrome / Edge 浏览器。';
+                hasContent.parentNode.insertBefore(note, hasContent);
+            });
             return;
         }
 
@@ -408,13 +481,16 @@
             });
 
             playBtn.addEventListener('click', function () {
-                var items = Array.prototype.map.call(lines, function (line) {
-                    var en = line.querySelector('.en');
-                    return { el: line, text: en ? en.textContent.replace(/\s+/g, ' ').trim() : '' };
-                }).filter(function (it) { return it.text; });
-
                 playBtn.hidden = true;
                 stopBtn.hidden = false;
+                /* AI 整篇音频优先；无音频则逐句浏览器 TTS（含高亮） */
+                if (tts.playFull(clearAll)) return;
+                var allLines = document.querySelectorAll('.dialogue-line');
+                var items = Array.prototype.map.call(lines, function (line) {
+                    var en = line.querySelector('.en');
+                    return { el: line, src: 'd' + Array.prototype.indexOf.call(allLines, line),
+                             text: en ? en.textContent.replace(/\s+/g, ' ').trim() : '' };
+                }).filter(function (it) { return it.text; });
                 tts.playSequence(items, function (item) {
                     block.querySelectorAll('.dialogue-line.speaking').forEach(function (l) {
                         l.classList.remove('speaking');
@@ -447,8 +523,8 @@
             });
         });
 
-        /* ---- Phrase / vocabulary lists: per-item button ---- */
-        document.querySelectorAll('.phrase-list li, .vocab-list li').forEach(function (li) {
+        /* ---- Phrase / vocabulary lists: per-item button (browser TTS) ---- */
+        function wireSpeakItem(li) {
             if (li.querySelector('.tts-line-btn')) return;
             var enEl = li.querySelector('.english') || li.querySelector('strong');
             if (!enEl) return;
@@ -470,7 +546,12 @@
                 tts.cancel();
                 tts.say(text);
             });
-        });
+        }
+
+        Array.prototype.forEach.call(
+            document.querySelectorAll('.phrase-list li'), wireSpeakItem);
+        Array.prototype.forEach.call(
+            document.querySelectorAll('.vocab-list li'), wireSpeakItem);
     }
 
     /* ---------- AI status badge (home page) ---------- */
