@@ -642,6 +642,16 @@
                 window.AISettings.show();
             });
         }
+        /* ---- Baidu Analytics（百度统计）：统一在此注入，页面零内联脚本 ---- */
+        if (window.location.protocol.indexOf('http') === 0) {
+            window._hmt = window._hmt || [];
+            (function () {
+                var hm = document.createElement('script');
+                hm.src = 'https://hm.baidu.com/hm.js?9ab837a7939b090e433de47b513717a5';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        }
     }
 
     if (document.readyState === 'loading') {

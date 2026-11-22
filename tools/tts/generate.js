@@ -47,6 +47,10 @@ function decodeEntities(s) {
 function stripTags(s) {
     return decodeEntities(s.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 }
+/* text goes inside SSML (XML) — must escape & < > or the service drops the stream */
+function escapeXml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 /* ---------- extraction: full article dialogue text ---------- */
 function extractDialogue(html) {
@@ -106,11 +110,25 @@ async function runWorker(queue, results) {
         }
 
         const text = job.lines.join('\n');
+        /* long articles can drop the stream mid-synthesis ("no turn.end") —
+           synthesize in line-chunks and concatenate into ONE full.mp3 */
+        const chunks = [];
+        let cur = [];
+        let curLen = 0;
+        for (const line of job.lines) {
+            cur.push(line);
+            curLen += line.length;
+            if (curLen >= 1200) { chunks.push(cur.join('\n')); cur = []; curLen = 0; }
+        }
+        if (cur.length) chunks.push(cur.join('\n'));
+
         let ok = false, lastErr = null;
         for (let attempt = 0; attempt <= RETRIES && !ok; attempt++) {
             try {
                 if (!client) { client = new MsEdgeTTS(); await client.setMetadata(VOICE, FORMAT); }
-                const buf = await synthesize(client, text);
+                const bufs = [];
+                for (const chunkText of chunks) bufs.push(await synthesize(client, escapeXml(chunkText)));
+                const buf = Buffer.concat(bufs);
                 fs.mkdirSync(job.outDir, { recursive: true });
                 fs.writeFileSync(out, buf);
                 fs.writeFileSync(path.join(job.outDir, 'manifest.json'),
